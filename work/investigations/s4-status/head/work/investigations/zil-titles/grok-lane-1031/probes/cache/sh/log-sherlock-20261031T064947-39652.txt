@@ -1,0 +1,4 @@
+sherlock sh-put @4 PUT KNIFE ON SOFA #239 TRUE "You are not holding a knife.\n \n> "
+sherlock sh-put @4 PUT KNIFE ON MANTELPIECE #292 TRUE "You are not holding a knife.\n \n> "
+sherlock sh-put @4 PUT KNIFE ON VIOLIN #207 NOTEST "You are not holding a knife.\n \n> "
+sherlock sh-put @4 GET KNIFE #151 FALSE "You take the knife off of the mantelpiece.\n \n> "

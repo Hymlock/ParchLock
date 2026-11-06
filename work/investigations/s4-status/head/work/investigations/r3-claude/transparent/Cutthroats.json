@@ -1,0 +1,779 @@
+{
+ "digest": "Cutthroats.z3.js",
+ "bits": {
+  "trans": 19,
+  "container": 11,
+  "open": 21
+ },
+ "objectCount": 223,
+ "status": "INCOMPLETE",
+ "carriers": [
+  {
+   "id": 25,
+   "name": "skeleton",
+   "container": false,
+   "openAtStart": false,
+   "parent": 222,
+   "contents": []
+  },
+  {
+   "id": 34,
+   "name": "glass case",
+   "container": true,
+   "openAtStart": false,
+   "parent": 222,
+   "contents": [
+    "collection of rare stamps"
+   ]
+  },
+  {
+   "id": 38,
+   "name": "row of fallen bunks",
+   "container": false,
+   "openAtStart": false,
+   "parent": 222,
+   "contents": []
+  },
+  {
+   "id": 74,
+   "name": "chair",
+   "container": false,
+   "openAtStart": true,
+   "parent": 75,
+   "contents": []
+  },
+  {
+   "id": 79,
+   "name": "bunk",
+   "container": true,
+   "openAtStart": true,
+   "parent": 80,
+   "contents": []
+  },
+  {
+   "id": 85,
+   "name": "small machine",
+   "container": true,
+   "openAtStart": false,
+   "parent": 86,
+   "contents": [
+    "machine label",
+    "machine compartment",
+    "machine switch"
+   ]
+  },
+  {
+   "id": 94,
+   "name": "chair",
+   "container": false,
+   "openAtStart": false,
+   "parent": 95,
+   "contents": []
+  },
+  {
+   "id": 108,
+   "name": "chair",
+   "container": false,
+   "openAtStart": true,
+   "parent": 112,
+   "contents": []
+  },
+  {
+   "id": 109,
+   "name": "table",
+   "container": true,
+   "openAtStart": true,
+   "parent": 112,
+   "contents": []
+  },
+  {
+   "id": 111,
+   "name": "parrot",
+   "container": false,
+   "openAtStart": false,
+   "parent": 112,
+   "contents": [
+    "small eyepatch"
+   ]
+  },
+  {
+   "id": 117,
+   "name": "portable electromagnet",
+   "container": false,
+   "openAtStart": false,
+   "parent": 131,
+   "contents": []
+  },
+  {
+   "id": 137,
+   "name": "diving mask",
+   "container": false,
+   "openAtStart": false,
+   "parent": 140,
+   "contents": []
+  },
+  {
+   "id": 146,
+   "name": "bed",
+   "container": true,
+   "openAtStart": true,
+   "parent": 183,
+   "contents": [
+    "cretin"
+   ]
+  },
+  {
+   "id": 178,
+   "name": "window",
+   "container": false,
+   "openAtStart": false,
+   "parent": 222,
+   "contents": []
+  },
+  {
+   "id": 179,
+   "name": "window",
+   "container": false,
+   "openAtStart": false,
+   "parent": 222,
+   "contents": []
+  },
+  {
+   "id": 223,
+   "name": "",
+   "container": false,
+   "openAtStart": true,
+   "parent": 0,
+   "contents": [
+    "",
+    "dead man",
+    "ferry",
+    "room",
+    "yourself",
+    "you",
+    "day",
+    "time",
+    "ferry token",
+    "money",
+    "bank",
+    "bunch of people",
+    "pocket",
+    "sleep",
+    "treasure",
+    "ceiling",
+    "wall",
+    "bulkhead",
+    "hole",
+    "floor",
+    "air",
+    "random object",
+    "direction",
+    ""
+   ]
+  }
+ ],
+ "containerTransCarriers": [
+  "34:glass case",
+  "79:bunk",
+  "85:small machine",
+  "109:table",
+  "146:bed"
+ ],
+ "positives": [],
+ "negatives": [
+  "dresser (closed opaque, passbook/book/room key) at start: LOOK omits contents; LOOK IN DRESSER -> The dresser is closed.; TAKE PASSBOOK -> You can't see any passbook here."
+ ],
+ "takeWhileClosed": "not observed",
+ "note": "Only closed CONT+TRANS with real contents: glass case (id34, stamps, parent 222) reached only near walkthrough end (~325 cmds, beyond the 80-command budget); the full replay probes at that point returned empty replies (game state diverged/ended), so no positive. small machine (id85) children are its own parts.",
+ "closedOpaqueWithContentsAtStart": [
+  {
+   "id": 122,
+   "name": "tube of putty",
+   "parent": 131,
+   "contents": [
+    "glob of putty"
+   ]
+  },
+  {
+   "id": 145,
+   "name": "dresser",
+   "parent": 183,
+   "contents": [
+    "Mariners' Trust passbook",
+    "book of shipwrecks",
+    "room key"
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "cmd": "look",
+   "reply": "Your Room, on the bed / You're in your room in the Red Boar Inn. It's sparsely furnished, but comfortable enough. To the north is the door, and there's a closet without a door to the west. / On the floor is a note that must have been slipped under the door while you slept. / In a corner of the room is a lopsided wooden dresser. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "look in dresser",
+   "reply": "The dresser is closed. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "examine dresser",
+   "reply": "It's a tilted old wooden dresser, which is closed. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "take passbook",
+   "reply": "You can't see any passbook here. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "look",
+   "reply": "",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "look in glass case",
+   "reply": "",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "examine glass case",
+   "reply": "",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "take stamps",
+   "reply": "",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "look in small machine",
+   "reply": "",
+   "closedTransContainers": [
+    {
+     "id": 34,
+     "name": "glass case",
+     "parent": 222,
+     "open": false,
+     "contents": [
+      "collection of rare stamps"
+     ]
+    },
+    {
+     "id": 85,
+     "name": "small machine",
+     "parent": 86,
+     "open": false,
+     "contents": [
+      "machine label",
+      "machine compartment",
+      "machine switch"
+     ]
+    }
+   ]
+  }
+ ],
+ "commands": [
+  "look",
+  "look in dresser",
+  "examine dresser",
+  "take passbook",
+  "look out window",
+  "wind watch",
+  "get out of bed",
+  "read note",
+  "open dresser",
+  "get passbook and room key",
+  "look in closet",
+  "i",
+  "open door",
+  "n",
+  "close door",
+  "lock door",
+  "wait",
+  "n",
+  "n",
+  "e",
+  "e",
+  "e",
+  "e",
+  "s",
+  "sit",
+  "order food",
+  "order drink",
+  "eat food",
+  "drink drink",
+  "yes",
+  "get out of chair",
+  "n",
+  "w",
+  "w",
+  "s",
+  "s",
+  "w",
+  "w",
+  "e",
+  "e",
+  "e",
+  "e",
+  "ne",
+  "s",
+  "s",
+  "sw",
+  "w",
+  "w",
+  "e",
+  "e",
+  "wait",
+  "n",
+  "withdraw $603",
+  "s",
+  "ne",
+  "n",
+  "nw",
+  "w",
+  "w",
+  "w",
+  "open window",
+  "look through window",
+  "w",
+  "drop passbook",
+  "e",
+  "e",
+  "n",
+  "n",
+  "w",
+  "w",
+  "sw",
+  "sw",
+  "nw",
+  "wait",
+  "examine plate",
+  "se",
+  "ne",
+  "ne",
+  "e",
+  "s",
+  "n",
+  "e",
+  "e",
+  "s",
+  "n",
+  "e",
+  "s",
+  "buy drink",
+  "drink drink",
+  "n",
+  "se",
+  "s",
+  "s",
+  "se",
+  "i",
+  "wait for johnny",
+  "YES",
+  "YES",
+  "YES",
+  "YES",
+  "YES",
+  "YES",
+  "yes",
+  "show $500",
+  "no",
+  "nw",
+  "n",
+  "n",
+  "nw",
+  "w",
+  "s",
+  "wait",
+  "wait",
+  "look",
+  "give $56",
+  "buy flashlight and repellent",
+  "buy c battery and putty",
+  "buy electromagnet",
+  "rent compressor",
+  "i",
+  "n",
+  "e",
+  "s",
+  "sit",
+  "order food",
+  "order drink",
+  "eat food",
+  "drink drink",
+  "get out of chair",
+  "n",
+  "se",
+  "s",
+  "s",
+  "sw",
+  "w",
+  "w",
+  "wait",
+  "wait",
+  "wait",
+  "wait",
+  "wait",
+  "wait",
+  "wait",
+  "wait",
+  "wait",
+  "wait",
+  "e",
+  "e",
+  "ne",
+  "n",
+  "n",
+  "nw",
+  "w",
+  "w",
+  "s",
+  "s",
+  "w",
+  "wait",
+  "look through window",
+  "w",
+  "e",
+  "wait",
+  "look through window",
+  "open window",
+  "enter window",
+  "get envelope",
+  "n",
+  "w",
+  "s",
+  "s",
+  "unlock door",
+  "open door",
+  "s",
+  "read envelope",
+  "get all from closet",
+  "i",
+  "n",
+  "close door",
+  "lock door",
+  "n",
+  "n",
+  "e",
+  "e",
+  "s",
+  "s",
+  "w",
+  "w",
+  "drop room key",
+  "e",
+  "e",
+  "e",
+  "e",
+  "ne",
+  "nw",
+  "s",
+  "sit",
+  "order drink",
+  "drink drink",
+  "wait",
+  "wait",
+  "get off chair",
+  "n",
+  "w",
+  "s",
+  "wait",
+  "n",
+  "w",
+  "n",
+  "w",
+  "s",
+  "d",
+  "n",
+  "n",
+  "n",
+  "get drill",
+  "open panel",
+  "get c battery",
+  "put c battery in drill",
+  "close panel",
+  "s",
+  "hide envelope under bunk",
+  "s",
+  "s",
+  "s",
+  "wait",
+  "wait",
+  "wait",
+  "latitude is 25",
+  "longitude is 25",
+  "n",
+  "u",
+  "n",
+  "s",
+  "drop wet suit",
+  "drop flippers",
+  "drop mask",
+  "drop drill",
+  "i",
+  "w",
+  "n",
+  "d",
+  "n",
+  "get all",
+  "examine compressor",
+  "examine air tank",
+  "fill tank with air",
+  "get air tank",
+  "s",
+  "s",
+  "drink water",
+  "s",
+  "d",
+  "u",
+  "s",
+  "n",
+  "n",
+  "n",
+  "look under bunk",
+  "n",
+  "s",
+  "u",
+  "w",
+  "s",
+  "examine drill",
+  "n",
+  "wait",
+  "get out of bunk",
+  "get all",
+  "get envelope",
+  "s",
+  "s",
+  "s",
+  "show envelope to johnny",
+  "n",
+  "u",
+  "d",
+  "n",
+  "eat stew",
+  "s",
+  "u",
+  "drop all",
+  "get watch",
+  "wear watch",
+  "get wet suit",
+  "wear wet suit",
+  "get air tank",
+  "wear air tank",
+  "get flippers",
+  "wear flippers",
+  "get mask",
+  "wear mask",
+  "i",
+  "look",
+  "get tube",
+  "get flashlight",
+  "get canister",
+  "get drill",
+  "get electromagnet",
+  "i",
+  "look",
+  "dive in ocean",
+  "open shark repellent",
+  "d",
+  "turn on flashlight",
+  "d",
+  "d",
+  "d",
+  "s",
+  "open door",
+  "s",
+  "put magnet on mine",
+  "turn on magnet",
+  "drop magnet",
+  "u",
+  "remove tank",
+  "s",
+  "s",
+  "turn drill on",
+  "drill safe with drill",
+  "turn drill off",
+  "grab case",
+  "n",
+  "n",
+  "wear air tank",
+  "d",
+  "n",
+  "u",
+  "look",
+  "look in glass case",
+  "examine glass case",
+  "take stamps",
+  "look in small machine"
+ ],
+ "driver": "work/investigations/r3-claude/transparent/drive-trans.cjs"
+}

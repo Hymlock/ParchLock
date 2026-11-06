@@ -1,0 +1,32 @@
+{
+  "titles": 26,
+  "statusCounts": {
+    "S": 170,
+    "UD": 42,
+    "O": 18,
+    "NA": 340,
+    "NC": 95,
+    "X": 28,
+    "SELF": 3,
+    "OPEN": 1,
+    "U": 9,
+    "NOTE": 3
+  },
+  "openOrNoConsumerByKey": {
+    "visited": 26,
+    "light": 19,
+    "worn": 9,
+    "proper": 12,
+    "lightSource": 15,
+    "on": 2,
+    "female": 9,
+    "pluralname": 6,
+    "locked": 1,
+    "switchable": 1,
+    "male": 1,
+    "neuter": 1,
+    "static": 1,
+    "takeable": 1
+  },
+  "qualification": "Static current ledger audit, not fresh native/catalog run and not title-completion accounting. U/NC may be stale relative to accepted owner facts."
+}

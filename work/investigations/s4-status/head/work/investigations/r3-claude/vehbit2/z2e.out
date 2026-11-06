@@ -1,0 +1,559 @@
+"GET LAMP AND SWORD"  231 -> 231 Inside the Barrow | lamp: Taken. sword: Taken. >
+"S"  231 -> 229 Narrow Tunnel | Narrow Tunnel You are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphores
+"S"  229 -> 228 Foot Bridge | Foot Bridge You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here. >
+"S"  228 -> 227 Great Cavern | Great Cavern This is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room g
+"southwest" goto:Shallow Ford 227 -> 226 Shallow Ford | Shallow Ford You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged
+"S"  226 -> 225 Dark Tunnel | You have moved into a dark place. It is pitch black. You are likely to be eaten by a grue. >
+"LIGHT LAMP"  225 -> 225 Dark Tunnel | The lamp is now on. Dark Tunnel This is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves
+"SE"  225 -> 222 North End of Garden | North End of Garden This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy d
+"ENTER GAZEBO"  222 -> 220 Gazebo | Gazebo This is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo. Sitting on the tabl
+"GET TEAPOT, MAT, LETTER OPENER, MATCHBOOK AND PAPER"  220 -> 220 Gazebo | china teapot: Taken. place mat: Taken. letter opener: Taken. matchbook: Taken. newspaper: Taken. >
+"OUT"  220 -> 222 North End of Garden | North End of Garden There is a beautiful unicorn here cropping grass. The unicorn bounds lightly away. Your sword is no longer glowing. >
+"S"  222 -> 219 Formal Garden | Formal Garden This is the middle part of a formal garden. Hedges hide the cavern walls and a dim illumination comes from mosses far above. The path is
+"W"  219 -> 216 Path Near Stream | Path Near Stream The path follows the south edge of a deep ravine and heads northeast. A tunnel heads southwest, narrowing to a rather tight crawl. A 
+"SW"  216 -> 138 Carousel Room | Carousel Room You are in a large circular room whose high ceiling is lost in gloom. Eight identical passages leave the room. A loud whirring sound com
+"N"  138 -> 215 Marble Hall | You're not sure which direction is which. This room is very disorienting. Marble Hall This is an arched hall of fine marble. The hall stops abruptly t
+"south" goto:Topiary 215 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 218 Topiary | You're not sure which direction is which. This room is very disorienting. Topiary This is the southern end of a formal garden. Hedges hide the cavern 
+"W"  218 -> 138 Carousel Room | Carousel Room >
+"N"  138 -> 201 Cool Room | You're not sure which direction is which. This room is very disorienting. Cool Room The room is cool and damp. The air is misty. A twisty path from th
+"north" goto:Topiary:random 201 -> 202 Stone Bridge | Stone Bridge This is the middle of a ruined but still impressive stone bridge spanning a deep chasm. Water flows far beneath. A paved path leads north
+"down" goto:Topiary:random 202 -> 202 Stone Bridge | It's a long way down. >
+"south" goto:Topiary:random 202 -> 201 Cool Room | Cool Room Your sword is no longer glowing. >
+"west" goto:Topiary:random 201 -> 200 Ice Room | Ice Room This is a large hall of ancient lava, since worn smooth by the movement of a glacier. A large passage exits to the east and an upward lava tu
+"down" goto:Topiary:random 200 -> 200 Ice Room | You can't go that way. >
+"northeast" goto:Topiary:random 200 -> 200 Ice Room | You can't go that way. >
+"north" goto:Topiary:random 200 -> 200 Ice Room | You can't go that way. >
+"southeast" goto:Topiary:random 200 -> 200 Ice Room | You can't go that way. >
+"east" goto:Topiary:random 200 -> 201 Cool Room | Cool Room >
+"south" goto:Topiary:random 201 -> 201 Cool Room | You can't go that way. >
+"up" goto:Topiary:random 201 -> 201 Cool Room | You can't go that way. >
+"northeast" goto:Topiary:random 201 -> 201 Cool Room | You can't go that way. >
+"east" goto:Topiary:random 201 -> 201 Cool Room | You can't go that way. >
+"west" goto:Topiary:random 201 -> 200 Ice Room | Ice Room A mass of ice fills the western half of the room. >
+"west" goto:Topiary:random 200 -> 200 Ice Room | You don't even have an ice-pick. >
+"south" goto:Topiary:random 200 -> 200 Ice Room | You can't go that way. >
+"up" goto:Topiary:random 200 -> 199 Lava Tube | Lava Tube You are in a tight chimney of solidified lava. It extends up at least another hundred feet and down to a large room far below. A large crack
+"down" goto:Topiary:random 199 -> 200 Ice Room | Ice Room A mass of ice fills the western half of the room. >
+"north" goto:Topiary:random 200 -> 200 Ice Room | You can't go that way. >
+"up" goto:Topiary:random 200 -> 199 Lava Tube | Lava Tube >
+"southeast" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"north" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"up" goto:Topiary:random 199 -> 127 Volcano View | Volcano View You are on a ledge in the middle of a large volcano. Below you the volcano bottom can be seen and above is the rim of the volcano. A coup
+"east" goto:Topiary:random 127 -> 199 Lava Tube | Lava Tube >
+"south" goto:Topiary:random 199 -> 198 Cobwebby Corridor | Cobwebby Corridor A winding corridor is filled with cobwebs. Some are broken and the dust on the floor is disturbed. The trend of the twists and turns
+"southwest" goto:Topiary:random 198 -> 167 Guarded Room | Guarded Room This room is cobwebby and musty, but tracks in the dust show that it has seen visitors recently. At the south end of the room is a staine
+"northeast" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"up" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"west" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"up" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"west" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"up" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"down" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"northeast" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"up" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"northwest" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"northeast" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"south" goto:Topiary:random 167 -> 167 Guarded Room | The door partly covered in cobwebs is closed. >
+"northeast" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"north" goto:Topiary:random 167 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"north" goto:Topiary:random 198 -> 199 Lava Tube | Lava Tube >
+"southwest" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"northwest" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"northeast" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"up" goto:Topiary:random 199 -> 127 Volcano View | Volcano View >
+"southwest" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"northwest" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"south" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"down" goto:Topiary:random 127 -> 127 Volcano View | I wouldn't try that. >
+"southwest" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"west" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"west" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"east" goto:Topiary:random 127 -> 199 Lava Tube | Lava Tube >
+"south" goto:Topiary:random 199 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"down" goto:Topiary:random 198 -> 167 Guarded Room | Guarded Room >
+"north" goto:Topiary:random 167 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"southwest" goto:Topiary:random 198 -> 167 Guarded Room | Guarded Room >
+"south" goto:Topiary:random 167 -> 167 Guarded Room | The door partly covered in cobwebs is closed. >
+"southwest" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"south" goto:Topiary:random 167 -> 167 Guarded Room | The door partly covered in cobwebs is closed. >
+"north" goto:Topiary:random 167 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"southeast" goto:Topiary:random 198 -> 198 Cobwebby Corridor | You can't go that way. >
+"up" goto:Topiary:random 198 -> 199 Lava Tube | Lava Tube >
+"southeast" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"west" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"south" goto:Topiary:random 199 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"west" goto:Topiary:random 198 -> 198 Cobwebby Corridor | You can't go that way. >
+"south" goto:Topiary:random 198 -> 198 Cobwebby Corridor | You can't go that way. >
+"down" goto:Topiary:random 198 -> 167 Guarded Room | Guarded Room >
+"northeast" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"northeast" goto:Topiary:random 167 -> 167 Guarded Room | You can't go that way. >
+"north" goto:Topiary:random 167 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"north" goto:Topiary:random 198 -> 199 Lava Tube | Lava Tube >
+"north" goto:Topiary:random 199 -> 199 Lava Tube | You can't go that way. >
+"up" goto:Topiary:random 199 -> 127 Volcano View | Volcano View >
+"northeast" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"down" goto:Topiary:random 127 -> 127 Volcano View | I wouldn't try that. >
+"north" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"south" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"north" goto:Topiary:random 127 -> 127 Volcano View | You can't go that way. >
+"W"  127 -> 127 Volcano View | You can't go that way. >
+"west" goto:Carousel Room:random 127 -> 127 Volcano View | You can't go that way. >
+"west" goto:Carousel Room:random 127 -> 127 Volcano View | You can't go that way. >
+"north" goto:Carousel Room:random 127 -> 127 Volcano View | You can't go that way. >
+"up" goto:Carousel Room:random 127 -> 127 Volcano View | You can't go that way. >
+"northeast" goto:Carousel Room:random 127 -> 127 Volcano View | You can't go that way. >
+"east" goto:Carousel Room:random 127 -> 199 Lava Tube | Lava Tube >
+"east" goto:Carousel Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"east" goto:Carousel Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"southeast" goto:Carousel Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"down" goto:Carousel Room:random 199 -> 200 Ice Room | Ice Room A mass of ice fills the western half of the room. >
+"south" goto:Carousel Room:random 200 -> 200 Ice Room | You can't go that way. >
+"south" goto:Carousel Room:random 200 -> 200 Ice Room | You can't go that way. >
+"northwest" goto:Carousel Room:random 200 -> 200 Ice Room | You can't go that way. >
+"south" goto:Carousel Room:random 200 -> 200 Ice Room | You can't go that way. >
+"east" goto:Carousel Room:random 200 -> 201 Cool Room | Cool Room >
+"southeast" goto:Carousel Room 201 -> 138 Carousel Room | Carousel Room >
+"N"  138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room This is a room which is bare on all sides. There is an exit down
+"south" goto:Topiary:random 137 -> 137 Riddle Room | You can't go that way. >
+"up" goto:Topiary:random 137 -> 137 Riddle Room | You can't go that way. >
+"east" goto:Topiary:random 137 -> 137 Riddle Room | The stone door is closed. >
+"north" goto:Topiary:random 137 -> 137 Riddle Room | You can't go that way. >
+"southeast" goto:Topiary:random 137 -> 137 Riddle Room | You can't go that way. >
+"northwest" goto:Topiary:random 137 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 215 Marble Hall | You're not sure which direction is which. This room is very disorienting. Marble Hall There is a square brick here which feels like clay. >
+"northwest" goto:Topiary:random 215 -> 215 Marble Hall | You can't go that way. >
+"southwest" goto:Topiary:random 215 -> 215 Marble Hall | You can't go that way. >
+"down" goto:Topiary:random 215 -> 215 Marble Hall | You can't go that way. >
+"northwest" goto:Topiary:random 215 -> 138 Carousel Room | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"east" goto:Topiary 138 -> 218 Topiary | You're not sure which direction is which. This room is very disorienting. Topiary >
+"W"  218 -> 138 Carousel Room | Carousel Room >
+"N"  138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room >
+"northeast" goto:Marble Hall:random 137 -> 137 Riddle Room | You can't go that way. >
+"east" goto:Marble Hall:random 137 -> 137 Riddle Room | The stone door is closed. >
+"south" goto:Marble Hall:random 137 -> 137 Riddle Room | You can't go that way. >
+"east" goto:Marble Hall:random 137 -> 137 Riddle Room | The stone door is closed. >
+"east" goto:Marble Hall:random 137 -> 137 Riddle Room | The stone door is closed. >
+"southeast" goto:Marble Hall:random 137 -> 137 Riddle Room | You can't go that way. >
+"south" goto:Marble Hall:random 137 -> 137 Riddle Room | You can't go that way. >
+"south" goto:Marble Hall:random 137 -> 137 Riddle Room | You can't go that way. >
+"west" goto:Marble Hall:random 137 -> 137 Riddle Room | You can't go that way. >
+"north" goto:Marble Hall:random 137 -> 137 Riddle Room | You can't go that way. >
+"northwest" goto:Marble Hall:random 137 -> 138 Carousel Room | Carousel Room >
+"north" goto:Marble Hall 138 -> 201 Cool Room | You're not sure which direction is which. This room is very disorienting. Cool Room >
+"northeast" goto:Marble Hall:random 201 -> 201 Cool Room | You can't go that way. >
+"down" goto:Marble Hall:random 201 -> 201 Cool Room | You can't go that way. >
+"northeast" goto:Marble Hall:random 201 -> 201 Cool Room | You can't go that way. >
+"west" goto:Marble Hall:random 201 -> 200 Ice Room | Ice Room A mass of ice fills the western half of the room. >
+"northwest" goto:Marble Hall:random 200 -> 200 Ice Room | You can't go that way. >
+"southeast" goto:Marble Hall:random 200 -> 200 Ice Room | You can't go that way. >
+"northwest" goto:Marble Hall:random 200 -> 200 Ice Room | You can't go that way. >
+"northwest" goto:Marble Hall:random 200 -> 200 Ice Room | You can't go that way. You suddenly decide that the Wizard isn't that terrifying... >
+"east" goto:Marble Hall:random 200 -> 201 Cool Room | Cool Room >
+"up" goto:Marble Hall:random 201 -> 201 Cool Room | You can't go that way. >
+"down" goto:Marble Hall:random 201 -> 201 Cool Room | You can't go that way. >
+"north" goto:Marble Hall:random 201 -> 202 Stone Bridge | Stone Bridge Your sword is glowing with a faint blue glow. >
+"northeast" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"up" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"down" goto:Marble Hall:random 202 -> 202 Stone Bridge | It's a long way down. >
+"north" goto:Marble Hall:random 202 -> 211 Dragon Room | Dragon Room The room is a large cavern full of broken stone. The walls are scorched and there are deep scratches on the floor. A sooty dry smell is ve
+"east" goto:Marble Hall:random 211 -> 212 End of Ledge | End of Ledge A ledge from the east ends here, and a tunnel leads north into the wall. There is a rather odd smokey odor in the warm air of the tunnel.
+"east" goto:Marble Hall:random 212 -> 213 Ledge in Ravine | Ledge in Ravine You are on a narrow ledge near the bottom of a deep ravine. The ledge continues to the west. A precarious climb up to another tiny led
+"west" goto:Marble Hall:random 213 -> 212 End of Ledge | End of Ledge Your sword is glowing with a faint blue glow. >
+"south" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"west" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"up" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"west" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"northeast" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"south" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"up" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"south" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"southeast" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"northwest" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"northeast" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"down" goto:Marble Hall:random 212 -> 212 End of Ledge | There are a lot of sharp rocks down there. >
+"southwest" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"south" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"west" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"up" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"northwest" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"southwest" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"west" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"northwest" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"north" goto:Marble Hall:random 212 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"south" goto:Marble Hall:random 211 -> 202 Stone Bridge | Stone Bridge Your sword is glowing with a faint blue glow. >
+"up" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"up" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"east" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"up" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"northeast" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"northeast" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"southwest" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"west" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"northwest" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"west" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"northwest" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"east" goto:Marble Hall:random 202 -> 202 Stone Bridge | You can't go that way. >
+"north" goto:Marble Hall:random 202 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"east" goto:Marble Hall:random 211 -> 212 End of Ledge | End of Ledge Your sword is glowing with a faint blue glow. >
+"east" goto:Marble Hall:random 212 -> 213 Ledge in Ravine | Ledge in Ravine Your sword is no longer glowing. >
+"west" goto:Marble Hall:random 213 -> 212 End of Ledge | End of Ledge Your sword is glowing with a faint blue glow. >
+"northeast" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"southwest" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"west" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"southeast" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"west" goto:Marble Hall:random 212 -> 212 End of Ledge | You can't go that way. >
+"east" goto:Marble Hall:random 212 -> 213 Ledge in Ravine | Ledge in Ravine Your sword is no longer glowing. The lamp appears a bit dimmer. >
+"southwest" goto:Marble Hall:random 213 -> 213 Ledge in Ravine | You can't go that way. >
+"southwest" goto:Marble Hall:random 213 -> 213 Ledge in Ravine | You can't go that way. >
+"southeast" goto:Marble Hall:random 213 -> 213 Ledge in Ravine | You can't go that way. >
+"southeast" goto:Marble Hall:random 213 -> 213 Ledge in Ravine | You can't go that way. >
+"west" goto:Marble Hall:random 213 -> 212 End of Ledge | End of Ledge Your sword is glowing with a faint blue glow. >
+"N"  212 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"west" goto:Deep Ford:random 211 -> 203 Fresco Room | Fresco Room A path leads east-west through a room decorated with beautiful frescoes of someone battling dragons and rescuing fair maidens. It is hard 
+"north" goto:Deep Ford:random 203 -> 203 Fresco Room | You can't go that way. >
+"south" goto:Deep Ford:random 203 -> 203 Fresco Room | You can't go that way. >
+"up" goto:Deep Ford:random 203 -> 203 Fresco Room | You can't go that way. >
+"east" goto:Deep Ford:random 203 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"down" goto:Deep Ford:random 211 -> 211 Dragon Room | You can't go that way. >
+"up" goto:Deep Ford:random 211 -> 211 Dragon Room | You can't go that way. >
+"northwest" goto:Deep Ford:random 211 -> 211 Dragon Room | You can't go that way. >
+"south" goto:Deep Ford:random 211 -> 202 Stone Bridge | Stone Bridge Your sword is glowing with a faint blue glow. >
+"south" goto:Deep Ford:random 202 -> 201 Cool Room | Cool Room Your sword is no longer glowing. >
+"northwest" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"northeast" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"northeast" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"south" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"northeast" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"northeast" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"down" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"northwest" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"down" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"down" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"southwest" goto:Deep Ford:random 201 -> 201 Cool Room | You can't go that way. >
+"west" goto:Deep Ford:random 201 -> 200 Ice Room | Ice Room A mass of ice fills the western half of the room. >
+"northeast" goto:Deep Ford:random 200 -> 200 Ice Room | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"southwest" goto:Deep Ford:random 200 -> 200 Ice Room | You can't go that way. Your sword has begun to glow very brightly. >
+"up" goto:Deep Ford:random 200 -> 199 Lava Tube | Lava Tube Your sword is glowing with a faint blue glow. >
+"northwest" goto:Deep Ford:random 199 -> 199 Lava Tube | You can't go that way. >
+"north" goto:Deep Ford:random 199 -> 199 Lava Tube | You can't go that way. >
+"down" goto:Deep Ford:random 199 -> 200 Ice Room | Ice Room A mass of ice fills the western half of the room. Your sword is no longer glowing. >
+"southeast" goto:Deep Ford:random 200 -> 200 Ice Room | You can't go that way. >
+"east" goto:Deep Ford:random 200 -> 201 Cool Room | Cool Room >
+"southeast" goto:Deep Ford:random 201 -> 138 Carousel Room | Carousel Room >
+"north" goto:Deep Ford 138 -> 215 Marble Hall | You're not sure which direction is which. This room is very disorienting. Marble Hall There is a square brick here which feels like clay. >
+"north" goto:Deep Ford 215 -> 214 Deep Ford | Deep Ford You are fording the stream at a deep but not impossible spot. The water is very cold. The walls of the ravine rise to east and west. There i
+"FILL POT WITH WATER"  214 -> 214 Deep Ford | The teapot is now full of water. >
+"N"  214 -> 212 End of Ledge | Ledge in Ravine A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrological sign
+"east" goto:Ledge in Ravine 212 -> 213 Ledge in Ravine | Ledge in Ravine >
+"U"  213 -> 100 Tiny Room | Tiny Room This is a tiny room carved out of the wall of the ravine. There is an exit down a precarious climb. On the north side of the room is a massi
+"OPEN LID"  100 -> 100 Tiny Room | The lid is now open. >
+"PUT MAT UNDER DOOR"  100 -> 100 Tiny Room | The place mat fits easily under the door. >
+"PUT OPENER IN KEYHOLE"  100 -> 100 Tiny Room | There is a faint noise from behind the door and a small cloud of dust rises from beneath it. Done. >
+"REMOVE OPENER AND DROP IT"  100 -> 100 Tiny Room | Taken. Dropped. >
+"PULL MAT"  100 -> 100 Tiny Room | As the place mat is moved, a rusty iron key falls from it and onto the floor. >
+"GET KEY"  100 -> 100 Tiny Room | Taken. >
+"UNLOCK DOOR WITH KEY"  100 -> 100 Tiny Room | The door is now unlocked. You suddenly decide that the Wizard isn't that terrifying... >
+"OPEN DOOR"  100 -> 100 Tiny Room | The door is now open. >
+"DROP KEY"  100 -> 100 Tiny Room | Dropped. >
+"N"  100 -> 103 Dreary Room | Dreary Room This is a small and rather dreary room, eerily illuminated by a red glow emanating from a crack in one wall. The light falls upon a dusty 
+"GET BLUE SPHERE"  103 -> 103 Dreary Room | Taken. >
+"S"  103 -> 100 Tiny Room | Tiny Room There is a rusty iron key here. There is a place mat here. There is a letter opener here. >
+"D"  100 -> 213 Ledge in Ravine | Ledge in Ravine >
+"W"  213 -> 212 End of Ledge | End of Ledge Your sword is glowing with a faint blue glow. >
+"N"  212 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"HIT DRAGON WITH SWORD"  211 -> 211 Dragon Room | That captured his interest. He stares at you balefully. The dragon continues to watch you carefully. >
+"S"  211 -> 202 Stone Bridge | Stone Bridge The dragon follows you, out of mingled curiosity and anger. >
+"HIT DRAGON WITH SWORD"  202 -> 202 Stone Bridge | That did no damage, but he turns his smoky yellow eyes in your direction and sighs. The dragon continues to watch you carefully. >
+"S"  202 -> 201 Cool Room | Cool Room The dragon follows you, out of mingled curiosity and anger. >
+"HIT DRAGON WITH SWORD"  201 -> 201 Cool Room | You've made him rather angry. You had better be very careful now. The dragon continues to watch you carefully. >
+"W"  201 -> 200 Ice Room | Ice Room A mass of ice fills the western half of the room. As the dragon enters, he sees his reflection on the icy surface of the glacier at its weste
+"DROP SWORD"  200 -> 200 Ice Room | Dropped. >
+"E"  200 -> 201 Cool Room | Cool Room >
+"N"  201 -> 202 Stone Bridge | Stone Bridge >
+"N"  202 -> 211 Dragon Room | Dragon Room >
+"N"  211 -> 210 Dragon's Lair | Dragon's Lair You are in the dragon's lair, where the rock walls are scarred by flame. A blackened doorway leads to the south. A rotten old wooden che
+"OPEN CHEST"  210 -> 210 Dragon's Lair | The hinges are very rusty, but they seem to be starting to give. You can probably open it if you try again. There is something bumping around inside. 
+"OPEN CHEST"  210 -> 210 Dragon's Lair | The rotten wooden chest opens. Nestled in the chest is a wrought gold statuette of a dragon. The princess walks south. She glances back at you as she 
+"GET DRAGON"  210 -> 210 Dragon's Lair | Taken. >
+"S"  210 -> 211 Dragon Room | Dragon Room >
+"E"  211 -> 212 End of Ledge | End of Ledge There is a dishevelled and slightly unkempt princess here. The princess walks east. She glances back at you as she goes. >
+"E"  212 -> 213 Ledge in Ravine | Ledge in Ravine There is a dishevelled and slightly unkempt princess here. >
+"D"  213 -> 214 Deep Ford | Deep Ford A huge dead dragon is lying half blocking the stream. The princess climbs down the rock wall onto the beach. >
+"S"  214 -> 215 Marble Hall | Marble Hall There is a square brick here which feels like clay. The princess enters from the north. She seems surprised to see you. >
+"WAIT"  215 -> 215 Marble Hall | Time passes... The princess presses a loose piece of marble in the wall and a large section of the wall slides away, revealing a passage to the east. 
+"WAIT"  215 -> 215 Marble Hall | Time passes... >
+"E"  215 -> 216 Path Near Stream | Path Near Stream >
+"E"  216 -> 219 Formal Garden | Formal Garden >
+"N"  219 -> 222 North End of Garden | North End of Garden >
+"IN"  222 -> 220 Gazebo | Gazebo There is a dishevelled and slightly unkempt princess here. >
+"WAIT"  220 -> 220 Gazebo | Time passes... >
+"WAIT"  220 -> 220 Gazebo | Time passes... Shyly, a unicorn peeks out of the hedges. It notices the princess and seems captivated. It approaches her and bows its head as though c
+"OUT"  220 -> 222 North End of Garden | North End of Garden >
+"S"  222 -> 219 Formal Garden | Formal Garden >
+"S"  219 -> 218 Topiary | Topiary >
+"W"  218 -> 138 Carousel Room | Carousel Room >
+"SE"  138 -> 198 Cobwebby Corridor | You're not sure which direction is which. This room is very disorienting. Cobwebby Corridor There is a coil of black, braided string here. >
+"southwest" goto:Marble Hall:random 198 -> 167 Guarded Room | Guarded Room >
+"up" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"west" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"northeast" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"east" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"northwest" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"west" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"east" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"northeast" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"northwest" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"southeast" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"south" goto:Marble Hall:random 167 -> 167 Guarded Room | The door partly covered in cobwebs is closed. >
+"southwest" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"east" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"west" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"northwest" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"north" goto:Marble Hall:random 167 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"west" goto:Marble Hall:random 198 -> 198 Cobwebby Corridor | You can't go that way. >
+"down" goto:Marble Hall:random 198 -> 167 Guarded Room | Guarded Room >
+"southwest" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"northeast" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"down" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"south" goto:Marble Hall:random 167 -> 167 Guarded Room | The door partly covered in cobwebs is closed. >
+"south" goto:Marble Hall:random 167 -> 167 Guarded Room | The door partly covered in cobwebs is closed. >
+"northwest" goto:Marble Hall:random 167 -> 167 Guarded Room | You can't go that way. >
+"north" goto:Marble Hall:random 167 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"south" goto:Marble Hall:random 198 -> 198 Cobwebby Corridor | You can't go that way. >
+"northeast" goto:Marble Hall:random 198 -> 138 Carousel Room | Carousel Room >
+"north" goto:Marble Hall 138 -> 215 Marble Hall | You're not sure which direction is which. This room is very disorienting. Marble Hall There is a square brick here which feels like clay. >
+"S"  215 -> 138 Carousel Room | Carousel Room >
+"SE"  138 -> 216 Path Near Stream | You're not sure which direction is which. This room is very disorienting. Path Near Stream >
+"southwest" goto:Menhir Room 216 -> 138 Carousel Room | Carousel Room >
+"south" goto:Menhir Room 138 -> 195 Menhir Room | You're not sure which direction is which. This room is very disorienting. Menhir Room This is a large room which was evidently used once as a quarry. 
+"N"  195 -> 138 Carousel Room | Carousel Room >
+"SE"  138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room >
+"south" goto:Menhir Room:random 137 -> 137 Riddle Room | You can't go that way. >
+"up" goto:Menhir Room:random 137 -> 137 Riddle Room | You can't go that way. >
+"northeast" goto:Menhir Room:random 137 -> 137 Riddle Room | You can't go that way. >
+"down" goto:Menhir Room:random 137 -> 138 Carousel Room | Carousel Room >
+"south" goto:Menhir Room 138 -> 215 Marble Hall | You're not sure which direction is which. This room is very disorienting. Marble Hall There is a square brick here which feels like clay. >
+"southwest" goto:Menhir Room:random 215 -> 215 Marble Hall | You can't go that way. >
+"up" goto:Menhir Room:random 215 -> 215 Marble Hall | You can't go that way. >
+"east" goto:Menhir Room:random 215 -> 216 Path Near Stream | Path Near Stream >
+"southwest" goto:Menhir Room:random 216 -> 138 Carousel Room | Carousel Room >
+"south" goto:Menhir Room 138 -> 195 Menhir Room | You're not sure which direction is which. This room is very disorienting. Menhir Room >
+"N"  195 -> 138 Carousel Room | Carousel Room >
+"SE"  138 -> 198 Cobwebby Corridor | You're not sure which direction is which. This room is very disorienting. Cobwebby Corridor There is a coil of black, braided string here. >
+"down" goto:Cool Room:random 198 -> 167 Guarded Room | Guarded Room >
+"north" goto:Cool Room:random 167 -> 198 Cobwebby Corridor | Cobwebby Corridor There is a coil of black, braided string here. >
+"up" goto:Cool Room:random 198 -> 199 Lava Tube | Lava Tube >
+"northwest" goto:Cool Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"northwest" goto:Cool Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"southeast" goto:Cool Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"southeast" goto:Cool Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"west" goto:Cool Room:random 199 -> 199 Lava Tube | You can't go that way. >
+"down" goto:Cool Room:random 199 -> 200 Ice Room | Ice Room An Elvish sword of great antiquity is here. >
+"east" goto:Cool Room 200 -> 201 Cool Room | Cool Room >
+"SE"  201 -> 138 Carousel Room | Carousel Room >
+"SE"  138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room >
+"ANSWER \"A WELL\""  137 -> 137 Riddle Room | There is a deafening clap of thunder and the stone door quietly swings open to reveal a passageway beyond. >
+"E"  137 -> 135 Pearl Room | Pearl Room This is a former broom closet. The exits are to the east and west. There is a pearl necklace here with hundreds of large pearls. >
+"E"  135 -> 118 Circular Room | Circular Room This is a damp circular room, whose walls are made of brick and mortar. The roof of this room is not visible, but there appear to be som
+"DROP DRAGON AND PAPER"  118 -> 118 Circular Room | golden dragon statuette: Dropped. newspaper: Dropped. >
+"GET IN BUCKET"  118 -> 51 wooden bucket | You are now in the wooden bucket. >
+"DROP WATER"  51 -> 51 wooden bucket | There is now a puddle in the bottom of the wooden bucket. The bucket rises and comes to a stop. Top of Well, in the wooden bucket You are at the top o
+"GET OUT OF BUCKET"  51 -> 119 Top of Well | You are on your own feet again. >
+"E"  119 -> 117 Tea Room | Tea Room This is a small room containing a large oblong table, no doubt set for afternoon tea. It is clear from the objects on the table that the user
+"DROP TEAPOT"  117 -> 117 Tea Room | Dropped. >
+"GET RED, BLUE AND GREEN CAKE"  117 -> 117 Tea Room | cake frosted with red letters: Taken. cake frosted with blue letters: Taken. cake frosted with green letters: Taken. >
+"EAT GREEN"  117 -> 116 Posts Room | Suddenly, the room appears to have become very large (although everything you are carrying seems to be its normal size). Posts Room This is an enormou
+"E"  116 -> 115 Pool Room | Pool Room This is a large room, one half of which is depressed. Salty water flows from a large leak in the ceiling. The only exit is to the west. A st
+"PUT RED CAKE IN POOL"  115 -> 115 Pool Room | Most of the pool evaporates, revealing a (slightly damp but still valuable) package of rare candies. The red cake must be pretty strong stuff, since i
+"GET CANDY"  115 -> 115 Pool Room | Taken. >
+"W"  115 -> 116 Posts Room | Posts Room There is a cake frosted with blue letters here. There is a china teapot here. >
+"EAT BLUE CAKE"  116 -> 117 Tea Room | (Taken) The room around you seems to be getting smaller. Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the lar
+"NW"  117 -> 123 Low Room | Low Room You are in a circular room with a low ceiling. There are exits to the east and southeast. There is a green piece of paper here. There is a ro
+"ROBOT, EAST AND SOUTH"  123 -> 123 Low Room | "Whirr, buzz, click!" The robot leaves the room. >
+"E"  123 -> 122 Machine Room | Machine Room This is a large room full of assorted heavy machinery, whirring noisily. The room smells of burned resistors. Along one wall are three bu
+"S"  122 -> 121 Dingy Closet | Dingy Closet This is a dingy closet adjacent to a larger room to the north. Chiselled into a wall are these words: Protected by FROBOZZ Magic Alarm Co
+"GET RED SPHERE"  121 -> 120 Cage | As you reach for the sphere, a solid steel cage falls from the ceiling to entrap you. To make matters worse, poisonous gas starts coming into the room
+"ROBOT, LIFT CAGE"  120 -> 121 Dingy Closet | The cage shakes and is hurled across the room. It's hard to say, but the robot appears to be smiling. Dingy Closet There is a beautiful red crystal sp
+"GET RED SPHERE"  121 -> 121 Dingy Closet | Taken. >
+"ROBOT, NORTH AND PRESS TRIANGULAR BUTTON"  121 -> 121 Dingy Closet | "Buzz, click, whirr!" The robot leaves the room. A dull thump is heard in the distance. >
+"N"  121 -> 122 Machine Room | Machine Room There is a robot here. >
+"W"  122 -> 123 Low Room | As you enter, your compass starts spinning wildly. What compass, you ask? The one which allows you to specify compass directions for movement. Low Roo
+"SE"  123 -> 117 Tea Room | You cannot get your bearings... Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cak
+"north" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"west" goto:Machine Room:random 117 -> 119 Top of Well | Top of Well There is a wooden bucket here, 3 feet in diameter and 3 feet high. The wooden bucket contains: A quantity of water >
+"southeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"west" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"down" goto:Machine Room:random 119 -> 119 Top of Well | It's a long way down! >
+"west" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"west" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"down" goto:Machine Room:random 119 -> 119 Top of Well | It's a long way down! >
+"up" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"east" goto:Machine Room:random 119 -> 117 Tea Room | Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cake frosted with orange letters >
+"down" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"north" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"west" goto:Machine Room:random 117 -> 119 Top of Well | Top of Well There is a wooden bucket here, 3 feet in diameter and 3 feet high. The wooden bucket contains: A quantity of water >
+"east" goto:Machine Room:random 119 -> 117 Tea Room | Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cake frosted with orange letters >
+"down" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"west" goto:Machine Room:random 117 -> 119 Top of Well | Top of Well There is a wooden bucket here, 3 feet in diameter and 3 feet high. The wooden bucket contains: A quantity of water >
+"west" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"down" goto:Machine Room:random 119 -> 119 Top of Well | It's a long way down! >
+"northwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"down" goto:Machine Room:random 119 -> 119 Top of Well | It's a long way down! >
+"northwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"east" goto:Machine Room:random 119 -> 117 Tea Room | Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cake frosted with orange letters >
+"west" goto:Machine Room:random 117 -> 119 Top of Well | Top of Well There is a wooden bucket here, 3 feet in diameter and 3 feet high. The wooden bucket contains: A quantity of water >
+"up" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. The Wizard appears, floating nonchalantly in the air beside you. He grins sideways at you. The Wizard draws forth his wand and 
+"northwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. The Wizard vanishes. >
+"up" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"east" goto:Machine Room:random 119 -> 117 Tea Room | Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cake frosted with orange letters >
+"southwest" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"up" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"southeast" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"up" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"southeast" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"southeast" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"southeast" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"northwest" goto:Machine Room:random 117 -> 123 Low Room | As you enter, your compass starts spinning wildly. Low Room There is a green piece of paper here. >
+"southwest" goto:Machine Room:random 123 -> 117 Tea Room | You cannot get your bearings... Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cak
+"down" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"southwest" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"northeast" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"southeast" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"down" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"down" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"down" goto:Machine Room:random 117 -> 117 Tea Room | You can't go that way. >
+"west" goto:Machine Room:random 117 -> 119 Top of Well | Top of Well There is a wooden bucket here, 3 feet in diameter and 3 feet high. The wooden bucket contains: A quantity of water >
+"southwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"west" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"up" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"up" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"west" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. The Wizard appears, floating nonchalantly in the air beside you. He grins sideways at you. The Wizard draws forth his wand and 
+"west" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southwest" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Machine Room:random 119 -> 119 Top of Well | You can't go that way. >
+"down" goto:Machine Room:random 119 -> 119 Top of Well | It's a long way down! >
+"W"  119 -> 119 Top of Well | You can't go that way. >
+"west" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"up" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"south" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"north" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"west" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southwest" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"northeast" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"southeast" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"west" goto:Low Room:random 119 -> 119 Top of Well | You can't go that way. >
+"east" goto:Low Room:random 119 -> 117 Tea Room | Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cake frosted with orange letters >
+"northwest" goto:Low Room 117 -> 123 Low Room | As you enter, your compass starts spinning wildly. Low Room There is a green piece of paper here. >
+"SE"  123 -> 122 Machine Room | You cannot get your bearings... Machine Room There is a robot here. >
+"W"  122 -> 123 Low Room | As you enter, your compass starts spinning wildly. Low Room There is a green piece of paper here. A strange little man in a long cloak appears suddenl
+"SE"  123 -> 117 Tea Room | You cannot get your bearings... Tea Room There is a china teapot here. There is a large oblong table here. Sitting on the large oblong table is: A cak
+"GET TEAPOT"  117 -> 117 Tea Room | Taken. >
+"W"  117 -> 119 Top of Well | Top of Well There is a wooden bucket here, 3 feet in diameter and 3 feet high. >
+"GET IN BUCKET"  119 -> 51 wooden bucket | You are now in the wooden bucket. The last of the water evaporates, and the bucket descends. Circular Room, in the wooden bucket There is a newspaper 
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"south" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"north" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. The lamp is definitely dimmer now. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. The Wizard appears, floating nonchalantly in the air beside you. He grins sideways at you. He mutters something (muffled by his
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"south" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"west" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go there in a wooden bucket. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"west" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go there in a wooden bucket. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"south" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. The Wizard appears, floating nonchalantly in the air beside you. He grins sideways at you. He mutters something (muffled 
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"west" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go there in a wooden bucket. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"northeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"southwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"north" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"up" goto:Top of Well:random 51 -> 51 wooden bucket | The walls cannot be climbed. >
+"northwest" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. The Wizard appears, floating nonchalantly in the air beside you. He grins sideways at you. He mutters something (muffled by his
+"southeast" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"down" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"east" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >
+"south" goto:Top of Well:random 51 -> 51 wooden bucket | You can't go that way. >

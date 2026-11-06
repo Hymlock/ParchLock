@@ -1,0 +1,186 @@
+# Border Zone on/lightSource complete source search (rev 5c80126)
+files + sha256:
+4af17c9ce99b25f55c8e12709e80a4f53cb91c1aa818429a97b1794aba4082dd *bad.zil
+ba2b1667fdc93b89bd00fc1b74fe3c39c3c5c4f6dcf57645fe18e720df268ec2 *border.zil
+92cc0fd7c37d36701996c86ec7f204384f425ed82e975942e26717e73e8292e9 *bystander.zil
+7dc815d5f166b8a620e9a11353b692b50e4cc7e71e94561d50f7d3429916aad6 *desc.zil
+d5fe794621d4a7426f04e23d405c8227844042e9da2ec15c89728e64c9ce5093 *globals.zil
+80c6a70bbb5663139f6e95c91cf8ab0b8ad21f7317f633285f7ae7873554b08e *good.zil
+bd01d5faefd66143179b66d3cde0b7b01ab3a32ad700604d335d3238cac487f4 *hints.zil
+426082af8feb83bc1269361de40720519590ae0701d1b4556c0d5817be91d38f *misc.zil
+eb8f022dab6ef9633398b2000d98d2e09bff21fecab71a9176ace1c4a99d8734 *once.zil
+feae70587ea5c7fc34c284502f85e9bfe7c26fa211580fa85d6f26375594d8a4 *parser.zil
+189abcbeff89a9bc2e22d97d3ea7850f4c9965cf761b69c6073ed21ca8139f16 *realtime.zil
+8314238528da157c2225dfd38380969ca03249d7034aba85804aba04bdea6c30 *scenario.zil
+d9af5b0aaa2341b4ef98513e1c7a30384c3ff5b83feb72a8fc4a7e7a90ff9bf4 *spy.zil
+3638ba940680ffe5f5998023cbdb995720a0443829b36ec69498e3351e4b1d0a *syntax.zil
+5985ead09cd27fa7dc201f9236b66d5b47b05f22607d793b11035113556f3854 *verbs.zil
+
+## whole-word ONBIT
+desc.zil:217:	 <COND (<FSET? .OBJ ,ONBIT>
+
+## whole-word LIGHTBIT
+
+## LAMP-ON / LAMP-OFF / V-ON / V-OFF handlers and syntax
+bad.zil:65:	 <COND (<VERB? DROP TAKE-OFF>
+bad.zil:202:	 <COND (<VERB? ON KILL REMOVE>
+bad.zil:224:	 <COND (<VERB? ON>
+bad.zil:1115:	 <COND (<VERB? ENTER BOARD CLIMB-ON>
+bad.zil:1573:	 <COND (<VERB? SIT CLIMB-ON>
+bad.zil:2268:	       (<VERB? BOARD STAND-ON CLIMB-ON>
+bad.zil:2275:	 <COND (<VERB? TAKE-OFF DISEMBARK LEAVE LEAP LEAP-OFF>
+bad.zil:2282:	       (<VERB? CLIMB-ON BOARD STAND-ON CLIMB-UP>
+bad.zil:2397:	       (<AND <VERB? TOUCH CLIMB-ON TAKE> <EQUAL? ,HERE ,ALLEY-3>>
+bad.zil:3303:		      (<VERB? CLIMB-ON BOARD ENTER>
+border.zil:130:	 <COND (<AND <AT-NML?> <NOT <VERB? OFF-2>>>
+border.zil:140:	       (<AND <VERB? OFF-2>
+border.zil:795:	 <COND (<VERB? BOARD CLIMB-ON CLIMB CLIMB-UP>
+border.zil:814:	       (<VERB? DISEMBARK TAKE-OFF CLIMB-DOWN>
+border.zil:957:	 <COND (<AND <VERB? TIE PUT-ON>
+border.zil:978:	       (<AND <VERB? PUT PUT-ON TIE>
+border.zil:1340:	       (<AND <VERB? PUT PUT-ON>
+border.zil:1418:		    <AND <VERB? CLIMB-ON> ,ON-BRACE?>>
+border.zil:1433:	       (<AND <VERB? BOARD CLIMB-ON>
+border.zil:1496:	 <COND (<AND <VERB? TIE PUT PUT-ON>
+border.zil:1557:	       (<AND <VERB? PUT PUT-ON TIE>
+border.zil:1609:	       (<VERB? LEAP-OFF>
+border.zil:1759:	       (<AND <VERB? PUT PUT-ON TIE>
+border.zil:1770:	       (<VERB? CLIMB CLIMB-UP CLIMB-OVER CLIMB-ON>
+border.zil:4120:	 <COND (<AND <VERB? TAKE-OFF REMOVE>
+border.zil:4123:	       (<AND <VERB? TAKE-OFF REMOVE>
+border.zil:4174:	       (<VERB? TAKE-OFF>
+border.zil:4948:		<COND (<VERB? DISEMBARK TAKE-OFF LEAVE>
+border.zil:4955:		      (<VERB? OFF OFF-2>
+bystander.zil:371:	       (<VERB? CLIMB-ON BOARD>
+bystander.zil:414:	       (<VERB? DISEMBARK LEAP-OFF ENTER EXIT>
+bystander.zil:883:	       (<VERB? CLIMB-ON BOARD>
+bystander.zil:1302:	 <COND (<VERB? DROP TAKE-OFF>
+bystander.zil:1378:	 <COND (<VERB? TAKE-OFF REMOVE>
+bystander.zil:1413:	       (<AND <VERB? TAKE-OFF> <IN? ,PRSO ,BYSTANDER-CLOTHES>>
+bystander.zil:1686:	       (<AND <VERB? PUT PUT-ON> <EQUAL? ,PRSI ,COMP-BLOOD-STAIN>>
+bystander.zil:1847:	       (<AND <VERB? PUT PUT-ON>
+bystander.zil:1953:	       (<VERB? ON OFF SET OPEN CLOSE>
+bystander.zil:1990:	       (<OR <VERB? OPEN ON>
+bystander.zil:2001:	       (<OR <VERB? CLOSE OFF>
+bystander.zil:2057:		    <AND <VERB? PUT PUT-ON> <EQUAL? ,DOCUMENT ,PRSI>>>
+bystander.zil:2578:	       (<VERB? BOARD ENTER CLIMB-ON>
+globals.zil:293:	 <COND (<VERB? CLIMB-UP CLIMB-ON CLIMB BOARD>
+globals.zil:469:	       (<VERB? KILL HIT MUNG OFF>
+globals.zil:592:		     <VERB? PUT PUT-ON>>
+good.zil:251:		     <VERB? TAKE TAKE-OFF UNTIE>>
+good.zil:255:		     <VERB? TAKE-OFF UNTIE>>
+good.zil:267:	 <COND (<AND <VERB? PUT-ON> <EQUAL? ,PRSI ,BODY-PARTS>>
+good.zil:301:	 <COND (<AND <VERB? TIE PUT PUT-ON> <EQUAL? ,PRSO ,CLOTHES>>
+good.zil:308:	       (<AND <VERB? TIE PUT PUT-ON>
+good.zil:322:	       (<VERB? TIE PUT-ON>
+good.zil:335:	       (<AND <VERB? OFF OFF-2>
+good.zil:350:	       (<VERB? REMOVE TAKE-OFF>
+good.zil:365:	 <COND (<VERB? TAKE-OFF>
+good.zil:436:	 <COND (<VERB? OFF-2 ON-2> <RFALSE>) (T <TELL "Huh?" CR>)>>
+good.zil:451:	       (<VERB? ON>
+good.zil:455:	       (<VERB? OFF>
+good.zil:521:	       (<AND <VERB? OFF-2>
+good.zil:937:		(<AND <VERB? PUT PUT-ON PUT-UNDER TIE>
+good.zil:948:		(<VERB? ON>
+misc.zil:475:		      (<AND <VERB? DROP PUT PUT-ON GIVE SGIVE>
+misc.zil:479:		      (<AND <VERB? DROP PUT PUT-ON GIVE SGIVE>
+misc.zil:482:		      (<AND <VERB? PUT PUT-ON>
+syntax.zil:103:<SYNTAX BLOW OUT OBJECT = V-OFF>
+syntax.zil:141:	= V-OFF>
+syntax.zil:203:<SYNTAX EXTINGUISH OBJECT = V-OFF>
+syntax.zil:317:<SYNTAX LIGHT OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-ON>
+syntax.zil:440:<SYNTAX PUT OUT OBJECT = V-OFF>
+syntax.zil:538:<SYNTAX START OBJECT = V-ON>
+syntax.zil:539:<SYNTAX START OBJECT OBJECT = V-ON-2>
+syntax.zil:542:<SYNTAX STOP OBJECT = V-OFF>
+syntax.zil:543:<SYNTAX STOP OBJECT OBJECT = V-OFF-2>
+syntax.zil:618:<SYNTAX TURN ON OBJECT = V-ON>
+syntax.zil:619:<SYNTAX TURN OFF OBJECT = V-OFF>
+verbs.zil:828:<ROUTINE V-OFF-2 ()
+verbs.zil:839:<ROUTINE V-OFF ()
+verbs.zil:843:<ROUTINE V-ON-2 ()
+verbs.zil:851:<ROUTINE V-ON ()
+
+## indirect FSET/FCLEAR with a variable object
+border.zil:1042:		<FSET .RM ,FENCEBLOWNBIT>
+border.zil:1043:		<FSET .RMA ,FENCEBLOWNBIT>
+border.zil:1044:		<FCLEAR .RM ,PENBIT>
+border.zil:1045:		<FCLEAR .RMA ,PENBIT>
+border.zil:1787:		       <FSET .ACROSS ,FENCECUTBIT>
+border.zil:1806:			      <FCLEAR .ACROSS ,FENCEBENTBIT>
+border.zil:1811:			      <FSET .ACROSS ,FENCEBENTBIT>
+bystander.zil:802:		       <FSET .DOOR ,OPENBIT>)>
+good.zil:86:		       <FSET .BOGEY ,PENBIT>
+good.zil:102:				     <FSET .BOGEY ,PENBIT>
+good.zil:108:				     <FSET .BOGEY ,PENBIT>
+good.zil:113:			      <FSET .BOGEY ,PENBIT>
+
+## Two-operand scan (codex #4343): whole files, newlines collapsed, comments stripped; tool = node flagscan (below)
+two-operand FSET/FSET?/FCLEAR forms scanned: 406
+forms whose FLAG operand is not a literal ,FLAG constant: 2
+  desc.zil: <FSET? .OBJ <- ,D-BIT>>
+  verbs.zil: <FSET? .OBJ .FLAG-IN-QUESTION>
+DEFMAC macros containing FSET/FCLEAR: 3
+  misc.zil: DEFMAC BSET
+  misc.zil: DEFMAC BCLEAR
+  misc.zil: DEFMAC BSET
+All non-literal flag operands above are FSET? TESTS (read-only), not setters.
+BSET/BCLEAR (the only FSET/FCLEAR-forwarding macros, via MULTIBITS): call sites = 0
+
+## Handler excerpts (inline, rev 5c80126)
+-- V-ON / CANT-TURN verbs.zil:851-855
+<ROUTINE V-ON ()
+	 <CANT-TURN "n">>
+
+<ROUTINE CANT-TURN (STRING)
+	 <TELL "You can't turn that o" .STRING "." CR>>
+-- MATCHES-F bad.zil:200-212
+
+<ROUTINE MATCHES-F ()
+	 <COND (<VERB? ON KILL REMOVE>
+		<TELL
+"You've tried this before on the train - the matches don't work; perhaps
+that's why they're given out for free. The mystery is why you're still
+holding on to them." CR>)
+	       (<VERB? OPEN CLOSE>
+		<TELL
+"The matchbook has no cover; anyone concerned about safety wouldn't be
+riding the Frobnian National Railroad anyway." CR>)
+	       (<VERB? READ EXAMINE>
+		<TELL
+-- CIGARETTE-F bad.zil:222-231
+
+<ROUTINE CIGARETTE-F ()
+	 <COND (<VERB? ON>
+		<TELL
+"You haven't a lighter and the matches you're carrying have proven themselves
+useless; there'll be more time for a smoke after
+you finish your mission." CR>)
+	       (<VERB? EXAMINE>
+		<TELL
+"This cigarette is your last; you haven't had enough time to buy another
+-- only ONBIT use desc.zil:214-220 (commented-out ;<ROUTINE DESCRIBE-SPECIAL>)
+
+"DESCRIBE-SPECIAL -- add special trailers to object descriptions here"
+
+;<ROUTINE DESCRIBE-SPECIAL (OBJ)
+	 <COND (<FSET? .OBJ ,ONBIT>
+		<TELL " (providing light)">)
+	       ;(<FSET? .OBJ ,WORNBIT>
+		<TELL " (being worn)">)>>
+-- syntax: LIGHT / TURN ON -> V-ON
+317:<SYNTAX LIGHT OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-ON>
+618:<SYNTAX TURN ON OBJECT = V-ON>
+
+## Tokenized scan (zilscan.js, supersedes the regex flagscan section): ONBIT and LIGHTBIT
+command: node zilscan.js <rev 5c80126> ONBIT
+flag-operation forms (FSET/FCLEAR/FSET?/BSET/BCLEAR/BSET?) parsed: 397 ; filter ONBIT + all non-literal
+desc.zil:238 FSET? .OBJ <form>   [NON-LITERAL FLAG OPERAND]
+UNBALANCED syntax.zil: 1
+verbs.zil:1807 FSET? .OBJ .FLAG-IN-QUESTION   [NON-LITERAL FLAG OPERAND]
+command: node zilscan.js <rev 5c80126> LIGHTBIT
+flag-operation forms (FSET/FCLEAR/FSET?/BSET/BCLEAR/BSET?) parsed: 397 ; filter LIGHTBIT + all non-literal
+desc.zil:238 FSET? .OBJ <form>   [NON-LITERAL FLAG OPERAND]
+UNBALANCED syntax.zil: 1
+verbs.zil:1807 FSET? .OBJ .FLAG-IN-QUESTION   [NON-LITERAL FLAG OPERAND]
+Reading: ZERO live flag operations on ONBIT or LIGHTBIT anywhere (the only ONBIT text, desc.zil:217, is inside the ';'-commented DESCRIBE-SPECIAL routine and is dropped by the tokenizer). Non-literal operands = 2, both FSET? tests. syntax.zil 1 unbalanced bracket (grammar file), disclosed.

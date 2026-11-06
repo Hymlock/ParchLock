@@ -1,0 +1,1357 @@
+{
+ "story": "TheWitness.z3.js",
+ "executableDigest": "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824",
+ "proposalDigest": "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824",
+ "digestMatch": true,
+ "fileSha256": "cb84cdddd8f57c448f6820a52b9545f0508926eb9d33800ac13e620a60bf13b7",
+ "localScope": {
+  "property": 12,
+  "width": 1,
+  "holder": 247,
+  "roomLitAttribute": 14,
+  "invisible": 12,
+  "searchBit": 7,
+  "surfaceBit": 16,
+  "openBit": 8,
+  "transBit": 6
+ },
+ "proposalLocalScope": {
+  "property": 9,
+  "width": 1,
+  "holder": 247,
+  "roomLitAttribute": 14,
+  "invisible": 12,
+  "searchBit": 7,
+  "surfaceBit": 16,
+  "openBit": 8,
+  "transBit": 6
+ },
+ "sourceFlags": {
+  "INVISIBLE": {
+   "bit": 12,
+   "positives": 13,
+   "negatives": 190,
+   "tp": 12,
+   "fp": 0,
+   "fn": 1,
+   "exact": false
+  },
+  "ONBIT": {
+   "bit": 14,
+   "positives": 24,
+   "negatives": 179,
+   "tp": 24,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  }
+ },
+ "summary": {
+  "property": 12,
+  "width": 1,
+  "holder": 247,
+  "invisible": 12,
+  "R1": "driveway entrance (224)",
+  "R1obj": "bamboo woods / fence",
+  "R2": "front porch (228)",
+  "R2obj": "front gate",
+  "negatives": "NONE HOLD. At driveway entrance 224 (not listing them): \"examine front gate\" (232) => \"There's nothing special about the front gate.\"; \"examine French door\" (235), \"examine sink\" (246), \"examine lamp\" (159), \"examine office window\" (212) all resolve; \"examine toilet\" (245) => handler reply. At front porch 228: \"examine bamboo woods\" (223, not listed) resolves. Only refusals: \"set of footprints\" (222, INVISIBLE bit 12) at 228 and \"grandfather clock\" (112) at 224.",
+  "extra": "Census/proposal property 9 is not GLOBAL; GLOBAL is property 12, holder 247 (parent 249). Local-global children resolve from rooms that do not list them: The Witness does NOT restrict local globals to listing rooms. D232 room-scope prediction CONTRADICTED for this title.",
+  "dark": "n/a",
+  "status": "CONTRADICTED"
+ },
+ "holderChildren": [
+  {
+   "id": 248,
+   "name": "window",
+   "invisible": false,
+   "attrs": [
+    17,
+    18,
+    19
+   ],
+   "listedBy": [
+    "158L",
+    "197L",
+    "205L"
+   ]
+  },
+  {
+   "id": 181,
+   "name": "cabinet",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "153L",
+    "185L"
+   ]
+  },
+  {
+   "id": 187,
+   "name": "closet",
+   "invisible": false,
+   "attrs": [
+    9,
+    19,
+    20
+   ],
+   "listedBy": [
+    "130L",
+    "135L",
+    "174L",
+    "197L"
+   ]
+  },
+  {
+   "id": 189,
+   "name": "mirror",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "133L",
+    "174L",
+    "185L",
+    "197L"
+   ]
+  },
+  {
+   "id": 190,
+   "name": "bed",
+   "invisible": false,
+   "attrs": [
+    8,
+    9,
+    16,
+    19,
+    20,
+    29
+   ],
+   "listedBy": [
+    "135L",
+    "174L",
+    "197L"
+   ]
+  },
+  {
+   "id": 159,
+   "name": "lamp",
+   "invisible": false,
+   "attrs": [
+    14,
+    19,
+    20
+   ],
+   "listedBy": [
+    "168L"
+   ]
+  },
+  {
+   "id": 170,
+   "name": "chair",
+   "invisible": false,
+   "attrs": [
+    19,
+    20
+   ],
+   "listedBy": [
+    "153L",
+    "158L",
+    "174L"
+   ]
+  },
+  {
+   "id": 188,
+   "name": "telephone",
+   "invisible": false,
+   "attrs": [
+    10
+   ],
+   "listedBy": [
+    "168L",
+    "197L",
+    "207L"
+   ]
+  },
+  {
+   "id": 210,
+   "name": "pile of broken glass",
+   "invisible": true,
+   "attrs": [
+    10,
+    12,
+    19
+   ],
+   "listedBy": [
+    "207L",
+    "214L"
+   ]
+  },
+  {
+   "id": 230,
+   "name": "fence",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "203L",
+    "219L",
+    "224L",
+    "225L",
+    "228L",
+    "237L"
+   ]
+  },
+  {
+   "id": 236,
+   "name": "house",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "203L",
+    "205L",
+    "214L",
+    "218L",
+    "219L",
+    "224L",
+    "225L",
+    "228L",
+    "237L"
+   ]
+  },
+  {
+   "id": 98,
+   "name": "workshop door",
+   "invisible": false,
+   "attrs": [
+    17,
+    28
+   ],
+   "listedBy": [
+    "96L",
+    "102L"
+   ]
+  },
+  {
+   "id": 120,
+   "name": "garage door",
+   "invisible": false,
+   "attrs": [
+    17,
+    28
+   ],
+   "listedBy": [
+    "102L",
+    "122L"
+   ]
+  },
+  {
+   "id": 112,
+   "name": "grandfather clock",
+   "invisible": false,
+   "attrs": [
+    9,
+    17,
+    19,
+    20
+   ],
+   "listedBy": [
+    "207L"
+   ]
+  },
+  {
+   "id": 121,
+   "name": "office door",
+   "invisible": false,
+   "attrs": [
+    11,
+    28
+   ],
+   "listedBy": [
+    "122L",
+    "207L"
+   ]
+  },
+  {
+   "id": 125,
+   "name": "storage door",
+   "invisible": false,
+   "attrs": [
+    28
+   ],
+   "listedBy": [
+    "122L",
+    "126L"
+   ]
+  },
+  {
+   "id": 231,
+   "name": "front door",
+   "invisible": false,
+   "attrs": [
+    17,
+    28
+   ],
+   "listedBy": [
+    "130L",
+    "224L",
+    "225L",
+    "228L",
+    "237L"
+   ]
+  },
+  {
+   "id": 233,
+   "name": "bedroom window",
+   "invisible": false,
+   "attrs": [
+    18,
+    19
+   ],
+   "listedBy": [
+    "135L",
+    "237L"
+   ]
+  },
+  {
+   "id": 134,
+   "name": "bathroom door",
+   "invisible": false,
+   "attrs": [
+    28
+   ],
+   "listedBy": [
+    "133L",
+    "135L"
+   ]
+  },
+  {
+   "id": 137,
+   "name": "butler's door",
+   "invisible": false,
+   "attrs": [
+    28
+   ],
+   "listedBy": [
+    "135L",
+    "138L"
+   ]
+  },
+  {
+   "id": 140,
+   "name": "kitchen door",
+   "invisible": false,
+   "attrs": [
+    8,
+    28
+   ],
+   "listedBy": [
+    "139L",
+    "153L"
+   ]
+  },
+  {
+   "id": 234,
+   "name": "kitchen window",
+   "invisible": false,
+   "attrs": [
+    18,
+    19
+   ],
+   "listedBy": [
+    "153L",
+    "237L"
+   ]
+  },
+  {
+   "id": 157,
+   "name": "swinging door",
+   "invisible": false,
+   "attrs": [
+    8,
+    28
+   ],
+   "listedBy": [
+    "153L",
+    "158L"
+   ]
+  },
+  {
+   "id": 235,
+   "name": "French door",
+   "invisible": false,
+   "attrs": [
+    17,
+    28
+   ],
+   "listedBy": [
+    "158L",
+    "237L"
+   ]
+  },
+  {
+   "id": 160,
+   "name": "double door",
+   "invisible": false,
+   "attrs": [
+    8,
+    28
+   ],
+   "listedBy": [
+    "158L",
+    "168L"
+   ]
+  },
+  {
+   "id": 171,
+   "name": "bedroom door",
+   "invisible": false,
+   "attrs": [
+    28
+   ],
+   "listedBy": [
+    "168L",
+    "174L"
+   ]
+  },
+  {
+   "id": 201,
+   "name": "Linder's window",
+   "invisible": false,
+   "attrs": [
+    18,
+    19
+   ],
+   "listedBy": [
+    "174L",
+    "203L"
+   ]
+  },
+  {
+   "id": 183,
+   "name": "redwood door",
+   "invisible": false,
+   "attrs": [
+    28
+   ],
+   "listedBy": [
+    "174L",
+    "185L"
+   ]
+  },
+  {
+   "id": 182,
+   "name": "toilet door",
+   "invisible": false,
+   "attrs": [
+    8,
+    28
+   ],
+   "listedBy": [
+    "176L",
+    "185L"
+   ]
+  },
+  {
+   "id": 179,
+   "name": "bathtub",
+   "invisible": false,
+   "attrs": [
+    8,
+    9,
+    19,
+    20,
+    29
+   ],
+   "listedBy": [
+    "133L",
+    "180L"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "bath window",
+   "invisible": false,
+   "attrs": [
+    18,
+    19
+   ],
+   "listedBy": [
+    "180L",
+    "203L"
+   ]
+  },
+  {
+   "id": 184,
+   "name": "tub door",
+   "invisible": false,
+   "attrs": [
+    28
+   ],
+   "listedBy": [
+    "180L",
+    "185L"
+   ]
+  },
+  {
+   "id": 191,
+   "name": "cedar door",
+   "invisible": false,
+   "attrs": [
+    8,
+    28
+   ],
+   "listedBy": [
+    "185L",
+    "197L"
+   ]
+  },
+  {
+   "id": 192,
+   "name": "bedroom door",
+   "invisible": false,
+   "attrs": [
+    8,
+    28
+   ],
+   "listedBy": [
+    "138L",
+    "197L"
+   ]
+  },
+  {
+   "id": 202,
+   "name": "back door",
+   "invisible": false,
+   "attrs": [
+    17,
+    28
+   ],
+   "listedBy": [
+    "174L",
+    "203L"
+   ]
+  },
+  {
+   "id": 204,
+   "name": "back door",
+   "invisible": false,
+   "attrs": [
+    17,
+    28
+   ],
+   "listedBy": [
+    "197L",
+    "205L"
+   ]
+  },
+  {
+   "id": 211,
+   "name": "lawn",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "203L",
+    "205L",
+    "214L"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "back door",
+   "invisible": false,
+   "attrs": [
+    17,
+    28
+   ],
+   "listedBy": [
+    "207L",
+    "214L"
+   ]
+  },
+  {
+   "id": 212,
+   "name": "office window",
+   "invisible": false,
+   "attrs": [
+    11,
+    18
+   ],
+   "listedBy": [
+    "207L",
+    "214L"
+   ]
+  },
+  {
+   "id": 209,
+   "name": "set of footprints",
+   "invisible": true,
+   "attrs": [
+    12
+   ],
+   "listedBy": [
+    "214L"
+   ]
+  },
+  {
+   "id": 223,
+   "name": "bamboo woods",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "203L",
+    "205L",
+    "214L",
+    "218L",
+    "224L"
+   ]
+  },
+  {
+   "id": 222,
+   "name": "set of footprints",
+   "invisible": true,
+   "attrs": [
+    12
+   ],
+   "listedBy": [
+    "218L",
+    "219L",
+    "224L"
+   ]
+  },
+  {
+   "id": 227,
+   "name": "driveway",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "219L",
+    "224L",
+    "225L",
+    "228L"
+   ]
+  },
+  {
+   "id": 232,
+   "name": "front gate",
+   "invisible": false,
+   "attrs": [
+    28
+   ],
+   "listedBy": [
+    "228L",
+    "237L"
+   ]
+  },
+  {
+   "id": 245,
+   "name": "toilet",
+   "invisible": false,
+   "attrs": [
+    16,
+    19,
+    20,
+    29
+   ],
+   "listedBy": [
+    "133L",
+    "176L"
+   ]
+  },
+  {
+   "id": 246,
+   "name": "sink",
+   "invisible": false,
+   "attrs": [
+    19,
+    20
+   ],
+   "listedBy": [
+    "133L",
+    "153L",
+    "180L",
+    "185L"
+   ]
+  }
+ ],
+ "roomsListingProperty": [
+  {
+   "id": 96,
+   "name": "workshop",
+   "parent": 251,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "98:workshop door"
+   ]
+  },
+  {
+   "id": 102,
+   "name": "garage",
+   "parent": 251,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "120:garage door",
+    "98:workshop door"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "hallway",
+   "parent": 251,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "125:storage door",
+    "121:office door",
+    "120:garage door"
+   ]
+  },
+  {
+   "id": 126,
+   "name": "storage closet",
+   "parent": 251,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "125:storage door"
+   ]
+  },
+  {
+   "id": 130,
+   "name": "entry",
+   "parent": 251,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "231:front door",
+    "187:closet"
+   ]
+  },
+  {
+   "id": 133,
+   "name": "butler's bathroom",
+   "parent": 251,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "189:mirror",
+    "245:toilet",
+    "246:sink",
+    "179:bathtub",
+    "134:bathroom door"
+   ]
+  },
+  {
+   "id": 135,
+   "name": "butler's room",
+   "parent": 251,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "137:butler's door",
+    "134:bathroom door",
+    "233:bedroom window",
+    "187:closet",
+    "190:bed"
+   ]
+  },
+  {
+   "id": 138,
+   "name": "hallway",
+   "parent": 251,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "192:bedroom door",
+    "137:butler's door"
+   ]
+  },
+  {
+   "id": 139,
+   "name": "hallway",
+   "parent": 251,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "140:kitchen door"
+   ]
+  },
+  {
+   "id": 153,
+   "name": "kitchen",
+   "parent": 251,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "157:swinging door",
+    "140:kitchen door",
+    "234:kitchen window",
+    "246:sink",
+    "181:cabinet",
+    "170:chair"
+   ]
+  },
+  {
+   "id": 158,
+   "name": "dining room",
+   "parent": 251,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "235:French door",
+    "160:double door",
+    "157:swinging door",
+    "248:window",
+    "170:chair"
+   ]
+  },
+  {
+   "id": 168,
+   "name": "living room",
+   "parent": 251,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "171:bedroom door",
+    "160:double door",
+    "188:telephone",
+    "159:lamp"
+   ]
+  },
+  {
+   "id": 174,
+   "name": "Linder's bedroom",
+   "parent": 251,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "171:bedroom door",
+    "202:back door",
+    "183:redwood door",
+    "187:closet",
+    "189:mirror",
+    "201:Linder's window",
+    "190:bed",
+    "170:chair"
+   ]
+  },
+  {
+   "id": 176,
+   "name": "toilet room",
+   "parent": 251,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "182:toilet door",
+    "245:toilet"
+   ]
+  },
+  {
+   "id": 180,
+   "name": "tub room",
+   "parent": 251,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "184:tub door",
+    "200:bath window",
+    "179:bathtub",
+    "246:sink"
+   ]
+  },
+  {
+   "id": 185,
+   "name": "bathroom",
+   "parent": 251,
+   "lit": true,
+   "sz": 7,
+   "lg": [
+    "191:cedar door",
+    "183:redwood door",
+    "182:toilet door",
+    "184:tub door",
+    "181:cabinet",
+    "189:mirror",
+    "246:sink"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "Monica's bedroom",
+   "parent": 251,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "192:bedroom door",
+    "204:back door",
+    "191:cedar door",
+    "248:window",
+    "190:bed",
+    "189:mirror",
+    "188:telephone",
+    "187:closet"
+   ]
+  },
+  {
+   "id": 203,
+   "name": "rock garden",
+   "parent": 251,
+   "lit": true,
+   "sz": 7,
+   "lg": [
+    "236:house",
+    "202:back door",
+    "201:Linder's window",
+    "200:bath window",
+    "211:lawn",
+    "223:bamboo woods",
+    "230:fence"
+   ]
+  },
+  {
+   "id": 205,
+   "name": "back yard",
+   "parent": 251,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "236:house",
+    "204:back door",
+    "248:window",
+    "211:lawn",
+    "223:bamboo woods"
+   ]
+  },
+  {
+   "id": 207,
+   "name": "office",
+   "parent": 251,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "121:office door",
+    "212:office window",
+    "210:pile of broken glass",
+    "213:back door",
+    "188:telephone",
+    "112:grandfather clock"
+   ]
+  },
+  {
+   "id": 214,
+   "name": "office porch",
+   "parent": 251,
+   "lit": true,
+   "sz": 7,
+   "lg": [
+    "236:house",
+    "213:back door",
+    "212:office window",
+    "211:lawn",
+    "223:bamboo woods",
+    "210:pile of broken glass",
+    "209:set of footprints"
+   ]
+  },
+  {
+   "id": 218,
+   "name": "office path",
+   "parent": 251,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "236:house",
+    "223:bamboo woods",
+    "222:set of footprints"
+   ]
+  },
+  {
+   "id": 219,
+   "name": "side yard",
+   "parent": 251,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "236:house",
+    "230:fence",
+    "227:driveway",
+    "222:set of footprints"
+   ]
+  },
+  {
+   "id": 224,
+   "name": "driveway entrance",
+   "parent": 251,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "236:house",
+    "223:bamboo woods",
+    "231:front door",
+    "230:fence",
+    "227:driveway",
+    "222:set of footprints"
+   ]
+  },
+  {
+   "id": 225,
+   "name": "driveway",
+   "parent": 251,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "236:house",
+    "231:front door",
+    "230:fence",
+    "227:driveway"
+   ]
+  },
+  {
+   "id": 228,
+   "name": "front porch",
+   "parent": 251,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "236:house",
+    "231:front door",
+    "232:front gate",
+    "230:fence",
+    "227:driveway"
+   ]
+  },
+  {
+   "id": 237,
+   "name": "front yard",
+   "parent": 251,
+   "lit": true,
+   "sz": 7,
+   "lg": [
+    "236:house",
+    "235:French door",
+    "234:kitchen window",
+    "233:bedroom window",
+    "232:front gate",
+    "231:front door",
+    "230:fence"
+   ]
+  }
+ ],
+ "commands": 19,
+ "log": [
+  {
+   "dump": {
+    "roomId": 224,
+    "roomName": "driveway entrance",
+    "lit": true,
+    "prop": {
+     "num": 12,
+     "sz": 6,
+     "dataAddr": 8003
+    },
+    "localGlobals": [
+     {
+      "id": 236,
+      "name": "house",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 223,
+      "name": "bamboo woods",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 231,
+      "name": "front door",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 230,
+      "name": "fence",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 227,
+      "name": "driveway",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 222,
+      "name": "set of footprints",
+      "parent": 247,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": []
+   }
+  },
+  {
+   "cmd": "examine bamboo woods",
+   "roomIdAfter": 224,
+   "reply": [
+    "Bamboo, thick and tall, screens the entire lot on the east side.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine front gate",
+   "roomIdAfter": 224,
+   "reply": [
+    "There's nothing special about the front gate.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine French door",
+   "roomIdAfter": 224,
+   "reply": [
+    "There's nothing special about the French door.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "n",
+   "roomIdAfter": 225,
+   "reply": [
+    "You are now on the driveway.",
+    "The driveway, paved with peastone, runs from the entrance at the south end in a curve to a two-car garage at the east end. North of you is the front porch, the entrance to the house.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 225,
+    "roomName": "driveway",
+    "lit": true,
+    "prop": {
+     "num": 12,
+     "sz": 4,
+     "dataAddr": 8035
+    },
+    "localGlobals": [
+     {
+      "id": 236,
+      "name": "house",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 231,
+      "name": "front door",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 230,
+      "name": "fence",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 227,
+      "name": "driveway",
+      "parent": 247,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": []
+   }
+  },
+  {
+   "cmd": "examine fence",
+   "roomIdAfter": 225,
+   "reply": [
+    "This is a Japanese-style \"shadow fence\" made of wooden slats, opaque from most angles but designed to let breezes through.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine bamboo woods",
+   "roomIdAfter": 225,
+   "reply": [
+    "Bamboo, thick and tall, screens the entire lot on the east side.",
+    "Suddenly, a clap of thunder rolls across the hills nearby.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "n",
+   "roomIdAfter": 228,
+   "reply": [
+    "You are now on the front porch.",
+    "The front porch is in an alcove, sheltered from the weather by the walls and overhanging roof. A yellowish electric light hangs near the closed front door to the east, giving you a dim view of the driveway to the south and the front yard behind a gate to the north.",
+    "The gate is closed. A door bell glows at you, almost daring you to ring it.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 228,
+    "roomName": "front porch",
+    "lit": true,
+    "prop": {
+     "num": 12,
+     "sz": 5,
+     "dataAddr": 8118
+    },
+    "localGlobals": [
+     {
+      "id": 236,
+      "name": "house",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 231,
+      "name": "front door",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 232,
+      "name": "front gate",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 230,
+      "name": "fence",
+      "parent": 247,
+      "parentIsHolder": true
+     },
+     {
+      "id": 227,
+      "name": "driveway",
+      "parent": 247,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "door bell"
+    ]
+   }
+  },
+  {
+   "cmd": "examine front gate",
+   "roomIdAfter": 228,
+   "reply": [
+    "There's nothing special about the front gate.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine bamboo woods",
+   "roomIdAfter": 228,
+   "reply": [
+    "Bamboo, thick and tall, screens the entire lot on the east side.",
+    "Without warning, lightning flashes above, and a few seconds later thunder rattles the house.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine set of footprints",
+   "roomIdAfter": 228,
+   "reply": [
+    "(You can't see any footprints here!)",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "s",
+   "roomIdAfter": 225,
+   "reply": [
+    "You are now on the driveway.",
+    "(Aren't you getting tired of seeing \"What next?\" and \"You are now in the ....\"? From here on, the prompt will be much shorter.)",
+    ">"
+   ]
+  },
+  {
+   "cmd": "s",
+   "roomIdAfter": 224,
+   "reply": [
+    "(driveway entrance)",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine front gate",
+   "roomIdAfter": 224,
+   "reply": [
+    "There's nothing special about the front gate.",
+    "Rain begins to fall in a sprinkle.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine sink",
+   "roomIdAfter": 224,
+   "reply": [
+    "There's nothing special about the sink.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine toilet",
+   "roomIdAfter": 224,
+   "reply": [
+    "You have stooped to a new low by snooping around toilet bowls.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine grandfather clock",
+   "roomIdAfter": 224,
+   "reply": [
+    "(You can't see any clock here!)",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine lamp",
+   "roomIdAfter": 224,
+   "reply": [
+    "There's nothing special about the lamp.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine office window",
+   "roomIdAfter": 224,
+   "reply": [
+    "The window is a simple wooden sash, locked tight against the cold.",
+    "What next?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine house",
+   "roomIdAfter": 224,
+   "reply": [
+    "The house looks like a mixture of a California bungalow and East Asian influences.",
+    "What next?",
+    ">"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+PASS actual original tweed state belongs to garment domain
+PASS actual unworn exercise state remains false despite calibration
+PASS second garment state uses raw worn bit rather than custody
+PASS native-qualified nonwearable lantern remains false when held
+PASS room/root/global never gains worn aliases 7
+PASS room/root/global never gains worn aliases 12
+PASS room/root/global never gains worn aliases 33
+PASS room/root/global never gains worn aliases 62
+PASS room/root/global never gains worn aliases 126
+PASS room/root/global never gains worn aliases 151
+PASS room/root/global never gains worn aliases 37
+PASS room/root/global never gains worn aliases 66
+PASS offstage garment with constructed worn bit remains false
+PASS dropped garment with cleared bit stays unworn
+PASS custody alone never creates worn state
+PASS source NPC-costume relation preserves raw garment state
+PASS constructed nested state is bit-owned, not an accessibility claim
+PASS nonwearable cannot become worn from constructed bit alone
+PASS forged input attributes cannot override original-memory state
+PASS parent outside measured table fails closed
+PASS object beyond measured table fails closed
+PASS invalid domain objectCount=254
+PASS invalid domain objectCount=253
+PASS invalid domain roomRootObject=66
+PASS invalid domain roomRootObject=0
+PASS invalid domain roomRootObject=254
+PASS malformed owned selector cannot expose the unqualified raw room bit
+PASS missing measured worn bit cannot fall back to learned bit
+PASS missing measured wearable bit fails closed
+PASS unknown family fails closed
+PASS changed root role fails closed
+PASS changed property boundary fails closed
+PASS explicit wrong supplied view is never replaced by correct provider
+PASS explicit correct view is never replaced by wrong provider
+PASS omitted-memory call retains provider fallback
+PASS no player or room heuristic is consulted
+PASS stronger declared names are preserved
+PASS exception cannot resurrect owned raw room bit
+PASS throwing digest accessor cannot leak learned room/global worn state
+PASS missing executable identity fails closed for digest-owned domain
+PASS throwing executable identity fails closed for digest-owned domain
+PASS wrong identity header cannot authenticate the garment domain
+42 garment-domain checks passed

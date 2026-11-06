@@ -1,0 +1,8 @@
+{
+  "scope": "Separate isolated absent R1 research candidate, no Infidel changes or live file edits",
+  "baseline": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-g1gate-cand",
+  "sourceBefore": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72",
+  "sourceAfter": "817c737f37b4bd67ce33eb97cd6ffe5975f6d8e2845bed887cb6f63aba2dcaa5",
+  "delta": "Add absent to existing guarded family fallback set only",
+  "gameSha": "075074c8de60801f83d0f422ee6ae512877cf12e4d6a4034f7e5b6c862f5b9b8"
+}

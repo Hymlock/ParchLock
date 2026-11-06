@@ -1,0 +1,23 @@
+{
+  "rootCommit": "3d206149fd472907dab90ce484ee0ac1d2ba8d7d",
+  "priorPrototypeBase": "10fa8bd",
+  "rootRawHashes": {
+    "js/Actionable.js": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f",
+    "js/ActionSynth.js": "b17924fe3121043e60f110a0d59fd5518e85988d70f73d1fa478a37e167abaff",
+    "js/AttributeSchema.js": "7acbedd6fb0c1cd9b0b32dcf761366671a9a977a7bc61299cfd4e2fae483ec93",
+    "js/EquipmentUI.js": "3c4ae552726bf698dd01ea257c1776d40f59cb5b426ee8d43ced81e02e12275f",
+    "js/LearnedWords.js": "2e179163acca934ac27d57a5520e4f8bd7a2f2f0d9302fb056c8696234278afe",
+    "js/ModuleStatFactsClaude.js": "abc9b9fccc827294f48981c82e59ec20a4c9f52b5873dcfc3bde753aa7708bda",
+    "js/SemanticActions.js": "758de41f7c75678b324ec277f9142716c9f64913beb9eb25d7253132b1c2c5b6"
+  },
+  "copiedLFHashes": {
+    "js/Actionable.js": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f",
+    "js/ActionSynth.js": "b17924fe3121043e60f110a0d59fd5518e85988d70f73d1fa478a37e167abaff",
+    "js/AttributeSchema.js": "614bae63bbe6d001fe2f45c8ddd4bc4bfb321e1085e7a3f86ef01f24296ccc6d",
+    "js/EquipmentUI.js": "3c4ae552726bf698dd01ea257c1776d40f59cb5b426ee8d43ced81e02e12275f",
+    "js/LearnedWords.js": "2e179163acca934ac27d57a5520e4f8bd7a2f2f0d9302fb056c8696234278afe",
+    "js/ModuleStatFactsClaude.js": "cd3c52a2cf143adc0065bff3701533e0cba3564324007bf31322ff05bc235e1f",
+    "js/SemanticActions.js": "d87799ab6ab0f36ea58bcafde9334457ff9dfc2fa7ea1a1fc1c02908d13a5ed3"
+  },
+  "scope": "Seven-file research copy only; patch not yet applied/audited; no integration"
+}

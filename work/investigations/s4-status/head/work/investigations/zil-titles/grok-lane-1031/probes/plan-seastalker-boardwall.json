@@ -1,0 +1,73 @@
+{
+    "key":  "seastalker",
+    "game":  "Seastalker.z3.js",
+    "bit":  0,
+    "tmpl":  "board sub at airlock-wall",
+    "tag":  "seaboard",
+    "note":  "Seastalker R2 follow-up: LOCAL-SUB-F BOARD at AIRLOCK-WALL with roof closed (global:171-185) vs compass S/OUT blocked.",
+    "tests":  [
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "look"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "n"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "look"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "close roof"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "look"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "board sub"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "look"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "s"
+                  },
+                  {
+                      "id":  1,
+                      "name":  "x",
+                      "step":  178,
+                      "expect":  0,
+                      "cmd":  "look"
+                  }
+              ]
+}

@@ -1,0 +1,73 @@
+{
+ "key": "zork1",
+ "game": "Zork1-TheGreatUndergroundEmpire.z3.js",
+ "bit": 17,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 87,
+   "name": "jewel-encrusted egg",
+   "step": 3,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take jewel-encrusted egg"
+  },
+  {
+   "id": 89,
+   "name": "bird's nest",
+   "step": 3,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take bird's nest"
+  },
+  {
+   "id": 160,
+   "name": "small mailbox",
+   "step": 0,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take small mailbox"
+  },
+  {
+   "id": 181,
+   "name": "door",
+   "step": 0,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take door"
+  },
+  {
+   "id": 204,
+   "name": "kitchen table",
+   "step": 9,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take kitchen table"
+  },
+  {
+   "id": 111,
+   "name": "wooden door",
+   "step": 12,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take wooden door"
+  },
+  {
+   "id": 183,
+   "name": "trap door",
+   "step": 12,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take trap door"
+  },
+  {
+   "id": 192,
+   "name": "carpet",
+   "step": 12,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take carpet"
+  }
+ ]
+}

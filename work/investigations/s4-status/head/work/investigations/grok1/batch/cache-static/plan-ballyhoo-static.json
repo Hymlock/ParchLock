@@ -1,0 +1,73 @@
+{
+ "key": "ballyhoo",
+ "game": "Ballyhoo.z3.js",
+ "bit": 22,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 219,
+   "name": "Comrade Thumb",
+   "step": 1,
+   "expect": 1,
+   "bit": 22,
+   "cmd": "take comrade thumb"
+  },
+  {
+   "id": 93,
+   "name": "clown mask",
+   "step": 3,
+   "expect": 1,
+   "bit": 22,
+   "cmd": "take clown mask"
+  },
+  {
+   "id": 22,
+   "name": "button",
+   "step": 1,
+   "expect": 0,
+   "bit": 22,
+   "cmd": "take button"
+  },
+  {
+   "id": 90,
+   "name": "drinking fountain",
+   "step": 1,
+   "expect": 0,
+   "bit": 22,
+   "cmd": "take drinking fountain"
+  },
+  {
+   "id": 115,
+   "name": "uniform",
+   "step": 1,
+   "expect": 0,
+   "bit": 22,
+   "cmd": "take uniform"
+  },
+  {
+   "id": 168,
+   "name": "crowd",
+   "step": 1,
+   "expect": 0,
+   "bit": 22,
+   "cmd": "take crowd"
+  },
+  {
+   "id": 49,
+   "name": "barred passage",
+   "step": 3,
+   "expect": 0,
+   "bit": 22,
+   "cmd": "take barred passage"
+  },
+  {
+   "id": 32,
+   "name": "pair of sunglasses",
+   "step": 5,
+   "expect": 0,
+   "bit": 22,
+   "cmd": "take pair of sunglasses"
+  }
+ ]
+}

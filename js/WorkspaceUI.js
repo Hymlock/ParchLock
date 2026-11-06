@@ -284,6 +284,18 @@ var WorkspaceUI = {
         // is present; the Notes header/section itself is always visible
         // regardless of this preference, note count, or collapse state.
 
+        // S4: always shown; the effect is gated per module (StatusLineHide).
+        var hideStatusLabel = $("<label>").appendTo(groups.interface);
+        $("<input type='checkbox' id='pl-hide-status-line'>")
+            .prop("checked", !!Global.Prefs.HideStatusLine)
+            .on("change", function () {
+                Global.Prefs.HideStatusLine = !!this.checked;
+                Global.SavePrefs();
+                try { StatusLineHide.apply(); } catch (e) {}
+            })
+            .appendTo(hideStatusLabel);
+        hideStatusLabel.append(document.createTextNode("Hide the story's status line when the stat strip shows it"));
+
         var notesButtonLabel = $("<label>").appendTo(groups.interface);
         $("<input type='checkbox'>")
             .prop("checked", !!Global.Prefs.ShowNotesAddButton)
@@ -517,3 +529,76 @@ var WorkspaceUI = {
     }
 
 };
+
+// S4 (R2): hide the game's one-line status grid while the stat strip shows
+// at least one metric AND the grid yields a readable room label. Only the
+// live grid inside #windowport is tagged (GlkOte's #layout_test_pane
+// measurement grid is never touched, so gridmarginy/gridcharheight are
+// unaffected). One GridLine child === GlkOte gridheight 1 (GlkOte keeps one
+// .GridLine per grid row). Hiding is visibility:hidden (text stays readable
+// via textContent); the line is reclaimed by moving the buffer window(s)
+// directly below the grid up through a CSS top override. GlkOte's own
+// inline left/top/right/bottom and the bbox-derived sizes it reports to the
+// VM are not changed.
+var StatusLineHide = {
+    _pending: false,
+    _observer: null,
+    gateOpen: function (grid) {
+        if (typeof StatusGridDecoder === "undefined") return false;
+        // GridLine rows only: the grid frame can carry a <style> element.
+        var d = StatusGridDecoder.decode(Array.prototype.map.call(grid.querySelectorAll(".GridLine"), function (l) { return l.textContent || ""; }).join("\n"));
+        if (!d.roomLabel || !/[A-Za-z]/.test(d.roomLabel)) return false;
+        var shown = 0;
+        try { if (typeof StatTracker !== "undefined" && StatTracker.visibleStats) shown = (StatTracker.visibleStats() || []).length; } catch (e) {}
+        if (!shown) shown = d.metrics.length;
+        return shown > 0;
+    },
+    apply: function () {
+        StatusLineHide._pending = false;
+        if (typeof document === "undefined") return;
+        var wp = document.getElementById("windowport");
+        if (!wp) return;
+        var frames = Array.prototype.filter.call(wp.children, function (el) { return el.classList.contains("WindowFrame"); });
+        var oneline = [];
+        frames.forEach(function (el) {
+            if (!el.classList.contains("GridWindow")) return;
+            var rows = Array.prototype.filter.call(el.children, function (c) { return c.classList.contains("GridLine"); }).length;
+            var is1 = rows === 1;
+            if (el.classList.contains("pl-oneline-status") !== is1) el.classList.toggle("pl-oneline-status", is1);
+            if (is1) oneline.push(el);
+        });
+        var grid = oneline.length === 1 ? oneline[0] : null;
+        var on = !!(typeof Global !== "undefined" && Global.Prefs && Global.Prefs.HideStatusLine && grid && StatusLineHide.gateOpen(grid));
+        if (wp.classList.contains("pl-hide-status") !== on) wp.classList.toggle("pl-hide-status", on);
+        var gTop = grid ? parseFloat(grid.style.top) : NaN;
+        var gBottom = grid ? wp.clientHeight - parseFloat(grid.style.bottom) : NaN;
+        frames.forEach(function (el) {
+            var below = false, target = "";
+            if (on && el !== grid && isFinite(gTop) && isFinite(gBottom)) {
+                var top = parseFloat(el.style.top);
+                // Directly beneath the grid (GlkOte inserts at most a small spacing).
+                if (isFinite(top) && top >= gBottom - 1 && top <= gBottom + 16) { below = true; target = gTop + "px"; }
+            }
+            if (el.classList.contains("pl-status-below") !== below) el.classList.toggle("pl-status-below", below);
+            if (below) { if (el.style.getPropertyValue("--pl-reclaim-top") !== target) el.style.setProperty("--pl-reclaim-top", target); }
+            else if (el.style.getPropertyValue("--pl-reclaim-top")) el.style.removeProperty("--pl-reclaim-top");
+        });
+    },
+    schedule: function () {
+        if (StatusLineHide._pending) return;
+        StatusLineHide._pending = true;
+        (typeof requestAnimationFrame === "function" ? requestAnimationFrame : setTimeout)(StatusLineHide.apply);
+    },
+    start: function () {
+        if (StatusLineHide._observer || typeof MutationObserver === "undefined" || !document.body) return;
+        StatusLineHide._observer = new MutationObserver(StatusLineHide.schedule);
+        StatusLineHide._observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["style", "class", "hidden"] });
+        StatusLineHide.schedule();
+    }
+};
+try {
+    if (typeof document !== "undefined") {
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", StatusLineHide.start);
+        else StatusLineHide.start();
+    }
+} catch (e) {}

@@ -1,0 +1,938 @@
+{
+ "scenery @3:look#0": {
+  "tag": "scenery",
+  "id": 50,
+  "name": "crystal lamp",
+  "step": 3,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 221,
+  "here": 221,
+  "opsOnId": [
+   [
+    50,
+    31,
+    0,
+    27174
+   ],
+   [
+    50,
+    30,
+    0,
+    27174
+   ],
+   [
+    50,
+    31,
+    0,
+    27288
+   ],
+   [
+    50,
+    30,
+    0,
+    27288
+   ],
+   [
+    50,
+    25,
+    1,
+    27288
+   ]
+  ],
+  "nOps": 15,
+  "text": "Foyer\nThis is the foyer of the Robner house, beautifully appointed with a fine crystal chandelier, marble floors, and a large marble-topped table. The front door, to the south, is closed. The foyer continues north.\nMrs. Robner is to the north, heading toward the north.\n \n> ",
+  "ts": "2026-10-24T15:51:55.332Z"
+ },
+ "scenery @3:examine crystal lamp#1": {
+  "tag": "scenery",
+  "id": 50,
+  "name": "crystal lamp",
+  "step": 3,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "examine crystal lamp",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 221,
+  "here": 221,
+  "opsOnId": [
+   [
+    50,
+    31,
+    0,
+    26317
+   ],
+   [
+    50,
+    20,
+    0,
+    20996
+   ],
+   [
+    50,
+    21,
+    0,
+    26706
+   ],
+   [
+    50,
+    22,
+    0,
+    26706
+   ],
+   [
+    50,
+    20,
+    0,
+    26723
+   ]
+  ],
+  "nOps": 8,
+  "text": "There's nothing special about the crystal lamp.\nMrs. Robner, off to the north, ducks into a room to the north.\n \n> ",
+  "ts": "2026-10-24T15:51:55.917Z"
+ },
+ "scenery @3:look#2": {
+  "tag": "scenery",
+  "id": 129,
+  "name": "marble-top table",
+  "step": 3,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   21,
+   25,
+   28,
+   29
+  ],
+  "after": [
+   21,
+   25,
+   28,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 221,
+  "here": 221,
+  "opsOnId": [
+   [
+    129,
+    31,
+    0,
+    27174
+   ],
+   [
+    129,
+    30,
+    0,
+    27174
+   ],
+   [
+    129,
+    31,
+    0,
+    27288
+   ],
+   [
+    129,
+    30,
+    0,
+    27288
+   ],
+   [
+    129,
+    25,
+    1,
+    27288
+   ]
+  ],
+  "nOps": 15,
+  "text": "Foyer\nThis is the foyer of the Robner house, beautifully appointed with a fine crystal chandelier, marble floors, and a large marble-topped table. The front door, to the south, is closed. The foyer continues north.\n \n> ",
+  "ts": "2026-10-24T15:51:56.487Z"
+ },
+ "scenery @3:examine marble-top table#3": {
+  "tag": "scenery",
+  "id": 129,
+  "name": "marble-top table",
+  "step": 3,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "examine marble-top table",
+  "verdict": "NOTEST",
+  "before": [
+   21,
+   25,
+   28,
+   29
+  ],
+  "after": [
+   21,
+   25,
+   28,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 221,
+  "here": 221,
+  "opsOnId": [
+   [
+    129,
+    31,
+    0,
+    26317
+   ],
+   [
+    129,
+    20,
+    0,
+    20996
+   ],
+   [
+    129,
+    21,
+    1,
+    26693
+   ],
+   [
+    129,
+    24,
+    0,
+    32588
+   ],
+   [
+    129,
+    22,
+    0,
+    32632
+   ],
+   [
+    129,
+    21,
+    1,
+    32659
+   ],
+   [
+    129,
+    31,
+    0,
+    32766
+   ],
+   [
+    129,
+    27,
+    0,
+    32766
+   ],
+   [
+    129,
+    28,
+    1,
+    32766
+   ],
+   [
+    129,
+    29,
+    1,
+    32693
+   ]
+  ],
+  "nOps": 13,
+  "text": "There is nothing on the marble-top table.\n \n> ",
+  "ts": "2026-10-24T15:51:57.060Z"
+ },
+ "scenery @7:look#4": {
+  "tag": "scenery",
+  "id": 46,
+  "name": "fine wooden cabinets",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    46,
+    31,
+    0,
+    27174
+   ],
+   [
+    46,
+    30,
+    0,
+    27174
+   ],
+   [
+    46,
+    31,
+    0,
+    27288
+   ],
+   [
+    46,
+    30,
+    0,
+    27288
+   ],
+   [
+    46,
+    25,
+    1,
+    27288
+   ]
+  ],
+  "nOps": 43,
+  "text": "Living Room\nThis is a large and impressive room, whose furnishings bespeak the great personal wealth of the Robners. The south side of the room is a large bay window, now closed, which looks out onto the front yard.\nA wood pile sits beside a huge fieldstone fireplace. A double doorway leading to the main hall is the only exit. Pictures of Mrs. Robner's colonial ancestors line one wall. The room contains formal seating for at least fifteen people, in several groups of chairs and couches. Tables and cabinets, all of the finest mahogany and walnut, complete the furnishings. On one of the tables is a telephone.\nSitting on a table is a hardcover book.\nMs. Dunbar is sitting on the sofa here.\n \n> ",
+  "ts": "2026-10-24T15:51:59.983Z"
+ },
+ "scenery @7:examine fine wooden cabinets#5": {
+  "tag": "scenery",
+  "id": 46,
+  "name": "fine wooden cabinets",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "examine fine wooden cabinets",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    46,
+    31,
+    0,
+    26317
+   ],
+   [
+    46,
+    20,
+    0,
+    20996
+   ]
+  ],
+  "nOps": 10,
+  "text": "The cabinets are beautifully handworked walnut and mahogany.\n \n> ",
+  "ts": "2026-10-24T15:52:00.553Z"
+ },
+ "scenery @7:look#6": {
+  "tag": "scenery",
+  "id": 47,
+  "name": "collection of portraits",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    47,
+    31,
+    0,
+    27174
+   ],
+   [
+    47,
+    30,
+    0,
+    27174
+   ],
+   [
+    47,
+    31,
+    0,
+    27288
+   ],
+   [
+    47,
+    30,
+    0,
+    27288
+   ],
+   [
+    47,
+    25,
+    1,
+    27288
+   ]
+  ],
+  "nOps": 43,
+  "text": "Living Room\nThis is a large and impressive room, whose furnishings bespeak the great personal wealth of the Robners. The south side of the room is a large bay window, now closed, which looks out onto the front yard.\nA wood pile sits beside a huge fieldstone fireplace. A double doorway leading to the main hall is the only exit. Pictures of Mrs. Robner's colonial ancestors line one wall. The room contains formal seating for at least fifteen people, in several groups of chairs and couches. Tables and cabinets, all of the finest mahogany and walnut, complete the furnishings. On one of the tables is a telephone.\nSitting on a table is a hardcover book.\nMs. Dunbar is sitting on the sofa here.\n \n> ",
+  "ts": "2026-10-24T15:52:01.127Z"
+ },
+ "scenery @7:examine collection of portraits#7": {
+  "tag": "scenery",
+  "id": 47,
+  "name": "collection of portraits",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "examine collection of portraits",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    47,
+    31,
+    0,
+    26317
+   ],
+   [
+    47,
+    20,
+    0,
+    20996
+   ]
+  ],
+  "nOps": 10,
+  "text": "There are five portraits: two on each side of and one above the bay window. The fading portraits are of members of the Phillips family, among the oldest in New England.\n \n> ",
+  "ts": "2026-10-24T15:52:01.742Z"
+ },
+ "scenery @7:look#8": {
+  "tag": "scenery",
+  "id": 48,
+  "name": "wood pile",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    48,
+    31,
+    0,
+    27174
+   ],
+   [
+    48,
+    30,
+    0,
+    27174
+   ],
+   [
+    48,
+    31,
+    0,
+    27288
+   ],
+   [
+    48,
+    30,
+    0,
+    27288
+   ],
+   [
+    48,
+    25,
+    1,
+    27288
+   ]
+  ],
+  "nOps": 43,
+  "text": "Living Room\nThis is a large and impressive room, whose furnishings bespeak the great personal wealth of the Robners. The south side of the room is a large bay window, now closed, which looks out onto the front yard.\nA wood pile sits beside a huge fieldstone fireplace. A double doorway leading to the main hall is the only exit. Pictures of Mrs. Robner's colonial ancestors line one wall. The room contains formal seating for at least fifteen people, in several groups of chairs and couches. Tables and cabinets, all of the finest mahogany and walnut, complete the furnishings. On one of the tables is a telephone.\nSitting on a table is a hardcover book.\nMs. Dunbar is sitting on the sofa here.\n \n> ",
+  "ts": "2026-10-24T15:52:02.318Z"
+ },
+ "scenery @7:examine wood pile#9": {
+  "tag": "scenery",
+  "id": 48,
+  "name": "wood pile",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "examine wood pile",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    48,
+    31,
+    0,
+    26317
+   ],
+   [
+    48,
+    20,
+    0,
+    20996
+   ],
+   [
+    48,
+    21,
+    0,
+    26693
+   ],
+   [
+    48,
+    22,
+    0,
+    26693
+   ],
+   [
+    48,
+    20,
+    0,
+    26707
+   ]
+  ],
+  "nOps": 13,
+  "text": "There's nothing special about the wood pile.\n \n> ",
+  "ts": "2026-10-24T15:52:02.905Z"
+ },
+ "scenery @7:look#10": {
+  "tag": "scenery",
+  "id": 49,
+  "name": "fieldstone fireplace",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    49,
+    31,
+    0,
+    27174
+   ],
+   [
+    49,
+    30,
+    0,
+    27174
+   ],
+   [
+    49,
+    31,
+    0,
+    27288
+   ],
+   [
+    49,
+    30,
+    0,
+    27288
+   ],
+   [
+    49,
+    25,
+    1,
+    27288
+   ]
+  ],
+  "nOps": 43,
+  "text": "Living Room\nThis is a large and impressive room, whose furnishings bespeak the great personal wealth of the Robners. The south side of the room is a large bay window, now closed, which looks out onto the front yard.\nA wood pile sits beside a huge fieldstone fireplace. A double doorway leading to the main hall is the only exit. Pictures of Mrs. Robner's colonial ancestors line one wall. The room contains formal seating for at least fifteen people, in several groups of chairs and couches. Tables and cabinets, all of the finest mahogany and walnut, complete the furnishings. On one of the tables is a telephone.\nSitting on a table is a hardcover book.\nMs. Dunbar is sitting on the sofa here.\n \n> ",
+  "ts": "2026-10-24T15:52:03.540Z"
+ },
+ "scenery @7:examine fieldstone fireplace#11": {
+  "tag": "scenery",
+  "id": 49,
+  "name": "fieldstone fireplace",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "examine fieldstone fireplace",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    49,
+    31,
+    0,
+    26317
+   ],
+   [
+    49,
+    20,
+    0,
+    20996
+   ],
+   [
+    49,
+    21,
+    0,
+    26693
+   ],
+   [
+    49,
+    22,
+    0,
+    26693
+   ],
+   [
+    49,
+    20,
+    0,
+    26707
+   ]
+  ],
+  "nOps": 13,
+  "text": "There's nothing special about the fieldstone fireplace.\n \n> ",
+  "ts": "2026-10-24T15:52:04.112Z"
+ },
+ "scenery @7:look#12": {
+  "tag": "scenery",
+  "id": 103,
+  "name": "living room table",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   13,
+   21,
+   25,
+   28,
+   29
+  ],
+  "after": [
+   13,
+   21,
+   25,
+   28,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    103,
+    31,
+    0,
+    27174
+   ],
+   [
+    103,
+    30,
+    0,
+    27174
+   ],
+   [
+    103,
+    31,
+    0,
+    27288
+   ],
+   [
+    103,
+    30,
+    0,
+    27288
+   ],
+   [
+    103,
+    25,
+    1,
+    27288
+   ]
+  ],
+  "nOps": 43,
+  "text": "Living Room\nThis is a large and impressive room, whose furnishings bespeak the great personal wealth of the Robners. The south side of the room is a large bay window, now closed, which looks out onto the front yard.\nA wood pile sits beside a huge fieldstone fireplace. A double doorway leading to the main hall is the only exit. Pictures of Mrs. Robner's colonial ancestors line one wall. The room contains formal seating for at least fifteen people, in several groups of chairs and couches. Tables and cabinets, all of the finest mahogany and walnut, complete the furnishings. On one of the tables is a telephone.\nSitting on a table is a hardcover book.\nMs. Dunbar is sitting on the sofa here.\n \n> ",
+  "ts": "2026-10-24T15:52:04.687Z"
+ },
+ "scenery @7:examine living room table#13": {
+  "tag": "scenery",
+  "id": 103,
+  "name": "living room table",
+  "step": 7,
+  "expect": 1,
+  "bit": 25,
+  "cmd": "examine living room table",
+  "verdict": "NOTEST",
+  "before": [
+   13,
+   21,
+   25,
+   28,
+   29
+  ],
+  "after": [
+   13,
+   21,
+   25,
+   28,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    103,
+    31,
+    0,
+    26317
+   ],
+   [
+    103,
+    20,
+    0,
+    20996
+   ],
+   [
+    103,
+    21,
+    1,
+    26693
+   ],
+   [
+    103,
+    24,
+    0,
+    32579
+   ],
+   [
+    103,
+    22,
+    0,
+    32589
+   ],
+   [
+    103,
+    21,
+    1,
+    32648
+   ],
+   [
+    103,
+    31,
+    0,
+    32753
+   ],
+   [
+    103,
+    27,
+    0,
+    32753
+   ],
+   [
+    103,
+    28,
+    1,
+    32753
+   ],
+   [
+    103,
+    29,
+    1,
+    32675
+   ]
+  ],
+  "nOps": 18,
+  "text": "There is nothing on the living room table.\n \n> ",
+  "ts": "2026-10-24T15:52:05.260Z"
+ },
+ "scenery @7:look#14": {
+  "tag": "scenery",
+  "id": 7,
+  "name": "mystery book",
+  "step": 7,
+  "expect": 0,
+  "bit": 25,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   18,
+   19
+  ],
+  "after": [
+   18,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    7,
+    31,
+    0,
+    27174
+   ],
+   [
+    7,
+    30,
+    0,
+    27174
+   ],
+   [
+    7,
+    25,
+    0,
+    27174
+   ],
+   [
+    7,
+    31,
+    0,
+    32753
+   ],
+   [
+    7,
+    27,
+    0,
+    32753
+   ],
+   [
+    7,
+    28,
+    0,
+    32753
+   ],
+   [
+    7,
+    31,
+    0,
+    27288
+   ],
+   [
+    7,
+    30,
+    0,
+    27288
+   ]
+  ],
+  "nOps": 43,
+  "text": "Living Room\nThis is a large and impressive room, whose furnishings bespeak the great personal wealth of the Robners. The south side of the room is a large bay window, now closed, which looks out onto the front yard.\nA wood pile sits beside a huge fieldstone fireplace. A double doorway leading to the main hall is the only exit. Pictures of Mrs. Robner's colonial ancestors line one wall. The room contains formal seating for at least fifteen people, in several groups of chairs and couches. Tables and cabinets, all of the finest mahogany and walnut, complete the furnishings. On one of the tables is a telephone.\nSitting on a table is a hardcover book.\nMs. Dunbar is sitting on the sofa here.\n \n> ",
+  "ts": "2026-10-24T15:52:05.834Z"
+ },
+ "scenery @7:examine mystery book#15": {
+  "tag": "scenery",
+  "id": 7,
+  "name": "mystery book",
+  "step": 7,
+  "expect": 0,
+  "bit": 25,
+  "cmd": "examine mystery book",
+  "verdict": "NOTEST",
+  "before": [
+   18,
+   19
+  ],
+  "after": [
+   18,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 202,
+  "opsOnId": [
+   [
+    7,
+    31,
+    0,
+    26317
+   ],
+   [
+    7,
+    20,
+    0,
+    20996
+   ]
+  ],
+  "nOps": 10,
+  "text": "This is a novelization of DEADLINE, a classic work of computer fiction.\n \n> ",
+  "ts": "2026-10-24T15:52:06.404Z"
+ }
+}

@@ -1,0 +1,40 @@
+{
+  "baseline": "final-gate-r2/paired-base.jsonl (unchanged source/driver)",
+  "candidate": "r3-two-targets.jsonl",
+  "results": [
+    {
+      "game": "cabal.z5.js",
+      "equal": false,
+      "baseMarks": [
+        "families",
+        "your coffee",
+        "vagrant",
+        "your PalmPilot"
+      ],
+      "candidateMarks": [
+        "table",
+        "families",
+        "your coffee",
+        "vagrant",
+        "your PalmPilot"
+      ]
+    },
+    {
+      "game": "heist.z8.js",
+      "equal": false,
+      "baseMarks": [
+        "north",
+        "south",
+        "uncle's final resting place",
+        "group of mourners"
+      ],
+      "candidateMarks": [
+        "frame",
+        "north",
+        "south",
+        "uncle's final resting place",
+        "group of mourners"
+      ]
+    }
+  ]
+}

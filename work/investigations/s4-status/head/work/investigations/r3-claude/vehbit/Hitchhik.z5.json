@@ -1,0 +1,121 @@
+{
+ "title": "Hitchhik.z5.js",
+ "sha256": "26dcdab275054e5899c9454a879816a1ced530e9172bd8d8cf101fb7acc27cb4",
+ "bit": 28,
+ "sourceFlagsVEHBIT": "\"VEHBIT\":{\"bit\":28,\"positives\":2,\"negatives\":184,\"tp\":2,\"fp\":0,\"fn\":0,\"exact\":true,\"examples\":[\"49:pilot seat\",\"164:poetry appreciation chair\"]}",
+ "bitMatchesSourceFlags": true,
+ "objectCount": 236,
+ "initialCarriers": [
+  {
+   "id": 49,
+   "name": "pilot seat",
+   "parent": 23,
+   "parentName": "Presidential Speedboat"
+  },
+  {
+   "id": 114,
+   "name": "bed",
+   "parent": 150,
+   "parentName": "Bedroom"
+  },
+  {
+   "id": 164,
+   "name": "poetry appreciatichair",
+   "parent": 233,
+   "parentName": "Captain's Quarters"
+  },
+  {
+   "id": 166,
+   "name": "bed",
+   "parent": 37,
+   "parentName": ""
+  }
+ ],
+ "status": "INCOMPLETE",
+ "distinctPositiveCarriers": [
+  114
+ ],
+ "positives": [
+  {
+   "carrier": 114,
+   "name": "bed",
+   "enterCmd": "get in bed",
+   "parentBefore": 150,
+   "parentBeforeName": "Bedroom",
+   "parentAfter": 114,
+   "enterReply": "Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone. / There is a flathead screwdriver here. / There is a toothbrush here. /   / >get in bed / You are now in the bed. /   / > ",
+   "exitCmd": "get out of bed",
+   "exitParentAfter": 150,
+   "exitReply": "There is a flathead screwdriver here. / There is a toothbrush here. /   / >get in bed / You are now in the bed. /   / >get out of bed / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / > ",
+   "log": "hh0.log.json",
+   "step": 3
+  },
+  {
+   "carrier": 114,
+   "name": "bed",
+   "enterCmd": "sit on bed",
+   "parentBefore": 150,
+   "parentBeforeName": "Bedroom",
+   "parentAfter": 114,
+   "enterReply": ">get in bed / You are now in the bed. /   / >get out of bed / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >sit on bed / You are now in the bed. /   / > ",
+   "exitCmd": "stand up",
+   "exitParentAfter": 150,
+   "exitReply": ">get out of bed / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >sit on bed / You are now in the bed. /   / >stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / > ",
+   "log": "hh0.log.json",
+   "step": 5
+  }
+ ],
+ "gameMovedIntoCarrier": [
+  {
+   "carrier": 164,
+   "name": "poetry appreciation chair",
+   "enterCmd": "z",
+   "parentBefore": 99,
+   "parentBeforeName": "Vogon Hold",
+   "parentAfter": 164,
+   "enterReply": ">z / Time passes... /   / Guards burst in and grab you and Ford, who comes slowly awake. They drag you down the corridor to a large cabin, where they strap you into large, menacing chairs... /   / Captain's Quarters, in the poetry appreciation chair / This is the cabin of the Vogon Captain. You and Ford are strapped into poetry appreciation chairs. / The Captain is indescribably hideous, indescribably blubbery, and indescribably mid-to-dark green. He is holding samples of his favourite poetry. /",
+   "log": "hh.log.json",
+   "step": 61
+  }
+ ],
+ "negatives": [
+  {
+   "cmd": "enter gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": "Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone. / There is a flathead screwdriver here. / There is a toothbrush here. /   / >enter gown / You can't be serious. /   / > ",
+   "log": "hh.log.json",
+   "step": 3
+  },
+  {
+   "cmd": "sit on gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": "There is a flathead screwdriver here. / There is a toothbrush here. /   / >enter gown / You can't be serious. /   / >sit on gown / You can't climb onto your gown. /   / > ",
+   "log": "hh.log.json",
+   "step": 4
+  },
+  {
+   "cmd": "enter gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": ">sit on bed / You are now in the bed. /   / >stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >enter gown / Not bloody likely. /   / > ",
+   "log": "hh0.log.json",
+   "step": 7
+  },
+  {
+   "cmd": "sit on gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": ">stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >enter gown / Not bloody likely. /   / >sit on gown / You can't climb onto your gown. /   / > ",
+   "log": "hh0.log.json",
+   "step": 8
+  }
+ ],
+ "notes": "bed (114) confirmed via GET IN BED/SIT ON BED and GET OUT/STAND UP. poetry appreciation chair (164): player parent became 164 only via game event (guards strap you in), STAND UP refused 'You're strapped in'; not a player ENTER. pilot seat (49, Heart of Gold speedboat) and second bed (166) not reached within the route cap -> INCOMPLETE.",
+ "method": "headless Chromium play.html, Input.Inject ordinary commands, ~1.3s wait; parent via ZRamReader.objectLinks(ZRamProvider.getMem(), WorldModel.lastPayload.playerId). reply = last 10 BufferLines after the command (may include preceding turn text)."
+}

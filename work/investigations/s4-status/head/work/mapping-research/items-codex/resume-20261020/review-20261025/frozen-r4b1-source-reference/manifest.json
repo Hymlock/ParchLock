@@ -1,0 +1,27 @@
+{
+  "purpose": "Immutable source reference for reconstructing isolated research patches; never an application registry/runtime input",
+  "baselineRoot": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-g1gate-cand",
+  "baseCommit": "6732a7a77c138af198502672452fcb3feb88a33b plus reviewed noD1b facts/six-file freeze",
+  "files": {
+    "AttributeSchema.js.txt": {
+      "source": "js/AttributeSchema.js",
+      "sha": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72"
+    },
+    "ActionSynth.js.txt": {
+      "source": "js/ActionSynth.js",
+      "sha": "66ecd0b1349b8caeacb04c0781fb7e5235bfa1c1f333ecbdc0d5d2fa6b1c370c"
+    },
+    "EquipmentUI.js.txt": {
+      "source": "js/EquipmentUI.js",
+      "sha": "1845b0c3ce79386f9fe55ddbca232dd7ba54777e49375bb47d62908ac43b07b7"
+    },
+    "ModuleStatFactsClaude.js.txt": {
+      "source": "js/ModuleStatFactsClaude.js",
+      "sha": "b6ef5e48c978078a0dc48fcf4b7b148260105fb7f207bed0d0fe74c984eeb617"
+    },
+    "ZRamReader.js.txt": {
+      "source": "js/ZRamReader.js",
+      "sha": "36c95c54331695b3b17cce2098f64281e8bf10cda83e4916a9f8ffecdabd2c1b"
+    }
+  }
+}

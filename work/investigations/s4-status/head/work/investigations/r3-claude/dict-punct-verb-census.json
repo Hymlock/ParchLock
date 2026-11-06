@@ -1,0 +1,137 @@
+{
+ "games": 298,
+ "failed": [],
+ "byGame": {
+  "adverbum.z5.js": [
+   ".abduct",
+   ".acquire",
+   ".approac",
+   ".carry",
+   ".cop",
+   ".echo",
+   ".foo",
+   ".frame",
+   ".hold",
+   ".invento",
+   ".lift",
+   ".look",
+   ".own",
+   ".pick",
+   ".pile",
+   ".procure",
+   ".pry",
+   ".rip",
+   ".scoop",
+   ".talk",
+   ".telepor",
+   ".uproot",
+   ".walk",
+   ".whatwal"
+  ],
+  "amiss.z5.js": [
+   ";<",
+   ";exami",
+   ";give",
+   ";i",
+   ";inv",
+   ";inven",
+   ";move",
+   ";remov",
+   ";w",
+   ";watch",
+   ";x",
+   ";xo",
+   ";xs"
+  ],
+  "bunny.z5.js": [
+   "$ver",
+   "$verif"
+  ],
+  "DDIV.z5.js": [
+   "*censo"
+  ],
+  "dreamhold.z8.js": [
+   ",burnber",
+   ",freezeb",
+   ",noop"
+  ],
+  "huntdark.z5.js": [
+   ",autocav"
+  ],
+  "MakeItGood.zblorb.js": [
+   ".ask",
+   ".tell"
+  ],
+  "Savoir-Faire.zblorb.js": [
+   "/ork",
+   "\\uit",
+   "\\uity"
+  ],
+  "selection.z5.js": [
+   "5963"
+  ],
+  "stiffmst.z5.js": [
+   "69"
+  ],
+  "suvehnux.z5.js": [
+   ".="
+  ],
+  "zdungeon.z5.js": [
+   ".echo"
+  ]
+ },
+ "counts": {
+  "69": 1,
+  "5963": 1,
+  ".abduct": 1,
+  ".acquire": 1,
+  ".approac": 1,
+  ".carry": 1,
+  ".cop": 1,
+  ".echo": 2,
+  ".foo": 1,
+  ".frame": 1,
+  ".hold": 1,
+  ".invento": 1,
+  ".lift": 1,
+  ".look": 1,
+  ".own": 1,
+  ".pick": 1,
+  ".pile": 1,
+  ".procure": 1,
+  ".pry": 1,
+  ".rip": 1,
+  ".scoop": 1,
+  ".talk": 1,
+  ".telepor": 1,
+  ".uproot": 1,
+  ".walk": 1,
+  ".whatwal": 1,
+  ";<": 1,
+  ";exami": 1,
+  ";give": 1,
+  ";i": 1,
+  ";inv": 1,
+  ";inven": 1,
+  ";move": 1,
+  ";remov": 1,
+  ";w": 1,
+  ";watch": 1,
+  ";x": 1,
+  ";xo": 1,
+  ";xs": 1,
+  "$ver": 1,
+  "$verif": 1,
+  "*censo": 1,
+  ",burnber": 1,
+  ",freezeb": 1,
+  ",noop": 1,
+  ",autocav": 1,
+  ".ask": 1,
+  ".tell": 1,
+  "/ork": 1,
+  "\\uit": 1,
+  "\\uity": 1,
+  ".=": 1
+ }
+}

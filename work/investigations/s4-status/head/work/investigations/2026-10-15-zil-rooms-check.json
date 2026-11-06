@@ -1,0 +1,141 @@
+{
+ "Cutthroats.z3.js": {
+  "ts": "2026-10-16T02:11:43.127Z",
+  "turns": 50,
+  "agree": 50,
+  "mismatches": []
+ },
+ "Infidel.z3.js": {
+  "ts": "2026-10-16T02:12:13.836Z",
+  "turns": 50,
+  "agree": 50,
+  "mismatches": []
+ },
+ "PlunderedHearts.z3.js": {
+  "ts": "2026-10-16T02:12:45.041Z",
+  "turns": 50,
+  "agree": 50,
+  "mismatches": []
+ },
+ "Seastalker.z3.js": {
+  "ts": "2026-10-16T02:13:14.917Z",
+  "turns": 50,
+  "agree": 50,
+  "mismatches": []
+ },
+ "Sorcerer.z3.js": {
+  "ts": "2026-10-16T02:13:47.133Z",
+  "turns": 50,
+  "agree": 50,
+  "mismatches": []
+ },
+ "TheLurkingHorror.z3.js": {
+  "ts": "2026-10-16T02:14:17.082Z",
+  "turns": 50,
+  "agree": 50,
+  "mismatches": []
+ },
+ "Hitchhik.z5.js": {
+  "ts": "2026-10-16T02:14:46.917Z",
+  "turns": 50,
+  "agree": 41,
+  "mismatches": [
+   {
+    "c": "Get Up",
+    "app": "Bedroom",
+    "appId": 150,
+    "status": "Darkness"
+   },
+   {
+    "c": "Lie Down In Front Of Bulldozer",
+    "app": "Front of House",
+    "appId": 71,
+    "status": "Front of House, lying down"
+   },
+   {
+    "c": "Wait",
+    "app": "Front of House",
+    "appId": 71,
+    "status": "Front of House, lying down"
+   },
+   {
+    "c": "Wait",
+    "app": "Front of House",
+    "appId": 71,
+    "status": "Front of House, lying down"
+   },
+   {
+    "c": "Wait",
+    "app": "Front of House",
+    "appId": 71,
+    "status": "Front of House, lying down"
+   },
+   {
+    "c": "Wait",
+    "app": "Front of House",
+    "appId": 71,
+    "status": "Front of House, lying down"
+   },
+   {
+    "c": "Wait",
+    "app": "Front of House",
+    "appId": 71,
+    "status": "Front of House, lying down"
+   },
+   {
+    "c": "Wait",
+    "app": "Front of House",
+    "appId": 71,
+    "status": "Front of House, lying down"
+   }
+  ]
+ },
+ "Starcross.z3.js": {
+  "ts": "2026-10-16T02:15:24.692Z",
+  "turns": 2,
+  "agree": 2,
+  "mismatches": []
+ },
+ "Deadline.z3.js": {
+  "ts": "2026-10-16T02:15:29.545Z",
+  "turns": 13,
+  "agree": 13,
+  "mismatches": []
+ },
+ "TheWitness.z3.js": {
+  "ts": "2026-10-16T02:15:40.250Z",
+  "turns": 6,
+  "agree": 6,
+  "mismatches": []
+ },
+ "Moonmist.z3.js": {
+  "ts": "2026-10-16T02:15:47.075Z",
+  "turns": 4,
+  "agree": 4,
+  "mismatches": []
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "ts": "2026-10-16T02:15:52.910Z",
+  "turns": 6,
+  "agree": 6,
+  "mismatches": []
+ },
+ "Stationfall.z3.js": {
+  "ts": "2026-10-16T02:15:59.757Z",
+  "turns": 4,
+  "agree": 4,
+  "mismatches": []
+ },
+ "Suspended.z3.js": {
+  "ts": "2026-10-16T02:16:05.550Z",
+  "turns": 1,
+  "agree": 1,
+  "mismatches": []
+ },
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "ts": "2026-10-17T00:09:39.149Z",
+  "turns": 232,
+  "agree": 232,
+  "mismatches": []
+ }
+}

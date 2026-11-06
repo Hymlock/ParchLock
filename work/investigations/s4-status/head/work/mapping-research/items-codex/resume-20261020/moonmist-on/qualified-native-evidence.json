@@ -1,0 +1,86 @@
+[
+  {
+    "source": "g1-mmG.json",
+    "key": "Moonmist.z3.js @50:turn on lantern",
+    "reply": "Okay, it is now on.\n \n> ",
+    "ops": [
+      [
+        153,
+        10,
+        0
+      ]
+    ]
+  },
+  {
+    "source": "g1-mmG.json",
+    "key": "Moonmist.z3.js @51:turn on lantern",
+    "reply": "(The brass lantern is already on!)\n \n> ",
+    "ops": [
+      [
+        153,
+        10,
+        1
+      ]
+    ]
+  },
+  {
+    "source": "g1-mmG.json",
+    "key": "Moonmist.z3.js @51:turn off lantern",
+    "reply": "Okay, it is now off.\n \n> ",
+    "ops": [
+      [
+        153,
+        10,
+        1
+      ]
+    ]
+  },
+  {
+    "source": "g1-mmW.json",
+    "key": "Moonmist.z3.js @40:turn on lamp",
+    "reply": "(Your lamp is already on!)\n \n> ",
+    "ops": [
+      [
+        164,
+        10,
+        1
+      ]
+    ]
+  },
+  {
+    "source": "g1-mmW.json",
+    "key": "Moonmist.z3.js @40:turn off lamp",
+    "reply": "Okay, it is now off.\n \n> ",
+    "ops": [
+      [
+        164,
+        10,
+        1
+      ]
+    ]
+  },
+  {
+    "source": "g1-mmW.json",
+    "key": "Moonmist.z3.js @40:turn on bed",
+    "reply": "(You can't turn on your bed.)\n \n> ",
+    "ops": [
+      [
+        134,
+        10,
+        0
+      ]
+    ]
+  },
+  {
+    "source": "g1-mmW.json",
+    "key": "Moonmist.z3.js @40:turn on chair",
+    "reply": "(You can't turn on the wing chair.)\n \n> ",
+    "ops": [
+      [
+        76,
+        10,
+        0
+      ]
+    ]
+  }
+]

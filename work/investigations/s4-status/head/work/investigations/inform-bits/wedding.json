@@ -1,0 +1,335 @@
+{
+ "title": "wedding.z5",
+ "sha256": "2ab09dc0227163e8cb6916a1a3008dc25ef8698464dd7f3353dcaf1225bb81e5",
+ "objects": 177,
+ "layout": "L",
+ "verdict": "SHIFTED (low block -1)",
+ "confidence": "high",
+ "evidence": "anchors compass=concealed 2, walls=scenery 17, yourself 0,2,16,23 (animate,concealed,proper,transparent), rooms light 9; doors carry 4+15(+10,11); containers 3+15 or 3+14; hats/clothes 1; food 5; supporters 20. Bits 1..8 are PROFILE-1 (no `absent` at 1, an extra attr at 8); 9..23 equal PROFILE.",
+ "proposedAttributeMap": {
+  "door": 4,
+  "open": 14,
+  "isOpen": 14,
+  "openable": 15,
+  "container": 3,
+  "supporter": 20,
+  "light": 9,
+  "edible": 5,
+  "clothing": 1,
+  "wearable": 1,
+  "worn": 26,
+  "lockable": 10,
+  "locked": 11,
+  "concealed": 2,
+  "animate": 0,
+  "scenery": 17,
+  "static": 19,
+  "enterable": 6,
+  "transparent": 23
+ },
+ "bitEvidence": {
+  "door": "doors",
+  "openable": "doors+containers",
+  "open": "open containers (bag/jar/basket/tray)",
+  "container": "containers",
+  "supporter": "tables/desks",
+  "light": "rooms (lit)",
+  "edible": "food (carrot,sweet,cake,pizza)",
+  "clothing": "hats/clothes",
+  "lockable": "locked doors",
+  "locked": "locked doors",
+  "worn": "NOT observed statically; inferred from library order (PROFILE 26 / layout shift)",
+  "enterable": "beds (theatre/windhal) else inferred"
+ },
+ "profileWrongFor": [
+  "clothing",
+  "concealed",
+  "container",
+  "door",
+  "edible"
+ ],
+ "exemplars": [
+  {
+   "n": 4,
+   "name": "String",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 6,
+   "name": "compass",
+   "parent": 0,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 7,
+   "name": "north wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 8,
+   "name": "south wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 9,
+   "name": "east wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 10,
+   "name": "west wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 11,
+   "name": "northeast wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 12,
+   "name": "southeast wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 13,
+   "name": "northwest wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 14,
+   "name": "southwest wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 20,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 22,
+   "name": "cupboard",
+   "parent": 21,
+   "bits": [
+    3,
+    10,
+    11,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 35,
+   "name": "hidden door",
+   "parent": 0,
+   "bits": [
+    4,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 38,
+   "name": "bathroom door",
+   "parent": 37,
+   "bits": [
+    4,
+    15,
+    17,
+    22
+   ]
+  },
+  {
+   "n": 43,
+   "name": "Deborah's bedroom",
+   "parent": 0,
+   "bits": [
+    9,
+    16,
+    27,
+    35
+   ]
+  },
+  {
+   "n": 50,
+   "name": "plastic supermarket bag",
+   "parent": 49,
+   "bits": [
+    3,
+    14
+   ]
+  },
+  {
+   "n": 51,
+   "name": "torn cardboard box",
+   "parent": 49,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 53,
+   "name": "Guest bedroom",
+   "parent": 0,
+   "bits": [
+    9,
+    27,
+    35
+   ]
+  },
+  {
+   "n": 55,
+   "name": "single bed",
+   "parent": 53,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 62,
+   "name": "garden gate",
+   "parent": 58,
+   "bits": [
+    4,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 67,
+   "name": "cash tin box",
+   "parent": 66,
+   "bits": [
+    3,
+    10,
+    11,
+    15
+   ]
+  },
+  {
+   "n": 85,
+   "name": "hall door",
+   "parent": 83,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 99,
+   "name": "oak table",
+   "parent": 97,
+   "bits": [
+    2,
+    6,
+    17,
+    20
+   ]
+  },
+  {
+   "n": 102,
+   "name": "lamps",
+   "parent": 97,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 107,
+   "name": "simple table",
+   "parent": 105,
+   "bits": [
+    6,
+    19,
+    20
+   ]
+  },
+  {
+   "n": 108,
+   "name": "cellar door",
+   "parent": 105,
+   "bits": [
+    4,
+    15,
+    19,
+    22
+   ]
+  },
+  {
+   "n": 124,
+   "name": "pizza )in a box?",
+   "parent": 0,
+   "bits": [
+    5
+   ]
+  },
+  {
+   "n": 128,
+   "name": "crate",
+   "parent": 125,
+   "bits": [
+    19,
+    20
+   ]
+  },
+  {
+   "n": 132,
+   "name": "candle",
+   "parent": 131,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 134,
+   "name": "wooden door",
+   "parent": 131,
+   "bits": [
+    4,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 177,
+   "name": "Oi you, put away that disassembler!",
+   "parent": 0,
+   "bits": []
+  }
+ ]
+}

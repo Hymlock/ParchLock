@@ -1,0 +1,220 @@
+{
+  "story": "Suspect.z3.js",
+  "sha256": "075074c8de60801f83d0f422ee6ae512877cf12e4d6a4034f7e5b6c862f5b9b8",
+  "property": 10,
+  "width": 1,
+  "holder": 248,
+  "litBit": 11,
+  "at": "2026-10-24T06:08:35.455Z",
+  "log": [
+    {
+      "cmd": "look",
+      "roomIdAfter": 118,
+      "reply": [
+        "Ballroom, Near Bar",
+        "This is the south end of the ballroom, at the bar.",
+        "Elsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"",
+        "On the periphery of the room small groups can be seen, discussing everything from politics to local scandals.",
+        "The bartender is busy behind the bar, his only concession to the party a small domino mask.",
+        "Samuel Ostmann, enjoying himself hugely as a vampire, is here.",
+        "The sheik, seeing your reluctance to join them, shrugs his shoulders and rejoins the conversation, a proprietary hand on the fairy's shoulder.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 118,
+        "roomName": "Near Bar",
+        "lit": false,
+        "prop": {
+          "num": 10,
+          "sz": 2,
+          "dataAddr": 5736
+        },
+        "localGlobals": [
+          {
+            "id": 243,
+            "name": "window",
+            "parent": 248,
+            "parentIsHolder": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "parent": 248,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "Johnson",
+          "Ostmann",
+          "bar"
+        ]
+      }
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 118,
+      "reply": [
+        "There's nothing special about the window.",
+        "Off near the fireplace, the sheik and the fairy queen are conversing with a small group. The fairy is emphasizing some point when suddenly, she manages to spill her drink on her gown. Her reaction is audible even where you are standing, and she stalks off.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine food",
+      "roomIdAfter": 118,
+      "reply": [
+        "There's nothing special about the food.",
+        "The fairy queen is now near the south entrance.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine telephone",
+      "roomIdAfter": 118,
+      "reply": [
+        "You can't see the telephone here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine french door",
+      "roomIdAfter": 118,
+      "reply": [
+        "You can't see the french door here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "w",
+      "roomIdAfter": 118,
+      "reply": [
+        "Ballroom, Near Fireplace",
+        "This is the south end of the ballroom. A huge fieldstone fireplace dominates the south wall. The bar is to the east.",
+        "Elsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes, such as a woman disguised as a peanut butter sandwich. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"",
+        "On the periphery of the room small groups can be seen, discussing everything from politics to local scandals. The fairy queen is near the south entrance. Johnson and Ostmann are at the bar.",
+        "There's a broken glass here.",
+        "Michael, costumed as a sheik, is here.",
+        "The fairy queen leaves the ballroom.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 118,
+        "roomName": "Near Bar",
+        "lit": false,
+        "prop": {
+          "num": 10,
+          "sz": 2,
+          "dataAddr": 5736
+        },
+        "localGlobals": [
+          {
+            "id": 243,
+            "name": "window",
+            "parent": 248,
+            "parentIsHolder": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "parent": 248,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "Johnson",
+          "Ostmann",
+          "bar"
+        ]
+      }
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 120,
+      "reply": [
+        "You can't see any window here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine food",
+      "roomIdAfter": 120,
+      "reply": [
+        "There's nothing special about the food.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "e",
+      "roomIdAfter": 120,
+      "reply": [
+        "Ballroom, Near Bar",
+        "The bartender is busy behind the bar, his only concession to the party a small domino mask.",
+        "Samuel Ostmann, enjoying himself hugely as a vampire, is here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "n",
+      "roomIdAfter": 118,
+      "reply": [
+        "Ballroom, Near French Door",
+        "This is near the middle of the ballroom, at a French door leading out to the patio.",
+        "Elsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes, such as a Pac-man. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"",
+        "On the periphery of the room small groups can be seen, discussing everything from politics to local scandals. Michael is near the fireplace. Johnson and Ostmann are at the bar.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 118,
+        "roomName": "Near Bar",
+        "lit": false,
+        "prop": {
+          "num": 10,
+          "sz": 2,
+          "dataAddr": 5736
+        },
+        "localGlobals": [
+          {
+            "id": 243,
+            "name": "window",
+            "parent": 248,
+            "parentIsHolder": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "parent": 248,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "Johnson",
+          "Ostmann",
+          "bar"
+        ]
+      }
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 123,
+      "reply": [
+        "There's nothing special about the window.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine french door",
+      "roomIdAfter": 123,
+      "reply": [
+        "There's nothing special about the french door.",
+        "After a short pause, the band begins to play \"My Way.\"",
+        ">"
+      ]
+    }
+  ]
+}

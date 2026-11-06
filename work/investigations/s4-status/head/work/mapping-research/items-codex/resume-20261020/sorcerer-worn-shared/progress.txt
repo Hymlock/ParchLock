@@ -1,0 +1,14 @@
+candidate shard3 exit0
+base shard3 exit0
+base shard5 exit0
+candidate shard5 exit0
+candidate shard0 exit0
+base shard0 exit0
+candidate shard2 exit0
+base shard2 exit0
+base shard4 exit0
+candidate shard4 exit0
+base shard1 exit0
+candidate shard1 exit0
+base completed309, error rows 7
+candidate completed309, error rows 7

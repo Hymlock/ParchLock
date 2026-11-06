@@ -1,0 +1,18 @@
+{
+  "tier": "independent constructed regression controls against actual revised source",
+  "sourceSha": "d074f8e63b73ace113868bf435d76fce1f36c790177bc32cd175a6e7a1c26204",
+  "checks": [
+    {
+      "name": "overflow retained/nonerasable",
+      "pass": true
+    },
+    {
+      "name": "failed tombstone abort before removal",
+      "pass": true
+    },
+    {
+      "name": "cross-tab newer mutation retained",
+      "pass": true
+    }
+  ]
+}

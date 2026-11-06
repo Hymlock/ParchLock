@@ -1,0 +1,194 @@
+{
+ "r45hh2 @61:switch on switch#0": {
+  "tag": "r45hh2",
+  "id": 134,
+  "name": "switch",
+  "step": 61,
+  "cmd": "switch on switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hh2.json",
+  "planSha": "f76327d68e9a6d2e405bf27ecfda829542e68a76ee6dcc13607846536ef910c5",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 99,
+  "here": 133,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": " \nWould you like to start over, restore a saved position, get hints or end this session of the game?\n(Type RESTART, RESTORE, HINTS or QUIT):\n> ",
+  "ts": "2026-10-30T16:15:49.441Z"
+ },
+ "r45hh2 @61:switch off switch#1": {
+  "tag": "r45hh2",
+  "id": 134,
+  "name": "switch",
+  "step": 61,
+  "cmd": "switch off switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hh2.json",
+  "planSha": "f76327d68e9a6d2e405bf27ecfda829542e68a76ee6dcc13607846536ef910c5",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 99,
+  "here": 133,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": " \nWould you like to start over, restore a saved position, get hints or end this session of the game?\n(Type RESTART, RESTORE, HINTS or QUIT):\n> ",
+  "ts": "2026-10-30T16:15:50.013Z"
+ },
+ "r45hh2 @70:get out of chair#2": {
+  "tag": "r45hh2",
+  "id": 164,
+  "name": "poetry appreciation chair",
+  "step": 70,
+  "cmd": "get out of chair",
+  "expect": 1,
+  "bit": 28,
+  "plan": "plan-hh2.json",
+  "planSha": "f76327d68e9a6d2e405bf27ecfda829542e68a76ee6dcc13607846536ef910c5",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "after": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 233,
+  "here": 133,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": " \nWould you like to start over, restore a saved position, get hints or end this session of the game?\n(Type RESTART, RESTORE, HINTS or QUIT):\n> ",
+  "ts": "2026-10-30T16:15:55.713Z"
+ },
+ "r45hh2 @70:get in chair#3": {
+  "tag": "r45hh2",
+  "id": 164,
+  "name": "poetry appreciation chair",
+  "step": 70,
+  "cmd": "get in chair",
+  "expect": 1,
+  "bit": 28,
+  "plan": "plan-hh2.json",
+  "planSha": "f76327d68e9a6d2e405bf27ecfda829542e68a76ee6dcc13607846536ef910c5",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "after": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 233,
+  "here": 133,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": " \nWould you like to start over, restore a saved position, get hints or end this session of the game?\n(Type RESTART, RESTORE, HINTS or QUIT):\n> ",
+  "ts": "2026-10-30T16:15:56.291Z"
+ },
+ "r45hh2 @124:switch off generator switch#4": {
+  "tag": "r45hh2",
+  "id": 96,
+  "name": "generator switch",
+  "step": 124,
+  "cmd": "switch off generator switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hh2.json",
+  "planSha": "f76327d68e9a6d2e405bf27ecfda829542e68a76ee6dcc13607846536ef910c5",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 118,
+  "here": 133,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": " \nWould you like to start over, restore a saved position, get hints or end this session of the game?\n(Type RESTART, RESTORE, HINTS or QUIT):\n> ",
+  "ts": "2026-10-30T16:16:27.635Z"
+ },
+ "r45hh2 @124:switch on generator switch#5": {
+  "tag": "r45hh2",
+  "id": 96,
+  "name": "generator switch",
+  "step": 124,
+  "cmd": "switch on generator switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hh2.json",
+  "planSha": "f76327d68e9a6d2e405bf27ecfda829542e68a76ee6dcc13607846536ef910c5",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 118,
+  "here": 133,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": " \nWould you like to start over, restore a saved position, get hints or end this session of the game?\n(Type RESTART, RESTORE, HINTS or QUIT):\n> ",
+  "ts": "2026-10-30T16:16:28.208Z"
+ }
+}

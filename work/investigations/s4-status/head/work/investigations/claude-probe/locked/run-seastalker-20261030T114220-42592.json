@@ -1,0 +1,537 @@
+{
+ "e3seafix @104:open locker#0": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 104,
+  "cmd": "open locker",
+  "expect": 1,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "8c44e2583fc08f4d601695c89e1df5b02a2bb2c6d9047ca6d6b83fbce74ffc98",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "TRUE",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 158,
+  "here": 158,
+  "opsOnId": [
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    30,
+    0,
+    24464
+   ],
+   [
+    155,
+    18,
+    0,
+    52453
+   ],
+   [
+    155,
+    15,
+    1,
+    52453
+   ]
+  ],
+  "nOps": 52,
+  "printedObjs": [],
+  "text": "It's locked. The normal way to open its lock (which you yourself designed, Codex) is with a key.\n \n> ",
+  "ts": "2026-10-30T11:43:41.298Z"
+ },
+ "e3seafix @104:unlock locker#1": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 104,
+  "cmd": "unlock locker",
+  "expect": 1,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "8c44e2583fc08f4d601695c89e1df5b02a2bb2c6d9047ca6d6b83fbce74ffc98",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "TRUE",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 158,
+  "here": 158,
+  "opsOnId": [
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    30,
+    0,
+    24464
+   ],
+   [
+    155,
+    18,
+    0,
+    52422
+   ],
+   [
+    155,
+    15,
+    1,
+    52422
+   ]
+  ],
+  "nOps": 45,
+  "printedObjs": [],
+  "text": "It's locked. The normal way to open its lock (which you yourself designed, Codex) is with a key.\n \n> ",
+  "ts": "2026-10-30T11:43:41.869Z"
+ },
+ "e3seafix @105:open locker with tool#2": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 105,
+  "cmd": "open locker with tool",
+  "expect": 1,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "8c44e2583fc08f4d601695c89e1df5b02a2bb2c6d9047ca6d6b83fbce74ffc98",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "TRUE",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [
+   18
+  ],
+  "cleared": [
+   15
+  ],
+  "parent": 158,
+  "here": 158,
+  "opsOnId": [
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    30,
+    0,
+    24464
+   ],
+   [
+    155,
+    18,
+    0,
+    52422
+   ],
+   [
+    155,
+    15,
+    1,
+    52422
+   ],
+   [
+    155,
+    30,
+    0,
+    24464
+   ],
+   [
+    155,
+    18,
+    1,
+    52297
+   ]
+  ],
+  "nOps": 77,
+  "printedObjs": [],
+  "text": "The locker contains mostly clothing, toilet articles and books. One of the books is labeled DIARY. Something has been inserted between its pages.\n \n> ",
+  "ts": "2026-10-30T11:43:43.014Z"
+ },
+ "e3seafix @106:close locker#3": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 106,
+  "cmd": "close locker",
+  "expect": 0,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "8c44e2583fc08f4d601695c89e1df5b02a2bb2c6d9047ca6d6b83fbce74ffc98",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [
+   18
+  ],
+  "parent": 158,
+  "here": 158,
+  "opsOnId": [
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    30,
+    0,
+    24464
+   ],
+   [
+    155,
+    26,
+    1,
+    98255
+   ],
+   [
+    155,
+    27,
+    0,
+    98273
+   ],
+   [
+    155,
+    16,
+    0,
+    98273
+   ],
+   [
+    155,
+    6,
+    0,
+    98332
+   ],
+   [
+    155,
+    18,
+    1,
+    98332
+   ],
+   [
+    155,
+    30,
+    0,
+    78439
+   ],
+   [
+    155,
+    8,
+    1,
+    78447
+   ]
+  ],
+  "nOps": 57,
+  "printedObjs": [
+   155
+  ],
+  "text": "Okay, Horvak's locker is now closed.\nYou are having trouble breathing.\n \n> ",
+  "ts": "2026-10-30T11:43:44.175Z"
+ },
+ "e3seafix @106:open locker#4": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 106,
+  "cmd": "open locker",
+  "expect": 0,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "8c44e2583fc08f4d601695c89e1df5b02a2bb2c6d9047ca6d6b83fbce74ffc98",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "FALSE",
+  "before": [
+   8,
+   10,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [
+   18
+  ],
+  "cleared": [],
+  "parent": 158,
+  "here": 158,
+  "opsOnId": [
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    12,
+    0,
+    90707
+   ],
+   [
+    155,
+    6,
+    0,
+    90651
+   ],
+   [
+    155,
+    10,
+    1,
+    90671
+   ],
+   [
+    155,
+    30,
+    0,
+    24464
+   ],
+   [
+    155,
+    18,
+    0,
+    52422
+   ],
+   [
+    155,
+    15,
+    0,
+    52422
+   ],
+   [
+    155,
+    30,
+    0,
+    24464
+   ],
+   [
+    155,
+    18,
+    1,
+    52297
+   ]
+  ],
+  "nOps": 54,
+  "printedObjs": [],
+  "text": "The locker contains mostly clothing, toilet articles and books. One of the books is labeled DIARY. Something has been inserted between its pages.\nYou are having trouble breathing.\n \n> ",
+  "ts": "2026-10-30T11:43:44.768Z"
+ }
+}

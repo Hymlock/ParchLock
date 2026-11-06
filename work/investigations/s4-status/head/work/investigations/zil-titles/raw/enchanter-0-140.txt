@@ -1,0 +1,15 @@
+STEP 25 "N" -> >N / Pebbled Path / You are on a long pebbled path, stretching out to the north. To the south the path continues through an open arch into an open area. / >
+   changed: 219:Pebbled Path +15 -
+   dump: 19:jug [10,12,15,19,21] parent 55 ; 26:banquet candles [7] parent 153 ; 41:loaf of bread [15,19] parent 55 ; 94:battered lantern [15,19] parent 55 ; 175:brass lantern [8,19,22] parent 44 ; 204:black candle [8,19,22] parent 114
+STEP 26 "FROTZ LANTERN" -> You are on a long pebbled path, stretching out to the north. To the south the path continues through an open arch into an open area. / >FROTZ LANTERN / There is an almost blinding flash of light as th
+   changed: 94:battered lantern +8,22 -
+   dump: 19:jug [10,12,15,19,21] parent 55 ; 26:banquet candles [7] parent 153 ; 41:loaf of bread [15,19] parent 55 ; 94:battered lantern [8,15,19,22] parent 55 ; 175:brass lantern [8,19,22] parent 44 ; 204:black candle [8,19,22] parent 114
+STEP 133 "LEARN FROTZ" -> Taken. / >LEARN FROTZ / Using your best study habits, you learn the frotz spell. / >
+   changed: 
+   dump: 19:jug [10,12,15,19,21] parent 55 ; 26:banquet candles [7] parent 153 ; 41:loaf of bread [15,19] parent 55 ; 94:battered lantern [15,19] parent 55 ; 175:brass lantern [8,19,22] parent 44 ; 204:black candle [8,15,19,22] parent 55
+STEP 134 "FROTZ CANDLE" -> Using your best study habits, you learn the frotz spell. / >FROTZ CANDLE / There is an almost blinding flash of light as the black candle begins to glow! It slowly fades to a less painful level, but t
+   changed: 
+   dump: 19:jug [10,12,15,19,21] parent 55 ; 26:banquet candles [7] parent 153 ; 41:loaf of bread [15,19] parent 55 ; 94:battered lantern [15,19] parent 55 ; 175:brass lantern [8,19,22] parent 44 ; 204:black candle [8,15,19,22] parent 55
+STEP 139 "FROTZ LANTERN" -> In the exact center of the room is a large, jewelled box. It is wrapped in tight coils of thin rope. You try to follow the strands with your eye, but become hopelessly lost in the jumble of thousands 
+   changed: 94:battered lantern +8,22 -
+   dump: 19:jug [10,12,15,19,21] parent 55 ; 26:banquet candles [7] parent 153 ; 41:loaf of bread [15,19] parent 55 ; 94:battered lantern [8,15,19,22] parent 55 ; 175:brass lantern [8,19,22] parent 44 ; 204:black candle [8,15,19,22] parent 55

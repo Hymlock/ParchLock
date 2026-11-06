@@ -1,0 +1,18 @@
+{
+  "tier": "X-only source ownership/precedence controls; real decoder admission first; no actor/native semantics claim",
+  "digest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb",
+  "passed": [
+    "real Suspect decoder admission precedes mocks",
+    "actual ZIL absent ABI collision removed",
+    "every other PROFILE key unchanged on actual memory",
+    "explicit numeric absent owner retains precedence",
+    "explicit null owner retains precedence",
+    "malformed ZIL owner does not borrow PROFILE",
+    "declared Inform name wins explicit map",
+    "declared table without absent returns unknown",
+    "confirmed Inform without names keeps PROFILE1",
+    "unknown nonInform remains unknown",
+    "existing explicit Inform-compiled unknown-family fallback remains",
+    "legacy missing-memory behavior explicitly unchanged"
+  ]
+}

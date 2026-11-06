@@ -1,0 +1,10 @@
+{
+  "reviewer": "Independent non-author subagent /root/zil_food_independent; not old bus-seat acceptance",
+  "verdict": "ACCEPT current implementation",
+  "sourceSha256": "b668270679487a48a402ec8e750e46e02b69d65f2768aecbffbe3016e0e3b8de",
+  "semanticDelta": "Only Infidel existing digest attributeMap.edible7",
+  "native": "Production no-injection bothconsumersEat/noDrink, nativeEATsuccess/removal, negative+Drinkrefusal; source/capturehashverified",
+  "operator": "13PASS/0FAIL",
+  "gate": "3completedrowsInfidel/LostPig/Alabaster0diff",
+  "limits": "No consumed-state bit, DRINKBIT, hydration or whole-title/full26 closure"
+}

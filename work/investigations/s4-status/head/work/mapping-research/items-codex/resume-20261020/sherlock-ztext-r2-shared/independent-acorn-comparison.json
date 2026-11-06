@@ -1,0 +1,984 @@
+{
+  "base": {
+    "root": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-codex-ztext-r2-base-20261021",
+    "sourceHash": "028d620f0eec4e8dac08ca6db98799b2b56925623b146e9a4dca5e1fee1af418",
+    "rows": [
+      {
+        "command": "look",
+        "text": "A good sized courtyard with an air of late British colonialism about it.  To the west, in the direction the sun is setting, is a high, grey stone wall with an ornate iron gate set into the rock.  The walls of a large stone mansion rise several stories into the chilly evening air to the east, north, and south.  In the east wall, two or three stories up, is a large window.  On top of the west wall, above and to the right of the gate, is a large squirrels nest made of sticks, twigs, and leaves.\n \nA carpeting of old brown leaves from past winters rustle about on the ground in the breeze and drift listlessly across a cracked, stained, pale green tennis court with a rotting net.  In one corner of the court yard an impressively large oak tree casts long shadows in the dimming light.  The acorns nestled among the tree's massive branches and vividly healthy leaves are new and green.  Near the tree is a quaint looking well of crumbling stone.\n \nA rusty tin pail rests in the grass near the ball machine.\n \nThe tennis ball launching machine sitting in one corner of the yard looks like a relic from the 1930s.\n ",
+        "inventoryText": "",
+        "ball": {
+          "id": 33,
+          "name": "ball",
+          "display": "ball",
+          "aliases": [
+            "ball",
+            "tennisb"
+          ],
+          "head": "ball",
+          "ref": {
+            "noun": "ball",
+            "candidateIds": [
+              56,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53
+            ],
+            "unique": false,
+            "verified": false,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": []
+        },
+        "marks": [
+          {
+            "text": "iron gate",
+            "id": "58",
+            "candidates": "[58]"
+          },
+          {
+            "text": "window",
+            "id": "54",
+            "candidates": "[54]"
+          },
+          {
+            "text": "squirrels nest",
+            "id": "61",
+            "candidates": "[61]"
+          },
+          {
+            "text": "tennis court",
+            "candidates": "[59,60]"
+          },
+          {
+            "text": "oak tree",
+            "id": "55",
+            "candidates": "[55]"
+          },
+          {
+            "text": "crumbling stone",
+            "id": "62",
+            "candidates": "[62]"
+          },
+          {
+            "text": "tin pail",
+            "id": "25",
+            "candidates": "[25]"
+          },
+          {
+            "text": "ball",
+            "candidates": "[56,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]"
+          },
+          {
+            "text": "tennis ball launching machine",
+            "id": "56",
+            "candidates": "[56]"
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "command": "take all",
+        "text": "A good sized courtyard with an air of late British colonialism about it.  To the west, in the direction the sun is setting, is a high, grey stone wall with an ornate iron gate set into the rock.  The walls of a large stone mansion rise several stories into the chilly evening air to the east, north, and south.  In the east wall, two or three stories up, is a large window.  On top of the west wall, above and to the right of the gate, is a large squirrels nest made of sticks, twigs, and leaves.\n \nA carpeting of old brown leaves from past winters rustle about on the ground in the breeze and drift listlessly across a cracked, stained, pale green tennis court with a rotting net.  In one corner of the court yard an impressively large oak tree casts long shadows in the dimming light.  The acorns nestled among the tree's massive branches and vividly healthy leaves are new and green.  Near the tree is a quaint looking well of crumbling stone.\n \nA rusty tin pail rests in the grass near the ball machine.\n \nThe tennis ball launching machine sitting in one corner of the yard looks like a relic from the 1930s.\n ",
+        "inventoryText": "",
+        "ball": {
+          "id": 33,
+          "name": "tennisb",
+          "display": "ball",
+          "aliases": [
+            "ball",
+            "tennisb"
+          ],
+          "head": "ball",
+          "ref": {
+            "noun": "ball",
+            "candidateIds": [
+              56,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53
+            ],
+            "unique": false,
+            "verified": false,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": []
+        },
+        "marks": [
+          {
+            "text": "oak tree",
+            "id": "55",
+            "candidates": "[55]"
+          },
+          {
+            "text": "crumbling stone",
+            "id": "62",
+            "candidates": "[62]"
+          },
+          {
+            "text": "tin pail",
+            "id": "25",
+            "candidates": "[25]"
+          },
+          {
+            "text": "ball",
+            "candidates": "[56,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]"
+          },
+          {
+            "text": "acorn",
+            "candidates": "[27,28,29,30,31]"
+          },
+          {
+            "text": "window",
+            "id": "54",
+            "candidates": "[54]"
+          },
+          {
+            "text": "tennis ball launching machine",
+            "id": "56",
+            "candidates": "[56]"
+          },
+          {
+            "text": "iron gate",
+            "id": "58",
+            "candidates": "[58]"
+          },
+          {
+            "text": "tennis court net",
+            "id": "59",
+            "candidates": "[59]"
+          },
+          {
+            "text": "tennis court",
+            "candidates": "[59,60]"
+          },
+          {
+            "text": "squirrels nest",
+            "id": "61",
+            "candidates": "[61]"
+          },
+          {
+            "text": "rope assembly",
+            "id": "63",
+            "candidates": "[63]"
+          }
+        ],
+        "inventory": [
+          {
+            "id": 56,
+            "name": "tennis ball launching machine"
+          },
+          {
+            "id": 25,
+            "name": "tin bucket"
+          },
+          {
+            "id": 33,
+            "name": "tennisb"
+          },
+          {
+            "id": 34,
+            "name": "tennisb"
+          },
+          {
+            "id": 35,
+            "name": "tennisb"
+          },
+          {
+            "id": 36,
+            "name": "tennisb"
+          },
+          {
+            "id": 37,
+            "name": "tennisb"
+          },
+          {
+            "id": 38,
+            "name": "tennisb"
+          },
+          {
+            "id": 39,
+            "name": "tennisb"
+          },
+          {
+            "id": 40,
+            "name": "tennisb"
+          },
+          {
+            "id": 41,
+            "name": "tennisb"
+          },
+          {
+            "id": 42,
+            "name": "tennisb"
+          },
+          {
+            "id": 43,
+            "name": "tennisb"
+          },
+          {
+            "id": 44,
+            "name": "tennisb"
+          },
+          {
+            "id": 45,
+            "name": "tennisb"
+          },
+          {
+            "id": 46,
+            "name": "tennisb"
+          },
+          {
+            "id": 47,
+            "name": "tennisb"
+          },
+          {
+            "id": 48,
+            "name": "tennisb"
+          },
+          {
+            "id": 49,
+            "name": "tennisb"
+          },
+          {
+            "id": 50,
+            "name": "tennisb"
+          },
+          {
+            "id": 51,
+            "name": "tennisb"
+          },
+          {
+            "id": 52,
+            "name": "tennisb"
+          },
+          {
+            "id": 53,
+            "name": "tennisb"
+          }
+        ]
+      },
+      {
+        "command": "i",
+        "text": "A good sized courtyard with an air of late British colonialism about it.  To the west, in the direction the sun is setting, is a high, grey stone wall with an ornate iron gate set into the rock.  The walls of a large stone mansion rise several stories into the chilly evening air to the east, north, and south.  In the east wall, two or three stories up, is a large window.  On top of the west wall, above and to the right of the gate, is a large squirrels nest made of sticks, twigs, and leaves.\n \nA carpeting of old brown leaves from past winters rustle about on the ground in the breeze and drift listlessly across a cracked, stained, pale green tennis court with a rotting net.  In one corner of the court yard an impressively large oak tree casts long shadows in the dimming light.  The acorns nestled among the tree's massive branches and vividly healthy leaves are new and green.  Near the tree is a quaint looking well of crumbling stone.\n \nA rusty tin pail rests in the grass near the ball machine.\n \nThe tennis ball launching machine sitting in one corner of the yard looks like a relic from the 1930s.\n ",
+        "inventoryText": "You are carrying:\n  a tennis ball launching machine\n  a tin bucket\n    twenty-one tennis balls\n \n[The Court Yard]>  ",
+        "ball": {
+          "id": 33,
+          "name": "tennisb",
+          "display": "ball",
+          "aliases": [
+            "ball",
+            "tennisb"
+          ],
+          "head": "ball",
+          "ref": {
+            "noun": "ball",
+            "candidateIds": [
+              56,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53
+            ],
+            "unique": false,
+            "verified": false,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": []
+        },
+        "marks": [
+          {
+            "text": "net",
+            "id": "59",
+            "candidates": "[59]"
+          },
+          {
+            "text": "oak tree",
+            "id": "55",
+            "candidates": "[55]"
+          },
+          {
+            "text": "crumbling stone",
+            "id": "62",
+            "candidates": "[62]"
+          },
+          {
+            "text": "tin pail",
+            "id": "25",
+            "candidates": "[25]"
+          },
+          {
+            "text": "acorn",
+            "candidates": "[27,28,29,30,31]"
+          },
+          {
+            "text": "window",
+            "id": "54",
+            "candidates": "[54]"
+          },
+          {
+            "text": "ball",
+            "candidates": "[56,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]"
+          },
+          {
+            "text": "iron gate",
+            "id": "58",
+            "candidates": "[58]"
+          },
+          {
+            "text": "tennis court",
+            "candidates": "[59,60]"
+          },
+          {
+            "text": "squirrels nest",
+            "id": "61",
+            "candidates": "[61]"
+          },
+          {
+            "text": "rope assembly",
+            "id": "63",
+            "candidates": "[63]"
+          },
+          {
+            "text": "tennis ball launching machine",
+            "id": "56",
+            "candidates": "[56]"
+          }
+        ],
+        "inventory": [
+          {
+            "id": 56,
+            "name": "tennis ball launching machine"
+          },
+          {
+            "id": 25,
+            "name": "tin bucket"
+          },
+          {
+            "id": 33,
+            "name": "tennisb"
+          },
+          {
+            "id": 34,
+            "name": "tennisb"
+          },
+          {
+            "id": 35,
+            "name": "tennisb"
+          },
+          {
+            "id": 36,
+            "name": "tennisb"
+          },
+          {
+            "id": 37,
+            "name": "tennisb"
+          },
+          {
+            "id": 38,
+            "name": "tennisb"
+          },
+          {
+            "id": 39,
+            "name": "tennisb"
+          },
+          {
+            "id": 40,
+            "name": "tennisb"
+          },
+          {
+            "id": 41,
+            "name": "tennisb"
+          },
+          {
+            "id": 42,
+            "name": "tennisb"
+          },
+          {
+            "id": 43,
+            "name": "tennisb"
+          },
+          {
+            "id": 44,
+            "name": "tennisb"
+          },
+          {
+            "id": 45,
+            "name": "tennisb"
+          },
+          {
+            "id": 46,
+            "name": "tennisb"
+          },
+          {
+            "id": 47,
+            "name": "tennisb"
+          },
+          {
+            "id": 48,
+            "name": "tennisb"
+          },
+          {
+            "id": 49,
+            "name": "tennisb"
+          },
+          {
+            "id": 50,
+            "name": "tennisb"
+          },
+          {
+            "id": 51,
+            "name": "tennisb"
+          },
+          {
+            "id": 52,
+            "name": "tennisb"
+          },
+          {
+            "id": 53,
+            "name": "tennisb"
+          }
+        ]
+      }
+    ]
+  },
+  "candidate": {
+    "root": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-codex-ztext-r2-candidate-20261021",
+    "sourceHash": "9e4778c4a76185812b464350cbdd1faa8a65a8bc2b2d7237eb6e5f5fa2ef2f06",
+    "rows": [
+      {
+        "command": "look",
+        "text": "A good sized courtyard with an air of late British colonialism about it.  To the west, in the direction the sun is setting, is a high, grey stone wall with an ornate iron gate set into the rock.  The walls of a large stone mansion rise several stories into the chilly evening air to the east, north, and south.  In the east wall, two or three stories up, is a large window.  On top of the west wall, above and to the right of the gate, is a large squirrels nest made of sticks, twigs, and leaves.\n \nA carpeting of old brown leaves from past winters rustle about on the ground in the breeze and drift listlessly across a cracked, stained, pale green tennis court with a rotting net.  In one corner of the court yard an impressively large oak tree casts long shadows in the dimming light.  The acorns nestled among the tree's massive branches and vividly healthy leaves are new and green.  Near the tree is a quaint looking well of crumbling stone.\n \nA rusty tin pail rests in the grass near the ball machine.\n \nThe tennis ball launching machine sitting in one corner of the yard looks like a relic from the 1930s.\n ",
+        "inventoryText": "",
+        "ball": {
+          "id": 33,
+          "name": "tennis",
+          "display": "tennis",
+          "aliases": [
+            "ball",
+            "tennis"
+          ],
+          "head": "tennis",
+          "ref": {
+            "noun": "tennis",
+            "candidateIds": [
+              56,
+              59,
+              60,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53
+            ],
+            "unique": false,
+            "verified": false,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": []
+        },
+        "marks": [
+          {
+            "text": "iron gate",
+            "id": "58",
+            "candidates": "[58]"
+          },
+          {
+            "text": "window",
+            "id": "54",
+            "candidates": "[54]"
+          },
+          {
+            "text": "squirrels nest",
+            "id": "61",
+            "candidates": "[61]"
+          },
+          {
+            "text": "tennis court",
+            "candidates": "[59,60]"
+          },
+          {
+            "text": "oak tree",
+            "id": "55",
+            "candidates": "[55]"
+          },
+          {
+            "text": "crumbling stone",
+            "id": "62",
+            "candidates": "[62]"
+          },
+          {
+            "text": "tin pail",
+            "id": "25",
+            "candidates": "[25]"
+          },
+          {
+            "text": "tennis ball launching machine",
+            "id": "56",
+            "candidates": "[56]"
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "command": "take all",
+        "text": "A good sized courtyard with an air of late British colonialism about it.  To the west, in the direction the sun is setting, is a high, grey stone wall with an ornate iron gate set into the rock.  The walls of a large stone mansion rise several stories into the chilly evening air to the east, north, and south.  In the east wall, two or three stories up, is a large window.  On top of the west wall, above and to the right of the gate, is a large squirrels nest made of sticks, twigs, and leaves.\n \nA carpeting of old brown leaves from past winters rustle about on the ground in the breeze and drift listlessly across a cracked, stained, pale green tennis court with a rotting net.  In one corner of the court yard an impressively large oak tree casts long shadows in the dimming light.  The acorns nestled among the tree's massive branches and vividly healthy leaves are new and green.  Near the tree is a quaint looking well of crumbling stone.\n \nA rusty tin pail rests in the grass near the ball machine.\n \nThe tennis ball launching machine sitting in one corner of the yard looks like a relic from the 1930s.\n ",
+        "inventoryText": "",
+        "ball": {
+          "id": 33,
+          "name": "tennis ball",
+          "display": "tennis ball",
+          "aliases": [
+            "ball",
+            "tennis"
+          ],
+          "head": "ball",
+          "ref": {
+            "noun": "ball",
+            "candidateIds": [
+              56,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53
+            ],
+            "unique": false,
+            "verified": false,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": []
+        },
+        "marks": [
+          {
+            "text": "oak tree",
+            "id": "55",
+            "candidates": "[55]"
+          },
+          {
+            "text": "crumbling stone",
+            "id": "62",
+            "candidates": "[62]"
+          },
+          {
+            "text": "tin pail",
+            "id": "25",
+            "candidates": "[25]"
+          },
+          {
+            "text": "ball",
+            "candidates": "[56,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]"
+          },
+          {
+            "text": "window",
+            "id": "54",
+            "candidates": "[54]"
+          },
+          {
+            "text": "tennis ball launching machine",
+            "id": "56",
+            "candidates": "[56]"
+          },
+          {
+            "text": "iron gate",
+            "id": "58",
+            "candidates": "[58]"
+          },
+          {
+            "text": "tennis court net",
+            "id": "59",
+            "candidates": "[59]"
+          },
+          {
+            "text": "tennis court",
+            "candidates": "[59,60]"
+          },
+          {
+            "text": "squirrels nest",
+            "id": "61",
+            "candidates": "[61]"
+          },
+          {
+            "text": "rope assembly",
+            "id": "63",
+            "candidates": "[63]"
+          }
+        ],
+        "inventory": [
+          {
+            "id": 56,
+            "name": "tennis ball launching machine"
+          },
+          {
+            "id": 25,
+            "name": "tin bucket"
+          },
+          {
+            "id": 33,
+            "name": "tennis ball"
+          },
+          {
+            "id": 34,
+            "name": "tennis ball"
+          },
+          {
+            "id": 35,
+            "name": "tennis ball"
+          },
+          {
+            "id": 36,
+            "name": "tennis ball"
+          },
+          {
+            "id": 37,
+            "name": "tennis ball"
+          },
+          {
+            "id": 38,
+            "name": "tennis ball"
+          },
+          {
+            "id": 39,
+            "name": "tennis ball"
+          },
+          {
+            "id": 40,
+            "name": "tennis ball"
+          },
+          {
+            "id": 41,
+            "name": "tennis ball"
+          },
+          {
+            "id": 42,
+            "name": "tennis ball"
+          },
+          {
+            "id": 43,
+            "name": "tennis ball"
+          },
+          {
+            "id": 44,
+            "name": "tennis ball"
+          },
+          {
+            "id": 45,
+            "name": "tennis ball"
+          },
+          {
+            "id": 46,
+            "name": "tennis ball"
+          },
+          {
+            "id": 47,
+            "name": "tennis ball"
+          },
+          {
+            "id": 48,
+            "name": "tennis ball"
+          },
+          {
+            "id": 49,
+            "name": "tennis ball"
+          },
+          {
+            "id": 50,
+            "name": "tennis ball"
+          },
+          {
+            "id": 51,
+            "name": "tennis ball"
+          },
+          {
+            "id": 52,
+            "name": "tennis ball"
+          },
+          {
+            "id": 53,
+            "name": "tennis ball"
+          }
+        ]
+      },
+      {
+        "command": "i",
+        "text": "A good sized courtyard with an air of late British colonialism about it.  To the west, in the direction the sun is setting, is a high, grey stone wall with an ornate iron gate set into the rock.  The walls of a large stone mansion rise several stories into the chilly evening air to the east, north, and south.  In the east wall, two or three stories up, is a large window.  On top of the west wall, above and to the right of the gate, is a large squirrels nest made of sticks, twigs, and leaves.\n \nA carpeting of old brown leaves from past winters rustle about on the ground in the breeze and drift listlessly across a cracked, stained, pale green tennis court with a rotting net.  In one corner of the court yard an impressively large oak tree casts long shadows in the dimming light.  The acorns nestled among the tree's massive branches and vividly healthy leaves are new and green.  Near the tree is a quaint looking well of crumbling stone.\n \nA rusty tin pail rests in the grass near the ball machine.\n \nThe tennis ball launching machine sitting in one corner of the yard looks like a relic from the 1930s.\n ",
+        "inventoryText": "You are carrying:\n  a tennis ball launching machine\n  a tin bucket\n    twenty-one tennis balls\n \n[The Court Yard]>  ",
+        "ball": {
+          "id": 33,
+          "name": "tennis ball",
+          "display": "tennis ball",
+          "aliases": [
+            "ball",
+            "tennis"
+          ],
+          "head": "ball",
+          "ref": {
+            "noun": "ball",
+            "candidateIds": [
+              56,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53
+            ],
+            "unique": false,
+            "verified": false,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": []
+        },
+        "marks": [
+          {
+            "text": "net",
+            "id": "59",
+            "candidates": "[59]"
+          },
+          {
+            "text": "oak tree",
+            "id": "55",
+            "candidates": "[55]"
+          },
+          {
+            "text": "crumbling stone",
+            "id": "62",
+            "candidates": "[62]"
+          },
+          {
+            "text": "tin pail",
+            "id": "25",
+            "candidates": "[25]"
+          },
+          {
+            "text": "window",
+            "id": "54",
+            "candidates": "[54]"
+          },
+          {
+            "text": "ball",
+            "candidates": "[56,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]"
+          },
+          {
+            "text": "iron gate",
+            "id": "58",
+            "candidates": "[58]"
+          },
+          {
+            "text": "tennis court",
+            "candidates": "[59,60]"
+          },
+          {
+            "text": "squirrels nest",
+            "id": "61",
+            "candidates": "[61]"
+          },
+          {
+            "text": "rope assembly",
+            "id": "63",
+            "candidates": "[63]"
+          },
+          {
+            "text": "tennis ball launching machine",
+            "id": "56",
+            "candidates": "[56]"
+          }
+        ],
+        "inventory": [
+          {
+            "id": 56,
+            "name": "tennis ball launching machine"
+          },
+          {
+            "id": 25,
+            "name": "tin bucket"
+          },
+          {
+            "id": 33,
+            "name": "tennis ball"
+          },
+          {
+            "id": 34,
+            "name": "tennis ball"
+          },
+          {
+            "id": 35,
+            "name": "tennis ball"
+          },
+          {
+            "id": 36,
+            "name": "tennis ball"
+          },
+          {
+            "id": 37,
+            "name": "tennis ball"
+          },
+          {
+            "id": 38,
+            "name": "tennis ball"
+          },
+          {
+            "id": 39,
+            "name": "tennis ball"
+          },
+          {
+            "id": 40,
+            "name": "tennis ball"
+          },
+          {
+            "id": 41,
+            "name": "tennis ball"
+          },
+          {
+            "id": 42,
+            "name": "tennis ball"
+          },
+          {
+            "id": 43,
+            "name": "tennis ball"
+          },
+          {
+            "id": 44,
+            "name": "tennis ball"
+          },
+          {
+            "id": 45,
+            "name": "tennis ball"
+          },
+          {
+            "id": 46,
+            "name": "tennis ball"
+          },
+          {
+            "id": 47,
+            "name": "tennis ball"
+          },
+          {
+            "id": 48,
+            "name": "tennis ball"
+          },
+          {
+            "id": 49,
+            "name": "tennis ball"
+          },
+          {
+            "id": 50,
+            "name": "tennis ball"
+          },
+          {
+            "id": 51,
+            "name": "tennis ball"
+          },
+          {
+            "id": 52,
+            "name": "tennis ball"
+          },
+          {
+            "id": 53,
+            "name": "tennis ball"
+          }
+        ]
+      }
+    ]
+  }
+}

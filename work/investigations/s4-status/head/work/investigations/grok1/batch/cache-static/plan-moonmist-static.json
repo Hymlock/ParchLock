@@ -1,0 +1,73 @@
+{
+ "key": "moonmist",
+ "game": "Moonmist.z3.js",
+ "bit": 26,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 59,
+   "name": "your luggage",
+   "step": 0,
+   "expect": 1,
+   "bit": 26,
+   "cmd": "take your luggage"
+  },
+  {
+   "id": 78,
+   "name": "tweed outfit",
+   "step": 0,
+   "expect": 1,
+   "bit": 26,
+   "cmd": "take tweed outfit"
+  },
+  {
+   "id": 21,
+   "name": "horn",
+   "step": 0,
+   "expect": 0,
+   "bit": 26,
+   "cmd": "take horn"
+  },
+  {
+   "id": 171,
+   "name": "sports car",
+   "step": 0,
+   "expect": 0,
+   "bit": 26,
+   "cmd": "take sports car"
+  },
+  {
+   "id": 187,
+   "name": "dragon's eye",
+   "step": 0,
+   "expect": 0,
+   "bit": 26,
+   "cmd": "take dragon's eye"
+  },
+  {
+   "id": 190,
+   "name": "dragon",
+   "step": 0,
+   "expect": 0,
+   "bit": 26,
+   "cmd": "take dragon"
+  },
+  {
+   "id": 178,
+   "name": "Tamara",
+   "step": 22,
+   "expect": 0,
+   "bit": 26,
+   "cmd": "take tamara"
+  },
+  {
+   "id": 91,
+   "name": "Bolitho",
+   "step": 29,
+   "expect": 0,
+   "bit": 26,
+   "cmd": "take bolitho"
+  }
+ ]
+}

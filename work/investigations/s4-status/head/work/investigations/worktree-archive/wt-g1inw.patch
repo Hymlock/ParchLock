@@ -1,0 +1,22 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index a2d3c91..3e29cf8 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -176,7 +176,16 @@ var ModuleStatFactsClaude = {
+     },
+     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+         "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25 },
+-        "openCapability": { "all": ["container"], "none": ["supporter"] }
++        "openCapability": { "all": ["container"], "none": ["supporter"] },
++        // WEARBIT 22 = worn (grok1 2026-10-17, g1-scan9, test_attr only during the named command). Knapsack: route 'infw' (walkthrough 0-9 +
++        // 'get knapsack', 'wear knapsack') @12 'take off knapsack' tests knapsack 31:22 TRUE ("You take the knapsack off and place it down...");
++        // @11 (not worn) 31:22 FALSE ("You aren't wearing it!"). Ring: route 'infr' (walkthrough 0-70 to the Inner Chamber + 'get ring', 'wear
++        // ring'), tested before I-RING-KILL's fatal 8th turn (interrupts.zil:12): @73 'examine finger' tests jeweled ring 2:22 TRUE ("Sitting on your
++        // finger is a ring.") and 'take ring' 2:22 TRUE ("You are already wearing it.", PRE-TAKE); @72 (ring carried, not worn) 'examine finger'
++        // 2:22 FALSE ("It's part of your hands."). Negative: @12 'wear shovel' tests shovel 33:22 FALSE ("You can't wear the shovel."). Source:
++        // the only WEARBIT FSETs are KNAPSACK (camp.zil:1957) and RING (temple.zil:314); no object carries it statically. Bounded census
++        // (249 objects, ends 3011): bit 22 at boot only on 249 (parent 0, global holder). No wearable flag (V-WEAR tests the worn bit).
++        "wornAttribute": 22
+     },
+     // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
+     // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.

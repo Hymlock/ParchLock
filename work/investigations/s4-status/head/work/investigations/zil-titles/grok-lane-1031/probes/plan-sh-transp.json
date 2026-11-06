@@ -1,0 +1,59 @@
+{
+ "tag": "sh-transp",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 2,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native",
+ "tests": [
+  {
+   "cmd": "LOOK IN PHIAL",
+   "step": 4,
+   "name": "look in phial",
+   "id": 128,
+   "expect": 1
+  },
+  {
+   "cmd": "EXAMINE PHIAL",
+   "step": 4,
+   "name": "examine phial",
+   "id": 128,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN AMPOULE",
+   "step": 14,
+   "name": "look in ampoule",
+   "id": 140,
+   "expect": 1
+  },
+  {
+   "cmd": "EXAMINE ETHERIUM GAS",
+   "step": 14,
+   "name": "examine etherium gas",
+   "id": 139,
+   "expect": 1
+  },
+  {
+   "cmd": "EXAMINE TELESCOPE",
+   "step": 67,
+   "name": "examine telescope",
+   "id": 185,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK THROUGH TELESCOPE",
+   "step": 67,
+   "name": "look through telescope",
+   "id": 185,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN BLACK BAG",
+   "step": 4,
+   "name": "look in black bag",
+   "id": 172,
+   "expect": 0
+  }
+ ]
+}

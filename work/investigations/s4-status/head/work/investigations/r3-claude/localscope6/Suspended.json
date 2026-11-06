@@ -1,0 +1,570 @@
+{
+ "story": "Suspended.z3.js",
+ "executableDigest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+ "proposalDigest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+ "digestMatch": true,
+ "fileSha256": null,
+ "localScope": {
+  "property": 14,
+  "width": 1,
+  "holder": 190,
+  "roomLitAttribute": 2,
+  "invisible": 13,
+  "searchBit": 7,
+  "surfaceBit": 11,
+  "openBit": 8,
+  "transBit": null
+ },
+ "proposalLocalScope": {
+  "property": 5,
+  "width": 1,
+  "holder": 189,
+  "roomLitAttribute": 2,
+  "invisible": 13,
+  "searchBit": 7,
+  "surfaceBit": 11,
+  "openBit": 8,
+  "transBit": null
+ },
+ "sourceFlags": {
+  "INVISIBLE": {
+   "bit": 13,
+   "positives": 5,
+   "negatives": 144,
+   "tp": 5,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 2,
+   "positives": 63,
+   "negatives": 86,
+   "tp": 63,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  }
+ },
+ "summary": {
+  "property": 14,
+  "width": 1,
+  "holder": 190,
+  "invisible": 13,
+  "R1": null,
+  "R2": null,
+  "negatives": "not run",
+  "extra": "Static only: census/proposal property 5 holder 189 is the room list; GLOBAL is property 14, holder 190 (10 children). \"extensions\" 171 listed by robot pseudo-rooms is under 191, not 190. The player is a disembodied FC; physical scope belongs to the robots, so ordinary EXAMINE does not test room scope.",
+  "dark": "n/a",
+  "status": "INCOMPLETE"
+ },
+ "holderChildren": [
+  {
+   "id": 169,
+   "name": "sign",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "88L",
+    "90L"
+   ]
+  },
+  {
+   "id": 160,
+   "name": "monitor",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "132L",
+    "133L",
+    "157L"
+   ]
+  },
+  {
+   "id": 161,
+   "name": "stairs",
+   "invisible": false,
+   "attrs": [
+    4,
+    12,
+    27
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 162,
+   "name": "step",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "114L",
+    "123L",
+    "124L"
+   ]
+  },
+  {
+   "id": 163,
+   "name": "hole",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "88L",
+    "90L"
+   ]
+  },
+  {
+   "id": 164,
+   "name": "wiring",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "84L",
+    "89L",
+    "102L",
+    "151L",
+    "154L"
+   ]
+  },
+  {
+   "id": 165,
+   "name": "cables",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "88L",
+    "90L"
+   ]
+  },
+  {
+   "id": 166,
+   "name": "debris",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "135L",
+    "136L",
+    "138L"
+   ]
+  },
+  {
+   "id": 167,
+   "name": "air conditioning",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "83L",
+    "87L",
+    "89L",
+    "91L",
+    "137L"
+   ]
+  },
+  {
+   "id": 168,
+   "name": "panel",
+   "invisible": false,
+   "attrs": [
+    4,
+    12
+   ],
+   "listedBy": [
+    "94L",
+    "95L",
+    "96L"
+   ]
+  }
+ ],
+ "roomsListingProperty": [
+  {
+   "id": 83,
+   "name": "Cryogenic Area",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "167:air conditioning"
+   ]
+  },
+  {
+   "id": 84,
+   "name": "Biological Laboratory",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "164:wiring"
+   ]
+  },
+  {
+   "id": 87,
+   "name": "Alpha FC",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "167:air conditioning"
+   ]
+  },
+  {
+   "id": 88,
+   "name": "Primary Channel",
+   "parent": 189,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "165:cables",
+    "163:hole",
+    "169:sign"
+   ]
+  },
+  {
+   "id": 89,
+   "name": "Beta FC",
+   "parent": 189,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "164:wiring",
+    "167:air conditioning"
+   ]
+  },
+  {
+   "id": 90,
+   "name": "Secondary Channel",
+   "parent": 189,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "165:cables",
+    "163:hole",
+    "169:sign"
+   ]
+  },
+  {
+   "id": 91,
+   "name": "Gamma FC",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "167:air conditioning"
+   ]
+  },
+  {
+   "id": 94,
+   "name": "Transit Control Area",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "168:panel"
+   ]
+  },
+  {
+   "id": 95,
+   "name": "Hydroponics Control Area",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "168:panel"
+   ]
+  },
+  {
+   "id": 96,
+   "name": "Weather Control Area",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "168:panel"
+   ]
+  },
+  {
+   "id": 102,
+   "name": "Short Corridor",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "164:wiring"
+   ]
+  },
+  {
+   "id": 114,
+   "name": "Alpha Repair",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "162:step"
+   ]
+  },
+  {
+   "id": 123,
+   "name": "Hallway Junction",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "162:step"
+   ]
+  },
+  {
+   "id": 124,
+   "name": "Sloping Corridor",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "162:step"
+   ]
+  },
+  {
+   "id": 132,
+   "name": "Hydroponics Monitors",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "160:monitor"
+   ]
+  },
+  {
+   "id": 133,
+   "name": "Transit Monitors",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "160:monitor"
+   ]
+  },
+  {
+   "id": 135,
+   "name": "Main Supply Room",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "166:debris"
+   ]
+  },
+  {
+   "id": 136,
+   "name": "Middle Supply Room",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "166:debris"
+   ]
+  },
+  {
+   "id": 137,
+   "name": "Angling Corridor",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "167:air conditioning"
+   ]
+  },
+  {
+   "id": 138,
+   "name": "Sub Supply Room",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "166:debris"
+   ]
+  },
+  {
+   "id": 144,
+   "name": "Whiz",
+   "parent": 143,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 145,
+   "name": "Whiz",
+   "parent": 191,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 146,
+   "name": "Poet",
+   "parent": 151,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 147,
+   "name": "Poet",
+   "parent": 191,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 149,
+   "name": "Auda",
+   "parent": 148,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 150,
+   "name": "Auda",
+   "parent": 191,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 151,
+   "name": "Central Chamber",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "164:wiring"
+   ]
+  },
+  {
+   "id": 152,
+   "name": "Sensa",
+   "parent": 151,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 153,
+   "name": "Sensa",
+   "parent": 191,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 154,
+   "name": "Gamma Repair",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "164:wiring"
+   ]
+  },
+  {
+   "id": 155,
+   "name": "Waldo",
+   "parent": 154,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 156,
+   "name": "Waldo",
+   "parent": 191,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 157,
+   "name": "Weather Monitors",
+   "parent": 189,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "160:monitor"
+   ]
+  },
+  {
+   "id": 158,
+   "name": "Iris",
+   "parent": 157,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 159,
+   "name": "Iris",
+   "parent": 191,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "171:extensions(par191)"
+   ]
+  },
+  {
+   "id": 190,
+   "name": "",
+   "parent": 191,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "191:(par0)"
+   ]
+  }
+ ],
+ "commands": 0,
+ "log": []
+}

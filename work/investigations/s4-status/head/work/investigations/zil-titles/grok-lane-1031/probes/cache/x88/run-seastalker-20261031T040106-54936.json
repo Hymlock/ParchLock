@@ -1,0 +1,34 @@
+{
+ "ss88 @88:look#0": {
+  "tag": "ss88",
+  "id": 88,
+  "name": "x",
+  "step": 88,
+  "expect": 0,
+  "cmd": "look",
+  "bit": 0,
+  "plan": "plan-ss-88.json",
+  "planSha": "cf1b173d18cb066230cdf06682a67c27c6ba1d0aafccab4551926cbd2a3958e1",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18,
+   27
+  ],
+  "after": [
+   14,
+   18,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T04:02:08.786Z"
+ }
+}

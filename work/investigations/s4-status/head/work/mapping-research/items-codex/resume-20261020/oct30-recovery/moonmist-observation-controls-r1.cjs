@@ -1,0 +1,25 @@
+const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),cp=require('child_process'),assert=require('assert/strict');
+const out=process.env.OUT,checks=[]; if(out&&fs.existsSync(out))throw Error('Exclusive output already exists: '+out);
+function load(game,baseline=false){const raw=fs.readFileSync('games/'+game,'utf8'),b=Uint8Array.from(Buffer.from(raw.match(/processBase64Zcode\s*\(\s*['"]([\s\S]*?)['"]\s*\)/)[1],'base64')),mem=new DataView(b.buffer),digest=crypto.createHash('sha256').update(b).digest('hex');const c={console,window:{},WeakMap,setTimeout,clearTimeout,ModuleLibrary:{currentExecutableDigest:()=>digest,currentExecutableIdentity:()=>({digest,header:Array.from(b.slice(0,28))})},ZRamProvider:{getMem:()=>mem},AttrCalibrator:{hydrate(){},overrideFor:()=>({}),objectOverrideFor:()=>null,hasConfirmedFlag:()=>false}};vm.createContext(c);for(const n of ['ModuleStatFactsClaude','ZRamReader','GrammarProvider','AttributeSchema','ExitCalibrator'])vm.runInContext(baseline&&n==='AttributeSchema'?cp.execFileSync('git',['show','HEAD:js/AttributeSchema.js'],{encoding:'utf8'}):fs.readFileSync('js/'+n+'.js','utf8'),c,{filename:n+'.js'});return{c,mem,digest,f:c.ModuleStatFactsClaude[digest]};}
+const x=load('Moonmist.z3.js'),old=load('Moonmist.z3.js',true),A=x.c.AttributeSchema,R=x.c.ZRamReader,E=x.c.ExitCalibrator;delete old.f.lockedObservation;delete x.f.lockedObservation;
+const nav=(z)=>[9,13,33,124,132].map(room=>({room,exits:z.c.ExitCalibrator._d214ZilExitsFor(z.mem,room,{})}));const navBefore=JSON.stringify(nav(old));
+function check(name,fn){try{fn();checks.push({name,pass:true})}catch(e){checks.push({name,pass:false,error:e.message})}}
+check('Moonmist executable owns validated ZIL family',()=>assert.equal(x.c.GrammarProvider.decodeD198(x.mem).classification,'confirmed-zil-family'));
+check('baseline has no gate status',()=>assert.equal(old.c.AttributeSchema.lockedObjectStatus(52),null));
+x.f.lockedObservation={attribute:8,objects:[52]};
+check('new descriptor shows actual original locked gate52',()=>assert.equal(A.lockedObjectStatus(52),'Locked'));
+check('descriptor adds no mapped lock',()=>assert.equal(Object.hasOwn(x.f.attributeMap,'locked'),false));
+check('gate navigation lock remains unknown',()=>assert.equal(E._d214DoorLocked(x.mem,52),null));
+check('navigation output identical to actual baseline',()=>assert.equal(JSON.stringify(nav(x)),navBefore));
+for(const id of [6,66,120,136,187,254,999])check('excluded owner '+id,()=>assert.equal(A.lockedObjectStatus(id),null));
+for(const rule of [null,[],{}, {attribute:8,objects:[]},{attribute:8,objects:[52,52]},{attribute:8,objects:[52,999]},{attribute:8,objects:['52']},{attribute:32,objects:[52]},{attribute:-1,objects:[52]},{attribute:8.1,objects:[52]},{attribute:8,objects:[52],extra:true}])check('invalid descriptor '+JSON.stringify(rule),()=>{x.f.lockedObservation=rule;assert.equal(A.lockedObjectStatus(52),null)});
+x.f.lockedObservation={attribute:8,objects:[52]};
+check('conflicting mapped lock fails closed',()=>{x.f.attributeMap.locked=8;assert.equal(A.lockedObjectStatus(52),null);delete x.f.attributeMap.locked});
+check('conflicting old display domain fails closed',()=>{x.f.lockedStatusObjects=[52];assert.equal(A.lockedObjectStatus(52),null);delete x.f.lockedStatusObjects});
+check('X clear raw bit removes observation only',()=>{const at=R.objectBase(R.header(x.mem),52)+1,v=x.mem.getUint8(at);x.mem.setUint8(at,v&127);assert.equal(A.lockedObjectStatus(52),null);assert.equal(E._d214DoorLocked(x.mem,52),null);x.mem.setUint8(at,v);assert.equal(A.lockedObjectStatus(52),'Locked')});
+check('wrong digest omits',()=>{const fn=x.c.ModuleLibrary.currentExecutableDigest;x.c.ModuleLibrary.currentExecutableDigest=()=> 'foreign';assert.equal(A.lockedObjectStatus(52),null);x.c.ModuleLibrary.currentExecutableDigest=fn});
+check('unknown family omits',()=>{const fn=A._familyOf;A._familyOf=()=>({classification:'unknown'});assert.equal(A.lockedObjectStatus(52),null);A._familyOf=fn});
+check('Inform attribute names omit',()=>{const fn=R.informAttributeNames;R.informAttributeNames=()=>({bits:{locked:8}});assert.equal(A.lockedObjectStatus(52),null);R.informAttributeNames=fn});
+check('true frontier rejects beyond object count',()=>{x.f.lockedObservation={attribute:8,objects:[52,255]};assert.equal(A.lockedObjectStatus(52),null);x.f.lockedObservation={attribute:8,objects:[52]}});
+const lh=load('TheLurkingHorror.z3.js');for(const id of [119,135])check('existing LH status unchanged '+id,()=>assert.equal(lh.c.AttributeSchema.lockedObjectStatus(id),'Locked'));
+const result={tier:'Real original story bytes/readers; descriptor corruption and raw set/clear are constructed controls, not native qualification',pass:checks.filter(c=>c.pass).length,fail:checks.filter(c=>!c.pass).length,checks,navigation:JSON.parse(navBefore)};if(out)fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({pass:result.pass,fail:result.fail,failures:checks.filter(c=>!c.pass),navigationRows:result.navigation.map(r=>({room:r.room,n:r.exits?.length}))}));if(result.fail)process.exitCode=1;

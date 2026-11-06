@@ -1,0 +1,264 @@
+{
+ "digest": "Ballyhoo.z3.js",
+ "bits": {
+  "trans": 13,
+  "container": 23,
+  "open": 15
+ },
+ "objectCount": 239,
+ "status": "PARTIAL",
+ "carriers": [
+  {
+   "id": 19,
+   "name": "window",
+   "container": false,
+   "openAtStart": false,
+   "parent": 50,
+   "contents": []
+  },
+  {
+   "id": 49,
+   "name": "barred passage",
+   "container": true,
+   "openAtStart": true,
+   "parent": 230,
+   "contents": []
+  },
+  {
+   "id": 76,
+   "name": "",
+   "container": true,
+   "openAtStart": true,
+   "parent": 0,
+   "contents": [
+    "Eddie Smaldone",
+    "police",
+    "water",
+    "apparatus",
+    "safety net",
+    "circus",
+    "WPDL",
+    "future",
+    "music",
+    "roustabout",
+    "sawdust",
+    "voice",
+    "conversation",
+    "room",
+    "yourself",
+    "himself or herself",
+    "your head",
+    "your hand",
+    "air",
+    "egress",
+    "corner",
+    "ceiling",
+    "wall",
+    "ground",
+    "darkness",
+    "light",
+    "it",
+    "dollar",
+    "money",
+    "",
+    "direction",
+    "your back",
+    ""
+   ]
+  },
+  {
+   "id": 103,
+   "name": "cherry-hardwood desk",
+   "container": true,
+   "openAtStart": true,
+   "parent": 59,
+   "contents": [
+    "telephone",
+    "spreadsheet"
+   ]
+  },
+  {
+   "id": 109,
+   "name": "lower bunk",
+   "container": true,
+   "openAtStart": true,
+   "parent": 157,
+   "contents": [
+    "ash tray"
+   ]
+  },
+  {
+   "id": 154,
+   "name": "",
+   "container": true,
+   "openAtStart": true,
+   "parent": 50,
+   "contents": []
+  },
+  {
+   "id": 165,
+   "name": "balloon",
+   "container": true,
+   "openAtStart": false,
+   "parent": 70,
+   "contents": [
+    "helium"
+   ]
+  },
+  {
+   "id": 185,
+   "name": "upper bunk",
+   "container": true,
+   "openAtStart": true,
+   "parent": 157,
+   "contents": []
+  },
+  {
+   "id": 214,
+   "name": "ash tray",
+   "container": true,
+   "openAtStart": true,
+   "parent": 109,
+   "contents": [
+    "heap of black ash"
+   ]
+  }
+ ],
+ "containerTransCarriers": [
+  "49:barred passage",
+  "76:",
+  "103:cherry-hardwood desk",
+  "109:lower bunk",
+  "154:",
+  "165:balloon",
+  "185:upper bunk",
+  "214:ash tray"
+ ],
+ "positives": [
+  "balloon (id165, CONT+TRANS, closed, held) contains helium: TAKE HELIUM -> You already have it. (helium resolved in scope through closed balloon); EXAMINE BALLOON mentions helium via its own description; LOOK IN BALLOON -> You can't do that.; INVENTORY does not list helium."
+ ],
+ "negatives": [
+  "no in-game negative probed (closed opaque compartment id213 with rawhide bullwhip exists in RAM; not reached)"
+ ],
+ "takeWhileClosed": "not a clean refusal: You already have it.",
+ "note": null,
+ "closedOpaqueWithContentsAtStart": [
+  {
+   "id": 213,
+   "name": "compartment",
+   "parent": 201,
+   "contents": [
+    "rawhide bullwhip"
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "cmd": "look",
+   "reply": "Platform / You're standing on a small, unstable platform which is suspended high above the arena floor by guy wires converging on it from all directions. The tightrope stretches west to the opposite platform. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 165,
+     "name": "balloon",
+     "parent": 211,
+     "open": false,
+     "contents": [
+      "helium"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "look in balloon",
+   "reply": "You can't do that. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 165,
+     "name": "balloon",
+     "parent": 211,
+     "open": false,
+     "contents": [
+      "helium"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "examine balloon",
+   "reply": "It's a bright red balloon which is tied closed and filled with helium. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 165,
+     "name": "balloon",
+     "parent": 211,
+     "open": false,
+     "contents": [
+      "helium"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "take helium",
+   "reply": "You already have it. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 165,
+     "name": "balloon",
+     "parent": 211,
+     "open": false,
+     "contents": [
+      "helium"
+     ]
+    }
+   ]
+  },
+  {
+   "cmd": "inventory",
+   "reply": "You have a balloon, a fiberglass pole and $12.81 to your name. / / > ",
+   "closedTransContainers": [
+    {
+     "id": 165,
+     "name": "balloon",
+     "parent": 211,
+     "open": false,
+     "contents": [
+      "helium"
+     ]
+    }
+   ]
+  }
+ ],
+ "commands": [
+  "s",
+  "help midget",
+  "w",
+  "take mask",
+  "s",
+  "w",
+  "hide behind president",
+  "listen to conversation",
+  "again",
+  "e",
+  "e",
+  "take pole",
+  "n",
+  "n",
+  "n",
+  "drop mask",
+  "u",
+  "e",
+  "e",
+  "e",
+  "e",
+  "e",
+  "e",
+  "take balloon",
+  "look",
+  "look in balloon",
+  "examine balloon",
+  "take helium",
+  "inventory"
+ ],
+ "driver": "work/investigations/r3-claude/transparent/drive-trans.cjs"
+}

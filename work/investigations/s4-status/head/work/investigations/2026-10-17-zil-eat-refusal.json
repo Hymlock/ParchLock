@@ -1,0 +1,199 @@
+{
+ "Ballyhoo": {
+  "file": "Ballyhoo.z3.js",
+  "inventory": "You have $12.81 to your name. >",
+  "tests": [
+   {
+    "cmd": "eat me",
+    "reply": "Stuffing your face with yourself would do little to help at this point. >"
+   },
+   {
+    "cmd": "drink me",
+    "reply": "You can't drink that! >"
+   }
+  ]
+ },
+ "Enchanter": {
+  "file": "Enchanter.z3.js",
+  "inventory": "You are carrying: A spell book >",
+  "tests": [
+   {
+    "cmd": "eat book",
+    "reply": "Did they teach you to eat that in survival school? >"
+   },
+   {
+    "cmd": "drink book",
+    "reply": "You can't drink that! >"
+   },
+   {
+    "cmd": "eat spell",
+    "reply": "Which spell do you mean, the blorb spell, the nitfol spell, the frotz spell, or the gnusto spell? >"
+   },
+   {
+    "cmd": "drink spell",
+    "reply": "Which spell do you mean, the blorb spell, the nitfol spell, the frotz spell, or the gnusto spell? >"
+   }
+  ]
+ },
+ "HollywoodHijinx": {
+  "file": "HollywoodHijinx.z3.js",
+  "error": "page.waitForTimeout: Page crashed"
+ },
+ "LeatherGoddessesofPhobos": {
+  "file": "LeatherGoddessesofPhobos.z3.js",
+  "inventory": "The place: Upper Sandusky, Ohio. The time: 1936. The beer: at a nickel a mug, you don't ask for brand names. All you know is that your fifth one tasted as bad as the first. LEATHER GODDESSES OF PHOBOS",
+  "tests": [
+   {
+    "cmd": "eat flashlight",
+    "reply": "While the foodstuffs of the universe are many and varied, a flashlight is not one of them. >"
+   },
+   {
+    "cmd": "drink flashlight",
+    "reply": "You can't drink a flashlight! You trace the urge to the region of your bladder. >"
+   },
+   {
+    "cmd": "eat rules",
+    "reply": "While the foodstuffs of the universe are many and varied, a comic book is not one of them. Though operating at far below normal speed, your mind begins to conclude that it would be best at this point to find a bathroom. "
+   },
+   {
+    "cmd": "drink rules",
+    "reply": "You can't drink a comic book! Even if you don't care about your clothes, imagine the embarrassment! >"
+   }
+  ]
+ },
+ "PlunderedHearts": {
+  "file": "PlunderedHearts.z3.js",
+  "inventory": "PLUNDERED HEARTS Infocom interactive fiction Copyright (c) 1987 by Infocom, Inc. All rights reserved. PLUNDERED HEARTS is a trademark of Infocom, Inc. Release 26 / Serial number 870730 LATE ONE SPRING",
+  "tests": [
+   {
+    "cmd": "eat reticule",
+    "reply": "A lady is trained to eat anything, but this is absurd. \"The Falcon! The Falcon conquers!\" yells someone. >"
+   },
+   {
+    "cmd": "drink reticule",
+    "reply": "You can't drink your reticule! >"
+   },
+   {
+    "cmd": "eat salts",
+    "reply": "A lady is trained to eat anything, but this is absurd. >"
+   },
+   {
+    "cmd": "drink salts",
+    "reply": "You can't drink smelling salts! \"Cap'n Jamison! We've got 'em!\" cries a rough voice. >"
+   }
+  ]
+ },
+ "Sorcerer": {
+  "file": "Sorcerer.z3.js",
+  "inventory": "You are empty-handed. The hellhound reaches you and tears you apart with its powerful teeth. ...and a moment later you wake up in a cold sweat and realize you've been dreaming. SORCERER Infocom intera",
+  "tests": [
+   {
+    "cmd": "eat book",
+    "reply": "Did they teach you to eat that in survival school? >"
+   },
+   {
+    "cmd": "drink book",
+    "reply": "You can't drink that! >"
+   },
+   {
+    "cmd": "eat spell",
+    "reply": "Which spell do you mean, the gnusto spell, the vezza spell, the pulver spell, the izyuk spell, the yomin spell, the rezrov spell, or the frotz spell? >"
+   },
+   {
+    "cmd": "drink spell",
+    "reply": "Which spell do you mean, the gnusto spell, the vezza spell, the pulver spell, the izyuk spell, the yomin spell, the rezrov spell, or the frotz spell? >"
+   }
+  ]
+ },
+ "Spellbreaker": {
+  "file": "Spellbreaker.z3.js",
+  "inventory": "You are carrying: a magic burin a knife a spell book Sneffle of the Guild of Bakers is addressing the gathering. \"Do you know what this is doing to our business? Do you know how difficult it is to mak",
+  "tests": [
+   {
+    "cmd": "eat burin",
+    "reply": "Did they teach you to eat that in survival school? Hoobly of the Guild of Brewers stands, gesturing at the floury baker. \"You don't know what trouble is! Lately, what comes out of the vats, like as not, is cherry flavore"
+   },
+   {
+    "cmd": "drink burin",
+    "reply": "You can't drink that! A tall, gruff fellow begins to speak. This is Gzornenplatz of the Guild of Huntsmen. \"I'm a simple man, and I don't know much about magic. But I do know that the wild beasts are kept out of the town"
+   },
+   {
+    "cmd": "eat knife",
+    "reply": "Did they teach you to eat that in survival school? As the huntsman's accusations are being absorbed and discussed, Ardis of the Guild of Poets takes the floor. He begins to talk about magic rhyming and spelling aids, and"
+   },
+   {
+    "cmd": "drink knife",
+    "reply": "You can't drink that! >"
+   }
+  ]
+ },
+ "Stationfall": {
+  "file": "Stationfall.z3.js",
+  "inventory": "You are carrying a Class Three Spacecraft Activation Form HB-56-V, a Robot Use Authorization Form JZ-59-G and an Assignment Completion Form QX-17-T. You are wearing a Patrol uniform and a chronometer.",
+  "tests": [
+   {
+    "cmd": "eat uniform",
+    "reply": "It's doubtful that the Patrol uniform would agree with you. >"
+   },
+   {
+    "cmd": "drink uniform",
+    "reply": "It's doubtful that the Patrol uniform would agree with you. >"
+   },
+   {
+    "cmd": "eat card",
+    "reply": "It's doubtful that the ID card would agree with you. >"
+   },
+   {
+    "cmd": "drink card",
+    "reply": "It's doubtful that the ID card would agree with you. Ensign Twelfth Class Blather walks by, lugging his toilet scrubbing supplies. He spots you, whimpers, and slouches away (Footnote 2). >"
+   }
+  ]
+ },
+ "Wishbringer": {
+  "file": "Wishbringer.z3.js",
+  "inventory": "You're not holding anything. Somebody inside the Post Office is calling you. What next? >",
+  "tests": [
+   {
+    "cmd": "eat me",
+    "reply": "It's not likely that yourself would agree with you. Somebody inside the Post Office is calling you. What next? >"
+   },
+   {
+    "cmd": "drink me",
+    "reply": "You can't drink that! Somebody inside the Post Office is calling you. What next? >"
+   }
+  ]
+ },
+ "Deadline": {
+  "file": "Deadline.z3.js",
+  "inventory": "You are empty-handed. >",
+  "tests": []
+ },
+ "Moonmist": {
+  "file": "Moonmist.z3.js",
+  "inventory": "You are holding the tweed outfit (actually, wearing it). What next? >",
+  "tests": [
+   {
+    "cmd": "eat outfit",
+    "reply": "It's hard to believe you're that hungry. What next? >"
+   },
+   {
+    "cmd": "drink outfit",
+    "reply": "(You can't drink the tweed outfit.) [You won't see \"What next?\" any more.] >"
+   }
+  ]
+ },
+ "Borderzo": {
+  "file": "Borderzo.z5.js",
+  "error": "page.evaluate: Target crashed "
+ },
+ "Starcross": {
+  "file": "Starcross.z3.js",
+  "inventory": "You are empty handed. The alarm bell on the mass detector is ringing stridently. >",
+  "tests": []
+ },
+ "Suspended": {
+  "file": "Suspended.z3.js",
+  "inventory": "I am holding nothing in my dainty extensions. >",
+  "tests": []
+ }
+}

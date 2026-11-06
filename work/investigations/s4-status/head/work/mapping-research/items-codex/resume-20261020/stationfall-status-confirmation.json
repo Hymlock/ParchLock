@@ -1,0 +1,40 @@
+{
+  "game": "Stationfall.z3.js",
+  "digest": "3c5656897dd2503610945e80a0b42fc5d25614d967a010ace8e9cafd12f978a3",
+  "method": "Existing harness/status-module-live.js Stationfall.z3.js --verify-metrics --quick, STATUS_EVIDENCE=1",
+  "exitCode": 0,
+  "checks": 3,
+  "width": 1280,
+  "sourceHashes": {
+    "js/StatTracker.js": "c339a1930d24e7d281ea5b26e3da138f4079247153d53c25ebdc60f72311c069",
+    "js/ModuleStatFacts.js": "5df94a7e23fec8b6b1380054506ae4e358f89357ce83f8debd0bbb6c050399d3",
+    "js/ModuleStatFactsClaude.js": "fc9b847f3618cd39e1bde8dec3509c7f8137de93cb5ab01598b0968aaeadeab8",
+    "harness/status-module-live.js": "642b8167c258df1cdd69a7eef340526f9f885f6dd71cd5df69766560b8ebc327"
+  },
+  "observed": {
+    "boot": {
+      "score": 0,
+      "time": 5523,
+      "timeLabel": "Galactic Standard Time",
+      "turnsRow": false
+    },
+    "equipment": {
+      "score": 0,
+      "max": 80,
+      "rank": "Insignificant Nobody",
+      "day": 1,
+      "health": "good",
+      "time": 5559
+    },
+    "reopen": {
+      "time": 5577,
+      "fulfillment": "complete"
+    },
+    "nativeScoreReplyTime": 5541
+  },
+  "limitations": [
+    "Full raw result remains in this chat tool history; this file is a selected factual summary.",
+    "Native SCORE reply and later status samples belong to different turns; not evidence of same-generation locator correlation.",
+    "No RAM locator proof, quiet-output certification, whole-title closure or runtime change claimed."
+  ]
+}

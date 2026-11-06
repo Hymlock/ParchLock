@@ -1,0 +1,21 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 0272e50..f618b81 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -273,8 +273,14 @@ var ModuleStatFactsClaude = {
+         // as worn. REMOVE WATCH is refused; WEAR confirms already worn.
+         "inventoryHiddenAttribute": 29,
+         "wornAttribute": 39,
+-        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34 },
+-        "openCapability": { "all": ["container"], "none": ["supporter"] }
++        // PERSON 47 = animate (grok1 2026-10-17, g1-scan8.cjs chapter 3 (BZCH=3), test_attr recorded only during the named command):
++        // 's' -> Apartment Building: 'search guard' tests guard 228:47 TRUE; 's','e' -> Ostnitz Square: 'search mayor' tests mayor 253:47 TRUE,
++        // 'search huttinger' tests Huttinger 24:47 TRUE (all "That wouldn't be polite.", V-SEARCH verbs.zil:1049); 'search building' tests
++        // building 127:47 FALSE ("You find nothing unusual."). Source PERSON: 12 carriers, exact (2026-10-11-zil-source-flags.json); bounded compiled
++        // table (351 objects, ends at first property 6214): 17 carriers = 12 persons + yourself 30, GloObj 79, protagonist "it" 305 and 2 more; none
++        // are rooms. FAIL-CLOSED: TOPAZ carries CONTBIT + SURFACEBIT + PERSON (bad.zil:3249), so animate joins the openCapability none list.
++        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47 },
++        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
+     },
+     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,
+     // TAKE into holder 218; global 183 is the only global equal to that holder, still so after STARBOARD moves

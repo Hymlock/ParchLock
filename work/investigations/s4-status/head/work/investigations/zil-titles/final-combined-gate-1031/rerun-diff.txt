@@ -1,0 +1,25 @@
+Gumshoe.z5.js exits
+  base: ["down>50","east>50"]
+  cand: ["down>50","east>50","in>36","south>36"]
+Gumshoe.z5.js marks
+  base: ["money","private investigator's","east","down","welcome mat","door","Los Angeles Times"]
+  cand: ["money","private investigator's","east","down","south","welcome mat","door","Los Angeles Times"]
+Sherlock.z5.js inv1
+  base: ["173:whistle","302:coat","287:pocket","150:pound note","174:lapel","188:hat","172:black bag"]
+  cand: ["173:whistle","302:coat","150:pound note","188:hat","172:black bag"]
+Sherlock.z5.js inv2
+  base: ["173:whistle","302:coat","287:pocket","150:pound note","174:lapel","188:hat","172:black bag"]
+  cand: ["173:whistle","302:coat","150:pound note","188:hat","172:black bag"]
+heist.z8.js inv1
+  base: ["20:curious envelope","19:black canvas bag"]
+  cand: ["20:curious envelope","19:black canvas bag","124:silver picture frame","126:student's photo"]
+heist.z8.js inv2
+  base: ["20:curious envelope","19:black canvas bag"]
+  cand: ["20:curious envelope","19:black canvas bag","124:silver picture frame","126:student's photo"]
+minster.z5.js exits
+  base: []
+  cand: ["east>95","in>95"]
+minster.z5.js marks
+  base: ["cobbles","great wooden gate"]
+  cand: ["cobbles","great wooden gate","east"]
+GATE: 8 games, 8 differences (each must be an intended, reviewed change)

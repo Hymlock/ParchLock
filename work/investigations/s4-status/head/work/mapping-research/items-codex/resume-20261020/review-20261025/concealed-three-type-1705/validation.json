@@ -1,0 +1,79 @@
+{
+  "scope": "Single targeted data-only guard;5ZIL+InformZ+Glulx, not shared-runtime309gate",
+  "factsBinding": {
+    "executedCandidate": "29ec8122681fb2f43411f49753eb8be45341aad1",
+    "reviewedCandidate": "3a740dabfab79a8af355276d95e0f631912728b2",
+    "difference": "Only ZorkII comment correction. Actual executed bytes retained; no byte-identical3a claim."
+  },
+  "sourceStable": true,
+  "sourceFilesEach": {
+    "base": 77,
+    "cand": 77
+  },
+  "rowsEach": 7,
+  "differences": 0,
+  "rows": [
+    {
+      "game": "905.z5.js",
+      "error": null,
+      "rooms": 0,
+      "marks": 10,
+      "inventory": 2
+    },
+    {
+      "game": "Alabaster.gblorb.js",
+      "error": null,
+      "rooms": 0,
+      "marks": 0,
+      "inventory": 0
+    },
+    {
+      "game": "Deadline.z3.js",
+      "error": null,
+      "rooms": 10,
+      "marks": 6,
+      "inventory": 0
+    },
+    {
+      "game": "Planetfall.z3.js",
+      "error": null,
+      "rooms": 5,
+      "marks": 7,
+      "inventory": 5
+    },
+    {
+      "game": "PlunderedHearts.z3.js",
+      "error": null,
+      "rooms": 2,
+      "marks": 4,
+      "inventory": 6
+    },
+    {
+      "game": "Sorcerer.z3.js",
+      "error": null,
+      "rooms": 5,
+      "marks": 6,
+      "inventory": 8
+    },
+    {
+      "game": "Starcross.z3.js",
+      "error": null,
+      "rooms": 2,
+      "marks": 3,
+      "inventory": 0
+    }
+  ],
+  "limits": [
+    "Alabaster empty boot row is a boot/no-error guard only, not functional Glulx interaction.",
+    "This does not close reveal-phase consumers, PH actor-held garter or Deadline capture caveats.",
+    "Executed29ec differs from reviewed3a solely by ZorkII comment; parsed runtime facts equal, no exact3a byte-execution claim.",
+    "Sharedruntime1208 gate2oneoffs and Schema ownership holds remain separate."
+  ],
+  "operatorEvidence": {
+    "baseLog": "work/investigations/grok1/conc5/opreg-base.log",
+    "candLog": "work/investigations/grok1/conc5/opreg-cand.log",
+    "baseSha": "8a5f43bbfae2b47d3416352e44479fba34627b5998f2d13904d575ebf8cdcadd",
+    "candSha": "8a5f43bbfae2b47d3416352e44479fba34627b5998f2d13904d575ebf8cdcadd",
+    "result": "13PASS/0FAILeach per retained logs; unchanged data-only candidate runtime binding"
+  }
+}

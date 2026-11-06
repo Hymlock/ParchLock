@@ -1,0 +1,194 @@
+{
+ "title": "Zork3-TheDungeonMaster",
+ "digest": "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692",
+ "flag": "animate (ACTORBIT)",
+ "bit": 21,
+ "containerBitSource": 10,
+ "method": "drive.cjs headless Chromium, ordinary commands only; snapshot bits c=containerBit o=surface a=animate",
+ "appRowNow": {
+  "attributeMap": {
+   "open": 12,
+   "isOpen": 12,
+   "wearable": 4,
+   "container": 10,
+   "supporter": 26,
+   "on": 15,
+   "edible": 5
+  },
+  "openCapability": {
+   "all": [
+    "container"
+   ],
+   "none": [
+    "supporter"
+   ]
+  }
+ },
+ "carriersInitial": [
+  {
+   "id": 27,
+   "name": "man",
+   "parent": 0,
+   "containerBit": 1
+  },
+  {
+   "id": 67,
+   "name": "hooded figure",
+   "parent": 0,
+   "containerBit": 1
+  },
+  {
+   "id": 116,
+   "name": "old man",
+   "parent": 0,
+   "containerBit": 0
+  },
+  {
+   "id": 179,
+   "name": "dungeon master",
+   "parent": 178,
+   "containerBit": 0
+  },
+  {
+   "id": 182,
+   "name": "Guardians of Zork",
+   "parent": 221,
+   "containerBit": 0
+  },
+  {
+   "id": 200,
+   "name": "you",
+   "parent": 222,
+   "containerBit": 0
+  },
+  {
+   "id": 202,
+   "name": "cretin",
+   "parent": 64,
+   "containerBit": 0
+  }
+ ],
+ "evidence": [
+  {
+   "run": "_z3b.run.json",
+   "cmd": "talk to lamp",
+   "room": 64,
+   "reply": ">talk to lamp You can't talk to the lamp! > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "lamp, hello",
+   "room": 64,
+   "reply": ">lamp, hello You can't talk to the lamp! > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "talk to myself",
+   "room": 64,
+   "reply": ">talk to myself You can't talk to the you! > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "talk to old man",
+   "room": 154,
+   "reply": ">talk to old man You can't see any old man here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "talk to figure",
+   "room": 154,
+   "reply": ">talk to figure You can't see any figure here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "figure, hello",
+   "room": 154,
+   "reply": ">figure, hello You can't see any figure here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "talk to hooded figure",
+   "room": 154,
+   "reply": ">talk to hooded figure You can't see any hooded figure here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "talk to figure",
+   "room": 154,
+   "reply": ">talk to figure You can't see any figure here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3b.run.json",
+   "cmd": "talk to figure",
+   "room": 154,
+   "reply": ">talk to figure You can't see any figure here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "talk to lamp",
+   "room": 64,
+   "reply": ">talk to lamp You can't talk to the lamp! > ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "lamp, hello",
+   "room": 64,
+   "reply": ">lamp, hello You can't talk to the lamp! > ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "talk to old man",
+   "room": 154,
+   "reply": ">talk to old man You can't see any old man here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "old man, hello",
+   "room": 154,
+   "reply": ">old man, hello You can't see any old man here. > ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "ask old man about bread",
+   "room": 154,
+   "reply": ">ask old man about bread I don't know the word \"about\". > ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "talk to man",
+   "room": 63,
+   "reply": "> ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "man, hello",
+   "room": 63,
+   "reply": "> ",
+   "diff": []
+  },
+  {
+   "run": "_z3.run.json",
+   "cmd": "HELLO SAILOR",
+   "room": 63,
+   "reply": "> ",
+   "diff": []
+  }
+ ],
+ "status": "INCOMPLETE",
+ "notes": "0 native positives: NPC carriers (old man 116, hooded figure 67, man 27, dungeon master 179, Guardians 182) are not reachable in the first ~30 moves (old man never appeared in Engravings Room after bread/25 waits; walkthrough drowned at the lake by move ~47). Negatives native: lamp -> You can't talk to the lamp!. Player objects you(200)/cretin(202) carry bit 21 yet talk to myself -> You can't talk to the you! (player excluded by verb code; app must not offer Talk on the player). App row has no animate key."
+}

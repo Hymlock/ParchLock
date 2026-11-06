@@ -1,0 +1,7 @@
+538386788021776422e7608b25bffadf077b3126f589fb79a2639c95df97e3cc *enchanter.config.json
+9b97416664d0a7199809d8d3b74eed892feb5e8cb76ac24c6dfc1a8d1d8004e6 *enchanter.log
+a53679d52bb3aae7311548b9af7114a62786776bc913debf44430fab9e037013 *enchanter.run.json
+b876990ce914fe74b54b6a79897d7dce9dc93f332640872e47b1c8f4a5beab99 *enchanter2.config.json
+85d0ca57f645dedeb56c67338c3be2d63297e92692c3118051f57fb7f6ed5c65 *enchanter2.log
+cc800ae08e2d884e353d7e078c8a0611303a5ce8dabfcfcf5d4f9eba96fe9c51 *enchanter2.run.json
+# tier: T1 native play.html walk (probe.cjs), JSEED RNG parity, passive test_attr recording; no RAM/fact writes. *.run.json absent = run aborted/unreached

@@ -1,0 +1,12 @@
+{
+ "tier": "seeded-native: p4-probe.cjs replaces VM.random (seed 0, header parity with g1-batch); not a fresh unforced run. Toggle responses are deterministic game text (TURN ON/OFF RADIO), so the RNG does not affect them.",
+ "baseHead": "d0dd25c",
+ "sha256": {
+  "wt-claude-p4/js/AttributeSchema.js": "df4e2c2db20ac44516127004bd40f359c0e4527b3de6c0c51679e7f40bd3475b",
+  "wt-claude-p4/js/ModuleStatFactsClaude.js": "77f0eac4faeaa4eb9deb87e7e0cd7d3e3474ae9e92d4141616865e413e52d039",
+  "wt-claude-p4/harness/zil-room-switch.js": "d1237c60cad5505337b49b314cc086a9245c0f543457241710f689c8b9aaa9c9",
+  "work/investigations/claude-probe/p4-witness/p4-probe.cjs": "a9140d7947a37094dff1aeaf41154bfa61b481456c57e4646a4e23388a43b342",
+  "work/investigations/claude-probe/p4-witness/witness-radio-room.json": "b248c8469c46d9a19d92f303a69f40be7e73526daf14ab7ece4a5106e8c870c8",
+  "games/TheWitness.z3.js": "cb84cdddd8f57c448f6820a52b9545f0508926eb9d33800ac13e620a60bf13b7"
+ }
+}

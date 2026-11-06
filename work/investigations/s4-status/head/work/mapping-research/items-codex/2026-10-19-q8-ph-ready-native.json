@@ -1,0 +1,54 @@
+{
+ "player": 192,
+ "room": 80,
+ "roomName": "Cabin",
+ "resolved": {
+  "id": 192,
+  "source": "measured-player-global",
+  "ambiguous": false,
+  "candidates": []
+ },
+ "inventory": [
+  {
+   "id": 223,
+   "name": "your reticule",
+   "parent": 192
+  },
+  {
+   "id": 11,
+   "name": "smelling salts",
+   "parent": 223
+  },
+  {
+   "id": 186,
+   "name": "banknote",
+   "parent": 223
+  },
+  {
+   "id": 13,
+   "name": "your kid slippers",
+   "parent": 192
+  },
+  {
+   "id": 17,
+   "name": "linen chemise",
+   "parent": 192
+  },
+  {
+   "id": 84,
+   "name": "cotton frock",
+   "parent": 192
+  }
+ ],
+ "nativeTail": " \nLATE ONE SPRING NIGHT IN THE WEST INDIES...\n \n   A crash overhead! Pirates are boarding the Lafond Deux! The first mate hurries you into Captain Davis's cabin.\n   \"Good, you brought the girl,\" Davis smirks. \"She'll keep the pirates busy. She was only a tool of Lafond's, anyway. Let me just find that cof--\" A man on deck screams in agony and Davis starts. \"Let's go.\" The captain thrusts you on the bed and walks out, locking the door.\n   His laugh echoes. \"Best get comfortable, girl. You're likely to be there for the rest of your life.\"\n \nCabin, on the bed\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n \n>inventory\nYou have your reticule (hanging from your wrist). It seems that your reticule contains smelling salts and a banknote. You are wearing your kid slippers, a linen chemise and a cotton frock.\n \n>look\nCabin, on the bed\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n \n> ",
+ "probe": {
+  "status": "z-ram-live",
+  "playerId": 192,
+  "inventoryRootId": 192,
+  "playerSource": "measured-player-global",
+  "roomId": 80,
+  "roomSource": "player-containment",
+  "measuredDark": null,
+  "scopeCount": 2
+ }
+}

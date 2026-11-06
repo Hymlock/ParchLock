@@ -1,0 +1,209 @@
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index ae32df1..6a545b3 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -232,7 +232,10 @@ var AttributeSchema = {
+             // animate included: I6 PROFILE bit 0 is not Infocom ACTORBIT (grok1 #3590).
+             var zilStructural = {
+                 animate: 1, absent: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
+-                lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1, climbable: 1
++                lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1, climbable: 1,
++                // D11 P11a (claude+codex #5543): PROFILE bit 2 read rooms as garments
++                // (Planetfall FLOYDBIT, Suspended ONBIT). A measured attributeMap still wins.
++                clothing: 1, wearable: 1
+             };
+             // Operator #3782/#3790: ZIL PROFILE skip only for confirmed-zil-family (D198),
+             // not every !isInformCompiled title. Unknown family still fail-closed (null).
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index ac25650..f4caa47 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -4,6 +4,9 @@
+ // No stored numeric readings or title dispatch.
+ var ModuleStatFactsClaude = {
+     "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 14 = NDESCBIT (tp 50 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 14,
++        "inventoryHiddenRecurses": true,
+         // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Foot Bridge 228 bridge, Great Cavern 227 mosses, Narrow Tunnel stream; reciprocal refusals; Dark Tunnel 225 dark. INVISIBLE 9 tp6 fp0 fn1 (one source owner not set at start: disclosed).
+         "localScope": { "property": 12, "width": 1, "holder": 249, "roomLitAttribute": 19, "invisible": 9 },
+         // on 19 (bounded, codex #5475): the earlier WITHDRAWN (Codex #3451/#3453) applied to the whole ON domain (single object, no authored terminal checkpoint) and that domain stays unknown. Later bounded qualification 0945d47 (grok1 #4827 retained packet switch/zork2.json): held lamp 76 only, see Switch below. Other ON 19 carriers are room-lit, never switchable; no whole-ON-domain consumer claim.
+@@ -43,6 +46,9 @@ var ModuleStatFactsClaude = {
+     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
+     // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
+     "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 12 = NDESCBIT (tp 48 fp 0 fn 1); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 12,
++        "inventoryHiddenRecurses": true,
+         // D232 local globals, roots only (work/investigations/r3-claude/localscope5/): Your Room 183 / Upstairs Hallway 147 wallpaper; stairs refused at 183, window refused at 147. Lit bit set in all reached rooms. INVISIBLE 30 exact, ONBIT 17 exact.
+         "localScope": { "property": 8, "width": 1, "holder": 222, "roomLitAttribute": 17, "invisible": 30 },
+         // RE-ADDED from target-scoped PROBE walk p2 (original scene, command names the object): CONTBIT 11 tested TRUE on bar, table, tube of putty, closet, bed; FALSE on Weasel knife, Pete the Rat, Johnny Red, cigar. supporter 28 already proven, so surface-aware Open/Close applies. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+@@ -137,6 +143,9 @@ var ModuleStatFactsClaude = {
+     // in cage' TRUE on steel cage 81, 'look in staff' FALSE (wooden staff 31), lamp 198 FALSE (pgapz3c); source exact 12/12.
+     // Hooded figure 67 ('remove hood') excluded: not target-scoped. Applied together with openCapability.
+     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 25 = NDESCBIT (tp 59 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 25,
++        "inventoryHiddenRecurses": true,
+         // Primary PLAYER G178: current GO copies WINNER G163 into this separate role; native eight-command identity/custody proof, exact digest. No NPC/restore/all-lifecycle claim.
+         "playerGlobal": 178,
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+@@ -220,6 +229,9 @@ var ModuleStatFactsClaude = {
+     // SULTANS-WIFE), so playerGlobal would be wrong after an order. Binary has 19 store G189<-200 = 19 SETG WINNER ,PROTAGONIST in source;
+     // object 200 ("it") holds the flashlight at boot. App previously read player 16 with an empty inventory (Codex #3492).
+     "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 8 = NDESCBIT (tp 41 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 8,
++        "inventoryHiddenRecurses": true,
+         "playerObject": 200,
+         // OPENBIT 15 / SURFACEBIT 17 (grok1 2026-10-17, g1-ops3 = zil-inv-hidden-ops replaying 2026-10-15-zil-routes lgop, target-scoped):
+         // 'open door' (12) tests wide cell door 202:15 FALSE then 202 carries 15 ("swings open"); 'close door' (13) 202:15 TRUE, 15 cleared
+@@ -313,6 +325,9 @@ var ModuleStatFactsClaude = {
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+     },
+     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 18 = NDESCBIT (tp 87 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 18,
++        "inventoryHiddenRecurses": true,
+         // Native crate/trunk OPEN/CLOSE use supporter as closed-lid state; raw OPEN remains set.
+         "containerStateRules": [{ "objectId": 23, "closedFlag": "supporter" }, { "objectId": 39, "closedFlag": "supporter" }],
+         // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Your Tent 71 flap, River Bank 82 water; reciprocal refusals, Fire Pit refuses flap. No dark witness (positive-only lit).
+@@ -506,6 +521,9 @@ var ModuleStatFactsClaude = {
+     // holder 218 to room 54 (second DROP/TAKE 54/218). ZRamReader.resolvePlayer re-reads and link-validates it.
+     // Native REMOVE uniform/chronometer clears bit 21, WEAR sets it; native i labels both as being worn.
+     "3c5656897dd2503610945e80a0b42fc5d25614d967a010ace8e9cafd12f978a3": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 10 = NDESCBIT (tp 25 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 10,
++        "inventoryHiddenRecurses": true,
+         // Codex #3491 (original-scene native, source pin historicalsource/stationfall 5d05d5e verbs 2473 WEARBIT/WORNBIT, 1962 TELL ACTORBIT): WEAR tests 20 TRUE on uniform 229 and chronometer 1, FALSE on form 98 (refused); TELL tests 31 TRUE on Helen 135 and Floyd 26 with actor replies, FALSE on form 98. No container 17 (ID card OPEN/CLOSE impossible). grok2 gated. Evidence is Codex original scripted routes (2026-10-11-codex-zil-flags-proof.json), not a Jericho walkthrough.
+         // LIGHTBIT 24 = light (claude fc516e7/de32205 evidence; walk data checked by grok1 2026-10-17 in 2026-10-11-zil-walk-pwstationfall.json, test_attr
+         // recorded per command): 'turn reader off' (step 100) tests log reader 29:24 TRUE ("the log reader is now off"); 'turn lamp on' (steps 267, 333)
+@@ -575,6 +593,9 @@ var ModuleStatFactsClaude = {
+     // uniform; fresh inventory reports the uniform and chronometer
+     // "(being worn)", both of which carry bit 12.
+     "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 8 = NDESCBIT (tp 63 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 8,
++        "inventoryHiddenRecurses": true,
+         // D232 local globals, roots only (work/investigations/r3-claude/localscope4/): Deck Nine 235 / Gangway 222 stairway, escape pod refused at Gangway; INVISIBLE bulkheads refused. INVISIBLE 19 exact, ONBIT 5 exact.
+         "localScope": { "property": 9, "width": 1, "holder": 254, "roomLitAttribute": 5, "invisible": 19 },
+         // Native SCORE names G2 as Galactic Standard Time (+40 per WAIT), not turns.
+@@ -616,6 +637,9 @@ var ModuleStatFactsClaude = {
+     },
+     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
+     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 16 = NDESCBIT (tp 77 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 16,
++        "inventoryHiddenRecurses": true,
+         // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Front Porch 185 oak door, Southwest Junction 31 garden; reciprocal refusals. No dark witness (positive-only lit).
+         "localScope": { "property": 15, "width": 1, "holder": 54, "roomLitAttribute": 20, "invisible": 29 },
+         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
+@@ -681,6 +705,9 @@ var ModuleStatFactsClaude = {
+     // lamp, book, wood pile. Source-exact (24/24, 10/10). Applied together with openCapability.
+     // Grok4099 design, independent native audit: PERSON20 Dunbar155/George153 true, sofa200 false; no talkability/switchability inference.
+     "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 25 = NDESCBIT (tp 60 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 25,
++        "inventoryHiddenRecurses": true,
+         // D232 local globals, roots only (work/investigations/r3-claude/localscope6/): GLOBAL property found by single-holder scan (census had picked the room-list property 16): South Lawn 249 house/lawn, East Lawn 238 shed; roses refused at 249 and 238, sink refused at 249. INVISIBLE 31 exact, ONBIT 23 exact.
+         "localScope": { "property": 15, "width": 1, "holder": 254, "roomLitAttribute": 23, "invisible": 31 },
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
+@@ -707,6 +734,9 @@ var ModuleStatFactsClaude = {
+     // test_attr only during the named command). Bounded table: 9 carriers = 4 people x2 + GLOBAL-OBJECTS 249; no rooms.
+     // Fail-closed: animate joins openCapability none (actor Open/Close refused).
+     "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 19 = NDESCBIT (tp 93 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 19,
++        "inventoryHiddenRecurses": true,
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
+         // locked 17 = LOCKED exact; native (grok1 #5096 grok1/locked/witness-locked.json): front door 231 and office back door 213 read 17=1 ("unlock it first"); bedroom door 171 reads 0 and opens. Only the ROOMS container 249 (never a destination) carries 17; no room does.
+         // enterable 29 = source VEHBIT exact 11/11; native (grok1 #5135, routes/cache/ws*): SIT ON moves the player into 9 carriers (lounge 104, wooden chair 110, club chair 164, davenport 165, bench 155, table 156, bed 190 ("sit on bed"; four-poster 173 needs rephrase), bathtub 179, toilet 245) reading 29=1; carved chair 111 is Linder-intercepted (native); desk refuses; GET OUT OF LOUNGE native. ENTER refuses everywhere (V-THROUGH), hence enterForms.
+@@ -727,6 +757,9 @@ var ModuleStatFactsClaude = {
+     // verbs.zil:671). Bounded table: 6 carriers = weasel chieftain x2, rat-ant, giant spider, weasel-like alien, ship computer 24
+     // (addressed by 'computer, ...'); no rooms. VILLAIN 20 is NOT animate (palisade, laser beam, nest). No container is mapped.
+     "1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 23 = NDESCBIT (tp 78 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 23,
++        "inventoryHiddenRecurses": true,
+         // D232 local globals, roots only (work/investigations/r3-claude/localscope5/): ship Bridge 202 / Airlock 122 airlock; Living Quarters 10 refuses airlock and window. Artifact rooms not reached. INVISIBLE 30 exact, ONBIT 18 exact.
+         "localScope": { "property": 18, "width": 1, "holder": 111, "roomLitAttribute": 18, "invisible": 30 },
+         // Switch (grok1 #4847 grok1/switch/starcross.json): tape library 71: TURN ON -> "The tape library comes on.", TURN OFF -> "...is now off."; bunk refuses. State is the global TAPE-ON (no object bit), so no activationState/on.
+@@ -1076,6 +1109,9 @@ var ModuleStatFactsClaude = {
+     },
+     // Zork I (Infocom v3)
+     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 14 = NDESCBIT (tp 52 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 14,
++        "inventoryHiddenRecurses": true,
+         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 5, holder 249. Native: Kitchen 203
+         // EXAMINE CHIMNEY / WINDOW succeed, Behind House 79 kitchen window, North of House 81 boarded window, Living Room stairs;
+         // West of House 180 refuses chimney and window. Lit ONBIT 20 set in those rooms, clear in the dark Cellar 72 ("pitch black").
+@@ -1197,6 +1233,9 @@ var ModuleStatFactsClaude = {
+     },
+     // Suspended (Infocom v3)
+     "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f": {
++        // D1 source-proven (r44): inventoryHiddenAttribute 4 = NDESCBIT (tp 46 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
++        "inventoryHiddenAttribute": 4,
++        "inventoryHiddenRecurses": true,
+         // WEARABLEBIT 31 (grok1 2026-10-17; custom route agent-tools/g1-routes.json suspW: Waldo goes to the Middle Supply Room, takes the
+         // container and grasper; test_attr recorded only during the named command): 'waldo,install grasper' tests 63:31 TRUE ("It's now
+         // being worn.", V-WEAR verbs.zil:1740-1745); 'waldo,install container' tests basket 76:31 FALSE ("An interesting but highly unlikely
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index 445b39c..f64b4ec 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -2836,10 +2836,23 @@ var ZRamReader = {
+                 });
+             }
+         } catch (eInventoryInvisible) { hasInvisibleBit = false; }
++        // D1 (claude+codex #5543): PRINT-CONT / DESCRIBE-CONTENTS titles hide an
++        // NDESC child's own label but still list its visible contents. Literal
++        // true on a validated confirmed-zil-family title only; otherwise today's
++        // subtree skip. INVISIBLE (above) still drops the whole subtree.
++        var hiddenRecurses = false;
++        try {
++            hiddenRecurses = hasHiddenBit && fact.inventoryHiddenRecurses === true
++                && typeof GrammarProvider !== 'undefined' && !!GrammarProvider.decodeD198
++                && (function (fam) {
++                    return !!fam && fam.classification === 'confirmed-zil-family' && fam.evidence === 'validated';
++                })(GrammarProvider.decodeD198(mem));
++        } catch (eRecurse) { hiddenRecurses = false; }
+         function walk(id, d, viaUnnamedBypass) {
+             if (!id || seen[id] || d < 0) return;
+             seen[id] = 1;
+             ZRamReader.children(mem, id).forEach(function (cid) {
++                var suppressLabel = false;
+                 // Re-read current RAM before names or wrapper traversal. Native
+                 // INVISIBLE omits the object and subtree, including worn items.
+                 if (hasInvisibleBit) {
+@@ -2856,7 +2869,11 @@ var ZRamReader = {
+                     var hiddenLinks = ZRamReader.objectLinks(mem, cid);
+                     var hidden = hiddenLinks && (hiddenLinks.attrBytes[hiddenBit >> 3] & (128 >> (hiddenBit & 7)));
+                     if (hidden && !(fact.inventoryHiddenPreservesWorn === true
+-                        && ZRamReader.attrsFromObject(mem, cid).worn)) return;
++                        && ZRamReader.attrsFromObject(mem, cid).worn)) {
++                        if (!hiddenRecurses) return;
++                        // Same per-child path as any child; only its own label is withheld.
++                        suppressLabel = true;
++                    }
+                 }
+                 var name = ZRamReader.shortName(mem, cid);
+                 if (!name || name.charAt(0) === "(") {
+@@ -2890,7 +2907,7 @@ var ZRamReader = {
+                         var verified = content.length > 0 && content.every(function (w) { var k = vk(w); return !!k && !!own[k]; });
+                         if (storyLabel && !/^yourself$/i.test(storyLabel) && verified) parserLabel = storyLabel;
+                         if (parserLabel) {
+-                            out.push({
++                            if (!suppressLabel) out.push({
+                                 id: cid,
+                                 name: parserLabel,
+                                 parentId: id,
+@@ -2914,7 +2931,7 @@ var ZRamReader = {
+                 }
+                 var attrs = ZRamReader.attrsFromObject(mem, cid);
+                 if (viaUnnamedBypass && attrs.worn) return;
+-                out.push({
++                if (!suppressLabel) out.push({
+                     id: cid,
+                     name: name,
+                     parentId: id,

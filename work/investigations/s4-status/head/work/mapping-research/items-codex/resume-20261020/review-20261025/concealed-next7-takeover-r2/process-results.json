@@ -1,0 +1,20 @@
+[
+  {
+    "name": "base",
+    "side": "base",
+    "code": 0,
+    "pid": 13568
+  },
+  {
+    "name": "cand",
+    "side": "cand",
+    "code": 0,
+    "pid": 19900
+  },
+  {
+    "name": "operator",
+    "side": "cand",
+    "code": 1,
+    "pid": 39860
+  }
+]

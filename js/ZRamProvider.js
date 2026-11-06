@@ -175,7 +175,7 @@ var ZRamProvider = {
             }
             var wp = document.querySelector("#windowport");
             if (wp) {
-                var t = (wp.innerText || "").trim().split(/\n+/).map(function (l) { return l.trim(); }).filter(Boolean);
+                var t = ZRamProvider._windowportText(wp).trim().split(/\n+/).map(function (l) { return l.trim(); }).filter(Boolean);
                 for (var i = t.length - 1; i >= 0; i--) {
                     var line = t[i];
                     if (line.length < 2 || line.length > 48) continue;
@@ -187,10 +187,26 @@ var ZRamProvider = {
         } catch (e) {}
         return "";
     },
+    // S4: textContent (not innerText) so a visibility:hidden status grid is
+    // still read; GridLine/BufferLine rows are joined by newlines to keep the
+    // line structure innerText used to provide.
+    _windowportText: function (wp) {
+        if (!wp) return "";
+        var rows = wp.querySelectorAll(".GridLine, .BufferLine");
+        if (!rows.length) return wp.textContent || "";
+        // Rows the app deliberately removed from view (hidden D207 carry-probe replies) were never read by
+        // innerText; keep them out. Only visibility (the S4-hidden status grid) still reads.
+        return Array.prototype.filter.call(rows, function (r) {
+            if (r.classList && r.classList.contains("pl-carry-probe")) return false;
+            if (r.closest && r.closest('[aria-hidden="true"], [hidden]')) return false;
+            try { for (var n = r; n && n !== wp; n = n.parentElement) if (getComputedStyle(n).display === "none") return false; } catch (eS) {}
+            return true;
+        }).map(function (r) { return r.textContent || ""; }).join("\n");
+    },
     matchRoomFromText: function (mem) {
         try {
             var wp = document.querySelector("#windowport");
-            var text = ((wp && wp.innerText) || "").toLowerCase();
+            var text = ZRamProvider._windowportText(wp).toLowerCase();
             if (!text || text.length < 8) return 0;
             var h = ZRamReader.header(mem);
             var count = ZRamReader.objectCount(mem, h);

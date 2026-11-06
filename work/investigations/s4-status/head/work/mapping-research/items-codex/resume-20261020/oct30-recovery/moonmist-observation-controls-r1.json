@@ -1,0 +1,161 @@
+{
+  "tier": "Real original story bytes/readers; descriptor corruption and raw set/clear are constructed controls, not native qualification",
+  "pass": 33,
+  "fail": 0,
+  "checks": [
+    {
+      "name": "Moonmist executable owns validated ZIL family",
+      "pass": true
+    },
+    {
+      "name": "baseline has no gate status",
+      "pass": true
+    },
+    {
+      "name": "new descriptor shows actual original locked gate52",
+      "pass": true
+    },
+    {
+      "name": "descriptor adds no mapped lock",
+      "pass": true
+    },
+    {
+      "name": "gate navigation lock remains unknown",
+      "pass": true
+    },
+    {
+      "name": "navigation output identical to actual baseline",
+      "pass": true
+    },
+    {
+      "name": "excluded owner 6",
+      "pass": true
+    },
+    {
+      "name": "excluded owner 66",
+      "pass": true
+    },
+    {
+      "name": "excluded owner 120",
+      "pass": true
+    },
+    {
+      "name": "excluded owner 136",
+      "pass": true
+    },
+    {
+      "name": "excluded owner 187",
+      "pass": true
+    },
+    {
+      "name": "excluded owner 254",
+      "pass": true
+    },
+    {
+      "name": "excluded owner 999",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor null",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor []",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":8,\"objects\":[]}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":8,\"objects\":[52,52]}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":8,\"objects\":[52,999]}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":8,\"objects\":[\"52\"]}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":32,\"objects\":[52]}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":-1,\"objects\":[52]}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":8.1,\"objects\":[52]}",
+      "pass": true
+    },
+    {
+      "name": "invalid descriptor {\"attribute\":8,\"objects\":[52],\"extra\":true}",
+      "pass": true
+    },
+    {
+      "name": "conflicting mapped lock fails closed",
+      "pass": true
+    },
+    {
+      "name": "conflicting old display domain fails closed",
+      "pass": true
+    },
+    {
+      "name": "X clear raw bit removes observation only",
+      "pass": true
+    },
+    {
+      "name": "wrong digest omits",
+      "pass": true
+    },
+    {
+      "name": "unknown family omits",
+      "pass": true
+    },
+    {
+      "name": "Inform attribute names omit",
+      "pass": true
+    },
+    {
+      "name": "true frontier rejects beyond object count",
+      "pass": true
+    },
+    {
+      "name": "existing LH status unchanged 119",
+      "pass": true
+    },
+    {
+      "name": "existing LH status unchanged 135",
+      "pass": true
+    }
+  ],
+  "navigation": [
+    {
+      "room": 9,
+      "exits": []
+    },
+    {
+      "room": 13,
+      "exits": []
+    },
+    {
+      "room": 33,
+      "exits": []
+    },
+    {
+      "room": 124,
+      "exits": []
+    },
+    {
+      "room": 132,
+      "exits": []
+    }
+  ]
+}

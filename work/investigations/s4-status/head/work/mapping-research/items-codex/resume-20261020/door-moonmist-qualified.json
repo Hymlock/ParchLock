@@ -1,0 +1,195 @@
+{
+  "status": "QUALIFIED physical native doors120/128 plus negative134; pending independent review",
+  "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+  "doorAttribute": 7,
+  "openAttribute": 14,
+  "input": {
+    "path": "work/mapping-research/items-codex/resume-20261020/door-moonmist-tour-final.json",
+    "sha256": "17abe3bd819111ee84ade173f35bc09cf503737cc96929882f19db2f1d1c94bc"
+  },
+  "proof": [
+    {
+      "row": 32,
+      "command": "close bathroom door",
+      "id": 128,
+      "before": {
+        "name": "bathroom door",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          14,
+          17
+        ]
+      },
+      "after": {
+        "name": "bathroom door",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          17
+        ]
+      },
+      "reply": [
+        "The butler enters with your luggage and lays it on the bed.",
+        "\"I regret to say, Codex, that the maid will be unable to unpack for you, due to the arrangements for the late Lord Lionel's memorial birthday dinner,\" he apologizes. \"Do you wish me to do so before I leave?\"",
+        " ",
+        ">close bathroom door",
+        "Okay, it is now closed.",
+        "Bolitho repeats, \"I said: Do you wish me to do so before I leave?\"",
+        "Tamara leaves.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "row": 33,
+      "command": "open bathroom door",
+      "id": 128,
+      "before": {
+        "name": "bathroom door",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          17
+        ]
+      },
+      "after": {
+        "name": "bathroom door",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          14,
+          17
+        ]
+      },
+      "reply": [
+        "Okay, it is now closed.",
+        "Bolitho repeats, \"I said: Do you wish me to do so before I leave?\"",
+        "Tamara leaves.",
+        " ",
+        ">open bathroom door",
+        "Okay, it is now open.",
+        "Bolitho mutters, \"I'd heard that Americans were rude, but really...!\"",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "row": 41,
+      "command": "open front door",
+      "id": 120,
+      "before": {
+        "name": "front door",
+        "parent": 37,
+        "door7": true,
+        "bits": [
+          7,
+          17
+        ]
+      },
+      "after": {
+        "name": "front door",
+        "parent": 37,
+        "door7": true,
+        "bits": [
+          7,
+          14,
+          17
+        ]
+      },
+      "reply": [
+        "Okay, it is now open.",
+        " ",
+        ">close front door",
+        "Okay, it is now closed.",
+        " ",
+        ">open front door",
+        "Okay, it is now open.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "row": 40,
+      "command": "close front door",
+      "id": 120,
+      "before": {
+        "name": "front door",
+        "parent": 37,
+        "door7": true,
+        "bits": [
+          7,
+          14,
+          17
+        ]
+      },
+      "after": {
+        "name": "front door",
+        "parent": 37,
+        "door7": true,
+        "bits": [
+          7,
+          17
+        ]
+      },
+      "reply": [
+        "(You are in the foyer.)",
+        " ",
+        ">open front door",
+        "Okay, it is now open.",
+        " ",
+        ">close front door",
+        "Okay, it is now closed.",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "negative": {
+    "id": 134,
+    "command": "open bed",
+    "before": {
+      "name": "your bed",
+      "parent": 33,
+      "door7": false,
+      "bits": [
+        14,
+        19,
+        20,
+        23,
+        28
+      ]
+    },
+    "after": {
+      "name": "your bed",
+      "parent": 33,
+      "door7": false,
+      "bits": [
+        14,
+        17,
+        19,
+        20,
+        23,
+        28
+      ]
+    },
+    "reply": [
+      "Okay, it is now closed.",
+      " ",
+      ">open bedroom door",
+      "Okay, it is now open.",
+      " ",
+      ">open bed",
+      "(You can't open your bed.)",
+      " ",
+      "> "
+    ],
+    "qualification": "Door7 false, open14 unchanged; bit17 changes, not whole-object unchanged."
+  },
+  "additional": "Room33 separately encodes bedroom door; excluded from physical positives. Sentinel66 and out-of-domain254/255 excluded.",
+  "limitations": "Length-based outputDelta clips late after buffer pruning; selected per-control reply retains explicit command echo and response. No rerun needed."
+}

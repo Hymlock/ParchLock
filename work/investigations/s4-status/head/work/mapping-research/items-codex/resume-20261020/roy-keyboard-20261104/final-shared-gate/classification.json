@@ -1,0 +1,409 @@
+{
+  "rows": {
+    "base": 309,
+    "candidate": 309
+  },
+  "totals": {
+    "INTENDED": 0,
+    "FLAKY": 12,
+    "REGRESSION": 0,
+    "UNRESOLVED": 0
+  },
+  "differences": [
+    {
+      "game": "cabal.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed paired run reverses the two exact mark arrays: BOTH trees exhibit BOTH outputs; paired startup-sensitive annotation variability",
+      "initialBase": [
+        "families",
+        "your coffee",
+        "vagrant",
+        "your PalmPilot"
+      ],
+      "initialCandidate": [
+        "table",
+        "families",
+        "your coffee",
+        "vagrant",
+        "your PalmPilot"
+      ],
+      "pairedBase": [
+        "table",
+        "families",
+        "your coffee",
+        "vagrant",
+        "your PalmPilot"
+      ],
+      "pairedCandidate": [
+        "families",
+        "your coffee",
+        "vagrant",
+        "your PalmPilot"
+      ]
+    },
+    {
+      "game": "Delusns.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "Self",
+        "east",
+        "west"
+      ],
+      "initialCandidate": [
+        "east",
+        "west"
+      ],
+      "pairedBase": [
+        "Self",
+        "east",
+        "west"
+      ],
+      "pairedCandidate": [
+        "Self",
+        "east",
+        "west"
+      ]
+    },
+    {
+      "game": "heist.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "frame",
+        "north",
+        "south",
+        "uncle's final resting place",
+        "group of mourners"
+      ],
+      "initialCandidate": [
+        "north",
+        "south",
+        "uncle's final resting place",
+        "group of mourners"
+      ],
+      "pairedBase": [
+        "north",
+        "south",
+        "uncle's final resting place",
+        "group of mourners"
+      ],
+      "pairedCandidate": [
+        "north",
+        "south",
+        "uncle's final resting place",
+        "group of mourners"
+      ]
+    },
+    {
+      "game": "Help.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [],
+      "initialCandidate": [
+        "Snark",
+        "large piece of equipment",
+        "trophy"
+      ],
+      "pairedBase": [
+        "Snark",
+        "large piece of equipment",
+        "trophy"
+      ],
+      "pairedCandidate": [
+        "Snark",
+        "large piece of equipment",
+        "trophy"
+      ]
+    },
+    {
+      "game": "jet.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed paired run reverses the two exact mark arrays: BOTH trees exhibit BOTH outputs; paired startup-sensitive annotation variability",
+      "initialBase": [
+        "wing"
+      ],
+      "initialCandidate": [
+        "dragon's"
+      ],
+      "pairedBase": [
+        "dragon's"
+      ],
+      "pairedCandidate": [
+        "wing"
+      ]
+    },
+    {
+      "game": "Jigsaw.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "west",
+        "northeast",
+        "Crowds",
+        "east"
+      ],
+      "initialCandidate": [
+        "party",
+        "attractive stranger",
+        "west",
+        "northeast",
+        "east"
+      ],
+      "pairedBase": [
+        "party",
+        "attractive stranger",
+        "west",
+        "northeast",
+        "east"
+      ],
+      "pairedCandidate": [
+        "party",
+        "attractive stranger",
+        "west",
+        "northeast",
+        "east"
+      ]
+    },
+    {
+      "game": "largemac.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "bad egg",
+        "Alvin",
+        "machine",
+        "lino floor",
+        "mural",
+        "storage locker",
+        "wall",
+        "picture"
+      ],
+      "initialCandidate": [
+        "machine",
+        "lino floor",
+        "mural",
+        "storage locker",
+        "wall",
+        "picture"
+      ],
+      "pairedBase": [
+        "bad egg",
+        "Alvin",
+        "machine",
+        "lino floor",
+        "mural",
+        "storage locker",
+        "wall",
+        "picture"
+      ],
+      "pairedCandidate": [
+        "bad egg",
+        "Alvin",
+        "machine",
+        "lino floor",
+        "mural",
+        "storage locker",
+        "wall",
+        "picture"
+      ]
+    },
+    {
+      "game": "medusa.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "toga",
+        "snakes",
+        "elevator",
+        "floor indicator",
+        "buttons",
+        "red",
+        "mirror",
+        "vampire"
+      ],
+      "initialCandidate": [
+        "vampire",
+        "elevator",
+        "red",
+        "toga",
+        "snakes",
+        "floor indicator",
+        "buttons"
+      ],
+      "pairedBase": [
+        "toga",
+        "snakes",
+        "elevator",
+        "floor indicator",
+        "buttons",
+        "red",
+        "mirror",
+        "vampire"
+      ],
+      "pairedCandidate": [
+        "toga",
+        "snakes",
+        "elevator",
+        "floor indicator",
+        "buttons",
+        "red",
+        "mirror",
+        "vampire"
+      ]
+    },
+    {
+      "game": "permagic.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "report",
+        "east",
+        "papers"
+      ],
+      "initialCandidate": [
+        "of junk",
+        "report",
+        "east"
+      ],
+      "pairedBase": [
+        "of junk",
+        "report",
+        "east"
+      ],
+      "pairedCandidate": [
+        "of junk",
+        "report",
+        "east"
+      ]
+    },
+    {
+      "game": "Sherlock.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "coat",
+        "west"
+      ],
+      "initialCandidate": [
+        "west"
+      ],
+      "pairedBase": [
+        "coat",
+        "west"
+      ],
+      "pairedCandidate": [
+        "coat",
+        "west"
+      ]
+    },
+    {
+      "game": "suvehnux.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "sliver of light",
+        "under",
+        "door",
+        "darkness",
+        "shelf",
+        "walls",
+        "brass cage",
+        "scroll"
+      ],
+      "initialCandidate": [
+        "vault",
+        "golden key",
+        "black",
+        "dark",
+        "sliver of light",
+        "door",
+        "shelf",
+        "walls",
+        "brass cage",
+        "scroll"
+      ],
+      "pairedBase": [
+        "sliver of light",
+        "under",
+        "door",
+        "darkness",
+        "shelf",
+        "walls",
+        "brass cage",
+        "scroll"
+      ],
+      "pairedCandidate": [
+        "sliver of light",
+        "under",
+        "door",
+        "darkness",
+        "shelf",
+        "walls",
+        "brass cage",
+        "scroll"
+      ]
+    },
+    {
+      "game": "terror_tabby.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "Fresh same-driver/seed/immutable-source paired rerun converged across all6fields",
+      "initialBase": [
+        "drawers",
+        "floor",
+        "mattress",
+        "south",
+        "east",
+        "bathroom",
+        "tabby cat"
+      ],
+      "initialCandidate": [
+        "mattress",
+        "south",
+        "east",
+        "bathroom",
+        "tabby cat"
+      ],
+      "pairedBase": [
+        "drawers",
+        "floor",
+        "mattress",
+        "south",
+        "east",
+        "bathroom",
+        "tabby cat"
+      ],
+      "pairedCandidate": [
+        "drawers",
+        "floor",
+        "mattress",
+        "south",
+        "east",
+        "bathroom",
+        "tabby cat"
+      ]
+    }
+  ],
+  "noPrompt": [
+    "BeingSteve.zblorb.js",
+    "BlueLacuna.gblorb.js",
+    "bookvol.z5.js",
+    "Borderzo.z5.js",
+    "chico.z5.js",
+    "stiffmst.z5.js",
+    "vgame.z8.js"
+  ],
+  "limits": "Seeded startup/LOOK/travel/inventory snapshot comparison only, not full-game/all26 semantic completion. Seven matching no-prompt gaps; Glulx boot-only. Published earlier at operator explicit direction; this is subsequent classification pending non-author review."
+}

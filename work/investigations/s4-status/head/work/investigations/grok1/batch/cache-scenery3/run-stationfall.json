@@ -1,0 +1,1761 @@
+{
+ "scenery @8:look#0": {
+  "tag": "scenery",
+  "id": 46,
+  "name": "SB radio",
+  "step": 8,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   10,
+   12,
+   24
+  ],
+  "after": [
+   10,
+   12,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    46,
+    19,
+    0,
+    52765
+   ],
+   [
+    46,
+    10,
+    1,
+    52787
+   ],
+   [
+    46,
+    19,
+    0,
+    52765
+   ],
+   [
+    46,
+    10,
+    1,
+    52787
+   ],
+   [
+    46,
+    19,
+    0,
+    52765
+   ],
+   [
+    46,
+    10,
+    1,
+    52787
+   ],
+   [
+    46,
+    25,
+    0,
+    52565
+   ]
+  ],
+  "nOps": 71,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:25.773Z"
+ },
+ "scenery @8:examine sb radio#1": {
+  "tag": "scenery",
+  "id": 46,
+  "name": "SB radio",
+  "step": 8,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine sb radio",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   12,
+   24
+  ],
+  "after": [
+   10,
+   12,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    46,
+    19,
+    0,
+    32021
+   ],
+   [
+    46,
+    31,
+    0,
+    24242
+   ],
+   [
+    46,
+    31,
+    0,
+    40561
+   ],
+   [
+    46,
+    17,
+    0,
+    40588
+   ],
+   [
+    46,
+    27,
+    0,
+    40600
+   ],
+   [
+    46,
+    25,
+    0,
+    40639
+   ],
+   [
+    46,
+    24,
+    1,
+    40675
+   ],
+   [
+    46,
+    7,
+    0,
+    22149
+   ],
+   [
+    46,
+    26,
+    0,
+    40690
+   ]
+  ],
+  "nOps": 34,
+  "text": "The radio seems to be damaged, because the microphone is missing. It looks like the SB radio is off.\n \n> ",
+  "ts": "2026-10-24T15:52:26.346Z"
+ },
+ "scenery @8:look#2": {
+  "tag": "scenery",
+  "id": 50,
+  "name": "pilot seat",
+  "step": 8,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "after": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    50,
+    19,
+    0,
+    52765
+   ],
+   [
+    50,
+    10,
+    1,
+    52787
+   ],
+   [
+    50,
+    19,
+    0,
+    52765
+   ],
+   [
+    50,
+    10,
+    1,
+    52787
+   ],
+   [
+    50,
+    19,
+    0,
+    52765
+   ],
+   [
+    50,
+    10,
+    1,
+    52787
+   ],
+   [
+    50,
+    25,
+    1,
+    52565
+   ],
+   [
+    50,
+    19,
+    0,
+    52765
+   ],
+   [
+    50,
+    31,
+    0,
+    52221
+   ]
+  ],
+  "nOps": 73,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n   Floyd plays a quick game of paddleball, almost breaking his record of four hits.\n \n> ",
+  "ts": "2026-10-24T15:52:26.933Z"
+ },
+ "scenery @8:examine pilot seat#3": {
+  "tag": "scenery",
+  "id": 50,
+  "name": "pilot seat",
+  "step": 8,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine pilot seat",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "after": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    50,
+    19,
+    0,
+    32021
+   ],
+   [
+    50,
+    31,
+    0,
+    24242
+   ],
+   [
+    50,
+    31,
+    0,
+    40543
+   ],
+   [
+    50,
+    17,
+    0,
+    40579
+   ],
+   [
+    50,
+    27,
+    0,
+    40589
+   ],
+   [
+    50,
+    25,
+    1,
+    40622
+   ],
+   [
+    50,
+    29,
+    1,
+    40622
+   ],
+   [
+    50,
+    24,
+    0,
+    40659
+   ],
+   [
+    50,
+    22,
+    0,
+    40707
+   ],
+   [
+    50,
+    7,
+    0,
+    40719
+   ],
+   [
+    50,
+    7,
+    0,
+    22139
+   ]
+  ],
+  "nOps": 39,
+  "text": "There's nothing unusual about the pilot seat.\n   Floyd produces a crayon from one of his compartments and scrawls his name on the wall.\n \n> ",
+  "ts": "2026-10-24T15:52:27.514Z"
+ },
+ "scenery @8:look#4": {
+  "tag": "scenery",
+  "id": 90,
+  "name": "copilot seat",
+  "step": 8,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "after": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    90,
+    19,
+    0,
+    52765
+   ],
+   [
+    90,
+    10,
+    1,
+    52787
+   ],
+   [
+    90,
+    19,
+    0,
+    52765
+   ],
+   [
+    90,
+    10,
+    1,
+    52787
+   ],
+   [
+    90,
+    19,
+    0,
+    52765
+   ],
+   [
+    90,
+    10,
+    1,
+    52787
+   ],
+   [
+    90,
+    25,
+    1,
+    52565
+   ],
+   [
+    90,
+    19,
+    0,
+    52765
+   ],
+   [
+    90,
+    31,
+    0,
+    52221
+   ]
+  ],
+  "nOps": 71,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:28.092Z"
+ },
+ "scenery @8:examine copilot seat#5": {
+  "tag": "scenery",
+  "id": 90,
+  "name": "copilot seat",
+  "step": 8,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine copilot seat",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "after": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    90,
+    19,
+    0,
+    32021
+   ],
+   [
+    90,
+    31,
+    0,
+    24242
+   ],
+   [
+    90,
+    31,
+    0,
+    40543
+   ],
+   [
+    90,
+    17,
+    0,
+    40579
+   ],
+   [
+    90,
+    27,
+    0,
+    40589
+   ],
+   [
+    90,
+    25,
+    1,
+    40622
+   ],
+   [
+    90,
+    29,
+    1,
+    40622
+   ],
+   [
+    90,
+    24,
+    0,
+    40659
+   ],
+   [
+    90,
+    22,
+    0,
+    40696
+   ],
+   [
+    90,
+    7,
+    0,
+    40708
+   ],
+   [
+    90,
+    7,
+    0,
+    22139
+   ]
+  ],
+  "nOps": 36,
+  "text": "There's nothing noteworthy about the copilot seat.\n \n> ",
+  "ts": "2026-10-24T15:52:28.662Z"
+ },
+ "scenery @8:look#6": {
+  "tag": "scenery",
+  "id": 1,
+  "name": "chronometer",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   20,
+   21,
+   23
+  ],
+  "after": [
+   20,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 218,
+  "here": 230,
+  "opsOnId": [
+   [
+    1,
+    21,
+    1,
+    23164
+   ]
+  ],
+  "nOps": 71,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:29.240Z"
+ },
+ "scenery @8:examine chronometer#7": {
+  "tag": "scenery",
+  "id": 1,
+  "name": "chronometer",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "examine chronometer",
+  "verdict": "NOTEST",
+  "before": [
+   20,
+   21,
+   23
+  ],
+  "after": [
+   20,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 218,
+  "here": 230,
+  "opsOnId": [
+   [
+    1,
+    19,
+    0,
+    32021
+   ],
+   [
+    1,
+    31,
+    0,
+    24242
+   ],
+   [
+    1,
+    21,
+    1,
+    48271
+   ],
+   [
+    1,
+    21,
+    1,
+    23164
+   ]
+  ],
+  "nOps": 28,
+  "text": "It is a standard wrist chronometer with a digital display. Current Galactic Standard Time (adjusted to your local day-cycle) is 4694. The back is engraved with the message \"Good luck in the Patrol! Love, Mom and Dad.\"\n \n> ",
+  "ts": "2026-10-24T15:52:29.907Z"
+ },
+ "scenery @8:look#8": {
+  "tag": "scenery",
+  "id": 26,
+  "name": "Floyd",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   7,
+   14,
+   15,
+   16,
+   18,
+   25,
+   26,
+   31
+  ],
+  "after": [
+   7,
+   14,
+   15,
+   16,
+   18,
+   25,
+   26,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    26,
+    19,
+    0,
+    52765
+   ],
+   [
+    26,
+    10,
+    0,
+    52787
+   ],
+   [
+    26,
+    18,
+    1,
+    52004
+   ],
+   [
+    26,
+    19,
+    0,
+    52765
+   ],
+   [
+    26,
+    10,
+    0,
+    52787
+   ],
+   [
+    26,
+    18,
+    1,
+    68371
+   ],
+   [
+    26,
+    26,
+    1,
+    68713
+   ],
+   [
+    26,
+    25,
+    1,
+    52093
+   ],
+   [
+    26,
+    31,
+    1,
+    52221
+   ],
+   [
+    26,
+    19,
+    0,
+    52765
+   ],
+   [
+    26,
+    10,
+    0,
+    52787
+   ],
+   [
+    26,
+    25,
+    1,
+    52565
+   ],
+   [
+    26,
+    19,
+    0,
+    52765
+   ],
+   [
+    26,
+    18,
+    1,
+    32702
+   ],
+   [
+    26,
+    19,
+    0,
+    53583
+   ],
+   [
+    26,
+    26,
+    1,
+    32947
+   ]
+  ],
+  "nOps": 71,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:30.475Z"
+ },
+ "scenery @8:examine floyd#9": {
+  "tag": "scenery",
+  "id": 26,
+  "name": "Floyd",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "examine floyd",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   14,
+   15,
+   16,
+   18,
+   25,
+   26,
+   31
+  ],
+  "after": [
+   7,
+   14,
+   15,
+   16,
+   18,
+   25,
+   26,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 230,
+  "here": 230,
+  "opsOnId": [
+   [
+    26,
+    19,
+    0,
+    32021
+   ],
+   [
+    26,
+    31,
+    1,
+    24242
+   ],
+   [
+    26,
+    18,
+    1,
+    66017
+   ],
+   [
+    26,
+    18,
+    1,
+    68371
+   ],
+   [
+    26,
+    26,
+    1,
+    68713
+   ],
+   [
+    26,
+    18,
+    1,
+    32702
+   ],
+   [
+    26,
+    19,
+    0,
+    53583
+   ],
+   [
+    26,
+    26,
+    1,
+    32947
+   ],
+   [
+    26,
+    18,
+    1,
+    33872
+   ],
+   [
+    26,
+    23,
+    0,
+    33872
+   ]
+  ],
+  "nOps": 32,
+  "text": "Floyd is a multi-purpose robot with slightly-crossed eyes and a lopsided grin.\n   Floyd wanders restlessly around the room.\n \n> ",
+  "ts": "2026-10-24T15:52:31.043Z"
+ },
+ "scenery @8:look#10": {
+  "tag": "scenery",
+  "id": 81,
+  "name": "ID card",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   12,
+   16,
+   22,
+   23
+  ],
+  "after": [
+   12,
+   16,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 229,
+  "here": 230,
+  "opsOnId": [],
+  "nOps": 71,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:31.617Z"
+ },
+ "scenery @8:examine id card#11": {
+  "tag": "scenery",
+  "id": 81,
+  "name": "ID card",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "examine id card",
+  "verdict": "NOTEST",
+  "before": [
+   12,
+   16,
+   22,
+   23
+  ],
+  "after": [
+   12,
+   16,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 229,
+  "here": 230,
+  "opsOnId": [
+   [
+    81,
+    19,
+    0,
+    32021
+   ],
+   [
+    81,
+    31,
+    0,
+    24242
+   ],
+   [
+    81,
+    31,
+    0,
+    40543
+   ],
+   [
+    81,
+    17,
+    0,
+    40579
+   ],
+   [
+    81,
+    27,
+    0,
+    40589
+   ],
+   [
+    81,
+    25,
+    0,
+    40622
+   ],
+   [
+    81,
+    24,
+    0,
+    40659
+   ],
+   [
+    81,
+    22,
+    1,
+    40696
+   ],
+   [
+    81,
+    31,
+    0,
+    24242
+   ],
+   [
+    81,
+    22,
+    1,
+    45671
+   ]
+  ],
+  "nOps": 36,
+  "text": "\"STELLAR PATROL\nPaperwork Task Force\nID Number: 1451-352-716\"\n \n> ",
+  "ts": "2026-10-24T15:52:32.188Z"
+ },
+ "scenery @8:look#12": {
+  "tag": "scenery",
+  "id": 98,
+  "name": "Class Three Spacecraft Activation Form HB-56-V",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 218,
+  "here": 230,
+  "opsOnId": [],
+  "nOps": 73,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:32.778Z"
+ },
+ "scenery @8:examine class three spacecraft activation form hb-56-v#13": {
+  "tag": "scenery",
+  "id": 98,
+  "name": "Class Three Spacecraft Activation Form HB-56-V",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "examine class three spacecraft activation form hb-56-v",
+  "verdict": "NOTEST",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 218,
+  "here": 230,
+  "opsOnId": [
+   [
+    98,
+    19,
+    0,
+    32021
+   ],
+   [
+    98,
+    31,
+    0,
+    24242
+   ]
+  ],
+  "nOps": 27,
+  "text": "[This form can be found in your STATIONFALL package.]\n \n> ",
+  "ts": "2026-10-24T15:52:33.350Z"
+ },
+ "scenery @8:look#14": {
+  "tag": "scenery",
+  "id": 132,
+  "name": "blob of orange goo",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [],
+  "after": [],
+  "set": [],
+  "cleared": [],
+  "parent": 189,
+  "here": 230,
+  "opsOnId": [],
+  "nOps": 71,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:33.930Z"
+ },
+ "scenery @8:examine blob of orange goo#15": {
+  "tag": "scenery",
+  "id": 132,
+  "name": "blob of orange goo",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "examine blob of orange goo",
+  "verdict": "NOTEST",
+  "before": [],
+  "after": [],
+  "set": [],
+  "cleared": [],
+  "parent": 189,
+  "here": 230,
+  "opsOnId": [],
+  "nOps": 45,
+  "text": "You can't see any orange goo here!\n \n> ",
+  "ts": "2026-10-24T15:52:34.514Z"
+ },
+ "scenery @8:look#16": {
+  "tag": "scenery",
+  "id": 160,
+  "name": "Thermos bottle",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   23,
+   25
+  ],
+  "after": [
+   14,
+   23,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 189,
+  "here": 230,
+  "opsOnId": [],
+  "nOps": 71,
+  "text": "Spacetruck\n   This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo.\n   Floyd is here, also looking around the room.\n   You can see a survival kit here.\n \n> ",
+  "ts": "2026-10-24T15:52:35.091Z"
+ },
+ "scenery @8:examine thermos bottle#17": {
+  "tag": "scenery",
+  "id": 160,
+  "name": "Thermos bottle",
+  "step": 8,
+  "expect": 0,
+  "bit": 10,
+  "cmd": "examine thermos bottle",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   23,
+   25
+  ],
+  "after": [
+   14,
+   23,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 189,
+  "here": 230,
+  "opsOnId": [],
+  "nOps": 45,
+  "text": "You can't see any Thermos bottle here!\n \n> ",
+  "ts": "2026-10-24T15:52:35.663Z"
+ },
+ "scenery @26:look#18": {
+  "tag": "scenery",
+  "id": 55,
+  "name": "Plato's volume of poetry",
+  "step": 26,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   10,
+   22
+  ],
+  "after": [
+   7,
+   10,
+   22
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 247,
+  "here": 37,
+  "opsOnId": [],
+  "nOps": 41,
+  "text": "Engineering Office\n   This is a small office associated with the lab to the south.\n   Floyd is here, also looking around the room.\n   You can see a diary here.\n \n> ",
+  "ts": "2026-10-24T15:52:49.411Z"
+ },
+ "scenery @26:examine plato's volume of poetry#19": {
+  "tag": "scenery",
+  "id": 55,
+  "name": "Plato's volume of poetry",
+  "step": 26,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine plato's volume of poetry",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   10,
+   22
+  ],
+  "after": [
+   7,
+   10,
+   22
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 247,
+  "here": 37,
+  "opsOnId": [],
+  "nOps": 38,
+  "text": "You can't see any Plato's volume of poetry here!\n \n> ",
+  "ts": "2026-10-24T15:52:49.987Z"
+ },
+ "scenery @26:look#20": {
+  "tag": "scenery",
+  "id": 247,
+  "name": "Plato",
+  "step": 26,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   10,
+   14,
+   15,
+   16,
+   25,
+   31
+  ],
+  "after": [
+   7,
+   10,
+   14,
+   15,
+   16,
+   25,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 40,
+  "here": 37,
+  "opsOnId": [],
+  "nOps": 41,
+  "text": "Engineering Office\n   This is a small office associated with the lab to the south.\n   Floyd is here, also looking around the room.\n   You can see a diary here.\n \n> ",
+  "ts": "2026-10-24T15:52:50.561Z"
+ },
+ "scenery @26:examine plato#21": {
+  "tag": "scenery",
+  "id": 247,
+  "name": "Plato",
+  "step": 26,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine plato",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   10,
+   14,
+   15,
+   16,
+   25,
+   31
+  ],
+  "after": [
+   7,
+   10,
+   14,
+   15,
+   16,
+   25,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 40,
+  "here": 37,
+  "opsOnId": [],
+  "nOps": 38,
+  "text": "You can't see Plato here!\n \n> ",
+  "ts": "2026-10-24T15:52:51.139Z"
+ },
+ "scenery @63:look#22": {
+  "tag": "scenery",
+  "id": 96,
+  "name": "pulpit",
+  "step": 63,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   10,
+   14,
+   25
+  ],
+  "after": [
+   10,
+   14,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 100,
+  "opsOnId": [
+   [
+    96,
+    19,
+    0,
+    52765
+   ],
+   [
+    96,
+    10,
+    1,
+    52787
+   ],
+   [
+    96,
+    19,
+    0,
+    52765
+   ],
+   [
+    96,
+    10,
+    1,
+    52787
+   ],
+   [
+    96,
+    19,
+    0,
+    52765
+   ],
+   [
+    96,
+    10,
+    1,
+    52787
+   ],
+   [
+    96,
+    25,
+    1,
+    52565
+   ],
+   [
+    96,
+    19,
+    0,
+    52765
+   ],
+   [
+    96,
+    31,
+    0,
+    52232
+   ],
+   [
+    96,
+    25,
+    1,
+    52232
+   ],
+   [
+    96,
+    15,
+    0,
+    52232
+   ],
+   [
+    96,
+    13,
+    0,
+    52232
+   ]
+  ],
+  "nOps": 88,
+  "text": "Chapel\n   This is a modest, nondenominational chapel. Hanging high above the beautiful wooden pulpit are the two universal symbols of every major galactic religion: an eternal flame and a seven-pointed star. The flame flickers in the air currents. A doorway occupies the center of the east wall.\n   The star is blinking.\n   Plato and Floyd are both here.\n   You can see a puce nanofilm spool here.\n \n> ",
+  "ts": "2026-10-24T15:53:12.913Z"
+ },
+ "scenery @63:examine pulpit#23": {
+  "tag": "scenery",
+  "id": 96,
+  "name": "pulpit",
+  "step": 63,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine pulpit",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   14,
+   25
+  ],
+  "after": [
+   10,
+   14,
+   18,
+   25
+  ],
+  "set": [
+   18
+  ],
+  "cleared": [],
+  "parent": 100,
+  "here": 100,
+  "opsOnId": [
+   [
+    96,
+    19,
+    0,
+    32021
+   ],
+   [
+    96,
+    15,
+    0,
+    31166
+   ],
+   [
+    96,
+    13,
+    0,
+    31166
+   ],
+   [
+    96,
+    31,
+    0,
+    24242
+   ],
+   [
+    96,
+    18,
+    0,
+    82087
+   ]
+  ],
+  "nOps": 47,
+  "text": "You discover that the pulpit seems openable!\n   Floyd gives Plato a friendly hug.\n \n> ",
+  "ts": "2026-10-24T15:53:13.490Z"
+ },
+ "scenery @63:look#24": {
+  "tag": "scenery",
+  "id": 138,
+  "name": "seven-pointed star",
+  "step": 63,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   10,
+   14,
+   16,
+   23,
+   25
+  ],
+  "after": [
+   10,
+   14,
+   16,
+   23,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 100,
+  "opsOnId": [
+   [
+    138,
+    18,
+    0,
+    81263
+   ],
+   [
+    138,
+    18,
+    0,
+    81284
+   ],
+   [
+    138,
+    18,
+    0,
+    81376
+   ],
+   [
+    138,
+    19,
+    0,
+    52765
+   ],
+   [
+    138,
+    10,
+    1,
+    52787
+   ],
+   [
+    138,
+    19,
+    0,
+    52765
+   ],
+   [
+    138,
+    10,
+    1,
+    52787
+   ],
+   [
+    138,
+    19,
+    0,
+    52765
+   ],
+   [
+    138,
+    10,
+    1,
+    52787
+   ],
+   [
+    138,
+    25,
+    1,
+    52565
+   ],
+   [
+    138,
+    19,
+    0,
+    52765
+   ],
+   [
+    138,
+    31,
+    0,
+    52232
+   ],
+   [
+    138,
+    25,
+    1,
+    52232
+   ],
+   [
+    138,
+    15,
+    0,
+    52232
+   ],
+   [
+    138,
+    13,
+    0,
+    52232
+   ]
+  ],
+  "nOps": 88,
+  "text": "Chapel\n   This is a modest, nondenominational chapel. Hanging high above the beautiful wooden pulpit are the two universal symbols of every major galactic religion: an eternal flame and a seven-pointed star. The flame flickers in the air currents. A doorway occupies the center of the east wall.\n   The star is blinking.\n   Plato and Floyd are both here.\n   You can see a puce nanofilm spool here.\n \n> ",
+  "ts": "2026-10-24T15:53:14.086Z"
+ },
+ "scenery @63:examine seven-pointed star#25": {
+  "tag": "scenery",
+  "id": 138,
+  "name": "seven-pointed star",
+  "step": 63,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine seven-pointed star",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   14,
+   16,
+   23,
+   25
+  ],
+  "after": [
+   10,
+   14,
+   16,
+   23,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 100,
+  "opsOnId": [
+   [
+    138,
+    19,
+    0,
+    32021
+   ],
+   [
+    138,
+    15,
+    0,
+    31166
+   ],
+   [
+    138,
+    13,
+    0,
+    31166
+   ],
+   [
+    138,
+    31,
+    0,
+    24242
+   ],
+   [
+    138,
+    16,
+    1,
+    81567
+   ],
+   [
+    138,
+    31,
+    0,
+    24242
+   ],
+   [
+    138,
+    16,
+    1,
+    81437
+   ]
+  ],
+  "nOps": 47,
+  "text": "It's blinking with a gentle, rhythmic light. The star is above you, beyond your reach.\n   Plato reaches the last page of his book. \"Heavens! It appears to be time for another jaunt to the library. Would you care to accompany me, my boisterous friend?\"\n   \"Oh boy yessiree!\" says Floyd, bounding off after Plato. \"I hope they have copies of my favorite comic, THE ADVENTURES OF LANE MASTODON!\"\n \n> ",
+  "ts": "2026-10-24T15:53:14.660Z"
+ },
+ "scenery @63:look#26": {
+  "tag": "scenery",
+  "id": 205,
+  "name": "eternal flame",
+  "step": 63,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   10,
+   12,
+   24,
+   26,
+   30
+  ],
+  "after": [
+   10,
+   12,
+   24,
+   26,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 100,
+  "opsOnId": [
+   [
+    205,
+    30,
+    1,
+    81284
+   ],
+   [
+    205,
+    19,
+    0,
+    52765
+   ],
+   [
+    205,
+    10,
+    1,
+    52787
+   ],
+   [
+    205,
+    19,
+    0,
+    52765
+   ],
+   [
+    205,
+    10,
+    1,
+    52787
+   ],
+   [
+    205,
+    19,
+    0,
+    52765
+   ],
+   [
+    205,
+    10,
+    1,
+    52787
+   ],
+   [
+    205,
+    25,
+    0,
+    52565
+   ]
+  ],
+  "nOps": 62,
+  "text": "Chapel\n   This is a modest, nondenominational chapel. Hanging high above the beautiful wooden pulpit are the two universal symbols of every major galactic religion: an eternal flame and a seven-pointed star. The flame flickers in the air currents. A doorway occupies the center of the east wall.\n   The star is blinking.\n   You can see a puce nanofilm spool here.\n \n> ",
+  "ts": "2026-10-24T15:53:15.230Z"
+ },
+ "scenery @63:examine eternal flame#27": {
+  "tag": "scenery",
+  "id": 205,
+  "name": "eternal flame",
+  "step": 63,
+  "expect": 1,
+  "bit": 10,
+  "cmd": "examine eternal flame",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   12,
+   24,
+   26,
+   30
+  ],
+  "after": [
+   10,
+   12,
+   24,
+   26,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 100,
+  "opsOnId": [
+   [
+    205,
+    19,
+    0,
+    32021
+   ],
+   [
+    205,
+    31,
+    0,
+    24242
+   ],
+   [
+    205,
+    30,
+    1,
+    81822
+   ]
+  ],
+  "nOps": 38,
+  "text": "The eternal flame burns high above the floor of the chapel. It looks like a reproduction of the eternal flame designed by the 108th century artist, Ernie DaCosta, for the Sierra Vista Monastery on Bulbus VII.\n \n> ",
+  "ts": "2026-10-24T15:53:15.807Z"
+ }
+}

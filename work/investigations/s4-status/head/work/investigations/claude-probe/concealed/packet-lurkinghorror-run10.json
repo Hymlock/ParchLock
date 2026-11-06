@@ -1,0 +1,159 @@
+{
+  "story": "TheLurkingHorror.z3.js",
+  "digest": "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af",
+  "attribute": "concealed",
+  "bit": 20,
+  "rawFiles": [
+    {
+      "file": "lurking-native-run10.json",
+      "sha256": "a0ac4ed1ef4ca7a8113cec6cc0b82d476209a29dbb9c8fb2f368987ec7a49615"
+    },
+    {
+      "file": "lurking-run10.config.json",
+      "sha256": "267158cb722a26256a5fddf559390e87dd73d74b4ce6cfa6bf39afc40d303649"
+    }
+  ],
+  "runner": "run-native-cycle.cjs (run-native.cjs plus: until-loop may hit on any cycle element, onHit commands inserted, rest of cycle replayed; ordinary commands, passive RAM reads, no VM/RNG/fact writes)",
+  "assetSha256": "5ccb6abc72c122479ec9b099fbf3b084f9c06b3a8b64ed09d398db3f7425c5c4",
+  "readerSha256": "6092d570064e1263d550306ad9e0d5e16f932ea7968f80634da1267e261bd01a",
+  "sourceStable": false,
+  "urchinMechanics": "frob.zil:346 I-URCHIN runs every 10 turns (queued in GO, misc.zil:319). If the urchin is in the player's room: 80% stays (lit: 'looks around nervously ... decides against it'). Otherwise he moves to a random adjacent non-OUTSIDE room; if that room is the player's lit room he 'beats a hasty retreat' and does not move. So he never walks into a lit player; the player must walk into his room. Not turn-count, item or score gated; SHOW HAND needs HAND PERSON (animated). Fix: cycle his haunt rooms (Second Floor, Computer Center, Basement, Aero Basement, Stairway, Aero Lobby, Infinite Corridor) with EXAMINE BOLT CUTTER and SHOW HAND TO URCHIN after each move.",
+  "routeFixes": [
+    "TURN ON PC / LOGIN 872325412 / PASSWORD UHLERSOTH before CLICK ON EDIT",
+    "urchin cycle loop as above",
+    "DROP CUTTER / DROP FLASK / DROP AXE separately (combined drop failed when the cutter was absent, leaving the axe, which blocks NW)"
+  ],
+  "positives": [
+    {
+      "id": 45,
+      "name": "bolt cutter",
+      "owner": "frob.zil:437 BOLT-CUTTER (IN URCHIN), cleared frob.zil:269",
+      "hidden": {
+        "row": 205,
+        "command": "examine bolt cutter",
+        "room": "Basement",
+        "bit20After": {
+          "45": true,
+          "100": false,
+          "170": true,
+          "231": true
+        },
+        "reply": ">examine bolt cutter You can't see any bolt cutter here. >"
+      },
+      "transition": {
+        "row": 206,
+        "command": "SHOW HAND TO URCHIN",
+        "room": "Basement",
+        "bit20After": {
+          "45": false,
+          "100": false,
+          "170": true,
+          "231": true
+        },
+        "reply": ">SHOW HAND TO URCHIN The urchin sees the hand twitching. \"I heard what happens around here! I'm not gettin' fed to a monster!\" He lets loose a scream of fear and zooms away. Something drops from beneath his parka as he departs. He slows for a moment, decides not to retrieve it, and disappears into the distance. >"
+      },
+      "visible": {
+        "row": 207,
+        "command": "examine bolt cutter",
+        "room": "Basement",
+        "bit20After": {
+          "45": false,
+          "100": false,
+          "170": true,
+          "231": true
+        },
+        "reply": ">examine bolt cutter This is a heavy duty bolt or chain cutter, standard equipment for local bicycle thieves. It will defeat any but the heaviest bicycle chains. >"
+      },
+      "take": {
+        "row": 208,
+        "command": "GET CUTTER",
+        "room": "Basement",
+        "bit20After": {
+          "45": false,
+          "100": false,
+          "170": true,
+          "231": true
+        },
+        "reply": ">GET CUTTER Taken. >"
+      }
+    },
+    {
+      "id": 231,
+      "name": "reinforcing rod",
+      "owner": "cs.zil:3020 ROD (LOCAL-GLOBALS), cleared cs.zil:3272",
+      "hidden": {
+        "row": 243,
+        "command": "examine rod",
+        "room": "Steam Tunnel",
+        "bit20After": {
+          "45": false,
+          "100": false,
+          "170": true,
+          "231": true
+        },
+        "reply": ">examine rod You can't see any rod here. >"
+      },
+      "transition": {
+        "row": 245,
+        "command": "REMOVE NEW BRICK WITH CROWBAR",
+        "room": "Steam Tunnel",
+        "bit20After": {
+          "45": false,
+          "100": false,
+          "170": true,
+          "231": false
+        },
+        "reply": ">REMOVE NEW BRICK WITH CROWBAR The wall grudgingly yields to your efforts. A brick, less well mortared than its fellows, drops to the floor on the other side, making a hole through the wall. You can see a rusty steel reinforcing rod in the hole. >"
+      },
+      "visible": {
+        "row": 246,
+        "command": "examine rod",
+        "room": "Steam Tunnel",
+        "bit20After": {
+          "45": false,
+          "100": false,
+          "170": true,
+          "231": false
+        },
+        "reply": ">examine rod It's rusty, obviously didn't help the wall all that much, and runs up and down through the hole you have made. >"
+      }
+    },
+    {
+      "id": 170,
+      "name": "urchins",
+      "owner": "frob.zil:122 URCHINS, cleared frob.zil:487",
+      "transition": {
+        "row": 291,
+        "command": "CUT GROWTH WITH CUTTER",
+        "room": "Large Chamber",
+        "bit20After": {
+          "45": false,
+          "100": false,
+          "170": false,
+          "231": false
+        },
+        "reply": ">CUT GROWTH WITH CUTTER You strain and push the two handles of the bolt cutter together with all your strength. At first it looks like nothing will happen, but then, with a loud click, the jaws cut the wire! The wire, as though under tension, rapidly begins to curl up, disappearing down the tunnel and away. Urchins burst forth from the slots. The effect on the urchins is electric (perhaps literally). They twitch, jerk spasmodically, and fall to the ground almost in unison. They have lost all interest in you. >"
+      },
+      "note": "bonus 1->0; no EXAMINE after"
+    }
+  ],
+  "negative": {
+    "id": 100,
+    "name": "urchin",
+    "row": {
+      "row": 204,
+      "command": "D",
+      "room": "Basement",
+      "bit20After": {
+        "45": true,
+        "100": false,
+        "170": true,
+        "231": true
+      },
+      "reply": ">D Basement Slouching nearby is an urchin. The urchin looks around nervously, obviously thinking of flight, but decides against it. >"
+    },
+    "note": "named in the Basement description and acted on by SHOW HAND; bit 20 = 0 in every row"
+  },
+  "verdict": "PASS",
+  "status": "2 qualifying positives (bolt cutter, rod) + bonus urchins transition + 1 visible negative"
+}

@@ -1,0 +1,11 @@
+{"key":"suspW","tag":"r45sus3","bit":8,"tests":[{"id":45,"name":"groove","step":12,"cmd":"whiz,look on groove","expect":1,"bit":11},
+{"id":45,"name":"groove","step":12,"cmd":"whiz,look in groove","expect":1,"bit":8},
+{"id":45,"name":"groove","step":12,"cmd":"whiz,close groove","expect":1,"bit":8},
+{"id":9,"name":"front panel","step":12,"cmd":"iris,look on front panel","expect":1,"bit":11},
+{"id":74,"name":"first socket","step":12,"cmd":"iris,look in first socket","expect":1,"bit":8},
+{"id":74,"name":"first socket","step":12,"cmd":"iris,look on first socket","expect":0,"bit":11},
+{"id":13,"name":"machine","step":12,"cmd":"iris,look in machine","expect":0,"bit":8},
+{"id":13,"name":"machine","step":12,"cmd":"iris,close machine","expect":0,"bit":8},
+{"id":58,"name":"vehicle","step":12,"cmd":"poet,go to hallway end","expect":1,"bit":28},
+{"id":58,"name":"vehicle","step":27,"cmd":"poet,get in vehicle","expect":1,"bit":28},
+{"id":58,"name":"vehicle","step":27,"cmd":"poet,get out of vehicle","expect":1,"bit":28}]}

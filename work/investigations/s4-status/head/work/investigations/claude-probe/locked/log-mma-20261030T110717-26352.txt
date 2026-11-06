@@ -1,0 +1,4 @@
+mma e3mm @24 open old great hall #136 TRUE "Too bad, but it is locked.\n \n> "
+mma e3mm @24 unlock great hall #136 TRUE "(You can't unlock the old great hall.)\n \n> "
+mma e3mm @24 open gate #52 TRUE "It seems to be locked.\n \n\"We can talk more later, Codex,\" says Tamara, taking yo"
+mma e3mm @26 open front door #120 FALSE "(The front door is already open!)\n \n> "

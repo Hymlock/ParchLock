@@ -1,0 +1,201 @@
+{
+  "story": "Sorcerer.z3.js",
+  "sha256": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8",
+  "property": 17,
+  "holder": 55,
+  "litBit": 11,
+  "at": "2026-10-24T05:03:32.707Z",
+  "log": [
+    {
+      "cmd": "wait",
+      "roomIdAfter": 17,
+      "reply": [
+        "Time passes...",
+        "The hellhound reaches you and tears you apart with its powerful teeth.",
+        "...and a moment later you wake up in a cold sweat and realize you've been dreaming.",
+        "SORCERER",
+        "Infocom interactive fiction - a fantasy story",
+        "Copyright (c) 1984 by Infocom, Inc. All rights reserved.",
+        "SORCERER is a trademark of Infocom, Inc.",
+        "Release 15 / Serial number 851108",
+        "Your frotz spell seems to have worn off during the night, and it is now pitch black.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "get up",
+      "roomIdAfter": 17,
+      "reply": [
+        "You are now on your feet.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 17,
+        "roomName": "Your Quarters",
+        "lit": false,
+        "prop": {
+          "num": 17,
+          "sz": 2,
+          "dataAddr": 3467
+        },
+        "localGlobals": [
+          {
+            "id": 158,
+            "name": "doorway",
+            "parent": 55,
+            "parentIsHolder": true
+          },
+          {
+            "id": 188,
+            "name": "bed",
+            "parent": 55,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "bed"
+        ]
+      }
+    },
+    {
+      "cmd": "examine bed",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine doorway",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine road",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 17,
+      "reply": [
+        "You can't go that way.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 17,
+        "roomName": "Your Quarters",
+        "lit": false,
+        "prop": {
+          "num": 17,
+          "sz": 2,
+          "dataAddr": 3467
+        },
+        "localGlobals": [
+          {
+            "id": 158,
+            "name": "doorway",
+            "parent": 55,
+            "parentIsHolder": true
+          },
+          {
+            "id": 188,
+            "name": "bed",
+            "parent": 55,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "bed"
+        ]
+      }
+    },
+    {
+      "cmd": "examine doorway",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine bed",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 17,
+      "reply": [
+        "You can't go that way.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 17,
+        "roomName": "Your Quarters",
+        "lit": false,
+        "prop": {
+          "num": 17,
+          "sz": 2,
+          "dataAddr": 3467
+        },
+        "localGlobals": [
+          {
+            "id": 158,
+            "name": "doorway",
+            "parent": 55,
+            "parentIsHolder": true
+          },
+          {
+            "id": 188,
+            "name": "bed",
+            "parent": 55,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "bed"
+        ]
+      }
+    },
+    {
+      "cmd": "examine road",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine opening",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine bed",
+      "roomIdAfter": 17,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    }
+  ]
+}

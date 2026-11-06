@@ -1,0 +1,176 @@
+{
+ "Planetfall.z3.js": {
+  "stage": "research only; no runtime facts",
+  "keys": {
+   "container": {
+    "flag": "CONTBIT",
+    "sourceBit": 24,
+    "sourceExact": true,
+    "status": "proven",
+    "ramCount": 17,
+    "sourcePositives": 17,
+    "samples": [
+     {
+      "id": 9,
+      "name": "laser",
+      "word": "laser",
+      "kind": "pos",
+      "disp": 0,
+      "ops": [],
+      "other": [],
+      "reply": "There doesn't seem to be any way to do that to this laser. |   | > "
+     },
+     {
+      "id": 37,
+      "name": "lab uniform",
+      "word": "logo",
+      "kind": "pos",
+      "disp": 0,
+      "ops": [],
+      "other": [],
+      "reply": "You discover a small piece of paper and a teleportation access card in the pocket of the uniform. |   | > "
+     },
+     {
+      "id": 55,
+      "name": "microfilm reader",
+      "word": "reader",
+      "kind": "pos",
+      "disp": 1,
+      "ops": [
+       "test_attr=true"
+      ],
+      "other": [
+       "test_attr:26",
+       "test_attr:11"
+      ],
+      "reply": "It's already open. |   | > "
+     },
+     {
+      "id": 62,
+      "name": "large metal cube",
+      "word": "cube",
+      "kind": "pos",
+      "disp": 0,
+      "ops": [],
+      "other": [],
+      "reply": "  A fused ninety-ohm bedistor |   | > "
+     },
+     {
+      "id": 80,
+      "name": "medicine bottle",
+      "word": "bottle",
+      "kind": "pos",
+      "disp": 1,
+      "ops": [
+       "test_attr=true"
+      ],
+      "other": [
+       "test_attr:26",
+       "test_attr:11",
+       "set_attr:11",
+       "test_attr:9"
+      ],
+      "reply": "Opened. |   | > "
+     },
+     {
+      "id": 110,
+      "name": "multiple purpose robot",
+      "word": "compar",
+      "kind": "pos",
+      "disp": 0,
+      "ops": [],
+      "other": [],
+      "reply": "In one of the robot's compartments you find and take a magnetic-striped card embossed \"Loowur Elavaatur Akses Kard.\" |   | > "
+     },
+     {
+      "id": 125,
+      "name": "glass flask",
+      "word": "flask",
+      "kind": "pos",
+      "disp": 1,
+      "ops": [
+       "test_attr=true"
+      ],
+      "other": [
+       "test_attr:26",
+       "test_attr:11"
+      ],
+      "reply": "It's already open. |   | > "
+     },
+     {
+      "id": 137,
+      "name": "cardboard box",
+      "word": "box",
+      "kind": "pos",
+      "disp": 1,
+      "ops": [
+       "test_attr=true"
+      ],
+      "other": [
+       "test_attr:26",
+       "test_attr:11"
+      ],
+      "reply": "The alien ambassador from the planet Blow'k-bibben-Gordo ambles toward you from down the corridor. He is munching on something resembling an enormous stalk of c"
+     },
+     {
+      "id": 1,
+      "name": "mobile man-eating plant",
+      "word": "triffi",
+      "kind": "neg",
+      "disp": 1,
+      "ops": [
+       "test_attr=false"
+      ],
+      "other": [
+       "test_attr:26"
+      ],
+      "reply": "The ambassador remarks that all humans look alike to him. |   | > "
+     },
+     {
+      "id": 2,
+      "name": "lurking fanged creature",
+      "word": "grue",
+      "kind": "neg",
+      "disp": 1,
+      "ops": [
+       "test_attr=false"
+      ],
+      "other": [
+       "test_attr:26"
+      ],
+      "reply": "The ambassador recites a plea for coexistence between your races. |   | > "
+     },
+     {
+      "id": 3,
+      "name": "hairy growling biped",
+      "word": "troll",
+      "kind": "neg",
+      "disp": 1,
+      "ops": [
+       "test_attr=false"
+      ],
+      "other": [
+       "test_attr:26"
+      ],
+      "reply": "The ambassador offers you a bit of celery. |   | > "
+     },
+     {
+      "id": 4,
+      "name": "rat-like, ant-like man-sized monster",
+      "word": "rat-a",
+      "kind": "neg",
+      "disp": 1,
+      "ops": [
+       "test_attr=false"
+      ],
+      "other": [
+       "test_attr:26"
+      ],
+      "reply": "The ambassador grunts a polite farewell, and disappears up the gangway, leaving a trail of dripping slime. |   | > "
+     }
+    ],
+    "reason": "4 native positives + 4 negative"
+   }
+  }
+ }
+}

@@ -1,0 +1,20 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index a2d3c91..851ed9a 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -325,7 +325,14 @@ var ModuleStatFactsClaude = {
+         // WEARBIT 25 (grok1 2026-10-17, zil-inv-hidden-ops @c3f1254 seed 4): 'wear gown' (step 3) tests 206:25 TRUE ("You are now wearing
+         // your gown."); 'wear toothbrush' (7) 31:25 FALSE and 'wear screwdriver' (7) 105:25 FALSE ("You can't wear the ..."). Whole module scanned
+         // (all 236 objects): the gown is the only 25 owner, so the rule-5 exception applies: source WEARBIT 25 exact 1/1 confirms.
+-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "container": 40, "supporter": 23, "wearable": 25 },
++        // ONBIT 45 = on (grok1 2026-10-17, g1-scan9.cjs, test_attr recorded only during the named command; generic V-LAMP-ON tests LIGHTBIT 35, then 45):
++        // route hg2 step 24 (Pub): 'turn on jukebox' tests jukebox 98:45 TRUE ("It is already on."); route hg7 step 86 (Bridge of the Heart of Gold):
++        // 'turn on eddie' tests Eddie 52:45 TRUE ("It is already on."). Negative: step 0 (Bedroom, dark) 'turn on light' -> LIGHT handler (globals.zil:201)
++        // tests Bedroom 150:45 FALSE, then FSETs it ("...The light is now on."). No item negative can reach the 45 test: 'turn on gown/pincer/console'
++        // stop at LIGHTBIT 35 FALSE ("You can't turn that on."), and the other LIGHTBIT items (Nutrimat, both drives) have their own LAMP-ON handlers.
++        // Source: ONBIT FLAGS items are exactly JUKEBOX (earth.zil:1780) and EDDIE (heart.zil:1034); the only FSET ,ONBIT is <FSET ,HERE ,ONBIT> (globals.zil:205).
++        // In-memory scan (232 objects, step 24): bit-45 carriers = jukebox 98 + Eddie 52 + rooms only (attrs.on is read only for items).
++        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "container": 40, "supporter": 23, "wearable": 25, "on": 45 },
+         "wornAttribute": 24,
+         // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
+         // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).

@@ -1,0 +1,1046 @@
+{
+ "story": "Sorcerer.z3.js",
+ "executableDigest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+ "proposalDigest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+ "digestMatch": true,
+ "fileSha256": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8",
+ "localScope": {
+  "property": 17,
+  "width": 1,
+  "holder": 55,
+  "roomLitAttribute": 11,
+  "invisible": 19,
+  "searchBit": 14,
+  "surfaceBit": 17,
+  "openBit": 15,
+  "transBit": 5
+ },
+ "sourceFlags": {
+  "INVISIBLE": {
+   "bit": 19,
+   "positives": 3,
+   "negatives": 227,
+   "tp": 3,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 11,
+   "positives": 34,
+   "negatives": 196,
+   "tp": 34,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  }
+ },
+ "summary": {
+  "R1": "Hallway (67)",
+  "R1obj": "heavy wooden door",
+  "R2": "Lobby (18)",
+  "R2obj": "road",
+  "extra": "Hallway 50 doorway positive; Your Quarters bed positive after FROTZ BOOK (room lit bit clear, lit by carried source)",
+  "dark": "Your Quarters (17): lit=false, before FROTZ \"examine bed\" => \"It's too dark to see!\"",
+  "status": "CONFIRMED",
+  "caveat": "Lobby/Cellar/Turret list stairs 177 whose parent is 31, not holder 55"
+ },
+ "holderChildren": [
+  {
+   "id": 66,
+   "name": "road",
+   "invisible": false
+  },
+  {
+   "id": 79,
+   "name": "lagoon",
+   "invisible": false
+  },
+  {
+   "id": 238,
+   "name": "ocean",
+   "invisible": false
+  },
+  {
+   "id": 89,
+   "name": "beach",
+   "invisible": false
+  },
+  {
+   "id": 164,
+   "name": "heavy door",
+   "invisible": false
+  },
+  {
+   "id": 209,
+   "name": "lower coal chute",
+   "invisible": false
+  },
+  {
+   "id": 120,
+   "name": "upper coal chute",
+   "invisible": false
+  },
+  {
+   "id": 69,
+   "name": "lumps of coal",
+   "invisible": false
+  },
+  {
+   "id": 54,
+   "name": "soot",
+   "invisible": false
+  },
+  {
+   "id": 51,
+   "name": "chimney",
+   "invisible": false
+  },
+  {
+   "id": 38,
+   "name": "stone hovel",
+   "invisible": false
+  },
+  {
+   "id": 244,
+   "name": "glass maze",
+   "invisible": false
+  },
+  {
+   "id": 190,
+   "name": "amusement park",
+   "invisible": false
+  },
+  {
+   "id": 216,
+   "name": "fort",
+   "invisible": false
+  },
+  {
+   "id": 113,
+   "name": "waterfall",
+   "invisible": false
+  },
+  {
+   "id": 101,
+   "name": "river bed",
+   "invisible": false
+  },
+  {
+   "id": 40,
+   "name": "river bank",
+   "invisible": false
+  },
+  {
+   "id": 229,
+   "name": "river",
+   "invisible": false
+  },
+  {
+   "id": 170,
+   "name": "meadow",
+   "invisible": false
+  },
+  {
+   "id": 107,
+   "name": "gnarled tree",
+   "invisible": false
+  },
+  {
+   "id": 251,
+   "name": "heavy wooden door",
+   "invisible": false
+  },
+  {
+   "id": 188,
+   "name": "bed",
+   "invisible": false
+  },
+  {
+   "id": 32,
+   "name": "cave",
+   "invisible": false
+  },
+  {
+   "id": 185,
+   "name": "castle",
+   "invisible": false
+  },
+  {
+   "id": 1,
+   "name": "blighted forest",
+   "invisible": false
+  },
+  {
+   "id": 99,
+   "name": "opening",
+   "invisible": false
+  },
+  {
+   "id": 158,
+   "name": "doorway",
+   "invisible": false
+  },
+  {
+   "id": 194,
+   "name": "water",
+   "invisible": false
+  }
+ ],
+ "roomsListingProperty": [
+  {
+   "id": 3,
+   "name": "River Bed",
+   "lit": true,
+   "lg": [
+    "194:water",
+    "32:cave",
+    "40:river bank",
+    "101:river bed"
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Dungeon",
+   "lit": false,
+   "lg": [
+    "99:opening",
+    "185:castle"
+   ]
+  },
+  {
+   "id": 9,
+   "name": "Grue Lair",
+   "lit": false,
+   "lg": [
+    "32:cave"
+   ]
+  },
+  {
+   "id": 17,
+   "name": "Your Quarters",
+   "lit": false,
+   "lg": [
+    "158:doorway",
+    "188:bed"
+   ]
+  },
+  {
+   "id": 18,
+   "name": "Lobby",
+   "lit": true,
+   "lg": [
+    "99:opening",
+    "66:road",
+    "177:stairs(par31)",
+    "158:doorway"
+   ]
+  },
+  {
+   "id": 21,
+   "name": "Slanted Room",
+   "lit": false,
+   "lg": [
+    "120:upper coal chute"
+   ]
+  },
+  {
+   "id": 25,
+   "name": "Shaft Bottom",
+   "lit": false,
+   "lg": [
+    "164:heavy door"
+   ]
+  },
+  {
+   "id": 36,
+   "name": "Twisted Forest",
+   "lit": true,
+   "lg": [
+    "66:road",
+    "1:blighted forest",
+    "107:gnarled tree"
+   ]
+  },
+  {
+   "id": 39,
+   "name": "Outside Glass Arch",
+   "lit": false,
+   "lg": [
+    "244:glass maze",
+    "158:doorway"
+   ]
+  },
+  {
+   "id": 43,
+   "name": "Cellar",
+   "lit": false,
+   "lg": [
+    "177:stairs(par31)"
+   ]
+  },
+  {
+   "id": 44,
+   "name": "Top of Chute",
+   "lit": false,
+   "lg": [
+    "120:upper coal chute"
+   ]
+  },
+  {
+   "id": 45,
+   "name": "East End of Midway",
+   "lit": true,
+   "lg": [
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 46,
+   "name": "Stone Hut",
+   "lit": false,
+   "lg": [
+    "51:chimney",
+    "38:stone hovel"
+   ]
+  },
+  {
+   "id": 47,
+   "name": "Turret",
+   "lit": true,
+   "lg": [
+    "216:fort",
+    "238:ocean",
+    "229:river",
+    "170:meadow",
+    "177:stairs(par31)",
+    "1:blighted forest",
+    "185:castle",
+    "113:waterfall"
+   ]
+  },
+  {
+   "id": 48,
+   "name": "Mammoth Cavern",
+   "lit": false,
+   "lg": [
+    "32:cave"
+   ]
+  },
+  {
+   "id": 50,
+   "name": "Hallway",
+   "lit": true,
+   "lg": [
+    "158:doorway"
+   ]
+  },
+  {
+   "id": 52,
+   "name": "Highway",
+   "lit": false,
+   "lg": [
+    "66:road"
+   ]
+  },
+  {
+   "id": 55,
+   "name": "",
+   "lit": false,
+   "lg": [
+    "70:(par0)"
+   ]
+  },
+  {
+   "id": 59,
+   "name": "Ocean Shore South",
+   "lit": true,
+   "lg": [
+    "79:lagoon",
+    "238:ocean",
+    "194:water",
+    "89:beach"
+   ]
+  },
+  {
+   "id": 67,
+   "name": "Hallway",
+   "lit": true,
+   "lg": [
+    "251:heavy wooden door"
+   ]
+  },
+  {
+   "id": 85,
+   "name": "Mine Field",
+   "lit": true,
+   "lg": [
+    "1:blighted forest"
+   ]
+  },
+  {
+   "id": 86,
+   "name": "Lagoon Shore",
+   "lit": true,
+   "lg": [
+    "209:lower coal chute",
+    "79:lagoon",
+    "194:water",
+    "89:beach"
+   ]
+  },
+  {
+   "id": 103,
+   "name": "Armory",
+   "lit": false,
+   "lg": [
+    "216:fort"
+   ]
+  },
+  {
+   "id": 105,
+   "name": "Gun Emplacement",
+   "lit": true,
+   "lg": [
+    "229:river",
+    "238:ocean",
+    "216:fort"
+   ]
+  },
+  {
+   "id": 114,
+   "name": "Bend",
+   "lit": false,
+   "lg": [
+    "66:road"
+   ]
+  },
+  {
+   "id": 116,
+   "name": "Arcade",
+   "lit": true,
+   "lg": [
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 117,
+   "name": "End of Highway",
+   "lit": false,
+   "lg": [
+    "66:road",
+    "38:stone hovel",
+    "177:stairs(par31)"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Flume",
+   "lit": true,
+   "lg": [
+    "194:water",
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 123,
+   "name": "Chamber of Living Death",
+   "lit": true,
+   "lg": [
+    "32:cave"
+   ]
+  },
+  {
+   "id": 125,
+   "name": "Top of Falls",
+   "lit": true,
+   "lg": [
+    "194:water",
+    "216:fort",
+    "40:river bank",
+    "238:ocean",
+    "113:waterfall",
+    "101:river bed"
+   ]
+  },
+  {
+   "id": 129,
+   "name": "Hall of Eternal Pain",
+   "lit": true,
+   "lg": [
+    "32:cave"
+   ]
+  },
+  {
+   "id": 135,
+   "name": "Near Stagnant Pool",
+   "lit": true,
+   "lg": [
+    "194:water",
+    "40:river bank",
+    "101:river bed"
+   ]
+  },
+  {
+   "id": 137,
+   "name": "Meadow",
+   "lit": true,
+   "lg": [
+    "170:meadow",
+    "185:castle"
+   ]
+  },
+  {
+   "id": 141,
+   "name": "Dial Room",
+   "lit": true,
+   "lg": [
+    "164:heavy door",
+    "69:lumps of coal"
+   ]
+  },
+  {
+   "id": 148,
+   "name": "Torture Chamber",
+   "lit": false,
+   "lg": [
+    "185:castle"
+   ]
+  },
+  {
+   "id": 152,
+   "name": "Outside Store",
+   "lit": false,
+   "lg": [
+    "66:road"
+   ]
+  },
+  {
+   "id": 154,
+   "name": "Pit of Bones",
+   "lit": false,
+   "lg": [
+    "99:opening",
+    "185:castle",
+    "32:cave"
+   ]
+  },
+  {
+   "id": 155,
+   "name": "Mouth of River",
+   "lit": true,
+   "lg": [
+    "194:water",
+    "238:ocean",
+    "229:river",
+    "216:fort",
+    "32:cave",
+    "113:waterfall"
+   ]
+  },
+  {
+   "id": 156,
+   "name": "Chamber of the Circle",
+   "lit": false,
+   "lg": [
+    "251:heavy wooden door"
+   ]
+  },
+  {
+   "id": 157,
+   "name": "Hollow",
+   "lit": true,
+   "lg": [
+    "51:chimney",
+    "99:opening",
+    "54:soot",
+    "244:glass maze",
+    "158:doorway"
+   ]
+  },
+  {
+   "id": 159,
+   "name": "Fort Entrance",
+   "lit": true,
+   "lg": [
+    "216:fort",
+    "66:road",
+    "40:river bank"
+   ]
+  },
+  {
+   "id": 163,
+   "name": "River Bank",
+   "lit": true,
+   "lg": [
+    "194:water",
+    "229:river",
+    "170:meadow",
+    "40:river bank",
+    "101:river bed"
+   ]
+  },
+  {
+   "id": 166,
+   "name": "Barracks",
+   "lit": false,
+   "lg": [
+    "216:fort"
+   ]
+  },
+  {
+   "id": 168,
+   "name": "Forest Edge",
+   "lit": true,
+   "lg": [
+    "99:opening",
+    "66:road",
+    "1:blighted forest",
+    "137:Meadow(par49)"
+   ]
+  },
+  {
+   "id": 172,
+   "name": "Surface of Lagoon",
+   "lit": true,
+   "lg": [
+    "79:lagoon",
+    "238:ocean",
+    "194:water"
+   ]
+  },
+  {
+   "id": 181,
+   "name": "Parade Ground",
+   "lit": true,
+   "lg": [
+    "216:fort"
+   ]
+  },
+  {
+   "id": 187,
+   "name": "Park Entrance",
+   "lit": false,
+   "lg": [
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 191,
+   "name": "Ocean Shore North",
+   "lit": true,
+   "lg": [
+    "79:lagoon",
+    "238:ocean",
+    "89:beach",
+    "194:water"
+   ]
+  },
+  {
+   "id": 193,
+   "name": "Ruins",
+   "lit": true,
+   "lg": [
+    "177:stairs(par31)",
+    "185:castle"
+   ]
+  },
+  {
+   "id": 195,
+   "name": "West End of Midway",
+   "lit": true,
+   "lg": [
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "Slimy Room",
+   "lit": false,
+   "lg": [
+    "99:opening"
+   ]
+  },
+  {
+   "id": 198,
+   "name": "Toll Gate",
+   "lit": false,
+   "lg": [
+    "66:road"
+   ]
+  },
+  {
+   "id": 203,
+   "name": "Hidden Cave",
+   "lit": false,
+   "lg": [
+    "194:water",
+    "32:cave",
+    "99:opening"
+   ]
+  },
+  {
+   "id": 208,
+   "name": "Entrance Hall",
+   "lit": false,
+   "lg": [
+    "158:doorway"
+   ]
+  },
+  {
+   "id": 212,
+   "name": "Sooty Room",
+   "lit": false,
+   "lg": [
+    "54:soot"
+   ]
+  },
+  {
+   "id": 218,
+   "name": "Roller Coaster",
+   "lit": true,
+   "lg": [
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 219,
+   "name": "Drawbridge",
+   "lit": true,
+   "lg": [
+    "194:water",
+    "185:castle",
+    "170:meadow"
+   ]
+  },
+  {
+   "id": 222,
+   "name": "Tree Branch",
+   "lit": true,
+   "lg": [
+    "1:blighted forest",
+    "107:gnarled tree"
+   ]
+  },
+  {
+   "id": 237,
+   "name": "Casino",
+   "lit": false,
+   "lg": [
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 239,
+   "name": "Coal Bin Room",
+   "lit": true,
+   "lg": [
+    "120:upper coal chute",
+    "209:lower coal chute",
+    "69:lumps of coal"
+   ]
+  },
+  {
+   "id": 246,
+   "name": "Edge of Crater",
+   "lit": false,
+   "lg": [
+    "66:road"
+   ]
+  },
+  {
+   "id": 247,
+   "name": "Haunted House",
+   "lit": false,
+   "lg": [
+    "190:amusement park"
+   ]
+  },
+  {
+   "id": 250,
+   "name": "Lagoon Floor",
+   "lit": true,
+   "lg": [
+    "79:lagoon",
+    "238:ocean",
+    "194:water"
+   ]
+  },
+  {
+   "id": 253,
+   "name": "Belboz's Hideout",
+   "lit": true,
+   "lg": [
+    "32:cave"
+   ]
+  },
+  {
+   "id": 255,
+   "name": "Inside the Glass Maze",
+   "lit": true,
+   "lg": [
+    "244:glass maze"
+   ]
+  }
+ ],
+ "commands": 16,
+ "log": [
+  {
+   "cmd": "wait",
+   "roomIdAfter": 17,
+   "reply": [
+    "Time passes...",
+    "The hellhound reaches you and tears you apart with its powerful teeth.",
+    "...and a moment later you wake up in a cold sweat and realize you've been dreaming.",
+    "SORCERER",
+    "Infocom interactive fiction - a fantasy story",
+    "Copyright (c) 1984 by Infocom, Inc. All rights reserved.",
+    "SORCERER is a trademark of Infocom, Inc.",
+    "Release 15 / Serial number 851108",
+    "Your frotz spell seems to have worn off during the night, and it is now pitch black.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 17,
+    "roomName": "Your Quarters",
+    "lit": false,
+    "prop": {
+     "num": 17,
+     "sz": 2,
+     "dataAddr": 3467
+    },
+    "localGlobals": [
+     {
+      "id": 158,
+      "name": "doorway",
+      "parent": 55,
+      "parentIsHolder": true
+     },
+     {
+      "id": 188,
+      "name": "bed",
+      "parent": 55,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "bed"
+    ]
+   }
+  },
+  {
+   "cmd": "examine bed",
+   "roomIdAfter": 17,
+   "reply": [
+    "It's too dark to see!",
+    ">"
+   ]
+  },
+  {
+   "cmd": "frotz book",
+   "roomIdAfter": 17,
+   "reply": [
+    "There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite usable as a light source.",
+    "Your Quarters, in the bed",
+    "This is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a great privilege, especially for an Enchanter as young as yourself, but how many Enchanters can say they defeated the infamous Krill?",
+    ">"
+   ]
+  },
+  {
+   "cmd": "get up",
+   "roomIdAfter": 17,
+   "reply": [
+    "You are now on your feet.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine bed",
+   "roomIdAfter": 17,
+   "reply": [
+    "There is nothing on the bed.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "w",
+   "roomIdAfter": 67,
+   "reply": [
+    "Hallway",
+    "Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north.",
+    "Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 67,
+    "roomName": "Hallway",
+    "lit": true,
+    "prop": {
+     "num": 17,
+     "sz": 1,
+     "dataAddr": 4751
+    },
+    "localGlobals": [
+     {
+      "id": 251,
+      "name": "heavy wooden door",
+      "parent": 55,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "scribbled note"
+    ]
+   }
+  },
+  {
+   "cmd": "examine heavy wooden door",
+   "roomIdAfter": 67,
+   "reply": [
+    "All you can tell is that the heavy wooden door is closed.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine road",
+   "roomIdAfter": 67,
+   "reply": [
+    "You can't see any road here!",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine bed",
+   "roomIdAfter": 67,
+   "reply": [
+    "You can't see any bed here!",
+    ">"
+   ]
+  },
+  {
+   "cmd": "s",
+   "roomIdAfter": 50,
+   "reply": [
+    "Hallway",
+    "Rooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 50,
+    "roomName": "Hallway",
+    "lit": true,
+    "prop": {
+     "num": 17,
+     "sz": 1,
+     "dataAddr": 4320
+    },
+    "localGlobals": [
+     {
+      "id": 158,
+      "name": "doorway",
+      "parent": 55,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": []
+   }
+  },
+  {
+   "cmd": "examine doorway",
+   "roomIdAfter": 50,
+   "reply": [
+    "You see nothing special about the doorway.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "s",
+   "roomIdAfter": 18,
+   "reply": [
+    "Lobby",
+    "This is the entrance lobby of the Guild Hall. Befitting the status and wealth of the Guild, the lobby is finished with polished Antharian marble, inlaid with intricate patterns of silver leaf. To the north is a wide arch, and smaller openings flank the area on the eastern and western sides, as well as the northeastern and northwestern corners. A narrow stair leads downward. Through another arch to the south, you can see the entrance steps and the main road into town.",
+    "Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 18,
+    "roomName": "Lobby",
+    "lit": true,
+    "prop": {
+     "num": 17,
+     "sz": 4,
+     "dataAddr": 3503
+    },
+    "localGlobals": [
+     {
+      "id": 99,
+      "name": "opening",
+      "parent": 55,
+      "parentIsHolder": true
+     },
+     {
+      "id": 66,
+      "name": "road",
+      "parent": 55,
+      "parentIsHolder": true
+     },
+     {
+      "id": 177,
+      "name": "stairs",
+      "parent": 31,
+      "parentIsHolder": false
+     },
+     {
+      "id": 158,
+      "name": "doorway",
+      "parent": 55,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "receptacle"
+    ]
+   }
+  },
+  {
+   "cmd": "examine road",
+   "roomIdAfter": 18,
+   "reply": [
+    "You see nothing special about the road.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine opening",
+   "roomIdAfter": 18,
+   "reply": [
+    "You see nothing special about the opening.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine heavy wooden door",
+   "roomIdAfter": 18,
+   "reply": [
+    "You can't see any heavy wooden door here!",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine bed",
+   "roomIdAfter": 18,
+   "reply": [
+    "You can't see any bed here!",
+    ">"
+   ]
+  }
+ ]
+}

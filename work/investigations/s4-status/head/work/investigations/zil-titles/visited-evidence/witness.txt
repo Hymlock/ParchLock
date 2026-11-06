@@ -1,0 +1,15 @@
+### verbs.zil:294 (historicalsource/witness)
+	<COND (<FIRST? ,HERE>
+	       <PRINT-CONT ,HERE <SET V? <OR .V? ,VERBOSE>> -1>)>)
+       (ELSE
+	<TELL "You can't see anything in the dark." CR>)>>
+
+<ROUTINE DESCRIBE-ROOM ("OPTIONAL" (LOOK? <>) "AUX" V? (F? <>) STR L)
+	 <SET V? <OR .LOOK? ,VERBOSE>>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>
+		<SET F? T>)>
+	 <COND (<IN? ,HERE ,ROOMS>
+		<COND (,P-PROMPT
+

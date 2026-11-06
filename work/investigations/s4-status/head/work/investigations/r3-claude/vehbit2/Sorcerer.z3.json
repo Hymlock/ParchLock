@@ -1,0 +1,209 @@
+{
+ "title": "Sorcerer.z3.js",
+ "sha256": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+ "bit": 29,
+ "initialCarriers": [
+  {
+   "id": 128,
+   "name": "bed",
+   "parent": 17,
+   "parentName": "Quarters"
+  },
+  {
+   "id": 176,
+   "name": "car",
+   "parent": 218,
+   "parentName": "Roller Coaster"
+  },
+  {
+   "id": 188,
+   "name": "bed",
+   "parent": 55,
+   "parentName": ""
+  },
+  {
+   "id": 199,
+   "name": "log boat",
+   "parent": 119,
+   "parentName": "Flume"
+  }
+ ],
+ "status": "INCOMPLETE",
+ "priorCarriers": [
+  128
+ ],
+ "newCarriers": [],
+ "distinctPositiveCarriers": [
+  128
+ ],
+ "positives": [
+  {
+   "carrier": 128,
+   "name": "bed",
+   "enterCmd": "enter bed",
+   "parentBefore": 17,
+   "parentBeforeName": "Your Quarters",
+   "parentAfter": 128,
+   "enterReply": "You are now in the bed.\n \n>",
+   "exitCmd": "stand up",
+   "exitParentAfter": 17,
+   "exitReply": "You are now on your feet.\n \n>",
+   "log": "sob.log.json",
+   "step": 4
+  },
+  {
+   "carrier": 128,
+   "name": "bed",
+   "enterCmd": "board bed",
+   "parentBefore": 17,
+   "parentBeforeName": "Your Quarters",
+   "parentAfter": 128,
+   "enterReply": "You are now in the bed.\n \n>",
+   "exitCmd": "get out of bed",
+   "exitParentAfter": 17,
+   "exitReply": "You are now on your feet.\n \n>",
+   "log": "sob.log.json",
+   "step": 8
+  },
+  {
+   "carrier": 128,
+   "name": "bed",
+   "enterCmd": "climb on bed",
+   "parentBefore": 17,
+   "parentBeforeName": "Your Quarters",
+   "parentAfter": 128,
+   "enterReply": "You are now in the bed.\n \n>",
+   "exitCmd": "get off bed",
+   "exitParentAfter": 17,
+   "exitReply": "You are now on your feet.\n \n>",
+   "log": "sob.log.json",
+   "step": 10
+  }
+ ],
+ "verbMatrix": {
+  "128": [
+   {
+    "cmd": "get in bed",
+    "parentBefore": 128,
+    "parentAfter": 128,
+    "moved": false,
+    "reply": "You are already in the bed!\n \n>",
+    "log": "sob.log.json",
+    "step": 2
+   },
+   {
+    "cmd": "get out of bed",
+    "parentBefore": 128,
+    "parentAfter": 17,
+    "moved": true,
+    "reply": "You are now on your feet.\n \n>",
+    "log": "sob.log.json",
+    "step": 3
+   },
+   {
+    "cmd": "enter bed",
+    "parentBefore": 17,
+    "parentAfter": 128,
+    "moved": true,
+    "reply": "You are now in the bed.\n \n>",
+    "log": "sob.log.json",
+    "step": 4
+   },
+   {
+    "cmd": "exit",
+    "parentBefore": 128,
+    "parentAfter": 128,
+    "moved": false,
+    "reply": "You're not going anywhere until you get out of the bed.\n \n>",
+    "log": "sob.log.json",
+    "step": 5
+   },
+   {
+    "cmd": "sit on bed",
+    "parentBefore": 128,
+    "parentAfter": 128,
+    "moved": false,
+    "reply": "You are already in the bed!\n \n>",
+    "log": "sob.log.json",
+    "step": 6
+   },
+   {
+    "cmd": "stand up",
+    "parentBefore": 128,
+    "parentAfter": 17,
+    "moved": true,
+    "reply": "You are now on your feet.\n \n>",
+    "log": "sob.log.json",
+    "step": 7
+   },
+   {
+    "cmd": "board bed",
+    "parentBefore": 17,
+    "parentAfter": 128,
+    "moved": true,
+    "reply": "You are now in the bed.\n \n>",
+    "log": "sob.log.json",
+    "step": 8
+   },
+   {
+    "cmd": "get out of bed",
+    "parentBefore": 128,
+    "parentAfter": 17,
+    "moved": true,
+    "reply": "You are now on your feet.\n \n>",
+    "log": "sob.log.json",
+    "step": 9
+   },
+   {
+    "cmd": "climb on bed",
+    "parentBefore": 17,
+    "parentAfter": 128,
+    "moved": true,
+    "reply": "You are now in the bed.\n \n>",
+    "log": "sob.log.json",
+    "step": 10
+   },
+   {
+    "cmd": "get off bed",
+    "parentBefore": 128,
+    "parentAfter": 17,
+    "moved": true,
+    "reply": "You are now on your feet.\n \n>",
+    "log": "sob.log.json",
+    "step": 11
+   }
+  ]
+ },
+ "negatives": [
+  {
+   "cmd": "exit",
+   "parentBefore": 128,
+   "parentAfter": 128,
+   "parentName": "bed",
+   "reply": "You're not going anywhere until you get out of the bed.\n \n>",
+   "log": "sob.log.json",
+   "step": 5
+  },
+  {
+   "cmd": "enter book",
+   "parentBefore": 17,
+   "parentAfter": 17,
+   "parentName": "Your Quarters",
+   "reply": ">sit on bed / You are now in the bed. /   / >stand up / You are now on your feet. /   / >enter book / That would involve quite a contortion! /   / > ",
+   "log": "so.log.json",
+   "step": 9
+  },
+  {
+   "cmd": "enter desk",
+   "parentBefore": 67,
+   "parentAfter": 67,
+   "parentName": "Hallway",
+   "reply": "  / >W / Hallway / Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. / Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment. /   / >enter desk / You can't see any desk here! /   / > ",
+   "log": "so.log.json",
+   "step": 11
+  }
+ ],
+ "priorEvidenceFile": "work/investigations/r3-claude/vehbit/Sorcerer.z3.json",
+ "notes": "Second carrier NOT reached. Amusement park (Roller Coaster car 176, Flume log boat 199) is reachable only through Park Entrance after the AIMFIZ route; the trunk combination needed for the aimfiz scroll is randomised and given by the feelie (the walk's PRESS sequence fails), so the route stalls in the Guild. Extra evidence for bed 128 (sob.log.json): GET IN/ENTER/BOARD/CLIMB ON BED move 17->128; GET OUT OF/GET OFF BED and STAND UP return; EXIT is REFUSED in bed ('You're not going anywhere until you get out of the bed.'). INCOMPLETE.",
+ "method": "headless Chromium play.html via drive2.cjs: Input.Inject of ordinary commands only (no VM writes/snapshots). Navigation helpers GOTO/ENSURE only issue ordinary direction commands chosen by BFS over ExitCalibrator.exitsFor (read-only). parent = ZRamReader.objectLinks(mem, WorldModel.lastPayload.playerId).parent before/after each command."
+}

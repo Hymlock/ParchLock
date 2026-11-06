@@ -1,0 +1,13 @@
+Inevita.z5.js marks
+  base: ["sheets of rain","canopy","console","engine","switch"]
+  cand: ["vessel","straps","stick","pouch","sheets of rain","canopy","console","engine","switch"]
+Mask.z5.js marks
+  base: ["Men","Mr.","Mr.","Sean","floor","Dark stained oak paneling","well-polished brass knobs","plush red sofa","painting","oak door","door","main room","hat","coat","Simon"]
+  cand: ["Men","Mr.","Mr.","Sean","floor","Dark stained oak paneling","well-polished brass knobs","plush red sofa","painting","oak door","glass door","main room","hat","coat","Simon"]
+jet.z8.js marks
+  base: ["dragon's"]
+  cand: ["wing"]
+vespers.z8.js marks
+  base: ["room","west","desk","bed","blanket"]
+  cand: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
+GATE: 309 games, 4 differences (each must be an intended, reviewed change)

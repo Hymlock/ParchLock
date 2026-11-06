@@ -1,0 +1,486 @@
+{
+ "title": "break-in.z5",
+ "sha256": "45da361177da2e073616082377ea37654bb10b8289024833f61e1422dedb6201",
+ "objects": 404,
+ "layout": "L",
+ "verdict": "SHIFTED (low block -1)",
+ "confidence": "high",
+ "evidence": "anchors compass=concealed 2, walls=scenery 17, yourself 0,2,16,23 (animate,concealed,proper,transparent), rooms light 9; doors carry 4+15(+10,11); containers 3+15 or 3+14; hats/clothes 1; food 5; supporters 20. Bits 1..8 are PROFILE-1 (no `absent` at 1, an extra attr at 8); 9..23 equal PROFILE.",
+ "proposedAttributeMap": {
+  "door": 4,
+  "open": 14,
+  "isOpen": 14,
+  "openable": 15,
+  "container": 3,
+  "supporter": 20,
+  "light": 9,
+  "edible": 5,
+  "clothing": 1,
+  "wearable": 1,
+  "worn": 26,
+  "lockable": 10,
+  "locked": 11,
+  "concealed": 2,
+  "animate": 0,
+  "scenery": 17,
+  "static": 19,
+  "enterable": 6,
+  "transparent": 23
+ },
+ "bitEvidence": {
+  "door": "doors",
+  "openable": "doors+containers",
+  "open": "open containers (bag/jar/basket/tray)",
+  "container": "containers",
+  "supporter": "tables/desks",
+  "light": "rooms (lit)",
+  "edible": "food (carrot,sweet,cake,pizza)",
+  "clothing": "hats/clothes",
+  "lockable": "locked doors",
+  "locked": "locked doors",
+  "worn": "NOT observed statically; inferred from library order (PROFILE 26 / layout shift)",
+  "enterable": "beds (theatre/windhal) else inferred"
+ },
+ "profileWrongFor": [
+  "clothing",
+  "concealed",
+  "container",
+  "door",
+  "edible"
+ ],
+ "exemplars": [
+  {
+   "n": 4,
+   "name": "String",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 6,
+   "name": "compass",
+   "parent": 0,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 7,
+   "name": "north wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 8,
+   "name": "south wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 9,
+   "name": "east wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 10,
+   "name": "west wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 11,
+   "name": "northeast wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 12,
+   "name": "southeast wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 13,
+   "name": "northwest wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 14,
+   "name": "southwest wall",
+   "parent": 6,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 20,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 30,
+   "name": "Hat",
+   "parent": 1,
+   "bits": [
+    1,
+    36
+   ]
+  },
+  {
+   "n": 35,
+   "name": "useless desk",
+   "parent": 33,
+   "bits": [
+    19,
+    20
+   ]
+  },
+  {
+   "n": 36,
+   "name": "door",
+   "parent": 33,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 39,
+   "name": "reception desk",
+   "parent": 38,
+   "bits": [
+    19,
+    20
+   ]
+  },
+  {
+   "n": 58,
+   "name": "bundle of rags",
+   "parent": 54,
+   "bits": [
+    0,
+    2,
+    23
+   ]
+  },
+  {
+   "n": 71,
+   "name": "five:barred gate",
+   "parent": 68,
+   "bits": [
+    4,
+    19
+   ]
+  },
+  {
+   "n": 73,
+   "name": "front door",
+   "parent": 68,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 83,
+   "name": "bottle cap",
+   "parent": 0,
+   "bits": [
+    36
+   ]
+  },
+  {
+   "n": 85,
+   "name": "dangling end of string",
+   "parent": 0,
+   "bits": [
+    19,
+    30
+   ]
+  },
+  {
+   "n": 89,
+   "name": "silver torch",
+   "parent": 88,
+   "bits": [
+    34
+   ]
+  },
+  {
+   "n": 93,
+   "name": "barren vegetable plot",
+   "parent": 90,
+   "bits": [
+    2,
+    19
+   ]
+  },
+  {
+   "n": 105,
+   "name": "length of string",
+   "parent": 0,
+   "bits": [
+    30,
+    36
+   ]
+  },
+  {
+   "n": 108,
+   "name": "hatch",
+   "parent": 106,
+   "bits": [
+    6,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 130,
+   "name": "cupboard",
+   "parent": 125,
+   "bits": [
+    3,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 136,
+   "name": "coffee table",
+   "parent": 132,
+   "bits": [
+    2,
+    19,
+    20
+   ]
+  },
+  {
+   "n": 141,
+   "name": "small black box",
+   "parent": 139,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 142,
+   "name": "desk",
+   "parent": 139,
+   "bits": [
+    2,
+    19
+   ]
+  },
+  {
+   "n": 162,
+   "name": "mirrored cabinet",
+   "parent": 161,
+   "bits": [
+    3,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 171,
+   "name": "Bedroom",
+   "parent": 0,
+   "bits": [
+    9,
+    32
+   ]
+  },
+  {
+   "n": 174,
+   "name": "bed",
+   "parent": 171,
+   "bits": [
+    6,
+    17,
+    20
+   ]
+  },
+  {
+   "n": 176,
+   "name": "trophy case",
+   "parent": 171,
+   "bits": [
+    3,
+    10,
+    11,
+    15,
+    19,
+    23
+   ]
+  },
+  {
+   "n": 190,
+   "name": "crate",
+   "parent": 183,
+   "bits": [
+    2,
+    3,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 192,
+   "name": "cupboard",
+   "parent": 183,
+   "bits": [
+    2,
+    3,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 200,
+   "name": "red party hat",
+   "parent": 0,
+   "bits": [
+    1,
+    36
+   ]
+  },
+  {
+   "n": 201,
+   "name": "green party hat",
+   "parent": 0,
+   "bits": [
+    1,
+    36
+   ]
+  },
+  {
+   "n": 202,
+   "name": "blue party hat",
+   "parent": 0,
+   "bits": [
+    1,
+    36
+   ]
+  },
+  {
+   "n": 207,
+   "name": "shelf",
+   "parent": 206,
+   "bits": [
+    3,
+    14,
+    19,
+    23
+   ]
+  },
+  {
+   "n": 217,
+   "name": "treasure chest",
+   "parent": 215,
+   "bits": [
+    3,
+    10,
+    11,
+    15
+   ]
+  },
+  {
+   "n": 225,
+   "name": "Clearing in Wood",
+   "parent": 0,
+   "bits": [
+    9,
+    27
+   ]
+  },
+  {
+   "n": 321,
+   "name": "yourself",
+   "parent": 319,
+   "bits": [
+    0,
+    23
+   ]
+  },
+  {
+   "n": 323,
+   "name": "lamppost",
+   "parent": 319,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 328,
+   "name": "Top of Lamp:post",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 336,
+   "name": "glass of water for table nine",
+   "parent": 335,
+   "bits": []
+  },
+  {
+   "n": 345,
+   "name": "Lush Garden by Castle Wall",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 375,
+   "name": "hard wooden bed",
+   "parent": 374,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 382,
+   "name": "Top of Long Staircase",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 394,
+   "name": "stone box",
+   "parent": 393,
+   "bits": [
+    3,
+    10,
+    11,
+    15
+   ]
+  }
+ ]
+}

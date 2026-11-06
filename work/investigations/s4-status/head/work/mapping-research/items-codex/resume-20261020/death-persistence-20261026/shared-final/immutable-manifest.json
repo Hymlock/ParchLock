@@ -1,0 +1,2144 @@
+{
+  "createdAt": "2026-10-27T03:35:15.607Z",
+  "base": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-codex-death-base-20261027",
+  "candidate": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-codex-death-candidate-20261027",
+  "baseCommit": "59aeaf71db10d50eedb531942c841863311acdb0",
+  "owner": "codex",
+  "changed": [
+    "js/Consts.js",
+    "js/SaveState.js",
+    "js/StatTracker.js",
+    "js/Transcript.js",
+    "js/Qol.js",
+    "js/WorkspaceUI.js",
+    "js/Tutorial.js",
+    "service-worker.js",
+    "USER_GUIDE.md"
+  ],
+  "hashes": {
+    "index.html": {
+      "base": "4c11d1040cea59661cdcfbcedeccd0e4fc2dbd63cb39b60efe4bfb7e57a66fcc",
+      "candidate": "4c11d1040cea59661cdcfbcedeccd0e4fc2dbd63cb39b60efe4bfb7e57a66fcc"
+    },
+    "play.html": {
+      "base": "a4023f140d9ea5fd9364004be3a589545243087fc0f5e1f9c5bd3077bcb9433e",
+      "candidate": "a4023f140d9ea5fd9364004be3a589545243087fc0f5e1f9c5bd3077bcb9433e"
+    },
+    "tutorial.html": {
+      "base": "71ce99e7cdd42f41d8b1e571892bab1af6cd4e3151b3425a38ce5554ce4081aa",
+      "candidate": "71ce99e7cdd42f41d8b1e571892bab1af6cd4e3151b3425a38ce5554ce4081aa"
+    },
+    "manifest.json": {
+      "base": "11f335655d2178b173f41a4586e7fa47316a16145bf85ce30a1ef4bd12fb0d81",
+      "candidate": "11f335655d2178b173f41a4586e7fa47316a16145bf85ce30a1ef4bd12fb0d81"
+    },
+    "service-worker.js": {
+      "base": "057a240969a31eed1106c6a07734cbce1faa3db758fb52bd346bd1faa4d08988",
+      "candidate": "dabcbcfc297cd0889c58c73a3e5180dafa5d14e9f1ecdd1997fb4e402aa1e92a"
+    },
+    "USER_GUIDE.md": {
+      "base": "7ab2df4914d7549217148c6a1ab9af601fe218272a605630a11f010abeb7f043",
+      "candidate": "c1a1d2cbe0ed805e3b7885e8319b482cfb846349e8fc1ca62eaf713563c40790"
+    },
+    "js/Actionable.js": {
+      "base": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f",
+      "candidate": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f"
+    },
+    "js/ActionSynth.js": {
+      "base": "b786ec9888cdbcdef8552d09c0d54b1d765f889819c87e83964cfcef71493fa8",
+      "candidate": "b786ec9888cdbcdef8552d09c0d54b1d765f889819c87e83964cfcef71493fa8"
+    },
+    "js/AttrCalibrator.js": {
+      "base": "99b14a67194c2b2435b10a5b2ede48f012073acd4adf7fcef08150615f0167a3",
+      "candidate": "99b14a67194c2b2435b10a5b2ede48f012073acd4adf7fcef08150615f0167a3"
+    },
+    "js/AttributeSchema.js": {
+      "base": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72",
+      "candidate": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72"
+    },
+    "js/Autocomplete.js": {
+      "base": "20cf17d709ddaf40c1c016d19d135fd1325cba4d25146df6e2bd0178ce69b4d6",
+      "candidate": "20cf17d709ddaf40c1c016d19d135fd1325cba4d25146df6e2bd0178ce69b4d6"
+    },
+    "js/BufferRevision.js": {
+      "base": "5786f00bf1b39e5548c766813d71b2a2e264f7e4cc1c2f190ea66bcf80b85f8f",
+      "candidate": "5786f00bf1b39e5548c766813d71b2a2e264f7e4cc1c2f190ea66bcf80b85f8f"
+    },
+    "js/BufferTapProvider.js": {
+      "base": "acfe7f92deb97decdbe6c9f2d99594c92c09ef9909e2ede4aee6d33c7ed0e178",
+      "candidate": "acfe7f92deb97decdbe6c9f2d99594c92c09ef9909e2ede4aee6d33c7ed0e178"
+    },
+    "js/CharKeys.js": {
+      "base": "6d9fc8201a88f4e9655cae941a08c2c8d478e051e076f43095f086886b9ea685",
+      "candidate": "6d9fc8201a88f4e9655cae941a08c2c8d478e051e076f43095f086886b9ea685"
+    },
+    "js/Consts.js": {
+      "base": "c946aeb99318c90f473e00ffd4f0e40cc3323571a8db415c0edf533234cf1aea",
+      "candidate": "0c3e014242d052d698c1d3828626fcb85450188f9884fa89b52714dde5610510"
+    },
+    "js/DarkScope.js": {
+      "base": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9",
+      "candidate": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9"
+    },
+    "js/DirectionalRadial.js": {
+      "base": "85b6ec831ad62175436cc82e6760f1390fa411e3ad2cc67b30db8e62dccdc1c2",
+      "candidate": "85b6ec831ad62175436cc82e6760f1390fa411e3ad2cc67b30db8e62dccdc1c2"
+    },
+    "js/Directions.js": {
+      "base": "0fd8408571cfcf72bed1b4ed4c385fb8308beadbbe831b6aa794b86945372d18",
+      "candidate": "0fd8408571cfcf72bed1b4ed4c385fb8308beadbbe831b6aa794b86945372d18"
+    },
+    "js/EmglkenHost.js": {
+      "base": "04a215b7f8bc2207f6983ad970baec99b5f5d1a7e535f2c38174ed4cd0332615",
+      "candidate": "04a215b7f8bc2207f6983ad970baec99b5f5d1a7e535f2c38174ed4cd0332615"
+    },
+    "js/EmglkenProvider.js": {
+      "base": "dd29f6578aaad99d69c5e42652815f32e24a21920a609e6ce4d55779d5b79c79",
+      "candidate": "dd29f6578aaad99d69c5e42652815f32e24a21920a609e6ce4d55779d5b79c79"
+    },
+    "js/EquipmentUI.js": {
+      "base": "1845b0c3ce79386f9fe55ddbca232dd7ba54777e49375bb47d62908ac43b07b7",
+      "candidate": "1845b0c3ce79386f9fe55ddbca232dd7ba54777e49375bb47d62908ac43b07b7"
+    },
+    "js/ExitCalibrator.js": {
+      "base": "ac60b3399cd0cc699f24ab48ba7db4653d7e79b1cc1012aed56b4f09879b7627",
+      "candidate": "ac60b3399cd0cc699f24ab48ba7db4653d7e79b1cc1012aed56b4f09879b7627"
+    },
+    "js/GameList.js": {
+      "base": "1638121054e486571eb11d5d2997fffb40383692bc5c0bc9ff1d55ec644e3bd4",
+      "candidate": "1638121054e486571eb11d5d2997fffb40383692bc5c0bc9ff1d55ec644e3bd4"
+    },
+    "js/GlkTapProvider.js": {
+      "base": "9b08add9e5e9fb3a52d527700fc1e26f0e12eab38b9d318dca0d14f98f702391",
+      "candidate": "9b08add9e5e9fb3a52d527700fc1e26f0e12eab38b9d318dca0d14f98f702391"
+    },
+    "js/Global.js": {
+      "base": "a562bc3266c3238cb240281af905a08d6574dbd3e63d219355f0736337aede82",
+      "candidate": "a562bc3266c3238cb240281af905a08d6574dbd3e63d219355f0736337aede82"
+    },
+    "js/GrammarProvider.js": {
+      "base": "f04e67645d4485ce677e2ada682ccb6bca8f0e3a8abe96ebfd1e423b6fc095b8",
+      "candidate": "f04e67645d4485ce677e2ada682ccb6bca8f0e3a8abe96ebfd1e423b6fc095b8"
+    },
+    "js/GraphicsDock.js": {
+      "base": "aa14da92da3a699aa7b2d08ea2f7b8d5f6afb7902d7bc549b1ae11ab553269dd",
+      "candidate": "aa14da92da3a699aa7b2d08ea2f7b8d5f6afb7902d7bc549b1ae11ab553269dd"
+    },
+    "js/HostEmglkenBridge.js": {
+      "base": "0eac2f9f1db6ed6a03363cae62ef78871d262708f9c8ee37dda8b0b8dc45a8b8",
+      "candidate": "0eac2f9f1db6ed6a03363cae62ef78871d262708f9c8ee37dda8b0b8dc45a8b8"
+    },
+    "js/IconRotation.js": {
+      "base": "82be3ccc016926092595149196206777318e7b1f19d8c55d31f70c6e58e32c87",
+      "candidate": "82be3ccc016926092595149196206777318e7b1f19d8c55d31f70c6e58e32c87"
+    },
+    "js/Input.js": {
+      "base": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681",
+      "candidate": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681"
+    },
+    "js/LearnedWords.js": {
+      "base": "2e179163acca934ac27d57a5520e4f8bd7a2f2f0d9302fb056c8696234278afe",
+      "candidate": "2e179163acca934ac27d57a5520e4f8bd7a2f2f0d9302fb056c8696234278afe"
+    },
+    "js/LiveHeapProvider.js": {
+      "base": "30816c32a55a52721405132fb02987d80f7fc467f83f90b6eea7035f12465b22",
+      "candidate": "30816c32a55a52721405132fb02987d80f7fc467f83f90b6eea7035f12465b22"
+    },
+    "js/MainMenu.js": {
+      "base": "76f36899fccda9e86d972c3e04c993070475b4f8327afd7be7ef5774cc6b34c6",
+      "candidate": "76f36899fccda9e86d972c3e04c993070475b4f8327afd7be7ef5774cc6b34c6"
+    },
+    "js/Map.js": {
+      "base": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed",
+      "candidate": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed"
+    },
+    "js/MapBeautify.js": {
+      "base": "3dbd4ab68ac1447ba2f11021647fadd26b315bfee3390affe9307dfeeb06426a",
+      "candidate": "3dbd4ab68ac1447ba2f11021647fadd26b315bfee3390affe9307dfeeb06426a"
+    },
+    "js/MapIdentity.js": {
+      "base": "6218420ce1d3649c5899d3d2f148fe0892889acea380d2a1bfc094c0fca498ad",
+      "candidate": "6218420ce1d3649c5899d3d2f148fe0892889acea380d2a1bfc094c0fca498ad"
+    },
+    "js/MapTopology.js": {
+      "base": "a7999a00878f2ac196dce29993ac6eff9963377cc6db082040d65bfde0198cd4",
+      "candidate": "a7999a00878f2ac196dce29993ac6eff9963377cc6db082040d65bfde0198cd4"
+    },
+    "js/Message.js": {
+      "base": "4ba168368364c068983021cc53ec6277b825cef1f63840bc89373133dfb66d19",
+      "candidate": "4ba168368364c068983021cc53ec6277b825cef1f63840bc89373133dfb66d19"
+    },
+    "js/MobileLayout.js": {
+      "base": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8",
+      "candidate": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8"
+    },
+    "js/ModuleLibrary.js": {
+      "base": "917c3b9425d29b76086fb74524a84ea93f4ab38dfc4540e89d0d52e550d6855b",
+      "candidate": "917c3b9425d29b76086fb74524a84ea93f4ab38dfc4540e89d0d52e550d6855b"
+    },
+    "js/ModuleStatFacts.js": {
+      "base": "5df94a7e23fec8b6b1380054506ae4e358f89357ce83f8debd0bbb6c050399d3",
+      "candidate": "5df94a7e23fec8b6b1380054506ae4e358f89357ce83f8debd0bbb6c050399d3"
+    },
+    "js/ModuleStatFactsClaude.js": {
+      "base": "ece4b40505c41eb3a472ec5d0f199a3d28ba64b3e352d8a0c9bc252f38e8a4d7",
+      "candidate": "ece4b40505c41eb3a472ec5d0f199a3d28ba64b3e352d8a0c9bc252f38e8a4d7"
+    },
+    "js/Navigator.js": {
+      "base": "cdb9963dd0d5646daa015d09a005c16e24bc8948117b85686fb1ebfa6521b6e7",
+      "candidate": "cdb9963dd0d5646daa015d09a005c16e24bc8948117b85686fb1ebfa6521b6e7"
+    },
+    "js/ParchLock.js": {
+      "base": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010",
+      "candidate": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010"
+    },
+    "js/ProductInfo.js": {
+      "base": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff",
+      "candidate": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff"
+    },
+    "js/PronunciationCatalog.js": {
+      "base": "7e5458d4d7c489f03270893eb292de1459d1f2cb4f742e165f2460f3ca409ef4",
+      "candidate": "7e5458d4d7c489f03270893eb292de1459d1f2cb4f742e165f2460f3ca409ef4"
+    },
+    "js/Qol.js": {
+      "base": "61c004ba0d66cad6b6992661df1ae3a9a24053c21aee2eded43910dabe2cfe67",
+      "candidate": "1ebea551e8d54b556122242fddb47b153f1d9f319dbd972994e879db8aabc5ee"
+    },
+    "js/ReadAloud.js": {
+      "base": "5a71ab0d620ffd827022d7286f1f3d6e9e0d0e84e1a2546c50744f0b18e30ee7",
+      "candidate": "5a71ab0d620ffd827022d7286f1f3d6e9e0d0e84e1a2546c50744f0b18e30ee7"
+    },
+    "js/RemGlkTapProvider.js": {
+      "base": "58a8d751b98d7b572f4622465f92e9a26ad5de00fcb4cbe82d7a2bb23432fc77",
+      "candidate": "58a8d751b98d7b572f4622465f92e9a26ad5de00fcb4cbe82d7a2bb23432fc77"
+    },
+    "js/SaveState.js": {
+      "base": "0e66266e23eaafaaa93075d7e27d4e1f8018ee7bcc5b223a740f9822fe9b7b0c",
+      "candidate": "8bd7ead8597691963310d2b97f10764ce212a2b0d388c6d9cf1fc66dc931be75"
+    },
+    "js/SemanticActions.js": {
+      "base": "758de41f7c75678b324ec277f9142716c9f64913beb9eb25d7253132b1c2c5b6",
+      "candidate": "758de41f7c75678b324ec277f9142716c9f64913beb9eb25d7253132b1c2c5b6"
+    },
+    "js/StatTracker.js": {
+      "base": "0a7d789900850a4a5b0bc392d1924323372a84d8bc2a8ad64330dd934f85e2db",
+      "candidate": "4e4f7948ea5ee01b934c79e039ee1e35e1b7224ede30ffe5944dea6a07af9e83"
+    },
+    "js/StatusGridDecoder.js": {
+      "base": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75",
+      "candidate": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75"
+    },
+    "js/TextGate.js": {
+      "base": "b71a7eb6cdca2234cac182b248e57dcbc8985063619901c0032adc9f75e97a6b",
+      "candidate": "b71a7eb6cdca2234cac182b248e57dcbc8985063619901c0032adc9f75e97a6b"
+    },
+    "js/Transcript.js": {
+      "base": "998fbac7a9ca5a2686d225717bc3b2c593cefc06f51ead8a5cba515fec2f8e47",
+      "candidate": "5cddf48dd101579d8b0ec628f540183a89ae7546aa7b31d4d0555cd6c7fb1c7b"
+    },
+    "js/TranslatorUI.js": {
+      "base": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd",
+      "candidate": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd"
+    },
+    "js/TurnRecorder.js": {
+      "base": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8",
+      "candidate": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8"
+    },
+    "js/Tutorial.js": {
+      "base": "6f5459be6daa66ef2aa4563638c944e63348ce95c1b9c3abe758f9a52d8c7f89",
+      "candidate": "fcbebe25f96d378021d1cb97a696d319d00e8ecc4ffbd43bfe8ac5a72c34efcb"
+    },
+    "js/UndoRestoreSync.js": {
+      "base": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed",
+      "candidate": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed"
+    },
+    "js/VmProbeLoader.js": {
+      "base": "39394dbfa280aeeaca03f5ba732fe690b1f4ba35b66f0790bdba437dc61d7fee",
+      "candidate": "39394dbfa280aeeaca03f5ba732fe690b1f4ba35b66f0790bdba437dc61d7fee"
+    },
+    "js/WorkspaceUI.js": {
+      "base": "9d091960edf0e3d53ce4b3e43a7ddfb74469be715c37e9f96942746999ce280d",
+      "candidate": "c48694502f78974cf5b923d386d476667fedfab025e89cfc22e21171be630353"
+    },
+    "js/WorldMap.js": {
+      "base": "71d3c15f05983dc750da1c726ce7ffaa3faf733a53121474b6466e41ed322cbe",
+      "candidate": "71d3c15f05983dc750da1c726ce7ffaa3faf733a53121474b6466e41ed322cbe"
+    },
+    "js/WorldMapLayout.js": {
+      "base": "42a05712e33c110182148f7e066bdf6f660bca497114d6ea2c67082b48664f11",
+      "candidate": "42a05712e33c110182148f7e066bdf6f660bca497114d6ea2c67082b48664f11"
+    },
+    "js/WorldModel.js": {
+      "base": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0",
+      "candidate": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+    },
+    "js/ZRamProvider.js": {
+      "base": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109",
+      "candidate": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109"
+    },
+    "js/ZRamReader.js": {
+      "base": "36c95c54331695b3b17cce2098f64281e8bf10cda83e4916a9f8ffecdabd2c1b",
+      "candidate": "36c95c54331695b3b17cce2098f64281e8bf10cda83e4916a9f8ffecdabd2c1b"
+    },
+    "js/ZvmCapture.js": {
+      "base": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d",
+      "candidate": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d"
+    },
+    "css/CharCell.css": {
+      "base": "7066e8067d0871e724b5de74dedd982af72cbaaf9d6698627bef1d2d9d295b11",
+      "candidate": "7066e8067d0871e724b5de74dedd982af72cbaaf9d6698627bef1d2d9d295b11"
+    },
+    "css/LearnedWords.css": {
+      "base": "4c1ff2e80bb4cf9342de708f0a616562f84bfe5fa3dbe7f32d22443fb11f2c54",
+      "candidate": "4c1ff2e80bb4cf9342de708f0a616562f84bfe5fa3dbe7f32d22443fb11f2c54"
+    },
+    "css/ParchLock.css": {
+      "base": "43e0a23ab55f3ffbb3eaf1a362794003c60d4aeeeace43b0872ee749a5ec1f1a",
+      "candidate": "43e0a23ab55f3ffbb3eaf1a362794003c60d4aeeeace43b0872ee749a5ec1f1a"
+    },
+    "css/parchment.css": {
+      "base": "bdb8b5049f30e7aedd1a7f4bd32f3243b94498c7ce0ec38ff70dca91c26c3b9c",
+      "candidate": "bdb8b5049f30e7aedd1a7f4bd32f3243b94498c7ce0ec38ff70dca91c26c3b9c"
+    },
+    "css/RobotoMono-ExtraLight.ttf": {
+      "base": "ed914effe22b8ff538666757408bc2db978536f9d167b433d9ee7c9bb21117ce",
+      "candidate": "ed914effe22b8ff538666757408bc2db978536f9d167b433d9ee7c9bb21117ce"
+    },
+    "css/RobotoMono-OFL.txt": {
+      "base": "50ab8dd54680d3473f649c9db86fece88434d097c7834475c1c72d2f8c429215",
+      "candidate": "50ab8dd54680d3473f649c9db86fece88434d097c7834475c1c72d2f8c429215"
+    },
+    "css/Tutorial.css": {
+      "base": "8c1d6ee66f8d6bf52bcc48f079892ebb7d3696d3c6aee0ec3759beb4a7ecf114",
+      "candidate": "8c1d6ee66f8d6bf52bcc48f079892ebb7d3696d3c6aee0ec3759beb4a7ecf114"
+    },
+    "lib/emglken/asyncglk.js": {
+      "base": "c97d03be9d0091ae7c3e24913ab687d3e9abc9e4722b85d33156f6e0ee5ea773",
+      "candidate": "c97d03be9d0091ae7c3e24913ab687d3e9abc9e4722b85d33156f6e0ee5ea773"
+    },
+    "lib/emglken/bocfel-noz6.js": {
+      "base": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698",
+      "candidate": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698"
+    },
+    "lib/emglken/bocfel-noz6.wasm": {
+      "base": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c",
+      "candidate": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c"
+    },
+    "lib/emglken/bocfel.js": {
+      "base": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec",
+      "candidate": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec"
+    },
+    "lib/emglken/bocfel.wasm": {
+      "base": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b",
+      "candidate": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b"
+    },
+    "lib/emglken/file-sizes.json": {
+      "base": "49186543b0a9ed6b6bc760c4b646edefce218c6b72bbe5f070782fb3c677cabd",
+      "candidate": "49186543b0a9ed6b6bc760c4b646edefce218c6b72bbe5f070782fb3c677cabd"
+    },
+    "lib/emglken/glulxe.js": {
+      "base": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134",
+      "candidate": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134"
+    },
+    "lib/emglken/glulxe.wasm": {
+      "base": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920",
+      "candidate": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920"
+    },
+    "lib/emglken/README.md": {
+      "base": "789c238881c686adaf59b4272f95fb7365177cfe18191c4e713e7b43993c78b6",
+      "candidate": "789c238881c686adaf59b4272f95fb7365177cfe18191c4e713e7b43993c78b6"
+    },
+    "lib/ie.js": {
+      "base": "cf9de5d701907a27cf429625f186e9c0e081a2eba324065c4895762e5556e45e",
+      "candidate": "cf9de5d701907a27cf429625f186e9c0e081a2eba324065c4895762e5556e45e"
+    },
+    "lib/jquery.min.js": {
+      "base": "6150a35c0f486c46cadf0e230e2aa159c7c23ecfbb5611b64ee3f25fcbff341f",
+      "candidate": "6150a35c0f486c46cadf0e230e2aa159c7c23ecfbb5611b64ee3f25fcbff341f"
+    },
+    "lib/jquery.slimscroll.min.js": {
+      "base": "a84ffabdd498cd0bbd960a2c2b1845a65113bd6bea00096602e47ec8f87fd122",
+      "candidate": "a84ffabdd498cd0bbd960a2c2b1845a65113bd6bea00096602e47ec8f87fd122"
+    },
+    "lib/main.js": {
+      "base": "5155f95821cf719e218aa54d614d2d57cc2fbae8e533c9bb3aba09ac7aeaa7b9",
+      "candidate": "5155f95821cf719e218aa54d614d2d57cc2fbae8e533c9bb3aba09ac7aeaa7b9"
+    },
+    "lib/parchment-modern/bocfel-noz6.js": {
+      "base": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698",
+      "candidate": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698"
+    },
+    "lib/parchment-modern/bocfel-noz6.wasm": {
+      "base": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c",
+      "candidate": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c"
+    },
+    "lib/parchment-modern/bocfel.js": {
+      "base": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec",
+      "candidate": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec"
+    },
+    "lib/parchment-modern/bocfel.wasm": {
+      "base": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b",
+      "candidate": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b"
+    },
+    "lib/parchment-modern/glulxe.js": {
+      "base": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134",
+      "candidate": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134"
+    },
+    "lib/parchment-modern/glulxe.wasm": {
+      "base": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920",
+      "candidate": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920"
+    },
+    "lib/parchment-modern/ie.js": {
+      "base": "58c798ce6c181200d590e9e305c4988fbb1cf5643ff0addbaab527c5fa01ab69",
+      "candidate": "58c798ce6c181200d590e9e305c4988fbb1cf5643ff0addbaab527c5fa01ab69"
+    },
+    "lib/parchment-modern/jquery.min.js": {
+      "base": "39a546ea9ad97f8bfaf5d3e0e8f8556adb415e470e59007ada9759dce472adaa",
+      "candidate": "39a546ea9ad97f8bfaf5d3e0e8f8556adb415e470e59007ada9759dce472adaa"
+    },
+    "lib/parchment-modern/lib/bocfel-noz6.js": {
+      "base": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698",
+      "candidate": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698"
+    },
+    "lib/parchment-modern/lib/bocfel-noz6.wasm": {
+      "base": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c",
+      "candidate": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c"
+    },
+    "lib/parchment-modern/lib/bocfel.js": {
+      "base": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec",
+      "candidate": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec"
+    },
+    "lib/parchment-modern/lib/bocfel.wasm": {
+      "base": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b",
+      "candidate": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b"
+    },
+    "lib/parchment-modern/lib/emglken/asyncglk.js": {
+      "base": "c97d03be9d0091ae7c3e24913ab687d3e9abc9e4722b85d33156f6e0ee5ea773",
+      "candidate": "c97d03be9d0091ae7c3e24913ab687d3e9abc9e4722b85d33156f6e0ee5ea773"
+    },
+    "lib/parchment-modern/lib/emglken/bocfel-noz6.js": {
+      "base": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698",
+      "candidate": "4f41c0fae12943310443e3cb357fa440e2730982b5ef291e6bc54a05fb7dc698"
+    },
+    "lib/parchment-modern/lib/emglken/bocfel-noz6.wasm": {
+      "base": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c",
+      "candidate": "4fd4b135dfc688747048e52ba2718884b1922766bc83e8b80e65324b5b3a199c"
+    },
+    "lib/parchment-modern/lib/emglken/bocfel.js": {
+      "base": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec",
+      "candidate": "2457193256bd13349ab8da6d8e02ab8f3ab2af4932d1f6c9b6b00092529413ec"
+    },
+    "lib/parchment-modern/lib/emglken/bocfel.wasm": {
+      "base": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b",
+      "candidate": "3f1dfec7cd45dcf6ded87af968713bf23579646d9ce24bfc7e35564b2108dd1b"
+    },
+    "lib/parchment-modern/lib/emglken/file-sizes.json": {
+      "base": "49186543b0a9ed6b6bc760c4b646edefce218c6b72bbe5f070782fb3c677cabd",
+      "candidate": "49186543b0a9ed6b6bc760c4b646edefce218c6b72bbe5f070782fb3c677cabd"
+    },
+    "lib/parchment-modern/lib/emglken/glulxe.js": {
+      "base": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134",
+      "candidate": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134"
+    },
+    "lib/parchment-modern/lib/emglken/glulxe.wasm": {
+      "base": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920",
+      "candidate": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920"
+    },
+    "lib/parchment-modern/lib/emglken/README.md": {
+      "base": "789c238881c686adaf59b4272f95fb7365177cfe18191c4e713e7b43993c78b6",
+      "candidate": "789c238881c686adaf59b4272f95fb7365177cfe18191c4e713e7b43993c78b6"
+    },
+    "lib/parchment-modern/lib/glulxe.js": {
+      "base": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134",
+      "candidate": "6d370730f7f745a6e70a17b09f581de5b0c711731aaa0581814afc6a23bc6134"
+    },
+    "lib/parchment-modern/lib/glulxe.wasm": {
+      "base": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920",
+      "candidate": "6544c4c909c965b8d1dee287043f10b70b4e500e9a22e99d549e072333d94920"
+    },
+    "lib/parchment-modern/parchment-single-tapped.html": {
+      "base": "a0664ecf80d9449d833df828df1c4cc639b25b5a82a5daf58d3d0c4e3f39c738",
+      "candidate": "a0664ecf80d9449d833df828df1c4cc639b25b5a82a5daf58d3d0c4e3f39c738"
+    },
+    "lib/parchment-modern/parchment-single.html": {
+      "base": "0fdd54d01d0e4314cca99ba05edbf539271331cea1075255ea08ce699fc2cb1b",
+      "candidate": "0fdd54d01d0e4314cca99ba05edbf539271331cea1075255ea08ce699fc2cb1b"
+    },
+    "lib/parchment-modern/parchment.css": {
+      "base": "6624f0ab0d38aa0451e6bdf065b4dfb543223e186c5a25f5a8fd735087ee640a",
+      "candidate": "6624f0ab0d38aa0451e6bdf065b4dfb543223e186c5a25f5a8fd735087ee640a"
+    },
+    "lib/parchment-modern/parchment.js": {
+      "base": "9dd015aa46213b7b690cd7ecd97446ccdf68db032e2849c832848bf97e7cda49",
+      "candidate": "9dd015aa46213b7b690cd7ecd97446ccdf68db032e2849c832848bf97e7cda49"
+    },
+    "lib/parchment-modern/README.md": {
+      "base": "d33b3be32a712e412e4dc5fed29ffa9c683ec13207fcda853bc54ff3bb7b90d1",
+      "candidate": "d33b3be32a712e412e4dc5fed29ffa9c683ec13207fcda853bc54ff3bb7b90d1"
+    },
+    "lib/parchment-modern/waiting.gif": {
+      "base": "a5f0061830d5ae41d5b2d350d70430939ffc46365d0d1f2bafac844e9b95087c",
+      "candidate": "a5f0061830d5ae41d5b2d350d70430939ffc46365d0d1f2bafac844e9b95087c"
+    },
+    "lib/pm_vm_probe.js": {
+      "base": "956fc67c5be0377df19c4f3eb029d9a31703d11654e6d03fa4da147d5c6173c8",
+      "candidate": "956fc67c5be0377df19c4f3eb029d9a31703d11654e6d03fa4da147d5c6173c8"
+    },
+    "lib/pm_vm_probe.wasm": {
+      "base": "e5f2bef2e2dd8beb69d893438b618f2b646cfa06ae9abccc7ebde506b05e4102",
+      "candidate": "e5f2bef2e2dd8beb69d893438b618f2b646cfa06ae9abccc7ebde506b05e4102"
+    },
+    "lib/quixe.js": {
+      "base": "033fd286580d51306a8f358f01cf7637e213812e391984bbc6cbf272fa08b1c4",
+      "candidate": "033fd286580d51306a8f358f01cf7637e213812e391984bbc6cbf272fa08b1c4"
+    },
+    "lib/resourcemap.js": {
+      "base": "4431c4899e408d6d925698143d640d1e673d99ca04d050b0470c8399d94e2203",
+      "candidate": "4431c4899e408d6d925698143d640d1e673d99ca04d050b0470c8399d94e2203"
+    },
+    "lib/zvm.js": {
+      "base": "12bf89d7f524abf72f223c89c98d68abf3df88d93b77a64838442b4eefb92e2f",
+      "candidate": "12bf89d7f524abf72f223c89c98d68abf3df88d93b77a64838442b4eefb92e2f"
+    },
+    "img/apple-touch-icon-114x114.png": {
+      "base": "5669d04b8524124fdcb5da1be2c1c20d1a7f069b22c783978d90963cc440e652",
+      "candidate": "5669d04b8524124fdcb5da1be2c1c20d1a7f069b22c783978d90963cc440e652"
+    },
+    "img/apple-touch-icon-120x120.png": {
+      "base": "0bbba69224316358426adfa0aca4cf931556793d1fcca64e2d47ffe0ebf644b9",
+      "candidate": "0bbba69224316358426adfa0aca4cf931556793d1fcca64e2d47ffe0ebf644b9"
+    },
+    "img/apple-touch-icon-144x144.png": {
+      "base": "610e096d7026df44de428f2bab6c857e9028d86a05b4f887d28ef8a43c4c4a50",
+      "candidate": "610e096d7026df44de428f2bab6c857e9028d86a05b4f887d28ef8a43c4c4a50"
+    },
+    "img/apple-touch-icon-152x152.png": {
+      "base": "03cd75aab05a0fd2e099772bb636f33559bd35521424f61032344f0117a77a66",
+      "candidate": "03cd75aab05a0fd2e099772bb636f33559bd35521424f61032344f0117a77a66"
+    },
+    "img/apple-touch-icon-180x180.png": {
+      "base": "4d433c6953ebfe6da243ce42c2f76e71886fc20acced12925673bf95b16b6277",
+      "candidate": "4d433c6953ebfe6da243ce42c2f76e71886fc20acced12925673bf95b16b6277"
+    },
+    "img/apple-touch-icon-57x57.png": {
+      "base": "33ecbd98276e8a5296f251da93129a04e72623bdc37d75aeb3a675b38efc7cc5",
+      "candidate": "33ecbd98276e8a5296f251da93129a04e72623bdc37d75aeb3a675b38efc7cc5"
+    },
+    "img/apple-touch-icon-72x72.png": {
+      "base": "2a90307084dc5c0c1bd113222e180becd0316d042a5d6baf4849250550f3703f",
+      "candidate": "2a90307084dc5c0c1bd113222e180becd0316d042a5d6baf4849250550f3703f"
+    },
+    "img/apple-touch-icon-76x76.png": {
+      "base": "0449da7efdebcc3f2cab1746a9cf982cd85d7c25023751c37a9e4078498ba562",
+      "candidate": "0449da7efdebcc3f2cab1746a9cf982cd85d7c25023751c37a9e4078498ba562"
+    },
+    "img/apple-touch-icon.png": {
+      "base": "33ecbd98276e8a5296f251da93129a04e72623bdc37d75aeb3a675b38efc7cc5",
+      "candidate": "33ecbd98276e8a5296f251da93129a04e72623bdc37d75aeb3a675b38efc7cc5"
+    },
+    "img/favicon.ico": {
+      "base": "2eff2fa4940ba580121f99f55dcde2bde960691ebb28452bdb723da56d6456ac",
+      "candidate": "2eff2fa4940ba580121f99f55dcde2bde960691ebb28452bdb723da56d6456ac"
+    },
+    "img/favicon.png": {
+      "base": "f381cf2b09bf3932e811e08e43e66813100d0375ca1afe3a18f34e7f7a4e0447",
+      "candidate": "f381cf2b09bf3932e811e08e43e66813100d0375ca1afe3a18f34e7f7a4e0447"
+    },
+    "img/icon-back-to-room-dark.svg": {
+      "base": "c4c261afed2bdb9c668415161d7ad214e0a8c7006534ef864955defb1084561a",
+      "candidate": "c4c261afed2bdb9c668415161d7ad214e0a8c7006534ef864955defb1084561a"
+    },
+    "img/icon-back-to-room-light.svg": {
+      "base": "84107221998e47e33724b3db69ec960c23f7a33ba16def64f78a0a3565dc5b96",
+      "candidate": "84107221998e47e33724b3db69ec960c23f7a33ba16def64f78a0a3565dc5b96"
+    },
+    "img/icon-delete-dark.svg": {
+      "base": "b90d135f8190d1bf78c4c16e8ed59b9de938c618b245c65498a16514148b05e1",
+      "candidate": "b90d135f8190d1bf78c4c16e8ed59b9de938c618b245c65498a16514148b05e1"
+    },
+    "img/icon-delete-light.svg": {
+      "base": "46e2a6514af25ad82df9257ed5df50a87b2a8e2b20ff708a4fc99234ad897a39",
+      "candidate": "46e2a6514af25ad82df9257ed5df50a87b2a8e2b20ff708a4fc99234ad897a39"
+    },
+    "img/icon-done-off-dark.svg": {
+      "base": "113cf02b40bea6810dee96f499062ffc6c53e077b32c71a74a2fca1966473769",
+      "candidate": "113cf02b40bea6810dee96f499062ffc6c53e077b32c71a74a2fca1966473769"
+    },
+    "img/icon-done-off-light.svg": {
+      "base": "332e1b7c4886550c918f3a89656e4268f98c1f570f332f4d6ad8618e4e772750",
+      "candidate": "332e1b7c4886550c918f3a89656e4268f98c1f570f332f4d6ad8618e4e772750"
+    },
+    "img/icon-done-on-dark.svg": {
+      "base": "12aa5ddda082672650281c7c00398b5ddf0bf7b114d6e110ca2d3cf0ef2db51f",
+      "candidate": "12aa5ddda082672650281c7c00398b5ddf0bf7b114d6e110ca2d3cf0ef2db51f"
+    },
+    "img/icon-done-on-light.svg": {
+      "base": "a8a3ea89ea3cd6b9d5dbd19490e9b61c20675eee86a6a151d491d8e1c331dc83",
+      "candidate": "a8a3ea89ea3cd6b9d5dbd19490e9b61c20675eee86a6a151d491d8e1c331dc83"
+    },
+    "img/icon-eye-dark.svg": {
+      "base": "164de1c24f0b1bb92418beb12821627312e6e44807a66bb545b8d2478b615371",
+      "candidate": "164de1c24f0b1bb92418beb12821627312e6e44807a66bb545b8d2478b615371"
+    },
+    "img/icon-eye-light.svg": {
+      "base": "3606fc1bc219b96eee111204630aaa6822e2bb6ceeb804c74ff4eb42d11efdf9",
+      "candidate": "3606fc1bc219b96eee111204630aaa6822e2bb6ceeb804c74ff4eb42d11efdf9"
+    },
+    "img/icon-fav-off-dark.svg": {
+      "base": "6a097fa53ab6c233ef7d91b9cc52a9ace0a080eb3d955a323d812861b65057f6",
+      "candidate": "6a097fa53ab6c233ef7d91b9cc52a9ace0a080eb3d955a323d812861b65057f6"
+    },
+    "img/icon-fav-off-light.svg": {
+      "base": "0358a82ef1bda90e5969fe421348d0a82ae070cf85e75a38b34eb478445daa48",
+      "candidate": "0358a82ef1bda90e5969fe421348d0a82ae070cf85e75a38b34eb478445daa48"
+    },
+    "img/icon-fav-on-dark.svg": {
+      "base": "72b3118e42b0635ffeffd5f0cbfc7bd5face539c3c3a9f09eaf74dcd43476462",
+      "candidate": "72b3118e42b0635ffeffd5f0cbfc7bd5face539c3c3a9f09eaf74dcd43476462"
+    },
+    "img/icon-fav-on-light.svg": {
+      "base": "b9f5a12ddd9ef7a0278de587f2fc15a8279957c4939ad07aa1b64c2cad5c1c1e",
+      "candidate": "b9f5a12ddd9ef7a0278de587f2fc15a8279957c4939ad07aa1b64c2cad5c1c1e"
+    },
+    "img/icon-go-to-room-dark.svg": {
+      "base": "630a63dba6e4bdcc84a880a5938b3d53add4f8f09b98230096cd66079d6c6564",
+      "candidate": "630a63dba6e4bdcc84a880a5938b3d53add4f8f09b98230096cd66079d6c6564"
+    },
+    "img/icon-go-to-room-light.svg": {
+      "base": "6d0de8baada3fff435f21eda024d184e7220b120e8c977303264667832069bfe",
+      "candidate": "6d0de8baada3fff435f21eda024d184e7220b120e8c977303264667832069bfe"
+    },
+    "img/icon-import-dark.svg": {
+      "base": "fcc024d7bb08e6811ee5e632e062907d8881375a62101e92a028d9219b9b1ab2",
+      "candidate": "fcc024d7bb08e6811ee5e632e062907d8881375a62101e92a028d9219b9b1ab2"
+    },
+    "img/icon-import-export-dark.svg": {
+      "base": "09aed9cb4d7393ad857e01f8dcad590b0567976f1f221b45ca1b3e30d92389a4",
+      "candidate": "09aed9cb4d7393ad857e01f8dcad590b0567976f1f221b45ca1b3e30d92389a4"
+    },
+    "img/icon-import-export-light.svg": {
+      "base": "1f4738962d7de49df54f8a141908d973de8a7f55128dbdab628c495078af7d05",
+      "candidate": "1f4738962d7de49df54f8a141908d973de8a7f55128dbdab628c495078af7d05"
+    },
+    "img/icon-import-light.svg": {
+      "base": "ad13aa8acb1af1c8a0713cc6245540db6250ff2c9bae939d702b44c99e69aaa5",
+      "candidate": "ad13aa8acb1af1c8a0713cc6245540db6250ff2c9bae939d702b44c99e69aaa5"
+    },
+    "img/icon-me-dark.svg": {
+      "base": "013f58c16e1c73c46a16266a0c1a9e8a863e09b97df36ac5eb9342ef24b2cec2",
+      "candidate": "013f58c16e1c73c46a16266a0c1a9e8a863e09b97df36ac5eb9342ef24b2cec2"
+    },
+    "img/icon-me-light.svg": {
+      "base": "4bbcc020edb3182b4f1f597b702c1f9bc61654dcbb1adb7c2fee2fdbbcfd3f36",
+      "candidate": "4bbcc020edb3182b4f1f597b702c1f9bc61654dcbb1adb7c2fee2fdbbcfd3f36"
+    },
+    "img/icon-no-mobile.svg": {
+      "base": "106fd01ff55ae6a9a135cfd6fd50674489fdd9ac5a2efa1ee275d3175cde5320",
+      "candidate": "106fd01ff55ae6a9a135cfd6fd50674489fdd9ac5a2efa1ee275d3175cde5320"
+    },
+    "img/icon-note-dark.svg": {
+      "base": "438ccd1864d82703fa59f0cd975ec1ec701abdb7521ec295587e7ed3afe052a3",
+      "candidate": "438ccd1864d82703fa59f0cd975ec1ec701abdb7521ec295587e7ed3afe052a3"
+    },
+    "img/icon-note-light.svg": {
+      "base": "49d8586c0af14cbaa22c9a564549537c957cf2d651794b13dcceb5e5aef003d3",
+      "candidate": "49d8586c0af14cbaa22c9a564549537c957cf2d651794b13dcceb5e5aef003d3"
+    },
+    "img/icon-save.svg": {
+      "base": "21254824f92b8710c992fcfbbd0444356d71ed554bc30a0b41d382fc167953b0",
+      "candidate": "21254824f92b8710c992fcfbbd0444356d71ed554bc30a0b41d382fc167953b0"
+    },
+    "img/icon-theme-dark.svg": {
+      "base": "0377aaf5d9ac08ffedd758d8ff3a00544e6e9e07e6243e4025d12535bda59baa",
+      "candidate": "0377aaf5d9ac08ffedd758d8ff3a00544e6e9e07e6243e4025d12535bda59baa"
+    },
+    "img/icon-theme-light.svg": {
+      "base": "573d56c5ef07624aabd59aef912261339c1b504e67c8a77e201bf5e64fa21b96",
+      "candidate": "573d56c5ef07624aabd59aef912261339c1b504e67c8a77e201bf5e64fa21b96"
+    },
+    "img/icon-trash-dark.svg": {
+      "base": "aa020226df5f5e019ce1d766fe90aed634e8ef48b64fb59884a891c2489161f6",
+      "candidate": "aa020226df5f5e019ce1d766fe90aed634e8ef48b64fb59884a891c2489161f6"
+    },
+    "img/icon-trash-light.svg": {
+      "base": "5f547818c292889cdffcac745c6396cfdb58526bf43c9556a7c0f0d02e3cbdbc",
+      "candidate": "5f547818c292889cdffcac745c6396cfdb58526bf43c9556a7c0f0d02e3cbdbc"
+    },
+    "img/icon-video-dark.svg": {
+      "base": "4d0c792a2af7868c0f86defa0002323fe8b5d9167bd3a9e8b0c6f6a694374929",
+      "candidate": "4d0c792a2af7868c0f86defa0002323fe8b5d9167bd3a9e8b0c6f6a694374929"
+    },
+    "img/icon-video-light.svg": {
+      "base": "606fa1334c5e55507461fb59cfdb007b05efc62600a8b48809d2dc3deac74d0e",
+      "candidate": "606fa1334c5e55507461fb59cfdb007b05efc62600a8b48809d2dc3deac74d0e"
+    },
+    "img/icons/archive-16.png": {
+      "base": "6012b13bccc308783a3bfa2007eb7db8c2e98a029999faff1b1f0505425dc704",
+      "candidate": "6012b13bccc308783a3bfa2007eb7db8c2e98a029999faff1b1f0505425dc704"
+    },
+    "img/icons/archive-192.png": {
+      "base": "82a3ce6453ff40a6d1617e42d58fd0253ddfaf1aededbf6ad1d6221f3ff28dc6",
+      "candidate": "82a3ce6453ff40a6d1617e42d58fd0253ddfaf1aededbf6ad1d6221f3ff28dc6"
+    },
+    "img/icons/archive-256.png": {
+      "base": "007202fbff222997625a5327bf84b85c9f41682cfcc92a6e5948c2472b4755d7",
+      "candidate": "007202fbff222997625a5327bf84b85c9f41682cfcc92a6e5948c2472b4755d7"
+    },
+    "img/icons/archive-32.png": {
+      "base": "f381cf2b09bf3932e811e08e43e66813100d0375ca1afe3a18f34e7f7a4e0447",
+      "candidate": "f381cf2b09bf3932e811e08e43e66813100d0375ca1afe3a18f34e7f7a4e0447"
+    },
+    "img/icons/archive-48.png": {
+      "base": "9988b4c820774a6e0012cdea771f3609ec6b8613ada1e994402221d1897de19a",
+      "candidate": "9988b4c820774a6e0012cdea771f3609ec6b8613ada1e994402221d1897de19a"
+    },
+    "img/icons/archive-512.png": {
+      "base": "6815d2d8fe126e90cf53da1c73389971d40a7d1775e0b69406cce2692f5822d9",
+      "candidate": "6815d2d8fe126e90cf53da1c73389971d40a7d1775e0b69406cce2692f5822d9"
+    },
+    "img/icons/archive-maskable-512.png": {
+      "base": "113ac17e03c184e5af9368ccf27c4a348202f93105e59c3b67f91876233f2958",
+      "candidate": "113ac17e03c184e5af9368ccf27c4a348202f93105e59c3b67f91876233f2958"
+    },
+    "img/icons/dungeon-16.png": {
+      "base": "3edd6561a114ea5f9887b511b8b10f5b887769962884bde261357e1290d4a74a",
+      "candidate": "3edd6561a114ea5f9887b511b8b10f5b887769962884bde261357e1290d4a74a"
+    },
+    "img/icons/dungeon-192.png": {
+      "base": "91ed32594dc72155bfa2b6ddf584293e99d2cc9f613e74f9524ce36fabe696a0",
+      "candidate": "91ed32594dc72155bfa2b6ddf584293e99d2cc9f613e74f9524ce36fabe696a0"
+    },
+    "img/icons/dungeon-256.png": {
+      "base": "d65ced60ab8133c25de5900a5cb22b887ab7a5d919da8a579f3a91ab936a461c",
+      "candidate": "d65ced60ab8133c25de5900a5cb22b887ab7a5d919da8a579f3a91ab936a461c"
+    },
+    "img/icons/dungeon-32.png": {
+      "base": "fc10b4623b3ed8b2d6fc2bb359a62de34e7980d11a7e97c4239b94a0b710c2a5",
+      "candidate": "fc10b4623b3ed8b2d6fc2bb359a62de34e7980d11a7e97c4239b94a0b710c2a5"
+    },
+    "img/icons/dungeon-48.png": {
+      "base": "b02047b2634cc74a693183ea0a3e3919f7b497bb1d0bbd5aa7531c6873105c09",
+      "candidate": "b02047b2634cc74a693183ea0a3e3919f7b497bb1d0bbd5aa7531c6873105c09"
+    },
+    "img/icons/dungeon-512.png": {
+      "base": "887df3f03c60c05a6c829637dc4d7d9f64027229e2384a26540915aaf7dda618",
+      "candidate": "887df3f03c60c05a6c829637dc4d7d9f64027229e2384a26540915aaf7dda618"
+    },
+    "img/icons/dungeon-maskable-512.png": {
+      "base": "a8662fdbd6c23f9b3777dad61e88fb3b0f881bd9973a1640d6e12221796452fe",
+      "candidate": "a8662fdbd6c23f9b3777dad61e88fb3b0f881bd9973a1640d6e12221796452fe"
+    },
+    "img/icons/forest-16.png": {
+      "base": "b188f04f23dfd52010ed559a4bcbde73105d960d042e8e339b4fb7c07518e4bc",
+      "candidate": "b188f04f23dfd52010ed559a4bcbde73105d960d042e8e339b4fb7c07518e4bc"
+    },
+    "img/icons/forest-192.png": {
+      "base": "030da6e68c1bec216f1379e9a6ec06514287c0bf986ebf37af7bb5bf88f322c9",
+      "candidate": "030da6e68c1bec216f1379e9a6ec06514287c0bf986ebf37af7bb5bf88f322c9"
+    },
+    "img/icons/forest-256.png": {
+      "base": "4e0c66e40a5d9da2d64eba053ed2c69e2baec9c4409d5368b5726444fbffc2cc",
+      "candidate": "4e0c66e40a5d9da2d64eba053ed2c69e2baec9c4409d5368b5726444fbffc2cc"
+    },
+    "img/icons/forest-32.png": {
+      "base": "f1c86736995d93df709b62f32ae5f45245aa0d039c99bbbdcf4812da859d34b3",
+      "candidate": "f1c86736995d93df709b62f32ae5f45245aa0d039c99bbbdcf4812da859d34b3"
+    },
+    "img/icons/forest-48.png": {
+      "base": "501c0a48689a0a1086a909c135e8824dd2095f8791da0eb769555486e3bdc372",
+      "candidate": "501c0a48689a0a1086a909c135e8824dd2095f8791da0eb769555486e3bdc372"
+    },
+    "img/icons/forest-512.png": {
+      "base": "b64de14382d497f58e38c8144429a6236ecb11daf326467e0e60d67c86055428",
+      "candidate": "b64de14382d497f58e38c8144429a6236ecb11daf326467e0e60d67c86055428"
+    },
+    "img/icons/forest-maskable-512.png": {
+      "base": "352284d3333da6f63017eee1a8582ba5af43ad5b043f173c6e2453e63f943987",
+      "candidate": "352284d3333da6f63017eee1a8582ba5af43ad5b043f173c6e2453e63f943987"
+    },
+    "img/icons/map-16.png": {
+      "base": "abff4edcf0c369823ff594a9f62b8b4601902b43a25db8c1bd63c84e128d33eb",
+      "candidate": "abff4edcf0c369823ff594a9f62b8b4601902b43a25db8c1bd63c84e128d33eb"
+    },
+    "img/icons/map-192.png": {
+      "base": "b374e7189215320c9ae3b36ba43d499f602d4ebd2fb3de63d6c4ded38fc347b0",
+      "candidate": "b374e7189215320c9ae3b36ba43d499f602d4ebd2fb3de63d6c4ded38fc347b0"
+    },
+    "img/icons/map-256.png": {
+      "base": "0dcef84be122ecc5e2a6610802e82b806c163f2218162ba624673a3d807239ac",
+      "candidate": "0dcef84be122ecc5e2a6610802e82b806c163f2218162ba624673a3d807239ac"
+    },
+    "img/icons/map-32.png": {
+      "base": "4600a4515eb5becd6a68b02c1e5df1c7bb191e15e6538f56bfb6d60c6dd17e2c",
+      "candidate": "4600a4515eb5becd6a68b02c1e5df1c7bb191e15e6538f56bfb6d60c6dd17e2c"
+    },
+    "img/icons/map-48.png": {
+      "base": "b166b0ed3687fd9e22c652dbc13e0de3b0838a108f6fd68ea10dd73f63570cdd",
+      "candidate": "b166b0ed3687fd9e22c652dbc13e0de3b0838a108f6fd68ea10dd73f63570cdd"
+    },
+    "img/icons/map-512.png": {
+      "base": "dec61ac5fead32c7debdb1ad9f5d5e541f7c9d6dff239fc174befd6016136f03",
+      "candidate": "dec61ac5fead32c7debdb1ad9f5d5e541f7c9d6dff239fc174befd6016136f03"
+    },
+    "img/icons/map-maskable-512.png": {
+      "base": "665053d2b57d09835ca0162c08cd6347108d77336c36c94f907ac965f4871bc4",
+      "candidate": "665053d2b57d09835ca0162c08cd6347108d77336c36c94f907ac965f4871bc4"
+    },
+    "img/icons/parchlock-archive.ico": {
+      "base": "2eff2fa4940ba580121f99f55dcde2bde960691ebb28452bdb723da56d6456ac",
+      "candidate": "2eff2fa4940ba580121f99f55dcde2bde960691ebb28452bdb723da56d6456ac"
+    },
+    "img/icons/parchlock-dungeon.ico": {
+      "base": "739daca886a6d6fdde41daf1c5daed92d282ad11194af5a0875db761aca5dabd",
+      "candidate": "739daca886a6d6fdde41daf1c5daed92d282ad11194af5a0875db761aca5dabd"
+    },
+    "img/icons/parchlock-forest.ico": {
+      "base": "0e35aaea693e295f99d05274cbd989c937ff478459db2aa477652f21bf206ffc",
+      "candidate": "0e35aaea693e295f99d05274cbd989c937ff478459db2aa477652f21bf206ffc"
+    },
+    "img/icons/parchlock-map.ico": {
+      "base": "80eea491a5a1ae91646a11bc855c697a354cedbe674bfacda8cb5c56ea405479",
+      "candidate": "80eea491a5a1ae91646a11bc855c697a354cedbe674bfacda8cb5c56ea405479"
+    },
+    "img/icons/tiny-archive.svg": {
+      "base": "c5ca244ab434bc6fc7ef807fb01ca70f7326c37ea54a8bc708e31a69743d2b53",
+      "candidate": "c5ca244ab434bc6fc7ef807fb01ca70f7326c37ea54a8bc708e31a69743d2b53"
+    },
+    "img/icons/tiny-dungeon.svg": {
+      "base": "8d1614a3b38379b4f9e3bb2d1b7879264b8f3fbc57d41382b1a927eccca37563",
+      "candidate": "8d1614a3b38379b4f9e3bb2d1b7879264b8f3fbc57d41382b1a927eccca37563"
+    },
+    "img/icons/tiny-forest.svg": {
+      "base": "01eb09757709f3fe3fb27ca41661d6fc9fd56b272502379f0f2fffaae0872c17",
+      "candidate": "01eb09757709f3fe3fb27ca41661d6fc9fd56b272502379f0f2fffaae0872c17"
+    },
+    "img/icons/tiny-map.svg": {
+      "base": "c0e0c9a2dbac2cfa341e328073949b062d0984a0d8e5510ff1dfc2a30f7627bf",
+      "candidate": "c0e0c9a2dbac2cfa341e328073949b062d0984a0d8e5510ff1dfc2a30f7627bf"
+    },
+    "img/parchlock-splash-archive-door.png": {
+      "base": "7e9785cb253d79e45bfc5122c7512bc9a4fba1b293e9a7fef8edcc2bcef662f5",
+      "candidate": "7e9785cb253d79e45bfc5122c7512bc9a4fba1b293e9a7fef8edcc2bcef662f5"
+    },
+    "img/parchlock-splash-dungeon-door.png": {
+      "base": "1e67eccd82bc1b955795afb95667b59f93da5c062dfaad63aaeccb2e4760cc24",
+      "candidate": "1e67eccd82bc1b955795afb95667b59f93da5c062dfaad63aaeccb2e4760cc24"
+    },
+    "img/parchlock-splash-forest-path.png": {
+      "base": "a61604fadafe9d3560f3b656d84ed6c5008fd8901d61ee05fb610b4ae5063171",
+      "candidate": "a61604fadafe9d3560f3b656d84ed6c5008fd8901d61ee05fb610b4ae5063171"
+    },
+    "img/parchlock-splash-living-map.png": {
+      "base": "d747706ed3ac23b63f616bbc297ab3f86ec21185b0c8747f8a808e4db6fec86e",
+      "candidate": "d747706ed3ac23b63f616bbc297ab3f86ec21185b0c8747f8a808e4db6fec86e"
+    },
+    "img/ParchLockSplash.css": {
+      "base": "31604768d4703dab7872bb5e6a4c6734a69280bfbb996fa56b607e056b7c2b41",
+      "candidate": "31604768d4703dab7872bb5e6a4c6734a69280bfbb996fa56b607e056b7c2b41"
+    },
+    "img/ParchLockSplash.js": {
+      "base": "727b935ec4b334025f1afe6970f976e3520d015312e75acb6e957f5bb0ccd4df",
+      "candidate": "727b935ec4b334025f1afe6970f976e3520d015312e75acb6e957f5bb0ccd4df"
+    },
+    "img/waiting.gif": {
+      "base": "a5f0061830d5ae41d5b2d350d70430939ffc46365d0d1f2bafac844e9b95087c",
+      "candidate": "a5f0061830d5ae41d5b2d350d70430939ffc46365d0d1f2bafac844e9b95087c"
+    },
+    "licenses/AsyncGlk-MIT.txt": {
+      "base": "98b2179558b1ea72993f2b6bcbebd954be85de7f550965edcfd0969efdc76152",
+      "candidate": "98b2179558b1ea72993f2b6bcbebd954be85de7f550965edcfd0969efdc76152"
+    },
+    "licenses/Bocfel-MIT.txt": {
+      "base": "f8a7cb5097ca3cf3149c40d256eb1244ee787bda4cd6f6dff42a59a2e802aee9",
+      "candidate": "f8a7cb5097ca3cf3149c40d256eb1244ee787bda4cd6f6dff42a59a2e802aee9"
+    },
+    "licenses/Capacitor-Filesystem-MIT.txt": {
+      "base": "de884404585ed20280150b0768082b6004d3548aaa0d6e596d6bfa0538ab331d",
+      "candidate": "de884404585ed20280150b0768082b6004d3548aaa0d6e596d6bfa0538ab331d"
+    },
+    "licenses/Capacitor-MIT.txt": {
+      "base": "9c6ebf3e5ab832ba4d5af38f340978e1fedbfee6e3d23662dfdb8917a9d864dd",
+      "candidate": "9c6ebf3e5ab832ba4d5af38f340978e1fedbfee6e3d23662dfdb8917a9d864dd"
+    },
+    "licenses/Capacitor-Share-MIT.txt": {
+      "base": "eb99a0d61b507ad0182e18e9d2a91537c1d9025c94e098e4e7603a53b4b5218a",
+      "candidate": "eb99a0d61b507ad0182e18e9d2a91537c1d9025c94e098e4e7603a53b4b5218a"
+    },
+    "licenses/Capacitor-Speech-MIT.txt": {
+      "base": "9fc8460a452d574481f7dae49d16656bf8f346100bb843dc8342ce2064bf5a6d",
+      "candidate": "9fc8460a452d574481f7dae49d16656bf8f346100bb843dc8342ce2064bf5a6d"
+    },
+    "licenses/Capacitor-TextToSpeech-MIT.txt": {
+      "base": "a703aa8fa63988475553dd445d0ad0e0aa42674947081ab24ddc8f785b5e2d2a",
+      "candidate": "a703aa8fa63988475553dd445d0ad0e0aa42674947081ab24ddc8f785b5e2d2a"
+    },
+    "licenses/Emglken-MIT.txt": {
+      "base": "7f832914e3a094960455f9a5ef730c7d6141222f1da8649511839bb3e0efd38c",
+      "candidate": "7f832914e3a094960455f9a5ef730c7d6141222f1da8649511839bb3e0efd38c"
+    },
+    "licenses/Glulxe-MIT.txt": {
+      "base": "73537ada0cd1aba5de83fab815701d3aac4e25b65b1d4cc361a536782c5c5c40",
+      "candidate": "73537ada0cd1aba5de83fab815701d3aac4e25b65b1d4cc361a536782c5c5c40"
+    },
+    "licenses/ifvms-MIT.txt": {
+      "base": "0b92ade636c10a0d23913856be8ebe635f28c7b8623f5575137733f6f19ee2fa",
+      "candidate": "0b92ade636c10a0d23913856be8ebe635f28c7b8623f5575137733f6f19ee2fa"
+    },
+    "licenses/jQuery-MIT.txt": {
+      "base": "1ff603118efdb313799567cb4a408594954384f40843ca6f29c596f5b1f8907d",
+      "candidate": "1ff603118efdb313799567cb4a408594954384f40843ca6f29c596f5b1f8907d"
+    },
+    "licenses/jQuery-slimScroll-MIT.txt": {
+      "base": "f7dfeb93e4503db196fb59c694a38159553e038439c390f565c1dc3239a40cf2",
+      "candidate": "f7dfeb93e4503db196fb59c694a38159553e038439c390f565c1dc3239a40cf2"
+    },
+    "licenses/Parchment-MIT.txt": {
+      "base": "c12fea9d912cc2ac6dbf8c577053f5ba254ce8706eb772123adbd0be77a2e8b3",
+      "candidate": "c12fea9d912cc2ac6dbf8c577053f5ba254ce8706eb772123adbd0be77a2e8b3"
+    },
+    "licenses/Quixe-MIT.txt": {
+      "base": "7def72a2e993aba0ce9e03a0cc877b472dc080d0e9836542cca2dfaf370c0b14",
+      "candidate": "7def72a2e993aba0ce9e03a0cc877b472dc080d0e9836542cca2dfaf370c0b14"
+    },
+    "licenses/RemGlk-MIT.txt": {
+      "base": "98b2179558b1ea72993f2b6bcbebd954be85de7f550965edcfd0969efdc76152",
+      "candidate": "98b2179558b1ea72993f2b6bcbebd954be85de7f550965edcfd0969efdc76152"
+    },
+    "games/905.z5.js": {
+      "base": "ecea264e4e50277206e42299a3d9628362dd60a50c8e4fb5f323e794e811871b",
+      "candidate": "ecea264e4e50277206e42299a3d9628362dd60a50c8e4fb5f323e794e811871b"
+    },
+    "games/Accuse.zblorb.js": {
+      "base": "f8b86e8b8dd900fb04e33a2d972bdfc47c70f8e51b326d57fa554101c1bdb97e",
+      "candidate": "f8b86e8b8dd900fb04e33a2d972bdfc47c70f8e51b326d57fa554101c1bdb97e"
+    },
+    "games/acorncourt.z5.js": {
+      "base": "9f9a75a026fb5b86e5b3e66ffba7fb1e4033c99890ab070eacadcc17b82c43fd",
+      "candidate": "9f9a75a026fb5b86e5b3e66ffba7fb1e4033c99890ab070eacadcc17b82c43fd"
+    },
+    "games/Advent.z5.js": {
+      "base": "1612d731f796799ac400f02ec4973a426beeecefd917798df96f41df9205697a",
+      "candidate": "1612d731f796799ac400f02ec4973a426beeecefd917798df96f41df9205697a"
+    },
+    "games/Adventureland.z5.js": {
+      "base": "9cc1bee2907937b95881107369d95f9508733d7ef913e66770b7f79b3ec8b369",
+      "candidate": "9cc1bee2907937b95881107369d95f9508733d7ef913e66770b7f79b3ec8b369"
+    },
+    "games/adverbum.z5.js": {
+      "base": "6939796e6b874fed5ef7136cd766471a6735bdf61003f6da5526ef262c1ac7d8",
+      "candidate": "6939796e6b874fed5ef7136cd766471a6735bdf61003f6da5526ef262c1ac7d8"
+    },
+    "games/Alabaster.gblorb.js": {
+      "base": "a2ac5db7501b73d8d6225908a4e6ec024acb0c5049eb934f40acb21aaa2e0434",
+      "candidate": "a2ac5db7501b73d8d6225908a4e6ec024acb0c5049eb934f40acb21aaa2e0434"
+    },
+    "games/alice3.z5.js": {
+      "base": "a4549d48fc488430937fb7a405c908c6a248cbe0946cead971a311867c390a2d",
+      "candidate": "a4549d48fc488430937fb7a405c908c6a248cbe0946cead971a311867c390a2d"
+    },
+    "games/AllRoads.z5.js": {
+      "base": "1c7692c06732a7cde8660024bafd4403f1a1c5fd7e7e159ec60700919d7b3aab",
+      "candidate": "1c7692c06732a7cde8660024bafd4403f1a1c5fd7e7e159ec60700919d7b3aab"
+    },
+    "games/amish.z5.js": {
+      "base": "ec4f53c8f8e1bd327ec81e69011a2fd8a630ff09bf97f1848d69d1d352eb2373",
+      "candidate": "ec4f53c8f8e1bd327ec81e69011a2fd8a630ff09bf97f1848d69d1d352eb2373"
+    },
+    "games/amiss.z5.js": {
+      "base": "e5d5bfe0d469788ce352692f0c6134421b2045282dc1107bdad658da00bbb67f",
+      "candidate": "e5d5bfe0d469788ce352692f0c6134421b2045282dc1107bdad658da00bbb67f"
+    },
+    "games/anchor.z8.js": {
+      "base": "b861abbe706f1f5bc341f00897977c0ed6383ee7f7f2ae1c513489d6ffa71aa1",
+      "candidate": "b861abbe706f1f5bc341f00897977c0ed6383ee7f7f2ae1c513489d6ffa71aa1"
+    },
+    "games/AndromedaApocalypse.gblorb.js": {
+      "base": "960e9d35a76cd4bd801a383cdecc032e4a2df4b0f99c76075acde06acb327807",
+      "candidate": "960e9d35a76cd4bd801a383cdecc032e4a2df4b0f99c76075acde06acb327807"
+    },
+    "games/annoy.z5.js": {
+      "base": "b1f315ff64b04b533ca4fa26cc2adb112552c9c32e3f4aa0d6fa872926522e1e",
+      "candidate": "b1f315ff64b04b533ca4fa26cc2adb112552c9c32e3f4aa0d6fa872926522e1e"
+    },
+    "games/AOTYRZ.z5.js": {
+      "base": "4824e80e5f9fc3315f8d6ecb57cc03d5e085266316ade4da394178d4a13bff79",
+      "candidate": "4824e80e5f9fc3315f8d6ecb57cc03d5e085266316ade4da394178d4a13bff79"
+    },
+    "games/appall.z5.js": {
+      "base": "576e995b8f0f37503d12fd039bb88621f083e0fbcf4fad139982f11d3a034afe",
+      "candidate": "576e995b8f0f37503d12fd039bb88621f083e0fbcf4fad139982f11d3a034afe"
+    },
+    "games/Aug4.z8.js": {
+      "base": "47851affaf95c2d162da68f970d4a14c89bc260a87fad8409fac23227632f44a",
+      "candidate": "47851affaf95c2d162da68f970d4a14c89bc260a87fad8409fac23227632f44a"
+    },
+    "games/awaken.z5.js": {
+      "base": "c2a21648bca9b94dbed3c407e7224eb8ab981085ca290e4d91161321bbc396ce",
+      "candidate": "c2a21648bca9b94dbed3c407e7224eb8ab981085ca290e4d91161321bbc396ce"
+    },
+    "games/ayac.z5.js": {
+      "base": "6cb1e96eb6117e69b72767697ff884b7779bd03cfbb9e6aecd80c7e42990d3e7",
+      "candidate": "6cb1e96eb6117e69b72767697ff884b7779bd03cfbb9e6aecd80c7e42990d3e7"
+    },
+    "games/b2demo.z5.js": {
+      "base": "9f73ffc46c37b4329b0d19cb185a19f3f4b87a14be83362ab6ad5605ece59ad8",
+      "candidate": "9f73ffc46c37b4329b0d19cb185a19f3f4b87a14be83362ab6ad5605ece59ad8"
+    },
+    "games/Balances.z5.js": {
+      "base": "f8db5800d7acc53dba378ae4dc5d99132861121d1cf31b153f955ea537988295",
+      "candidate": "f8db5800d7acc53dba378ae4dc5d99132861121d1cf31b153f955ea537988295"
+    },
+    "games/ballerina102.z8.js": {
+      "base": "de468b884248f1c888459c862f94ab7e2b304083b0ffd39f0b59327a6ed6edc5",
+      "candidate": "de468b884248f1c888459c862f94ab7e2b304083b0ffd39f0b59327a6ed6edc5"
+    },
+    "games/Ballyhoo.z3.js": {
+      "base": "a3cd79ae5bd483027ee43c1235cca6514115daadc6056d8c4aa4c3488fd6a6fb",
+      "candidate": "a3cd79ae5bd483027ee43c1235cca6514115daadc6056d8c4aa4c3488fd6a6fb"
+    },
+    "games/baron_EN.z8.js": {
+      "base": "d96bceb7bf048c03f2a25615ebc9d0a0cfa7a6eda8654ee5578ee5dbe3e56c33",
+      "candidate": "d96bceb7bf048c03f2a25615ebc9d0a0cfa7a6eda8654ee5578ee5dbe3e56c33"
+    },
+    "games/bear.z5.js": {
+      "base": "e10458a56d1ee205f965dd381e12d6333b25fde452e37aeb288b7832a12b4e61",
+      "candidate": "e10458a56d1ee205f965dd381e12d6333b25fde452e37aeb288b7832a12b4e61"
+    },
+    "games/bedlam.z5.js": {
+      "base": "497ba69eaaec3a7c5d7437f4cd3121c5c2435e11786bd77a9d5f423028749bcb",
+      "candidate": "497ba69eaaec3a7c5d7437f4cd3121c5c2435e11786bd77a9d5f423028749bcb"
+    },
+    "games/BeingAndrewPlotkin.zblorb.js": {
+      "base": "4111fa5fa5a08832252b06bc014f5f2134a3b582ba0ed32c5c159fd34e78dc47",
+      "candidate": "4111fa5fa5a08832252b06bc014f5f2134a3b582ba0ed32c5c159fd34e78dc47"
+    },
+    "games/BeingSteve.zblorb.js": {
+      "base": "ea65519956d69c1f3f4c97c76a8f128cd5b37061f49fb63904732ff26dbbcec5",
+      "candidate": "ea65519956d69c1f3f4c97c76a8f128cd5b37061f49fb63904732ff26dbbcec5"
+    },
+    "games/beneath.z5.js": {
+      "base": "fae502a245454a2e0ae78d0b2e2749be1ba000d5398e16592156b4a45715a036",
+      "candidate": "fae502a245454a2e0ae78d0b2e2749be1ba000d5398e16592156b4a45715a036"
+    },
+    "games/BibleRetold.z5.js": {
+      "base": "320bad89b34e667aeb97cee8c6aa90d3db21b5bea123730312b327db7e454ed2",
+      "candidate": "320bad89b34e667aeb97cee8c6aa90d3db21b5bea123730312b327db7e454ed2"
+    },
+    "games/Biscuit.z5.js": {
+      "base": "558961ff9713cd293437a5d7eb5b18275d585b48518bcf8e8d92a39c75dfac77",
+      "candidate": "558961ff9713cd293437a5d7eb5b18275d585b48518bcf8e8d92a39c75dfac77"
+    },
+    "games/bj.z5.js": {
+      "base": "e5b185ecfb3ac65be59802c7ae9c974276cdc0e532a2a78e9849ff3b6e709c7a",
+      "candidate": "e5b185ecfb3ac65be59802c7ae9c974276cdc0e532a2a78e9849ff3b6e709c7a"
+    },
+    "games/blair.z5.js": {
+      "base": "f19e5968d36aedcf56f5487f0e0f150e587e9795efb0fd2f0c88586931452057",
+      "candidate": "f19e5968d36aedcf56f5487f0e0f150e587e9795efb0fd2f0c88586931452057"
+    },
+    "games/bluechairs.z5.js": {
+      "base": "ec341f0b3d0b156eed0c00c84bea11a00427e1f70ea9689c7b4559f3e6ef5d19",
+      "candidate": "ec341f0b3d0b156eed0c00c84bea11a00427e1f70ea9689c7b4559f3e6ef5d19"
+    },
+    "games/BlueLacuna.gblorb.js": {
+      "base": "0812a14e06f5c86e20b1fd984e65ed9663f0e7a21f14982fe33c8a248b3c73c4",
+      "candidate": "0812a14e06f5c86e20b1fd984e65ed9663f0e7a21f14982fe33c8a248b3c73c4"
+    },
+    "games/blues.z5.js": {
+      "base": "eb5511c3e3ec2d29268fca3a19e9a64d1d82035ecbc92c6f937709209e65b7e2",
+      "candidate": "eb5511c3e3ec2d29268fca3a19e9a64d1d82035ecbc92c6f937709209e65b7e2"
+    },
+    "games/bofh.z5.js": {
+      "base": "bddfbc9a87b4cbcbdfebb4ee7cd9c28a7c1ce969fb223b7562017312df88c551",
+      "candidate": "bddfbc9a87b4cbcbdfebb4ee7cd9c28a7c1ce969fb223b7562017312df88c551"
+    },
+    "games/bookvol.z5.js": {
+      "base": "2077b8c29f334d269b99d12c1493ffaf9e945fe8e57e09fb4ba8d4ccae933236",
+      "candidate": "2077b8c29f334d269b99d12c1493ffaf9e945fe8e57e09fb4ba8d4ccae933236"
+    },
+    "games/booth.z5.js": {
+      "base": "017b867e5894bd6f09b300fba262c7d69a245cab637af999b97bd6caa7229b8c",
+      "candidate": "017b867e5894bd6f09b300fba262c7d69a245cab637af999b97bd6caa7229b8c"
+    },
+    "games/boothdye.z5.js": {
+      "base": "79a5fc141cd7108e1912faae8da785dbe093cc4237bf2dd3fcff87586c75561b",
+      "candidate": "79a5fc141cd7108e1912faae8da785dbe093cc4237bf2dd3fcff87586c75561b"
+    },
+    "games/Borderzo.z5.js": {
+      "base": "f8f5985c60427c7612f58dfe089211252497b7e7b7216d84173be438439e4d5b",
+      "candidate": "f8f5985c60427c7612f58dfe089211252497b7e7b7216d84173be438439e4d5b"
+    },
+    "games/break-in.z5.js": {
+      "base": "23917a9e4b15bb5cf5ecc79cc4de3f0b5425d22d05fb8c98d316db4fdafea174",
+      "candidate": "23917a9e4b15bb5cf5ecc79cc4de3f0b5425d22d05fb8c98d316db4fdafea174"
+    },
+    "games/Bronze.zblorb.js": {
+      "base": "9555924b978ad457d45ee51082712337e72459a3ad204cf619731683d309b377",
+      "candidate": "9555924b978ad457d45ee51082712337e72459a3ad204cf619731683d309b377"
+    },
+    "games/bse.z5.js": {
+      "base": "be14ceb25a2355d3952bde31cf4abe8a7c4148543bc14eebd4eef2e44f06b23e",
+      "candidate": "be14ceb25a2355d3952bde31cf4abe8a7c4148543bc14eebd4eef2e44f06b23e"
+    },
+    "games/building.z5.js": {
+      "base": "8df3e7e3e8ff434d90b539544f26d1581455d63af4894071a4a9cb7b96cc07f3",
+      "candidate": "8df3e7e3e8ff434d90b539544f26d1581455d63af4894071a4a9cb7b96cc07f3"
+    },
+    "games/bunny.z5.js": {
+      "base": "462fe0ab3adb63af0d88cc1d29188ffb12d46bb8f78b27d83d96939859d80e39",
+      "candidate": "462fe0ab3adb63af0d88cc1d29188ffb12d46bb8f78b27d83d96939859d80e39"
+    },
+    "games/burglar.z5.js": {
+      "base": "621f42663ad588587d9ad82b55d46ec3cf8dd316af229c8ea0ee0f36fab993f4",
+      "candidate": "621f42663ad588587d9ad82b55d46ec3cf8dd316af229c8ea0ee0f36fab993f4"
+    },
+    "games/cabal.z5.js": {
+      "base": "9c42d7d627564cc1ca434b5fc1fb6e9ee2e01e3674f192741d003f3e74bae5ae",
+      "candidate": "9c42d7d627564cc1ca434b5fc1fb6e9ee2e01e3674f192741d003f3e74bae5ae"
+    },
+    "games/candy.z5.js": {
+      "base": "3ee84f97c011c1df9117c2a814eb68898fe14f51afc384d61c56d8ebc362fe28",
+      "candidate": "3ee84f97c011c1df9117c2a814eb68898fe14f51afc384d61c56d8ebc362fe28"
+    },
+    "games/CatcherInTheRye.zblorb.js": {
+      "base": "a602c0bd5da0e2a4ec4aeedb0c449932cb2f4cd737bba9418d489336da2b7bd2",
+      "candidate": "a602c0bd5da0e2a4ec4aeedb0c449932cb2f4cd737bba9418d489336da2b7bd2"
+    },
+    "games/catseye.z3.js": {
+      "base": "b583bf7353a938dd0057ae2b4cd2f08a19d9b7e33f61edd7737d80536250cbc8",
+      "candidate": "b583bf7353a938dd0057ae2b4cd2f08a19d9b7e33f61edd7737d80536250cbc8"
+    },
+    "games/causality.z5.js": {
+      "base": "c0cd0f9e897b1a2387f35293591d19d397fb54b87165c7871e039be69dec7ea3",
+      "candidate": "c0cd0f9e897b1a2387f35293591d19d397fb54b87165c7871e039be69dec7ea3"
+    },
+    "games/cavern.z5.js": {
+      "base": "74bca9105acc2a28c148ec9660277eadeed7bc437bbbae1d89ca52b2ba85106b",
+      "candidate": "74bca9105acc2a28c148ec9660277eadeed7bc437bbbae1d89ca52b2ba85106b"
+    },
+    "games/change.z5.js": {
+      "base": "48bf4bccecbfdb4ae939bed5f8266a2272cda23cfdc6f062f4249030850a5842",
+      "candidate": "48bf4bccecbfdb4ae939bed5f8266a2272cda23cfdc6f062f4249030850a5842"
+    },
+    "games/cheater.z5.js": {
+      "base": "792486ababc10fea5e03cfa4274650aa782515f2b2ffcf6f569b4f393d6cb986",
+      "candidate": "792486ababc10fea5e03cfa4274650aa782515f2b2ffcf6f569b4f393d6cb986"
+    },
+    "games/cheeseshop.z5.js": {
+      "base": "a6e135e1d3a2d4203b3bcf87ff3d94be48b94f0e4f46a4a9a29001c4eace937e",
+      "candidate": "a6e135e1d3a2d4203b3bcf87ff3d94be48b94f0e4f46a4a9a29001c4eace937e"
+    },
+    "games/chico.z5.js": {
+      "base": "ee6d52507d34ee87dc8d374a2b09dc3d300ca980ea0d822a6fdb490af26de2d5",
+      "candidate": "ee6d52507d34ee87dc8d374a2b09dc3d300ca980ea0d822a6fdb490af26de2d5"
+    },
+    "games/ChildsPlay.zblorb.js": {
+      "base": "4e590414054ad44732ef499b85560f14e8b80e24bb8d630de3bbce60b1126f2f",
+      "candidate": "4e590414054ad44732ef499b85560f14e8b80e24bb8d630de3bbce60b1126f2f"
+    },
+    "games/chix.z5.js": {
+      "base": "2a45e363db3b72061e1ea08b7a6bc7d4a531845ab594b6fbc086a87f20aba7f9",
+      "candidate": "2a45e363db3b72061e1ea08b7a6bc7d4a531845ab594b6fbc086a87f20aba7f9"
+    },
+    "games/cia.z5.js": {
+      "base": "1bd723b4a9a5c408402f170f4b72ab0a92e3cee9c3a5d45e3efee3217f991baf",
+      "candidate": "1bd723b4a9a5c408402f170f4b72ab0a92e3cee9c3a5d45e3efee3217f991baf"
+    },
+    "games/claw.z5.js": {
+      "base": "fac06742d967584d68485260b64f5ca400519daead2c6e2010cd8efd0c3835c6",
+      "candidate": "fac06742d967584d68485260b64f5ca400519daead2c6e2010cd8efd0c3835c6"
+    },
+    "games/ConanKillEverything.z5.js": {
+      "base": "bd01b4b8bdfed70f8b03ae8e66de6a8bc5940763473ba063de3b278bf99de10a",
+      "candidate": "bd01b4b8bdfed70f8b03ae8e66de6a8bc5940763473ba063de3b278bf99de10a"
+    },
+    "games/CosmoServe.gblorb.js": {
+      "base": "d054d565ff637d27c5ce62ea630a3aaa970574d86cf0029be49dce4a0fe52650",
+      "candidate": "d054d565ff637d27c5ce62ea630a3aaa970574d86cf0029be49dce4a0fe52650"
+    },
+    "games/CounterfeitMonkey.gblorb.js": {
+      "base": "d54da18f91270c71fd5371fcce4235dc0e4be16a9517ebac8571a0aff5cd7b16",
+      "candidate": "d54da18f91270c71fd5371fcce4235dc0e4be16a9517ebac8571a0aff5cd7b16"
+    },
+    "games/Cove.z5.js": {
+      "base": "07a208277357fbfa33a3252c9af2fddf10f3792164a5191956d9f6c0b75ba967",
+      "candidate": "07a208277357fbfa33a3252c9af2fddf10f3792164a5191956d9f6c0b75ba967"
+    },
+    "games/CragneManor.gblorb.js": {
+      "base": "4faad3125135ceae4d13fe8350205ba2963287358406f94af1a64eaab772d477",
+      "candidate": "4faad3125135ceae4d13fe8350205ba2963287358406f94af1a64eaab772d477"
+    },
+    "games/csbb.z8.js": {
+      "base": "e448918f1527d3d95ed151353317670972896d0545391a8e02ca5149025c4433",
+      "candidate": "e448918f1527d3d95ed151353317670972896d0545391a8e02ca5149025c4433"
+    },
+    "games/CtDoom.z5.js": {
+      "base": "404257c2b6dab5c3c10d8a3ad4c70a0738378c34015f09946804099256234dc6",
+      "candidate": "404257c2b6dab5c3c10d8a3ad4c70a0738378c34015f09946804099256234dc6"
+    },
+    "games/curses.z5.js": {
+      "base": "83fb7d536a579b24e8507acdf0d27a5071cbca5673a6c1d896e199119d160879",
+      "candidate": "83fb7d536a579b24e8507acdf0d27a5071cbca5673a6c1d896e199119d160879"
+    },
+    "games/curves.z8.js": {
+      "base": "52fd30b6df62ef0211d40815a8992d0b42cdcd66224d8a5b6364231503642c80",
+      "candidate": "52fd30b6df62ef0211d40815a8992d0b42cdcd66224d8a5b6364231503642c80"
+    },
+    "games/Cutthroats.z3.js": {
+      "base": "c999acd85d6590f4772622e959c7729adc8341ea974c77a7e98074b4b73c7618",
+      "candidate": "c999acd85d6590f4772622e959c7729adc8341ea974c77a7e98074b4b73c7618"
+    },
+    "games/cycles.z5.js": {
+      "base": "bc6ed995b894b523f24f652ef054a6aed6a3360523e48c4ea260b505e0e5c160",
+      "candidate": "bc6ed995b894b523f24f652ef054a6aed6a3360523e48c4ea260b505e0e5c160"
+    },
+    "games/Cyclops.z5.js": {
+      "base": "12f8550347a29208f4bc7c064c8b427c6cdada6a8babb9a55acf965725b9056b",
+      "candidate": "12f8550347a29208f4bc7c064c8b427c6cdada6a8babb9a55acf965725b9056b"
+    },
+    "games/Damnatio-Memoriae.zblorb.js": {
+      "base": "331e1a54d82ca04e2bb9af976c09471b51127e60644e6df0223874d240c82052",
+      "candidate": "331e1a54d82ca04e2bb9af976c09471b51127e60644e6df0223874d240c82052"
+    },
+    "games/DDIV.z5.js": {
+      "base": "f378e6d2f826c4eda16882211ee681742bfa912f2285723f63c0a10aa7e0b458",
+      "candidate": "f378e6d2f826c4eda16882211ee681742bfa912f2285723f63c0a10aa7e0b458"
+    },
+    "games/Deadline.z3.js": {
+      "base": "fe914f9591af48be051f8921229d95cd337ff4b2aa381cde7b54d45f9679646c",
+      "candidate": "fe914f9591af48be051f8921229d95cd337ff4b2aa381cde7b54d45f9679646c"
+    },
+    "games/deadreck.z5.js": {
+      "base": "e8ee90dfcaa0e4530e3bd9898f81442b50704a253c550f2ec53716171819e1d6",
+      "candidate": "e8ee90dfcaa0e4530e3bd9898f81442b50704a253c550f2ec53716171819e1d6"
+    },
+    "games/death.z5.js": {
+      "base": "d28586614ade2be4a9e981ad7844011ee294bfeed3cbdd046c1b158d26619353",
+      "candidate": "d28586614ade2be4a9e981ad7844011ee294bfeed3cbdd046c1b158d26619353"
+    },
+    "games/Debate.z5.js": {
+      "base": "30a7940e5ebd136ae996a370a9c72fbadce91752cf71d4ef43762250ca7ecc42",
+      "candidate": "30a7940e5ebd136ae996a370a9c72fbadce91752cf71d4ef43762250ca7ecc42"
+    },
+    "games/deephome.z5.js": {
+      "base": "482235cb53d33631e3c6335226691f1625b41f51170c49f78afc433974aa10b0",
+      "candidate": "482235cb53d33631e3c6335226691f1625b41f51170c49f78afc433974aa10b0"
+    },
+    "games/degen.z5.js": {
+      "base": "cc33e99ef43702b0bbc08b2112f9e62730abfc02431017f63eb6a87311403d6f",
+      "candidate": "cc33e99ef43702b0bbc08b2112f9e62730abfc02431017f63eb6a87311403d6f"
+    },
+    "games/dejavu.z3.js": {
+      "base": "c5116a30f57cf5a04afec2d3b9f5dcca0ac3d43a0a37b4dad6790e7da3e28536",
+      "candidate": "c5116a30f57cf5a04afec2d3b9f5dcca0ac3d43a0a37b4dad6790e7da3e28536"
+    },
+    "games/Delusns.z5.js": {
+      "base": "b3dc8e5357faabf7283440d79202b3aaa8bbc1929934ef05f4c41e0abf80758e",
+      "candidate": "b3dc8e5357faabf7283440d79202b3aaa8bbc1929934ef05f4c41e0abf80758e"
+    },
+    "games/detective.z5.js": {
+      "base": "69319ae8e6616c6b13e6c29f49149d76cdad4bde83224da452b104c9c68ee7bf",
+      "candidate": "69319ae8e6616c6b13e6c29f49149d76cdad4bde83224da452b104c9c68ee7bf"
+    },
+    "games/devdoit.z5.js": {
+      "base": "5e694d1dff378db0854541f54cf64ed93b147731c970b28aa5a7f841e8b0fec0",
+      "candidate": "5e694d1dff378db0854541f54cf64ed93b147731c970b28aa5a7f841e8b0fec0"
+    },
+    "games/devours.z5.js": {
+      "base": "c67bac88751e84184e65ca8fa0038585844838d7d7b852b95c6d6fb2ec6be608",
+      "candidate": "c67bac88751e84184e65ca8fa0038585844838d7d7b852b95c6d6fb2ec6be608"
+    },
+    "games/dewdrops.z5.js": {
+      "base": "9d7d0fc7218cdf58eb4ab2290bd61d5379cd4b7af1a16132ec76304e084ad55c",
+      "candidate": "9d7d0fc7218cdf58eb4ab2290bd61d5379cd4b7af1a16132ec76304e084ad55c"
+    },
+    "games/djinni.z5.js": {
+      "base": "2a48502f8429ab23414108dfa6bb94538e886a91ef741187488cb6b45f82e639",
+      "candidate": "2a48502f8429ab23414108dfa6bb94538e886a91ef741187488cb6b45f82e639"
+    },
+    "games/dogslife.z5.js": {
+      "base": "e84be924bb8abd5e6b1765254732986e8dc3d05273ba29b9d6b071538c6535b1",
+      "candidate": "e84be924bb8abd5e6b1765254732986e8dc3d05273ba29b9d6b071538c6535b1"
+    },
+    "games/doll.z5.js": {
+      "base": "8b69ed0827249c987a2d68f670953032aba9de30f35c30fbb7aad6d2e67e3a19",
+      "candidate": "8b69ed0827249c987a2d68f670953032aba9de30f35c30fbb7aad6d2e67e3a19"
+    },
+    "games/dreamhold.z8.js": {
+      "base": "ba81fcca27d8878229bf65b5fdcdc86130c9d59412e26f318df7e259b2982824",
+      "candidate": "ba81fcca27d8878229bf65b5fdcdc86130c9d59412e26f318df7e259b2982824"
+    },
+    "games/DreamTooReal.zblorb.js": {
+      "base": "210c0cf55bd63b2f0a0ac932d328e358cc8b159809af46fc715ade7a8e90d98d",
+      "candidate": "210c0cf55bd63b2f0a0ac932d328e358cc8b159809af46fc715ade7a8e90d98d"
+    },
+    "games/dumont.z5.js": {
+      "base": "2cf1811732c18beb64d3f8da001201291f1e36be4651c9c1ce6634f72392a16b",
+      "candidate": "2cf1811732c18beb64d3f8da001201291f1e36be4651c9c1ce6634f72392a16b"
+    },
+    "games/edifice.z5.js": {
+      "base": "3c9dab6393835871d3dce2d66083c92307de5a5eceaa3ed63a0a9367dfca161c",
+      "candidate": "3c9dab6393835871d3dce2d66083c92307de5a5eceaa3ed63a0a9367dfca161c"
+    },
+    "games/Enchanter.z3.js": {
+      "base": "7a7b513220908478861ee3722d604b86849a13669be923a47b5c8eafcb626e4d",
+      "candidate": "7a7b513220908478861ee3722d604b86849a13669be923a47b5c8eafcb626e4d"
+    },
+    "games/Enemies.z8.js": {
+      "base": "0dba3c4638bd5c960cebc110993a5163e723bed414e66035189718287149ed09",
+      "candidate": "0dba3c4638bd5c960cebc110993a5163e723bed414e66035189718287149ed09"
+    },
+    "games/enter.z5.js": {
+      "base": "4a0216a239455762bb1beb07146cfec49620fcb084c56117e8da4b6c11345107",
+      "candidate": "4a0216a239455762bb1beb07146cfec49620fcb084c56117e8da4b6c11345107"
+    },
+    "games/eric_dm.z5.js": {
+      "base": "4d8a7a7b28e5e3361664da962290d6928d22412926fc49bdbc1a0c4391e4a8a0",
+      "candidate": "4d8a7a7b28e5e3361664da962290d6928d22412926fc49bdbc1a0c4391e4a8a0"
+    },
+    "games/escape.zblorb.js": {
+      "base": "d1f44f8c241eb49c886bc0b877f2e9f38e4eb0bb0cceab1f03c14bb1fde9860c",
+      "candidate": "d1f44f8c241eb49c886bc0b877f2e9f38e4eb0bb0cceab1f03c14bb1fde9860c"
+    },
+    "games/eto.z5.js": {
+      "base": "c924c699fd8f7f0d7cbcba84b50087a49ac5f82195f3ca9977f5d4530cd36992",
+      "candidate": "c924c699fd8f7f0d7cbcba84b50087a49ac5f82195f3ca9977f5d4530cd36992"
+    },
+    "games/f209.z5.js": {
+      "base": "d56f0ee7536098c02494fbf97382ea61fb5892553492067927788cf602469e3b",
+      "candidate": "d56f0ee7536098c02494fbf97382ea61fb5892553492067927788cf602469e3b"
+    },
+    "games/fable.z5.js": {
+      "base": "43da898252c29622c0f1a6170d2d3816a83b828c16e530d4bffdf155b463b800",
+      "candidate": "43da898252c29622c0f1a6170d2d3816a83b828c16e530d4bffdf155b463b800"
+    },
+    "games/Facility.z8.js": {
+      "base": "4c7a73e67013aaab6280375e2b222dfa5e093661f0cb4f69bcff4b536095d7b0",
+      "candidate": "4c7a73e67013aaab6280375e2b222dfa5e093661f0cb4f69bcff4b536095d7b0"
+    },
+    "games/faculty.zblorb.js": {
+      "base": "099c0372237548626be43f308dd32a317bb6ef2ae622f77fe6eef4d6ed889604",
+      "candidate": "099c0372237548626be43f308dd32a317bb6ef2ae622f77fe6eef4d6ed889604"
+    },
+    "games/farm.z5.js": {
+      "base": "b92c940ef322154fa635159370e6d371bfd384bd1e3a2be069061244ef98c915",
+      "candidate": "b92c940ef322154fa635159370e6d371bfd384bd1e3a2be069061244ef98c915"
+    },
+    "games/FFF.z5.js": {
+      "base": "c574e25b24aaee9de6a0518ec52c63655bc1d8ecd6cffd00d429a9472610fdcc",
+      "candidate": "c574e25b24aaee9de6a0518ec52c63655bc1d8ecd6cffd00d429a9472610fdcc"
+    },
+    "games/Figaro.zblorb.js": {
+      "base": "457c564dea91baf59b221c82390f45ea38d6c771bfd9216c5654fd85820e2a53",
+      "candidate": "457c564dea91baf59b221c82390f45ea38d6c771bfd9216c5654fd85820e2a53"
+    },
+    "games/FineTune.z8.js": {
+      "base": "50c891167cc39b876774bd1232fc7646255ea76051168f4202498f08cd592726",
+      "candidate": "50c891167cc39b876774bd1232fc7646255ea76051168f4202498f08cd592726"
+    },
+    "games/Fork.z5.js": {
+      "base": "bb177996fc37edf34e9be37665a26eda1ef44422c612814d17af755755361bb3",
+      "candidate": "bb177996fc37edf34e9be37665a26eda1ef44422c612814d17af755755361bb3"
+    },
+    "games/forms.z5.js": {
+      "base": "ece0f2a7b857f704e0bebb1d03ca63cca0be8ac366fd6520c83f94d4879dd9fb",
+      "candidate": "ece0f2a7b857f704e0bebb1d03ca63cca0be8ac366fd6520c83f94d4879dd9fb"
+    },
+    "games/fracture.z5.js": {
+      "base": "642137df9b5d64deba1d8b19c7211ce626f62246485ce76fbcbd20c1a0fd4ffc",
+      "candidate": "642137df9b5d64deba1d8b19c7211ce626f62246485ce76fbcbd20c1a0fd4ffc"
+    },
+    "games/frozen.z5.js": {
+      "base": "c37c8fbe2854ffa7eaa65c7906a9afe9ca38847242ccc6c381770b403f69882b",
+      "candidate": "c37c8fbe2854ffa7eaa65c7906a9afe9ca38847242ccc6c381770b403f69882b"
+    },
+    "games/Galatea.zblorb.js": {
+      "base": "c07bbce5f62cd2e317a43da3f99e797ea5d0800054b0ce997d1c082601457066",
+      "candidate": "c07bbce5f62cd2e317a43da3f99e797ea5d0800054b0ce997d1c082601457066"
+    },
+    "games/gamlet.z5.js": {
+      "base": "0ec651e257decbd6d1a3aba844561cc0ee94de352e332bb214f366554ce33f7a",
+      "candidate": "0ec651e257decbd6d1a3aba844561cc0ee94de352e332bb214f366554ce33f7a"
+    },
+    "games/gardening.zblorb.js": {
+      "base": "51d5d99fab32bb3616190f3794d810d85e43861732a9b5f2adcd6e881ca65b86",
+      "candidate": "51d5d99fab32bb3616190f3794d810d85e43861732a9b5f2adcd6e881ca65b86"
+    },
+    "games/geb.z5.js": {
+      "base": "004e42a9728ed7b4534e83a6f94056150986327ca6ae355d3af42858f92bd205",
+      "candidate": "004e42a9728ed7b4534e83a6f94056150986327ca6ae355d3af42858f92bd205"
+    },
+    "games/ghost.z8.js": {
+      "base": "8ef3d9435587ad5ea0f5e1dac30e04a16a478ec81ed272c6ddea34985fd79881",
+      "candidate": "8ef3d9435587ad5ea0f5e1dac30e04a16a478ec81ed272c6ddea34985fd79881"
+    },
+    "games/Glass.zblorb.js": {
+      "base": "7a14cb1a61c672d494316119a48c4bf352f3ab1f6dbe607077fee1ee855fe03e",
+      "candidate": "7a14cb1a61c672d494316119a48c4bf352f3ab1f6dbe607077fee1ee855fe03e"
+    },
+    "games/godot.z5.js": {
+      "base": "c70feb5f4ad9d8713d54ca7c9e292f65ff789e210a0efae3c80bf428d18a4b11",
+      "candidate": "c70feb5f4ad9d8713d54ca7c9e292f65ff789e210a0efae3c80bf428d18a4b11"
+    },
+    "games/gostak.z5.js": {
+      "base": "05467c6965649dc37f42d5ee7975dd1363bab1a8caf85d5951b639079a563f49",
+      "candidate": "05467c6965649dc37f42d5ee7975dd1363bab1a8caf85d5951b639079a563f49"
+    },
+    "games/gourmet.zblorb.js": {
+      "base": "67dd7f4d7db6bd4ac52ef1d1f112051f446331e457275fd1917debad9202b7b5",
+      "candidate": "67dd7f4d7db6bd4ac52ef1d1f112051f446331e457275fd1917debad9202b7b5"
+    },
+    "games/GreatXavio.z5.js": {
+      "base": "c359ea1411e68e5c0c8f6154bf67c335f14b50ed30b2228dfec3095aec327dd3",
+      "candidate": "c359ea1411e68e5c0c8f6154bf67c335f14b50ed30b2228dfec3095aec327dd3"
+    },
+    "games/Grooverland.gblorb.js": {
+      "base": "d12acd5b7443bd11969f717fbf3e9a41b3834715f4434d671bb1c4da03c9c52f",
+      "candidate": "d12acd5b7443bd11969f717fbf3e9a41b3834715f4434d671bb1c4da03c9c52f"
+    },
+    "games/guess.z5.js": {
+      "base": "e99ddf17384a5a0487778543e57cc6c475069e1db3210ffd50ebac93aaa0348a",
+      "candidate": "e99ddf17384a5a0487778543e57cc6c475069e1db3210ffd50ebac93aaa0348a"
+    },
+    "games/Gumshoe.z5.js": {
+      "base": "b59c4f8c97eea9e9969aaf5a9cf59604616e51fae2c32a128bc98c20869c34f6",
+      "candidate": "b59c4f8c97eea9e9969aaf5a9cf59604616e51fae2c32a128bc98c20869c34f6"
+    },
+    "games/gussdeath.z3.js": {
+      "base": "9dc86896ae0e279e059605ad5eadec47618b05352ad7b2a5abff589e414a0e19",
+      "candidate": "9dc86896ae0e279e059605ad5eadec47618b05352ad7b2a5abff589e414a0e19"
+    },
+    "games/heist.z8.js": {
+      "base": "f4b789e793786515409a88a0468998a5b8fa4e0895399821c73d09b9fba1db48",
+      "candidate": "f4b789e793786515409a88a0468998a5b8fa4e0895399821c73d09b9fba1db48"
+    },
+    "games/Heliopause.zblorb.js": {
+      "base": "7f047acd6b057ee408dd27143e008868a00f32ed31d498c97f001e87e5cc15b4",
+      "candidate": "7f047acd6b057ee408dd27143e008868a00f32ed31d498c97f001e87e5cc15b4"
+    },
+    "games/Help.z8.js": {
+      "base": "60d1ca6a55f47368e6a2d515c00f8c79a846192304259c52c057f0e22f0061d6",
+      "candidate": "60d1ca6a55f47368e6a2d515c00f8c79a846192304259c52c057f0e22f0061d6"
+    },
+    "games/Heroine.z8.js": {
+      "base": "cae42c90d644272aa99c20f6d11453d84b19337f9bbef0bed747a91b22023150",
+      "candidate": "cae42c90d644272aa99c20f6d11453d84b19337f9bbef0bed747a91b22023150"
+    },
+    "games/Hitchhik.z5.js": {
+      "base": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+      "candidate": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267"
+    },
+    "games/HollywoodHijinx.z3.js": {
+      "base": "1067babf4f185c6c9579ce714412886d83de8410bf4a5a7212b236d96153f495",
+      "candidate": "1067babf4f185c6c9579ce714412886d83de8410bf4a5a7212b236d96153f495"
+    },
+    "games/housekey1.z5.js": {
+      "base": "9fc41ce6feb7b3874ac462bd9510d19e877e1ea5eeb5b773671549d5b62e160e",
+      "candidate": "9fc41ce6feb7b3874ac462bd9510d19e877e1ea5eeb5b773671549d5b62e160e"
+    },
+    "games/HouseOfDreamOfMoon.z8.js": {
+      "base": "c81f7a893a8646fe3737707c62365232c6364769c7a4eff8e6923660a698a7f0",
+      "candidate": "c81f7a893a8646fe3737707c62365232c6364769c7a4eff8e6923660a698a7f0"
+    },
+    "games/HugeCave.z8.js": {
+      "base": "47fef20fe3853533ff087ee67027c29658edd5a4eaf752019a0ad9b48b74918f",
+      "candidate": "47fef20fe3853533ff087ee67027c29658edd5a4eaf752019a0ad9b48b74918f"
+    },
+    "games/huntdark.z5.js": {
+      "base": "4b8d11285a2e00eac134b91aa0008f44ab2ef236a858a8ae773d8b6c23ee1359",
+      "candidate": "4b8d11285a2e00eac134b91aa0008f44ab2ef236a858a8ae773d8b6c23ee1359"
+    },
+    "games/I-0.z5.js": {
+      "base": "3172a2db72a8f3c6d7c8682bad81a7009e8886319da9f61b4fec5b636b908403",
+      "candidate": "3172a2db72a8f3c6d7c8682bad81a7009e8886319da9f61b4fec5b636b908403"
+    },
+    "games/identity.z5.js": {
+      "base": "d22488438e4a44e2e1b237878a102af8e73644ab3180d3851806cb3db99af603",
+      "candidate": "d22488438e4a44e2e1b237878a102af8e73644ab3180d3851806cb3db99af603"
+    },
+    "games/Inevita.z5.js": {
+      "base": "c650b9368b76f47254f6eba3c520b2307b2a37b073e4ec976a27553d0ca0d644",
+      "candidate": "c650b9368b76f47254f6eba3c520b2307b2a37b073e4ec976a27553d0ca0d644"
+    },
+    "games/Infidel.z3.js": {
+      "base": "1cdda43a7bb09aceaf0b856a019a09f1bc0e430c0ee3a304f8482f7d9669b35f",
+      "candidate": "1cdda43a7bb09aceaf0b856a019a09f1bc0e430c0ee3a304f8482f7d9669b35f"
+    },
+    "games/Informat.z5.js": {
+      "base": "3b809e324e1685f328bcf63d71a64e11d7145015bec810909c73f4ce2c872728",
+      "candidate": "3b809e324e1685f328bcf63d71a64e11d7145015bec810909c73f4ce2c872728"
+    },
+    "games/inhumane.z5.js": {
+      "base": "940cd617f89cb8119f4fd6700756cc91a42f4a5255bb3c20d4c48452cf764646",
+      "candidate": "940cd617f89cb8119f4fd6700756cc91a42f4a5255bb3c20d4c48452cf764646"
+    },
+    "games/insight.z5.js": {
+      "base": "1a34118d1560ecb45240a6af4fdc99e9b38cc175b9c45e2193bdc7d3c09084b1",
+      "candidate": "1a34118d1560ecb45240a6af4fdc99e9b38cc175b9c45e2193bdc7d3c09084b1"
+    },
+    "games/jet.z8.js": {
+      "base": "4dd2dde3e4dfdff3c065bcf05fda9f462db443fe0909acff5e0d06b5d25478da",
+      "candidate": "4dd2dde3e4dfdff3c065bcf05fda9f462db443fe0909acff5e0d06b5d25478da"
+    },
+    "games/Jigsaw.z8.js": {
+      "base": "80e069cb1b3d4136de5a31422096078fcdcffe981a8d75b9599e65b568710042",
+      "candidate": "80e069cb1b3d4136de5a31422096078fcdcffe981a8d75b9599e65b568710042"
+    },
+    "games/karn.z5.js": {
+      "base": "9161a65e60ee84d684a89196595e82f3a94d521fb5f581da381327748caf54e3",
+      "candidate": "9161a65e60ee84d684a89196595e82f3a94d521fb5f581da381327748caf54e3"
+    },
+    "games/kirby.z5.js": {
+      "base": "b771240b143a78d1fb2b3fcadcece1b35e74180065c4371a9c8a7cf3a86373f3",
+      "candidate": "b771240b143a78d1fb2b3fcadcece1b35e74180065c4371a9c8a7cf3a86373f3"
+    },
+    "games/KoA.z5.js": {
+      "base": "7c4acdc065b7ec0d7732655af4d6d8db7483bd53c3f9313668b736743ae07c15",
+      "candidate": "7c4acdc065b7ec0d7732655af4d6d8db7483bd53c3f9313668b736743ae07c15"
+    },
+    "games/kooku.z5.js": {
+      "base": "9ab7ac8d82c510261963ed58cb8c723acc5ce5771fd34c0036f5f0ba39cfa546",
+      "candidate": "9ab7ac8d82c510261963ed58cb8c723acc5ce5771fd34c0036f5f0ba39cfa546"
+    },
+    "games/lambs.z5.js": {
+      "base": "246565f15e3a3b80958079a5c09cb5c66f1e19b5406bf8ae262dbd80779e0b42",
+      "candidate": "246565f15e3a3b80958079a5c09cb5c66f1e19b5406bf8ae262dbd80779e0b42"
+    },
+    "games/lambs2.z5.js": {
+      "base": "47344e7adcdff1e6fd09da475687ca7911d2847f90bea9c53221187e90dea972",
+      "candidate": "47344e7adcdff1e6fd09da475687ca7911d2847f90bea9c53221187e90dea972"
+    },
+    "games/largemac.z5.js": {
+      "base": "2e28401b8d5ebbea29f32c63d2a2403cb7b20334132442e646b04d6aae37c911",
+      "candidate": "2e28401b8d5ebbea29f32c63d2a2403cb7b20334132442e646b04d6aae37c911"
+    },
+    "games/LASH.z8.js": {
+      "base": "8da2b7e0ec873672cf03d4cff7279a97bc9e6255a0fe99b666ef246133414975",
+      "candidate": "8da2b7e0ec873672cf03d4cff7279a97bc9e6255a0fe99b666ef246133414975"
+    },
+    "games/LDoDoom.z5.js": {
+      "base": "91172b28e30dcacae8c235499ae7216b09b8db18e6445a724de347889468dc31",
+      "candidate": "91172b28e30dcacae8c235499ae7216b09b8db18e6445a724de347889468dc31"
+    },
+    "games/LeatherGoddessesofPhobos.z3.js": {
+      "base": "5a0bd659782f91639c54ab1034390af315eba596fc9c7eab0163a03556c14a8c",
+      "candidate": "5a0bd659782f91639c54ab1034390af315eba596fc9c7eab0163a03556c14a8c"
+    },
+    "games/library.z5.js": {
+      "base": "b95647a1bd118dfa5f27374fd10d5673bb0b27b4578f1a0cea2819e6740aabb2",
+      "candidate": "b95647a1bd118dfa5f27374fd10d5673bb0b27b4578f1a0cea2819e6740aabb2"
+    },
+    "games/limp.z5.js": {
+      "base": "cf9f8f0fb2d9f013ec3ea46073e4d1591b7180dd2a308e90b4233b1e9804d496",
+      "candidate": "cf9f8f0fb2d9f013ec3ea46073e4d1591b7180dd2a308e90b4233b1e9804d496"
+    },
+    "games/lists.z5.js": {
+      "base": "808b0092182b1e334b555a372cccebc1cc1279b714bb99c1e83543cc548db403",
+      "candidate": "808b0092182b1e334b555a372cccebc1cc1279b714bb99c1e83543cc548db403"
+    },
+    "games/LLR3.z8.js": {
+      "base": "4efb8530f80dc302b58f47e0db27659a2a5e63f870aef304c32b6d068ffb296c",
+      "candidate": "4efb8530f80dc302b58f47e0db27659a2a5e63f870aef304c32b6d068ffb296c"
+    },
+    "games/loose.z5.js": {
+      "base": "dbd82bba0a7f4d2fc279722150b7f5b20662c99ff745fedbc11e8b00e3212b76",
+      "candidate": "dbd82bba0a7f4d2fc279722150b7f5b20662c99ff745fedbc11e8b00e3212b76"
+    },
+    "games/lost.z5.js": {
+      "base": "2c06f8bf9e68109a0146415b60c4a723a32741a2a1c5d2b3cc5fac4f2c4c6e15",
+      "candidate": "2c06f8bf9e68109a0146415b60c4a723a32741a2a1c5d2b3cc5fac4f2c4c6e15"
+    },
+    "games/LostPig.z8.js": {
+      "base": "9f0bb7dbc06adf972d20725b83adb3a1c57b55f6b9f1aa84bbe7c190b056c1c6",
+      "candidate": "9f0bb7dbc06adf972d20725b83adb3a1c57b55f6b9f1aa84bbe7c190b056c1c6"
+    },
+    "games/ludicorp.z5.js": {
+      "base": "3333ccc46d2446197a7a8616e897449f570eec9569344f13e402318a168aff4f",
+      "candidate": "3333ccc46d2446197a7a8616e897449f570eec9569344f13e402318a168aff4f"
+    },
+    "games/magic-toyshop.z5.js": {
+      "base": "09245d7e4823562518b41ca8a6ee08122b3c8ec775e4e2316735c75b612292cd",
+      "candidate": "09245d7e4823562518b41ca8a6ee08122b3c8ec775e4e2316735c75b612292cd"
+    },
+    "games/MakeItGood.zblorb.js": {
+      "base": "23598d7d7e681ee22b9c867eb5ffba10d118da9bcfa9c0d38215609e6011adf9",
+      "candidate": "23598d7d7e681ee22b9c867eb5ffba10d118da9bcfa9c0d38215609e6011adf9"
+    },
+    "games/mary.z5.js": {
+      "base": "6436a198dc7e07275e180a4443c3fdd2270c37dc0a4d81554b5e423d1584cb58",
+      "candidate": "6436a198dc7e07275e180a4443c3fdd2270c37dc0a4d81554b5e423d1584cb58"
+    },
+    "games/Mask.z5.js": {
+      "base": "aa48c49569d675b06e6d9f4405e1c37a1fff26d86d56f89652bb4084b7b91cae",
+      "candidate": "aa48c49569d675b06e6d9f4405e1c37a1fff26d86d56f89652bb4084b7b91cae"
+    },
+    "games/medusa.z5.js": {
+      "base": "5055a3bb1f26a89a7eed9142bc58b6612b6132cca2af6a12ea146853ac8f2cd4",
+      "candidate": "5055a3bb1f26a89a7eed9142bc58b6612b6132cca2af6a12ea146853ac8f2cd4"
+    },
+    "games/Mercy.z5.js": {
+      "base": "e9459642771bf7fd168d7591dc73409b710fcf14ae6db063e679d3ac884fc231",
+      "candidate": "e9459642771bf7fd168d7591dc73409b710fcf14ae6db063e679d3ac884fc231"
+    },
+    "games/metamorp.z5.js": {
+      "base": "580c89dcb95371815b9f184eec5fd9cb76dbd30c9dd501ab2c6303f98ea4a435",
+      "candidate": "580c89dcb95371815b9f184eec5fd9cb76dbd30c9dd501ab2c6303f98ea4a435"
+    },
+    "games/mhpquest.z5.js": {
+      "base": "b2aa7c8ebc69988071aa12839cd9b540628fd74a1a0caa49c63cc1132f1ec635",
+      "candidate": "b2aa7c8ebc69988071aa12839cd9b540628fd74a1a0caa49c63cc1132f1ec635"
+    },
+    "games/mimesis.z5.js": {
+      "base": "bfbcfabfa3177c67bb2b6c97f723561194713edccdee05f4ed27777df8ee3e8e",
+      "candidate": "bfbcfabfa3177c67bb2b6c97f723561194713edccdee05f4ed27777df8ee3e8e"
+    },
+    "games/mindelec.z5.js": {
+      "base": "26732e97d7ffa2b061cff2514b86f06e4caf8fc6d29446ba56698fbbd4a9ad37",
+      "candidate": "26732e97d7ffa2b061cff2514b86f06e4caf8fc6d29446ba56698fbbd4a9ad37"
+    },
+    "games/minster.z5.js": {
+      "base": "37d5efea77a528a39c03540d7083bd324ea06158bfdf51e8d7df55120165e3a7",
+      "candidate": "37d5efea77a528a39c03540d7083bd324ea06158bfdf51e8d7df55120165e3a7"
+    },
+    "games/Mobius.zblorb.js": {
+      "base": "70455fa142e8642b2db6c2311c433e0f19aea07173b37c18bb334d1cc210e0e3",
+      "candidate": "70455fa142e8642b2db6c2311c433e0f19aea07173b37c18bb334d1cc210e0e3"
+    },
+    "games/moonglow.z3.js": {
+      "base": "4fc1d56779dd0163ce70eabfc1382759465da9d3dbe4f6f6d8f79331726cb448",
+      "candidate": "4fc1d56779dd0163ce70eabfc1382759465da9d3dbe4f6f6d8f79331726cb448"
+    },
+    "games/Moonmist.z3.js": {
+      "base": "f7d3ac2310279c49de7b16902d3b9045a2025bdcd11379a353083bc59330a3f2",
+      "candidate": "f7d3ac2310279c49de7b16902d3b9045a2025bdcd11379a353083bc59330a3f2"
+    },
+    "games/Mulldoon.z8.js": {
+      "base": "1439e2008a80b7d64ea5e0e371f2646826a4547b93145afb201d4e0ce30f033d",
+      "candidate": "1439e2008a80b7d64ea5e0e371f2646826a4547b93145afb201d4e0ce30f033d"
+    },
+    "games/Mullmurd.z5.js": {
+      "base": "a57fff0c5cd849d5934f97b39cb8436fba8afbda145ffb738bbe5316997a9304",
+      "candidate": "a57fff0c5cd849d5934f97b39cb8436fba8afbda145ffb738bbe5316997a9304"
+    },
+    "games/muse.z5.js": {
+      "base": "6efbbdc00ac746aa0935f8176997aa644e8a4fe6e22ac24b53a42972767a2347",
+      "candidate": "6efbbdc00ac746aa0935f8176997aa644e8a4fe6e22ac24b53a42972767a2347"
+    },
+    "games/musician.z8.js": {
+      "base": "c888e44264482962d9eae3dae163c84e39b03b148da7a24aa6538478748a1102",
+      "candidate": "c888e44264482962d9eae3dae163c84e39b03b148da7a24aa6538478748a1102"
+    },
+    "games/newday.z5.js": {
+      "base": "457b41ce5fdf385d6535bd4d5147f9687724c60b206bf9690e339d78cdc31411",
+      "candidate": "457b41ce5fdf385d6535bd4d5147f9687724c60b206bf9690e339d78cdc31411"
+    },
+    "games/night.z5.js": {
+      "base": "b011fe8b95952d42c7d9a91288f76286b54401219883ba8edbff79c48ff3a6f9",
+      "candidate": "b011fe8b95952d42c7d9a91288f76286b54401219883ba8edbff79c48ff3a6f9"
+    },
+    "games/NightBeforeChristmas.zblorb.js": {
+      "base": "63ad6fe2caa5454be2d83524c0632df9f2c1aded0ba6011c06b5e14aeab08232",
+      "candidate": "63ad6fe2caa5454be2d83524c0632df9f2c1aded0ba6011c06b5e14aeab08232"
+    },
+    "games/ninepts.z5.js": {
+      "base": "c62e9a365a97446fff0ef8d153f63e0ce1f73b562a193422e94f5b0daeeb1e58",
+      "candidate": "c62e9a365a97446fff0ef8d153f63e0ce1f73b562a193422e94f5b0daeeb1e58"
+    },
+    "games/njag2.z5.js": {
+      "base": "49e778fb9c372b7017d6d0204f97cac8104460523f01c72668511e0514276233",
+      "candidate": "49e778fb9c372b7017d6d0204f97cac8104460523f01c72668511e0514276233"
+    },
+    "games/noroom.z5.js": {
+      "base": "8595734a7426d9ba06cdfa9a0bd8a57cc79c28ccdd9aebb61e80fbc2a3ed18f9",
+      "candidate": "8595734a7426d9ba06cdfa9a0bd8a57cc79c28ccdd9aebb61e80fbc2a3ed18f9"
+    },
+    "games/oad.z5.js": {
+      "base": "bfc0b5fac00757870e3d8723793852ba26bf045f99f0cd835f117c2bb4f3a54d",
+      "candidate": "bfc0b5fac00757870e3d8723793852ba26bf045f99f0cd835f117c2bb4f3a54d"
+    },
+    "games/omniquest.z5.js": {
+      "base": "13e9c8b670c2b39183a95da63dadfda7bff4216e13eab4820e0f0ca3afb0e15f",
+      "candidate": "13e9c8b670c2b39183a95da63dadfda7bff4216e13eab4820e0f0ca3afb0e15f"
+    },
+    "games/orevore.z8.js": {
+      "base": "ec87899e1ab09635039eb4beae223bc6bb892c11a02fc5e1975a5858519b11b6",
+      "candidate": "ec87899e1ab09635039eb4beae223bc6bb892c11a02fc5e1975a5858519b11b6"
+    },
+    "games/orion.z5.js": {
+      "base": "ae2f8bd7164c979e2347e830acc79885e469c871b11ac859b2086b7b2736c448",
+      "candidate": "ae2f8bd7164c979e2347e830acc79885e469c871b11ac859b2086b7b2736c448"
+    },
+    "games/pad.z5.js": {
+      "base": "e12ed600b095d433a11d149b9fb46019c4d13ca0da3d0c8f3cc9f3e57d882128",
+      "candidate": "e12ed600b095d433a11d149b9fb46019c4d13ca0da3d0c8f3cc9f3e57d882128"
+    },
+    "games/paperchase.z5.js": {
+      "base": "0dd2c00593b4e1d5fc3557901f0ffe309c50026f03689a87b96ac4af574dd158",
+      "candidate": "0dd2c00593b4e1d5fc3557901f0ffe309c50026f03689a87b96ac4af574dd158"
+    },
+    "games/parallel.z5.js": {
+      "base": "5e56b230cbb2382694d8072d76ea7bd4f37ece63aa0395e6b7719bab7c345b19",
+      "candidate": "5e56b230cbb2382694d8072d76ea7bd4f37ece63aa0395e6b7719bab7c345b19"
+    },
+    "games/PataNoir.gblorb.js": {
+      "base": "039e5e89369f92b42672326a3648aeaf6c50128e33682bfec8a58aefa8e48197",
+      "candidate": "039e5e89369f92b42672326a3648aeaf6c50128e33682bfec8a58aefa8e48197"
+    },
+    "games/Peacock.z5.js": {
+      "base": "a7b6a9c6aca1c5041e5d88bd34053370a7dd7f4b2f2001c5396aaf138846816c",
+      "candidate": "a7b6a9c6aca1c5041e5d88bd34053370a7dd7f4b2f2001c5396aaf138846816c"
+    },
+    "games/pentari.z5.js": {
+      "base": "e6f2c523f82550d1fdd1119b2773f7f07d7eae2cf600cf53d0cb8593be5525f5",
+      "candidate": "e6f2c523f82550d1fdd1119b2773f7f07d7eae2cf600cf53d0cb8593be5525f5"
+    },
+    "games/permagic.z5.js": {
+      "base": "36a9683562f82c1ab3a6fff8eb195ad3b7ebd7b1bfa0b07bec752a5a757ac4e6",
+      "candidate": "36a9683562f82c1ab3a6fff8eb195ad3b7ebd7b1bfa0b07bec752a5a757ac4e6"
+    },
+    "games/PerrysWorld.zblorb.js": {
+      "base": "5d30775e396e5f7e20f2cd79cb1508d6995165fabfedb7d477e55d9f6dbf7aed",
+      "candidate": "5d30775e396e5f7e20f2cd79cb1508d6995165fabfedb7d477e55d9f6dbf7aed"
+    },
+    "games/phlegm.z5.js": {
+      "base": "3349ff4ddbe2e6b6177831869f9cf2faa21ce9933082aff7eb18cf59cd74d3ea",
+      "candidate": "3349ff4ddbe2e6b6177831869f9cf2faa21ce9933082aff7eb18cf59cd74d3ea"
+    },
+    "games/Photograph.zblorb.js": {
+      "base": "3f443f41075db972af8f11c5f6cf5c6fc0c7253adb439ef9c24ffc06039a45d2",
+      "candidate": "3f443f41075db972af8f11c5f6cf5c6fc0c7253adb439ef9c24ffc06039a45d2"
+    },
+    "games/photopia.z5.js": {
+      "base": "70b1b4b9bc23e00f85518b98539d723ec4c34df276d3241d4c804fccbaa50aef",
+      "candidate": "70b1b4b9bc23e00f85518b98539d723ec4c34df276d3241d4c804fccbaa50aef"
+    },
+    "games/piece_v3.z5.js": {
+      "base": "3e0c3f87e5ae5ace59ec620291d4b42d5d97f14e650f60d287093bcbcede6779",
+      "candidate": "3e0c3f87e5ae5ace59ec620291d4b42d5d97f14e650f60d287093bcbcede6779"
+    },
+    "games/Planetfall.z3.js": {
+      "base": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064",
+      "candidate": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064"
+    },
+    "games/PlunderedHearts.z3.js": {
+      "base": "dd8dc2268adbc9981971ac885b21b0d9dec6db6f06efb368f86b28ec201b1c64",
+      "candidate": "dd8dc2268adbc9981971ac885b21b0d9dec6db6f06efb368f86b28ec201b1c64"
+    },
+    "games/praser5.z5.js": {
+      "base": "89cfdd6dc49e9c70e68c9106bfd3844d9ea26b9abb028f81d5bf6c4de46e6f95",
+      "candidate": "89cfdd6dc49e9c70e68c9106bfd3844d9ea26b9abb028f81d5bf6c4de46e6f95"
+    },
+    "games/Primrose.zblorb.js": {
+      "base": "e0f303976ca348e5a8e0afd7d72c753b98a1b70eee35eeaa224944edbc188733",
+      "candidate": "e0f303976ca348e5a8e0afd7d72c753b98a1b70eee35eeaa224944edbc188733"
+    },
+    "games/punkpnts.z5.js": {
+      "base": "29f9b94021b974ea0ce2fb5be013414edb61c379b74c4836c1c9b20575e0380a",
+      "candidate": "29f9b94021b974ea0ce2fb5be013414edb61c379b74c4836c1c9b20575e0380a"
+    },
+    "games/PUTPBAA.z5.js": {
+      "base": "26d98d0524f8f241cc2b71929a6011d2f6955bd32ef8a81236c68da4b8458e56",
+      "candidate": "26d98d0524f8f241cc2b71929a6011d2f6955bd32ef8a81236c68da4b8458e56"
+    },
+    "games/Ralph.z5.js": {
+      "base": "2e0892a054ca053fb7fe999b7b6e0d7d42cdbafc467577b2dedaa656245ddb79",
+      "candidate": "2e0892a054ca053fb7fe999b7b6e0d7d42cdbafc467577b2dedaa656245ddb79"
+    },
+    "games/rameses.zblorb.js": {
+      "base": "e8300f69e1b8522d1593cb26a546b6cec05174ade52294e0240694a9f713d77c",
+      "candidate": "e8300f69e1b8522d1593cb26a546b6cec05174ade52294e0240694a9f713d77c"
+    },
+    "games/RBD.z8.js": {
+      "base": "9104db6c3d6699ba15aec7463bfeaa69fc239938a84d610c8f58001cd9616c24",
+      "candidate": "9104db6c3d6699ba15aec7463bfeaa69fc239938a84d610c8f58001cd9616c24"
+    },
+    "games/Relief.z5.js": {
+      "base": "3d99daf541c119b9c791692ef6da45edf250307b824be6726dbc56f7b52617b7",
+      "candidate": "3d99daf541c119b9c791692ef6da45edf250307b824be6726dbc56f7b52617b7"
+    },
+    "games/reser.z5.js": {
+      "base": "9416f12f9d8b120ed912dd8a21d2c56e4563fc8169fa99ebd243faadb36fd4b1",
+      "candidate": "9416f12f9d8b120ed912dd8a21d2c56e4563fc8169fa99ebd243faadb36fd4b1"
+    },
+    "games/reverb.z5.js": {
+      "base": "9f23938a1887a890e7bc6bc8d3985788e7429efbec3e20eb30cbf8a256e24db4",
+      "candidate": "9f23938a1887a890e7bc6bc8d3985788e7429efbec3e20eb30cbf8a256e24db4"
+    },
+    "games/ribbons.z5.js": {
+      "base": "328a184731504ab1399f572a89d82762877582be39b2ed6563710ea8b30f0b04",
+      "candidate": "328a184731504ab1399f572a89d82762877582be39b2ed6563710ea8b30f0b04"
+    },
+    "games/risorg.z8.js": {
+      "base": "a33865a0ad09406b37ccd15bf9c327a2989a09292aeb12b4b08049fe7503b141",
+      "candidate": "a33865a0ad09406b37ccd15bf9c327a2989a09292aeb12b4b08049fe7503b141"
+    },
+    "games/RobinAndOrchid.gblorb.js": {
+      "base": "343cc1054a60e4726b970bce8d34c7317da69e6e6ed18545b842d81fe049f542",
+      "candidate": "343cc1054a60e4726b970bce8d34c7317da69e6e6ed18545b842d81fe049f542"
+    },
+    "games/RoTA.zblorb.js": {
+      "base": "a1ffaaf2e15ec71168889bd6d0991569f4558b88b821531259b5685ade213553",
+      "candidate": "a1ffaaf2e15ec71168889bd6d0991569f4558b88b821531259b5685ade213553"
+    },
+    "games/RoversDayOut.gblorb.js": {
+      "base": "06fda8c8afcc03412867954c3ab0640c6174d9208f228503d55b5a5c3e1e66e6",
+      "candidate": "06fda8c8afcc03412867954c3ab0640c6174d9208f228503d55b5a5c3e1e66e6"
+    },
+    "games/RtDoom.z5.js": {
+      "base": "8cbdc1fe821084f929b7e194183c3c5413bd9aae25fe14614a52d3bdb3cdee23",
+      "candidate": "8cbdc1fe821084f929b7e194183c3c5413bd9aae25fe14614a52d3bdb3cdee23"
+    },
+    "games/samhain.z5.js": {
+      "base": "6ffc6604b29d76070baa4b69fe06a678c744db118d31d3bd0823d6a66e2e6fd3",
+      "candidate": "6ffc6604b29d76070baa4b69fe06a678c744db118d31d3bd0823d6a66e2e6fd3"
+    },
+    "games/saveprinceton.z8.js": {
+      "base": "d8138a22adcdfbdbf5f72803a7a2a6fe82749318b4883384e8da81beacad5d1d",
+      "candidate": "d8138a22adcdfbdbf5f72803a7a2a6fe82749318b4883384e8da81beacad5d1d"
+    },
+    "games/Savoir-Faire.zblorb.js": {
+      "base": "901eb1a7bc0b596befebf79a0406388d22e1ff82430f74c6d4d77bf6202ff8c1",
+      "candidate": "901eb1a7bc0b596befebf79a0406388d22e1ff82430f74c6d4d77bf6202ff8c1"
+    },
+    "games/School.z5.js": {
+      "base": "febee3cb4f2cc0f0463aba84c63a0f4cf6c2b827f4371610681f25cb01abad7a",
+      "candidate": "febee3cb4f2cc0f0463aba84c63a0f4cf6c2b827f4371610681f25cb01abad7a"
+    },
+    "games/schooldays.z5.js": {
+      "base": "f72079d0fc9fe5028c27e4220dfad21c62693c9d830042232b42833f5edfbe87",
+      "candidate": "f72079d0fc9fe5028c27e4220dfad21c62693c9d830042232b42833f5edfbe87"
+    },
+    "games/ScrollThief.gblorb.js": {
+      "base": "86ee006c5ec4e702588ce0e3eba4deafc2abccdfe10544f0030729050fcd4b34",
+      "candidate": "86ee006c5ec4e702588ce0e3eba4deafc2abccdfe10544f0030729050fcd4b34"
+    },
+    "games/Seastalker.z3.js": {
+      "base": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+      "candidate": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925"
+    },
+    "games/selection.z5.js": {
+      "base": "d98bda1cd1d64e6d2f604dd327d3c392b1b09b5b22a738295133cd0728288a90",
+      "candidate": "d98bda1cd1d64e6d2f604dd327d3c392b1b09b5b22a738295133cd0728288a90"
+    },
+    "games/sgate.z5.js": {
+      "base": "785daadcda50a3b0e71c49954634e04e95ece9c3dd66ec7d0b56daaf7b2f3a57",
+      "candidate": "785daadcda50a3b0e71c49954634e04e95ece9c3dd66ec7d0b56daaf7b2f3a57"
+    },
+    "games/shade.z5.js": {
+      "base": "323b87d309a6fe198c3f7d0a8329c8cf4e370deeb1ff70cf26358fccf4ed3334",
+      "candidate": "323b87d309a6fe198c3f7d0a8329c8cf4e370deeb1ff70cf26358fccf4ed3334"
+    },
+    "games/ShadowOfMemories.zblorb.js": {
+      "base": "e2fae68e5e8a20561d6848d5307206b89d948d413b11d4f5053015c2cdb1e044",
+      "candidate": "e2fae68e5e8a20561d6848d5307206b89d948d413b11d4f5053015c2cdb1e044"
+    },
+    "games/ShadowSoldiers.zblorb.js": {
+      "base": "84aa9c2d7db260cb39402887c13fa702a94187b346126b1e1f9d21a950eb3ea4",
+      "candidate": "84aa9c2d7db260cb39402887c13fa702a94187b346126b1e1f9d21a950eb3ea4"
+    },
+    "games/Shapes.z5.js": {
+      "base": "26b0f727e8b9cfb57fa42ec4ef918fc35aefe0eb81caafb0ada76ec9b9abf5f9",
+      "candidate": "26b0f727e8b9cfb57fa42ec4ef918fc35aefe0eb81caafb0ada76ec9b9abf5f9"
+    },
+    "games/sherbet.z5.js": {
+      "base": "726725d5e5e70b66931afc150aa99de572d6e22d246936d6de88af733a1607f6",
+      "candidate": "726725d5e5e70b66931afc150aa99de572d6e22d246936d6de88af733a1607f6"
+    },
+    "games/Sherlock.z5.js": {
+      "base": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+      "candidate": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8"
+    },
+    "games/Slackerx.z5.js": {
+      "base": "9d59cd5de41496c6debad4050aa5dcfc685056ea197e3da3c2417a1b54ffeef3",
+      "candidate": "9d59cd5de41496c6debad4050aa5dcfc685056ea197e3da3c2417a1b54ffeef3"
+    },
+    "games/SoFar.z8.js": {
+      "base": "0db4e1a9fba0822ec7fc97a0f65b67effc5bcd12abe66563c529c45397f3ff5a",
+      "candidate": "0db4e1a9fba0822ec7fc97a0f65b67effc5bcd12abe66563c529c45397f3ff5a"
+    },
+    "games/solitary.z5.js": {
+      "base": "9edc3bcfb33453b2762457e9e302bf54cf4d750fd86f8bb9488386e48790e8dd",
+      "candidate": "9edc3bcfb33453b2762457e9e302bf54cf4d750fd86f8bb9488386e48790e8dd"
+    },
+    "games/Somewhere.z5.js": {
+      "base": "3c281c5a9e2a8eafd2d6cd31fc913f4eb709f738aab5bced267c0f6183ae3068",
+      "candidate": "3c281c5a9e2a8eafd2d6cd31fc913f4eb709f738aab5bced267c0f6183ae3068"
+    },
+    "games/Sorcerer.z3.js": {
+      "base": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8",
+      "candidate": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8"
+    },
+    "games/spacest2.z5.js": {
+      "base": "74f38b94476f6050a09a9bddfd71523c3101d8c4a9f9c05a2dcc75debb1ce856",
+      "candidate": "74f38b94476f6050a09a9bddfd71523c3101d8c4a9f9c05a2dcc75debb1ce856"
+    },
+    "games/SpAdventure.z5.js": {
+      "base": "f81809787d29a53eb629d40b0bb86e7f07819fe84f57cb6c84e50cb75a72ab4a",
+      "candidate": "f81809787d29a53eb629d40b0bb86e7f07819fe84f57cb6c84e50cb75a72ab4a"
+    },
+    "games/Spellbreaker.z3.js": {
+      "base": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+      "candidate": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251"
+    },
+    "games/spirit.z5.js": {
+      "base": "857f34dadc54c528d6959f4528c97960fbf1eed77c903cb8f6d5a5e5b42e93f0",
+      "candidate": "857f34dadc54c528d6959f4528c97960fbf1eed77c903cb8f6d5a5e5b42e93f0"
+    },
+    "games/sporkery1.z5.js": {
+      "base": "06da263dc661f60dc343e8dab7ead4bd1a6739982c0ca800043462443d8c1f4b",
+      "candidate": "06da263dc661f60dc343e8dab7ead4bd1a6739982c0ca800043462443d8c1f4b"
+    },
+    "games/spot.z5.js": {
+      "base": "dd8a47bfd9809de6390369a2d66a239206f1f3ab1466b0672d35c841c13160db",
+      "candidate": "dd8a47bfd9809de6390369a2d66a239206f1f3ab1466b0672d35c841c13160db"
+    },
+    "games/spring.z8.js": {
+      "base": "35a1ba94fa5ce215c20fae374700c5b501b7b519cea5e0da259f2606ffd4a7e8",
+      "candidate": "35a1ba94fa5ce215c20fae374700c5b501b7b519cea5e0da259f2606ffd4a7e8"
+    },
+    "games/Starcross.z3.js": {
+      "base": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+      "candidate": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a"
+    },
+    "games/Stationfall.z3.js": {
+      "base": "2121546d5874ad023d162af7d78f8820920583894294f9e827c654da19784a1d",
+      "candidate": "2121546d5874ad023d162af7d78f8820920583894294f9e827c654da19784a1d"
+    },
+    "games/stiffmst.z5.js": {
+      "base": "3b1df0ae480c68a34b5f76ca801387589164ed0e4321c0cd0a824da09156f49e",
+      "candidate": "3b1df0ae480c68a34b5f76ca801387589164ed0e4321c0cd0a824da09156f49e"
+    },
+    "games/Sushi.zblorb.js": {
+      "base": "5a900ec47e0725a0a587d55025879da76586fc72eea8edabe93a2d8bee4049bb",
+      "candidate": "5a900ec47e0725a0a587d55025879da76586fc72eea8edabe93a2d8bee4049bb"
+    },
+    "games/Suspect.z3.js": {
+      "base": "075074c8de60801f83d0f422ee6ae512877cf12e4d6a4034f7e5b6c862f5b9b8",
+      "candidate": "075074c8de60801f83d0f422ee6ae512877cf12e4d6a4034f7e5b6c862f5b9b8"
+    },
+    "games/Suspended.z3.js": {
+      "base": "252462be2eb7efb428e905041eedfdb60cb69f1154e79e85d6adc2d934553d36",
+      "candidate": "252462be2eb7efb428e905041eedfdb60cb69f1154e79e85d6adc2d934553d36"
+    },
+    "games/sutwin.z5.js": {
+      "base": "1978baa372b08e3d370d2e56a636ab59c57c1888b9f17f8624e68d306be5d25e",
+      "candidate": "1978baa372b08e3d370d2e56a636ab59c57c1888b9f17f8624e68d306be5d25e"
+    },
+    "games/suvehnux.z5.js": {
+      "base": "15ebb27a47c99e2c011dae6e7936715a418be15104144daf8a2bf1e95738866c",
+      "candidate": "15ebb27a47c99e2c011dae6e7936715a418be15104144daf8a2bf1e95738866c"
+    },
+    "games/Swineback.z5.js": {
+      "base": "a8751b34ecb179d8eb8af49c61e428f444d979fce4d2631810823662cbafd9b3",
+      "candidate": "a8751b34ecb179d8eb8af49c61e428f444d979fce4d2631810823662cbafd9b3"
+    },
+    "games/sycamora.z5.js": {
+      "base": "6b08e75bf2e642c979c6cc945b58461f3754d11aaa239e9fecc8b3bdca656fe7",
+      "candidate": "6b08e75bf2e642c979c6cc945b58461f3754d11aaa239e9fecc8b3bdca656fe7"
+    },
+    "games/Tangle.z5.js": {
+      "base": "93bb78889165cf64c115b849c971939b7d53dc16ee6365fc289be7d8129d8bd2",
+      "candidate": "93bb78889165cf64c115b849c971939b7d53dc16ee6365fc289be7d8129d8bd2"
+    },
+    "games/tatctae.z8.js": {
+      "base": "468098dbb20db118cafab8c8abc21bc7b026126c1c9edebe8bb06e3e21a6c532",
+      "candidate": "468098dbb20db118cafab8c8abc21bc7b026126c1c9edebe8bb06e3e21a6c532"
+    },
+    "games/TCOTY.zblorb.js": {
+      "base": "b7024af2c1d7fc01d873fffaf8f26ec361acce06535e5ffeca0294df8fa2fcb5",
+      "candidate": "b7024af2c1d7fc01d873fffaf8f26ec361acce06535e5ffeca0294df8fa2fcb5"
+    },
+    "games/teacher.z5.js": {
+      "base": "e0f7dd30b5a441814bca28e8cba818b5bc544f3e5bea1a1f2c824c654094b5ee",
+      "candidate": "e0f7dd30b5a441814bca28e8cba818b5bc544f3e5bea1a1f2c824c654094b5ee"
+    },
+    "games/tell.z5.js": {
+      "base": "97b750991f39c9b47f8f172bebdb69533a151e00354cf23f58a2922d4211929d",
+      "candidate": "97b750991f39c9b47f8f172bebdb69533a151e00354cf23f58a2922d4211929d"
+    },
+    "games/temple.z5.js": {
+      "base": "c78904b3ec37d03d7d949559849e9ac53fd1378458577e548580e8f6303e69be",
+      "candidate": "c78904b3ec37d03d7d949559849e9ac53fd1378458577e548580e8f6303e69be"
+    },
+    "games/terror_tabby.z5.js": {
+      "base": "dd2f33a2740fc9700bbca5e00ac0c1254cff1230da58af711d0642ee06dce424",
+      "candidate": "dd2f33a2740fc9700bbca5e00ac0c1254cff1230da58af711d0642ee06dce424"
+    },
+    "games/tess.z5.js": {
+      "base": "888487d92465138a84d78d81b7526d8138e3dbb1eff66504683de086d63a9b82",
+      "candidate": "888487d92465138a84d78d81b7526d8138e3dbb1eff66504683de086d63a9b82"
+    },
+    "games/theatre.z5.js": {
+      "base": "6f2c9714ad9004db894443043f9730a105503fb5491f8d3da99408817af60052",
+      "candidate": "6f2c9714ad9004db894443043f9730a105503fb5491f8d3da99408817af60052"
+    },
+    "games/thegreat.z5.js": {
+      "base": "b8065437364b53819846c17ef4f9f5da8fe420d0eaf3c0626f9d7a7ea16b2915",
+      "candidate": "b8065437364b53819846c17ef4f9f5da8fe420d0eaf3c0626f9d7a7ea16b2915"
+    },
+    "games/TheLurkingHorror.z3.js": {
+      "base": "5ccb6abc72c122479ec9b099fbf3b084f9c06b3a8b64ed09d398db3f7425c5c4",
+      "candidate": "5ccb6abc72c122479ec9b099fbf3b084f9c06b3a8b64ed09d398db3f7425c5c4"
+    },
+    "games/TheWarblersNest.zblorb.js": {
+      "base": "9b4cddde46ddca0f0fe7b8a66b64732c22e158481adae9fcb27061739d6ba529",
+      "candidate": "9b4cddde46ddca0f0fe7b8a66b64732c22e158481adae9fcb27061739d6ba529"
+    },
+    "games/TheWitness.z3.js": {
+      "base": "cb84cdddd8f57c448f6820a52b9545f0508926eb9d33800ac13e620a60bf13b7",
+      "candidate": "cb84cdddd8f57c448f6820a52b9545f0508926eb9d33800ac13e620a60bf13b7"
+    },
+    "games/thorn.z5.js": {
+      "base": "90c316394583031ebcf19c6836cd85098687408c618b4950199c9186b2106794",
+      "candidate": "90c316394583031ebcf19c6836cd85098687408c618b4950199c9186b2106794"
+    },
+    "games/tirehoax.zblorb.js": {
+      "base": "3f570f54a9c73f68a803f7404d1850057d9fc34a1315459d7552165fb96694fa",
+      "candidate": "3f570f54a9c73f68a803f7404d1850057d9fc34a1315459d7552165fb96694fa"
+    },
+    "games/tk1.z5.js": {
+      "base": "e6fdfbc69ec518fa14af643915684a28de3eabe12548f0b8cf34a7c933f2cce7",
+      "candidate": "e6fdfbc69ec518fa14af643915684a28de3eabe12548f0b8cf34a7c933f2cce7"
+    },
+    "games/Tokyo2.z5.js": {
+      "base": "4022d6b170a0d04a8bc9fff7088e4853f1d8d11f66079f6d4717a75376fa4733",
+      "candidate": "4022d6b170a0d04a8bc9fff7088e4853f1d8d11f66079f6d4717a75376fa4733"
+    },
+    "games/TreasuresofaSlaversKingdom.z8.js": {
+      "base": "2421ee4a11576f49c7995bd3386bff40eca50fbe71678f397a17538cf3c0bdd6",
+      "candidate": "2421ee4a11576f49c7995bd3386bff40eca50fbe71678f397a17538cf3c0bdd6"
+    },
+    "games/troll.z5.js": {
+      "base": "4b8b4486f941a3a22e1262d626d544fabece483e7ac828edba629d038c49ce28",
+      "candidate": "4b8b4486f941a3a22e1262d626d544fabece483e7ac828edba629d038c49ce28"
+    },
+    "games/tryst205.z5.js": {
+      "base": "5510040d7d04e3ea99e9a63191a5fdf57aa3a661478f6a7774f9f68f78005e37",
+      "candidate": "5510040d7d04e3ea99e9a63191a5fdf57aa3a661478f6a7774f9f68f78005e37"
+    },
+    "games/tube.z5.js": {
+      "base": "6e05d52f31595222ac0b8659be25d61ba042f3f5e14e6f1d8788b1dcf68dd67b",
+      "candidate": "6e05d52f31595222ac0b8659be25d61ba042f3f5e14e6f1d8788b1dcf68dd67b"
+    },
+    "games/uhoh-demo.z5.js": {
+      "base": "32bfae9f82a8486149909d47eaa13f1a790fe175eaef40db4b37b93ad9d200a2",
+      "candidate": "32bfae9f82a8486149909d47eaa13f1a790fe175eaef40db4b37b93ad9d200a2"
+    },
+    "games/under.z5.js": {
+      "base": "520334e1205d9dd680e64211d26b066d6f1ad39bfb338db9a2eefc24ecb5fa71",
+      "candidate": "520334e1205d9dd680e64211d26b066d6f1ad39bfb338db9a2eefc24ecb5fa71"
+    },
+    "games/Vacation.z5.js": {
+      "base": "b2286e73c96953dd051b55a94eed9028ea345ab86fb99b395ccfe7ded3dfaab6",
+      "candidate": "b2286e73c96953dd051b55a94eed9028ea345ab86fb99b395ccfe7ded3dfaab6"
+    },
+    "games/vampire.z8.js": {
+      "base": "1e657f5d38f12909bb65607357d1223998115bba8e0e60e6a7b907e01b4c49c9",
+      "candidate": "1e657f5d38f12909bb65607357d1223998115bba8e0e60e6a7b907e01b4c49c9"
+    },
+    "games/vespers.z8.js": {
+      "base": "34c2c21c4fb97943fc4b11f0523a0af07cc369cc5d870fd2217417611678c642",
+      "candidate": "34c2c21c4fb97943fc4b11f0523a0af07cc369cc5d870fd2217417611678c642"
+    },
+    "games/vgame.z8.js": {
+      "base": "df518d60bb357b158c3b33912c40ff3101e7c3a1ca9ff944a770f342c5427c4d",
+      "candidate": "df518d60bb357b158c3b33912c40ff3101e7c3a1ca9ff944a770f342c5427c4d"
+    },
+    "games/vindaloo.z5.js": {
+      "base": "87fa2d2f4e0fed7d18ef1fa7de718c987385917acaab979cb0ec7c5f0f3f18bc",
+      "candidate": "87fa2d2f4e0fed7d18ef1fa7de718c987385917acaab979cb0ec7c5f0f3f18bc"
+    },
+    "games/vision.z5.js": {
+      "base": "9b3cb92f7c419393c5258f994d05f653870465f099a68d90b6d21634976d583b",
+      "candidate": "9b3cb92f7c419393c5258f994d05f653870465f099a68d90b6d21634976d583b"
+    },
+    "games/visitor.z5.js": {
+      "base": "45f5845c26f19a20dd4dd90ff5dec98da3b8921d5dc09c8bde8dbf550880979b",
+      "candidate": "45f5845c26f19a20dd4dd90ff5dec98da3b8921d5dc09c8bde8dbf550880979b"
+    },
+    "games/wadewar3.z5.js": {
+      "base": "0c2a3bbc00b369478dd6e2a377b28eb600997c377fae97661b93768fa9a8858d",
+      "candidate": "0c2a3bbc00b369478dd6e2a377b28eb600997c377fae97661b93768fa9a8858d"
+    },
+    "games/Wallpaper.zblorb.js": {
+      "base": "608f35d7cc87234c21eafc1d3f5fb41e5e53a277377d81d176cd3f5205b53c2b",
+      "candidate": "608f35d7cc87234c21eafc1d3f5fb41e5e53a277377d81d176cd3f5205b53c2b"
+    },
+    "games/warp.z5.js": {
+      "base": "0aaf30f199ca5fb2ff620e09ea30d3ee2db62f4cca91187f4c2b756e0f8bb069",
+      "candidate": "0aaf30f199ca5fb2ff620e09ea30d3ee2db62f4cca91187f4c2b756e0f8bb069"
+    },
+    "games/weather.z5.js": {
+      "base": "97e65397a33b6cc0d7009bbc825ca75ae6de153763c3fe7c1e6cb3a4e70d85a0",
+      "candidate": "97e65397a33b6cc0d7009bbc825ca75ae6de153763c3fe7c1e6cb3a4e70d85a0"
+    },
+    "games/wedding.z5.js": {
+      "base": "4adbe77d2384357cf9dd3272015b269bbf77ab1907e2c6027aeb7c93cb346d16",
+      "candidate": "4adbe77d2384357cf9dd3272015b269bbf77ab1907e2c6027aeb7c93cb346d16"
+    },
+    "games/weirdness.z5.js": {
+      "base": "370e20774b8578947f222b050019596605954a830a053e98a1da07cd5c861817",
+      "candidate": "370e20774b8578947f222b050019596605954a830a053e98a1da07cd5c861817"
+    },
+    "games/whispers.z5.js": {
+      "base": "1c06157341a1839627390c4686fa09fece8dc19288aff1947bb68c0051b76500",
+      "candidate": "1c06157341a1839627390c4686fa09fece8dc19288aff1947bb68c0051b76500"
+    },
+    "games/windhal1.z8.js": {
+      "base": "382cffb4a1c89a997fa1cc1f92208b1f6ca7c0edb878915071de50322647dbde",
+      "candidate": "382cffb4a1c89a997fa1cc1f92208b1f6ca7c0edb878915071de50322647dbde"
+    },
+    "games/WiR1.zblorb.js": {
+      "base": "7c7aa432c7b811cd1c28651bc775437e4002ff3baa9161ae084f044d9bc66bd1",
+      "candidate": "7c7aa432c7b811cd1c28651bc775437e4002ff3baa9161ae084f044d9bc66bd1"
+    },
+    "games/WiR2.zblorb.js": {
+      "base": "45b2586da07cb5d0e6036b9e6ecea3bf82c7a0299cd3b73a415dcff755eb2aec",
+      "candidate": "45b2586da07cb5d0e6036b9e6ecea3bf82c7a0299cd3b73a415dcff755eb2aec"
+    },
+    "games/wireless.z5.js": {
+      "base": "c88de3fe78a5a2b2e2d38b63cc72153d75d1f6ce65fcc7e08ffefc6dd97a362c",
+      "candidate": "c88de3fe78a5a2b2e2d38b63cc72153d75d1f6ce65fcc7e08ffefc6dd97a362c"
+    },
+    "games/Wishbringer.z3.js": {
+      "base": "797558c4172e74844e566339b652f61aeec9f6f7ef8d6101cdf06795cb5796bc",
+      "candidate": "797558c4172e74844e566339b652f61aeec9f6f7ef8d6101cdf06795cb5796bc"
+    },
+    "games/wossname.z5.js": {
+      "base": "322e9d56cafceeb9d706962efc7839e5a8f7f3853b9677de4ec218274ad3cb4e",
+      "candidate": "322e9d56cafceeb9d706962efc7839e5a8f7f3853b9677de4ec218274ad3cb4e"
+    },
+    "games/wump2ka.z5.js": {
+      "base": "a2bc9b375147695bc901eca6a64e27ae33a10bc8628a481bb9504bb33b704250",
+      "candidate": "a2bc9b375147695bc901eca6a64e27ae33a10bc8628a481bb9504bb33b704250"
+    },
+    "games/yagwad.z5.js": {
+      "base": "3bb3aa66c0cc3dae4b76f917fa54f6136eac9d13210373528d348cfb486d0822",
+      "candidate": "3bb3aa66c0cc3dae4b76f917fa54f6136eac9d13210373528d348cfb486d0822"
+    },
+    "games/zdungeon.z5.js": {
+      "base": "babdc22afd85adc776cfd8aa630bcdc6c0c3a75d2773d30952c0ab0e985a48a3",
+      "candidate": "babdc22afd85adc776cfd8aa630bcdc6c0c3a75d2773d30952c0ab0e985a48a3"
+    },
+    "games/zenon.z5.js": {
+      "base": "b3824757ba53fb8aa559e8d44c16d3cb4681c6406fb1ad1e27d26d67ad679ba2",
+      "candidate": "b3824757ba53fb8aa559e8d44c16d3cb4681c6406fb1ad1e27d26d67ad679ba2"
+    },
+    "games/Zork1-TheGreatUndergroundEmpire.z3.js": {
+      "base": "7da3731fbfde5d0548f4bc6cbaa46b80fbc374e1e97f8fe894a5924a41b7b2a8",
+      "candidate": "7da3731fbfde5d0548f4bc6cbaa46b80fbc374e1e97f8fe894a5924a41b7b2a8"
+    },
+    "games/Zork2-TheWizardofFrobozz.z3.js": {
+      "base": "0ea4ccc316d219cc7af801dfc62964147631a2228f00e1493896d7b9aba43f95",
+      "candidate": "0ea4ccc316d219cc7af801dfc62964147631a2228f00e1493896d7b9aba43f95"
+    },
+    "games/Zork3-TheDungeonMaster.z3.js": {
+      "base": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+      "candidate": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d"
+    },
+    "games/ztuu.z5.js": {
+      "base": "6ec3f5da3645a271fb0f7bfcd193e09118b829a5c424ccc1dbb3cd05284d3bae",
+      "candidate": "6ec3f5da3645a271fb0f7bfcd193e09118b829a5c424ccc1dbb3cd05284d3bae"
+    }
+  }
+}

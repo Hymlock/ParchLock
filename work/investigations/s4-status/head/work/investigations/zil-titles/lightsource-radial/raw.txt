@@ -1,0 +1,95 @@
+## Zork1-TheGreatUndergroundEmpire.z3.js player 4
+   104 "torch" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   105 "Torch Room" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   147 "pair of candles" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+   155 "matchbook" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   164 "brass lantern" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+   166 "burned-out lantern" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   210 "broken lantern" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Zork2-TheWizardofFrobozz.z3.js player 4
+   45 "shimmering curtain of light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   75 "broken brass lantern" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   76 "lamp" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+   105 "matchbook" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Zork3-TheDungeonMaster.z3.js player 200
+   37 "lamp" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   40 "burned-out torch" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   41 "torch" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   124 "red beam of light" switchable=false lightSource=false ["examine","search","empty","close","drop","give to","put in"]
+   198 "lamp" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+   199 "broken brass lantern" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Enchanter.z3.js player 21
+   26 "banquet candles" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   67 "glowing button" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   94 "battered lantern" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   175 "brass lantern" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   204 "black candle" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Sorcerer.z3.js player 29
+   71 "depleted matchbook" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   182 "kerosene lamp" switchable=false lightSource=false ["examine","search","empty","close","drop","give to","put in"]
+   192 "brass lantern" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+## Spellbreaker.z3.js player 52
+   63 "light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   111 "Light Pool" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   118 "Light Room" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Planetfall.z3.js player 234
+   25 "portable lamp" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+   94 "glowing button" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   242 "light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Stationfall.z3.js player 28
+   141 "headlamp" switchable=true lightSource=false ["examine","turn on","turn off","wear","drop","give to","put in"]
+## Infidel.z3.js player 221
+   44 "matchbook" switchable=false lightSource=false ["examine","search","empty","close","drop","give to","put in"]
+   45 "burned matchbook" switchable=false lightSource=false ["examine","search","empty","open","drop","give to","put in"]
+   46 "match" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   47 "single match" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   48 "few matches" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   49 "matchbook" switchable=false lightSource=false ["examine","search","empty","open","drop","give to","put in"]
+   198 "bronze torch" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Wishbringer.z3.js player 23
+   65 "candle" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Hitchhik.z5.js player 58
+   46 "light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   100 "light" switchable=false lightSource=false ["examine","take out of it"]
+## Starcross.z3.js player 73
+   235 "light beam" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## TheLurkingHorror.z3.js player 29
+   70 "light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   132 "flashlight" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+## TheWitness.z3.js player 79
+   48 "Brass Lantern" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   53 "match book" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   159 "lamp" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Deadline.z3.js player 1
+   50 "crystal lamp" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   132 "light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Ballyhoo.z3.js player 29
+   58 "light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Moonmist.z3.js player 42
+   80 "ornate candle sconce" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   153 "brass lantern" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+   164 "your lamp" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   211 "light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Cutthroats.z3.js player 181
+   116 "flashlight" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Seastalker.z3.js player 112
+   212 "brass search light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   230 "sonarscope warning light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   234 "depth finder warning light" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Suspect.z3.js player 98
+## Suspended.z3.js player 0
+## HollywoodHijinx.z3.js player 21
+   19 "blue candle wax" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   20 "red match" switchable=false lightSource=false ["examine","search","empty","close","drop","give to","put in"]
+   87 "glowing mop" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   123 "flashlight" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+   171 "green match" switchable=false lightSource=false ["examine","search","empty","close","drop","give to","put in"]
+   173 "red candle wax" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   240 "white candle wax" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## LeatherGoddessesofPhobos.z3.js player 16
+   56 "matchbook" switchable=false lightSource=false ["examine","drop","give to","put in"]
+   110 "flashlight" switchable=true lightSource=false ["examine","turn on","turn off","drop","give to","put in"]
+## PlunderedHearts.z3.js player 15
+   9 "torch" switchable=false lightSource=false ["examine","drop","give to","put in"]
+## Borderzo.z5.js player 30
+   152 "matchbook" switchable=false lightSource=false ["examine","take out of it"]

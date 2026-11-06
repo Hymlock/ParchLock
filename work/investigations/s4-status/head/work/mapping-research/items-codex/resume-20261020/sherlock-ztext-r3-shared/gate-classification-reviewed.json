@@ -1,0 +1,113 @@
+{
+  "scope": "One immutable309x2 comparison, not universal action/flag coverage",
+  "baseCommit": "7e1fa822d63e7264dc03c3852e6fb969a76a369c",
+  "rowsEach": 309,
+  "sourceImmutable": true,
+  "differences": [
+    {
+      "game": "Delusns.z5.js",
+      "key": "marks",
+      "base": [
+        "Self",
+        "east",
+        "west"
+      ],
+      "candidate": [
+        "east",
+        "west"
+      ],
+      "classification": "FLAKY",
+      "pairedBase": [
+        "Self",
+        "east",
+        "west"
+      ],
+      "pairedCandidate": [
+        "Self",
+        "east",
+        "west"
+      ]
+    },
+    {
+      "game": "dogslife.z5.js",
+      "key": "rooms",
+      "base": [
+        "37:Driveway in front of your house",
+        "46:Freeblewhizz Road",
+        "47:Junction Freeblewhizz Whizbang"
+      ],
+      "candidate": [
+        "37:Driveway in front of your house",
+        "46:Freeblewhizz Road",
+        "47:Junction Freeblewhizz & Whizbang"
+      ],
+      "classification": "INTENDED",
+      "pairedBase": [
+        "37:Driveway in front of your house",
+        "46:Freeblewhizz Road",
+        "47:Junction Freeblewhizz Whizbang"
+      ],
+      "pairedCandidate": [
+        "37:Driveway in front of your house",
+        "46:Freeblewhizz Road",
+        "47:Junction Freeblewhizz & Whizbang"
+      ],
+      "review": "Independent non-author zil_food_independent explicitly ACCEPTED room47 name field only: raw ZSCII38 and untouched native NORTH/NORTH/LOOK",
+      "proof": {
+        "nativeSha256": "f32020f78a50113b3b2833ee9b0038a45a74076e647328759d2e3276eca80541",
+        "rawSha256": "b229e39305ed805f0d3646700cca61680365bb208737693766444abe59b3e53f",
+        "storyDigest": "67d4330759ba9e3bd43dc11ae2610a21cde085b2eeadf94d960a634205a2dc0b"
+      }
+    },
+    {
+      "game": "jet.z8.js",
+      "key": "marks",
+      "base": [
+        "wing"
+      ],
+      "candidate": [
+        "dragon's"
+      ],
+      "classification": "FLAKY",
+      "pairedBase": [
+        "dragon's"
+      ],
+      "pairedCandidate": [
+        "dragon's"
+      ]
+    }
+  ],
+  "coverageGaps": [
+    {
+      "game": "BeingSteve.zblorb.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "BlueLacuna.gblorb.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "bookvol.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "Borderzo.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "chico.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "stiffmst.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "vgame.z8.js",
+      "error": "no-prompt"
+    }
+  ],
+  "unresolved": 0,
+  "limits": "Matching error rows are coverage gaps, not functional passes. FLAKY only when fresh same-state runs on BOTH immutable trees agree on the differing field.",
+  "reviewScope": "Generic paired classifier retained separately; only exact reviewed room47 ampersand correction added as INTENDED. No other difference waived."
+}

@@ -1,0 +1,169 @@
+{
+ "title": "Zork1-TheGreatUndergroundEmpire",
+ "doorbit": 23,
+ "openbit": 11,
+ "openbitFromFacts": null,
+ "containerbit": 19,
+ "digest": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+ "objectCount": 250,
+ "carriers": [
+  {
+   "id": 111,
+   "name": "wooden door",
+   "parent": 193,
+   "parentName": "Living Room",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 174,
+   "name": "grating",
+   "parent": 249,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 179,
+   "name": "stone door",
+   "parent": 178,
+   "parentName": "Stone Barrow",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 181,
+   "name": "door",
+   "parent": 180,
+   "parentName": "West of House",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 183,
+   "name": "trap door",
+   "parent": 193,
+   "parentName": "Living Room",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 235,
+   "name": "kitchen window",
+   "parent": 249,
+   "parentName": "",
+   "container": false,
+   "open": false
+  }
+ ],
+ "positives": [
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "OPEN WINDOW",
+   "reply": ">OPEN WINDOW With great effort, you open the window far enough to allow entry. >",
+   "openToggles": [
+    {
+     "id": 235,
+     "name": "kitchen window",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "CLOSE WINDOW",
+   "reply": ">CLOSE WINDOW The window closes (more easily than it opened). >",
+   "openToggles": [
+    {
+     "id": 235,
+     "name": "kitchen window",
+     "before": 1,
+     "after": 0
+    }
+   ]
+  },
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "OPEN WINDOW",
+   "reply": ">OPEN WINDOW With great effort, you open the window far enough to allow entry. >",
+   "openToggles": [
+    {
+     "id": 235,
+     "name": "kitchen window",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "OPEN TRAP DOOR",
+   "reply": ">OPEN TRAP DOOR The door reluctantly opens to reveal a rickety staircase descending into darkness. >",
+   "openToggles": [
+    {
+     "id": 183,
+     "name": "trap door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "CLOSE TRAP DOOR",
+   "reply": ">CLOSE TRAP DOOR The door swings shut and closes. >",
+   "openToggles": [
+    {
+     "id": 183,
+     "name": "trap door",
+     "before": 1,
+     "after": 0
+    }
+   ]
+  },
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "OPEN TRAP DOOR",
+   "reply": ">OPEN TRAP DOOR The door reluctantly opens to reveal a rickety staircase descending into darkness. >",
+   "openToggles": [
+    {
+     "id": 183,
+     "name": "trap door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  }
+ ],
+ "doorSpecificRefusals": [
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": ">OPEN DOOR The door cannot be opened. >",
+   "openToggles": []
+  },
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": ">OPEN DOOR The door cannot be opened. >",
+   "openToggles": []
+  }
+ ],
+ "negatives": [
+  {
+   "run": "_Zork1-TheGreatUndergroundEmpire.run.json",
+   "cmd": "OPEN LEAFLET",
+   "reply": ">OPEN LEAFLET You must tell me how to do that to a leaflet. >",
+   "openToggles": []
+  }
+ ],
+ "problemCarriers": {
+  "111": "living-room wooden door: \"The door cannot be opened.\" (nailed)",
+  "174": "grating not probed",
+  "179": "stone door (Stone Barrow, endgame) not probed",
+  "181": "front door: permanent \"The door cannot be opened.\" - Open offered but never works"
+ },
+ "status": "CONFIRMED",
+ "method": "headless Chromium play.html; ordinary commands via Input.Inject; Jericho walkthrough prefixes with inserted probes; JSEED-style random-opcode shim (seed 0) for walkthrough parity, no VM memory writes/snapshots"
+}

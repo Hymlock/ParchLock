@@ -1,0 +1,267 @@
+{
+ "title": "Suspect",
+ "digest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb",
+ "flag": "supporter (SURFACEBIT)",
+ "bit": 15,
+ "containerBitSource": 16,
+ "method": "drive.cjs headless Chromium, ordinary commands only; snapshot bits c=containerBit o=surface a=animate",
+ "appRowNow": {
+  "attributeMap": {
+   "container": 16,
+   "open": 13,
+   "isOpen": 13,
+   "animate": 31
+  },
+  "openCapability": {
+   "all": [
+    "container"
+   ],
+   "none": [
+    "animate"
+   ]
+  }
+ },
+ "carriersInitial": [
+  {
+   "id": 89,
+   "name": "Veronica's body",
+   "parent": 186,
+   "containerBit": 1
+  },
+  {
+   "id": 137,
+   "name": "workbench",
+   "parent": 139,
+   "containerBit": 1
+  },
+  {
+   "id": 146,
+   "name": "sideboard",
+   "parent": 149,
+   "containerBit": 1
+  },
+  {
+   "id": 147,
+   "name": "table",
+   "parent": 149,
+   "containerBit": 1
+  },
+  {
+   "id": 154,
+   "name": "side table",
+   "parent": 156,
+   "containerBit": 1
+  },
+  {
+   "id": 159,
+   "name": "toilet",
+   "parent": 248,
+   "containerBit": 0
+  },
+  {
+   "id": 164,
+   "name": "mantel",
+   "parent": 167,
+   "containerBit": 1
+  },
+  {
+   "id": 183,
+   "name": "small desk",
+   "parent": 186,
+   "containerBit": 1
+  },
+  {
+   "id": 184,
+   "name": "large desk",
+   "parent": 186,
+   "containerBit": 1
+  },
+  {
+   "id": 229,
+   "name": "end table",
+   "parent": 232,
+   "containerBit": 1
+  },
+  {
+   "id": 233,
+   "name": "window seat",
+   "parent": 237,
+   "containerBit": 1
+  },
+  {
+   "id": 246,
+   "name": "",
+   "parent": 0,
+   "containerBit": 1
+  }
+ ],
+ "evidence": [
+  {
+   "run": "_sus.run.json",
+   "cmd": "put notebook on table",
+   "room": 149,
+   "reply": ">put notebook on table Okay. > ",
+   "diff": [
+    {
+     "id": 90,
+     "n": "Veronica",
+     "parent": [
+      208,
+      209
+     ]
+    },
+    {
+     "id": 94,
+     "n": "notebook",
+     "parent": [
+      99,
+      147
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_sus.run.json",
+   "cmd": "put notebook on sideboard",
+   "room": 149,
+   "reply": ">put notebook on sideboard Sorry, but the word \"sideboard\" is not in the vocabulary you can use. > ",
+   "diff": []
+  },
+  {
+   "run": "_sus.run.json",
+   "cmd": "put pen on notebook",
+   "room": 149,
+   "reply": ">put pen on notebook You can't do that. > ",
+   "diff": [
+    {
+     "id": 61,
+     "n": "Cochrane",
+     "parent": [
+      157,
+      197
+     ]
+    },
+    {
+     "id": 90,
+     "n": "Veronica",
+     "parent": [
+      211,
+      218
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_sus.run.json",
+   "cmd": "put notebook on gunbelt",
+   "room": 149,
+   "reply": ">put notebook on gunbelt It won't fit. > ",
+   "diff": [
+    {
+     "id": 61,
+     "n": "Cochrane",
+     "parent": [
+      197,
+      199
+     ]
+    },
+    {
+     "id": 90,
+     "n": "Veronica",
+     "parent": [
+      218,
+      219
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_sus.run.json",
+   "cmd": "put notebook on mantel",
+   "room": 167,
+   "reply": ">put notebook on mantel Okay. The front doorbell rings. > ",
+   "diff": [
+    {
+     "id": 57,
+     "n": "Smythe",
+     "parent": [
+      205,
+      207
+     ]
+    },
+    {
+     "id": 80,
+     "n": "Alicia",
+     "parent": [
+      254,
+      252
+     ]
+    },
+    {
+     "id": 94,
+     "n": "notebook",
+     "parent": [
+      99,
+      164
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_sus.run.json",
+   "cmd": "put notebook on sofa",
+   "room": 167,
+   "reply": ">put notebook on sofa It seems a shame to mar the sofa with a notebook, so you put it on the floor instead. > ",
+   "diff": [
+    {
+     "id": 57,
+     "n": "Smythe",
+     "parent": [
+      209,
+      210
+     ]
+    },
+    {
+     "id": 78,
+     "n": "Linda",
+     "parent": [
+      227,
+      224
+     ]
+    },
+    {
+     "id": 94,
+     "n": "notebook",
+     "parent": [
+      99,
+      167
+     ]
+    },
+    {
+     "id": 170,
+     "n": "Michael",
+     "parent": [
+      125,
+      124
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_sus.run.json",
+   "cmd": "put notebook on chair",
+   "room": 167,
+   "reply": ">put notebook on chair You don't have the notebook. > ",
+   "diff": []
+  },
+  {
+   "run": "_sus.run.json",
+   "cmd": "talk to smythe",
+   "room": 167,
+   "reply": ">talk to smythe Smythe isn't here. > ",
+   "diff": []
+  }
+ ],
+ "status": "CONFIRMED",
+ "notes": "put notebook on table -> Okay. (parent 147, Dining Room); put notebook on mantel -> Okay. (parent 164, Living Room). Negatives: put pen on notebook -> You can't do that.; put notebook on sofa/chair -> It seems a shame to mar the X..., so you put it on the floor instead. Concern: 10 of 11 carriers also carry container bit 16 (toilet 159 does not); Veronica's body 89 carries surface+container+animate 31; sideboard 146 carries the bit but has no vocabulary word. App openCapability.none lacks supporter, so supporter+container tables/desks would be offered Open/Close; container gunbelt answers put ... on gunbelt -> It won't fit. (on treated as in)."
+}

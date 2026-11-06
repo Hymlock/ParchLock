@@ -1,0 +1,4 @@
+suspect mer bit=17 group=*|c7bc0b40ec8bfde1c462d07a08aaa964bd2bd0e6|mer|17|075074c8de60801f83d0f422ee6ae512877cf12e FAIL open mercedes trunk@68#133=TRUE(+)
+suspect bmw bit=17 group=*|31a7b8deef75baceb47d80da41ed7da0082cc493|bmw|17|075074c8de60801f83d0f422ee6ae512877cf12e FAIL open bmw trunk@68#134=TRUE(+)
+suspect tc bit=17 group=*|c072870ceb13b870887a538bc00d7da427e1f3b9|tc|17|075074c8de60801f83d0f422ee6ae512877cf12e FAIL open tool chest@68#132=FALSE(-)
+suspect fd bit=17 group=*|86bc8ccf2fc624887d088d8ce7ffef478ed68165|fd|17|075074c8de60801f83d0f422ee6ae512877cf12e FAIL open front door@19#251=NOTEST(+)

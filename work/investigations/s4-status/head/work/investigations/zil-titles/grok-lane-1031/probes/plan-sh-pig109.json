@@ -1,0 +1,26 @@
+{
+ "tag": "sh-alive",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 40,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native; isolated step cluster (no earlier test mutations)",
+ "tests": [
+  {
+   "cmd": "LOOK IN PIGEON",
+   "step": 109,
+   "name": "look in pigeon",
+   "id": 290,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN PIGEON",
+   "step": 109,
+   "name": "look in pigeon",
+   "id": 290,
+   "expect": 0,
+   "bit": 47,
+   "tag": "sh-person"
+  }
+ ]
+}

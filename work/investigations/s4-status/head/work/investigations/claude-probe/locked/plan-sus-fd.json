@@ -1,0 +1,1 @@
+{"key":"suspect","tag":"fd","tests":[{"id":251,"name":"front door","step":19,"cmd":"open front door","expect":1,"bit":17}]}

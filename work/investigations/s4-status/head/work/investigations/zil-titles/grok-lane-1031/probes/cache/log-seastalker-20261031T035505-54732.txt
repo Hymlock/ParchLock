@@ -1,0 +1,7 @@
+seastalker seasan @36 look #36 NOTEST "(SCIMITAR)\nYou're in the pilot's seat of the SCIMITAR, its operating control pan"
+seastalker seasan @40 look #40 NOTEST "(SCIMITAR)\nYou're in the pilot's seat of the SCIMITAR, its operating control pan"
+seastalker seasan @44 look #44 NOTEST "(SCIMITAR)\nYou're in the pilot's seat of the SCIMITAR, its operating control pan"
+seastalker seasan @47 look #47 NOTEST "(SCIMITAR)\nYou're in the pilot's seat of the SCIMITAR, its operating control pan"
+seastalker seasan @60 look #60 NOTEST "(SCIMITAR)\nYou're in the pilot's seat of the SCIMITAR, its operating control pan"
+seastalker seasan @92 look #92 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
+seastalker seasan @96 look #96 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

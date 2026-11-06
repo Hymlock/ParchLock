@@ -1,0 +1,5 @@
+sherlock sh-alive @4 LISTEN TO HOLMES #293 TRUE "At the moment, Holmes is silent.\n \n> "
+sherlock sh-alive @4 LISTEN TO VIOLIN #207 FALSE "At the moment, the violin is silent.\n \n> "
+sherlock sh-alive @4 LOOK IN SOFA #239 FALSE "You cannot look inside a sofa.\n \n> "
+sherlock sh-alive @26 LOOK IN DOG #147 NOTEST "You cannot see any dog here.\n \n> "
+sherlock sh-alive @26 LOOK IN GUARD #155 NOTEST "You cannot see any guard here.\n \n> "

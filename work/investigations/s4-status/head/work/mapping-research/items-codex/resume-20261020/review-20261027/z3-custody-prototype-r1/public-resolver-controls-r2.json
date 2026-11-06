@@ -1,0 +1,5 @@
+{
+  "tier": "CONSTRUCTED actual public resolver + actual semantic cutover + migration adapter + Equipment callbacks; not native or rendered consumer proof",
+  "pass": 13,
+  "fail": 0
+}

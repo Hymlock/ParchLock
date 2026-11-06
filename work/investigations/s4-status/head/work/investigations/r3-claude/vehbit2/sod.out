@@ -1,0 +1,73 @@
+"WAIT"  36 -> 128 bed | The hellhound reaches you and tears you apart with its powerful teeth. ...and a moment later you wake up in a cold sweat and realize you've been dream
+"FROTZ BOOK"  128 -> 128 bed | There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite 
+"GET UP"  128 -> 17 Your Quarters | You are now on your feet. >
+"north" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"down" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"northeast" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"down" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"south" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"up" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"down" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"north" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"northeast" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"northwest" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"down" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"north" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"east" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"southwest" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"southeast" goto:Roller Coaster:random 17 -> 17 Your Quarters | You can't go that way. >
+"west" goto:Roller Coaster:random 17 -> 67 Hallway | Hallway Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. Tacked to the doorframe of 
+"northeast" goto:Roller Coaster:random 67 -> 67 Hallway | You can't go that way. >
+"north" goto:Roller Coaster:random 67 -> 67 Hallway | The heavy wooden door is closed. >
+"northwest" goto:Roller Coaster:random 67 -> 67 Hallway | You can't go that way. You are now a bit hungry. >
+"north" goto:Roller Coaster:random 67 -> 67 Hallway | The heavy wooden door is closed. >
+"south" goto:Roller Coaster:random 67 -> 50 Hallway | Hallway Rooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area. >
+"west" goto:Roller Coaster:random 50 -> 13 Helistar's Quarters | Helistar's Quarters Helistar is one of the foremost members of the Circle, and this is her private chamber. Among Helistar's possessions is a scroll, 
+"east" goto:Roller Coaster:random 13 -> 50 Hallway | Hallway The Guild Hall doorbell chimes. >
+"northwest" goto:Roller Coaster:random 50 -> 50 Hallway | You can't go that way. >
+"down" goto:Roller Coaster:random 50 -> 50 Hallway | You can't go that way. You are now somewhat thirsty. >
+"northwest" goto:Roller Coaster:random 50 -> 50 Hallway | You can't go that way. >
+"southwest" goto:Roller Coaster:random 50 -> 50 Hallway | You can't go that way. >
+"northwest" goto:Roller Coaster:random 50 -> 50 Hallway | You can't go that way. >
+"south" goto:Roller Coaster:random 50 -> 18 Lobby | Lobby This is the entrance lobby of the Guild Hall. Befitting the status and wealth of the Guild, the lobby is finished with polished Antharian marble
+"east" goto:Roller Coaster:random 18 -> 142 Library | Library This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is h
+"northwest" goto:Roller Coaster:random 142 -> 142 Library | You can't go that way. >
+"up" goto:Roller Coaster:random 142 -> 142 Library | You can't go that way. >
+"west" goto:Roller Coaster:random 142 -> 18 Lobby | Lobby Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. >
+"south" goto:Roller Coaster:random 18 -> 18 Lobby | A tiny warning nymph appears, floating in the air next to your ear. "There's no one else here," it reminds you, "so you'd better not leave just now. B
+"north" goto:Roller Coaster:random 18 -> 50 Hallway | Hallway >
+"north" goto:Roller Coaster:random 50 -> 67 Hallway | Hallway Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment. >
+"southwest" goto:Roller Coaster:random 67 -> 67 Hallway | You can't go that way. >
+"northwest" goto:Roller Coaster:random 67 -> 67 Hallway | You can't go that way. >
+"west" goto:Roller Coaster:random 67 -> 115 Belboz's Quarters | Belboz's Quarters The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven wall hanging, an exo
+"south" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"southwest" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. You are now quite hungry. "Squawk! This tea is cold! Get me another cup. Squawk!" >
+"north" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! This tea is cold! Get me another cup. Squawk!" >
+"west" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. You are now very thirsty. >
+"north" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"up" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! You should never have let down your mindshield, you doddering old Enchanter. Squawk!" >
+"north" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! Now where can I hide this key? Squawk!" >
+"down" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"south" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"southeast" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"south" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"down" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"south" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. You are now extremely thirsty. You are now very hungry. >
+"north" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"west" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"southwest" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"up" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! Pollibar want a cracker! Squawk!" >
+"northeast" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"southwest" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"west" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"northeast" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"northeast" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. You are now incredibly thirsty. >
+"up" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! Pollibar want a cracker! Squawk!" >
+"south" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. You are now extremely hungry. >
+"east" goto:Roller Coaster:random 115 -> 67 Hallway | Hallway Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment. >
+"north" goto:Roller Coaster:random 67 -> 67 Hallway | The heavy wooden door is closed. >
+"north" goto:Roller Coaster:random 67 -> 67 Hallway | The heavy wooden door is closed. >
+"southeast" goto:Roller Coaster:random 67 -> 67 Hallway | You can't go that way. >
+"southeast" goto:Roller Coaster:random 67 -> 67 Hallway | You can't go that way. >
+"west" goto:Roller Coaster:random 67 -> 115 Belboz's Quarters | Belboz's Quarters Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia. >
+"south" goto:Roller Coaster:random 115 -> 115 Belboz's Quarters | You can't go that way. You pass out from lack of food and water. **** You have died **** Unfortunately, you made no provisions for your untimely death

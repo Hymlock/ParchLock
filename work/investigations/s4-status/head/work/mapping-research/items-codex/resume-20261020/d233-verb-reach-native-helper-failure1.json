@@ -1,0 +1,171 @@
+{
+  "tier": "Fresh ordinary commands; no snapshots, VM/object/fact writes or RNG overrides. Post-exposure independent validation, not blind.",
+  "rows": [
+    {
+      "command": "take carton",
+      "before": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        " ",
+        "Sitting at a terminal is a hacker whom you recognize.",
+        " ",
+        ">STAND",
+        "You already are standing.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "close carton",
+      "before": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        " ",
+        "Sitting at a terminal is a hacker whom you recognize.",
+        " ",
+        ">STAND",
+        "You already are standing.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open carton",
+      "before": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        " ",
+        "Sitting at a terminal is a hacker whom you recognize.",
+        " ",
+        ">STAND",
+        "You already are standing.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "eat chinese food",
+      "before": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 105,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        " ",
+        "Sitting at a terminal is a hacker whom you recognize.",
+        " ",
+        ">STAND",
+        "You already are standing.",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "ready": {
+    "overlay": false,
+    "input": true
+  },
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(r.rows[0].before[58].parent===86&&r.rows[0].after[58].parent===86)\n\n    at C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\d233-verb-reach-native.cjs:2:1821"
+}

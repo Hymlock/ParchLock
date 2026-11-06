@@ -1,0 +1,3082 @@
+{
+  "tier": "Fresh ordinary native commands/new rendered consumer on isolated prototype; no VM/fact/RNG writes; older semantic packet retained at seeded tier",
+  "files": {
+    "js/AttributeSchema.js": "29652e1a099b79d4ac5ba6b44f2ba897171f22342dad1efd487e01591307fa73",
+    "js/EquipmentUI.js": "f052f3c41b0ebfba3c2a29e75c51f488099b31cfef0ad1914d24e65d10fbe2ac",
+    "js/ModuleStatFactsClaude.js": "0eaa1701247cb8167e0b49eebc09257ec0b73583c33c96b0e05c36f91ad9d999",
+    "js/ZRamReader.js": "36c95c54331695b3b17cce2098f64281e8bf10cda83e4916a9f8ffecdabd2c1b",
+    "js/GrammarProvider.js": "f04e67645d4485ce677e2ada682ccb6bca8f0e3a8abe96ebfd1e423b6fc095b8",
+    "games/Sorcerer.z3.js": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8"
+  },
+  "rows": [
+    {
+      "command": "WAIT",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 36,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 16,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 17,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "reply": [
+        ">WAIT",
+        "Time passes...",
+        " ",
+        "The hellhound reaches you and tears you apart with its powerful teeth.",
+        " ",
+        "...and a moment later you wake up in a cold sweat and realize you've been dreaming.",
+        " ",
+        "SORCERER",
+        "Infocom interactive fiction - a fantasy story",
+        "Copyright (c) 1984 by Infocom, Inc. All rights reserved.",
+        "SORCERER is a trademark of Infocom, Inc.",
+        "Release 15 / Serial number 851108",
+        " ",
+        "Your frotz spell seems to have worn off during the night, and it is now pitch black.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "FROTZ BOOK",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 17,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 17,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "reply": [
+        ">FROTZ BOOK",
+        "There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite usable as a light source.",
+        " ",
+        "Your Quarters, in the bed",
+        "This is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a great privilege, especially for an Enchanter as young as yourself, but how many Enchanters can say they defeated the infamous Krill?",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "GET UP",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 17,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 17,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "reply": [
+        ">GET UP",
+        "You are now on your feet.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "W",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 17,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 67,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "reply": [
+        ">W",
+        "Hallway",
+        "Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north.",
+        "Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "READ NOTE",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 67,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 67,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "reply": [
+        ">READ NOTE",
+        "(taking the scribbled note first)",
+        "\"I have taken the apprentices into town to shop for the Guild picnic. I tried rousing you, but you seemed deep asleep. By the way, have you seen Belboz anywhere? It's not like him to leave without telling someone -- but then, he's been acting pretty odd of late.",
+        " ",
+        "                            -- Frobar\"",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "DROP IT",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 67,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 67,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "reply": [
+        ">DROP IT",
+        "Dropped.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "W",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 67,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "reply": [
+        ">W",
+        "Belboz's Quarters",
+        "The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven wall hanging, an exotic morgia plant, and a wide darkwood desk crafted by the artisans of Gurth. The hallway lies to the east.",
+        "Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "OPEN DESK",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": []
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "take box",
+              "search box",
+              "empty box",
+              "open box"
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "take journal"
+            ]
+          }
+        ]
+      },
+      "reply": [
+        ">OPEN DESK",
+        "Opening the desk drawer reveals a tiny box, an infotater, and a journal.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "GET BOX AND JOURNAL",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "take box",
+              "search box",
+              "empty box",
+              "open box"
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 12,
+            "on11": false,
+            "emission": null,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "take journal"
+            ]
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "search box",
+              "empty box",
+              "open box",
+              "drop box",
+              "give box to ",
+              "put box in "
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "drop journal",
+              "give journal to ",
+              "put journal in "
+            ]
+          }
+        ]
+      },
+      "reply": [
+        ">GET BOX AND JOURNAL",
+        "tiny box: Taken.",
+        "journal: Taken.",
+        " ",
+        "\"Squawk! This tea is cold! Get me another cup. Squawk!\"",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "frotz box",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "search box",
+              "empty box",
+              "open box",
+              "drop box",
+              "give box to ",
+              "put box in "
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "drop journal",
+              "give journal to ",
+              "put journal in "
+            ]
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "search box",
+              "empty box",
+              "open box",
+              "drop box",
+              "give box to ",
+              "put box in "
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "drop journal",
+              "give journal to ",
+              "put journal in "
+            ]
+          }
+        ]
+      },
+      "reply": [
+        ">frotz box",
+        "There is an almost blinding flash of light as the tiny box begins to glow! It slowly fades to a less painful level, but the tiny box is now quite usable as a light source.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "drop box",
+      "before": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "search box",
+              "empty box",
+              "open box",
+              "drop box",
+              "give box to ",
+              "put box in "
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "drop journal",
+              "give journal to ",
+              "put journal in "
+            ]
+          }
+        ]
+      },
+      "after": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 115,
+            "on11": true,
+            "emission": null,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "take box",
+              "search box",
+              "empty box",
+              "open box"
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "drop journal",
+              "give journal to ",
+              "put journal in "
+            ]
+          }
+        ]
+      },
+      "reply": [
+        ">drop box",
+        "Dropped.",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "ui": [
+    {
+      "stage": "before",
+      "rows": [
+        {
+          "id": 223,
+          "text": "Yourself\nyou"
+        },
+        {
+          "id": 225,
+          "text": "journal"
+        },
+        {
+          "id": 139,
+          "text": "spell book\nopen\nproviding light\n7 inside"
+        },
+        {
+          "id": 147,
+          "text": "frotz spell"
+        },
+        {
+          "id": 214,
+          "text": "gnusto spell"
+        },
+        {
+          "id": 140,
+          "text": "izyuk spell"
+        },
+        {
+          "id": 162,
+          "text": "pulver spell"
+        },
+        {
+          "id": 22,
+          "text": "rezrov spell"
+        },
+        {
+          "id": 27,
+          "text": "vezza spell"
+        },
+        {
+          "id": 183,
+          "text": "yomin spell"
+        },
+        {
+          "id": 102,
+          "text": "tiny box\nclosed"
+        }
+      ],
+      "state": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "search box",
+              "empty box",
+              "open box",
+              "drop box",
+              "give box to ",
+              "put box in "
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "drop journal",
+              "give journal to ",
+              "put journal in "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "after",
+      "rows": [
+        {
+          "id": 223,
+          "text": "Yourself\nyou"
+        },
+        {
+          "id": 225,
+          "text": "journal"
+        },
+        {
+          "id": 139,
+          "text": "spell book\nopen\nproviding light\n7 inside"
+        },
+        {
+          "id": 147,
+          "text": "frotz spell"
+        },
+        {
+          "id": 214,
+          "text": "gnusto spell"
+        },
+        {
+          "id": 140,
+          "text": "izyuk spell"
+        },
+        {
+          "id": 162,
+          "text": "pulver spell"
+        },
+        {
+          "id": 22,
+          "text": "rezrov spell"
+        },
+        {
+          "id": 27,
+          "text": "vezza spell"
+        },
+        {
+          "id": 183,
+          "text": "yomin spell"
+        },
+        {
+          "id": 102,
+          "text": "tiny box\nclosed\nproviding light"
+        }
+      ],
+      "state": {
+        "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+        "family": {
+          "classification": "confirmed-zil-family",
+          "evidence": "validated"
+        },
+        "player": {
+          "id": 223,
+          "source": "measured-player-global",
+          "ambiguous": false,
+          "candidates": []
+        },
+        "room": 115,
+        "objects": [
+          {
+            "id": 102,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine box",
+              "search box",
+              "empty box",
+              "open box",
+              "drop box",
+              "give box to ",
+              "put box in "
+            ]
+          },
+          {
+            "id": 139,
+            "parent": 223,
+            "on11": true,
+            "emission": true,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": true,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": true,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": true
+            },
+            "illuminationTags": [
+              "providing light"
+            ],
+            "activationTags": [],
+            "commands": [
+              "examine book",
+              "search book",
+              "empty book",
+              "close book",
+              "drop book",
+              "give book to ",
+              "put book in "
+            ]
+          },
+          {
+            "id": 225,
+            "parent": 223,
+            "on11": false,
+            "emission": false,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": true,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "isWorn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": true,
+              "switchable": false,
+              "providingLight": false
+            },
+            "illuminationTags": [],
+            "activationTags": [],
+            "commands": [
+              "examine journal",
+              "drop journal",
+              "give journal to ",
+              "put journal in "
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "warningDismissed": "⚠ WARNING\n\nOpening your inventory is like rummaging through your bags.\n\nWhile ParchLock checks what you're carrying, some stories count it as a turn — time passes in the game world while you're elbow-deep in your pack.\n\nSo maybe don't do it in the middle of a fight. Enemies find it terribly rude to be ignored, and they get irate — and they will attack while you're not looking.\n\nYou'll only see this warning once for this story.\n\n✕",
+  "sourceStable": true,
+  "status": "PASS bounded real Gear emission, fresh custody, no new switchability/commands"
+}

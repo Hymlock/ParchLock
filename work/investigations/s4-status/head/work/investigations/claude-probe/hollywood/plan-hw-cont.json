@@ -1,0 +1,10 @@
+{"key":"hollywood","tag":"e7cont","bit":4,"tests":[
+{"id":225,"name":"mailbox","step":4,"cmd":"open mailbox","expect":1},
+{"id":225,"name":"mailbox","step":5,"cmd":"look in mailbox","expect":1},
+{"id":63,"name":"business card","step":6,"cmd":"look in business card","expect":0},
+{"id":243,"name":"statue of Buck Palace","step":4,"cmd":"look in statue","expect":0},
+{"id":222,"name":"piano","step":78,"cmd":"open piano","expect":1},
+{"id":199,"name":"cloth sack","step":107,"cmd":"open sack","expect":1},
+{"id":138,"name":"small compartment","step":320,"cmd":"open compartment","expect":1},
+{"id":194,"name":"mantle","step":49,"cmd":"close mantle","expect":1}
+]}

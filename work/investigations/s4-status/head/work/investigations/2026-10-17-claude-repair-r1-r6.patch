@@ -1,0 +1,212 @@
+diff --git a/js/Actionable.js b/js/Actionable.js
+index fe87409..7db459d 100644
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -296,7 +296,8 @@ var Actionable = {
+         var preserves = curL === structuralDisp || (structuralDisp && (" " + curL + " ").indexOf(" " + structuralDisp + " ") >= 0);
+         // When a genuine inventory listing row prints exactly the structural name, the game has named the item: a phrase
+         // observed elsewhere must not replace it (Lurking's held "pc" became "computer terminals" from the opening text,
+-        // its aliases being the truncated "comput"/"termin"). A longer observed phrase that CONTAINS the name still wins.
++        // its aliases being the truncated "comput"/"termin"). This deliberately outranks longerRecovery (which is TRUE for
++        // that same alias-built phrase); an observed phrase that CONTAINS the name is already accepted as `preserves`.
+         if (curL && !preserves && structuralDisp && invText) {
+             try {
+                 var rowNamed = Actionable.listingRows(invText, pool).some(function (r) {
+@@ -379,7 +380,9 @@ var Actionable = {
+         var player = "you(?: are|'re) (?:carrying|holding|wearing)|you have";
+         // Header: a colon-ended line built around a player inventory phrase ("You are carrying:", AllRoads "All that you
+         // know you have is:") or "<known object> contains:". A bare "Warning:" is not a header.
+-        var headRe = new RegExp("^(?:.{0,40}\\b(?:" + player + ")\\b.{0,20}|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s*:$", "i");
++        // Exact player-inventory grammar (Codex #3553): "You have lost:" is not a header. AllRoads' "All that you know you
++        // have is:" is the one measured variant.
++        var headRe = new RegExp("^(?:(?:all that you know )?(?:you(?: are|'re) (?:carrying|holding|wearing)|you have)(?: is)?|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s*:$", "i");
+         var sentRe = new RegExp("^(?:" + player + "|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s+(.+)$", "i");
+         var endsKnown = function (s) { s = s.toLowerCase().trim(); return names.some(function (n) { return s === n || s.slice(-n.length - 1) === " " + n; }); };
+         var rows = [], inBlock = false, blockInd = -1;
+@@ -392,7 +395,10 @@ var Actionable = {
+             if (headRe.test(t.split(/[.!?]\s+/).pop())) { inBlock = true; blockInd = -1; return; }
+             // Block rows: the first row fixes the indentation level (Inform lists top-level rows unindented, Infocom
+             // indents them); rows at that level or deeper continue, a shallower line ends the block.
+-            if (inBlock && (blockInd < 0 || ind >= blockInd)) { if (blockInd < 0) blockInd = ind; rows.push(t); return; }
++            // An unindented line that ends a sentence is prose, not a row (Codex #3553: "A troll drops a red cube." after
++            // a zero-indent list); Inform's unindented rows carry no sentence punctuation.
++            var prose = ind === 0 && /[.!?]["']?$/.test(t.replace(/\s*\([^()]*\)\s*$/, ""));
++            if (inBlock && !prose && (blockInd < 0 || ind >= blockInd)) { if (blockInd < 0) blockInd = ind; rows.push(t); return; }
+             inBlock = false;
+             // Each sentence of the line separately (Plundered Hearts prints "You have ... . It seems that your
+             // reticule contains ... . You are wearing ..." on one line). An item must START like an item entry
+@@ -1774,8 +1780,12 @@ var Actionable = {
+     relocateExactMarks: function (lines, suppliedMarks) {
+         // Phrase/ownership selection has already finished. Move those SAME
+         // marks, so latest-copy presentation cannot change the chosen noun.
+-        var marks = suppliedMarks || [];
++        var marks = (suppliedMarks || []).slice();
+         if (!suppliedMarks) lines.forEach(function (line) { line.querySelectorAll(".pl-act:not(.is-stale)").forEach(function (mark) { if (marks.indexOf(mark) < 0) marks.push(mark); }); });
++        // Codex #3561/#3562: a LOCAL worklist, longest text first (stable ties), so a full name ("spell book") reserves the
++        // first occurrence ("My Spell Book") before a shorter shared token ("spell") can occupy it. The global LiveMarks
++        // order and the parser/candidate/coverage identities are untouched.
++        marks.sort(function (a, b) { return String(b.textContent || "").length - String(a.textContent || "").length; });
+         marks.forEach(function (mark) {
+             var phrase = mark.textContent, target = phrase.toLowerCase(), parent = mark.parentNode;
+             if (!parent || !target) return;
+diff --git a/js/AttrCalibrator.js b/js/AttrCalibrator.js
+index 14a0fea..cd024e3 100644
+--- a/js/AttrCalibrator.js
++++ b/js/AttrCalibrator.js
+@@ -1267,9 +1267,19 @@ var AttrCalibrator = {
+                 // Animate objects named in the reply are holders or bystanders, not listed items: cabal's PC is literally
+                 // named "you" (matched by "You are carrying") and the vagrant is mentioned in the same reply. Counting
+                 // them hid the PalmPilot (its parent looked "listed") and let a room parent compete.
++                // Occurrence provenance (Codex #3552/#3566): an object is listed only when its name occurs in a genuine
++                // listing row of this reply (Actionable.listingRows), never in the header ("You are carrying:" naming a PC
++                // called "you") or in prose (the vagrant). A carried animal in a row stays listed, so its own children
++                // do not vote for it as the holder.
++                var rowsText = text;
++                try {
++                    if (typeof Actionable !== "undefined" && Actionable.listingRows) {
++                        var rws = Actionable.listingRows(text, snap.objs.map(function (o) { return { name: o.name }; }));
++                        rowsText = rws.length ? rws.join("\n").toLowerCase() : "";
++                    }
++                } catch (eRows) {}
+                 var listed = snap.objs.filter(function (o) {
+-                    try { if (ZRamReader.attrsFromObject(ctx.mem, o.id).animate) return false; } catch (eAn) {}
+-                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(text);
++                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(rowsText);
+                 });
+                 var listedIds = {}; listed.forEach(function (o) { listedIds[o.id] = true; });
+                 var counts = {};
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index c81f545..6389c27 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -61,7 +61,9 @@ var ModuleStatFactsClaude = {
+     // Hooded figure 67 ('remove hood') excluded: not target-scoped. Applied together with openCapability.
+     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "supporter": 26, "container": 10 }
++        // supporter 26 WITHDRAWN (Codex REVISE #3556): the pedestal test was ambient (identical bit-26 vector across commands)
++        // and the pedestal is unreachable through the cage; one reachable target positive (cage 81) only. Fail closed.
++        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10 }
+     },
+     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+@@ -290,8 +292,8 @@ var ModuleStatFactsClaude = {
+     // No source pin. Closed bag no longer spills its bottles/pills. SOLO/SELF-AUDIT.
+     "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0": {
+         "playerObject": 232,
+-        "attributeMap": { "container": 9, "open": 5, "isOpen": 5 },
+-        "openCapability": { "all": ["container"], "none": [] }
++        // No openCapability (grok2 REVISE #3576: "all containers" offered Open on the lapel, hat and bottles).
++        "attributeMap": { "container": 9, "open": 5, "isOpen": 5 }
+     },
+     // phlegm (Inform, no attribute-name table): this library numbers container 3 (I6 default: concealed 3, container 4).
+     // Raw target-scoped PUT IN tests (zil-route-ops-raw.cjs): PUT MAP IN COAT tests 3 TRUE on the blue overcoat 39, PUT MAP
+diff --git a/js/WorldModel.js b/js/WorldModel.js
+index 1203969..f83e594 100644
+--- a/js/WorldModel.js
++++ b/js/WorldModel.js
+@@ -120,6 +120,9 @@ var WorldModel = {
+     recoverInventory: (payload) => {
+         var inv = WorldModel.idBacked(payload && payload.inventory);
+         if (inv.length) return inv;
++        // A digest-pinned player that is not yet initialized means "no holder": never recover one from worn bits
++        // (Codex #3566).
++        if (payload && payload.probe && payload.probe.playerSource === "fact-uninitialized") return inv;
+         var objs = (payload && payload.discoveredObjects) || [];
+         // D58/D68: only structurally truly-worn objects identify inventory root.
+         // scenery+worn (Glow Bar) must not promote a CustomPlayer wrapper.
+diff --git a/js/ZRamProvider.js b/js/ZRamProvider.js
+index d96a2e7..b8f0215 100644
+--- a/js/ZRamProvider.js
++++ b/js/ZRamProvider.js
+@@ -29,7 +29,9 @@ var ZRamProvider = {
+         // every learned or structural guess: Sherlock's learner otherwise settled on the coat pocket.
+         try {
+             var lf = ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
+-            if (playerId && lf && (Number.isInteger(lf.playerObject) || Number.isInteger(lf.playerGlobal))) return playerId;
++            // A pinned fact that resolves to 0 (fact-uninitialized) means "no holder yet", never a learned or guessed root
++            // (Codex #3552/#3566).
++            if (lf && (Number.isInteger(lf.playerObject) || Number.isInteger(lf.playerGlobal))) return playerId || 0;
+         } catch (eFact) {}
+         try {
+             if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.confirmedInventoryRootId) {
+@@ -67,6 +69,8 @@ var ZRamProvider = {
+         // ZIL uses unnamed groupings for offstage/global objects as well; those
+         // are not inventories. Native confirmed holders above remain first.
+         if (!ZRamReader.isInformCompiled(mem)) return playerId;
++        // The placed, empty-handed player guard covers the unnamed-wrapper family too (Codex #3566).
++        if (playerPlaced) return playerId;
+         // D75: wump2ka (and similar) parent the real held tree under an
+         // unnamed room child ("(CustomPlayer)") whose animate bit may be
+         // clear this session. probe playerId is often an empty-handed
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index 9322c54..85f8fe5 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -120,6 +120,25 @@ var ZRamReader = {
+         return true;
+     },
+ 
++    // Dictionary equivalence key of a typed word for THIS story (Codex #3565): the live VM's own encoder (v3: 4 bytes,
++    // v4+: 6 bytes), only when the VM's memory is the supplied mem and its version agrees with the header. Otherwise the
++    // exact normalized word ("w:" prefix). Unsupported token forms (anything but letters, internal ' or -) return "".
++    dictionaryWordKey: (mem, word) => {
++        var w = String(word || "").toLowerCase().trim();
++        if (!/^[a-z0-9]+(?:['-][a-z0-9]+)*$/.test(w)) return "";
++        try {
++            var vm = typeof window !== "undefined" && window.__PARCHLOCK_ZVM__;
++            var h = ZRamReader.header(mem);
++            var buf = mem && mem.buffer, off = (mem && mem.byteOffset) || 0;
++            if (vm && vm.encode && vm.m && h && vm.m.buffer === buf && (vm.m.byteOffset || 0) === off
++                && (!!vm.version3) === (h.version <= 3)) {
++                var enc = vm.encode(Array.from(w, function (c) { return c.charCodeAt(0); }));
++                if (enc && enc.length) return "z:" + Array.prototype.join.call(enc, ",");
++            }
++        } catch (eEnc) {}
++        return "w:" + w;
++    },
++
+     enclosingRoom: (mem, playerId) => {
+         // Research proposal: validated ZIL v3 status location must also be
+         // on the current player's containment chain. Never climb to its root.
+@@ -154,6 +173,21 @@ var ZRamReader = {
+                         }
+                         // A truncated chain is not a validated ancestry either.
+                         if (found && !cycle && cursor && !cursor.parent) return statusRoom;
++                        // The game's own HERE is a validated location but the player's chain holds no location at all
++                        // (Planetfall's sleep: player in bed 196 inside limbo containers 254 > 255): the game moved the
++                        // player out of the room tree, so HERE is the room. A real room on the chain still wins above.
++                        // ZIL rooms are the children of the ROOMS object (HERE's own parent); isLocationObject alone cannot
++                        // tell a bed from a room, so "outside the room tree" = no chain member shares HERE's parent.
++                        // Fail closed (grok #3577): only for a real placed player whose full chain was walked to the root.
++                        if (!found && !cycle && playerId > 0 && cursor && !cursor.parent && Object.keys(chain).length > 1) {
++                            var roomsRoot = (ZRamReader.objectLinks(mem, statusRoom) || {}).parent;
++                            var anyRoom = !roomsRoot;
++                            Object.keys(chain).forEach(function (cid) {
++                                var pl = ZRamReader.objectLinks(mem, +cid);
++                                if (+cid === roomsRoot || (pl && pl.parent === roomsRoot)) anyRoom = true;
++                            });
++                            if (!anyRoom) return statusRoom;
++                        }
+                     }
+                 }
+             }
+@@ -2645,12 +2679,13 @@ var ZRamReader = {
+                         try { storyLabel = String((ZRamReader.storyShortName && ZRamReader.storyShortName(mem, cid)) || "").trim(); } catch (eStory) {}
+                         // Accept it only when every content word is one of the object's own parser words: a short_name
+                         // property that holds a routine decodes to junk ("that yss" in MakeItGood, "ecsuo e" in dewdrops).
+-                        var vk = function (w) { return String(w || "").toLowerCase().replace(/[^a-z0-9'-]/g, "").slice(0, 9); };
+-                        var own = {}; aliases.forEach(function (a) { own[vk(a)] = true; });
++                        // Ownership = the game's own dictionary encoding (Codex #3551/#3565): the live VM encoder, used only
++                        // when its memory is this mem and its version agrees; otherwise exact own-word equality. v5 "ticket"
++                        // does not own "ticketing"; v3 truncation and v5 "undershir"/"undershirt" stay equal.
++                        var vk = function (w) { return ZRamReader.dictionaryWordKey(mem, w); };
++                        var own = {}; aliases.forEach(function (a) { var k = vk(a); if (k) own[k] = true; });
+                         var content = storyLabel.toLowerCase().split(/\s+/).filter(function (w) { return w && !/^(a|an|the|some|of|in|on|with|and|for|to)$/.test(w); });
+-                        var verified = content.length > 0 && content.every(function (w) {
+-                            var k = vk(w); return own[k] || Object.keys(own).some(function (o) { return o.length >= 6 && k.indexOf(o) === 0; });
+-                        });
++                        var verified = content.length > 0 && content.every(function (w) { var k = vk(w); return !!k && !!own[k]; });
+                         if (storyLabel && !/^yourself$/i.test(storyLabel) && verified) parserLabel = storyLabel;
+                         if (parserLabel) {
+                             out.push({

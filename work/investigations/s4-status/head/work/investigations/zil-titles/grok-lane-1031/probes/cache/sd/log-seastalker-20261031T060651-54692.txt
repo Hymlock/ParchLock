@@ -1,0 +1,2 @@
+seastalker sdB @82 look #82 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
+seastalker sdB @82 examine depth control #82 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

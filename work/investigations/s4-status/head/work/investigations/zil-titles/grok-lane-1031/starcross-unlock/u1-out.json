@@ -1,0 +1,705 @@
+{
+  "game": "Starcross.z3.js",
+  "route": "starcross",
+  "n": 0,
+  "seed": 0,
+  "wornBit": 5,
+  "pattern": "suit",
+  "extra": [
+    "stand",
+    "i",
+    "e",
+    "e",
+    "look",
+    "take all",
+    "i",
+    "w",
+    "sit on couch",
+    "tie belt",
+    "examine couch",
+    "unlock belt with safety line",
+    "examine couch",
+    "tie belt",
+    "wear space suit",
+    "i",
+    "unlock belt with space suit",
+    "examine couch",
+    "unlock airlock with safety line",
+    "unlock safety line with space suit",
+    "stand",
+    "unlock belt"
+  ],
+  "log": [
+    {
+      "step": "after-route",
+      "state": {
+        "here": "10:Living Quarters",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "stand",
+      "reply": ">stand\nYou are on your own feet again.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 2 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nLiving Quarters\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridge\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "10:Living Quarters",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are empty handed.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 2 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nLiving Quarters\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridge\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "10:Living Quarters",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "e",
+      "reply": ">e\nBridge\nThis is the control room of the Starcross. There are exits labelled (arbitrarily) \"Port,\" \"Starboard,\" and \"Out.\" The latter exit has a heavy bulkhead which is closed.\nYour ship's computer does the routine tasks of navigation and life support. A control couch is mounted before a control panel and a large viewport. The ship's registration is affixed nearby.\nYour mass detector, essential in the search for black holes, sits to one side. On the detector are a red button, a blue button, and a small screen on which something is displayed.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 6 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridge\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "e",
+      "reply": ">e\nStorage\nThis cubicle is used for storage. The only exit is to port.\nHanging on a rack is your space suit.\nA safety line hangs on the wall.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "look",
+      "reply": ">look\nStorage\nThis cubicle is used for storage. The only exit is to port.\nHanging on a rack is your space suit.\nA safety line hangs on the wall.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "take all",
+      "reply": ">take all\nspace suit: Taken.\nsafety line: Taken.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are carrying:\n  A safety line\n  A space suit\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "w",
+      "reply": ">w\nBridge\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "202:Bridge",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "sit on couch",
+      "reply": ">sit on couch\nYou are now in the control couch.\nThe couch has a seat belt which is currently unfastened.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "tie belt",
+      "reply": ">tie belt\nClick.\nThe alarm bell on the mass detector is ringing stridently.\nAn expressionless but nonetheless surly voice issues from the computer: \"Please turn that alarm off! We'll both have headaches if you don't.\"\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "examine couch",
+      "reply": ">examine couch\nThe couch has a seat belt which is currently fastened.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "unlock belt with safety line",
+      "reply": ">unlock belt with safety line\nClick.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "examine couch",
+      "reply": ">examine couch\nThe couch has a seat belt which is currently unfastened.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "tie belt",
+      "reply": ">tie belt\nClick.\nThe alarm bell on the mass detector is ringing stridently.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "wear space suit",
+      "reply": ">wear space suit\nYou are now wearing the space suit, breathing internal oxygen.\nThe alarm bell on the mass detector is ringing stridently.\n\"If you won't turn it off, I will. I can't take the noise any more.\"\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are carrying:\n  A space suit (being worn)\n  A safety line\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "unlock belt with space suit",
+      "reply": ">unlock belt with space suit\nClick.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "examine couch",
+      "reply": ">examine couch\nThe couch has a seat belt which is currently unfastened.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "unlock airlock with safety line",
+      "reply": ">unlock airlock with safety line\nThat doesn't work.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "unlock safety line with space suit",
+      "reply": ">unlock safety line with space suit\nThat doesn't work.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "128:control couch",
+              "111:",
+              "11:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "stand",
+      "reply": ">stand\nYou are on your own feet again.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "202:Bridge",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    },
+    {
+      "cmd": "unlock belt",
+      "reply": ">unlock belt\n(with the pair of hands)\nYou must sit down first.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nBridge\nE\nStorage\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "202:Bridge",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "202:Bridge",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": []
+    }
+  ],
+  "ts": "2026-10-31T17:53:37.117Z"
+}

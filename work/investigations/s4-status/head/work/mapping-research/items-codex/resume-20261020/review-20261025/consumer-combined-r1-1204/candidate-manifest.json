@@ -1,0 +1,32 @@
+{
+  "base": "ccd9b58",
+  "scope": "Research composition only",
+  "hashes": {
+    "js/ActionSynth.js": "0c1b16f614c6e646c50aabfd10b26b6bbbafffc85c40e18135d469b0d1575d57",
+    "js/AttributeSchema.js": "b39d803dc2247c85aeb922c26891f0b72bafd88555daa84fbc118668ef038760",
+    "js/EquipmentUI.js": "238a46bcbe19b98723f6f4e6f538b9c1414602db5e56bc5fd7cc091d25a97e9e",
+    "js/ModuleStatFactsClaude.js": "5622e663732c74bec8c62c178c39967ba3f748b371613a36bcb48e334fa76918",
+    "js/ZRamReader.js": "a7d39948ad521f23be8f9eda36be1d4eca00fc25f3177676c5ac8c6e59bbfd68"
+  },
+  "bindings": [
+    {
+      "source": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\infidel-state-r3-candidate\\focused-controls.cjs",
+      "sourceSha": "b2defceb70e92373c9374a90968801da6140a8477ba74d8fcaa7d4c2293b03ad",
+      "helper": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204\\infidel-controls.cjs",
+      "helperSha": "133f0c6d1f841e67aab57b597a0fc657007aafab3df8c51e03116d6e5738c4ff"
+    },
+    {
+      "source": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\absent-r1-controls-0658.cjs",
+      "sourceSha": "37644e958e5ed0777892f4b580a3672375954c2bdfe01c3c2b10cdc209ceeca2",
+      "helper": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204\\absent-controls.cjs",
+      "helperSha": "bebb4185be6993479fa4c922f570a659d70a76d243631650aff1c801d7df12b2"
+    },
+    {
+      "source": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\sorcerer-illumination-controls-1140.cjs",
+      "sourceSha": "f5773a1e12a46958e18dab885386d1f296ee84be67db5dfb5f7c8817a34d6295",
+      "helper": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204\\illumination-controls.cjs",
+      "helperSha": "b5a8ff72c055e73a74a03dd03d18fa76e94e43ec6cbbb9ffd153f8fdd289355f"
+    }
+  ],
+  "limits": "No combined native/shared-gate acceptance; constituent controls rebound to combined copy and current committed baseline. No test expectation changed."
+}

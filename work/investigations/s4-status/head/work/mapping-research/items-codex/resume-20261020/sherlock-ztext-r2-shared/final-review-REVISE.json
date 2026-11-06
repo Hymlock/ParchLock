@@ -1,0 +1,11 @@
+{
+  "verdict": "REVISE",
+  "reviewer": "Independent non-author subagent /root/zil_food_independent plus root native/raw corroboration",
+  "rowsEach": 309,
+  "pairedVariableFields": 6,
+  "persistentFields": 3,
+  "regressions": ["acorncourt marks: ball group underline lost", "acorncourt inv2: lexical ownership changes to incomplete dictionary prefix"],
+  "intendedCorrectionPendingFinalCandidateReview": "dogslife room47 restores ASCII38 ampersand; raw text and untouched native NORTH/NORTH/LOOK agree",
+  "next": "R3 shared dictionary lexical completeness owner, preserving correct prose decoding and compiler sentinel",
+  "limits": ["Seven no-prompt coverage gaps", "Operator13/0 and focused28 do not override regression", "No acceptance or commit", "R1/R2 evidence retained"]
+}

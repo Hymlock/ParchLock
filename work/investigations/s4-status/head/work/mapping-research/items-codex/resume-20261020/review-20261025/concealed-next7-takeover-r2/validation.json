@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-26T21:56:01.494Z",
+  "scope": "Seven data-only concealed fields, prior actual semantic reviews plus SOLO exact composition audit; no shared runtime changes",
+  "parent": "0d28bd9d8b2e67cabab4724614f595f95b0e8b79",
+  "sourceStable": true,
+  "drift": [],
+  "rows": {
+    "base": 9,
+    "cand": 9
+  },
+  "unique": {
+    "base": 9,
+    "cand": 9
+  },
+  "diff": [],
+  "failures": [],
+  "operator": true,
+  "limits": [
+    "Alabaster empty row is boot-only, not functional Glulx validation.",
+    "Semantic native reveals reuse earlier independently reviewed packets; no claim this boot guard proves reveal consumers/actor possessions.",
+    "Original missing-operator-assets failure retained separately; only operator rerun after assets supplement.",
+    "SOLO exact composition audit under direct operator takeover, actual prior semantic peer reviews remain separate."
+  ]
+}

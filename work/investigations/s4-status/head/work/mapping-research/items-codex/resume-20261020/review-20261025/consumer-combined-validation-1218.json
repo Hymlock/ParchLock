@@ -1,0 +1,70 @@
+{
+  "time": "2026-10-26T11:54:16.625Z",
+  "scope": "Combined research candidate targeted native seam qualification, not sharedgate/production acceptance",
+  "manifest": {
+    "base": "ccd9b58",
+    "scope": "Research composition only",
+    "hashes": {
+      "js/ActionSynth.js": "0c1b16f614c6e646c50aabfd10b26b6bbbafffc85c40e18135d469b0d1575d57",
+      "js/AttributeSchema.js": "b39d803dc2247c85aeb922c26891f0b72bafd88555daa84fbc118668ef038760",
+      "js/EquipmentUI.js": "238a46bcbe19b98723f6f4e6f538b9c1414602db5e56bc5fd7cc091d25a97e9e",
+      "js/ModuleStatFactsClaude.js": "5622e663732c74bec8c62c178c39967ba3f748b371613a36bcb48e334fa76918",
+      "js/ZRamReader.js": "a7d39948ad521f23be8f9eda36be1d4eca00fc25f3177676c5ac8c6e59bbfd68"
+    },
+    "bindings": [
+      {
+        "source": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\infidel-state-r3-candidate\\focused-controls.cjs",
+        "sourceSha": "b2defceb70e92373c9374a90968801da6140a8477ba74d8fcaa7d4c2293b03ad",
+        "helper": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204\\infidel-controls.cjs",
+        "helperSha": "133f0c6d1f841e67aab57b597a0fc657007aafab3df8c51e03116d6e5738c4ff"
+      },
+      {
+        "source": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\absent-r1-controls-0658.cjs",
+        "sourceSha": "37644e958e5ed0777892f4b580a3672375954c2bdfe01c3c2b10cdc209ceeca2",
+        "helper": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204\\absent-controls.cjs",
+        "helperSha": "bebb4185be6993479fa4c922f570a659d70a76d243631650aff1c801d7df12b2"
+      },
+      {
+        "source": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\sorcerer-illumination-controls-1140.cjs",
+        "sourceSha": "f5773a1e12a46958e18dab885386d1f296ee84be67db5dfb5f7c8817a34d6295",
+        "helper": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204\\illumination-controls.cjs",
+        "helperSha": "b5a8ff72c055e73a74a03dd03d18fa76e94e43ec6cbbb9ffd153f8fdd289355f"
+      }
+    ],
+    "limits": "No combined native/shared-gate acceptance; constituent controls rebound to combined copy and current committed baseline. No test expectation changed."
+  },
+  "independentSourceReview": "border_food_blind ACCEPT all5hashes, exact union/registry2ruleadditions, no tests/replay",
+  "runs": [
+    {
+      "name": "combined-crate-native-1215",
+      "status": "PASS bounded two-owner actual generated state cycles; inspect rendered fields for badge scope",
+      "sourceStable": true,
+      "scriptedCommands": 16
+    },
+    {
+      "name": "combined-illumination-native-1215",
+      "status": "PASS bounded real Gear emission, fresh custody, no new switchability/commands",
+      "sourceStable": true,
+      "scriptedCommands": 11
+    }
+  ],
+  "artifacts": {
+    "combined-crate-native-1215.cjs": "970578c77175bfa8b8ed3577ead36674bbbd4df481414ff2fc162d43df987cec",
+    "combined-crate-native-1215.json": "f2bb95438cc09296f47d1ea664d03d6d3fe1a36853e1d4391621939e4d41660b",
+    "combined-illumination-native-1215.cjs": "3b8d8d05e6c696cffeb7f9af66fd91db4e0a4d3c7559a71f40b71bdbba1bd2ba",
+    "combined-illumination-native-1215.json": "b6d14b6d0cf9a419771e7bf72b73c85aa3d77ee2de55eee38bbc15acffc31f9e",
+    "combined-illumination-before-1215.png": "9f8c6c2c5b18612798e915e9deb26d9727565d4b33c0f529e5b415de160eb75c",
+    "combined-illumination-after-1215.png": "67573db314477f1386fe02656a98c9885077046a87dd9a4dedd00c18d85dd006",
+    "combined-crate-closed-1215.png": "2a3df756050dd0a4f02d8738059a0858e3f0ae7daf84532a7ca77cf06da57433",
+    "combined-crate-open-1215.png": "8cc76bf150a9c3f47c8e10e462479afc863e733944ca6bb722ad5dda05790882",
+    "combined-native-output-collision-1216.json": "66ff1a82fb21278167e6da93da98eb99909d752236704a7e3dd65f3e726dd8af",
+    "consumer-combined-r1-1208.patch": "751cdaf86678412e6efb04e5e0c925dac1fb3440882e478eecaa28e802e1c5c8"
+  },
+  "limits": [
+    "Infidel combined run covers crate23 only,16scriptedcommands; inherited status text says two-owner but is generic from original helper, not a two-owner combined result. Original trunk39 proof remains individual candidate only.",
+    "Sorcerer combined11scriptedcommands emission/state/custody checks; no switchability or commands added.",
+    "Missing copied img directory left splash underlay in combined screenshots; Equipment target rows readable and individually visually inspected(crateclosed,illuminationafter). Copied img support added after capture; no whole-app visual acceptance. JS hashes unchanged.",
+    "Sorcerer interpolated PNG output collision documented in combined-native-output-collision-1216.json; originals restored exact Gitbytes and new combined screenshots preserved without replay.",
+    "Individual source/native evidence not silently promoted into combined. Combined source/58Xcontrols/targetednative only; one settledsharedgate and mainownership remain pending."
+  ]
+}

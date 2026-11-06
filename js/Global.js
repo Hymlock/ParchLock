@@ -26,6 +26,9 @@ var Global = {
         // D100 read-aloud: default ON; new story buffer text only.
         ReadAloud: true,
         ReadAloudStatus: false,
+        // S4: hide the game's one-line status grid while the stat strip
+        // already shows its metrics and a readable room label. Default off.
+        HideStatusLine: false,
         ReadAloudDialogs: false,
         ReadAloudSkipRepeats: false,
         ReadAloudRate: 1.0,

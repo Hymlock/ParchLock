@@ -1,0 +1,102 @@
+STEP 0 "look" -> You are by the front gate of Tresyllian Castle. You can hear the ocean beating urgently against the rocks far below. / In the moonlit gloom, you can make out an ornament on the gate. It's a winged, tw
+   changed: 9:driveway +16 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 1 "out" -> You are on your own feet again. / (You are in the driveway.) / Your new little sports car is parked here. / What next? / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 2 "push eye" -> What next? / >push eye / The dragon's eye glows red. A voice comes from a hidden speaker. It says: / "Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and
+   changed: 71:it +16 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 3 "Ms. Ann Smith" -> >push eye / The dragon's eye glows red. A voice comes from a hidden speaker. It says: / "Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first a
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 4 "yes" -> "Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name." / >Ms. Ann Smith / "Did you say your name is Ms. Ann Smith?" / >yes / "An
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 5 "red" -> "Did you say your name is Ms. Ann Smith?" / >yes / "And what is your favorite color, Ms. Smith?" / >red / "Did you say your favorite color is red?" / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 6 "yes" -> "Jolly good! The spare bedroom is decorated in red! Please enter." / The red eye turns green, and the front gate creaks open. / [You won't see "What next?" any more.] / >
+   changed: 52:front gate +14 -8 ; 71:it + -16 ; 139:stained-glass window +27 - ; 209:ghost +15 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 7 "s" -> Someone comes running out of the wing to greet you. She's a beautiful red-haired young woman of average height. You recognize her as your friend, Tamara Lynd. / "Ann!" she cries with outflung arms. "Y
+   changed: 13:courtyard +16 - ; 52:front gate +8 -14 ; 120:front door + -8 ; 178:Tamara +16 -19
+   dump: 153:brass lantern [24,26] parent 30
+STEP 8 "s" -> After a warm hug, she asks anxiously, "You did read my letter, and not just give it a hasty glance?" / >s / Tamara says, "Wait a mo'. I asked you a question." / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 9 "s" -> Tamara says, "Wait a mo'. I asked you a question." / >s / Tamara says, "Wait a mo'. I asked you a question." / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 10 "wait" -> Time passes... / "We can talk more later, Ann," says Tamara, taking your arm, "but let's go in now, so you can meet the other guests. Bolitho will see to the car and bring your luggage." / An elderly 
+   changed: 91:Bolitho +16 -19
+   dump: 153:brass lantern [24,26] parent 30
+STEP 11 "wait" -> "My fiance, Lord Jack Tresyllian," Tamara introduces him. "Jack, this is my friend from the States, Ms. Ann Smith." / "So you're that famous young sleuth whom the Yanks call Ms. Sherlock!" says Lord J
+   changed: 112:Lord Jack +16,17 -19 ; 132:foyer +16 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 12 "wait" -> Lord Jack introduces them as Montague Hyde and Vivien Pentreath. / Hyde smiles and bows stiffly. And Vivien murmurs in an attractively low voice, "How do you do, Ms. Smith." / "Believe it or not, this
+   changed: 12:drawing room +16 - ; 106:Vivien +16,17 - ; 108:Hyde +16 -19
+   dump: 153:brass lantern [24,26] parent 30
+STEP 13 "wait" -> They stop dancing, turn off the radio, and greet you. Tamara introduces them as the Honourable Iris Vane and Lt. Ian Fordyce of Her Majesty's Coldstream Guards. / "I say!" exclaims Ian, bringing your 
+   changed: 91:Bolitho +17 - ; 118:Ian +16,17 - ; 120:front door + -14 ; 124:new great hall +16 - ; 205:Iris +16 -19
+   dump: 153:brass lantern [24,26] parent 30
+STEP 14 "wait" -> Time passes... / Ian repeats, "I said: Are there more girl sleuths like you in the States, my dear?" / Bolitho walks upstairs. / He is carrying your luggage. / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 15 "look" -> A man is coming downstairs. He's a middle-sized man in his fifties, with spectacles and a grizzled mustache. / Tamara introduces him as one of Lionel's oldest friends, Dr. Nicholas Wendish. / He's car
+   changed: 85:Dr. Wendish +16 - ; 178:Tamara +17 - ; 205:Iris +17 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 16 "u" -> "I read about one of your mystery cases when I was in New York last year, Ms. Smith," he probes. "Is it a case that brings you to Cornwall?" / >u / Dr. Wendish says, "Pardon me, Ms. Smith, but I asked
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 17 "look" -> Lord Jack is surveying his domain. / Iris is looking coy. / Dr. Wendish and Ian are listening to you. / Dr. Wendish repeats, "I said: Is it a case that brings you to Cornwall?" / >
+   changed: 85:Dr. Wendish +17 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 18 "e" -> Dr. Wendish repeats, "I said: Is it a case that brings you to Cornwall?" / >e / Dr. Wendish says, "Pardon me, Ms. Smith, but I asked you a question." / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 19 "look" -> Lord Jack is surveying his domain. / Iris is looking coy. / Dr. Wendish and Ian are listening to you. / Dr. Wendish mutters, "I'd heard that Americans were rude, but really...!" / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 20 "turn on lamp" -> Dr. Wendish mutters, "I'd heard that Americans were rude, but really...!" / >turn on lamp / (The light is already on!) / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 21 "turn off lamp" -> She says, "I know it's confusing, but the British call this the 'first' floor. We just left the 'ground' floor." / (You are now in the gallery.) / The gallery spans the top of the double stairways. Yo
+   changed: 131:gallery +16 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 22 "d" -> On your bed you see your luggage. / Bolitho is waiting patiently. / She turns to leave, saying, "Here's Bolitho, so I'll leave you to rest or freshen up, Ann. Dinner's at eight, by the way -- or whene
+   changed: 33:your bedroom +16,17 - ; 59:your luggage +17 - ; 134:your bed +17 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 23 "look" -> (You are in your bedroom.) / Your room is decorated in shades of red. You see your bathroom to the north and a cozy fireplace in one corner. The room is furnished with a bed, a night table with a lamp
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 24 "n" -> >n / (You are now in your bathroom.) / From the look of it, your bathroom was added in recently. It is comfortable and inviting, especially for Cornwall. / >
+   changed: 62:your bathroom +16,17 -
+   dump: 153:brass lantern [24,26] parent 30
+STEP 25 "look" -> >look / (You are in your bathroom.) / From the look of it, your bathroom was added in recently. It is comfortable and inviting, especially for Cornwall. / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 26 "w" -> From the look of it, your bathroom was added in recently. It is comfortable and inviting, especially for Cornwall. / >w / (You can't go in that direction.) / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 27 "look" -> >look / (You are in your bathroom.) / From the look of it, your bathroom was added in recently. It is comfortable and inviting, especially for Cornwall. / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 28 "d" -> But in your bedroom Bolitho gets in your way. / (You are in your bedroom.) / Bolitho is waiting patiently. / Bolitho coughs diffidently and asks, "Ms. Smith? Am I right in assuming that you are the we
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 29 "look" -> Your room is decorated in shades of red. You see your bathroom to the north and a cozy fireplace in one corner. The room is furnished with a bed, a night table with a lamp on it, a chest of drawers, a
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 30 "take lantern" -> Bolitho repeats, "I said: Am I right in assuming that you are the well-known young American detective?" / >take lantern / (You can't see any lantern right here!) / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 31 "turn on lantern" -> (You can't see any lantern right here!) / >turn on lantern / (You can't see any lantern right here!) / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 32 "turn off lantern" -> (You can't see any lantern right here!) / >turn off lantern / (You can't see any lantern right here!) / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30
+STEP 33 "turn on lantern" -> (You can't see any lantern right here!) / >turn on lantern / (You can't see any lantern right here!) / >
+   changed: 
+   dump: 153:brass lantern [24,26] parent 30

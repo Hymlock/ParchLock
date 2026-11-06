@@ -1,0 +1,233 @@
+{
+ "story": "guess.z5.js",
+ "pg": null,
+ "trace": [
+  {
+   "input": "(start)",
+   "lp": {
+    "playerId": 20,
+    "roomId": null,
+    "roomName": "",
+    "pSrc": "named-player",
+    "rSrc": "none"
+   },
+   "chain": [
+    "20:(self object)"
+   ],
+   "glob": [
+    "2=22:(Inform Library)",
+    "20=20:(self object)",
+    "23=19:(darkness object)",
+    "55=20:(self object)",
+    "137=36:(MainScenario)",
+    "138=241:(foobar_spell)",
+    "235=22:(Inform Library)"
+   ],
+   "dig": "e17beb4180286c155ba4449618956fe4ae3bdc3e8933accaa04c1c584b3599bd",
+   "inv": [],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 0,
+    "roomSource": "none"
+   },
+   "status": "",
+   "tail": "Would you like to start a NEW game, RESTORE a saved game, start a SCRIPT, or QUIT? > ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "new",
+   "lp": {
+    "playerId": 37,
+    "roomId": 51,
+    "roomName": "Verb Guessing Booth",
+    "pSrc": "named-player",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "37:(StandardPlayer)",
+    "51:Verb Guessing Booth"
+   ],
+   "glob": [
+    "20=37:(StandardPlayer)",
+    "42=29:(scrutinizev)",
+    "55=37:(StandardPlayer)",
+    "137=36:(MainScenario)",
+    "138=241:(foobar_spell)",
+    "233=29:(scrutinizev)"
+   ],
+   "dig": "e17beb4180286c155ba4449618956fe4ae3bdc3e8933accaa04c1c584b3599bd",
+   "inv": [
+    "tarnished quarter",
+    "corn dog",
+    "identity bracelet"
+   ],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver"
+   },
+   "status": "",
+   "tail": "ed memory. \"Hello, little boy or girl!\", bellows Lalrry in the alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "boy",
+   "lp": {
+    "playerId": 37,
+    "roomId": 51,
+    "roomName": "Verb Guessing Booth",
+    "pSrc": "named-player",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "37:(StandardPlayer)",
+    "51:Verb Guessing Booth"
+   ],
+   "glob": [
+    "20=37:(StandardPlayer)",
+    "42=29:(scrutinizev)",
+    "55=37:(StandardPlayer)",
+    "137=36:(MainScenario)",
+    "138=241:(foobar_spell)",
+    "233=29:(scrutinizev)"
+   ],
+   "dig": "e17beb4180286c155ba4449618956fe4ae3bdc3e8933accaa04c1c584b3599bd",
+   "inv": [
+    "tarnished quarter",
+    "corn dog",
+    "identity bracelet"
+   ],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver"
+   },
+   "status": "",
+   "tail": "he alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => boy \"And what's your name, little boy or--little boy?\" => ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "bob",
+   "lp": {
+    "playerId": 37,
+    "roomId": 51,
+    "roomName": "Verb Guessing Booth",
+    "pSrc": "named-player",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "37:(StandardPlayer)",
+    "51:Verb Guessing Booth"
+   ],
+   "glob": [
+    "20=37:(StandardPlayer)",
+    "55=37:(StandardPlayer)",
+    "137=36:(MainScenario)",
+    "138=241:(foobar_spell)",
+    "234=22:(Inform Library)",
+    "235=21:(Inform Parser)"
+   ],
+   "dig": "e17beb4180286c155ba4449618956fe4ae3bdc3e8933accaa04c1c584b3599bd",
+   "inv": [
+    "tarnished quarter",
+    "corn dog",
+    "identity bracelet"
+   ],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver"
+   },
+   "status": "Verb Guessing Booth Guessed: 0 Completed: 0 Moves: 1",
+   "tail": "wheel! And you can GUESS THE VERB for fun and prizes!\" His pitch delivered, Lalrry switches back to broadcast mode and begins his old banter with an occasional hopeful glance in your direction. > ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "lp": {
+    "playerId": 37,
+    "roomId": 51,
+    "roomName": "Verb Guessing Booth",
+    "pSrc": "named-player",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "37:(StandardPlayer)",
+    "51:Verb Guessing Booth"
+   ],
+   "glob": [
+    "20=37:(StandardPlayer)",
+    "42=29:(scrutinizev)",
+    "55=37:(StandardPlayer)",
+    "81=29:(scrutinizev)",
+    "137=36:(MainScenario)",
+    "138=241:(foobar_spell)",
+    "233=29:(scrutinizev)",
+    "234=22:(Inform Library)",
+    "235=21:(Inform Parser)"
+   ],
+   "dig": "e17beb4180286c155ba4449618956fe4ae3bdc3e8933accaa04c1c584b3599bd",
+   "inv": [
+    "tarnished quarter",
+    "corn dog",
+    "identity bracelet"
+   ],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver"
+   },
+   "status": "Verb Guessing Booth Guessed: 0 Completed: 0 Moves: 2",
+   "tail": " SCRUTINIZE, RECONFIGURE, FASTEN, DISEMBARK, and UNDO. Lalrry makes some rather dubious claims about the beneficial effects of his carnival game on malaria, food poisoning, and the common cold. > ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "n",
+   "lp": {
+    "playerId": 37,
+    "roomId": 51,
+    "roomName": "Verb Guessing Booth",
+    "pSrc": "named-player",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "37:(StandardPlayer)",
+    "51:Verb Guessing Booth"
+   ],
+   "glob": [
+    "20=37:(StandardPlayer)",
+    "55=37:(StandardPlayer)",
+    "137=36:(MainScenario)",
+    "138=241:(foobar_spell)",
+    "234=22:(Inform Library)",
+    "235=21:(Inform Parser)"
+   ],
+   "dig": "e17beb4180286c155ba4449618956fe4ae3bdc3e8933accaa04c1c584b3599bd",
+   "inv": [
+    "tarnished quarter",
+    "corn dog",
+    "identity bracelet"
+   ],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver"
+   },
+   "status": "Verb Guessing Booth Guessed: 0 Completed: 0 Moves: 3",
+   "tail": "eficial effects of his carnival game on malaria, food poisoning, and the common cold. >n You can't go that way. Lalrry reminisces about a friend of his, a medical expert system named Lazarus. > ",
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}

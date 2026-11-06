@@ -1,0 +1,110 @@
+Zork1- "n" {"room":"81:North of House","last":"n"}
+Zork1- "e" {"room":"79:Behind House","last":"e"}
+Zork1- "open window" {"room":"79:Behind House","last":"open window"}
+Zork1- "enter house" {"room":"203:Kitchen","last":"enter house"}
+Zork1- "w" {"room":"193:Living Room","last":"w"}
+Zork1- "e" {"room":"203:Kitchen","last":"e"}
+Zork1- "out" {"room":"79:Behind House","last":"out"}
+Zork1- "n" {"room":"81:North of House","last":"n"}
+Zork1- "n" {"room":"75:Forest Path","last":"n"}
+Zork1- "climb tree" {"room":"88:Up a Tree","last":"climb tree"}
+[
+ {
+  "id": "180",
+  "n": "West of House",
+  "ex": {
+   "n": "3|n|state-delta"
+  }
+ },
+ {
+  "id": "178",
+  "n": "Stone Barrow",
+  "ex": {}
+ },
+ {
+  "id": "80",
+  "n": "South of House",
+  "ex": {}
+ },
+ {
+  "id": "81",
+  "n": "North of House",
+  "ex": {
+   "e": "5|east|ram-lookahead",
+   "n": "6|n|state-delta"
+  }
+ },
+ {
+  "id": "78",
+  "n": "Forest",
+  "ex": {}
+ },
+ {
+  "id": "79",
+  "n": "Behind House",
+  "ex": {
+   "enter house": "7|enter house|ram-lookahead",
+   "e": "8|east|ram-lookahead",
+   "n": "3|n|state-delta"
+  }
+ },
+ {
+  "id": "75",
+  "n": "Forest Path",
+  "ex": {
+   "e": "13|east|ram-lookahead",
+   "n": "14|north|ram-lookahead",
+   "climb tree": "15|climb tree|state-delta"
+  }
+ },
+ {
+  "id": "203",
+  "n": "Kitchen",
+  "ex": {
+   "w": "11|west|ram-lookahead",
+   "out": "5|out|state-delta"
+  }
+ },
+ {
+  "id": "74",
+  "n": "Clearing",
+  "ex": {}
+ },
+ {
+  "id": "94",
+  "n": "Studio",
+  "ex": {}
+ },
+ {
+  "id": "201",
+  "n": "Attic",
+  "ex": {}
+ },
+ {
+  "id": "193",
+  "n": "Living Room",
+  "ex": {
+   "e": "7|e|state-delta"
+  }
+ },
+ {
+  "id": "51",
+  "n": "Strange Passage",
+  "ex": {}
+ },
+ {
+  "id": "77",
+  "n": "Forest",
+  "ex": {}
+ },
+ {
+  "id": "143",
+  "n": "Clearing",
+  "ex": {}
+ },
+ {
+  "id": "88",
+  "n": "Up a Tree",
+  "ex": {}
+ }
+]

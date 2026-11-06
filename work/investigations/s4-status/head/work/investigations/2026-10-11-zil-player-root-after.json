@@ -1,0 +1,104 @@
+{
+ "PlunderedHearts.z3.js": {
+  "takes": [
+   {
+    "c": "GET COFFER",
+    "text": "Taken.   > ",
+    "item": {
+     "id": 69,
+     "n": "coffer",
+     "parent": 192,
+     "parentName": "it",
+     "match": true
+    },
+    "appPlayer": 192,
+    "keys": [
+     "playerId",
+     "inventory"
+    ],
+    "inv": [
+     "coffer",
+     "your reticule",
+     "smelling salts",
+     "banknote",
+     "your kid slippers",
+     "linen chemise",
+     "cotton frock"
+    ]
+   },
+   {
+    "c": "GET CLOTHES",
+    "text": "You pick up the pile of clothes. It separates into a pair of",
+    "item": {
+     "id": 125,
+     "n": "pile of clothes",
+     "parent": 0,
+     "parentName": ""
+    },
+    "appPlayer": 192,
+    "keys": [
+     "playerId",
+     "inventory"
+    ],
+    "inv": [
+     "breeches",
+     "shirt",
+     "missive",
+     "your reticule",
+     "smelling salts",
+     "banknote",
+     "your kid slippers",
+     "linen chemise"
+    ]
+   }
+  ]
+ },
+ "TheLurkingHorror.z3.js": {
+  "takes": [
+   {
+    "c": "GET CARTON",
+    "text": "Taken.   > ",
+    "item": {
+     "id": 58,
+     "n": "cardboard carton",
+     "parent": 56,
+     "parentName": "it",
+     "match": true
+    },
+    "appPlayer": 56,
+    "keys": [
+     "playerId",
+     "inventory"
+    ],
+    "inv": [
+     "cardboard carton",
+     "Chinese food",
+     "two liter bottle of Classic Coke",
+     "assignment"
+    ]
+   },
+   {
+    "c": "GET FLASHLIGHT",
+    "text": "Taken.   > ",
+    "item": {
+     "id": 132,
+     "n": "flashlight",
+     "parent": 56,
+     "parentName": "it",
+     "match": true
+    },
+    "appPlayer": 56,
+    "keys": [
+     "playerId",
+     "inventory"
+    ],
+    "inv": [
+     "flashlight",
+     "master key",
+     "two liter bottle of Classic Coke",
+     "assignment"
+    ]
+   }
+  ]
+ }
+}

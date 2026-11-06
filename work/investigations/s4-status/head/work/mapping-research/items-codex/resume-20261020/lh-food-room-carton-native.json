@@ -1,0 +1,170 @@
+{
+  "tier": "Fresh ordinary commands; no snapshots, VM/object/fact writes or RNG overrides. Post-exposure independent validation, not blind.",
+  "rows": [
+    {
+      "command": "close carton",
+      "before": {
+        "58": {
+          "parent": 160,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 160,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        ">PUT CARTON ON COUNTER",
+        "Done.",
+        " ",
+        ">close carton",
+        "Closed.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "eat chinese food",
+      "before": {
+        "58": {
+          "parent": 160,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 160,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        ">close carton",
+        "Closed.",
+        " ",
+        ">eat chinese food",
+        "You can't see any chinese food here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open carton",
+      "before": {
+        "58": {
+          "parent": 160,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 160,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        ">eat chinese food",
+        "You can't see any chinese food here.",
+        " ",
+        ">open carton",
+        "Opening the cardboard carton reveals Chinese food.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "eat chinese food",
+      "before": {
+        "58": {
+          "parent": 160,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 160,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 0,
+          "open": false
+        }
+      },
+      "reply": [
+        ">open carton",
+        "Opening the cardboard carton reveals Chinese food.",
+        " ",
+        ">eat chinese food",
+        "It's very (chemically) hot, spicy, and cold. You immediately want to drink something to wash it down.",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "ready": {
+    "overlay": false,
+    "input": true
+  },
+  "status": "PASS: room counter carton closed hides food/refuses Eat; open allows native Eat/removes90, carton remains unheld"
+}

@@ -1,0 +1,1136 @@
+905.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+905.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+905.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+905.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+905.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+AOTYRZ.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+AOTYRZ.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+AOTYRZ.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+AOTYRZ.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+AOTYRZ.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+AOTYRZ.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Accuse.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Accuse.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Accuse.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Accuse.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Accuse.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Advent.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Advent.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Advent.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Advent.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Advent.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Advent.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+AllRoads.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+AllRoads.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+AllRoads.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+AllRoads.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+AllRoads.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Aug4.z8.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Aug4.z8.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+Aug4.z8.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Aug4.z8.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Aug4.z8.js	16	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Balances.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Balances.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Balances.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Balances.z5.js	22	"(Inform Library 6/3)"	parent=0	child=0	plausibleRoom=false
+Balances.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+BeingAndrewPlotkin.zblorb.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+BeingAndrewPlotkin.zblorb.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+BeingAndrewPlotkin.zblorb.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+BeingAndrewPlotkin.zblorb.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+BeingAndrewPlotkin.zblorb.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+BeingSteve.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+BeingSteve.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+BeingSteve.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+BeingSteve.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+BibleRetold.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+BibleRetold.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+BibleRetold.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+BibleRetold.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+BibleRetold.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+BibleRetold.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Biscuit.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Biscuit.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Biscuit.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Biscuit.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Biscuit.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Bronze.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Bronze.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Bronze.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Bronze.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+CatcherInTheRye.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+CatcherInTheRye.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+CatcherInTheRye.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+CatcherInTheRye.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+ChildsPlay.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ChildsPlay.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ChildsPlay.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ChildsPlay.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+ConanKillEverything.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ConanKillEverything.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+ConanKillEverything.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ConanKillEverything.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ConanKillEverything.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+ConanKillEverything.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Cove.z5.js	10	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Cove.z5.js	11	"(self object)"	parent=0	child=0	plausibleRoom=false
+Cove.z5.js	12	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Cove.z5.js	13	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+CtDoom.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+CtDoom.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+CtDoom.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+CtDoom.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+CtDoom.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Cyclops.z5.js	5	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Cyclops.z5.js	6	"(self object)"	parent=0	child=0	plausibleRoom=false
+Cyclops.z5.js	7	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Cyclops.z5.js	8	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Cyclops.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+DDIV.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+DDIV.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+DDIV.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+DDIV.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+DDIV.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Damnatio-Memoriae.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Damnatio-Memoriae.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Damnatio-Memoriae.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Damnatio-Memoriae.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Damnatio-Memoriae.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Debate.z5.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Debate.z5.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Debate.z5.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Debate.z5.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Debate.z5.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Delusns.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Delusns.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Delusns.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Delusns.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Delusns.z5.js	25	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+DreamTooReal.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+DreamTooReal.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+DreamTooReal.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+DreamTooReal.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+DreamTooReal.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+FFF.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+FFF.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+FFF.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+FFF.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+FFF.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+FFF.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Facility.z8.js	6	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Facility.z8.js	7	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Facility.z8.js	8	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Figaro.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Figaro.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Figaro.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Figaro.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Figaro.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+FineTune.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+FineTune.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+FineTune.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+FineTune.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+FineTune.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Fork.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Fork.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Fork.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Fork.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Fork.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Fork.z5.js	33	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Galatea.zblorb.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Galatea.zblorb.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Galatea.zblorb.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Galatea.zblorb.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Galatea.zblorb.js	28	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Galatea.zblorb.js	222	"(self object)"	parent=0	child=0	plausibleRoom=false
+Glass.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Glass.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Glass.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Glass.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Glass.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+GreatXavio.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+GreatXavio.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+GreatXavio.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+GreatXavio.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+GreatXavio.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Heliopause.zblorb.js	7	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Heliopause.zblorb.js	8	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Heliopause.zblorb.js	9	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Heliopause.zblorb.js	10	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Help.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Help.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Help.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Help.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Help.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Help.z8.js	99	"(self object)"	parent=0	child=0	plausibleRoom=false
+Heroine.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Heroine.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Heroine.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Heroine.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Heroine.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+HouseOfDreamOfMoon.z8.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+HouseOfDreamOfMoon.z8.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+HouseOfDreamOfMoon.z8.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+HouseOfDreamOfMoon.z8.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+HouseOfDreamOfMoon.z8.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+HugeCave.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+HugeCave.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+HugeCave.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+HugeCave.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+HugeCave.z8.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+HugeCave.z8.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Inevita.z5.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Inevita.z5.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+Inevita.z5.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Inevita.z5.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Informat.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Informat.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Informat.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Informat.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Informat.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+KoA.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+KoA.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+KoA.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+KoA.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+KoA.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+KoA.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+LASH.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+LASH.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+LASH.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+LASH.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+LASH.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+LDoDoom.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+LDoDoom.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+LDoDoom.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+LDoDoom.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+LDoDoom.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+LLR3.z8.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+LLR3.z8.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+LLR3.z8.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+LLR3.z8.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+LLR3.z8.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+LostPig.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+LostPig.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+LostPig.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+LostPig.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+LostPig.z8.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+LostPig.z8.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+MakeItGood.zblorb.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+MakeItGood.zblorb.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+MakeItGood.zblorb.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+MakeItGood.zblorb.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+MakeItGood.zblorb.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Mask.z5.js	10	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Mask.z5.js	11	"(self object)"	parent=0	child=0	plausibleRoom=false
+Mask.z5.js	12	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Mask.z5.js	13	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Mercy.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Mercy.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Mercy.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Mercy.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Mercy.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Mobius.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Mobius.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Mobius.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Mobius.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Mobius.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Mullmurd.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Mullmurd.z5.js	20	"(self object)"	parent=0	child=211	plausibleRoom=false
+Mullmurd.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Mullmurd.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Mullmurd.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+NightBeforeChristmas.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+NightBeforeChristmas.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+NightBeforeChristmas.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+NightBeforeChristmas.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+NightBeforeChristmas.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+PUTPBAA.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+PUTPBAA.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+PUTPBAA.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+PUTPBAA.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Peacock.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Peacock.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Peacock.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Peacock.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Peacock.z5.js	85	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+PerrysWorld.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+PerrysWorld.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+PerrysWorld.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+PerrysWorld.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+PerrysWorld.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Photograph.zblorb.js	21	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Photograph.zblorb.js	22	"(self object)"	parent=0	child=0	plausibleRoom=false
+Photograph.zblorb.js	23	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Photograph.zblorb.js	24	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Photograph.zblorb.js	25	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Primrose.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Primrose.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Primrose.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Primrose.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+RBD.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+RBD.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+RBD.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+RBD.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+RBD.z8.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+RBD.z8.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Ralph.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Ralph.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Ralph.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Ralph.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Ralph.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Relief.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Relief.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Relief.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Relief.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Relief.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+RoTA.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+RoTA.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+RoTA.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+RoTA.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+RtDoom.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+RtDoom.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+RtDoom.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+RtDoom.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+RtDoom.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Savoir-Faire.zblorb.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Savoir-Faire.zblorb.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Savoir-Faire.zblorb.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Savoir-Faire.zblorb.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Savoir-Faire.zblorb.js	69	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Savoir-Faire.zblorb.js	411	"(self object)"	parent=0	child=0	plausibleRoom=false
+School.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+School.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+School.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+School.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+School.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+ShadowOfMemories.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ShadowOfMemories.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ShadowOfMemories.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ShadowOfMemories.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+ShadowOfMemories.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+ShadowSoldiers.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ShadowSoldiers.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ShadowSoldiers.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ShadowSoldiers.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+ShadowSoldiers.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Shapes.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Shapes.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Shapes.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Shapes.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Shapes.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+Shapes.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Somewhere.z5.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Somewhere.z5.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Somewhere.z5.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Somewhere.z5.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+SpAdventure.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+SpAdventure.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+SpAdventure.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+SpAdventure.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+SpAdventure.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+SpAdventure.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Sushi.zblorb.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Sushi.zblorb.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Sushi.zblorb.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Sushi.zblorb.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Sushi.zblorb.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Swineback.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Swineback.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Swineback.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Swineback.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Swineback.z5.js	23	"(Library Extensions)"	parent=0	child=24	plausibleRoom=false
+Swineback.z5.js	26	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+TCOTY.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+TCOTY.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+TCOTY.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+TCOTY.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+TCOTY.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+Tangle.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Tangle.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Tangle.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Tangle.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+TheWarblersNest.zblorb.js	6	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+TheWarblersNest.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+TheWarblersNest.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+TheWarblersNest.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Tokyo2.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Tokyo2.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+Tokyo2.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Tokyo2.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Tokyo2.z5.js	28	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+TreasuresofaSlaversKingdom.z8.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+TreasuresofaSlaversKingdom.z8.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+TreasuresofaSlaversKingdom.z8.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Wallpaper.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+Wallpaper.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+Wallpaper.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+Wallpaper.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+WiR1.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+WiR1.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+WiR1.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+WiR1.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+WiR2.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+WiR2.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+WiR2.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+WiR2.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+acorncourt.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+acorncourt.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+acorncourt.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+acorncourt.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+acorncourt.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+adverbum.z5.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+adverbum.z5.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+adverbum.z5.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+adverbum.z5.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+adverbum.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+alice3.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+alice3.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+alice3.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+alice3.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+alice3.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+amish.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+amish.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+amish.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+amish.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+amish.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+amiss.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+amiss.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+amiss.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+amiss.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+amiss.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+anchor.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+anchor.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+anchor.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+anchor.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+anchor.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+annoy.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+annoy.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+annoy.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+annoy.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+annoy.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+appall.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+appall.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+appall.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+appall.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+appall.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+awaken.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+awaken.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+awaken.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+awaken.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+awaken.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+ayac.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ayac.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+ayac.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ayac.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ayac.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+ballerina102.z8.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ballerina102.z8.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+ballerina102.z8.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ballerina102.z8.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+baron_EN.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+baron_EN.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+baron_EN.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+baron_EN.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+baron_EN.z8.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+baron_EN.z8.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+bear.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+bear.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+bear.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+bear.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+bear.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+beneath.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+beneath.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+beneath.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+beneath.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+beneath.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+beneath.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+bj.z5.js	19	"(darkness object)"	parent=0	child=41	plausibleRoom=false
+bj.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+bj.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+bj.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+bj.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+blair.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+blair.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+blair.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+blair.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+blair.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+bluechairs.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+bluechairs.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+bluechairs.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+bluechairs.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+bluechairs.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+bluechairs.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+blues.z5.js	5	"(darkness object)"	parent=0	child=204	plausibleRoom=false
+blues.z5.js	6	"(self object)"	parent=0	child=0	plausibleRoom=false
+blues.z5.js	7	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+blues.z5.js	9	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+blues.z5.js	10	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+blues.z5.js	44	"(self object)"	parent=0	child=0	plausibleRoom=false
+bofh.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+bofh.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+bofh.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+bofh.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+bofh.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+bookvol.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+bookvol.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+bookvol.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+bookvol.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+bookvol.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+bookvol.z5.js	64	"(Library)"	parent=0	child=65	plausibleRoom=false
+bookvol.z5.js	354	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+boothdye.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+boothdye.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+boothdye.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+boothdye.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+boothdye.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+building.z5.js	19	"(darkness object)"	parent=0	child=168	plausibleRoom=false
+building.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+building.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+building.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+building.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+building.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+bunny.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+bunny.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+bunny.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+bunny.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+bunny.z5.js	25	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+burglar.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+burglar.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+burglar.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+burglar.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+burglar.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+cabal.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+cabal.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+cabal.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+cabal.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+cabal.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+candy.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+candy.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+candy.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+candy.z5.js	22	"(Inform Library 6/3)"	parent=0	child=0	plausibleRoom=false
+candy.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+causality.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+causality.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+causality.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+causality.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+causality.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+cavern.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+cavern.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+cavern.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+cavern.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+cavern.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+change.z5.js	9	"(darkness object)"	parent=0	child=71	plausibleRoom=false
+change.z5.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+change.z5.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+change.z5.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+change.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+cheeseshop.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+cheeseshop.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+cheeseshop.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+cheeseshop.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+cheeseshop.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+chico.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+chico.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+chico.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+chico.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+chico.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+chix.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+chix.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+chix.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+chix.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+chix.z5.js	102	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+cia.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+cia.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+cia.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+cia.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+cia.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+csbb.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+csbb.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+csbb.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+csbb.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+csbb.z8.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+csbb.z8.js	28	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+curves.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+curves.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+curves.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+curves.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+curves.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+curves.z8.js	24	"(self object)"	parent=0	child=0	plausibleRoom=false
+cycles.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+cycles.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+cycles.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+cycles.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+cycles.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+deadreck.z5.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+deadreck.z5.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+deadreck.z5.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+deadreck.z5.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+deadreck.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+death.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+death.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+death.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+death.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+death.z5.js	38	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+deephome.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+deephome.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+deephome.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+deephome.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+deephome.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+degen.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+degen.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+degen.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+degen.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+degen.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+detective.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+detective.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+detective.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+detective.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+devdoit.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+devdoit.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+devdoit.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+devdoit.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+devdoit.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+devours.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+devours.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+devours.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+devours.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+devours.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+devours.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+devours.z5.js	93	"(self object)"	parent=0	child=0	plausibleRoom=false
+dewdrops.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+dewdrops.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+dewdrops.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+dewdrops.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+dewdrops.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+dewdrops.z5.js	24	"(self object)"	parent=0	child=0	plausibleRoom=false
+djinni.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+djinni.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+djinni.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+djinni.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+djinni.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+dogslife.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+dogslife.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+dogslife.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+dogslife.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+dogslife.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+doll.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+doll.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+doll.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+doll.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+doll.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+dreamhold.z8.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+dreamhold.z8.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+dreamhold.z8.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+dreamhold.z8.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+dreamhold.z8.js	14	"(self object)"	parent=0	child=0	plausibleRoom=false
+dreamhold.z8.js	46	"(Darkness)"	parent=0	child=0	plausibleRoom=false
+dumont.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+dumont.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+dumont.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+dumont.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+dumont.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+dumont.z5.js	39	"(self object)"	parent=0	child=40	plausibleRoom=false
+edifice.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+edifice.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+edifice.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+edifice.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+edifice.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+enter.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+enter.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+enter.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+enter.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+enter.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+eric_dm.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+eric_dm.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+eric_dm.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+eric_dm.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+eric_dm.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+eric_dm.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+escape.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+escape.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+escape.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+escape.zblorb.js	10	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+eto.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+eto.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+eto.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+eto.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+eto.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+f209.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+f209.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+f209.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+f209.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+f209.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+fable.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+fable.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+fable.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+fable.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+faculty.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+faculty.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+faculty.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+faculty.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+faculty.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+farm.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+farm.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+farm.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+farm.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+forms.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+forms.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+forms.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+forms.z5.js	22	"(Inform Library 6/3)"	parent=0	child=0	plausibleRoom=false
+fracture.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+fracture.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+fracture.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+fracture.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+fracture.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+gamlet.z5.js	5	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+gamlet.z5.js	6	"(self object)"	parent=0	child=0	plausibleRoom=false
+gamlet.z5.js	7	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+gamlet.z5.js	8	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+gamlet.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+gardening.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+gardening.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+gardening.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+gardening.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+gardening.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+geb.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+geb.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+geb.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+geb.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+geb.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+geb.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+ghost.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ghost.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+ghost.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ghost.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ghost.z8.js	23	"(Library Extensions)"	parent=0	child=28	plausibleRoom=false
+ghost.z8.js	24	"(libraryMessages)"	parent=0	child=0	plausibleRoom=false
+gostak.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+gostak.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+gostak.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+gostak.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+gostak.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+gourmet.zblorb.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+gourmet.zblorb.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+gourmet.zblorb.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+gourmet.zblorb.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+gourmet.zblorb.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+guess.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+guess.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+guess.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+guess.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+guess.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+housekey1.z5.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+housekey1.z5.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+housekey1.z5.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+housekey1.z5.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+housekey1.z5.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+huntdark.z5.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+huntdark.z5.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+huntdark.z5.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+huntdark.z5.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+huntdark.z5.js	17	"(self object)"	parent=0	child=0	plausibleRoom=false
+identity.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+identity.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+identity.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+identity.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+identity.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+identity.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+insight.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+insight.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+insight.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+insight.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+insight.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+jet.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+jet.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+jet.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+jet.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+jet.z8.js	23	"(Library Extensions)"	parent=0	child=28	plausibleRoom=false
+jet.z8.js	24	"(libraryMessages)"	parent=0	child=0	plausibleRoom=false
+kirby.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+kirby.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+kirby.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+kirby.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+kirby.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+kooku.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+kooku.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+kooku.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+kooku.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+kooku.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+lambs.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+lambs.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+lambs.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+lambs.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+lambs.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+lambs2.z5.js	9	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+lambs2.z5.js	10	"(self object)"	parent=0	child=0	plausibleRoom=false
+lambs2.z5.js	11	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+lambs2.z5.js	12	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+lambs2.z5.js	13	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+largemac.z5.js	11	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+largemac.z5.js	12	"(self object)"	parent=0	child=0	plausibleRoom=false
+largemac.z5.js	13	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+largemac.z5.js	14	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+largemac.z5.js	176	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+limp.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+limp.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+limp.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+limp.z5.js	22	"(Inform Library 6/3)"	parent=0	child=0	plausibleRoom=false
+limp.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+loose.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+loose.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+loose.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+loose.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+loose.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+loose.z5.js	34	"(self object)"	parent=0	child=0	plausibleRoom=false
+ludicorp.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ludicorp.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+ludicorp.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ludicorp.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ludicorp.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+mary.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+mary.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+mary.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+mary.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+mary.z5.js	62	"(LibraryMessages)"	parent=0	child=63	plausibleRoom=false
+medusa.z5.js	20	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+medusa.z5.js	21	"(self object)"	parent=0	child=0	plausibleRoom=false
+medusa.z5.js	22	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+medusa.z5.js	23	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+medusa.z5.js	28	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+metamorp.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+metamorp.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+metamorp.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+metamorp.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+metamorp.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+mimesis.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+mimesis.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+mimesis.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+mimesis.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+mimesis.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+muse.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+muse.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+muse.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+muse.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+muse.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+musician.z8.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+musician.z8.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+musician.z8.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+musician.z8.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+musician.z8.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+newday.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+newday.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+newday.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+newday.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+newday.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+njag2.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+njag2.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+njag2.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+njag2.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+njag2.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+noroom.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+noroom.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+noroom.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+noroom.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+noroom.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+oad.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+oad.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+oad.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+oad.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+oad.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+omniquest.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+omniquest.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+omniquest.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+omniquest.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+omniquest.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+orevore.z8.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+orevore.z8.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+orevore.z8.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+orevore.z8.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+orevore.z8.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+orion.z5.js	20	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+orion.z5.js	21	"(self object)"	parent=0	child=0	plausibleRoom=false
+orion.z5.js	22	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+orion.z5.js	23	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+orion.z5.js	24	"(Library Extensions)"	parent=0	child=28	plausibleRoom=false
+orion.z5.js	27	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+pad.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+pad.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+pad.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+pad.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+pad.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+parallel.z5.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+parallel.z5.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+parallel.z5.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+parallel.z5.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+parallel.z5.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+pentari.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+pentari.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+pentari.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+pentari.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+pentari.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+permagic.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+permagic.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+permagic.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+permagic.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+permagic.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+photopia.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+photopia.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+photopia.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+photopia.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+photopia.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+punkpnts.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+punkpnts.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+punkpnts.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+punkpnts.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+punkpnts.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+rameses.zblorb.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+rameses.zblorb.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+rameses.zblorb.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+rameses.zblorb.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+rameses.zblorb.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+reser.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+reser.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+reser.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+reser.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+reser.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+reser.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+reverb.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+reverb.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+reverb.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+reverb.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ribbons.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+ribbons.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+ribbons.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+ribbons.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ribbons.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+ribbons.z5.js	32	"(self object)"	parent=0	child=0	plausibleRoom=false
+risorg.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+risorg.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+risorg.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+risorg.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+risorg.z8.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+risorg.z8.js	26	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+samhain.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+samhain.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+samhain.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+samhain.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+samhain.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+saveprinceton.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+saveprinceton.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+saveprinceton.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+saveprinceton.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+saveprinceton.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+saveprinceton.z8.js	376	"(self object)"	parent=0	child=0	plausibleRoom=false
+schooldays.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+schooldays.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+schooldays.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+schooldays.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+schooldays.z5.js	27	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+selection.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+selection.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+selection.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+selection.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+selection.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+selection.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+sgate.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+sgate.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+sgate.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+sgate.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+sgate.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+shade.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+shade.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+shade.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+shade.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+shade.z5.js	125	"(self object)"	parent=0	child=0	plausibleRoom=false
+sherbet.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+sherbet.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+sherbet.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+sherbet.z5.js	22	"(Inform Library 6/3)"	parent=0	child=0	plausibleRoom=false
+sherbet.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+solitary.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+solitary.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+solitary.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+solitary.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+solitary.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+solitary.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+spacest2.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+spacest2.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+spacest2.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+spacest2.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+spacest2.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+sporkery1.z5.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+sporkery1.z5.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+sporkery1.z5.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+sporkery1.z5.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+sporkery1.z5.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+spot.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+spot.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+spot.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+spot.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+spot.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+spring.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+spring.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+spring.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+spring.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+stiffmst.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+stiffmst.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+stiffmst.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+stiffmst.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+stiffmst.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+suvehnux.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+suvehnux.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+suvehnux.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+suvehnux.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+suvehnux.z5.js	23	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+suvehnux.z5.js	91	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+sycamora.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+sycamora.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+sycamora.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+sycamora.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+sycamora.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+teacher.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+teacher.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+teacher.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+teacher.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+teacher.z5.js	23	"(LibraryMessages)"	parent=0	child=24	plausibleRoom=false
+tell.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+tell.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+tell.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+tell.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+tell.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+terror_tabby.z5.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+terror_tabby.z5.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+terror_tabby.z5.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+terror_tabby.z5.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+terror_tabby.z5.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+tess.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+tess.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+tess.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+tess.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+tess.z5.js	25	"(self object)"	parent=0	child=0	plausibleRoom=false
+tess.z5.js	38	"(self object)"	parent=37:"Alien Atheneum"	child=0	plausibleRoom=false
+tess.z5.js	55	"(self object)"	parent=54:"Twilight of Thought"	child=0	plausibleRoom=false
+thegreat.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+thegreat.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+thegreat.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+thegreat.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+thegreat.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+thorn.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+thorn.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+thorn.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+thorn.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+thorn.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+tirehoax.zblorb.js	7	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+tirehoax.zblorb.js	8	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+tirehoax.zblorb.js	9	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+tirehoax.zblorb.js	10	"(Library Extensions)"	parent=0	child=0	plausibleRoom=false
+tirehoax.zblorb.js	11	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+troll.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+troll.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+troll.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+troll.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+troll.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+tryst205.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+tryst205.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+tryst205.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+tryst205.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+tryst205.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+uhoh-demo.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+uhoh-demo.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+uhoh-demo.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+uhoh-demo.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+uhoh-demo.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+under.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+under.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+under.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+under.z5.js	22	"(Inform Library 6/3)"	parent=0	child=0	plausibleRoom=false
+under.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+vampire.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+vampire.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+vampire.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+vampire.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+vampire.z8.js	23	"(Library Extensions)"	parent=0	child=28	plausibleRoom=false
+vampire.z8.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+vespers.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+vespers.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+vespers.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+vespers.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+vespers.z8.js	23	"(Library Extensions)"	parent=0	child=24	plausibleRoom=false
+vespers.z8.js	25	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+vgame.z8.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+vgame.z8.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+vgame.z8.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+vgame.z8.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+vgame.z8.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+vision.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+vision.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+vision.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+vision.z5.js	22	"(Inform Library 6/3)"	parent=0	child=0	plausibleRoom=false
+vision.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+visitor.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+visitor.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+visitor.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+visitor.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+visitor.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+wadewar3.z5.js	20	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+wadewar3.z5.js	21	"(self object)"	parent=0	child=0	plausibleRoom=false
+wadewar3.z5.js	22	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+wadewar3.z5.js	23	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+wadewar3.z5.js	27	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+warp.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+warp.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+warp.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+warp.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+warp.z5.js	24	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+weirdness.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+weirdness.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+weirdness.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+weirdness.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+weirdness.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+whispers.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+whispers.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+whispers.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+whispers.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+whispers.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+wireless.z5.js	20	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+wireless.z5.js	21	"(self object)"	parent=0	child=0	plausibleRoom=false
+wireless.z5.js	22	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+wireless.z5.js	23	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+wireless.z5.js	24	"(Library Extensions)"	parent=0	child=30	plausibleRoom=false
+wireless.z5.js	29	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+wossname.z5.js	19	"(darkness object)"	parent=0	child=69	plausibleRoom=false
+wossname.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+wossname.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+wossname.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+wump2ka.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+wump2ka.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+wump2ka.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+wump2ka.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+wump2ka.z5.js	23	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+yagwad.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+yagwad.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+yagwad.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+yagwad.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+yagwad.z5.js	28	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+zdungeon.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+zdungeon.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+zdungeon.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+zdungeon.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+zdungeon.z5.js	60	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+zenon.z5.js	19	"(darkness object)"	parent=0	child=0	plausibleRoom=false
+zenon.z5.js	20	"(self object)"	parent=0	child=0	plausibleRoom=false
+zenon.z5.js	21	"(Inform Parser)"	parent=0	child=0	plausibleRoom=false
+zenon.z5.js	22	"(Inform Library)"	parent=0	child=0	plausibleRoom=false
+ztuu.z5.js	21	"(LibraryMessages)"	parent=0	child=0	plausibleRoom=false
+
+# distinct names
+1	"(Darkness)"
+7	"(Inform Library 6/3)"
+214	"(Inform Library)"
+221	"(Inform Parser)"
+62	"(Library Extensions)"
+1	"(Library)"
+195	"(LibraryMessages)"
+221	"(darkness object)"
+2	"(libraryMessages)"
+200	"(self object)"

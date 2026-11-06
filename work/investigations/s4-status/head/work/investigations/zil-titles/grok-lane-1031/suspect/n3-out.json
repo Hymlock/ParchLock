@@ -1,0 +1,226 @@
+{
+  "game": "Suspect.z3.js",
+  "route": "suspect",
+  "n": 0,
+  "seed": 0,
+  "wornBit": 11,
+  "pattern": "projection TV",
+  "extra": [
+    "look",
+    "examine tv",
+    "turn off tv",
+    "turn on tv",
+    "examine tv"
+  ],
+  "log": [
+    {
+      "step": "after-route",
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 190,
+            "name": "projection TV",
+            "chain": [
+              "192:Media Room",
+              "255:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "step": "seedmove",
+      "res": {
+        "moved": 190,
+        "into": 118
+      },
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 190,
+            "name": "projection TV",
+            "chain": [
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "look",
+      "reply": ">look\nBallroom, Near Bar\nThis is the south end of the ballroom, at the bar.\nElsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"\nOn the periphery of the room small groups can be seen, discussing everything from politics to local scandals.\nThe bartender is busy behind the bar, his only concession to the party a small domino mask.\nSamuel Ostmann, enjoying himself hugely as a vampire, is here.\n \nThe sheik, seeing your reluctance to join them, shrugs his shoulders and rejoins the conversation, a proprietary hand on the fairy's shoulder.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 190,
+            "name": "projection TV",
+            "chain": [
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          190,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "tv",
+              "objectId": 190,
+              "command": "examine tv",
+              "confidence": 0.85
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "examine tv",
+      "reply": ">examine tv\nThe TV is on, tuned to the Cable News Network.\n \nOff near the fireplace, the sheik and the fairy queen are conversing with a small group. The fairy is emphasizing some point when suddenly, she manages to spill her drink on her gown. Her reaction is audible even where you are standing, and she stalks off.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 190,
+            "name": "projection TV",
+            "chain": [
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          190,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "tv",
+              "objectId": 190,
+              "command": "examine tv",
+              "confidence": 0.85
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "turn off tv",
+      "reply": ">turn off tv\nDon't you like to watch?\nThe fairy queen is now near the south entrance.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 190,
+            "name": "projection TV",
+            "chain": [
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          190,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "tv",
+              "objectId": 190,
+              "command": "examine tv",
+              "confidence": 0.85
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "turn on tv",
+      "reply": ">turn on tv\nIt's already on.\nThe fairy queen leaves the ballroom.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 190,
+            "name": "projection TV",
+            "chain": [
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          190,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "tv",
+              "objectId": 190,
+              "command": "examine tv",
+              "confidence": 0.85
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "examine tv",
+      "reply": ">examine tv\nThe TV is on, tuned to the Cable News Network.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 190,
+            "name": "projection TV",
+            "chain": [
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          190,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "tv",
+              "objectId": 190,
+              "command": "examine tv",
+              "confidence": 0.85
+            }
+          ]
+        ]
+      ]
+    }
+  ],
+  "ts": "2026-10-31T17:23:25.852Z"
+}

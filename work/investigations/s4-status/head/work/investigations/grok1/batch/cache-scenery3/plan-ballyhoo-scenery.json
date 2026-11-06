@@ -1,0 +1,233 @@
+{
+ "key": "ballyhoo",
+ "game": "Ballyhoo.z3.js",
+ "bit": 6,
+ "tmpl": "look|examine X",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 168,
+   "name": "crowd",
+   "step": 0,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 168,
+   "name": "crowd",
+   "step": 0,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine crowd"
+  },
+  {
+   "id": 22,
+   "name": "button",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 22,
+   "name": "button",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine button"
+  },
+  {
+   "id": 90,
+   "name": "drinking fountain",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 90,
+   "name": "drinking fountain",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine drinking fountain"
+  },
+  {
+   "id": 115,
+   "name": "uniform",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 115,
+   "name": "uniform",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine uniform"
+  },
+  {
+   "id": 219,
+   "name": "Comrade Thumb",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 219,
+   "name": "Comrade Thumb",
+   "step": 1,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine comrade thumb"
+  },
+  {
+   "id": 32,
+   "name": "pair of sunglasses",
+   "step": 5,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 32,
+   "name": "pair of sunglasses",
+   "step": 5,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine pair of sunglasses"
+  },
+  {
+   "id": 180,
+   "name": "flower",
+   "step": 5,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 180,
+   "name": "flower",
+   "step": 5,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine flower"
+  },
+  {
+   "id": 198,
+   "name": "burned cage",
+   "step": 5,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 198,
+   "name": "burned cage",
+   "step": 5,
+   "expect": 1,
+   "bit": 6,
+   "cmd": "examine burned cage"
+  },
+  {
+   "id": 92,
+   "name": "turnstile",
+   "step": 5,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 92,
+   "name": "turnstile",
+   "step": 5,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "examine turnstile"
+  },
+  {
+   "id": 93,
+   "name": "clown mask",
+   "step": 5,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 93,
+   "name": "clown mask",
+   "step": 5,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "examine clown mask"
+  },
+  {
+   "id": 113,
+   "name": "Chuckles",
+   "step": 5,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 113,
+   "name": "Chuckles",
+   "step": 5,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "examine chuckles"
+  },
+  {
+   "id": 49,
+   "name": "barred passage",
+   "step": 3,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 49,
+   "name": "barred passage",
+   "step": 3,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "examine barred passage"
+  },
+  {
+   "id": 66,
+   "name": "figure of President Taft",
+   "step": 6,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 66,
+   "name": "figure of President Taft",
+   "step": 6,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "examine figure of president taft"
+  },
+  {
+   "id": 208,
+   "name": "gorilla suit",
+   "step": 6,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "look"
+  },
+  {
+   "id": 208,
+   "name": "gorilla suit",
+   "step": 6,
+   "expect": 0,
+   "bit": 6,
+   "cmd": "examine gorilla suit"
+  }
+ ]
+}

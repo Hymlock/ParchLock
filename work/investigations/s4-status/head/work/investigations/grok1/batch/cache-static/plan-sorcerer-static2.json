@@ -1,0 +1,57 @@
+{
+ "key": "sorcerer",
+ "game": "Sorcerer.z3.js",
+ "bit": 23,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 183,
+   "name": "yomin spell",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take yomin spell"
+  },
+  {
+   "id": 214,
+   "name": "gnusto spell",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take gnusto spell"
+  },
+  {
+   "id": 12,
+   "name": "desk drawer",
+   "step": 9,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take desk drawer"
+  },
+  {
+   "id": 33,
+   "name": "morgia plant",
+   "step": 9,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take morgia plant"
+  },
+  {
+   "id": 90,
+   "name": "parrot",
+   "step": 9,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take parrot"
+  },
+  {
+   "id": 106,
+   "name": "wall hanging",
+   "step": 9,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take wall hanging"
+  }
+ ]
+}

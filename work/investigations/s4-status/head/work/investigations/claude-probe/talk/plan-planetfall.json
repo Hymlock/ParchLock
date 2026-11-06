@@ -1,0 +1,61 @@
+{
+ "key": "planetfall",
+ "game": "Planetfall.z3.js",
+ "tag": "talk-planetfall",
+ "tests": [
+  {
+   "id": 90,
+   "name": "fluid",
+   "step": 124,
+   "expect": 0,
+   "bit": 31,
+   "cmd": "look in fluid",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 90,
+   "name": "fluid",
+   "step": 124,
+   "expect": 0,
+   "bit": 31,
+   "cmd": "yell at fluid",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "look in robot",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "yell at robot",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "play with robot",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "smile at robot",
+   "tag": "talk-planetfall"
+  }
+ ]
+}

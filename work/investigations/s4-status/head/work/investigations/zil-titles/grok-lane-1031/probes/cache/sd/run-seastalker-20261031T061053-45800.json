@@ -1,0 +1,208 @@
+{
+ "sdC @50:examine depth control#0": {
+  "tag": "sdC",
+  "cmd": "examine depth control",
+  "step": 50,
+  "name": "x",
+  "id": 50,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdC.json",
+  "planSha": "21dc6765787915e2f9cb11ba7c0e3200fd432cc0659a68c68e99a93c9c96f7c8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [],
+  "after": [],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:11:29.975Z"
+ },
+ "sdC @66:examine depth control#1": {
+  "tag": "sdC",
+  "cmd": "examine depth control",
+  "step": 66,
+  "name": "x",
+  "id": 66,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdC.json",
+  "planSha": "21dc6765787915e2f9cb11ba7c0e3200fd432cc0659a68c68e99a93c9c96f7c8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 67,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:11:40.962Z"
+ },
+ "sdC @74:examine depth control#2": {
+  "tag": "sdC",
+  "cmd": "examine depth control",
+  "step": 74,
+  "name": "x",
+  "id": 74,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdC.json",
+  "planSha": "21dc6765787915e2f9cb11ba7c0e3200fd432cc0659a68c68e99a93c9c96f7c8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:11:46.303Z"
+ },
+ "sdC @78:examine depth control#3": {
+  "tag": "sdC",
+  "cmd": "examine depth control",
+  "step": 78,
+  "name": "x",
+  "id": 78,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdC.json",
+  "planSha": "21dc6765787915e2f9cb11ba7c0e3200fd432cc0659a68c68e99a93c9c96f7c8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   18,
+   26
+  ],
+  "after": [
+   10,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 107,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:11:49.202Z"
+ },
+ "sdC @80:examine depth control#4": {
+  "tag": "sdC",
+  "cmd": "examine depth control",
+  "step": 80,
+  "name": "x",
+  "id": 80,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdC.json",
+  "planSha": "21dc6765787915e2f9cb11ba7c0e3200fd432cc0659a68c68e99a93c9c96f7c8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   19,
+   20
+  ],
+  "after": [
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:11:51.096Z"
+ },
+ "sdC @84:examine depth control#5": {
+  "tag": "sdC",
+  "cmd": "examine depth control",
+  "step": 84,
+  "name": "x",
+  "id": 84,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdC.json",
+  "planSha": "21dc6765787915e2f9cb11ba7c0e3200fd432cc0659a68c68e99a93c9c96f7c8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:11:54.119Z"
+ },
+ "sdC @90:examine depth control#6": {
+  "tag": "sdC",
+  "cmd": "examine depth control",
+  "step": 90,
+  "name": "x",
+  "id": 90,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdC.json",
+  "planSha": "21dc6765787915e2f9cb11ba7c0e3200fd432cc0659a68c68e99a93c9c96f7c8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 92,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:11:58.324Z"
+ }
+}

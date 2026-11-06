@@ -1,0 +1,2 @@
+sherlock sh-transp @15 EXAMINE VIOLIN THROUGH NEWSPAPER #289 FALSE "You can't look through the newspaper.\n \n> "
+sherlock sh-transp @15 EXAMINE VIOLIN THROUGH GLASS #270 NOTEST "You train the magnifying glass on the violin.\nIt appears much larger now.\n \n> "

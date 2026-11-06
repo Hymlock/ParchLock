@@ -1,0 +1,490 @@
+{
+  "tier": "Current menu observation after retained ordinary route; not new semantic bit qualification",
+  "rows": [
+    {
+      "step": 0,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                                             \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n> "
+    },
+    {
+      "step": 1,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 2,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 3,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 4,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 5,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 6,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 7,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 8,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 9,
+      "command": "wait",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n> "
+    },
+    {
+      "step": 10,
+      "command": "Codex Audit",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n> "
+    },
+    {
+      "step": 11,
+      "command": "yes",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n> "
+    },
+    {
+      "step": 12,
+      "command": "red",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n> "
+    },
+    {
+      "step": 13,
+      "command": "yes",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": " driveway                                               Time: 7:10 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n> "
+    },
+    {
+      "step": 14,
+      "command": "take all",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": "7:11 PM \nMoonmist\nInfocom interactive fiction - a mystery story\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nMoonmist is a trademark of Infocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n> "
+    },
+    {
+      "step": 15,
+      "command": "open luggage",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": "ocom, Inc.\nRelease number 9 / Serial number 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n>open luggage\nYou open it and see a dinner outfit, an exercise outfit, a nightshirt and a tourist brochure.\n \n[You won't see \"What next?\" any more.]\n \n> "
+    },
+    {
+      "step": 16,
+      "command": "close luggage",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": "er 861022\n \nYou drove west from London all day in your new little British sports car. Now at last you've arrived in the storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n>open luggage\nYou open it and see a dinner outfit, an exercise outfit, a nightshirt and a tourist brochure.\n \n[You won't see \"What next?\" any more.]\n \n>close luggage\nOkay, it is now closed.\n \n> "
+    },
+    {
+      "step": 17,
+      "command": "open luggage",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": "he storied land of Cornwall.\n \nDusk has fallen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n>open luggage\nYou open it and see a dinner outfit, an exercise outfit, a nightshirt and a tourist brochure.\n \n[You won't see \"What next?\" any more.]\n \n>close luggage\nOkay, it is now closed.\n \n>open luggage\nYou open it and see the dinner outfit, the exercise outfit, the nightshirt and the tourist brochure.\n \n> "
+    },
+    {
+      "step": 18,
+      "command": "close luggage",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": "allen as you pull up in front of Tresyllian Castle. A ghostly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n>open luggage\nYou open it and see a dinner outfit, an exercise outfit, a nightshirt and a tourist brochure.\n \n[You won't see \"What next?\" any more.]\n \n>close luggage\nOkay, it is now closed.\n \n>open luggage\nYou open it and see the dinner outfit, the exercise outfit, the nightshirt and the tourist brochure.\n \n>close luggage\nOkay, it is now closed.\n \n> "
+    },
+    {
+      "step": 19,
+      "command": "open car",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": "ly full moon is rising, and a tall iron gate between two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n>open luggage\nYou open it and see a dinner outfit, an exercise outfit, a nightshirt and a tourist brochure.\n \n[You won't see \"What next?\" any more.]\n \n>close luggage\nOkay, it is now closed.\n \n>open luggage\nYou open it and see the dinner outfit, the exercise outfit, the nightshirt and the tourist brochure.\n \n>close luggage\nOkay, it is now closed.\n \n>open car\n(You don't need to do that to the sports car.)\n \n> "
+    },
+    {
+      "step": 20,
+      "command": "open gate",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 9,
+      "text": "tween two pillars bars the way into the courtyard.\n \nWhat would you like to do?\n>wait\n[I assume you mean: Wait 10 minutes.]\nTime passes...\nThe dragon's eye glows red. A voice comes from a hidden speaker. It says:\n\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>wait\n\"I said: Please state your full name.\"\n>Codex Audit\n\"Did you say your name is Codex Audit?\"\n>yes\n\"And what is your favorite color, Codex?\"\n>red\n\"Did you say your favorite color is red?\"\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n>open luggage\nYou open it and see a dinner outfit, an exercise outfit, a nightshirt and a tourist brochure.\n \n[You won't see \"What next?\" any more.]\n \n>close luggage\nOkay, it is now closed.\n \n>open luggage\nYou open it and see the dinner outfit, the exercise outfit, the nightshirt and the tourist brochure.\n \n>close luggage\nOkay, it is now closed.\n \n>open car\n(You don't need to do that to the sports car.)\n \n>open gate\n(The front gate is already open!)\n \n> "
+    },
+    {
+      "step": 21,
+      "command": "close gate",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "room": 13,
+      "text": "\n>yes\n\"Jolly good! The spare bedroom is decorated in red! Please enter.\"\nThe red eye turns green, and the front gate creaks open.\n \nWhat next?\n>take all\ndragon: It's part of the front gate.\nyour luggage: You are now holding your luggage.\n \nWhat next?\n>open luggage\nYou open it and see a dinner outfit, an exercise outfit, a nightshirt and a tourist brochure.\n \n[You won't see \"What next?\" any more.]\n \n>close luggage\nOkay, it is now closed.\n \n>open luggage\nYou open it and see the dinner outfit, the exercise outfit, the nightshirt and the tourist brochure.\n \n>close luggage\nOkay, it is now closed.\n \n>open car\n(You don't need to do that to the sports car.)\n \n>open gate\n(The front gate is already open!)\n \n>close gate\nOkay, it is now closed.\nWhen a door opens in the castle and the front gate creaks open, you decide to drive through the gate and get out of the car.\nThe front gate closes and locks behind you.\n(You are now in the courtyard.)\nAs flood lights blaze on, you look around. It looks even lovelier than it sounds in the tourist brochure.\nThe dark stone turrets rise toward the misty sky.\nYour new little red sports car is parked here.\n \nSomeone comes running out of the wing to greet you. She's a beautiful red-haired young woman of average height. You recognize her as your friend, Tamara Lynd.\n\"Codex!\" she cries with outflung arms. \"You sweet thing, to answer my letter in person this way! And all the people I wrote about are here tonight for Lionel's memorial birthday dinner!\"\nAfter a warm hug, she asks anxiously, \"You did read my letter, and not just give it a hasty glance?\"\n \n> "
+    }
+  ],
+  "radials": [
+    {
+      "width": 1280,
+      "labels": [
+        "Close",
+        "Open",
+        "Examine",
+        "Use with...",
+        "Unlock with...",
+        "More"
+      ],
+      "status": [],
+      "input": "",
+      "rawLocked": true
+    }
+  ],
+  "navigation": {
+    "room": 13,
+    "mapping": [
+      {
+        "prop": 20,
+        "label": "out",
+        "aliases": [
+          "out",
+          "outsid"
+        ]
+      },
+      {
+        "prop": 21,
+        "label": "in",
+        "aliases": [
+          "in",
+          "inside",
+          "into"
+        ]
+      },
+      {
+        "prop": 22,
+        "label": "down",
+        "aliases": [
+          "d",
+          "down",
+          "downst"
+        ]
+      },
+      {
+        "prop": 23,
+        "label": "up",
+        "aliases": [
+          "u",
+          "up",
+          "upstai"
+        ]
+      },
+      {
+        "prop": 24,
+        "label": "northwest",
+        "aliases": [
+          "northw",
+          "nw"
+        ]
+      },
+      {
+        "prop": 25,
+        "label": "west",
+        "aliases": [
+          "w",
+          "west"
+        ]
+      },
+      {
+        "prop": 26,
+        "label": "southwest",
+        "aliases": [
+          "southw",
+          "sw"
+        ]
+      },
+      {
+        "prop": 27,
+        "label": "south",
+        "aliases": [
+          "s",
+          "south"
+        ]
+      },
+      {
+        "prop": 28,
+        "label": "southeast",
+        "aliases": [
+          "se",
+          "southe"
+        ]
+      },
+      {
+        "prop": 29,
+        "label": "east",
+        "aliases": [
+          "e",
+          "east"
+        ]
+      },
+      {
+        "prop": 30,
+        "label": "northeast",
+        "aliases": [
+          "ne",
+          "northe"
+        ]
+      },
+      {
+        "prop": 31,
+        "label": "north",
+        "aliases": [
+          "n",
+          "north"
+        ]
+      }
+    ],
+    "exits": [
+      {
+        "label": "out",
+        "command": "out",
+        "prop": 20,
+        "targetRoomId": 9,
+        "targetRoomName": "driveway",
+        "isDoor": true,
+        "doorObjectId": 52,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "in",
+        "command": "in",
+        "prop": 21,
+        "targetRoomId": 132,
+        "targetRoomName": "foyer",
+        "isDoor": true,
+        "doorObjectId": 120,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "southwest",
+        "command": "southwest",
+        "prop": 26,
+        "targetRoomId": 136,
+        "targetRoomName": "old great hall",
+        "isDoor": true,
+        "doorObjectId": 136,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "south",
+        "command": "south",
+        "prop": 27,
+        "targetRoomId": 132,
+        "targetRoomName": "foyer",
+        "isDoor": true,
+        "doorObjectId": 120,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "east",
+        "command": "east",
+        "prop": 29,
+        "targetRoomId": 241,
+        "targetRoomName": "hedge maze",
+        "isDoor": false,
+        "doorObjectId": null,
+        "conditional": false,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "U"
+      },
+      {
+        "label": "north",
+        "command": "north",
+        "prop": 31,
+        "targetRoomId": 9,
+        "targetRoomName": "driveway",
+        "isDoor": true,
+        "doorObjectId": 52,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      }
+    ],
+    "lookAhead": [
+      {
+        "label": "out",
+        "command": "out",
+        "prop": 20,
+        "targetRoomId": 9,
+        "targetRoomName": "driveway",
+        "isDoor": true,
+        "doorObjectId": 52,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "in",
+        "command": "in",
+        "prop": 21,
+        "targetRoomId": 132,
+        "targetRoomName": "foyer",
+        "isDoor": true,
+        "doorObjectId": 120,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "southwest",
+        "command": "southwest",
+        "prop": 26,
+        "targetRoomId": 136,
+        "targetRoomName": "old great hall",
+        "isDoor": true,
+        "doorObjectId": 136,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "south",
+        "command": "south",
+        "prop": 27,
+        "targetRoomId": 132,
+        "targetRoomName": "foyer",
+        "isDoor": true,
+        "doorObjectId": 120,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      },
+      {
+        "label": "east",
+        "command": "east",
+        "prop": 29,
+        "targetRoomId": 241,
+        "targetRoomName": "hedge maze",
+        "isDoor": false,
+        "doorObjectId": null,
+        "conditional": false,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "U"
+      },
+      {
+        "label": "north",
+        "command": "north",
+        "prop": 31,
+        "targetRoomId": 9,
+        "targetRoomName": "driveway",
+        "isDoor": true,
+        "doorObjectId": 52,
+        "conditional": true,
+        "hinted": true,
+        "hintOnly": true,
+        "roomHintSourceId": 13,
+        "confidence": 0.8,
+        "source": "d214-zil-exit-hint",
+        "exitForm": "D",
+        "routeBlocked": false
+      }
+    ],
+    "rawLock": null,
+    "mappedLock": false
+  },
+  "status": "STOP_DIAGNOSTIC",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\moonmist-current-menu-r2.cjs:12:725",
+  "sourceStable": true
+}

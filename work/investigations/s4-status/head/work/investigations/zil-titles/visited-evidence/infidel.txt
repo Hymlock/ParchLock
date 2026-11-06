@@ -1,0 +1,30 @@
+### camp.zil:1737 (historicalsource/infidel)
+			<COND (<EQUAL? ,DESERT-LOC <GET ,REENTRY-TBL .OFFS>>
+			       <SET NEW-ROOM <GET ,REENTRY-TBL <+ .OFFS 1>>>
+			       <RETURN>)
+			      (ELSE
+			       <SET OFFS <+ .OFFS 2>>)>)>>
+	 <DESERT-TO-TABLE .OLD-DESERT>
+	 <PROP-TO-TBL .OLD-DESERT>
+	 <COND (<NOT .NEW-ROOM>
+		<FCLEAR ,HERE ,TOUCHBIT>
+		<SET NEW-ROOM ,ENDLESS-DESERT>
+		<TABLE-TO-DESERT ,DESERT-LOC>
+		<TBL-TO-PROP ,DESERT-LOC>)
+	       (ELSE
+
+### verbs.zil:70 (historicalsource/infidel)
+<ROUTINE DESCRIBE-ROOM ("OPTIONAL" (LOOK? <>) "AUX" V? STR AV)
+	 <SET V? <OR .LOOK? ,VERBOSE>>
+	 <COND (<NOT ,LIT>
+		<TELL
+"It is pitch black. Off in the distance you hear hideous squealing and what can
+only be the sound of thousands of tiny, clawed feet coming closer." CR>
+		<RETURN <>>)>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>)>
+	 <COND (<IN? ,HERE ,ROOMS> <TELL D ,HERE CR>)>
+	 <COND (<OR .LOOK? <NOT ,SUPER-BRIEF>>
+		<SET AV <LOC ,WINNER>>
+

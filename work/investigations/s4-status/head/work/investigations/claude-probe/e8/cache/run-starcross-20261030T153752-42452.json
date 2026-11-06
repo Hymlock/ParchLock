@@ -1,0 +1,448 @@
+{
+ "e8climb22b @25:climb#0": {
+  "tag": "e8climb22b",
+  "id": 170,
+  "name": "wall",
+  "step": 25,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 22,
+  "plan": "sc-plan2.json",
+  "planSha": "70bc757bedb4ae443e291f1e13dc6ee08377b47dd1c39ecc1e1557ced23e2b4c",
+  "gameSha": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+  "verdict": "TRUE",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 11,
+  "here": 122,
+  "opsOnId": [
+   [
+    170,
+    30,
+    0,
+    23219
+   ],
+   [
+    170,
+    22,
+    1,
+    23280
+   ],
+   [
+    170,
+    30,
+    0,
+    22541
+   ],
+   [
+    170,
+    15,
+    0,
+    21029
+   ],
+   [
+    170,
+    14,
+    0,
+    29939
+   ],
+   [
+    170,
+    15,
+    0,
+    29966
+   ]
+  ],
+  "nOps": 111,
+  "printedObjs": [
+   170
+  ],
+  "text": "(on the wall)\nYou can't climb onto the wall.\n \n> ",
+  "ts": "2026-10-30T15:38:07.272Z"
+ },
+ "e8climb22b @29:climb#1": {
+  "tag": "e8climb22b",
+  "id": 170,
+  "name": "wall",
+  "step": 29,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 22,
+  "plan": "sc-plan2.json",
+  "planSha": "70bc757bedb4ae443e291f1e13dc6ee08377b47dd1c39ecc1e1557ced23e2b4c",
+  "gameSha": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+  "verdict": "TRUE",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 11,
+  "here": 188,
+  "opsOnId": [
+   [
+    170,
+    30,
+    0,
+    23219
+   ],
+   [
+    170,
+    22,
+    1,
+    23280
+   ],
+   [
+    170,
+    30,
+    0,
+    22541
+   ],
+   [
+    170,
+    15,
+    0,
+    21029
+   ],
+   [
+    170,
+    14,
+    0,
+    29939
+   ],
+   [
+    170,
+    15,
+    0,
+    29955
+   ]
+  ],
+  "nOps": 118,
+  "printedObjs": [
+   170
+  ],
+  "text": "(on the wall)\nYou can't climb onto the wall.\n \n> ",
+  "ts": "2026-10-30T15:38:10.186Z"
+ },
+ "e8climb22b @33:climb#2": {
+  "tag": "e8climb22b",
+  "id": 170,
+  "name": "wall",
+  "step": 33,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 22,
+  "plan": "sc-plan2.json",
+  "planSha": "70bc757bedb4ae443e291f1e13dc6ee08377b47dd1c39ecc1e1557ced23e2b4c",
+  "gameSha": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+  "verdict": "TRUE",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 11,
+  "here": 175,
+  "opsOnId": [
+   [
+    170,
+    30,
+    0,
+    23219
+   ],
+   [
+    170,
+    22,
+    1,
+    23280
+   ],
+   [
+    170,
+    30,
+    0,
+    22541
+   ],
+   [
+    170,
+    15,
+    0,
+    21029
+   ],
+   [
+    170,
+    14,
+    0,
+    29939
+   ],
+   [
+    170,
+    15,
+    0,
+    29955
+   ]
+  ],
+  "nOps": 108,
+  "printedObjs": [
+   170
+  ],
+  "text": "(on the wall)\nYou can't climb onto the wall.\n \n> ",
+  "ts": "2026-10-30T15:38:13.058Z"
+ },
+ "e8climb22b @37:climb#3": {
+  "tag": "e8climb22b",
+  "id": 170,
+  "name": "wall",
+  "step": 37,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 22,
+  "plan": "sc-plan2.json",
+  "planSha": "70bc757bedb4ae443e291f1e13dc6ee08377b47dd1c39ecc1e1557ced23e2b4c",
+  "gameSha": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+  "verdict": "NOTEST",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 11,
+  "here": 20,
+  "opsOnId": [],
+  "nOps": 28,
+  "printedObjs": [
+   155
+  ],
+  "text": "(on the stairs)\nYou can't climb onto the stairs.\n \n> ",
+  "ts": "2026-10-30T15:38:15.890Z"
+ },
+ "e8climb22b @38:climb#4": {
+  "tag": "e8climb22b",
+  "id": 170,
+  "name": "wall",
+  "step": 38,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 22,
+  "plan": "sc-plan2.json",
+  "planSha": "70bc757bedb4ae443e291f1e13dc6ee08377b47dd1c39ecc1e1557ced23e2b4c",
+  "gameSha": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+  "verdict": "TRUE",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 11,
+  "here": 154,
+  "opsOnId": [
+   [
+    170,
+    30,
+    0,
+    23219
+   ],
+   [
+    170,
+    22,
+    1,
+    23280
+   ],
+   [
+    170,
+    30,
+    0,
+    22541
+   ],
+   [
+    170,
+    15,
+    0,
+    21029
+   ],
+   [
+    170,
+    14,
+    0,
+    29939
+   ],
+   [
+    170,
+    15,
+    0,
+    29955
+   ]
+  ],
+  "nOps": 110,
+  "printedObjs": [
+   170
+  ],
+  "text": "(on the wall)\nYou can't climb onto the wall.\n \n> ",
+  "ts": "2026-10-30T15:38:17.026Z"
+ },
+ "e8climb22b @40:climb#5": {
+  "tag": "e8climb22b",
+  "id": 170,
+  "name": "wall",
+  "step": 40,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 22,
+  "plan": "sc-plan2.json",
+  "planSha": "70bc757bedb4ae443e291f1e13dc6ee08377b47dd1c39ecc1e1557ced23e2b4c",
+  "gameSha": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+  "verdict": "TRUE",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 11,
+  "here": 46,
+  "opsOnId": [
+   [
+    170,
+    30,
+    0,
+    23219
+   ],
+   [
+    170,
+    22,
+    1,
+    23280
+   ],
+   [
+    170,
+    30,
+    0,
+    22541
+   ],
+   [
+    170,
+    15,
+    0,
+    21029
+   ],
+   [
+    170,
+    14,
+    0,
+    29939
+   ],
+   [
+    170,
+    15,
+    0,
+    29955
+   ]
+  ],
+  "nOps": 106,
+  "printedObjs": [
+   170
+  ],
+  "text": "(on the wall)\nYou can't climb onto the wall.\n \n> ",
+  "ts": "2026-10-30T15:38:18.746Z"
+ },
+ "e8climb22b @42:climb#6": {
+  "tag": "e8climb22b",
+  "id": 170,
+  "name": "wall",
+  "step": 42,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 22,
+  "plan": "sc-plan2.json",
+  "planSha": "70bc757bedb4ae443e291f1e13dc6ee08377b47dd1c39ecc1e1557ced23e2b4c",
+  "gameSha": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+  "verdict": "TRUE",
+  "before": [
+   22,
+   23
+  ],
+  "after": [
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 11,
+  "here": 102,
+  "opsOnId": [
+   [
+    170,
+    30,
+    0,
+    23219
+   ],
+   [
+    170,
+    22,
+    1,
+    23280
+   ],
+   [
+    170,
+    30,
+    0,
+    22541
+   ],
+   [
+    170,
+    15,
+    0,
+    21029
+   ],
+   [
+    170,
+    14,
+    0,
+    29939
+   ],
+   [
+    170,
+    15,
+    0,
+    29955
+   ]
+  ],
+  "nOps": 122,
+  "printedObjs": [
+   170
+  ],
+  "text": "(on the wall)\nYou can't climb onto the wall.\n \n> ",
+  "ts": "2026-10-30T15:38:20.458Z"
+ }
+}

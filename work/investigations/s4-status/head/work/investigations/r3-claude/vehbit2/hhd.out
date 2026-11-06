@@ -1,0 +1,257 @@
+"Get Up"  114 -> 150 Bedroom | Very difficult, but you manage it. The room is still spinning. It dips and sways a little. >
+"Turn on Light"  150 -> 150 Bedroom | Good start to the day. Pity it's going to be the worst one of your life. The light is now on. Bedroom The bedroom is a mess. It is a small bedroom wit
+"Get Gown"  150 -> 150 Bedroom | Luckily, this is large enough for you to get hold of. You notice something in the pocket. >
+"Wear Gown"  150 -> 150 Bedroom | You are now wearing your gown. >
+"Look in pocket"  150 -> 150 Bedroom | Opening your gown reveals a buffered analgesic, pocket fluff, and a thing your aunt gave you which you don't know what it is. >
+"take analgesic"  150 -> 150 Bedroom | You swallow the tablet. After a few seconds the room begins to calm down and behave in an orderly manner. Your terrible headache goes. >
+"Get all"  150 -> 150 Bedroom | flathead screwdriver: Taken. toothbrush: As you pick up the toothbrush a tree outside the window collapses. There is no causal relationship between th
+"South"  150 -> 174 Front Porch | You make your way down to the front porch. Front Porch This is the enclosed front porch of your home. Your front garden lies to the south, and you can
+"Get Mail"  174 -> 174 Front Porch | You gather up the pile of mail. >
+"South"  174 -> 71 Front of House | Front of House You can enter your home to the north. A path leads around it to the northeast and northwest, and a country lane is visible to the south
+"Lie Down In Front Of Bulldozer"  71 -> 71 Front of House | You lie down in the path of the advancing bulldozer. Prosser yells at you to for crissake move!!! >
+"Wait"  71 -> 71 Front of House | Time passes... The bulldozer thunders toward you. The ground is shaking beneath you as you lie in the mud. >
+"Wait"  71 -> 71 Front of House | Time passes... The noise of the giant bulldozer is now so violently loud that you can't even hear Prosser yelling to warn you that you will be killed 
+"Wait"  71 -> 71 Front of House | Time passes... With a terrible grinding of gears the bulldozer comes to an abrupt halt just in front of you. It shakes, shudders, and emits noxious su
+"Wait"  71 -> 71 Front of House | Time passes... Ford glances uncomfortably at the sky. He offers you the towel again. >
+"Wait"  71 -> 71 Front of House | Time passes... Ford seems oblivious to your trouble, so you ask "Ford, what about my home?" He looks startled, then guilty. He starts to say something
+"Wait"  71 -> 71 Front of House | Time passes... Ford and Prosser stop talking and approach you. Ford says that Prosser has agreed to lie in your place so that the two of you can go of
+"Wait"  71 -> 71 Front of House | Time passes... Ford, urging you to follow, hurries toward the country lane. >
+"Follow Ford"  71 -> 133 Country Lane | In a state of anxiety and confusion you follow Ford down the lane... Country Lane The road runs from your home, to the north, toward the village Pub, 
+"Enter Pub"  133 -> 167 Pub | Pub The Pub is pleasant and cheerful and full of pleasant and cheerful people who don't know they've got about twelve minutes to live and are therefor
+"Look Shelf"  167 -> 167 Pub | Use prepositions to indicate precisely what you want to do: LOOK AT the object, LOOK INSIDE it, LOOK UNDER it, etc. "Drink the beer," urges Ford. "It 
+"Buy Sandwich"  167 -> 167 Pub | The barman gives you a cheese sandwich. The bread is like the stuff that stereos come packed in, the cheese would be great for rubbing out spelling mi
+"Drink Beer"  167 -> 167 Pub | It's very good beer, brewed by a small local company. You particularly like its flavour, which is why you woke up feeling so wretched this morning. Yo
+"Drink Beer"  167 -> 167 Pub | It is really very pleasant stuff, with a very good dry, nutty flavour, some light froth on top, and a deep colour. It is at exactly room temperature. 
+"Drink Beer"  167 -> 167 Pub | There is a distant crash which Ford explains is nothing to worry about, probably just your house being knocked down. >
+"Exit"  167 -> 133 Country Lane | Country Lane You see the huge bulldozer heaving itself among the cloud of brick dust which is all that remains of your home. As you start up the lane,
+"Feed dog sandwich"  133 -> 133 Country Lane | The dog is deeply moved. With powerful sweeps of its tail it indicates that it regards this cheese sandwich as one of the great cheese sandwiches. Nin
+"Get towel"  133 -> 133 Country Lane | Taken. >
+"Wait"  133 -> 133 Country Lane | Time passes... >
+"wait"  133 -> 133 Country Lane | Time passes... >
+"wait"  133 -> 133 Country Lane | Time passes... >
+"wait"  133 -> 133 Country Lane | Time passes... >
+"wait"  133 -> 133 Country Lane | Time passes... >
+"wait"  133 -> 133 Country Lane | Time passes... >
+"wait"  133 -> 133 Country Lane | Time passes... With a noise like a cross between Led Zeppelin's farewell concert and the eruption of Krakatoa, a huge fleet of Vogon Constructor ships
+"wait"  133 -> 133 Country Lane | Time passes... The vast yellow ships thunder across the sky, spreading waves of terror and panic in their wake. The voice of the Vogon Captain slams a
+"get device"  133 -> 133 Country Lane | Taken. Fierce gales whip across the land, and thunder bangs continuously through the air in the wake of the giant ships. Ford fights to reach you, but
+"push green button"  133 -> 125 Dark | Lights whirl sickeningly around your head, the ground arches away beneath your feet, and every atom of your being is scrambled, an experience you're p
+"n"  125 -> 125 Dark | There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you ar
+"s"  125 -> 125 Dark | There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you ar
+"n"  125 -> 125 Dark | You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"s"  125 -> 125 Dark | You can't hear anything, see anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. >
+"smell"  125 -> 125 Dark | (darkness) It does smell a bit. There's something pungent being waved under your nose. Your head begins to clear. You can make out a shadow moving in 
+"examine shadow"  125 -> 99 Vogon Hold | The shadow is vaguely Ford Prefect-shaped. Vogon Hold This is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of 
+"Eat Peanuts"  99 -> 99 Vogon Hold | You feel stronger as the peanuts replace some of the protein you lost in the matter transference beam. >
+"Take off gown"  99 -> 99 Vogon Hold | Okay, you're no longer wearing your gown. >
+"Put Gown on hook"  99 -> 99 Vogon Hold | The gown is now hanging from the hook, covering a tiny hole. >
+"put towel over drain"  99 -> 99 Vogon Hold | The towel completely covers the drain. >
+"wait"  99 -> 99 Vogon Hold | Time passes... Ford yawns. "Matter transference always tires me out. I'm going to take a nap." He places something on top of his satchel. "If you have
+"get satchel"  99 -> 99 Vogon Hold | Taken. >
+"put satchel in front of panel"  99 -> 99 Vogon Hold | Okay, the satchel is lying on its side in front of the tiny robot panel. >
+"put mail on satchel"  99 -> 99 Vogon Hold | Okay, the loose pile of junk mail is now sitting on the satchel. >
+"push dispenser button"  99 -> 99 Vogon Hold | A single babel fish shoots out of the slot. It sails across the room and hits the dressing gown. The fish slides down the sleeve of the gown and falls
+"get gown"  99 -> 99 Vogon Hold | Taken. >
+"wear gown"  99 -> 99 Vogon Hold | You are now wearing your gown. >
+"get all"  99 -> 99 Vogon Hold | satchel: Taken. towel: Taken. keyboard: You can't be serious. An announcement is coming over the ship's intercom. "This is the Captain. My instruments
+"push switch"  99 -> 99 Vogon Hold | A recording plays: "To open the case, type in the third word from the second verse of the Captain's current favourite poem. WARNING: An incorrect inpu
+"z"  99 -> 99 Vogon Hold | Time passes... An announcement is coming over the ship's intercom. "This is the Captain. My instruments show that we've picked up a couple of hitchhik
+"z"  99 -> 164 poetry appreciation chair | Time passes... Guards burst in and grab you and Ford, who comes slowly awake. They drag you down the corridor to a large cabin, where they strap you i
+"z"  164 -> 164 poetry appreciation chair | Time passes... "If he's going to read us his poetry," mutters Ford, sweating profusely, "just pray he softens us up with some cudgels first..." "Hello
+"z"  164 -> 164 poetry appreciation chair | Time passes... "Oh freddled gruntbuggly, thy nacturations are to me!" >
+"z"  164 -> 164 poetry appreciation chair | Time passes... "As plurdled gabbleblotchits on a lurgid bee." >
+"z"  164 -> 164 poetry appreciation chair | Time passes... "Groop I implore thee, my foonting turlingdromes." >
+"z"  164 -> 164 poetry appreciation chair | Time passes... "And hooptiously drangle me with crinkly bindlewurdles, or I will rend thee in the gobberwarts with my blurglecruncheon, see if I don't
+"enjoy poetry"  164 -> 164 poetry appreciation chair | You realise that, although the Vogon poetry is indeed astoundingly bad, worse things happen at sea, and in fact, at school. With an effort for which H
+"z"  164 -> 164 poetry appreciation chair | Time passes... "Fripping lyshus wimbgunts, awhilst moongrovenly kormzibs." >
+"z"  164 -> 164 poetry appreciation chair | Time passes... "Bleem miserable venchit! Bleem forever mestinglish asunder frapt." >
+"z"  164 -> 164 poetry appreciation chair | Time passes... "Gashee morphousite, thou expungiest quoopisk!" >
+"z"  164 -> 164 poetry appreciation chair | Time passes... "Gerond withoutitude form into formless bloit, why not then? Moose." >
+"z"  164 -> 99 Vogon Hold | Time passes... "Since you have somehow managed to survive two verses of my poetry, I have no choice but to space you. Guards!" A guard grabs you and F
+"type \"wimbgunts\"" typepoem:third word from the second verse 99 -> 99 Vogon Hold | The glass case opens. Ford continues trying to talk the guard into a sudden career change. >
+"get plotter"  99 -> 99 Vogon Hold | Taken. Ford continues trying to talk the guard into a sudden career change. >
+"z"  99 -> 99 Vogon Hold | Time passes... Ford continues trying to talk the guard into a sudden career change. >
+"z"  99 -> 99 Vogon Hold | Time passes... Ford continues trying to talk the guard into a sudden career change. >
+"z"  99 -> 135 Airlock | Time passes... The guard says, "Well, all things considered, I guess I like being a guard. Especially the shouting. Resistance is useless!" He throws 
+"examine thumb"  135 -> 135 Airlock | The electronic Sub-Etha signaling device is shaped like a small fist with an extended thumb. Various lights along its "knuckles" are currently blinkin
+"press green button"  135 -> 125 Dark | Every molecule in your body gets pulled away from every other molecule. Then suddenly they snap back together again like elastic, and you find, with a
+"n"  125 -> 125 Dark | You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"s"  125 -> 125 Dark | You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. >
+"n"  125 -> 125 Dark | You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"s"  125 -> 125 Dark | You can't see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. >
+"listen"  125 -> 125 Dark | (to darkness) You hear the deep and distant hum of a star drive coming from far above. There is an exit to port. >
+"Aft"  125 -> 149 Entry Bay Number Two | (We were lying about the exit to port.) You emerge from a small doorway... Entry Bay Number Two This is an entry bay for the Heart of Gold. A corridor
+"read brochure"  149 -> 74 Bridge | (Taking the sales brochure first) "Equipped with a sensational breakthrough in Improbability Physics, the Heart of Gold will make you the envy of ever
+"z"  74 -> 74 Bridge | Time passes... "Hey, Zaphod, how ya doing?" says Ford. He's cool. "Not bad, Ford. Great to see you," replies Zaphod. He's cooler. You suddenly realise
+"z"  74 -> 74 Bridge | Time passes... "Like my spaceship, Ford?" Zaphod asks. "YOUR spaceship?" says Ford, losing his cool for a second. "Yeah, I stole it," Zaphod admits. "
+"inventory"  74 -> 74 Bridge | I don't know the word "inventory". >
+"take pincer"  74 -> 74 Bridge | You're holding too much already. >
+"put all into thing"  74 -> 74 Bridge | sales brochure: Done. atomic vector plotter: Done. towel: Done. your gown: You'll have to remove it first. pocket fluff: Done. babel fish: You'll have
+"d"  74 -> 93 Corridor, Fore End | Corridor, Fore End This is one end of a short corridor that continues aft along the main deck of the Heart of Gold. Doorways lead to fore and port. In
+"port"  93 -> 138 Galley | Galley You are in the Galley area of the ship, containing a machine which is the state of the art in Nutritional Technology, a Sirius Cybernetics Corp
+"touch pad"  138 -> 138 Galley | The Nutrimat makes an instant but highly detailed examination of your taste buds, a spectroscopic analysis of your metabolism and sends tiny experimen
+"get cup"  138 -> 138 Galley | Taken. >
+"starboard"  138 -> 93 Corridor, Fore End | Corridor, Fore End >
+"aft"  93 -> 69 Corridor, Aft End | Corridor, Aft End This is one end of a short corridor that continues fore along the main deck of the Heart of Gold. Doorways lead to aft and port. In 
+"aft"  69 -> 69 Corridor, Aft End | That entrance leads to the Infinite Improbability Drive chamber. It's supposed to be a terribly dangerous area of the ship. Are you sure you want to g
+"yes"  69 -> 69 Corridor, Aft End | Absolutely sure? >
+"yes"  69 -> 69 Corridor, Aft End | I can tell you don't want to really. You stride away with a spring in your step, wisely leaving the Drive Chamber safely behind you. Telegrams arrive 
+"aft"  69 -> 69 Corridor, Aft End | What? You're joking, of course. Can I ask you to reconsider? >
+"no"  69 -> 123 Engine Room | Engine Room You're in the Infinite Improbability Drive chamber. Nothing happens; there is nothing to see. >
+"look"  123 -> 123 Engine Room | Engine Room I mean it! There's nothing to see here! >
+"look"  123 -> 123 Engine Room | Engine Room Okay, okay, there are a FEW things to see here. This is the room that houses the powerful Infinite Improbability Generator that drives the
+"drop thing"  123 -> 123 Engine Room | It falls to the ground with a light "thunk." It doesn't do anything else at all. >
+"get rasp"  123 -> 123 Engine Room | Taken. You feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room. >
+"get pliers"  123 -> 123 Engine Room | Taken. Marvin wanders off. >
+"put rasp into thing"  123 -> 123 Engine Room | Done. >
+"put pliers into thing"  123 -> 123 Engine Room | Done. >
+"get improbability drive"  123 -> 123 Engine Room | Taken. >
+"fore"  123 -> 69 Corridor, Aft End | Corridor, Aft End >
+"fore"  69 -> 93 Corridor, Fore End | Corridor, Fore End >
+"up"  93 -> 74 Bridge | Bridge There is a satchel here. There is a handbag here. There is a molecular hyperwave pincer here. >
+"drop drive"  74 -> 74 Bridge | Dropped. >
+"drop cup"  74 -> 74 Bridge | Dropped. >
+"drop plotter"  74 -> 74 Bridge | Dropped. >
+"z"  74 -> 74 Bridge | Time passes... >
+"drop plotter"  74 -> 74 Bridge | You're not holding the atomic vector plotter. >
+"z"  74 -> 74 Bridge | Time passes... You feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room. >
+"drop plotter"  74 -> 74 Bridge | You're not holding the atomic vector plotter. >
+"put small plug in plotter"  74 -> 74 Bridge | Plugged. Marvin wanders off. >
+"put bit in cup"  74 -> 74 Bridge | Done. >
+"turn on drive"  74 -> 125 Dark | A mist spins round your head. You fall into what seems like a bottomless pit. Suddenly, you hit the bottom so hard that you wish it had been bottomles
+"n"  125 -> 125 Dark | You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"s"  125 -> 125 Dark | You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you 
+"n"  125 -> 125 Dark | You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"s"  125 -> 125 Dark | You can't hear anything, see anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. >
+"smell"  125 -> 125 Dark | (darkness) It does smell a bit. There's something pungent waving under your nose. Your head begins to clear. You can make out a shadow moving in the d
+"look at shadow"  125 -> 106 Lair | The shadow is vaguely Bugblatter Beast-shaped. Lair This is the lair of the Ravenous Bugblatter Beast of Traal. There are exits east and southwest. Th
+"say my name"  106 -> 106 Lair | The Beast roars your name with relish, and explains that once it has eaten you, your name will be added to its list of remembrance. >
+"e"  106 -> 157 Beast's Outer Lair | Beast's Outer Lair This is a large walled courtyard. Strewn about are a profusion of gnawed bones bleaching in the sun. In case the significance of th
+"examine memorial"  157 -> 157 Beast's Outer Lair | There are countless names carved on the sandstone memorial: Gleb Snardfitz, Bibs Trench, Zeke Fitzberry, Elmo Smith, Brian "Spike" Berkowitz, Clybert 
+"get sharp stone"  157 -> 157 Beast's Outer Lair | Taken. The Beast is nearly upon you. >
+"put towel on your head"  157 -> 157 Beast's Outer Lair | The Ravenous Bugblatter Beast of Traal is completely bewildered. It is so dim it thinks that if you can't see it, it can't see you. You have a few sec
+"carve my name on the memorial"  157 -> 157 Beast's Outer Lair | You chip away with the stone. It's not your best writing, what with your mounting sense of panic and a towel wrapped around your head. However, it suf
+"remove towel"  157 -> 157 Beast's Outer Lair | You unwrap the towel from your head. Beast's Outer Lair This is a large walled courtyard. Strewn about are a profusion of gnawed bones bleaching in th
+"drop stone"  157 -> 157 Beast's Outer Lair | Dropped. >
+"w"  157 -> 106 Lair | Lair >
+"sw"  106 -> 40 Inner Lair | Inner Lair This is the heart of the Beast's lair. The only exit leads northeast. The skeleton of a dead Beasthunter lies nearby, clutching something l
+"get interface"  40 -> 40 Inner Lair | Taken. >
+"z"  40 -> 125 Dark | Time passes... Suddenly, a team of Fronurbdian Beasthunters charges in, intent on catching the Beast for their zoo. Mistaking you for the Beast, they 
+"z"  125 -> 125 Dark | You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you 
+"z"  125 -> 125 Dark | You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"z"  125 -> 125 Dark | You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. >
+"z"  125 -> 125 Dark | There's nothing you can taste, nothing you can see, nothing you can feel, nothing you can smell, you do not even know who you are. >
+"hear the dark"  125 -> 125 Dark | You hear the deep and distant hum of a star drive coming from far above. There is an exit to port. >
+"aft"  125 -> 149 Entry Bay Number Two | (We were lying about the exit to port.) You emerge from a small doorway... Entry Bay Number Two >
+"aft"  149 -> 93 Corridor, Fore End | Corridor, Fore End >
+"up"  93 -> 74 Bridge | Bridge There is a nice, hot cup of Advanced Tea Substitute here. Lying on the deck is a plotter connected to a spare Improbability Drive. The plotter'
+"d"  74 -> 93 Corridor, Fore End | Corridor, Fore End >
+"port"  93 -> 138 Galley | Galley A carton labelled "Nutrimat/Computer Interface" is sitting here. >
+"open panel"  138 -> 138 Galley | Opening the Nutrimat reveals a circuit board. >
+"take circuit"  138 -> 138 Galley | Taken. >
+"insert interface in nutrimat"  138 -> 138 Galley | Done. >
+"close panel"  138 -> 138 Galley | Okay, the Nutrimat is now closed. >
+"touch pad"  138 -> 138 Galley | The Nutrimat is puzzled that you want something made by pouring boiling water on dead leaves and squirting stuff from a cow in it, and says that it wi
+"starboard"  138 -> 93 Corridor, Fore End | Corridor, Fore End >
+"up"  93 -> 74 Bridge | Bridge There is a nice, hot cup of Advanced Tea Substitute here. Lying on the deck is a plotter connected to a spare Improbability Drive. The plotter'
+"put large plug in large receptacle"  74 -> 74 Bridge | Plugged. >
+"z"  74 -> 74 Bridge | Time passes... "Announcement, announcement. This is Eddie (the shipboard computer). Emergency situation! Nuclear missiles have just been launched at u
+"turn on drive"  74 -> 74 Bridge | As you flip the switch, sparks fly from the large receptacle. "My new control console!" wails Eddie (the shipboard computer). "This is the thanks I ge
+"d"  74 -> 93 Corridor, Fore End | Corridor, Fore End You feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room. >
+"port"  93 -> 138 Galley | Galley A carton labelled "Nutrimat/Computer Interface" is sitting here. It looks like the slot contains: tea >
+"get tea"  138 -> 138 Galley | no tea: Dropped. >
+"starboard"  138 -> 93 Corridor, Fore End | Corridor, Fore End You feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room. >
+"up"  93 -> 74 Bridge | Bridge There is a nice, hot cup of Advanced Tea Substitute here. Lying on the deck is a plotter connected to a spare Improbability Drive. The plotter'
+"drop tea"  74 -> 74 Bridge | no tea: Taken. >
+"z"  74 -> 74 Bridge | Time passes... >
+"z"  74 -> 74 Bridge | Time passes... >
+"z"  74 -> 74 Bridge | Time passes... You feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room. >
+"z"  74 -> 74 Bridge | Time passes... Marvin wanders off. >
+"z"  74 -> 74 Bridge | Time passes... >
+"z"  74 -> 74 Bridge | Time passes... You feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room. >
+"z"  74 -> 74 Bridge | Time passes... Marvin wanders off. >
+"z"  74 -> 74 Bridge | Time passes... >
+"z"  74 -> 74 Bridge | Time passes... "Announcement, announcement. This is Eddie (the shipboard computer). We have just landed on the legendary lost planet of Magrathea. I d
+"z"  74 -> 74 Bridge | Time passes... >
+"remove bit"  74 -> 74 Bridge | The long, dangly bit is no longer suspended in Advanced Tea Substitute. >
+"put bit in tea"  74 -> 74 Bridge | Done. >
+"turn on drive"  74 -> 125 Dark | Like fog rolling in off the ocean, a shroud of blackness billows toward you. Unlike fog rolling in off the ocean, the blackness hits you like a sixtee
+"z"  125 -> 125 Dark | You can't see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. It i
+"touch"  125 -> 125 Dark | (darkness) You can hear nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. >
+"touch"  125 -> 125 Dark | (darkness) You can hear nothing, smell nothing, taste nothing, feel nothing, and are not even certain who you are. >
+"drink liquid"  125 -> 125 Dark | You can't see any liquid here! >
+"examine arthur"  125 -> 125 Dark | You can see nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"drop wine"  125 -> 125 Dark | You can't see that here! >
+"get fluff"  125 -> 125 Dark | You can't see any fluff here! >
+"open bag"  125 -> 125 Dark | You can't see any bag here! >
+"put fluff in bag"  125 -> 125 Dark | Those things aren't here! >
+"get wine"  125 -> 125 Dark | You can't see any wine here! >
+"z"  125 -> 125 Dark | You can see nothing, feel nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"z"  125 -> 125 Dark | There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, you do not even know who you are. >
+"z"  125 -> 125 Dark | There's nothing you can taste, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are. >
+"z"  125 -> 125 Dark | There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can smell, you do not even know who you are. >
+"z"  125 -> 125 Dark | You can see nothing, feel nothing, taste nothing, smell nothing, and are not entirely certain who you are. >
+"z"  125 -> 125 Dark | You can hear nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. >
+"hear"  125 -> 125 Dark | (darkness) You can't hear anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got
+"aft"  125 -> 125 Dark | You can't hear anything, see anything, smell anything, or taste anything, and do not even know where you are or who you are or how you got there. >
+"aft"  125 -> 125 Dark | You can't see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. >
+"up"  125 -> 125 Dark | You can hear nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. >
+"open handbag"  125 -> 125 Dark | You can't see any handbag here! >
+"get tweezers"  125 -> 125 Dark | You can't see any tweezers here! >
+"get fluff"  125 -> 125 Dark | You can't see any fluff here! >
+"put all in thing"  125 -> 125 Dark | There isn't anything to put! >
+"turn on drive"  125 -> 125 Dark | You can hear nothing, smell nothing, taste nothing, feel nothing, and are not even certain who you are. >
+"z"  125 -> 125 Dark | You can hear nothing, smell nothing, taste nothing, see nothing, and are not even certain who you are. >
+"touch"  125 -> 125 Dark | (darkness) It does feel a bit cold and wet and squishy. There seems to be some liquid at your fingertips. >
+"touch"  125 -> 125 Dark | (darkness) It does feel a bit cold and wet and squishy. There seems to be some liquid at your fingertips. >
+"touch"  125 -> 125 Dark | (darkness) It does feel a bit cold and wet and squishy. There seems to be some liquid at your fingertips. >
+"touch"  125 -> 125 Dark | (darkness) It does feel a bit cold and wet and squishy. There seems to be some liquid at your fingertips. >
+"drink liquid"  125 -> 70 Living Room | It tastes just like wine. In fact, you realise with growing embarrassment that your hand is sitting in a glass of white wine. You're at a party being 
+"get flowerpot"  70 -> 70 Living Room | You can't see any flowerpot here! >
+"put it in thing"  70 -> 70 Living Room | I don't see what you're referring to. >
+"examine thumb"  70 -> 70 Living Room | You can't see any thumb here! >
+"press red button"  70 -> 70 Living Room | You can't see any red button here! >
+"give thumb to robot"  70 -> 70 Living Room | You can't see that here! >
+"z"  70 -> 70 Living Room | Time passes... >
+"show warranty"  70 -> 70 Living Room | What do you want to show the warranty to? >
+"press green button"  70 -> 70 Living Room | You can't see any green button here! >
+"z"  70 -> 70 Living Room | Time passes... >
+"z"  70 -> 70 Living Room | Time passes... >
+"z"  70 -> 70 Living Room | Time passes... >
+"z"  70 -> 70 Living Room | Time passes... >
+"hear"  70 -> 70 Living Room | What do you want to hear? >
+"aft"  70 -> 70 Living Room | What! Leave a fun party like this? >
+"aft"  70 -> 70 Living Room | What! Leave a fun party like this? >
+"up"  70 -> 70 Living Room | You can't go that way. >
+"turn on drive"  70 -> 70 Living Room | You can't see any drive here! >
+"see"  70 -> 70 Living Room | What do you want to see? >
+"see"  70 -> 70 Living Room | What do you want to see? >
+"see"  70 -> 70 Living Room | What do you want to see? >
+"see"  70 -> 70 Living Room | What do you want to see? >
+"examine light"  70 -> 70 Living Room | You can't see any light here. >
+"look under seat"  70 -> 70 Living Room | You can't see any seat here! >
+"get in seat" probe:seat 70 -> 70 Living Room | You can't see any seat here! >
+"get out of seat" probe:seat 70 -> 70 Living Room | You can't see any of seat here! >
+"enter seat" probe:seat 70 -> 70 Living Room | You can't see any seat here! >
+"exit" probe:seat 70 -> 70 Living Room | Did you have any particular direction in mind? >
+"sit on seat" probe:seat 70 -> 70 Living Room | You can't see any seat here! >
+"stand up" probe:seat 70 -> 70 Living Room | You are already standing. >
+"board seat" probe:seat 70 -> 70 Living Room | You can't see any seat here! >
+"get out of seat" probe:seat 70 -> 70 Living Room | You can't see any of seat here! >
+"climb on seat" probe:seat 70 -> 70 Living Room | You can't see any seat here! >
+"get off seat" probe:seat 70 -> 70 Living Room | You can't see that here! >
+"LOOK"  70 -> 70 Living Room | Living Room You are in a large Living Room. There is a party going on. Other rooms lie to the west and southwest, and the apartment's front door is so
+"ENTER SEAT"  70 -> 70 Living Room | You can't see any seat here! >
+"EXIT"  70 -> 70 Living Room | Did you have any particular direction in mind? >
+"GET OUT OF SEAT"  70 -> 70 Living Room | You can't see any of seat here! >
+"GET IN SEAT"  70 -> 70 Living Room | You can't see any seat here! >
+"GET OUT OF SEAT"  70 -> 70 Living Room | You can't see any of seat here! >
+"BOARD SEAT"  70 -> 70 Living Room | You can't see any seat here! >
+"GET OUT OF SEAT"  70 -> 70 Living Room | You can't see any of seat here! >
+"SIT IN SEAT"  70 -> 70 Living Room | You can't see any seat here! >
+"STAND UP"  70 -> 70 Living Room | You are already standing. >
+"SIT ON SEAT"  70 -> 70 Living Room | You can't see any seat here! >
+"STAND UP"  70 -> 70 Living Room | You are already standing. >
+"CLIMB IN SEAT"  70 -> 70 Living Room | You can't see any seat here! >
+"LEAVE SEAT"  70 -> 70 Living Room | You can't see any seat here! >
+"LOOK"  70 -> 70 Living Room | Living Room You are in a large Living Room. There is a party going on. Other rooms lie to the west and southwest, and the apartment's front door is so

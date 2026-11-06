@@ -1,0 +1,18 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index a2d3c91..0919004 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -192,7 +192,12 @@ var ModuleStatFactsClaude = {
+         // ACTORBIT 31 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json):
+         // 'GNOME, HELLO' tests 31 TRUE on gnome 245, 'TWIN, HELLO' TRUE on your older self 26, 'BOOK, HELLO' FALSE on spell
+         // book 139 ("You can't talk to a spell book!"). Source exact 9/9.
+-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31 },
++        // WEARBIT 21 = wearable (grok1 2026-10-17, g1-scan9 on the Jericho walkthrough (route soj), objects held, test_attr only during the
++        // named command): @150 'wear amulet' tests magic amulet 60:21 TRUE and @244 'wear suit' tests grue suit 95:21 TRUE (both "You are
++        // already wearing it.": V-WEAR verbs.zil:1914 passes WEARBIT then PERFORMs TAKE); @150 'wear coin' tests zorkmid coin 118:21 FALSE
++        // ("You can't wear the zorkmid coin.") and 'wear calendar' 61:21 FALSE. Source WEARBIT exact 2/2; bounded table (255 objects, ends
++        // 3045): bit 21 = amulet 60, suit 95 + GLOBAL-OBJECTS 70. No rooms. worn is NOT mapped (no separate worn flag; held = worn).
++        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "wearable": 21 },
+         "playerGlobal": 38
+     },
+     // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;

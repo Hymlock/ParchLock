@@ -1,0 +1,15 @@
+### verbs.zil:2407 (historicalsource/hitchhikersguide)
+
+<ROUTINE DESCRIBE-ROOM ("OPTIONAL" (LOOK? <>) "AUX" V? STR AV)
+	 <SET V? <OR .LOOK? <EQUAL? ,VERBOSITY 2>>>
+	 <COND (<NOT ,LIT>
+		<TELL "It is pitch black.">
+		<CRLF>
+		<RETURN <>>)>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>)>
+	 <COND (<IN? ,HERE ,ROOMS>
+		<TELL D ,HERE>
+		<SET AV <LOC ,WINNER>>
+

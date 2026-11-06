@@ -1,0 +1,18 @@
+[
+  {
+    "file": "current-native-normal.json",
+    "sha256": "a9c92fbc0f58409a977f167b294afe7b865edd8e29b4dbdd91673d14f869d1d3"
+  },
+  {
+    "file": "current-native-before.json",
+    "sha256": "4a459461c68c42876e44b59cdc047609dfa6aab2b87c53b8a007f9dd486fa615"
+  },
+  {
+    "file": "current-native-after.json",
+    "sha256": "37b4be93dcd62fe8d37609a03e16cc95bec7cb059be42c1fa4da3c974d3872ba"
+  },
+  {
+    "file": "author-proposal.json",
+    "sha256": "82c2c6efb356614a9de6b7f58fd16be3e9f48ae14680c3bd7f40c59893689a48"
+  }
+]

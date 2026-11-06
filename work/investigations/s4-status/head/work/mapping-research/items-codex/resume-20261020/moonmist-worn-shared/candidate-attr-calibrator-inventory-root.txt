@@ -1,0 +1,15 @@
+PASS: with zero observations, confirmedInventoryRootId is null (no invented answer)
+PASS: correlation targets the real transmat popper object id
+PASS: the confirmed inventory root is the REAL insert_obj destination (171), not the (possibly wrong) probe playerId
+PASS: resolveInventoryRootId returns the D75-confirmed real holder (171) instead of falling through to the empty-handed playerId (20)
+PASS: a different game's identity key never inherits another game's confirmed inventory root
+PASS: offstage consumption preserves the real prior holder
+PASS: detached persisted bucket cannot become inventory
+PASS: in-room real holder remains admitted
+PASS: room reinsertion can never become the inventory holder
+PASS: already persisted current-room root is ignored
+PASS: persisted compiled-room root remains excluded after travel
+PASS: valid existing holder survives rejection of room roots
+PASS: same-parent remove/reinsert is not a successful or behavioral Take
+
+13 PASS / 0 FAIL

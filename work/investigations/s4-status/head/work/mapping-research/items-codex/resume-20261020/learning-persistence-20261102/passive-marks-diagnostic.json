@@ -1,0 +1,4409 @@
+{
+  "tier": "Exact driver boot/seed/LOOK and passive snapshots only; no scope/provider/refresh observation calls, VM writes, extra gameplay or teaching",
+  "rows": [
+    {
+      "label": "base",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-base-20261102",
+      "game": "cabal.z5.js",
+      "stage": "driver-sample",
+      "state": {
+        "text": [
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "Not exactly the holiday of a lifetime. You've come here to investigate the mysterious disappearance of several UFOs in the Bermuda Triangle (which, as you've discovered, is not a triangle but a trapezium, stretching as far back as New Mexico), but the authorities have been doing everything they can to block you. The girl in the City Hall even pretended not to know what you were talking about! If you were the paranoid type, you'd suspect the aliens themselves were in on the conspiracy, but no, it's probably just the usual government cover-up.",
+          " ",
+          "All the same, it's best to lie low for a while. To avoid suspicion (not to mention the mosquitoes) you've camped down for the afternoon in this innocuous family restaurant, drinking coffee. And what better way to pass the time than play an Infocom game on your PalmPilot? You can't beat the old-school games, and in Infidel's case, you literally can't beat it. In fact, you've been stuck in the slab room for sixteen years. Sixteen years -- now that's entertainment.",
+          " ",
+          "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+          " ",
+          ">look",
+          " ",
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+          " ",
+          "The vagrant seems strangely interested in your PalmPilot.",
+          " ",
+          "> "
+        ],
+        "room": 32,
+        "marks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            },
+            "visible": true,
+            "line": "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 34,
+            "name": "table",
+            "parentId": 32,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "openable": false,
+              "proper": false,
+              "scenery": true,
+              "scored": false,
+              "static": true,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": false
+            },
+            "aliases": [
+              "yellow",
+              "smears",
+              "table",
+              "plastic"
+            ],
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {},
+        "verifiedNouns": {
+          "34": "table",
+          "35": "coffee",
+          "41": "families",
+          "42": "vagrant",
+          "222": "your PalmPilot"
+        },
+        "commandNouns": {
+          "33": "seat",
+          "34": "table",
+          "35": "coffee",
+          "36": "walls",
+          "37": "window",
+          "38": "floor",
+          "39": "ceiling",
+          "40": "door",
+          "41": "families",
+          "42": "vagrant",
+          "222": "palmpilot"
+        },
+        "scope": {
+          "roomName": "McDonald's Hamburger Restaurant, Miami Beach, Florida",
+          "roomId": 32,
+          "roomNouns": [
+            "your seat",
+            "table",
+            "your coffee",
+            "walls",
+            "windows",
+            "floor",
+            "ceiling",
+            "door",
+            "families",
+            "vagrant"
+          ],
+          "inventoryNouns": [
+            "your palmpilot"
+          ],
+          "lastLookText": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n ",
+          "lastInventoryText": "",
+          "lastReplyText": " \nMcDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)\nYou're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n \n> ",
+          "_inventoryTree": [
+            {
+              "name": "your PalmPilot",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "absent": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": true,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": true,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "male": false,
+                "female": false,
+                "neuter": false,
+                "pluralname": false,
+                "takeable": true
+              }
+            }
+          ]
+        },
+        "liveMarks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            }
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            }
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            }
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            }
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "21": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "22": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "25": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "54": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "3-041127",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+        "ramSha256": "27b85ce0f51e42ebf460cc9d036c5136b185df03ebcb481c7ffad92b79f8b3f8",
+        "textSha256": "91d138a5cf1aad33af6805831b18fad7a6d0f217937c79a213234947dab7ef1a"
+      }
+    },
+    {
+      "label": "base",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-base-20261102",
+      "game": "cabal.z5.js",
+      "stage": "passive-delay-same-page",
+      "state": {
+        "text": [
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "Not exactly the holiday of a lifetime. You've come here to investigate the mysterious disappearance of several UFOs in the Bermuda Triangle (which, as you've discovered, is not a triangle but a trapezium, stretching as far back as New Mexico), but the authorities have been doing everything they can to block you. The girl in the City Hall even pretended not to know what you were talking about! If you were the paranoid type, you'd suspect the aliens themselves were in on the conspiracy, but no, it's probably just the usual government cover-up.",
+          " ",
+          "All the same, it's best to lie low for a while. To avoid suspicion (not to mention the mosquitoes) you've camped down for the afternoon in this innocuous family restaurant, drinking coffee. And what better way to pass the time than play an Infocom game on your PalmPilot? You can't beat the old-school games, and in Infidel's case, you literally can't beat it. In fact, you've been stuck in the slab room for sixteen years. Sixteen years -- now that's entertainment.",
+          " ",
+          "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+          " ",
+          ">look",
+          " ",
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+          " ",
+          "The vagrant seems strangely interested in your PalmPilot.",
+          " ",
+          "> "
+        ],
+        "room": 32,
+        "marks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            },
+            "visible": true,
+            "line": "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 34,
+            "name": "table",
+            "parentId": 32,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "openable": false,
+              "proper": false,
+              "scenery": true,
+              "scored": false,
+              "static": true,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": false
+            },
+            "aliases": [
+              "yellow",
+              "smears",
+              "table",
+              "plastic"
+            ],
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {},
+        "verifiedNouns": {
+          "34": "table",
+          "35": "coffee",
+          "41": "families",
+          "42": "vagrant",
+          "222": "your PalmPilot"
+        },
+        "commandNouns": {
+          "33": "seat",
+          "34": "table",
+          "35": "coffee",
+          "36": "walls",
+          "37": "window",
+          "38": "floor",
+          "39": "ceiling",
+          "40": "door",
+          "41": "families",
+          "42": "vagrant",
+          "222": "palmpilot"
+        },
+        "scope": {
+          "roomName": "McDonald's Hamburger Restaurant, Miami Beach, Florida",
+          "roomId": 32,
+          "roomNouns": [
+            "your seat",
+            "table",
+            "your coffee",
+            "walls",
+            "windows",
+            "floor",
+            "ceiling",
+            "door",
+            "families",
+            "vagrant"
+          ],
+          "inventoryNouns": [
+            "your palmpilot"
+          ],
+          "lastLookText": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n ",
+          "lastInventoryText": "",
+          "lastReplyText": " \nMcDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)\nYou're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n \n> ",
+          "_inventoryTree": [
+            {
+              "name": "your PalmPilot",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "absent": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": true,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": true,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "male": false,
+                "female": false,
+                "neuter": false,
+                "pluralname": false,
+                "takeable": true
+              }
+            }
+          ]
+        },
+        "liveMarks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            }
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            }
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            }
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            }
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "21": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "22": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "25": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "54": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "3-041127",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+        "ramSha256": "27b85ce0f51e42ebf460cc9d036c5136b185df03ebcb481c7ffad92b79f8b3f8",
+        "textSha256": "91d138a5cf1aad33af6805831b18fad7a6d0f217937c79a213234947dab7ef1a"
+      }
+    },
+    {
+      "label": "base",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-base-20261102",
+      "game": "heist.z8.js",
+      "stage": "driver-sample",
+      "state": {
+        "text": [
+          " ",
+          " ",
+          " ",
+          " ",
+          "CHAPTER ONE: HAPPY FAMILY",
+          " ",
+          "Wet, tired and incredibly bored.",
+          " ",
+          "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+          " ",
+          "What makes it even worse is the very fact you're here. An all too often forgotten niece at her uncle's funeral. You're starting to wish you hadn't made the long journey up north after all. It's not like Uncle Henry actually cared about anything except his money and his ego, and you just wish the priest would get on with this tiresome ceremony.",
+          " ",
+          "After it's finished you could go home, emptying any lingering thoughts of the selfish, arrogant man from your mind.",
+          " ",
+          "HEIST",
+          "\"The Crime of the Century\"",
+          "An Original Piece of Interactive Fiction",
+          "Copyright (c) 1997, Andy Phillips",
+          " ",
+          "Release 4 / Serial number 971125 / Inform v1502 Library 5/12",
+          "Standard interpreter 1.2",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          ">look",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          "The priest pauses for a moment before continuing with his speech.",
+          " ",
+          "\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"",
+          " ",
+          "> "
+        ],
+        "room": 16,
+        "marks": [
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            },
+            "visible": true,
+            "line": "Your uncle's final resting place is marked by a hole in the ground.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            },
+            "visible": true,
+            "line": "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 124,
+            "name": "silver picture frame",
+            "parentId": 19,
+            "attrs": {
+              "animate": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "openable": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "female": false,
+              "takeable": true
+            },
+            "aliases": [
+              "silver",
+              "picture",
+              "frame",
+              "markings",
+              "ancient",
+              "script",
+              "border",
+              "weird"
+            ],
+            "confidence": 0.9,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {
+          "17": {
+            "phrase": "uncle's final resting place",
+            "words": [
+              "final",
+              "grave",
+              "ground",
+              "henry's",
+              "henrys",
+              "hole",
+              "pit",
+              "place",
+              "resting",
+              "tomb",
+              "uncle",
+              "uncle's",
+              "uncles"
+            ]
+          }
+        },
+        "verifiedNouns": {
+          "17": "uncle's final resting place",
+          "18": "group of mourners"
+        },
+        "commandNouns": {
+          "17": "place",
+          "18": "mourners",
+          "19": "bag",
+          "124": "frame",
+          "126": "student"
+        },
+        "scope": {
+          "roomName": "Graveyard",
+          "roomId": 16,
+          "roomNouns": [
+            "uncle's final resting place",
+            "group of mourners",
+            "uncle henry's grave"
+          ],
+          "inventoryNouns": [
+            "black canvas bag",
+            "silver picture frame",
+            "student's photo"
+          ],
+          "lastLookText": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n ",
+          "lastInventoryText": "",
+          "_inventoryTree": [
+            {
+              "name": "black canvas bag",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": true,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "silver picture frame",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "student's photo",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            }
+          ],
+          "lastReplyText": " \nGraveyard\nJust standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n \n> "
+        },
+        "liveMarks": [
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            }
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "19": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "24": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "4-971125",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+        "ramSha256": "0885b0b4bb810ac8aae15904721bc008fdcf798c5f65c909fcebabaeb368955a",
+        "textSha256": "f088e54f2b16419cc60473c2eaa0a6c96442e6b61087d401e991e87de4828862"
+      }
+    },
+    {
+      "label": "base",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-base-20261102",
+      "game": "heist.z8.js",
+      "stage": "passive-delay-same-page",
+      "state": {
+        "text": [
+          " ",
+          " ",
+          " ",
+          " ",
+          "CHAPTER ONE: HAPPY FAMILY",
+          " ",
+          "Wet, tired and incredibly bored.",
+          " ",
+          "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+          " ",
+          "What makes it even worse is the very fact you're here. An all too often forgotten niece at her uncle's funeral. You're starting to wish you hadn't made the long journey up north after all. It's not like Uncle Henry actually cared about anything except his money and his ego, and you just wish the priest would get on with this tiresome ceremony.",
+          " ",
+          "After it's finished you could go home, emptying any lingering thoughts of the selfish, arrogant man from your mind.",
+          " ",
+          "HEIST",
+          "\"The Crime of the Century\"",
+          "An Original Piece of Interactive Fiction",
+          "Copyright (c) 1997, Andy Phillips",
+          " ",
+          "Release 4 / Serial number 971125 / Inform v1502 Library 5/12",
+          "Standard interpreter 1.2",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          ">look",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          "The priest pauses for a moment before continuing with his speech.",
+          " ",
+          "\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"",
+          " ",
+          "> "
+        ],
+        "room": 16,
+        "marks": [
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            },
+            "visible": true,
+            "line": "Your uncle's final resting place is marked by a hole in the ground.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            },
+            "visible": true,
+            "line": "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 124,
+            "name": "silver picture frame",
+            "parentId": 19,
+            "attrs": {
+              "animate": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "openable": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "female": false,
+              "takeable": true
+            },
+            "aliases": [
+              "silver",
+              "picture",
+              "frame",
+              "markings",
+              "ancient",
+              "script",
+              "border",
+              "weird"
+            ],
+            "confidence": 0.9,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {
+          "17": {
+            "phrase": "uncle's final resting place",
+            "words": [
+              "final",
+              "grave",
+              "ground",
+              "henry's",
+              "henrys",
+              "hole",
+              "pit",
+              "place",
+              "resting",
+              "tomb",
+              "uncle",
+              "uncle's",
+              "uncles"
+            ]
+          }
+        },
+        "verifiedNouns": {
+          "17": "uncle's final resting place",
+          "18": "group of mourners"
+        },
+        "commandNouns": {
+          "17": "place",
+          "18": "mourners",
+          "19": "bag",
+          "124": "frame",
+          "126": "student"
+        },
+        "scope": {
+          "roomName": "Graveyard",
+          "roomId": 16,
+          "roomNouns": [
+            "uncle's final resting place",
+            "group of mourners",
+            "uncle henry's grave"
+          ],
+          "inventoryNouns": [
+            "black canvas bag",
+            "silver picture frame",
+            "student's photo"
+          ],
+          "lastLookText": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n ",
+          "lastInventoryText": "",
+          "_inventoryTree": [
+            {
+              "name": "black canvas bag",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": true,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "silver picture frame",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "student's photo",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            }
+          ],
+          "lastReplyText": " \nGraveyard\nJust standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n \n> "
+        },
+        "liveMarks": [
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            }
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "19": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "24": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "4-971125",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+        "ramSha256": "0885b0b4bb810ac8aae15904721bc008fdcf798c5f65c909fcebabaeb368955a",
+        "textSha256": "f088e54f2b16419cc60473c2eaa0a6c96442e6b61087d401e991e87de4828862"
+      }
+    },
+    {
+      "label": "r2",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-20261102",
+      "game": "cabal.z5.js",
+      "stage": "driver-sample",
+      "state": {
+        "text": [
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "Not exactly the holiday of a lifetime. You've come here to investigate the mysterious disappearance of several UFOs in the Bermuda Triangle (which, as you've discovered, is not a triangle but a trapezium, stretching as far back as New Mexico), but the authorities have been doing everything they can to block you. The girl in the City Hall even pretended not to know what you were talking about! If you were the paranoid type, you'd suspect the aliens themselves were in on the conspiracy, but no, it's probably just the usual government cover-up.",
+          " ",
+          "All the same, it's best to lie low for a while. To avoid suspicion (not to mention the mosquitoes) you've camped down for the afternoon in this innocuous family restaurant, drinking coffee. And what better way to pass the time than play an Infocom game on your PalmPilot? You can't beat the old-school games, and in Infidel's case, you literally can't beat it. In fact, you've been stuck in the slab room for sixteen years. Sixteen years -- now that's entertainment.",
+          " ",
+          "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+          " ",
+          ">look",
+          " ",
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+          " ",
+          "The vagrant seems strangely interested in your PalmPilot.",
+          " ",
+          "> "
+        ],
+        "room": 32,
+        "marks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            },
+            "visible": true,
+            "line": "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 34,
+            "name": "table",
+            "parentId": 32,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "openable": false,
+              "proper": false,
+              "scenery": true,
+              "scored": false,
+              "static": true,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": false
+            },
+            "aliases": [
+              "yellow",
+              "smears",
+              "table",
+              "plastic"
+            ],
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {},
+        "verifiedNouns": {
+          "34": "table",
+          "35": "coffee",
+          "41": "families",
+          "42": "vagrant",
+          "222": "your PalmPilot"
+        },
+        "commandNouns": {
+          "33": "seat",
+          "34": "table",
+          "35": "coffee",
+          "36": "walls",
+          "37": "window",
+          "38": "floor",
+          "39": "ceiling",
+          "40": "door",
+          "41": "families",
+          "42": "vagrant",
+          "222": "palmpilot"
+        },
+        "scope": {
+          "roomName": "McDonald's Hamburger Restaurant, Miami Beach, Florida",
+          "roomId": 32,
+          "roomNouns": [
+            "your seat",
+            "table",
+            "your coffee",
+            "walls",
+            "windows",
+            "floor",
+            "ceiling",
+            "door",
+            "families",
+            "vagrant"
+          ],
+          "inventoryNouns": [
+            "your palmpilot"
+          ],
+          "lastLookText": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n ",
+          "lastInventoryText": "",
+          "lastReplyText": " \nMcDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)\nYou're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n \n> ",
+          "_inventoryTree": [
+            {
+              "name": "your PalmPilot",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "absent": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": true,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": true,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "male": false,
+                "female": false,
+                "neuter": false,
+                "pluralname": false,
+                "takeable": true
+              }
+            }
+          ]
+        },
+        "liveMarks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            }
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            }
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            }
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            }
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "21": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "22": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "25": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "54": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+        "ramSha256": "27b85ce0f51e42ebf460cc9d036c5136b185df03ebcb481c7ffad92b79f8b3f8",
+        "textSha256": "91d138a5cf1aad33af6805831b18fad7a6d0f217937c79a213234947dab7ef1a"
+      }
+    },
+    {
+      "label": "r2",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-20261102",
+      "game": "cabal.z5.js",
+      "stage": "passive-delay-same-page",
+      "state": {
+        "text": [
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "Not exactly the holiday of a lifetime. You've come here to investigate the mysterious disappearance of several UFOs in the Bermuda Triangle (which, as you've discovered, is not a triangle but a trapezium, stretching as far back as New Mexico), but the authorities have been doing everything they can to block you. The girl in the City Hall even pretended not to know what you were talking about! If you were the paranoid type, you'd suspect the aliens themselves were in on the conspiracy, but no, it's probably just the usual government cover-up.",
+          " ",
+          "All the same, it's best to lie low for a while. To avoid suspicion (not to mention the mosquitoes) you've camped down for the afternoon in this innocuous family restaurant, drinking coffee. And what better way to pass the time than play an Infocom game on your PalmPilot? You can't beat the old-school games, and in Infidel's case, you literally can't beat it. In fact, you've been stuck in the slab room for sixteen years. Sixteen years -- now that's entertainment.",
+          " ",
+          "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+          " ",
+          ">look",
+          " ",
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+          " ",
+          "The vagrant seems strangely interested in your PalmPilot.",
+          " ",
+          "> "
+        ],
+        "room": 32,
+        "marks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            },
+            "visible": true,
+            "line": "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 34,
+            "name": "table",
+            "parentId": 32,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "openable": false,
+              "proper": false,
+              "scenery": true,
+              "scored": false,
+              "static": true,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": false
+            },
+            "aliases": [
+              "yellow",
+              "smears",
+              "table",
+              "plastic"
+            ],
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {},
+        "verifiedNouns": {
+          "34": "table",
+          "35": "coffee",
+          "41": "families",
+          "42": "vagrant",
+          "222": "your PalmPilot"
+        },
+        "commandNouns": {
+          "33": "seat",
+          "34": "table",
+          "35": "coffee",
+          "36": "walls",
+          "37": "window",
+          "38": "floor",
+          "39": "ceiling",
+          "40": "door",
+          "41": "families",
+          "42": "vagrant",
+          "222": "palmpilot"
+        },
+        "scope": {
+          "roomName": "McDonald's Hamburger Restaurant, Miami Beach, Florida",
+          "roomId": 32,
+          "roomNouns": [
+            "your seat",
+            "table",
+            "your coffee",
+            "walls",
+            "windows",
+            "floor",
+            "ceiling",
+            "door",
+            "families",
+            "vagrant"
+          ],
+          "inventoryNouns": [
+            "your palmpilot"
+          ],
+          "lastLookText": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n ",
+          "lastInventoryText": "",
+          "lastReplyText": " \nMcDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)\nYou're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n \n> ",
+          "_inventoryTree": [
+            {
+              "name": "your PalmPilot",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "absent": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": true,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": true,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "male": false,
+                "female": false,
+                "neuter": false,
+                "pluralname": false,
+                "takeable": true
+              }
+            }
+          ]
+        },
+        "liveMarks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            }
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            }
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            }
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            }
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "21": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "22": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "25": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "54": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+        "ramSha256": "27b85ce0f51e42ebf460cc9d036c5136b185df03ebcb481c7ffad92b79f8b3f8",
+        "textSha256": "91d138a5cf1aad33af6805831b18fad7a6d0f217937c79a213234947dab7ef1a"
+      }
+    },
+    {
+      "label": "r2",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-20261102",
+      "game": "heist.z8.js",
+      "stage": "driver-sample",
+      "state": {
+        "text": [
+          " ",
+          " ",
+          " ",
+          " ",
+          "CHAPTER ONE: HAPPY FAMILY",
+          " ",
+          "Wet, tired and incredibly bored.",
+          " ",
+          "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+          " ",
+          "What makes it even worse is the very fact you're here. An all too often forgotten niece at her uncle's funeral. You're starting to wish you hadn't made the long journey up north after all. It's not like Uncle Henry actually cared about anything except his money and his ego, and you just wish the priest would get on with this tiresome ceremony.",
+          " ",
+          "After it's finished you could go home, emptying any lingering thoughts of the selfish, arrogant man from your mind.",
+          " ",
+          "HEIST",
+          "\"The Crime of the Century\"",
+          "An Original Piece of Interactive Fiction",
+          "Copyright (c) 1997, Andy Phillips",
+          " ",
+          "Release 4 / Serial number 971125 / Inform v1502 Library 5/12",
+          "Standard interpreter 1.2",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          ">look",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          "The priest pauses for a moment before continuing with his speech.",
+          " ",
+          "\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"",
+          " ",
+          "> "
+        ],
+        "room": 16,
+        "marks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            },
+            "visible": true,
+            "line": "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            },
+            "visible": true,
+            "line": "Your uncle's final resting place is marked by a hole in the ground.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            },
+            "visible": true,
+            "line": "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 124,
+            "name": "silver picture frame",
+            "parentId": 19,
+            "attrs": {
+              "animate": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "openable": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "female": false,
+              "takeable": true
+            },
+            "aliases": [
+              "silver",
+              "picture",
+              "frame",
+              "markings",
+              "ancient",
+              "script",
+              "border",
+              "weird"
+            ],
+            "confidence": 0.9,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {
+          "17": {
+            "phrase": "uncle's final resting place",
+            "words": [
+              "final",
+              "grave",
+              "ground",
+              "henry's",
+              "henrys",
+              "hole",
+              "pit",
+              "place",
+              "resting",
+              "tomb",
+              "uncle",
+              "uncle's",
+              "uncles"
+            ]
+          }
+        },
+        "verifiedNouns": {
+          "17": "uncle's final resting place",
+          "18": "group of mourners",
+          "124": "frame"
+        },
+        "commandNouns": {
+          "17": "place",
+          "18": "mourners",
+          "19": "bag",
+          "124": "frame",
+          "126": "student"
+        },
+        "scope": {
+          "roomName": "Graveyard",
+          "roomId": 16,
+          "roomNouns": [
+            "uncle's final resting place",
+            "group of mourners",
+            "uncle henry's grave"
+          ],
+          "inventoryNouns": [
+            "black canvas bag",
+            "silver picture frame",
+            "student's photo"
+          ],
+          "lastLookText": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n ",
+          "lastInventoryText": "",
+          "_inventoryTree": [
+            {
+              "name": "black canvas bag",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": true,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "silver picture frame",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "student's photo",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            }
+          ],
+          "lastReplyText": " \nGraveyard\nJust standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n \n> "
+        },
+        "liveMarks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            }
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            }
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "19": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "24": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+        "ramSha256": "0885b0b4bb810ac8aae15904721bc008fdcf798c5f65c909fcebabaeb368955a",
+        "textSha256": "f088e54f2b16419cc60473c2eaa0a6c96442e6b61087d401e991e87de4828862"
+      }
+    },
+    {
+      "label": "r2",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-20261102",
+      "game": "heist.z8.js",
+      "stage": "passive-delay-same-page",
+      "state": {
+        "text": [
+          " ",
+          " ",
+          " ",
+          " ",
+          "CHAPTER ONE: HAPPY FAMILY",
+          " ",
+          "Wet, tired and incredibly bored.",
+          " ",
+          "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+          " ",
+          "What makes it even worse is the very fact you're here. An all too often forgotten niece at her uncle's funeral. You're starting to wish you hadn't made the long journey up north after all. It's not like Uncle Henry actually cared about anything except his money and his ego, and you just wish the priest would get on with this tiresome ceremony.",
+          " ",
+          "After it's finished you could go home, emptying any lingering thoughts of the selfish, arrogant man from your mind.",
+          " ",
+          "HEIST",
+          "\"The Crime of the Century\"",
+          "An Original Piece of Interactive Fiction",
+          "Copyright (c) 1997, Andy Phillips",
+          " ",
+          "Release 4 / Serial number 971125 / Inform v1502 Library 5/12",
+          "Standard interpreter 1.2",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          ">look",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          "The priest pauses for a moment before continuing with his speech.",
+          " ",
+          "\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"",
+          " ",
+          "> "
+        ],
+        "room": 16,
+        "marks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            },
+            "visible": true,
+            "line": "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            },
+            "visible": true,
+            "line": "Your uncle's final resting place is marked by a hole in the ground.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            },
+            "visible": true,
+            "line": "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 124,
+            "name": "silver picture frame",
+            "parentId": 19,
+            "attrs": {
+              "animate": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "openable": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "female": false,
+              "takeable": true
+            },
+            "aliases": [
+              "silver",
+              "picture",
+              "frame",
+              "markings",
+              "ancient",
+              "script",
+              "border",
+              "weird"
+            ],
+            "confidence": 0.9,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {
+          "17": {
+            "phrase": "uncle's final resting place",
+            "words": [
+              "final",
+              "grave",
+              "ground",
+              "henry's",
+              "henrys",
+              "hole",
+              "pit",
+              "place",
+              "resting",
+              "tomb",
+              "uncle",
+              "uncle's",
+              "uncles"
+            ]
+          }
+        },
+        "verifiedNouns": {
+          "17": "uncle's final resting place",
+          "18": "group of mourners",
+          "124": "frame"
+        },
+        "commandNouns": {
+          "17": "place",
+          "18": "mourners",
+          "19": "bag",
+          "124": "frame",
+          "126": "student"
+        },
+        "scope": {
+          "roomName": "Graveyard",
+          "roomId": 16,
+          "roomNouns": [
+            "uncle's final resting place",
+            "group of mourners",
+            "uncle henry's grave"
+          ],
+          "inventoryNouns": [
+            "black canvas bag",
+            "silver picture frame",
+            "student's photo"
+          ],
+          "lastLookText": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n ",
+          "lastInventoryText": "",
+          "_inventoryTree": [
+            {
+              "name": "black canvas bag",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": true,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "silver picture frame",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "student's photo",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            }
+          ],
+          "lastReplyText": " \nGraveyard\nJust standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n \n> "
+        },
+        "liveMarks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            }
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            }
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "19": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "24": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+        "ramSha256": "0885b0b4bb810ac8aae15904721bc008fdcf798c5f65c909fcebabaeb368955a",
+        "textSha256": "f088e54f2b16419cc60473c2eaa0a6c96442e6b61087d401e991e87de4828862"
+      }
+    },
+    {
+      "label": "r3",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-r3-20261102",
+      "game": "cabal.z5.js",
+      "stage": "driver-sample",
+      "state": {
+        "text": [
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "Not exactly the holiday of a lifetime. You've come here to investigate the mysterious disappearance of several UFOs in the Bermuda Triangle (which, as you've discovered, is not a triangle but a trapezium, stretching as far back as New Mexico), but the authorities have been doing everything they can to block you. The girl in the City Hall even pretended not to know what you were talking about! If you were the paranoid type, you'd suspect the aliens themselves were in on the conspiracy, but no, it's probably just the usual government cover-up.",
+          " ",
+          "All the same, it's best to lie low for a while. To avoid suspicion (not to mention the mosquitoes) you've camped down for the afternoon in this innocuous family restaurant, drinking coffee. And what better way to pass the time than play an Infocom game on your PalmPilot? You can't beat the old-school games, and in Infidel's case, you literally can't beat it. In fact, you've been stuck in the slab room for sixteen years. Sixteen years -- now that's entertainment.",
+          " ",
+          "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+          " ",
+          ">look",
+          " ",
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+          " ",
+          "The vagrant seems strangely interested in your PalmPilot.",
+          " ",
+          "> "
+        ],
+        "room": 32,
+        "marks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            },
+            "visible": true,
+            "line": "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 34,
+            "name": "table",
+            "parentId": 32,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "openable": false,
+              "proper": false,
+              "scenery": true,
+              "scored": false,
+              "static": true,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": false
+            },
+            "aliases": [
+              "yellow",
+              "smears",
+              "table",
+              "plastic"
+            ],
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {},
+        "verifiedNouns": {
+          "34": "table",
+          "35": "coffee",
+          "41": "families",
+          "42": "vagrant",
+          "222": "your PalmPilot"
+        },
+        "commandNouns": {
+          "33": "seat",
+          "34": "table",
+          "35": "coffee",
+          "36": "walls",
+          "37": "window",
+          "38": "floor",
+          "39": "ceiling",
+          "40": "door",
+          "41": "families",
+          "42": "vagrant",
+          "222": "palmpilot"
+        },
+        "scope": {
+          "roomName": "McDonald's Hamburger Restaurant, Miami Beach, Florida",
+          "roomId": 32,
+          "roomNouns": [
+            "your seat",
+            "table",
+            "your coffee",
+            "walls",
+            "windows",
+            "floor",
+            "ceiling",
+            "door",
+            "families",
+            "vagrant"
+          ],
+          "inventoryNouns": [
+            "your palmpilot"
+          ],
+          "lastLookText": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n ",
+          "lastInventoryText": "",
+          "lastReplyText": " \nMcDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)\nYou're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n \n> ",
+          "_inventoryTree": [
+            {
+              "name": "your PalmPilot",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "absent": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": true,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": true,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "male": false,
+                "female": false,
+                "neuter": false,
+                "pluralname": false,
+                "takeable": true
+              }
+            }
+          ]
+        },
+        "liveMarks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            }
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            }
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            }
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            }
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "21": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "22": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "25": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "54": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+        "ramSha256": "27b85ce0f51e42ebf460cc9d036c5136b185df03ebcb481c7ffad92b79f8b3f8",
+        "textSha256": "91d138a5cf1aad33af6805831b18fad7a6d0f217937c79a213234947dab7ef1a"
+      }
+    },
+    {
+      "label": "r3",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-r3-20261102",
+      "game": "cabal.z5.js",
+      "stage": "passive-delay-same-page",
+      "state": {
+        "text": [
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "Not exactly the holiday of a lifetime. You've come here to investigate the mysterious disappearance of several UFOs in the Bermuda Triangle (which, as you've discovered, is not a triangle but a trapezium, stretching as far back as New Mexico), but the authorities have been doing everything they can to block you. The girl in the City Hall even pretended not to know what you were talking about! If you were the paranoid type, you'd suspect the aliens themselves were in on the conspiracy, but no, it's probably just the usual government cover-up.",
+          " ",
+          "All the same, it's best to lie low for a while. To avoid suspicion (not to mention the mosquitoes) you've camped down for the afternoon in this innocuous family restaurant, drinking coffee. And what better way to pass the time than play an Infocom game on your PalmPilot? You can't beat the old-school games, and in Infidel's case, you literally can't beat it. In fact, you've been stuck in the slab room for sixteen years. Sixteen years -- now that's entertainment.",
+          " ",
+          "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+          " ",
+          ">look",
+          " ",
+          "McDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)",
+          "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+          " ",
+          "The vagrant seems strangely interested in your PalmPilot.",
+          " ",
+          "> "
+        ],
+        "room": 32,
+        "marks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            },
+            "visible": true,
+            "line": "Truth be told, though, that puzzle is starting to irritate you now. As is the foul-smelling vagrant who has seated himself at the table opposite you. To see such people in McDonald's of all restaurants! Standards really have fallen, and not just in the IF community.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            },
+            "visible": true,
+            "line": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            },
+            "visible": true,
+            "line": "The vagrant seems strangely interested in your PalmPilot.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 34,
+            "name": "table",
+            "parentId": 32,
+            "attrs": {
+              "animate": false,
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "openable": false,
+              "proper": false,
+              "scenery": true,
+              "scored": false,
+              "static": true,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": false
+            },
+            "aliases": [
+              "yellow",
+              "smears",
+              "table",
+              "plastic"
+            ],
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {},
+        "verifiedNouns": {
+          "34": "table",
+          "35": "coffee",
+          "41": "families",
+          "42": "vagrant",
+          "222": "your PalmPilot"
+        },
+        "commandNouns": {
+          "33": "seat",
+          "34": "table",
+          "35": "coffee",
+          "36": "walls",
+          "37": "window",
+          "38": "floor",
+          "39": "ceiling",
+          "40": "door",
+          "41": "families",
+          "42": "vagrant",
+          "222": "palmpilot"
+        },
+        "scope": {
+          "roomName": "McDonald's Hamburger Restaurant, Miami Beach, Florida",
+          "roomId": 32,
+          "roomNouns": [
+            "your seat",
+            "table",
+            "your coffee",
+            "walls",
+            "windows",
+            "floor",
+            "ceiling",
+            "door",
+            "families",
+            "vagrant"
+          ],
+          "inventoryNouns": [
+            "your palmpilot"
+          ],
+          "lastLookText": "You're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n ",
+          "lastInventoryText": "",
+          "lastReplyText": " \nMcDonald's Hamburger Restaurant, Miami Beach, Florida (on your seat)\nYou're in a McDonald's restaurant in Miami Beach, Florida, which is packed with loud families (the loudest being immigrants) enjoying their Happy Meals. The tables are clean, the service was fast, and your coffee is acceptable. All in all, it matches the standards you've come to expect from the McDonald's franchise, with the unpleasant exception of the bum sitting opposite you.\n \nThe vagrant seems strangely interested in your PalmPilot.\n \n> ",
+          "_inventoryTree": [
+            {
+              "name": "your PalmPilot",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "absent": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": true,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": true,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "male": false,
+                "female": false,
+                "neuter": false,
+                "pluralname": false,
+                "takeable": true
+              }
+            }
+          ]
+        },
+        "liveMarks": [
+          {
+            "text": "table",
+            "data": {
+              "noun": "table",
+              "kind": "object",
+              "candidateIds": "[34]",
+              "coverIds": "[\"34\"]",
+              "objectId": "34"
+            }
+          },
+          {
+            "text": "families",
+            "data": {
+              "noun": "families",
+              "kind": "object",
+              "candidateIds": "[41]",
+              "coverIds": "[\"41\"]",
+              "objectId": "41"
+            }
+          },
+          {
+            "text": "your coffee",
+            "data": {
+              "noun": "your coffee",
+              "kind": "object",
+              "candidateIds": "[35]",
+              "coverIds": "[\"35\"]",
+              "objectId": "35"
+            }
+          },
+          {
+            "text": "vagrant",
+            "data": {
+              "noun": "vagrant",
+              "kind": "object",
+              "candidateIds": "[42]",
+              "coverIds": "[\"42\"]",
+              "objectId": "42"
+            }
+          },
+          {
+            "text": "your PalmPilot",
+            "data": {
+              "noun": "your palmpilot",
+              "kind": "inventory",
+              "candidateIds": "[222]",
+              "coverIds": "[\"222\"]",
+              "objectId": "222"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "21": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "22": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "25": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "54": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+        "ramSha256": "27b85ce0f51e42ebf460cc9d036c5136b185df03ebcb481c7ffad92b79f8b3f8",
+        "textSha256": "91d138a5cf1aad33af6805831b18fad7a6d0f217937c79a213234947dab7ef1a"
+      }
+    },
+    {
+      "label": "r3",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-r3-20261102",
+      "game": "heist.z8.js",
+      "stage": "driver-sample",
+      "state": {
+        "text": [
+          " ",
+          " ",
+          " ",
+          " ",
+          "CHAPTER ONE: HAPPY FAMILY",
+          " ",
+          "Wet, tired and incredibly bored.",
+          " ",
+          "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+          " ",
+          "What makes it even worse is the very fact you're here. An all too often forgotten niece at her uncle's funeral. You're starting to wish you hadn't made the long journey up north after all. It's not like Uncle Henry actually cared about anything except his money and his ego, and you just wish the priest would get on with this tiresome ceremony.",
+          " ",
+          "After it's finished you could go home, emptying any lingering thoughts of the selfish, arrogant man from your mind.",
+          " ",
+          "HEIST",
+          "\"The Crime of the Century\"",
+          "An Original Piece of Interactive Fiction",
+          "Copyright (c) 1997, Andy Phillips",
+          " ",
+          "Release 4 / Serial number 971125 / Inform v1502 Library 5/12",
+          "Standard interpreter 1.2",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          ">look",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          "The priest pauses for a moment before continuing with his speech.",
+          " ",
+          "\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"",
+          " ",
+          "> "
+        ],
+        "room": 16,
+        "marks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            },
+            "visible": true,
+            "line": "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            },
+            "visible": true,
+            "line": "Your uncle's final resting place is marked by a hole in the ground.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            },
+            "visible": true,
+            "line": "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 124,
+            "name": "silver picture frame",
+            "parentId": 19,
+            "attrs": {
+              "animate": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "openable": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "female": false,
+              "takeable": true
+            },
+            "aliases": [
+              "silver",
+              "picture",
+              "frame",
+              "markings",
+              "ancient",
+              "script",
+              "border",
+              "weird"
+            ],
+            "confidence": 0.9,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {
+          "17": {
+            "phrase": "uncle's final resting place",
+            "words": [
+              "final",
+              "grave",
+              "ground",
+              "henry's",
+              "henrys",
+              "hole",
+              "pit",
+              "place",
+              "resting",
+              "tomb",
+              "uncle",
+              "uncle's",
+              "uncles"
+            ]
+          }
+        },
+        "verifiedNouns": {
+          "17": "uncle's final resting place",
+          "18": "group of mourners",
+          "124": "frame"
+        },
+        "commandNouns": {
+          "17": "place",
+          "18": "mourners",
+          "19": "bag",
+          "124": "frame",
+          "126": "student"
+        },
+        "scope": {
+          "roomName": "Graveyard",
+          "roomId": 16,
+          "roomNouns": [
+            "uncle's final resting place",
+            "group of mourners",
+            "uncle henry's grave"
+          ],
+          "inventoryNouns": [
+            "black canvas bag",
+            "silver picture frame",
+            "student's photo"
+          ],
+          "lastLookText": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n ",
+          "lastInventoryText": "",
+          "_inventoryTree": [
+            {
+              "name": "black canvas bag",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": true,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "silver picture frame",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "student's photo",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            }
+          ],
+          "lastReplyText": " \nGraveyard\nJust standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n \n> "
+        },
+        "liveMarks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            }
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            }
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "19": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "24": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+        "ramSha256": "0885b0b4bb810ac8aae15904721bc008fdcf798c5f65c909fcebabaeb368955a",
+        "textSha256": "f088e54f2b16419cc60473c2eaa0a6c96442e6b61087d401e991e87de4828862"
+      }
+    },
+    {
+      "label": "r3",
+      "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-learning-final-r3-20261102",
+      "game": "heist.z8.js",
+      "stage": "passive-delay-same-page",
+      "state": {
+        "text": [
+          " ",
+          " ",
+          " ",
+          " ",
+          "CHAPTER ONE: HAPPY FAMILY",
+          " ",
+          "Wet, tired and incredibly bored.",
+          " ",
+          "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+          " ",
+          "What makes it even worse is the very fact you're here. An all too often forgotten niece at her uncle's funeral. You're starting to wish you hadn't made the long journey up north after all. It's not like Uncle Henry actually cared about anything except his money and his ego, and you just wish the priest would get on with this tiresome ceremony.",
+          " ",
+          "After it's finished you could go home, emptying any lingering thoughts of the selfish, arrogant man from your mind.",
+          " ",
+          "HEIST",
+          "\"The Crime of the Century\"",
+          "An Original Piece of Interactive Fiction",
+          "Copyright (c) 1997, Andy Phillips",
+          " ",
+          "Release 4 / Serial number 971125 / Inform v1502 Library 5/12",
+          "Standard interpreter 1.2",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          ">look",
+          " ",
+          "Graveyard",
+          "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+          " ",
+          "Your uncle's final resting place is marked by a hole in the ground.",
+          " ",
+          "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+          " ",
+          "The priest pauses for a moment before continuing with his speech.",
+          " ",
+          "\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"",
+          " ",
+          "> "
+        ],
+        "room": 16,
+        "marks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            },
+            "visible": true,
+            "line": "That just about sums up your present frame of mind. Standing in an almost empty churchyard in a ghostly nondescript town, all the while being soaked by constant rainfall, would be bad enough at the best of times.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            },
+            "visible": true,
+            "line": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            },
+            "visible": true,
+            "line": "Your uncle's final resting place is marked by a hole in the ground.",
+            "parent": "Style_normal"
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            },
+            "visible": true,
+            "line": "A group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.",
+            "parent": "Style_normal"
+          }
+        ],
+        "targetObjects": [
+          {
+            "id": 124,
+            "name": "silver picture frame",
+            "parentId": 19,
+            "attrs": {
+              "animate": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "lockable": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "openable": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "female": false,
+              "takeable": true
+            },
+            "aliases": [
+              "silver",
+              "picture",
+              "frame",
+              "markings",
+              "ancient",
+              "script",
+              "border",
+              "weird"
+            ],
+            "confidence": 0.9,
+            "discovered": true
+          }
+        ],
+        "restoredLabels": {
+          "17": {
+            "phrase": "uncle's final resting place",
+            "words": [
+              "final",
+              "grave",
+              "ground",
+              "henry's",
+              "henrys",
+              "hole",
+              "pit",
+              "place",
+              "resting",
+              "tomb",
+              "uncle",
+              "uncle's",
+              "uncles"
+            ]
+          }
+        },
+        "verifiedNouns": {
+          "17": "uncle's final resting place",
+          "18": "group of mourners",
+          "124": "frame"
+        },
+        "commandNouns": {
+          "17": "place",
+          "18": "mourners",
+          "19": "bag",
+          "124": "frame",
+          "126": "student"
+        },
+        "scope": {
+          "roomName": "Graveyard",
+          "roomId": 16,
+          "roomNouns": [
+            "uncle's final resting place",
+            "group of mourners",
+            "uncle henry's grave"
+          ],
+          "inventoryNouns": [
+            "black canvas bag",
+            "silver picture frame",
+            "student's photo"
+          ],
+          "lastLookText": "Just standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n ",
+          "lastInventoryText": "",
+          "_inventoryTree": [
+            {
+              "name": "black canvas bag",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": true,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": true,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "silver picture frame",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": true,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": true,
+                "isOpen": true,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            },
+            {
+              "name": "student's photo",
+              "depth": 0,
+              "attrs": {
+                "animate": false,
+                "clothing": false,
+                "wearable": false,
+                "concealed": false,
+                "container": false,
+                "door": false,
+                "edible": false,
+                "enterable": false,
+                "general": false,
+                "light": false,
+                "lockable": false,
+                "locked": false,
+                "moved": false,
+                "on": false,
+                "open": false,
+                "isOpen": false,
+                "openable": false,
+                "proper": false,
+                "scenery": false,
+                "scored": false,
+                "static": false,
+                "supporter": false,
+                "switchable": false,
+                "talkable": false,
+                "transparent": false,
+                "visited": false,
+                "workflag": false,
+                "worn": false,
+                "female": false,
+                "takeable": true
+              }
+            }
+          ],
+          "lastReplyText": " \nGraveyard\nJust standing here is enough to give you a shudder. The many gravestones and the ivy covered spire of the church to the north blend in perfectly with the sinister atmosphere. Even the gates to the south, with the promise of relatively safe territory beyond, can't begin to neutralise their gloomy surroundings.\n \nYour uncle's final resting place is marked by a hole in the ground.\n \nA group of mourners are gathered around the latest addition to the cemetery. The parish priest stands nearby, reading the last rites at a painfully slow pace.\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n \n> "
+        },
+        "liveMarks": [
+          {
+            "text": "frame",
+            "data": {
+              "noun": "frame",
+              "kind": "inventory",
+              "candidateIds": "[124]",
+              "coverIds": "[\"124\"]",
+              "objectId": "124"
+            }
+          },
+          {
+            "text": "north",
+            "data": {
+              "noun": "north",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "south",
+            "data": {
+              "noun": "south",
+              "kind": "direction"
+            }
+          },
+          {
+            "text": "uncle's final resting place",
+            "data": {
+              "noun": "uncle's final resting place",
+              "kind": "object",
+              "candidateIds": "[17]",
+              "coverIds": "[\"17\"]",
+              "objectId": "17"
+            }
+          },
+          {
+            "text": "group of mourners",
+            "data": {
+              "noun": "group of mourners",
+              "kind": "object",
+              "candidateIds": "[18]",
+              "coverIds": "[\"18\"]",
+              "objectId": "18"
+            }
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "0": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "19": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "24": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordRows": {
+          "version": 1,
+          "gameIdentityKey": "sha256:251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+          "rows": {}
+        },
+        "generation": 0,
+        "digest": "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+        "ramSha256": "0885b0b4bb810ac8aae15904721bc008fdcf798c5f65c909fcebabaeb368955a",
+        "textSha256": "f088e54f2b16419cc60473c2eaa0a6c96442e6b61087d401e991e87de4828862"
+      }
+    }
+  ]
+}

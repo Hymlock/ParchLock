@@ -1,0 +1,432 @@
+[
+  {
+    "key": "Sorcerer.z3.js @9:frotz box",
+    "reply": "There is an almost blinding flash of light as the tiny box begins to glow! It slowly fades to a less painful level, but the tiny box is now quite usable as a light source.\n \n> ",
+    "targetOps": [
+      [
+        102,
+        11,
+        0
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        144,
+        11,
+        0
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        144,
+        11,
+        0
+      ]
+    ],
+    "ui": [
+      {
+        "id": 102,
+        "name": "tiny box",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine box",
+          "take box",
+          "search box",
+          "empty box",
+          "open box",
+          "close box",
+          "drop box",
+          "give box to ",
+          "put box in "
+        ]
+      },
+      {
+        "id": 139,
+        "name": "spell book",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine book",
+          "take book",
+          "search book",
+          "empty book",
+          "open book",
+          "close book",
+          "drop book",
+          "give book to ",
+          "put book in "
+        ]
+      }
+    ]
+  },
+  {
+    "key": "Sorcerer.z3.js @9:frotz tiny box",
+    "reply": "Have you forgotten that you already frotzed the tiny box?\n \n\"Squawk! This tea is cold! Get me another cup. Squawk!\"\n \n> ",
+    "targetOps": [
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        144,
+        11,
+        0
+      ]
+    ],
+    "ui": [
+      {
+        "id": 102,
+        "name": "tiny box",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine box",
+          "take box",
+          "search box",
+          "empty box",
+          "open box",
+          "close box",
+          "drop box",
+          "give box to ",
+          "put box in "
+        ]
+      },
+      {
+        "id": 139,
+        "name": "spell book",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine book",
+          "take book",
+          "search book",
+          "empty book",
+          "open book",
+          "close book",
+          "drop book",
+          "give book to ",
+          "put book in "
+        ]
+      }
+    ]
+  },
+  {
+    "key": "Sorcerer.z3.js @9:frotz book",
+    "reply": "Have you forgotten that you already frotzed the spell book?\n \n\"Squawk! Where did I leave my spectacles? Squawk!\"\n \n> ",
+    "targetOps": [
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        144,
+        11,
+        0
+      ]
+    ],
+    "ui": [
+      {
+        "id": 102,
+        "name": "tiny box",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine box",
+          "take box",
+          "search box",
+          "empty box",
+          "open box",
+          "close box",
+          "drop box",
+          "give box to ",
+          "put box in "
+        ]
+      },
+      {
+        "id": 139,
+        "name": "spell book",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine book",
+          "take book",
+          "search book",
+          "empty book",
+          "open book",
+          "close book",
+          "drop book",
+          "give book to ",
+          "put book in "
+        ]
+      }
+    ]
+  },
+  {
+    "key": "Sorcerer.z3.js @9:frotz desk",
+    "reply": "Although you complete the spell, nothing seems to have happened.\n \n\"Squawk! Where did I leave my spectacles? Squawk!\"\n \n> ",
+    "targetOps": [
+      [
+        144,
+        11,
+        0
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        144,
+        11,
+        0
+      ]
+    ],
+    "ui": [
+      {
+        "id": 102,
+        "name": "tiny box",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine box",
+          "take box",
+          "search box",
+          "empty box",
+          "open box",
+          "close box",
+          "drop box",
+          "give box to ",
+          "put box in "
+        ]
+      },
+      {
+        "id": 139,
+        "name": "spell book",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine book",
+          "take book",
+          "search book",
+          "empty book",
+          "open book",
+          "close book",
+          "drop book",
+          "give book to ",
+          "put book in "
+        ]
+      }
+    ]
+  },
+  {
+    "key": "Sorcerer.z3.js @9:i",
+    "reply": "You are carrying:\n  a journal\n  a tiny box (providing light)\n  a spell book (providing light)\n \n> ",
+    "targetOps": [
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        102,
+        11,
+        1
+      ],
+      [
+        139,
+        11,
+        1
+      ],
+      [
+        144,
+        11,
+        0
+      ]
+    ],
+    "ui": [
+      {
+        "id": 102,
+        "name": "tiny box",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine box",
+          "take box",
+          "search box",
+          "empty box",
+          "open box",
+          "close box",
+          "drop box",
+          "give box to ",
+          "put box in "
+        ]
+      },
+      {
+        "id": 139,
+        "name": "spell book",
+        "worn": false,
+        "wearable": false,
+        "on": true,
+        "light": false,
+        "switchable": false,
+        "tags": [],
+        "commands": [
+          "examine book",
+          "take book",
+          "search book",
+          "empty book",
+          "open book",
+          "close book",
+          "drop book",
+          "give book to ",
+          "put book in "
+        ]
+      }
+    ]
+  }
+]

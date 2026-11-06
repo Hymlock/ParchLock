@@ -1,0 +1,28 @@
+> stand
+  >stand / You already are standing. / >
+> s
+  Second Floor / This is the second floor of the Computer Center. An elevator and call buttons are on the south side of the hallway. A large, noisy room is to the north. Stairs also lead up and down, for the energetic. To 
+> w
+  Sitting on the kitchen counter is a package of Funny Bones. / >
+> open fridge
+  >open fridge / Opening the refrigerator reveals a two liter bottle of Classic Coke and a cardboard carton. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton | close carton
+   61:two liter bottle of Classic Coke {on:false,worn:false,edible:true} tags[] -> examine coke | take coke
+> get coke
+  >get coke / Taken. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton | close carton
+   61:two liter bottle of Classic Coke {on:false,worn:false,edible:true} tags[] -> examine coke | take coke | drink coke | drop coke | give coke to  | put coke in 
+> get carton
+  >get carton / Taken. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton | close carton | drop carton | give carton to  | put carton in 
+   61:two liter bottle of Classic Coke {on:false,worn:false,edible:true} tags[] -> examine coke | take coke | drink coke | drop coke | give coke to  | put coke in 
+> open carton
+  >open carton / Opening the cardboard carton reveals Chinese food. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton | close carton | drop carton | give carton to  | put carton in 
+   90:Chinese food {on:false,worn:false,edible:true} tags[] -> examine chinese food | take chinese food | eat chinese food
+   61:two liter bottle of Classic Coke {on:false,worn:false,edible:true} tags[] -> examine coke | take coke | drink coke | drop coke | give coke to  | put coke in 
+> i
+  >i / You are carrying a cardboard carton, a two liter bottle of Classic Coke and an assignment. The cardboard carton contains Chinese food. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton | close carton | drop carton | give carton to  | put carton in 
+   90:Chinese food {on:false,worn:false,edible:true} tags[] -> examine chinese food | take chinese food | eat chinese food
+   61:two liter bottle of Classic Coke {on:false,worn:false,edible:true} tags[] -> examine coke | take coke | drink coke | drop coke | give coke to  | put coke in 

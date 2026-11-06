@@ -1,0 +1,5 @@
+>get out of cot ::  legs are a little wobbly, though, and your head swims. You hear a plane flying high overhead, outside the tent. > 
+>look in trunk :: ook in trunk It's an old steamer trunk, very heavy and too clumsy for one person to carry. You hear a plane flying high overhead, outside the tent. > 
+>look in cot :: ook in cot It's just an army cot. You hear a plane flying high overhead, outside the tent. > 
+OPS ["223:30=1","51:30=0","38:30=0","39:30=0","40:30=1","39:28=1","71:14=0"]
+EQ []

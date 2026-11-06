@@ -1,0 +1,45 @@
+{
+ "tag": "sh-openable",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 44,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native",
+ "tests": [
+  {
+   "cmd": "OPEN VIOLIN",
+   "step": 4,
+   "name": "open violin",
+   "id": 207,
+   "expect": 0
+  },
+  {
+   "cmd": "OPEN SOFA",
+   "step": 4,
+   "name": "open sofa",
+   "id": 239,
+   "expect": 0
+  },
+  {
+   "cmd": "OPEN MAIL",
+   "step": 4,
+   "name": "open mail",
+   "id": 203,
+   "expect": 1
+  },
+  {
+   "cmd": "OPEN BLACK BAG",
+   "step": 4,
+   "name": "open black bag",
+   "id": 172,
+   "expect": 1
+  },
+  {
+   "cmd": "OPEN MATCHBOOK",
+   "step": 19,
+   "name": "open matchbook",
+   "id": 236,
+   "expect": 1
+  }
+ ]
+}

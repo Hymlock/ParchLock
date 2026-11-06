@@ -1,0 +1,609 @@
+{
+ "title": "heist.z8",
+ "sha256": "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616",
+ "objects": 555,
+ "layout": "L",
+ "verdict": "SHIFTED (low block -1)",
+ "confidence": "high",
+ "evidence": "anchors compass=concealed 2, walls=scenery 17, yourself 0,2,16,23 (animate,concealed,proper,transparent), rooms light 9; doors carry 4+15(+10,11); containers 3+15 or 3+14; hats/clothes 1; food 5; supporters 20. Bits 1..8 are PROFILE-1 (no `absent` at 1, an extra attr at 8); 9..23 equal PROFILE.",
+ "proposedAttributeMap": {
+  "door": 4,
+  "open": 14,
+  "isOpen": 14,
+  "openable": 15,
+  "container": 3,
+  "supporter": 20,
+  "light": 9,
+  "edible": 5,
+  "clothing": 1,
+  "wearable": 1,
+  "worn": 26,
+  "lockable": 10,
+  "locked": 11,
+  "concealed": 2,
+  "animate": 0,
+  "scenery": 17,
+  "static": 19,
+  "enterable": 6,
+  "transparent": 23
+ },
+ "bitEvidence": {
+  "door": "doors",
+  "openable": "doors+containers",
+  "open": "open containers (bag/jar/basket/tray)",
+  "container": "containers",
+  "supporter": "tables/desks",
+  "light": "rooms (lit)",
+  "edible": "food (carrot,sweet,cake,pizza)",
+  "clothing": "hats/clothes",
+  "lockable": "locked doors",
+  "locked": "locked doors",
+  "worn": "NOT observed statically; inferred from library order (PROFILE 26 / layout shift)",
+  "enterable": "beds (theatre/windhal) else inferred"
+ },
+ "profileWrongFor": [
+  "clothing",
+  "concealed",
+  "container",
+  "door",
+  "edible"
+ ],
+ "exemplars": [
+  {
+   "n": 1,
+   "name": "compass",
+   "parent": 0,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 2,
+   "name": "north wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 3,
+   "name": "south wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 4,
+   "name": "east wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 5,
+   "name": "west wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 6,
+   "name": "northeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 7,
+   "name": "southeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 8,
+   "name": "northwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 9,
+   "name": "southwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 15,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 19,
+   "name": "black canvas bag",
+   "parent": 0,
+   "bits": [
+    3,
+    14,
+    15
+   ]
+  },
+  {
+   "n": 23,
+   "name": "plain wooden box",
+   "parent": 0,
+   "bits": [
+    3,
+    11,
+    15
+   ]
+  },
+  {
+   "n": 61,
+   "name": "glass case",
+   "parent": 55,
+   "bits": [
+    19,
+    29
+   ]
+  },
+  {
+   "n": 70,
+   "name": "wooden packing crate",
+   "parent": 69,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 75,
+   "name": "secure counter",
+   "parent": 74,
+   "bits": [
+    3,
+    15,
+    17,
+    23,
+    29
+   ]
+  },
+  {
+   "n": 86,
+   "name": "Flower Beds",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 87,
+   "name": "flower beds",
+   "parent": 86,
+   "bits": [
+    17,
+    30
+   ]
+  },
+  {
+   "n": 88,
+   "name": "bunch of flowers",
+   "parent": 0,
+   "bits": [
+    18,
+    23,
+    30
+   ]
+  },
+  {
+   "n": 96,
+   "name": "solid looking door",
+   "parent": 0,
+   "bits": [
+    4,
+    6,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 114,
+   "name": "secret doorway",
+   "parent": 0,
+   "bits": [
+    4,
+    14,
+    19
+   ]
+  },
+  {
+   "n": 135,
+   "name": "Victorian style lamppost",
+   "parent": 134,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 136,
+   "name": "rack of sunbeds",
+   "parent": 134,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 141,
+   "name": "waiter's uniform",
+   "parent": 139,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 144,
+   "name": "emergency cabinet",
+   "parent": 143,
+   "bits": [
+    3,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 158,
+   "name": "coffee table",
+   "parent": 157,
+   "bits": [
+    19,
+    20
+   ]
+  },
+  {
+   "n": 167,
+   "name": "ship's captain",
+   "parent": 166,
+   "bits": [
+    0
+   ]
+  },
+  {
+   "n": 168,
+   "name": "richly dressed lady",
+   "parent": 166,
+   "bits": [
+    0,
+    7,
+    23
+   ]
+  },
+  {
+   "n": 175,
+   "name": "impressive cabin door",
+   "parent": 0,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 177,
+   "name": "four poster bed",
+   "parent": 176,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 178,
+   "name": "bedside table",
+   "parent": 176,
+   "bits": [
+    17,
+    20
+   ]
+  },
+  {
+   "n": 180,
+   "name": "evening dress",
+   "parent": 179,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 182,
+   "name": "Captain's Cabin",
+   "parent": 0,
+   "bits": [
+    9,
+    18
+   ]
+  },
+  {
+   "n": 183,
+   "name": "ship's captain",
+   "parent": 182,
+   "bits": [
+    0,
+    23
+   ]
+  },
+  {
+   "n": 186,
+   "name": "wall cupboard",
+   "parent": 185,
+   "bits": [
+    3,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 188,
+   "name": "hypodermic syringe",
+   "parent": 186,
+   "bits": []
+  },
+  {
+   "n": 190,
+   "name": "captain's desk",
+   "parent": 189,
+   "bits": [
+    17,
+    20
+   ]
+  },
+  {
+   "n": 201,
+   "name": "cracked magnetic compass",
+   "parent": 199,
+   "bits": []
+  },
+  {
+   "n": 211,
+   "name": "Lamp Tower",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 212,
+   "name": "massive electric lamp",
+   "parent": 211,
+   "bits": [
+    19,
+    23
+   ]
+  },
+  {
+   "n": 226,
+   "name": "pirate's treasure chest",
+   "parent": 0,
+   "bits": [
+    3,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 238,
+   "name": "heavy iron door",
+   "parent": 236,
+   "bits": [
+    4,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 249,
+   "name": "gold ring",
+   "parent": 245,
+   "bits": [
+    17,
+    23
+   ]
+  },
+  {
+   "n": 262,
+   "name": "Information Desk",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 264,
+   "name": "bowl of sweets",
+   "parent": 262,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 268,
+   "name": "pink sweet",
+   "parent": 0,
+   "bits": [
+    5
+   ]
+  },
+  {
+   "n": 283,
+   "name": "display case",
+   "parent": 282,
+   "bits": [
+    3,
+    15,
+    17,
+    23
+   ]
+  },
+  {
+   "n": 290,
+   "name": "pathetic wooden table",
+   "parent": 289,
+   "bits": [
+    17,
+    20
+   ]
+  },
+  {
+   "n": 295,
+   "name": "security control box",
+   "parent": 294,
+   "bits": [
+    3,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 296,
+   "name": "glass display case",
+   "parent": 294,
+   "bits": [
+    2,
+    17
+   ]
+  },
+  {
+   "n": 304,
+   "name": "glass display case",
+   "parent": 303,
+   "bits": [
+    3,
+    11,
+    15,
+    17,
+    23
+   ]
+  },
+  {
+   "n": 313,
+   "name": "Seabed",
+   "parent": 0,
+   "bits": [
+    18,
+    35
+   ]
+  },
+  {
+   "n": 319,
+   "name": "algae coated rocks",
+   "parent": 318,
+   "bits": [
+    2,
+    17
+   ]
+  },
+  {
+   "n": 322,
+   "name": "reinforced wooden crate",
+   "parent": 321,
+   "bits": [
+    3,
+    11,
+    15
+   ]
+  },
+  {
+   "n": 333,
+   "name": "Clearing",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 338,
+   "name": "military uniform",
+   "parent": 337,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 339,
+   "name": "childish boxer shorts",
+   "parent": 0,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 343,
+   "name": "security door",
+   "parent": 342,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 358,
+   "name": "marked drawer",
+   "parent": 356,
+   "bits": [
+    3,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 361,
+   "name": "black plastic box",
+   "parent": 358,
+   "bits": [
+    3,
+    11,
+    15,
+    22
+   ]
+  },
+  {
+   "n": 364,
+   "name": "wooden gate",
+   "parent": 363,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19,
+    23
+   ]
+  }
+ ],
+ "note": "No heist entry exists in js/ModuleStatFactsClaude.js (no hash match, no \"heist\" mention); the Holmes container 9/open 5 map there is a different game."
+}

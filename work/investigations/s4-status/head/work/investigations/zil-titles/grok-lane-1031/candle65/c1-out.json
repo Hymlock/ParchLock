@@ -1,0 +1,244 @@
+{
+  "game": "Wishbringer.z3.js",
+  "route": "wishbringer",
+  "n": 3,
+  "seed": 0,
+  "wornBit": 0,
+  "pattern": "^candle$",
+  "extra": [
+    "i",
+    "turn off candle",
+    "blow out candle",
+    "extinguish candle",
+    "i",
+    "light candle",
+    "turn on candle"
+  ],
+  "log": [
+    {
+      "step": "after-route",
+      "state": {
+        "here": "166:Post Office",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "237:Church",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "seedmove",
+      "res": {
+        "moved": 65,
+        "into": 219
+      },
+      "state": {
+        "here": "166:Post Office",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "166:Post Office",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou're holding a candle (providing light) and a mysterious envelope.\n \nMr. Crisp screams, \"Get moving!\"\n \nWhat next?\n> \n➤\n🎤\nWishbringer\nThe Magick Stone of Dreams\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nPost Office\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nHilltopOutside CemeteryPost Office\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "166:Post Office",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "166:Post Office",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "turn off candle",
+      "reply": ">turn off candle\nStrange. Despite your best efforts, the candle flame stubbornly refuses to go out.\n \nMr. Crisp growls, \"Don't just stand there!\"\n \nWhat next?\n> \n➤\n🎤\nWishbringer\nThe Magick Stone of Dreams\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nPost Office\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nHilltopOutside CemeteryPost Office\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "166:Post Office",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "166:Post Office",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "blow out candle",
+      "reply": ">blow out candle\nStrange. Despite your best efforts, the candle flame stubbornly refuses to go out.\n \nMr. Crisp hollers, \"Get going!\"\n \nWhat next?\n> \n➤\n🎤\nWishbringer\nThe Magick Stone of Dreams\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nPost Office\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nHilltopOutside CemeteryPost Office\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "166:Post Office",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "166:Post Office",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "extinguish candle",
+      "reply": ">extinguish candle\nThat's odd. Despite your best efforts, the candle flame stubbornly refuses to go out.\n \nMr. Crisp picks you up and throws you out of the Post Office. \"Quit stalling!\" he yells as he slams and locks the door behind you.\n \nWhat next?\n> \n➤\n🎤\nWishbringer\nThe Magick Stone of Dreams\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHilltop\nE\nSW\nS\nPost Office\nSE\nDOWN\nOUT\nKNOWN ROOMS\nHilltopOutside CemeteryPost Office\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "95:Hilltop",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "95:Hilltop",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou're holding a candle (providing light) and a mysterious envelope.\n \nWhat next?\n> \n➤\n🎤\nWishbringer\nThe Magick Stone of Dreams\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHilltop\nE\nSW\nS\nPost Office\nSE\nDOWN\nOUT\nKNOWN ROOMS\nHilltopOutside CemeteryPost Office\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "95:Hilltop",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "95:Hilltop",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "light candle",
+      "reply": ">light candle\nYou can't turn that on.\n \nWhat next?\n> \n➤\n🎤\nWishbringer\nThe Magick Stone of Dreams\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHilltop\nE\nSW\nS\nPost Office\nSE\nDOWN\nOUT\nKNOWN ROOMS\nHilltopOutside CemeteryPost Office\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "95:Hilltop",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "95:Hilltop",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "turn on candle",
+      "reply": ">turn on candle\nYou can't turn that on.\n \n(You won't see the \"What next?\" prompt any more.)\n> \n➤\n🎤\nWishbringer\nThe Magick Stone of Dreams\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHilltop\nE\nSW\nS\nPost Office\nSE\nDOWN\nOUT\nKNOWN ROOMS\nHilltopOutside CemeteryPost Office\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "95:Hilltop",
+        "objs": [
+          {
+            "id": 65,
+            "name": "candle",
+            "chain": [
+              "219:yourself",
+              "95:Hilltop",
+              "34:"
+            ],
+            "worn": false,
+            "attrs": [
+              11,
+              17,
+              20
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "ts": "2026-10-31T16:48:39.838Z"
+}

@@ -1,0 +1,80 @@
+[
+ {
+  "cmd": "poet,go to weather control",
+  "root": 152,
+  "reply": ">poet,go to weather control\nFC: Cryolink established to Poet.\nPOET: All life's a stage, so just consider me a player. See you.\n \n> ",
+  "player": 152,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "sensa,go to sub supply room",
+  "root": 152,
+  "reply": ">sensa,go to sub supply room\nFC: Cryolink established to Sensa.\nSENSA: Order input acknowledged. Output on arrival.\n \n> ",
+  "player": 152,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "whiz,go to secondary channel",
+  "root": 152,
+  "reply": ">whiz,go to secondary channel\nFC: Cryolink established to Whiz.\nWHIZ: CLC setting coordinates. Will report in on arrival.\n \nSENSA INTERRUPT: Sensory mechanisms match goal directive. I am at the Sub Supply Room.\n \n> ",
+  "player": 152,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "sensa,take ramp",
+  "root": 152,
+  "reply": ">sensa,take ramp\nFC: Cryolink established to Sensa.\nSENSA: Taken.\n \n> ",
+  "player": 152,
+  "held": [
+   "64: [11,12,16,18,27]"
+  ],
+  "appInv": []
+ },
+ {
+  "cmd": "sensa,go west",
+  "root": 152,
+  "reply": ">sensa,go west\nFC: Cryolink already established to Sensa.\nInternal map reference -- Middle Supply Room\nI am in the Middle Supply Room.\nI perceive a small container which holds several small devices.\n  The small container contains...\n    A scanning object\n    A buss object\n    A maximized object\n    A filtering object\n    A polarized object\nThere is a sixteen-inch cable here.\nA small object emits a weak signal, specifically oriented toward Waldo.\n \n> ",
+  "player": 152,
+  "held": [
+   "64: [11,12,16,18,27]"
+  ],
+  "appInv": []
+ },
+ {
+  "cmd": "sensa,take container and grasper",
+  "root": 152,
+  "reply": ">sensa,take container and grasper\nFC: Cryolink already established to Sensa.\n(small container) Taken.\n(micro extension) Taken.\n \n> ",
+  "player": 152,
+  "held": [
+   "63: [12,18,23,31]",
+   "76:BASKET [7,8,12,18,19]",
+   " 71:IC [12,18]",
+   " 67:IC [12,18]",
+   " 68:IC [12,18]",
+   " 69:IC [12,18]",
+   " 70:IC [12,18]",
+   "64: [11,12,16,18,27]"
+  ],
+  "appInv": []
+ },
+ {
+  "cmd": "sensa, i",
+  "root": 152,
+  "reply": ">sensa, i\nFC: Cryolink already established to Sensa.\nSensors indicate I'm holding...\n  A micro extension\n  A small container\n    The small container contains...\n      A scanning object\n      A buss object\n      A maximized object\n      A filtering object\n      A polarized object\n  A dense wedge\n \n> ",
+  "player": 152,
+  "held": [
+   "63: [12,18,23,31]",
+   "76:BASKET [7,8,12,18,19]",
+   " 71:IC [12,18]",
+   " 67:IC [12,18]",
+   " 68:IC [12,18]",
+   " 69:IC [12,18]",
+   " 70:IC [12,18]",
+   "64: [11,12,16,18,27]"
+  ],
+  "appInv": []
+ }
+]

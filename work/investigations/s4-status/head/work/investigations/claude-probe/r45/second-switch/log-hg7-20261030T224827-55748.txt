@@ -1,0 +1,6 @@
+hg7 r45ss @89 look #143 NOTEST "Galley\nYou are in the Galley area of the ship, containing a machine which is the"
+hg7 r45ss @89 turn on dipswitch #143 NOTEST "You can't see any dipswitch here!\n \n> "
+hg7 r45ss @89 examine dipswitch #143 NOTEST "You can't see any dipswitch here!\n \n> "
+hg7 r45ss @106 look #96 NOTEST "Engine Room\nThis is the room that houses the powerful Infinite Improbability Gen"
+hg7 r45ss @106 examine generator switch #96 NOTEST "You see nothing special about the generator switch.\n \n> "
+hg7 r45ss @106 turn on generator switch #96 NOTEST "Nothing happens.\n \n> "

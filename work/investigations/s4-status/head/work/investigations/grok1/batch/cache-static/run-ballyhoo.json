@@ -1,0 +1,282 @@
+{
+ "static @1:take comrade thumb#0": {
+  "tag": "static",
+  "id": 219,
+  "name": "Comrade Thumb",
+  "step": 1,
+  "expect": 1,
+  "bit": 22,
+  "cmd": "take comrade thumb",
+  "verdict": "NOTEST",
+  "before": [
+   1,
+   6,
+   8,
+   14,
+   15,
+   22,
+   23,
+   31
+  ],
+  "after": [
+   1,
+   6,
+   8,
+   14,
+   15,
+   22,
+   23,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    219,
+    19,
+    0
+   ],
+   [
+    219,
+    15,
+    1
+   ],
+   [
+    219,
+    17,
+    0
+   ],
+   [
+    219,
+    14,
+    1
+   ]
+  ],
+  "nOps": 14,
+  "text": "Once elevated, Comrade Thumb slurps his fill of water. He then plops down, gives you a quick salute, and waddles off into the darkness.\n \n> ",
+  "ts": "2026-10-24T15:34:15.958Z"
+ },
+ "static @1:take button#1": {
+  "tag": "static",
+  "id": 22,
+  "name": "button",
+  "step": 1,
+  "expect": 0,
+  "bit": 22,
+  "cmd": "take button",
+  "verdict": "FALSE",
+  "before": [
+   6
+  ],
+  "after": [
+   6
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    22,
+    19,
+    0
+   ],
+   [
+    22,
+    22,
+    0
+   ]
+  ],
+  "nOps": 9,
+  "text": "Fiddle-de-dee! Rot! Rubbish! Figs!\n \n> ",
+  "ts": "2026-10-24T15:34:16.529Z"
+ },
+ "static @1:take drinking fountain#2": {
+  "tag": "static",
+  "id": 90,
+  "name": "drinking fountain",
+  "step": 1,
+  "expect": 0,
+  "bit": 22,
+  "cmd": "take drinking fountain",
+  "verdict": "FALSE",
+  "before": [
+   6
+  ],
+  "after": [
+   6
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    90,
+    22,
+    0
+   ]
+  ],
+  "nOps": 9,
+  "text": "There you go again ...\n \n> ",
+  "ts": "2026-10-24T15:34:17.116Z"
+ },
+ "static @1:take uniform#3": {
+  "tag": "static",
+  "id": 115,
+  "name": "uniform",
+  "step": 1,
+  "expect": 0,
+  "bit": 22,
+  "cmd": "take uniform",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   7,
+   16
+  ],
+  "after": [
+   6,
+   7,
+   16
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 46,
+  "text": "[You can't see any uniform here.]\n \n> ",
+  "ts": "2026-10-24T15:34:17.688Z"
+ },
+ "static @1:take crowd#4": {
+  "tag": "static",
+  "id": 168,
+  "name": "crowd",
+  "step": 1,
+  "expect": 0,
+  "bit": 22,
+  "cmd": "take crowd",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   8,
+   31
+  ],
+  "after": [
+   6,
+   8,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 46,
+  "text": "[You can't see any crowd here.]\n \n> ",
+  "ts": "2026-10-24T15:34:18.261Z"
+ },
+ "static @3:take clown mask#5": {
+  "tag": "static",
+  "id": 93,
+  "name": "clown mask",
+  "step": 3,
+  "expect": 1,
+  "bit": 22,
+  "cmd": "take clown mask",
+  "verdict": "TRUE",
+  "before": [
+   21,
+   22
+  ],
+  "after": [
+   18,
+   21,
+   22
+  ],
+  "set": [
+   18
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    93,
+    19,
+    0
+   ],
+   [
+    93,
+    22,
+    1
+   ]
+  ],
+  "nOps": 8,
+  "text": "Taken.\n \n> ",
+  "ts": "2026-10-24T15:34:19.965Z"
+ },
+ "static @3:take barred passage#6": {
+  "tag": "static",
+  "id": 49,
+  "name": "barred passage",
+  "step": 3,
+  "expect": 0,
+  "bit": 22,
+  "cmd": "take barred passage",
+  "verdict": "FALSE",
+  "before": [
+   13,
+   15,
+   23
+  ],
+  "after": [
+   13,
+   15,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    49,
+    19,
+    0
+   ],
+   [
+    49,
+    22,
+    0
+   ]
+  ],
+  "nOps": 10,
+  "text": "Absolutely insane.\n \n> ",
+  "ts": "2026-10-24T15:34:20.542Z"
+ },
+ "static @5:take pair of sunglasses#7": {
+  "tag": "static",
+  "id": 32,
+  "name": "pair of sunglasses",
+  "step": 5,
+  "expect": 0,
+  "bit": 22,
+  "cmd": "take pair of sunglasses",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   16
+  ],
+  "after": [
+   6,
+   16
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    32,
+    19,
+    0
+   ]
+  ],
+  "nOps": 23,
+  "text": "You can't, since that would be blind theft.\n \nThe tall clown, whom you now recognize as Chuckles, barks a hello into the cage. You hear an electronic buzz from the turnstile and Chuckles passes through.\n \n> ",
+  "ts": "2026-10-24T15:34:22.265Z"
+ }
+}

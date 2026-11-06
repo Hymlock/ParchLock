@@ -1,0 +1,53 @@
+{
+ "date": "2026-10-23T06:48-04:00",
+ "device": {
+  "adbSerial": "91260151019C",
+  "model": "NX799J",
+  "package": "com.parchlock.app",
+  "versionCode": 47
+ },
+ "apk": {
+  "sha256": "3fa577c1e66ab9e7da302e8d867151b5a688ef260bb597370bbed13cb601a8af",
+  "recipe": "build74 android+assets, then 7 files from frozen ../wt-codex-food-state-candidate-20261023 (AttributeSchema, ActionSynth, LearnedWords, SemanticActions, ModuleStatFactsClaude, Qol, ParchLock.css), SW cache parchlock-shell-v172-foodtest; gradle assembleDebug",
+  "files": {
+   "js/AttributeSchema.js": "976d3c09398efa835cfe78b9a0363258087a48a677f87dd4d6760b8b5fecce25",
+   "js/ActionSynth.js": "e1e3a9f4db00ef2d0706ab86707dfab17720d790f4549920bdf69d82715d22ec",
+   "js/LearnedWords.js": "f3e38253f63a9d666359c021029312d2775623605beee069c128a353b71595ee",
+   "js/SemanticActions.js": "0c3ba2fdd68e3d3be140628ee8b08e51db70d69d9e01cd65cf00e50663825816",
+   "js/ModuleStatFactsClaude.js": "862ac11c1187fc7db771452206014324803e2efd137a0bab57cd014f316e5cfe"
+  }
+ },
+ "operator": "No we don't need to delay this please get it done without asking",
+ "checks": [
+  {
+   "owner": "Coke 61 held",
+   "route": "stand,s,w,open fridge,get coke,get carton,open carton,i",
+   "radial": "Examine, Drink, Drop, Give to..., Put in..., More... (no Eat)",
+   "screenshot": "radial-Coke.png",
+   "result": "PASS"
+  },
+  {
+   "owner": "Chinese food 90 in open held carton 58",
+   "route": "same",
+   "radial": "Examine, Eat, Take out of cardboard carton, Unlock with..., More",
+   "screenshot": "radial-Chinese_food.png",
+   "result": "PASS (Eat present); Unlock with... is a separate pre-existing defect"
+  },
+  {
+   "owner": "carton 58 (negative)",
+   "route": "same",
+   "radial": "Open, Examine, Search, Empty, Close, More... (no Eat/Drink)",
+   "screenshot": "radial-carton.png",
+   "result": "PASS; Open while open is separate"
+  },
+  {
+   "owner": "Funny Bones 18 after MED heat",
+   "route": "stand,s,w,get funny bones,open oven,put package in oven,close oven,press 4,press 0,press 5,press med,press start,wait x4,open oven,get package,i",
+   "radial": "Examine, Eat, Drop, Give to..., Put in..., More... (Actionable._open id 18 kind inventory)",
+   "screenshot": "radial-snack-3.png",
+   "result": "PASS",
+   "failedAttemptQualified": "radial-snack.png / radial-snack-more.png were a mis-aimed press on 'assignment' 97 (helper used the wrapped mark bounding-box centre; fixed to first client rect). Not a food result; their More page debug verbs belong to the assignment and are a separate defect."
+  }
+ ],
+ "result": "4/4 PASS"
+}

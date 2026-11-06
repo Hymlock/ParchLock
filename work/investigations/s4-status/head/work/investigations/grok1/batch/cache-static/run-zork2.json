@@ -1,0 +1,480 @@
+{
+ "static @0:take sword#0": {
+  "tag": "static",
+  "id": 23,
+  "name": "sword",
+  "step": 0,
+  "expect": 1,
+  "bit": 17,
+  "cmd": "take sword",
+  "verdict": "TRUE",
+  "before": [
+   13,
+   17,
+   29
+  ],
+  "after": [
+   2,
+   13,
+   17,
+   29
+  ],
+  "set": [
+   2
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    23,
+    9,
+    0
+   ],
+   [
+    23,
+    17,
+    1
+   ],
+   [
+    23,
+    3,
+    0
+   ]
+  ],
+  "nOps": 12,
+  "text": "Taken.\n \n> ",
+  "ts": "2026-10-24T15:34:30.894Z"
+ },
+ "static @0:take lamp#1": {
+  "tag": "static",
+  "id": 76,
+  "name": "lamp",
+  "step": 0,
+  "expect": 1,
+  "bit": 17,
+  "cmd": "take lamp",
+  "verdict": "TRUE",
+  "before": [
+   17,
+   31
+  ],
+  "after": [
+   2,
+   17,
+   31
+  ],
+  "set": [
+   2
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    76,
+    9,
+    0
+   ],
+   [
+    76,
+    17,
+    1
+   ],
+   [
+    76,
+    3,
+    0
+   ]
+  ],
+  "nOps": 15,
+  "text": "Taken.\n \n> ",
+  "ts": "2026-10-24T15:34:31.512Z"
+ },
+ "static @8:take table#2": {
+  "tag": "static",
+  "id": 104,
+  "name": "table",
+  "step": 8,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take table",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "after": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 33,
+  "text": "You can't see any table here!\n \n> ",
+  "ts": "2026-10-24T15:34:36.717Z"
+ },
+ "static @14:take hedge#3": {
+  "tag": "static",
+  "id": 217,
+  "name": "hedge",
+  "step": 14,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take hedge",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 33,
+  "text": "You can't see any hedge here!\n \n> ",
+  "ts": "2026-10-24T15:34:40.773Z"
+ },
+ "static @24:take keyhole#4": {
+  "tag": "static",
+  "id": 39,
+  "name": "keyhole",
+  "step": 24,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take keyhole",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   11,
+   14
+  ],
+  "after": [
+   4,
+   11,
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 33,
+  "text": "You can't see any keyhole here!\n \n> ",
+  "ts": "2026-10-24T15:34:47.108Z"
+ },
+ "static @24:take metal lid#5": {
+  "tag": "static",
+  "id": 43,
+  "name": "metal lid",
+  "step": 24,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take metal lid",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18
+  ],
+  "after": [
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 33,
+  "text": "You can't see any metal lid here!\n \n> ",
+  "ts": "2026-10-24T15:34:47.684Z"
+ },
+ "static @34:take keyhole#6": {
+  "tag": "static",
+  "id": 38,
+  "name": "keyhole",
+  "step": 34,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take keyhole",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   11,
+   14
+  ],
+  "after": [
+   4,
+   11,
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 33,
+  "text": "You can't see any keyhole here!\n \n> ",
+  "ts": "2026-10-24T15:34:54.057Z"
+ },
+ "static @34:take narrow crack#7": {
+  "tag": "static",
+  "id": 40,
+  "name": "narrow crack",
+  "step": 34,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take narrow crack",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 33,
+  "text": "You can't see any narrow crack here!\n \n> ",
+  "ts": "2026-10-24T15:34:54.634Z"
+ },
+ "static @34:take table#8": {
+  "tag": "static",
+  "id": 41,
+  "name": "table",
+  "step": 34,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take table",
+  "verdict": "FALSE",
+  "before": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "after": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    41,
+    9,
+    0
+   ],
+   [
+    41,
+    17,
+    0
+   ],
+   [
+    41,
+    30,
+    0
+   ]
+  ],
+  "nOps": 40,
+  "text": "What a concept!\n \n> ",
+  "ts": "2026-10-24T15:39:27.971Z"
+ },
+ "static @34:take metal lid#9": {
+  "tag": "static",
+  "id": 42,
+  "name": "metal lid",
+  "step": 34,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take metal lid",
+  "verdict": "FALSE",
+  "before": [
+   11,
+   14,
+   18
+  ],
+  "after": [
+   11,
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    42,
+    9,
+    0
+   ],
+   [
+    42,
+    17,
+    0
+   ],
+   [
+    42,
+    30,
+    0
+   ]
+  ],
+  "nOps": 40,
+  "text": "An interesting idea...\n \n> ",
+  "ts": "2026-10-24T15:39:28.589Z"
+ },
+ "static @39:take huge red dragon#10": {
+  "tag": "static",
+  "id": 207,
+  "name": "huge red dragon",
+  "step": 39,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take huge red dragon",
+  "verdict": "FALSE",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    207,
+    9,
+    0
+   ],
+   [
+    207,
+    17,
+    0
+   ],
+   [
+    207,
+    30,
+    1
+   ],
+   [
+    207,
+    9,
+    0
+   ],
+   [
+    207,
+    9,
+    0
+   ],
+   [
+    207,
+    19,
+    0
+   ]
+  ],
+  "nOps": 72,
+  "text": "A valiant attempt.\nThe dragon seems to have lost interest in you.\n \n> ",
+  "ts": "2026-10-24T15:39:32.047Z"
+ },
+ "static @50:take beautiful princess#11": {
+  "tag": "static",
+  "id": 204,
+  "name": "beautiful princess",
+  "step": 50,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take beautiful princess",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    204,
+    9,
+    0
+   ],
+   [
+    204,
+    9,
+    0
+   ],
+   [
+    204,
+    19,
+    0
+   ]
+  ],
+  "nOps": 69,
+  "text": "She's in a trance!\n \n> ",
+  "ts": "2026-10-24T15:39:38.894Z"
+ },
+ "static @57:take huge dead dragon#12": {
+  "tag": "static",
+  "id": 206,
+  "name": "huge dead dragon",
+  "step": 57,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take huge dead dragon",
+  "verdict": "FALSE",
+  "before": [],
+  "after": [],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    206,
+    9,
+    0
+   ],
+   [
+    206,
+    17,
+    0
+   ],
+   [
+    206,
+    9,
+    0
+   ],
+   [
+    206,
+    19,
+    0
+   ]
+  ],
+  "nOps": 70,
+  "text": "You can't be serious.\n \n> ",
+  "ts": "2026-10-24T15:39:43.500Z"
+ },
+ "static @79:take stone door#13": {
+  "tag": "static",
+  "id": 136,
+  "name": "stone door",
+  "step": 79,
+  "expect": 0,
+  "bit": 17,
+  "cmd": "take stone door",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18,
+   22
+  ],
+  "after": [
+   14,
+   18,
+   22
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 94,
+  "text": "You can't see any stone door here!\n \n> ",
+  "ts": "2026-10-24T15:39:56.716Z"
+ }
+}

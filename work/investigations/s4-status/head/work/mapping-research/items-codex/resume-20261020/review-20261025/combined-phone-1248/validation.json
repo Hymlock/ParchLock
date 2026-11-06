@@ -1,0 +1,17 @@
+{
+  "status": "PASS bounded real Gear emission, fresh custody, no new switchability/commands",
+  "sourceStable": true,
+  "viewport": {
+    "width": 360,
+    "height": 800
+  },
+  "visualInspection": "Root individually inspected after.png: visible book open/providinglight/7inside tags readable with wrapping; box below first viewport, no visiblebox claim.",
+  "scope": "New phone-width browser layout check only;11 ordinary commands, no VM/fact/RNG writes. No phone device/pointer/APK acceptance.",
+  "artifacts": {
+    "helper.cjs": "c592a0e4865511751197df8f0736998b59d21642bf5e85b2ef791bfbd2b3832b",
+    "native.json": "ee277d5a1e6309e66c7383e4876b0bc7a3ababe2060a85a4d8ac00886cd0022d",
+    "before.png": "9d3ab709ab39f76cbc8387949042bda88975e34864f24d514f5188a80ad1dc41",
+    "after.png": "7d255fdb83b9d0c1785ca84f80faa6655869da140da8c67dea7cfc9bbb362543",
+    "manifest.json": "a46b2452a4e8d9630dc1affb38c57f4bf64cfc7f2dfc25e2da13827caf7a05db"
+  }
+}

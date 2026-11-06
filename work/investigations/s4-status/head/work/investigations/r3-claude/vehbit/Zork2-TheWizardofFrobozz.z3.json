@@ -1,0 +1,65 @@
+{
+ "title": "Zork2-TheWizardofFrobozz.z3.js",
+ "sha256": "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e",
+ "bit": 27,
+ "sourceFlagsVEHBIT": "\"VEHBIT\":{\"bit\":27,\"positives\":2,\"negatives\":203,\"tp\":2,\"fp\":0,\"fn\":0,\"exact\":true,\"examples\":[\"98:basket\",\"51:wooden bucket\"]}",
+ "bitMatchesSourceFlags": true,
+ "objectCount": 250,
+ "initialCarriers": [
+  {
+   "id": 51,
+   "name": "bucket",
+   "parent": 118,
+   "parentName": "Circular "
+  },
+  {
+   "id": 98,
+   "name": "basket",
+   "parent": 134,
+   "parentName": "Volcano Bottom"
+  }
+ ],
+ "status": "INCOMPLETE",
+ "distinctPositiveCarriers": [
+  51
+ ],
+ "positives": [
+  {
+   "carrier": 51,
+   "name": "wooden bucket",
+   "enterCmd": "GET IN BUCKET",
+   "parentBefore": 118,
+   "parentBeforeName": "Circular Room",
+   "parentAfter": 51,
+   "enterReply": "This is a damp circular room, whose walls are made of brick and mortar. The roof of this room is not visible, but there appear to be some etchings on the walls. There is a passageway to the west. / There is a wooden bucket here, 3 feet in diameter and 3 feet high. /   / >DROP DRAGON AND PAPER / You don't have that! /   / >GET IN BUCKET / You are now in the wooden bucket. /   / > ",
+   "exitCmd": "GET OUT OF BUCKET",
+   "exitParentAfter": 118,
+   "exitReply": ">GET IN BUCKET / You are now in the wooden bucket. /   / >DROP WATER / You don't have that! /   / >GET OUT OF BUCKET / You are on your own feet again. /   / > ",
+   "log": "z2.log.json",
+   "step": 87
+  }
+ ],
+ "gameMovedIntoCarrier": [],
+ "negatives": [
+  {
+   "cmd": "enter teapot",
+   "parentBefore": 220,
+   "parentAfter": 220,
+   "parentName": "Gazebo",
+   "reply": "china teapot: Taken. / place mat: Taken. / letter opener: Taken. / matchbook: Taken. / newspaper: Taken. /   / >enter teapot / That would involve quite a contortion! /   / > ",
+   "log": "z2.log.json",
+   "step": 11
+  },
+  {
+   "cmd": "sit on teapot",
+   "parentBefore": 220,
+   "parentAfter": 220,
+   "parentName": "Gazebo",
+   "reply": ">sit on teapot / You can't climb onto the china teapot. / A unicorn is peacefully cropping grass at the north end of the garden. There is something hanging around its neck. / Your sword is glowing with a faint blue glow. / A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrological signs. He has a long, stringy, and unkempt beard. / The Wizard draws forth his wand and waves it in your direction. It begins to glow with a faint ",
+   "log": "z2.log.json",
+   "step": 12
+  }
+ ],
+ "notes": "wooden bucket (51) confirmed in Circular Room: GET IN BUCKET parent 118->51, GET OUT OF BUCKET 51->118. Jericho route desyncs on this release (Great Cavern exits are SW/NE; replaced opening with S,S,S,SW,S; later steps partly no-op but still reached the well). basket (98, Volcano Bottom, walkthrough step 142) not reached within cap -> INCOMPLETE. Negatives: ENTER TEAPOT (That would involve quite a contortion) and SIT ON TEAPOT (You cannot climb onto the china teapot) with parent unchanged in Gazebo; note the Gazebo itself is a room (ENTER GAZEBO = travel).",
+ "method": "headless Chromium play.html, Input.Inject ordinary commands, ~1.3s wait; parent via ZRamReader.objectLinks(ZRamProvider.getMem(), WorldModel.lastPayload.playerId). reply = last 10 BufferLines after the command (may include preceding turn text)."
+}

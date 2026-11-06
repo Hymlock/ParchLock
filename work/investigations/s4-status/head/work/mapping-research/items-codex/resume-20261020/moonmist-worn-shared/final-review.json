@@ -1,0 +1,62 @@
+{
+  "reviewer": "Independent subagent zil_food_independent; not an authenticated old bus seat",
+  "verdict": "ACCEPT",
+  "scope": "Bounded Moonmist garment worn-state domain and reviewed shared implementation; not overall/title completion",
+  "sourceHashes": {
+    "js/AttributeSchema.js": "8bf4963e768bb84ac1cc0b70e33ed792707ceaa17cb94e2acd961fa2ced17d01",
+    "js/ModuleStatFactsClaude.js": "96217a4e8165d170e16aef47fce762a907710007eafc44e1463290e3154e2061"
+  },
+  "sourceAndCatalogMismatches": [],
+  "rowsEach": 309,
+  "uniqueRowsEach": 309,
+  "differences": [
+    {
+      "game": "medusa.z5.js",
+      "key": "marks",
+      "pairedSame": true,
+      "classification": "FLAKY"
+    },
+    {
+      "game": "Sherlock.z5.js",
+      "key": "marks",
+      "pairedSame": true,
+      "classification": "FLAKY"
+    }
+  ],
+  "unresolvedDifferences": 0,
+  "coverageGaps": [
+    {
+      "game": "BeingSteve.zblorb.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "BlueLacuna.gblorb.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "bookvol.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "Borderzo.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "chico.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "stiffmst.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "vgame.z8.js",
+      "error": "no-prompt"
+    }
+  ],
+  "nativeCaptureSha256": "a115705f2017be662d43df4af0f7e75f81494cbe1db5d95f6a64f0942150c3d1",
+  "nativeReview": "Two-garment raw state and Equipment wear/remove/drop/retake agree with native replies; room33/62 identities and reciprocal map edges match retained baseline; menus observed not clicked; no forced relocation/facts/attributes",
+  "focusedLimits": "D31 identical8FAIL/52PASS remains unresolved, not pass. Constructed NPC/nested controls are consumer-only evidence.",
+  "otherLimits": "Existing wearable29 room alias and unrelated admission failures remain open; full loss of both identity sources cannot identify unknown owner; no physical-device/restore/full26 guarantee.",
+  "testsRunByReviewer": "Permanent42-control harness at prefreeze. Final review reads existing frozen outputs; no duplicated catalog run."
+}

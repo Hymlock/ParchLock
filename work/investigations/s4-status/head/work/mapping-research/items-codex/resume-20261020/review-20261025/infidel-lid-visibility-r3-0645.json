@@ -1,0 +1,1858 @@
+{
+  "tier": "Fresh ordinary native commands on isolated R3 candidate; comparison uses retained unchanged baseline0638; no VM/fact/RNG writes",
+  "trees": [
+    {
+      "site": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\infidel-state-r3-candidate",
+      "files": {
+        "js/AttributeSchema.js": "c41497cc5eb6be43692ca4193f5f23d4aa2ad20598d94bbffe87d676be0d1ca3",
+        "js/ZRamReader.js": "a7d39948ad521f23be8f9eda36be1d4eca00fc25f3177676c5ac8c6e59bbfd68",
+        "js/ModuleStatFactsClaude.js": "6997a3a08c2f9408a8e522809d4cca807a99a53d04d39980c2b43b0102f1e861",
+        "games/Infidel.z3.js": "1cdda43a7bb09aceaf0b856a019a09f1bc0e430c0ee3a304f8482f7d9669b35f"
+      },
+      "rows": [
+        {
+          "command": "get out of cot",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [],
+          "poolIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">get out of cot",
+            "You push yourself up and manage to get out of the cot. Your legs are a little wobbly, though, and your head swims.",
+            " ",
+            "You hear a plane flying high overhead, outside the tent.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "s",
+          "room": 72,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [],
+          "poolIds": [
+            76,
+            209,
+            232,
+            233
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">s",
+            "Outside Your Tent",
+            "You are on an east/west path on the north side of the encampment. To the south you can see a firepit and to the north is the entrance to your tent. Everything is oddly quiet, unsettling, creating a feeling of floating anxiety. The stillness seems to enhance the eerie quality of the desert, the feeling of being truly alone. There's a small hole in the sand, a remnant of your excavation attempts.",
+            " ",
+            "You crane your neck and see a plane, high overhead, circling the encampment.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "sw",
+          "room": 68,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            76,
+            80,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [],
+          "poolIds": [
+            76,
+            80,
+            209,
+            232,
+            233
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">sw",
+            "Outside Supply Tent",
+            "You're on a north/south path on the west edge of the encampment. Directly to the west is the supply tent, its flaps open, still in the hot, quiet air. To the east you can see the central firepit, a reminder of your being alone. A row of thickets, impossible to make any progress through even with a machete, grows along the western edge of the camp directly to the north and south of the tent. There's a small hole in the sand, a remnant of your excavation attempts.",
+            " ",
+            "You crane your neck and see a plane, high overhead, circling the encampment.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "w",
+          "room": 69,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            33,
+            37,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [],
+          "poolIds": [
+            33,
+            37,
+            76,
+            209,
+            232,
+            233
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">w",
+            "Supply Tent",
+            "You are in a tent, very much like your own -- a tent which had originally contained the supplies for your expedition. You notice, however, that most of the items which were here just yesterday have vanished with your workers. The tent looks as if it's been cleaned out and, as your stomach growls, the empty tent ironically reminds you of a turkey carcass picked clean after a huge Thanksgiving meal. Through the open tent flaps to the east you can see the firepit. If only one of the workers had remained behind, you would make him pay.",
+            "Stuck in the sand, handle down, is a small pick axe.",
+            "Half buried in the sand, in the corner of the tent, is a shovel.",
+            " ",
+            "It sounds as if the plane is circling.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "get pickaxe",
+          "room": 69,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            33,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            37
+          ],
+          "poolIds": [
+            33,
+            76,
+            209,
+            232,
+            233,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">get pickaxe",
+            "Taken.",
+            " ",
+            "It sounds as if the plane is circling.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "get shovel",
+          "room": 69,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            33,
+            37
+          ],
+          "poolIds": [
+            76,
+            209,
+            232,
+            233,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">get shovel",
+            "Taken.",
+            " ",
+            "It sounds as if the plane is flying off.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "e",
+          "room": 68,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            76,
+            80,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            33,
+            37
+          ],
+          "poolIds": [
+            76,
+            80,
+            209,
+            232,
+            233,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">e",
+            "Outside Supply Tent",
+            " ",
+            "A small speck descending from the plane overhead gets larger until you see a crate, dangling from a parachute.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "se",
+          "room": 64,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            23,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            33,
+            37
+          ],
+          "poolIds": [
+            23,
+            76,
+            209,
+            232,
+            233,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">se",
+            "Outside Work Tent",
+            "You are on an east/west path, directly to the north of the work tent. To the north you can see the firepit and, beyond that, your tent. The work tent borders an endless vista of fine, burning sand stretching out to the south. There's a small hole in the sand, a remnant of your excavation attempts.",
+            " ",
+            "At last, your luck seems to be changing. A large crate lands right before you, its parachute flapping in the breeze. The parachute breaks away from the crate and drifts off in the wind.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "s",
+          "room": 62,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            30,
+            31,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            33,
+            37
+          ],
+          "poolIds": [
+            30,
+            31,
+            76,
+            209,
+            232,
+            233,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">s",
+            "Work Tent",
+            "You are in a tent which used to house the workers and their personal effects. Looking around, taking in the stripped and bare surroundings, you feel surprised that they even left the canvas walls. You quickly realize that they took what they needed -- taking everything would have been more trouble than it was worth. From the looks of things they cleared out quickly but quietly.",
+            "Tacked up to the inside of one of the tent flaps is a note.",
+            "Sitting in the sand, bulging a little, is a beaten-up knapsack.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "read note",
+          "room": 62,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            30,
+            31,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            33,
+            37
+          ],
+          "poolIds": [
+            30,
+            31,
+            76,
+            209,
+            232,
+            233,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">read note",
+            "The note reads:",
+            " ",
+            "Fi aman Allah! ",
+            "Hereafter you shall pursue your fool dream of the hidden pyramid and its riches alone. May the jackals feed well on your bones. We have left you what you need to get back, though we hope you do not. We put several things you treasure above life itself inside your trunk, locked with your precious padlock, but we could not bear to part with the key. Especially after what you said of our rites. We hope the drug we placed in your drink did you harm. If not, we are at least satisfied you slept especially soundly while we cleaned out the camp.",
+            " ",
+            "Farewell",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "get knapsack",
+          "room": 62,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            30,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            30,
+            76,
+            209,
+            232,
+            233,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">get knapsack",
+            "(wearing it)",
+            "You swing the knapsack over your shoulders and it settles on your back as its cover flap closes.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "n",
+          "room": 64,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            23,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            23,
+            76,
+            209,
+            232,
+            233,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">n",
+            "Outside Work Tent",
+            "Lying in the sand is a wooden packing crate.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "n",
+          "room": 78,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            41,
+            49,
+            67,
+            76,
+            77,
+            79,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            41,
+            49,
+            67,
+            76,
+            77,
+            79,
+            232,
+            233,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">n",
+            "Fire Pit",
+            "You are in the center of the encampment, standing before a charred pit, a hole dug in the sand surrounded by blackened rocks. The night breezes have already started the reclamation work of the desert, covering most of the pit's bottom. You can see your tent to the north, the work tent to the south, and the supply tent to the west. Far off to the east, through the heat waves rising off the shifting sands, you can see gentle, rolling dunes. There's an enlarged hole in the sand, a remnant of your excavation attempts.",
+            "Half covered with sand is a bright piece of foil which catches your eye.",
+            "Sitting by a rock is what looks like a matchbook.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "get matchbook",
+          "room": 78,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            41,
+            67,
+            76,
+            77,
+            79,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            41,
+            67,
+            76,
+            77,
+            79,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">get matchbook",
+            "Taken.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "n",
+          "room": 72,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "canSee": null
+          },
+          "discoveredIds": [
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">n",
+            "Outside Your Tent",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "n",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">n",
+            "Your Tent",
+            "There is an army cot here.",
+            "At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "examine broken lock",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">examine broken lock",
+            "You can't see any broken lock here!",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "examine pickaxe",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            38,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">examine pickaxe",
+            "It's a small hand axe, similar to those used in mountain climbing.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "smash padlock with pickaxe",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">smash padlock with pickaxe",
+            "The padlock breaks open.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "examine broken lock",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">examine broken lock",
+            "This is a slightly messed-up lock which once functioned. Alas, like your personality, it has seen better days.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "remove padlock",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            39,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            40,
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            39,
+            51,
+            76,
+            209,
+            232,
+            233,
+            40,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">remove padlock",
+            "Taken.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "drop padlock",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 0,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [],
+          "reply": [
+            ">drop padlock",
+            "Dropped.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "open trunk",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 39,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": false,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            27,
+            34,
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            27,
+            34,
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [
+            "examine map",
+            "take map",
+            "search map",
+            "empty map",
+            "open map"
+          ],
+          "reply": [
+            ">open trunk",
+            "Opened. Opening the trunk reveals an inspection sticker, a piece of dried beef, and an ancient map.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "take map",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 223,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": false,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": true,
+              "isOpen": true,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": false,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            27,
+            34,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            35,
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            27,
+            34,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            35,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [
+            "examine map",
+            "take map",
+            "search map",
+            "empty map",
+            "open map",
+            "drop map",
+            "give map to ",
+            "put map in "
+          ],
+          "reply": [
+            ">take map",
+            "Taken. It feels fairly heavy, though, as though it were folded around something solid.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "close trunk",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 223,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            35,
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            35,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [
+            "take map",
+            "examine map",
+            "search map",
+            "empty map",
+            "open map",
+            "drop map",
+            "give map to ",
+            "put map in "
+          ],
+          "reply": [
+            ">close trunk",
+            "Closed.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "put map on trunk",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 39,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [
+            "take map",
+            "examine map",
+            "search map",
+            "empty map",
+            "open map"
+          ],
+          "reply": [
+            ">put map on trunk",
+            "Done.",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "look in trunk",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 39,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [
+            "take map",
+            "examine map",
+            "search map",
+            "empty map",
+            "open map"
+          ],
+          "reply": [
+            ">look in trunk",
+            "It's an old steamer trunk, very heavy and too clumsy for one person to carry.",
+            "Sitting on the trunk is:",
+            "  An ancient map",
+            " ",
+            "> "
+          ]
+        },
+        {
+          "command": "examine map",
+          "room": 71,
+          "player": 223,
+          "map": {
+            "parent": 39,
+            "name": "ancient map"
+          },
+          "trunk": {
+            "rawOpen": true,
+            "rawSurface": true,
+            "attrs": {
+              "absent": false,
+              "clothing": false,
+              "wearable": false,
+              "concealed": false,
+              "container": true,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": false,
+              "static": false,
+              "supporter": true,
+              "switchable": false,
+              "talkable": false,
+              "visited": false,
+              "workflag": true,
+              "worn": false,
+              "male": false,
+              "female": true,
+              "neuter": false,
+              "pluralname": false,
+              "climbable": false,
+              "takeable": false,
+              "openable": true,
+              "containerContentsOnSurface": true
+            },
+            "canSee": true
+          },
+          "discoveredIds": [
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233
+          ],
+          "inventoryIds": [
+            49,
+            31,
+            33,
+            37
+          ],
+          "poolIds": [
+            35,
+            39,
+            40,
+            51,
+            76,
+            209,
+            232,
+            233,
+            49,
+            31,
+            33,
+            37
+          ],
+          "mapCommands": [
+            "take map",
+            "examine map",
+            "search map",
+            "empty map",
+            "open map"
+          ],
+          "reply": [
+            ">examine map",
+            "You're not carrying the map.",
+            " ",
+            "> "
+          ]
+        }
+      ],
+      "sourceStable": true
+    }
+  ]
+}

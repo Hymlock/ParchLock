@@ -1,0 +1,9 @@
+Hitchhik.worn -> U
+Ballyhoo.worn -> U
+Infidel.worn -> U
+HollywoodHijinx.worn -> U
+TheLurkingHorror.worn -> U
+Sorcerer.worn -> NA
+Starcross.worn -> U
+Suspended.worn -> U
+Wishbringer.worn -> U

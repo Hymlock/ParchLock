@@ -1,0 +1,290 @@
+{
+ "talk-zork3 @68:squeeze man#0": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "squeeze man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "365a2e083ab34be23b9770efa57b8a445250a18a1842db5cd2218f3f226d5f7d",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "TRUE",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ],
+   [
+    27,
+    21,
+    1,
+    30094
+   ]
+  ],
+  "nOps": 20,
+  "printedObjs": [
+   27
+  ],
+  "text": "The man does not understand this.\nYour \"friend\" examines his valuables with great pride.\n \n> ",
+  "ts": "2026-10-30T11:11:11.509Z"
+ },
+ "talk-zork3 @68:shake man#1": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "shake man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "365a2e083ab34be23b9770efa57b8a445250a18a1842db5cd2218f3f226d5f7d",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "TRUE",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ],
+   [
+    27,
+    21,
+    1,
+    32366
+   ]
+  ],
+  "nOps": 20,
+  "printedObjs": [],
+  "text": "This seems to have no effect.\nYour \"friend\" examines his valuables with great pride.\n \n> ",
+  "ts": "2026-10-30T11:11:12.087Z"
+ },
+ "talk-zork3 @68:give torch to man#2": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "give torch to man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "365a2e083ab34be23b9770efa57b8a445250a18a1842db5cd2218f3f226d5f7d",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ],
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ],
+   [
+    27,
+    11,
+    1,
+    28520
+   ]
+  ],
+  "nOps": 38,
+  "printedObjs": [
+   27
+  ],
+  "text": "The man refuses it politely.\nYour \"friend\" examines his valuables with great pride.\n \n> ",
+  "ts": "2026-10-30T11:11:12.656Z"
+ },
+ "talk-zork3 @68:attack man#3": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "attack man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "365a2e083ab34be23b9770efa57b8a445250a18a1842db5cd2218f3f226d5f7d",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    18,
+    0,
+    24724
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ]
+  ],
+  "nOps": 79,
+  "printedObjs": [],
+  "text": "What do you want to attack the man with?\n \n> ",
+  "ts": "2026-10-30T11:11:13.238Z"
+ }
+}

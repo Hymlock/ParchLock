@@ -1,0 +1,1 @@
+﻿Tokyo2.z5.js bit 0 (14): 20:(self object) p=0 T | 36:Chickzilla p=35 S | 37:woman p=0 S | 38:pilot p=0 S | 39:cameraman p=0 S | 47:Chickzilla p=0 S | 49:Chickzilla p=48 S | 54:chihuahua p=0 T | 57:animal p=56 T | 58:animal p=0 T | 59:Cornbred Centigrade p=0 T | 78:woman p=74 | 80:Cornbred p=79 | 81:our hero p=29 T C

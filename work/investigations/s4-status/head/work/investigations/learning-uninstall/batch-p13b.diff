@@ -1,0 +1,824 @@
+diff --git a/harness/learning-caps.js b/harness/learning-caps.js
+new file mode 100644
+index 00000000..3338b858
+--- /dev/null
++++ b/harness/learning-caps.js
+@@ -0,0 +1,258 @@
++// P13b R2 harness: learning-store caps and compaction, the durable digests
++// index (incl. legacy ownersOverflow migration), quota hooks with
++// stop-requeue, the 64 custom-slice limit and the learned-data size note.
++// Run: node harness/learning-caps.js
++"use strict";
++const fs = require("fs");
++const path = require("path");
++const vm = require("vm");
++const ROOT = path.join(__dirname, "..");
++let pass = 0, fail = 0;
++function ok(cond, name) { if (cond) pass++; else { fail++; console.log("FAIL", name); } }
++
++function quotaErr() { const e = new Error("quota"); e.name = "QuotaExceededError"; e.code = 22; return e; }
++function makeStorage() {
++    const m = new Map();
++    const s = {
++        maxValue: Infinity, // values longer than this throw QuotaExceededError
++        setCalls: [],
++        getItem: k => (m.has(k) ? m.get(k) : null),
++        setItem: (k, v) => { s.setCalls.push(k); v = String(v); if (v.length > s.maxValue && k !== "PL_ModuleLearningOwner_v1") throw quotaErr(); m.set(k, v); },
++        removeItem: k => { m.delete(k); },
++        key: i => Array.from(m.keys())[i] || null,
++        get length() { return m.size; },
++        _m: m
++    };
++    return s;
++}
++function makeLocks() {
++    let tail = Promise.resolve();
++    return { request(name, cb) { const run = tail.then(() => cb()); tail = run.catch(() => {}); return run; } };
++}
++function makeLib(installed) {
++    const lib = {
++        installed, current: null,
++        all: () => lib.installed.map(m => ({ Path: m.path })),
++        normalizePath: p => String(p || ""),
++        transcriptDigestKey: p => "PL_TranscriptDigest_" + p,
++        currentExecutableDigest: p => { if (p === undefined) return lib.current; const m = lib.installed.find(x => x.path === p); return m ? m.digest : null; }
++    };
++    return lib;
++}
++const files = ["LearningStores", "LearnedWords", "AttrCalibrator", "SemanticActions", "ExitCalibrator", "StatTracker", "DirectionalRadial"];
++function makeTab(storage, lib) {
++    const ctx = {
++        localStorage: storage, navigator: { locks: makeLocks() }, console: { log() {}, warn() {}, error() {} },
++        ModuleLibrary: lib || makeLib([]), ParchLock: { StoryPath: "", GameFilename: "" },
++        setTimeout() {}, clearTimeout() {}, Date, Math, JSON, Promise
++    };
++    ctx.window = ctx;
++    vm.createContext(ctx);
++    files.forEach(f => {
++        const src = fs.readFileSync(path.join(ROOT, "js", f + ".js"), "utf8");
++        try { vm.runInContext(src + "\n;this." + f + "=" + f + ";", ctx, { filename: f + ".js" }); } catch (e) { ctx["_err_" + f] = e; }
++    });
++    return ctx;
++}
++const flush = () => new Promise(r => setImmediate(r));
++async function settle() { for (let i = 0; i < 6; i++) await flush(); }
++const clone = o => JSON.parse(JSON.stringify(o));
++
++(async function main() {
++    const t = makeTab(makeStorage());
++    files.forEach(f => ok(!t["_err_" + f], "load " + f + (t["_err_" + f] ? ": " + t["_err_" + f].message : "")));
++
++    // ---- AttrCalibrator compaction (no object LRU) -----------------------
++    {
++        const A = t.AttrCalibrator;
++        const objects = {};
++        for (let i = 1; i <= 40; i++) objects[i] = { takeable: true };
++        objects[7] = { exactForms: { "pry": { confirmations: 2 }, "ghost": { confirmations: 0 }, "kick": { confirmations: 1, behavioralAccept: true } },
++            allowedVerbs: { "open": { confirmations: 3, opcodeConfirmed: true }, "push": { confirmations: 0, opcodeConfirmed: false } } };
++        const tab = {
++            version: 2, objects,
++            verbs: { open: { candidates: { 11: true, 12: true }, mutatedBit: 11, confirmations: 4 }, wear: { candidates: { 3: true, 9: true }, mutatedBit: null, confirmations: 2 } },
++            locationGlobal: { confirmedSlot: 0, confirmedSlots: [0, 5], stableFor: A.LOCATION_STABLE_TURNS,
++                candidates: { 0: { transitions: 5, returns: 2, seen: { 10: true, 11: true, 12: true }, history: ["10>11"] },
++                    5: { transitions: 5, returns: 2, seen: { 10: true, 11: true }, history: ["10>11"] },
++                    9: { transitions: 1, returns: 0, seen: { 10: true }, history: [] } } }
++        };
++        const out = A.compactTable(clone(tab));
++        ok(JSON.stringify(Object.keys(out.verbs.open.candidates)) === '["11"]', "attr: losing flag candidates dropped once mutatedBit set");
++        ok(Object.keys(out.verbs.wear.candidates).length === 2, "attr: unconfirmed flag keeps every candidate");
++        ok(!out.locationGlobal.candidates[9] && out.locationGlobal.dropped.indexOf(9) >= 0, "attr: non-confirmed location slot dropped once stable");
++        ok(out.locationGlobal.candidates[0].seenCount === 3 && !out.locationGlobal.candidates[0].seen && out.locationGlobal.candidates[0].returns === 2, "attr: confirmed slot seen{} -> seenCount");
++        const confirming = clone(tab); confirming.locationGlobal.stableFor = A.LOCATION_STABLE_TURNS - 1;
++        const out2 = A.compactTable(confirming);
++        ok(out2.locationGlobal.candidates[9] && out2.locationGlobal.candidates[0].seen && !out2.locationGlobal.dropped, "attr: nothing touched while the cohort is still confirming");
++        ok(out.objects[7].exactForms.pry && out.objects[7].exactForms.kick && !out.objects[7].exactForms.ghost, "attr: exactForms keep confirmations>0 (behavioralAccept incl.)");
++        ok(out.objects[7].allowedVerbs.open.opcodeConfirmed && out.objects[7].allowedVerbs.push, "attr: opcodeConfirmed allowedVerb kept (allowedVerbs untouched)");
++        ok(Object.keys(out.objects).length === 40, "attr: no object is ever removed (no LRU; in-scope objects safe)");
++        const src = fs.readFileSync(path.join(ROOT, "js", "AttrCalibrator.js"), "utf8");
++        ok(/loc\.dropped && loc\.dropped\.indexOf\(g\) >= 0\) continue;/.test(src) && /if \(!winner\.length\) delete loc\.dropped;/.test(src), "attr: dropped slots not re-learned while confirmed, revived when the cohort is lost");
++    }
++
++    // ---- ExitCalibrator --------------------------------------------------
++    {
++        const E = t.ExitCalibrator;
++        const blocked = {};
++        for (let i = 0; i < E.BLOCKED_MAX_KEYS + 40; i++) blocked[i + "|n"] = 1;
++        const out = E.compactTable({ v: E.VERSION, dirs: { n: { confirmed: true } }, cand: { n: { "5:b": {} }, s: { "6:b": {} } }, blocked });
++        ok(!out.cand.n && out.cand.s, "exit: cand of a confirmed dir dropped, unconfirmed kept");
++        const keys = Object.keys(out.blocked);
++        ok(keys.length === E.BLOCKED_MAX_KEYS && keys[0] === "40|n" && keys[keys.length - 1] === (E.BLOCKED_MAX_KEYS + 39) + "|n", "exit: blocked keys LRU-bounded, newest kept");
++        ok(E.BLOCKED_MAX_KEYS >= 512, "exit: blocked cap is generous");
++    }
++
++    // ---- StatTracker -----------------------------------------------------
++    {
++        const S = t.StatTracker;
++        const seen = {}; for (let i = 0; i < 100; i++) seen["ending|" + i + "|1"] = 1;
++        const model = { itemMetrics: { 4: { value: { prop: 17, candidates: [17] }, weight: { prop: null, candidates: [3, 4] } }, 5: { value: { prop: null } } }, seenBanners: seen };
++        const v = S.persistView(model);
++        ok(v.itemMetrics[4].value && !v.itemMetrics[4].weight && !v.itemMetrics[5], "stats: itemMetrics persisted only with prop != null");
++        const ids = Object.keys(v.seenBanners);
++        ok(ids.length === 64 && ids[0] === "ending|36|1" && ids[63] === "ending|99|1", "stats: seenBanners keeps the latest 64");
++        ok(Object.keys(model.seenBanners).length === 100 && model.itemMetrics[5], "stats: live model not mutated");
++    }
++
++    // ---- LearnedWords row cap -------------------------------------------
++    {
++        const W = t.LearnedWords;
++        ok(W.MAX_ROWS === 1000, "lw: cap 1000 rows");
++        const row = (o) => Object.assign({ trigger: "x", label: "X", ignored: false, objectId: "1", original: "x", revision: "classification", witnesses: [] }, o);
++        const data = { version: 1, gameIdentityKey: "k", rows: {
++            "exact:1:a": row({ classificationOnly: true }),
++            "manual:z": row({ revision: "r1" }),
++            "exact:1:edited": row({ revision: "r2", trigger: "pry", original: "x" }),
++            "exact:1:ign": row({ ignored: true, classificationOnly: true }),
++            "allowed:1:b": row({ classificationOnly: true }),
++            "exact:1:old": row({}),
++            "exact:1:new": row({}),
++            "behavior:substitute": row({ revision: "r3" })
++        } };
++        const one = W.capRows(clone(data), 7);
++        ok(!one.rows["exact:1:a"] && one.rows["allowed:1:b"], "lw: oldest classificationOnly evicted first");
++        const four = W.capRows(clone(data), 4);
++        ok(!four.rows["exact:1:a"] && !four.rows["allowed:1:b"] && !four.rows["exact:1:old"] && !four.rows["exact:1:new"], "lw: then oldest unedited recorder exact/allowed");
++        const none = W.capRows(clone(data), 0);
++        ok(none.rows["manual:z"] && none.rows["exact:1:edited"] && none.rows["exact:1:ign"] && none.rows["behavior:substitute"], "lw: manual, user-edited exact and ignored suppress never evicted");
++        ok(Object.keys(W.capRows(clone(data)).rows).length === 8, "lw: under the cap nothing is evicted");
++    }
++
++    // ---- SemanticActions dedupe -----------------------------------------
++    {
++        const d = t.SemanticActions.dedupeEntries([{ intent: "OPEN", formId: "f", objectIds: [3], n: 1 }, { intent: "OPEN", formId: "f", objectIds: ["3"], n: 2 }, { intent: "OPEN", formId: "g", objectIds: [3] }]);
++        ok(d.length === 2 && d[0].n === 2, "semantic: dedupe by intent/form/object ids, latest wins");
++    }
++
++    // ---- DirectionalRadial 64 slices -------------------------------------
++    {
++        const tt = makeTab(makeStorage());
++        tt.ParchLock.GameFilename = "a.z5.js";
++        let made = 0;
++        for (let i = 0; i < 64; i++) if (tt.DirectionalRadial.AddCustomSlice({ label: "s" + i, command: "c", angle: i, ring: 2 })) made++;
++        await settle();
++        ok(made === 64 && tt.DirectionalRadial.GetCustomSlices().length === 64, "radial: 64 slices accepted");
++        ok(tt.DirectionalRadial.AddCustomSlice({ label: "x", command: "c", angle: 1, ring: 3 }) === null && tt.DirectionalRadial.GetCustomSlices().length === 64, "radial: 65th refused");
++        const src = fs.readFileSync(path.join(ROOT, "js", "DirectionalRadial.js"), "utf8");
++        ok(/errEl\.text\(DirectionalRadial\.CUSTOM_LIMIT_MESSAGE\)/.test(src) && /64 custom slices/.test(tt.DirectionalRadial.CUSTOM_LIMIT_MESSAGE), "radial: refusal shows a message");
++    }
++
++    // ---- index: digests + legacy overflow migration ----------------------
++    {
++        const owners16 = Array.from({ length: 16 }, (_, i) => ({ digest: "d" + i, path: "games/b" + i + ".z5.js", inputs: { identityKey: "2-B" } }));
++        const s = makeStorage(), lib = makeLib([]);
++        s.setItem("PL_LearnedWordOverrides_2-B", "v");
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 0, tombstones: {},
++            entries: { "PL_LearnedWordOverrides_2-B": { key: "PL_LearnedWordOverrides_2-B", kind: "learnedWords", owners: owners16, ownersOverflow: true } } }));
++        const tt = makeTab(s, lib);
++        lib.current = "dNew"; tt.ParchLock.StoryPath = "games/new.z5.js";
++        tt.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v2"); await settle();
++        lib.current = null; tt.ParchLock.StoryPath = "";
++        const e = tt.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
++        ok(e.ownersOverflow === true && !e.digests && e.owners.length === 16, "index: legacy overflow stays flagged, no digests invented");
++        const L = tt.LearningStores.list();
++        ok(L.removable === 0 && L.unknown === 1 && s.getItem("PL_LearnedWordOverrides_2-B") === "v2", "index: legacy overflow entry stays unerasable");
++    }
++    {   // complete legacy entry: digests rebuilt from its owners on the next owner add
++        const s = makeStorage(), lib = makeLib([]);
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 0, tombstones: {},
++            entries: { "PL_LearnedWordOverrides_2-B": { key: "PL_LearnedWordOverrides_2-B", kind: "learnedWords", owners: [{ digest: "dA", path: "games/a.z5.js", inputs: { identityKey: "2-B" } }] } } }));
++        const tt = makeTab(s, lib);
++        lib.current = "dB"; tt.ParchLock.StoryPath = "games/b.z5.js";
++        tt.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v"); await settle();
++        const e = tt.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
++        ok(JSON.stringify(e.digests) === '["dA","dB"]' && e.owners[1].lastWriteAt > 0, "index: digests rebuilt from known owners, lastWriteAt recorded");
++    }
++    {   // a dropped path-only owner keeps the entry fail-closed; installed digest outside owners still protects
++        const s = makeStorage(), lib = makeLib([]);
++        const tt = makeTab(s, lib);
++        tt.ParchLock.StoryPath = "games/pathonly.z5.js"; lib.current = null;
++        tt.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v"); await settle();
++        for (let i = 0; i < 16; i++) { lib.current = "d" + i; tt.ParchLock.StoryPath = "games/b" + i + ".z5.js"; tt.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v" + i); await settle(); }
++        lib.current = null; tt.ParchLock.StoryPath = "";
++        const e = tt.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
++        ok(e.owners.length === 16 && e.pathOnlyDropped === true && e.owners.every(o => o.digest), "index: dropping a path-only owner sets pathOnlyDropped");
++        ok(tt.LearningStores.list().removable === 0, "index: path-only history stays fail-closed");
++        // digest d0 left the owners list? no -- d0 is still an owner; check an evicted digest protects
++        const s2 = makeStorage(), lib2 = makeLib([]);
++        const t2 = makeTab(s2, lib2);
++        for (let i = 0; i < 18; i++) { lib2.current = "d" + i; t2.ParchLock.StoryPath = "games/b" + i + ".z5.js"; t2.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v" + i); await settle(); }
++        lib2.current = null; t2.ParchLock.StoryPath = "";
++        lib2.installed = [{ path: "games/renamed.z5.js", digest: "d0" }];
++        const L = t2.LearningStores.list();
++        ok(L.removable === 0 && L.installed === 1, "index: an installed digest trimmed from owners still protects the entry");
++    }
++
++    // ---- quota hooks + stop-requeue --------------------------------------
++    {
++        const s = makeStorage(), lib = makeLib([]);
++        const tt = makeTab(s, lib);
++        lib.current = "dA"; tt.ParchLock.StoryPath = "games/a.z5.js";
++        s.setItem("PL_Map_a.z5.js", "MAP");
++        const seen = {}; for (let i = 0; i < 400; i++) seen["ending|" + i + "|1"] = 1;
++        const big = JSON.stringify({ seenBanners: seen });
++        const small = JSON.stringify(tt.StatTracker.persistView({ seenBanners: seen }));
++        s.maxValue = small.length; // only the compacted value fits
++        tt.LearningStores.persist("stats", { identityKey: "1-A" }, big); await settle();
++        ok(s.getItem("PM_Stats_1-A") === small && !tt.LearningStores.lastError(), "quota: compact hook applied and retried once");
++        s.maxValue = 10;
++        tt.LearningStores.persist("stats", { identityKey: "1-A" }, big); await settle();
++        ok(tt.LearningStores.lastError() === "Storage is full; learned data was not saved", "quota: second failure reports the status");
++        ok(tt.LearningStores.pending() === 0, "quota: snapshot not requeued");
++        const calls = s.setCalls.length;
++        tt.LearningStores._drain(); await settle();
++        ok(s.setCalls.length === calls, "quota: no retry until a real mutation");
++        ok(s.getItem("PL_Map_a.z5.js") === "MAP" && s.getItem("PM_Stats_1-A") === small, "quota: maps and the older value untouched");
++        s.maxValue = Infinity;
++        tt.LearningStores.persist("stats", { identityKey: "1-A" }, "{}"); await settle();
++        ok(s.getItem("PM_Stats_1-A") === "{}" && !tt.LearningStores.lastError(), "quota: next real mutation writes and clears the status");
++        // kind without a hook: retried once, then reported
++        s.maxValue = 3;
++        tt.ParchLock.GameFilename = "a.z5.js";
++        tt.LearningStores.persist("dirRadial", { filename: "a.z5.js" }, "0123456789"); await settle();
++        ok(tt.LearningStores.lastError() === tt.LearningStores.QUOTA_MESSAGE && tt.LearningStores.pending() === 0, "quota: hookless kind skipped, reported, not requeued");
++        const src = fs.readFileSync(path.join(ROOT, "js", "LearningStores.js"), "utf8");
++        ok(/quotaError \|\| lastError \|\| recoveryError/.test(src) && /pl-learning-erase-status/.test(src), "quota: Options > Learned words status line shows it");
++        ["AttrCalibrator", "ExitCalibrator", "StatTracker", "LearnedWords"].forEach(f =>
++            ok(/LearningStores\.register\([^;]*compact: function \(value\)/.test(fs.readFileSync(path.join(ROOT, "js", f + ".js"), "utf8")), "quota: " + f + " registers a compact hook"));
++    }
++
++    // ---- size note ------------------------------------------------------
++    {
++        const LS = t.LearningStores;
++        ok(LS.sizeNote({ ok: true, bytes: 2e6, byModule: { "games/big.z5.js": 1.2 * 1024 * 1024 } }) === " Note: learned data for big.z5.js is over 1 MB.", "note: per-module > 1 MB");
++        ok(/over 3 MB in total/.test(LS.sizeNote({ ok: true, bytes: 3.5 * 1024 * 1024, byModule: { a: 9e5, b: 9e5, c: 9e5, d: 9e5 } })), "note: total > 3 MB");
++        ok(LS.sizeNote({ ok: true, bytes: 160000, byModule: { a: 160000 } }) === "", "note: silent at measured sizes");
++        const s = makeStorage(), lib = makeLib([]);
++        const tt = makeTab(s, lib);
++        lib.current = "dA"; tt.ParchLock.StoryPath = "games/a.z5.js";
++        tt.LearningStores.persist("stats", { identityKey: "1-A" }, "x".repeat(600000)); await settle();
++        const L = tt.LearningStores.list();
++        ok(L.byModule["games/a.z5.js"] > 1024 * 1024 && /learned data for a\.z5\.js is over 1 MB/.test(tt.LearningStores.describe(L)), "note: list().bytes per module drives the labelled note");
++    }
++
++    console.log("learning-caps: " + pass + " PASS, " + fail + " FAIL");
++    process.exit(fail ? 1 : 0);
++})();
+diff --git a/harness/learning-stores.js b/harness/learning-stores.js
+index d6aeb22b..1c152d40 100644
+--- a/harness/learning-stores.js
++++ b/harness/learning-stores.js
+@@ -235,12 +235,13 @@ async function settle() { for (let i = 0; i < 6; i++) await flush(); }
+     }
+ 
+ 
+-    {   // owner overflow: never forget an owner; entry becomes non-erasable
++    {   // P13b R2: owners metadata keeps the 16 most recent; the durable
++        // digests set (erase authority) keeps every digest, never trimmed
+         const { t } = await scenario([], Array.from({ length: 18 }, (_, i) => ({ id: "2-B", digest: "d" + i, path: "games/b" + i + ".z5.js" })), null);
+         const e = t.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
+-        ok(e.owners.length === 16 && e.ownersOverflow === true && e.owners[0].digest === "d0", "overflow keeps owners + sentinel");
++        ok(e.owners.length === 16 && !e.ownersOverflow && e.owners[0].digest === "d2" && e.digests.length === 18 && e.digests[0] === "d0", "owners keep 16 most recent, digests keep all 18");
+         const L = t.LearningStores.list();
+-        ok(L.removable === 0 && L.unknown === 1, "overflowed entry counted unknown");
++        ok(L.removable === 1 && L.unknown === 0, "all 18 owners uninstalled: erasable by the digests set");
+     }
+     {   // index write fails before erase: nothing removed
+         const { t, s } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
+diff --git a/js/AttrCalibrator.js b/js/AttrCalibrator.js
+index db69842f..a7749382 100644
+--- a/js/AttrCalibrator.js
++++ b/js/AttrCalibrator.js
+@@ -679,15 +679,20 @@ var AttrCalibrator = {
+                     delete loc.candidates[g];
+                     continue;
+                 }
++                // P13b: a slot dropped once the cohort was stable is not re-learned
++                // while that cohort stays confirmed.
++                if (loc.dropped && loc.dropped.indexOf(g) >= 0) continue;
+                 var c = loc.candidates[g];
+                 if (!c) c = loc.candidates[g] = { transitions: 0, returns: 0, seen: {}, history: [] };
+                 if (val !== prev && ZRamReader.isLocationObject(mem, prev, player)) {
+                     // A changed descriptor, known containment, or an already learned
+                     // cohort supplies evidence; a label is never an identity key.
+                     if (enclosing || (textAfter && textAfter !== textBefore) || loc.confirmedSlots.indexOf(g) >= 0) {
+-                        c.seen[prev] = true;
+-                        if (c.seen[val]) c.returns++;
+-                        c.seen[val] = true;
++                        if (c.seen) {
++                            c.seen[prev] = true;
++                            if (c.seen[val]) c.returns++;
++                            c.seen[val] = true;
++                        } else c.returns++; // P13b compacted confirmed slot: seen{} became seenCount
+                         c.transitions++;
+                         c.history.push(prev + ">" + val);
+                         if (c.history.length > 12) c.history.shift();
+@@ -701,6 +706,9 @@ var AttrCalibrator = {
+             // Mirrored globals are one hypothesis. Divergent equal-support
+             // hypotheses remain unresolved, rather than winning by slot order.
+             var winner = ranked.length && (!ranked[1] || ranked[0].length > ranked[1].length) ? ranked[0] : [];
++            var same = winner.length && JSON.stringify(winner) === JSON.stringify(loc.confirmedSlots || []);
++            loc.stableFor = same ? (loc.stableFor || 0) + 1 : 0;
++            if (!winner.length) delete loc.dropped; // cohort lost: every slot may be learned again
+             loc.confirmedSlots = winner;
+             loc.confirmedSlot = winner.length ? winner[0] : null;
+             AttrCalibrator.persist(mem);
+@@ -950,12 +958,51 @@ var AttrCalibrator = {
+             }
+         } catch (e) {}
+     },
++    // P13b R2: compaction only (no object LRU). Drops evidence that can no
++    // longer change any learned answer:
++    //  - a flag whose mutatedBit is set keeps only that bit as candidate;
++    //  - once confirmedSlots has been stable for LOCATION_STABLE_TURNS, the
++    //    non-confirmed locationGlobal slots are dropped (and not re-learned
++    //    while that cohort stays confirmed), and each confirmed slot's seen{}
++    //    map becomes a seenCount; never while a slot is still confirming;
++    //  - exactForms keep every form with confirmations > 0.
++    LOCATION_STABLE_TURNS: 8,
++    compactTable: function (t) {
++        if (!t || typeof t !== "object") return t;
++        Object.keys(t.verbs || {}).forEach(function (f) {
++            var v = t.verbs[f];
++            if (v && typeof v.mutatedBit === "number" && v.candidates && v.candidates[v.mutatedBit]) {
++                var keep = {}; keep[v.mutatedBit] = v.candidates[v.mutatedBit]; v.candidates = keep;
++            }
++        });
++        var loc = t.locationGlobal;
++        if (loc && loc.candidates && Array.isArray(loc.confirmedSlots) && loc.confirmedSlots.length &&
++            (loc.stableFor || 0) >= AttrCalibrator.LOCATION_STABLE_TURNS) {
++            Object.keys(loc.candidates).forEach(function (g) {
++                var n = Number(g);
++                if (loc.confirmedSlots.indexOf(n) < 0) {
++                    delete loc.candidates[g];
++                    loc.dropped = loc.dropped || [];
++                    if (loc.dropped.indexOf(n) < 0) loc.dropped.push(n);
++                } else {
++                    var c = loc.candidates[g];
++                    if (c && c.seen && c.returns > 0) { c.seenCount = Object.keys(c.seen).length; delete c.seen; }
++                }
++            });
++        }
++        Object.keys(t.objects || {}).forEach(function (id) {
++            var ef = t.objects[id] && t.objects[id].exactForms;
++            if (ef) Object.keys(ef).forEach(function (form) { if (!(ef[form] && ef[form].confirmations > 0)) delete ef[form]; });
++        });
++        return t;
++    },
+     learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? "PL_AttrCalib_" + inputs.identityKey : null; },
+     persist: function (mem) {
+         var key = AttrCalibrator.gameIdentityKey(mem);
+         if (!key) return;
+         try {
+             if (typeof localStorage === "undefined") return;
++            AttrCalibrator.compactTable(AttrCalibrator.table);
+             if (typeof LearningStores !== "undefined") LearningStores.persist("attrCalib", { identityKey: key }, JSON.stringify(AttrCalibrator.table), function () { if (AttrCalibrator.hydratedForGame === key) AttrCalibrator.table = { version: 2, verbs: {}, objects: {} }; });
+             else localStorage.setItem("PL_AttrCalib_" + key, JSON.stringify(AttrCalibrator.table));
+         } catch (e) {}
+@@ -1413,4 +1460,6 @@ if (typeof setTimeout === "function") {
+     setTimeout(function () { AttrCalibrator.installHooks(); }, 0);
+     setTimeout(function () { AttrCalibrator.installHooks(); }, 50);
+ }
+-if (typeof LearningStores !== "undefined") LearningStores.register("attrCalib", "PL_AttrCalib_", AttrCalibrator.learningKeyFor);
++if (typeof LearningStores !== "undefined") LearningStores.register("attrCalib", "PL_AttrCalib_", AttrCalibrator.learningKeyFor, {
++    compact: function (value) { return JSON.stringify(AttrCalibrator.compactTable(JSON.parse(value))); }
++});
+diff --git a/js/DirectionalRadial.js b/js/DirectionalRadial.js
+index a7cc3a1c..8d387a6f 100644
+--- a/js/DirectionalRadial.js
++++ b/js/DirectionalRadial.js
+@@ -437,8 +437,13 @@ var DirectionalRadial = {
+         } catch (e) {}
+     },
+ 
++    // P13b R2: a module holds at most 64 custom slices; the 65th is refused
++    // (returns null) rather than evicting one the player made.
++    MAX_CUSTOM_SLICES: 64,
++    CUSTOM_LIMIT_MESSAGE: "This story already has 64 custom slices. Delete one before adding another.",
+     AddCustomSlice: function (slice) {
+         var list = DirectionalRadial.GetCustomSlices();
++        if (list.length >= DirectionalRadial.MAX_CUSTOM_SLICES) return null;
+         slice = Object.assign({}, slice, { id: "cs" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7) });
+         list.push(slice);
+         DirectionalRadial.SaveCustomSlices(list);
+@@ -1138,7 +1143,10 @@ var DirectionalRadial = {
+         if (DirectionalRadial._editingId) {
+             DirectionalRadial.UpdateCustomSlice(DirectionalRadial._editingId, { label: label, command: command, angle: angle, ring: ring });
+         } else {
+-            DirectionalRadial.AddCustomSlice({ label: label, command: command, angle: angle, ring: ring });
++            if (!DirectionalRadial.AddCustomSlice({ label: label, command: command, angle: angle, ring: ring })) {
++                errEl.text(DirectionalRadial.CUSTOM_LIMIT_MESSAGE);
++                return;
++            }
+         }
+         DirectionalRadial._editingId = null;
+         $("#pl-dirpad-add-label").val("");
+diff --git a/js/ExitCalibrator.js b/js/ExitCalibrator.js
+index 907815e1..28139b00 100644
+--- a/js/ExitCalibrator.js
++++ b/js/ExitCalibrator.js
+@@ -380,7 +380,13 @@ var ExitCalibrator = {
+         var t = ExitCalibrator.hydrate(mem);
+         t.blocked = t.blocked || {};
+         var k = String(roomId) + "|" + dir;
+-        t.blocked[k] = (t.blocked[k] || 0) + 1;
++        var n = (t.blocked[k] || 0) + 1;
++        // P13b: re-insert so key order is recency order, then bound the key
++        // count (LRU). Blocked keys are only ever written for the room the
++        // player stood in, so every kept key belongs to a visited room.
++        delete t.blocked[k];
++        t.blocked[k] = n;
++        ExitCalibrator.compactTable(t);
+         ExitCalibrator.persist();
+     },
+ 
+@@ -407,6 +413,22 @@ var ExitCalibrator = {
+ 
+     learningKeyFor: function (i) { return i && typeof i.identityKey === "string" && i.identityKey ? "PM_ExitCalib_" + i.identityKey : null; },
+ 
++    // P13b R2. Measured (grok2 p13b-measure): whole exit table 3.5-6.4 KB on
++    // 400-600 turn walks; 512 blocked keys is several times any measured walk.
++    BLOCKED_MAX_KEYS: 512,
++    // Drops evidence that can no longer change an answer: cand buckets for
++    // dirs already confirmed (a torn-down dir deletes its cand anyway) and
++    // the least recently blocked keys past BLOCKED_MAX_KEYS.
++    compactTable: function (t) {
++        if (!t || typeof t !== "object") return t;
++        if (t.cand && t.dirs) Object.keys(t.cand).forEach(function (d) { if (t.dirs[d] && t.dirs[d].confirmed) delete t.cand[d]; });
++        if (t.blocked) {
++            var keys = Object.keys(t.blocked);
++            for (var i = 0; i < keys.length - ExitCalibrator.BLOCKED_MAX_KEYS; i++) delete t.blocked[keys[i]];
++        }
++        return t;
++    },
++
+     emptyTable: function () {
+         return { v: ExitCalibrator.VERSION, dirs: {}, cand: {}, blocked: {} };
+     },
+@@ -433,6 +455,7 @@ var ExitCalibrator = {
+         try {
+             if (ExitCalibrator._key && ExitCalibrator._table) {
+                 var ek = ExitCalibrator._key;
++                ExitCalibrator.compactTable(ExitCalibrator._table);
+                 if (typeof LearningStores !== "undefined") LearningStores.persist("exitCalib", { identityKey: ek.slice("PM_ExitCalib_".length) }, JSON.stringify(ExitCalibrator._table), function () { if (ExitCalibrator._key === ek) ExitCalibrator._table = ExitCalibrator.emptyTable(); });
+                 else localStorage.setItem(ek, JSON.stringify(ExitCalibrator._table));
+             }
+@@ -679,4 +702,6 @@ var ExitCalibrator = {
+         ExitCalibrator.persist();
+     }
+ };
+-if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor);
++if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor, {
++    compact: function (value) { return JSON.stringify(ExitCalibrator.compactTable(JSON.parse(value))); }
++});
+diff --git a/js/LearnedWords.js b/js/LearnedWords.js
+index 75a6c250..f2f8c38d 100644
+--- a/js/LearnedWords.js
++++ b/js/LearnedWords.js
+@@ -36,8 +36,30 @@ var LearnedWords = {
+         LearnedWords._data = data;
+         return data;
+     },
++    // P13b R2. Measured (grok2 p13b-measure): Zork I, 396 turns, 148 rows
++    // (all classificationOnly), 62 KB. 1000 rows is ~7x that walk.
++    MAX_ROWS: 1000,
++    // Evicts, oldest first, classificationOnly rows, then recorder exact/
++    // allowed rows that were never edited (revision 'classification',
++    // trigger === original) and are not ignored. Never evicted: manual:*
++    // rows, user-edited rows (committed: any other revision) and ignored rows.
++    capRows: function (data, max) {
++        if (!data || !data.rows) return data;
++        max = max == null ? LearnedWords.MAX_ROWS : max;
++        var ids = Object.keys(data.rows), over = ids.length - max;
++        if (over <= 0) return data;
++        function recorderUnedited(id) {
++            var r = data.rows[id];
++            return /^(exact|allowed):/.test(id) && r && !r.ignored && r.revision === "classification" && r.trigger === r.original;
++        }
++        var first = ids.filter(function (id) { return data.rows[id] && data.rows[id].classificationOnly && recorderUnedited(id); });
++        var second = ids.filter(function (id) { return first.indexOf(id) < 0 && recorderUnedited(id); });
++        first.concat(second).slice(0, over).forEach(function (id) { delete data.rows[id]; });
++        return data;
++    },
+     write: function (next, history) {
+         if (!LearnedWords.identity() || next.gameIdentityKey !== LearnedWords.identity()) throw new Error("This story changed. Reopen the editor.");
++        LearnedWords.capRows(next);
+         if (typeof LearningStores !== "undefined") LearningStores.persist("learnedWords", { identityKey: next.gameIdentityKey }, JSON.stringify(next), LearnedWords.resetErasedFor(next.gameIdentityKey));
+         else localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
+         if (history) LearnedWords._undo.push(JSON.stringify(LearnedWords.load()));
+@@ -635,4 +657,6 @@ var LearnedWords = {
+         if (LearnedWords._tourFocus && LearnedWords._tourFocus.isConnected) LearnedWords._tourFocus.focus();
+     }
+ };
+-if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
++if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor, {
++    compact: function (value) { return JSON.stringify(LearnedWords.capRows(JSON.parse(value))); }
++});
+diff --git a/js/LearningStores.js b/js/LearningStores.js
+index 154ee4da..8695fbde 100644
+--- a/js/LearningStores.js
++++ b/js/LearningStores.js
+@@ -21,6 +21,9 @@ var LearningStores = (function () {
+     var LOCK = "PL_learning_store";
+     var MAX_OWNERS = 16;
+     var generators = Object.create(null);
++    var compactors = Object.create(null); // P13b: kind -> compact(value) used on QuotaExceededError
++    var QUOTA_MESSAGE = "Storage is full; learned data was not saved";
++    var quotaError = null, quotaReported = false;
+     var prefixes = [];
+     var queue = [];            // FIFO of immutable snapshots
+     var draining = false;
+@@ -51,8 +54,11 @@ var LearningStores = (function () {
+                 var e = p.entries[k];
+                 if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners) || (e.eraseEpoch != null && !validInt(e.eraseEpoch))) throw 0;
+                 if (e.ownersOverflow != null && e.ownersOverflow !== true) throw 0;
++                if (e.pathOnlyDropped != null && e.pathOnlyDropped !== true) throw 0;
++                if (e.digests != null && (!Array.isArray(e.digests) || !e.digests.every(function (d) { return typeof d === "string"; }))) throw 0;
+                 e.owners.forEach(function (o) {
+                     if (!isObj(o) || !isObj(o.inputs) || (o.digest != null && typeof o.digest !== "string") || typeof o.path !== "string") throw 0;
++                    if (o.lastWriteAt != null && !(typeof o.lastWriteAt === "number" && isFinite(o.lastWriteAt))) throw 0;
+                 });
+             });
+             Object.keys(p.tombstones).forEach(function (k) {
+@@ -67,8 +73,11 @@ var LearningStores = (function () {
+     }
+     function writeIndex(index) { storage().setItem(INDEX_KEY, JSON.stringify(index)); }
+ 
+-    function register(kind, prefix, generator) {
++    // opts.compact(value) -> smaller serialized value; called only on a
++    // QuotaExceededError for this kind's own key (P13b R2 quota).
++    function register(kind, prefix, generator, opts) {
+         generators[kind] = generator;
++        if (opts && typeof opts.compact === "function") compactors[kind] = opts.compact;
+         if (prefix && prefixes.indexOf(prefix) < 0) prefixes.push(prefix);
+     }
+ 
+@@ -90,14 +99,68 @@ var LearningStores = (function () {
+         return { digest: digest, path: path };
+     }
+ 
+-    // Owners are never forgotten: past the bound the entry is marked
+-    // ownersOverflow (a permanent sentinel) and can never be erased.
++    // P13b R2 index. `digests` is the durable erase authority: every owner
++    // digest ever added, never trimmed. `owners` metadata keeps the
++    // MAX_OWNERS most recent (by lastWriteAt). Dropping a path-only owner
++    // (no digest) sets pathOnlyDropped, which keeps the entry unerasable
++    // (path-only owners stay fail-closed).
++    // Migration: an entry without `digests` gets them rebuilt from its owners
++    // only when that list is complete (never overflowed). A legacy
++    // ownersOverflow entry already lost owners beyond 16, so its digest set
++    // cannot be rebuilt: it stays unerasable for good, and the overflow flag
++    // is never cleared without digests.
++    function ensureDigests(e) {
++        if (Array.isArray(e.digests) || e.ownersOverflow) return false;
++        e.digests = [];
++        e.owners.forEach(function (o) { if (o.digest && e.digests.indexOf(o.digest) < 0) e.digests.push(o.digest); });
++        return true;
++    }
+     function addOwner(e, owner) {
++        // A known owner changes nothing (value-only writes never rewrite the
++        // index; entryDigests derives a complete legacy entry's digests).
+         if (e.owners.some(function (o) { return sameOwner(o, owner); })) return false;
+-        if (e.owners.length >= MAX_OWNERS) { if (e.ownersOverflow) return false; e.ownersOverflow = true; return true; }
+-        e.owners.push(owner);
++        // Legacy overflow (no digests): owners stay frozen, never erasable.
++        if (!Array.isArray(e.digests) && e.ownersOverflow) return false;
++        ensureDigests(e);
++        if (owner.digest && e.digests.indexOf(owner.digest) < 0) e.digests.push(owner.digest);
++        while (e.owners.length >= MAX_OWNERS) {
++            var oldest = 0;
++            for (var i = 1; i < e.owners.length; i++) if ((e.owners[i].lastWriteAt || 0) < (e.owners[oldest].lastWriteAt || 0)) oldest = i;
++            var gone = e.owners.splice(oldest, 1)[0];
++            if (!gone.digest) e.pathOnlyDropped = true;
++        }
++        e.owners.push({ digest: owner.digest, path: owner.path, inputs: owner.inputs, lastWriteAt: Date.now() });
+         return true;
+     }
++    function entryDigests(e) {
++        if (Array.isArray(e.digests)) return e.digests;
++        return e.owners.map(function (o) { return o.digest; }).filter(Boolean);
++    }
++    function isQuota(err) {
++        return !!err && (err.name === "QuotaExceededError" || err.name === "NS_ERROR_DOM_QUOTA_REACHED" || err.code === 22 || err.code === 1014);
++    }
++    function reportQuota() {
++        quotaError = QUOTA_MESSAGE;
++        if (!quotaReported) { quotaReported = true; try { console.warn("[LearningStores] " + QUOTA_MESSAGE); } catch (e) {} }
++        try { if (typeof $ !== "undefined") $("#pl-learning-erase-status").text(QUOTA_MESSAGE); } catch (e2) {}
++    }
++    // Writes a learning value. On QuotaExceededError the kind's registered
++    // compact(value) hook runs (kinds without one are skipped; only this
++    // learning key is touched -- never maps, saves, transcripts or prefs, and
++    // nothing is evicted from other keys), then the write is retried once. A
++    // second failure reports the quota status and returns false: the caller
++    // drops the snapshot instead of requeueing it, so it is next written only
++    // after a real mutation persists a new snapshot.
++    function writeValue(ls, kind, key, value) {
++        try { ls.setItem(key, value); quotaError = null; quotaReported = false; return true; }
++        catch (err) {
++            if (!isQuota(err)) throw err;
++            var next = value;
++            if (compactors[kind]) { try { var c = compactors[kind](value); if (typeof c === "string") next = c; } catch (eC) {} }
++            try { ls.setItem(key, next); quotaError = null; quotaReported = false; return true; }
++            catch (err2) { if (!isQuota(err2)) throw err2; reportQuota(); return false; }
++        }
++    }
+ 
+     // Finish an erase interrupted after its tombstones became durable. Its
+     // keys stay tombstoned; removal is retried and the revision finalized.
+@@ -192,7 +255,7 @@ var LearningStores = (function () {
+                 return "erased";
+             }
+         }
+-        if (!index) { ls.setItem(snap.key, snap.value); return "written-unindexed"; }
++        if (!index) return writeValue(ls, snap.kind, snap.key, snap.value) ? "written-unindexed" : "quota-dropped";
+         // Cross-tab writes are last-writer-wins in commit order. The index
+         // is rewritten only when entry metadata changed; recovery above
+         // already committed its own index changes.
+@@ -215,8 +278,7 @@ var LearningStores = (function () {
+             if (!be || !be.owners.some(function (o) { return sameOwner(o, snap.owner); }) && !be.ownersOverflow)
+                 throw new Error("owner registration not durable");
+         }
+-        ls.setItem(snap.key, snap.value);
+-        return "written";
++        return writeValue(ls, snap.kind, snap.key, snap.value) ? "written" : "quota-dropped";
+     }
+ 
+     var seqNo = 0;
+@@ -270,7 +332,7 @@ var LearningStores = (function () {
+         owner = { digest: owner.digest, path: owner.path, inputs: JSON.parse(JSON.stringify(inputs)) };
+         if (!locks()) {
+             // No Web Locks: cleanup is disabled for the session; write as today.
+-            try { ls.setItem(key, value); } catch (e) { return null; }
++            try { if (!writeValue(ls, kind, key, value)) return null; } catch (e) { return null; }
+             try {
+                 var r = readIndex();
+                 if (r.ok) {
+@@ -337,7 +399,7 @@ var LearningStores = (function () {
+     }
+ 
+     function list() {
+-        var out = { ok: false, reason: "", candidates: [], removable: 0, installed: 0, unknown: 0, unmanaged: 0, bytes: 0, revision: 0, signature: "" };
++        var out = { ok: false, reason: "", candidates: [], removable: 0, installed: 0, unknown: 0, unmanaged: 0, bytes: 0, byModule: {}, revision: 0, signature: "" };
+         if (!locks()) { out.reason = "Erasing is unavailable in this browser (no Web Locks)."; return out; }
+         var ls = storage();
+         if (!ls) { out.reason = "Storage is unavailable."; return out; }
+@@ -354,14 +416,20 @@ var LearningStores = (function () {
+             try { value = ls.getItem(k); } catch (eG) { value = null; }
+             if (!entryValid(e)) return; // counted as unmanaged below if present
+             managed[k] = true;
+-            if (value != null) out.bytes += (k.length + value.length) * 2;
++            if (value != null) {
++                var b = (k.length + value.length) * 2;
++                out.bytes += b;
++                var newest = e.owners.reduce(function (a, o) { return !a || (o.lastWriteAt || 0) >= (a.lastWriteAt || 0) ? o : a; }, null);
++                var mod = (newest && newest.path) || "(unknown story)";
++                out.byModule[mod] = (out.byModule[mod] || 0) + b;
++            }
++            var digs = entryDigests(e);
+             var installed = e.owners.some(function (o) {
+-                return inst.paths.indexOf(o.path) >= 0 || (o.digest && inst.digests.indexOf(o.digest) >= 0) ||
+-                    (cur.path && o.path === cur.path) || (cur.digest && o.digest === cur.digest);
+-            });
++                return inst.paths.indexOf(o.path) >= 0 || (cur.path && o.path === cur.path);
++            }) || digs.some(function (d) { return inst.digests.indexOf(d) >= 0 || (cur.digest && d === cur.digest); });
+             if (installed) { out.installed++; return; }
+             if (r.index.pending && pendingKeys(r.index).indexOf(k) >= 0) return;
+-            if (e.ownersOverflow || inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
++            if (e.ownersOverflow || e.pathOnlyDropped || inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
+             if (value == null) return;
+             out.candidates.push({ key: k, value: value, kind: e.kind, inputs: e.owners[0].inputs });
+         });
+@@ -426,11 +494,22 @@ var LearningStores = (function () {
+     }
+ 
+     function kb(bytes) { return Math.max(0, Math.round(bytes / 1024 * 10) / 10); }
++    // P13b R2 soft note (not a cap): measured long walks hold 87-156 KB of
++    // learned data per story, so 1 MB per story / 3 MB in total is several
++    // times any measured title.
++    var NOTE_MODULE_BYTES = 1024 * 1024, NOTE_TOTAL_BYTES = 3 * 1024 * 1024;
++    function sizeNote(listing) {
++        if (!listing || !listing.ok) return "";
++        var big = Object.keys(listing.byModule || {}).filter(function (m) { return listing.byModule[m] > NOTE_MODULE_BYTES; });
++        if (big.length) return " Note: learned data for " + big.map(function (m) { return String(m).split("/").pop(); }).join(", ") + " is over 1 MB.";
++        if (listing.bytes > NOTE_TOTAL_BYTES) return " Note: learned data is over 3 MB in total.";
++        return "";
++    }
+     function describe(listing, result) {
+         if (!listing.ok) return listing.reason;
+         var s = "Learned data: about " + kb(listing.bytes) + " KB (UTF-16 estimate). " +
+             listing.removable + " erasable, " + listing.installed + " kept for installed stories, " +
+-            listing.unknown + " unknown, " + listing.unmanaged + " unmanaged.";
++            listing.unknown + " unknown, " + listing.unmanaged + " unmanaged." + sizeNote(listing);
+         if (result) s = (result.aborted ? result.reason + " " : "Removed " + result.removed + ", failed " + result.failed + ". ") + s;
+         return s;
+     }
+@@ -446,10 +525,12 @@ var LearningStores = (function () {
+         function show(l, result) {
+             listing = l;
+             eraseBtn.prop("disabled", needCheck || !l || !l.ok || l.removable === 0);
+-            status.text(((lastError || recoveryError) ? (lastError || recoveryError) + " " : "") + describe(l, result));
++            var err = quotaError || lastError || recoveryError;
++            status.text((err ? err + " " : "") + describe(l, result));
+         }
+         var first = list();
+-        status.text(((lastError || recoveryError) ? (lastError || recoveryError) + " " : "") + (first.ok ? "Check to find learned data from uninstalled stories. " + describe(first) : first.reason));
++        var err0 = quotaError || lastError || recoveryError;
++        status.text((err0 ? err0 + " " : "") + (first.ok ? "Check to find learned data from uninstalled stories. " + describe(first) : first.reason));
+         checkBtn.prop("disabled", !first.ok);
+         checkBtn.on("click", function () {
+             checkBtn.prop("disabled", true); eraseBtn.prop("disabled", true);
+@@ -474,7 +555,8 @@ var LearningStores = (function () {
+         register: register, read: read, persist: persist, readIndex: readIndex,
+         list: list, check: check, erase: erase, describe: describe, addOptions: addOptions,
+         entryValid: entryValid, pending: function () { return queue.length; },
+-        lastError: function () { return lastError || recoveryError; },
++        lastError: function () { return quotaError || lastError || recoveryError; },
++        QUOTA_MESSAGE: QUOTA_MESSAGE, sizeNote: sizeNote, MAX_OWNERS: MAX_OWNERS,
+         _drain: drain, _indexWrites: function () { return indexWrites; }
+     };
+ })();
+diff --git a/js/SemanticActions.js b/js/SemanticActions.js
+index 6a43e4a1..60889371 100644
+--- a/js/SemanticActions.js
++++ b/js/SemanticActions.js
+@@ -700,12 +700,23 @@ var SemanticActions = {
+     // persists an empty set today. That is intentional, not a bug: writing
+     // unconfirmed behavioral guesses into durable storage is exactly what
+     // "fails closed" is guarding against.
++    // P13b R2: one persisted entry per (intent, formId, objectIds); the
++    // latest observation of a triple wins. The entry cap waits for the
++    // structural witnesses that will first produce confirmed entries.
++    dedupeEntries: function (entries) {
++        var at = Object.create(null), out = [];
++        (entries || []).forEach(function (e) {
++            var k = JSON.stringify([e && e.intent, e && e.formId, ((e && e.objectIds) || []).map(String)]);
++            if (k in at) out[at[k]] = e; else { at[k] = out.length; out.push(e); }
++        });
++        return out;
++    },
+     persist: function (mem, locale) {
+         var key = SemanticActions.buildIdentityKey(mem, locale);
+         if (!key) return;
+         try {
+             if (typeof localStorage === "undefined") return;
+-            var confirmedOnly = SemanticActions.Evidence.all().filter(function (e) { return e.confirmed; });
++            var confirmedOnly = SemanticActions.dedupeEntries(SemanticActions.Evidence.all().filter(function (e) { return e.confirmed; }));
+             var json = JSON.stringify({
+                 version: SemanticActions.SIDECAR_VERSION,
+                 buildKey: key,
+diff --git a/js/StatTracker.js b/js/StatTracker.js
+index d6d261d2..9f413600 100644
+--- a/js/StatTracker.js
++++ b/js/StatTracker.js
+@@ -1616,6 +1616,33 @@ var StatTracker = {
+     // differs from what was last written.
+     _lastSaved: null,
+     _saveReplacer: (k, v) => (k === "badgeUntil" || k === "badgeDelta" || k === "lastChange") ? undefined : v,
++    // P13b R2: the persisted projection keeps only learned item-metric pins
++    // (prop != null; forgetReadings drops the rest on load anyway) and the
++    // latest SEEN_BANNERS_MAX ending ids (each carries its page epoch, so an
++    // older one can never recur). The live model is not mutated.
++    SEEN_BANNERS_MAX: 64,
++    persistView: function (model) {
++        if (!model || typeof model !== "object") return model;
++        var out = Object.assign({}, model);
++        if (model.itemMetrics) {
++            var im = {};
++            Object.keys(model.itemMetrics).forEach(function (id) {
++                var recs = model.itemMetrics[id] || {}, kept = null;
++                Object.keys(recs).forEach(function (f) { if (recs[f] && recs[f].prop != null) (kept || (kept = {}))[f] = recs[f]; });
++                if (kept) im[id] = kept;
++            });
++            out.itemMetrics = im;
++        }
++        if (model.seenBanners) {
++            var ids = Object.keys(model.seenBanners);
++            if (ids.length > StatTracker.SEEN_BANNERS_MAX) {
++                var sb = {};
++                ids.slice(-StatTracker.SEEN_BANNERS_MAX).forEach(function (id) { sb[id] = model.seenBanners[id]; });
++                out.seenBanners = sb;
++            }
++        }
++        return out;
++    },
+     learningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? StatTracker.STORAGE_PREFIX + i.identityKey : null),
+     save: (key, model) => {
+         try {
+@@ -1623,7 +1650,7 @@ var StatTracker = {
+             // D17: badgeUntil/badgeDelta/lastChange are presentation state that
+             // load() resets anyway; persisting them only dirties the compare.
+             // A replacer projects them out without mutating the live model.
+-            var json = JSON.stringify(model, StatTracker._saveReplacer);
++            var json = JSON.stringify(StatTracker.persistView(model), StatTracker._saveReplacer);
+             if (json === StatTracker._lastSaved) return;
+             StatTracker._lastSaved = json;
+             if (typeof LearningStores !== "undefined") LearningStores.persist("stats", { identityKey: key }, json, function () { if (StatTracker._key === key) { StatTracker._model = StatTracker.blank(); StatTracker._lastSaved = null; } });
+@@ -4440,6 +4467,8 @@ try {
+     }
+ } catch (e) {}
+ 
+-if (typeof LearningStores !== "undefined") LearningStores.register("stats", StatTracker.STORAGE_PREFIX, StatTracker.learningKeyFor);
++if (typeof LearningStores !== "undefined") LearningStores.register("stats", StatTracker.STORAGE_PREFIX, StatTracker.learningKeyFor, {
++    compact: function (value) { return JSON.stringify(StatTracker.persistView(JSON.parse(value))); }
++});
+ try { if (typeof window !== "undefined") window.StatTracker = StatTracker; } catch (e) {}
+ try { if (typeof module !== "undefined" && module.exports) module.exports = StatTracker; } catch (e) {}

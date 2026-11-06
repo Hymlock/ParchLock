@@ -1,0 +1,245 @@
+{
+  "story": "Zork2-TheWizardofFrobozz.z3.js",
+  "sha256": "0ea4ccc316d219cc7af801dfc62964147631a2228f00e1493896d7b9aba43f95",
+  "property": 12,
+  "holder": 249,
+  "litBit": 19,
+  "at": "2026-10-24T05:03:12.279Z",
+  "log": [
+    {
+      "cmd": "s",
+      "roomIdAfter": 229,
+      "reply": [
+        "Narrow Tunnel",
+        "You are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphorescent mosses clinging to its high ceiling. A deep ravine winds through the cavern, with a small stream at the bottom. The walls of the ravine are steep and crumbly. A foot bridge crosses the ravine to the south.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 229,
+        "roomName": "Narrow Tunnel",
+        "lit": true,
+        "prop": {
+          "num": 12,
+          "sz": 4,
+          "dataAddr": 8593
+        },
+        "localGlobals": [
+          {
+            "id": 245,
+            "name": "bridge",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 248,
+            "name": "chasm",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 250,
+            "name": "stream",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 247,
+            "name": "mosses",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine stream",
+      "roomIdAfter": 229,
+      "reply": [
+        "There's nothing special about the stream.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine water",
+      "roomIdAfter": 229,
+      "reply": [
+        "You can't see any water here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 228,
+      "reply": [
+        "Foot Bridge",
+        "You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 228,
+        "roomName": "Foot Bridge",
+        "lit": true,
+        "prop": {
+          "num": 12,
+          "sz": 2,
+          "dataAddr": 8566
+        },
+        "localGlobals": [
+          {
+            "id": 245,
+            "name": "bridge",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 248,
+            "name": "chasm",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine bridge",
+      "roomIdAfter": 228,
+      "reply": [
+        "There's nothing special about the bridge.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine mosses",
+      "roomIdAfter": 228,
+      "reply": [
+        "You can't see any mosses here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 227,
+      "reply": [
+        "Great Cavern",
+        "This is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room glows with dim light provided by phosphorescent moss, and weird shadows move all around you. A narrow path winds southwest among the stalagmites, and another leads northeast.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 227,
+        "roomName": "Great Cavern",
+        "lit": true,
+        "prop": {
+          "num": 12,
+          "sz": 1,
+          "dataAddr": 8530
+        },
+        "localGlobals": [
+          {
+            "id": 247,
+            "name": "mosses",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine mosses",
+      "roomIdAfter": 227,
+      "reply": [
+        "There's nothing special about the mosses.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine bridge",
+      "roomIdAfter": 227,
+      "reply": [
+        "You can't see any bridge here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "sw",
+      "roomIdAfter": 226,
+      "reply": [
+        "Shallow Ford",
+        "You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 226,
+        "roomName": "Shallow Ford",
+        "lit": true,
+        "prop": {
+          "num": 12,
+          "sz": 1,
+          "dataAddr": 8509
+        },
+        "localGlobals": [
+          {
+            "id": 238,
+            "name": "water",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine water",
+      "roomIdAfter": 226,
+      "reply": [
+        "There's nothing special about the quantity of water.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine mosses",
+      "roomIdAfter": 226,
+      "reply": [
+        "You can't see any mosses here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 225,
+      "reply": [
+        "You have moved into a dark place.",
+        "It is pitch black. You are likely to be eaten by a grue.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 225,
+        "roomName": "Dark Tunnel",
+        "lit": false,
+        "prop": null,
+        "localGlobals": [],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "look",
+      "roomIdAfter": 225,
+      "reply": [
+        "It is pitch black. You are likely to be eaten by a grue.",
+        ">"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ParchLock",
+  "short_name": "ParchLock",
+  "description": "Play interactive fiction with automatic mapping, notes, and quick navigation.",
+  "start_url": "./play.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "portrait-primary",
+  "background_color": "#101916",
+  "theme_color": "#101916",
+  "icons": [
+    { "src": "img/icons/archive-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/icons/archive-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/icons/archive-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

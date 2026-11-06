@@ -1,0 +1,903 @@
+{
+ "story": "HollywoodHijinx.z3.js",
+ "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+ "flags": {
+  ";CONTBIT": {
+   "bit": 9,
+   "exact": true
+  },
+  ";FURNITBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";NDESCBIT": {
+   "bit": 23,
+   "exact": true
+  },
+  ";ONBIT": {
+   "bit": 9,
+   "exact": true
+  },
+  ";TAKEBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";VEHBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  "ACTORBIT": {
+   "bit": 18,
+   "exact": true
+  },
+  "BLACK-CAT-BIT": {
+   "bit": 0,
+   "exact": false
+  },
+  "BURNBIT": {
+   "bit": 2,
+   "exact": true
+  },
+  "CANT-MOVE-POST-BIT": {
+   "bit": 0,
+   "exact": false
+  },
+  "CAVEBIT": {
+   "bit": 6,
+   "exact": true
+  },
+  "CONTBIT": {
+   "bit": 4,
+   "exact": false
+  },
+  "DOORBIT": {
+   "bit": 10,
+   "exact": true
+  },
+  "EVERYBIT": {
+   "bit": 31,
+   "exact": false
+  },
+  "FLAMEBIT": {
+   "bit": 9,
+   "exact": true
+  },
+  "INVISIBLE": {
+   "bit": 29,
+   "exact": true
+  },
+  "LIGHTBIT": {
+   "bit": 3,
+   "exact": true
+  },
+  "LOCKEDBIT": {
+   "bit": 15,
+   "exact": true
+  },
+  "NARTICLEBIT": {
+   "bit": 30,
+   "exact": true
+  },
+  "NDESCBIT": {
+   "bit": 16,
+   "exact": true
+  },
+  "ON-MONUMENT-BIT": {
+   "bit": 0,
+   "exact": false
+  },
+  "ONBIT": {
+   "bit": 20,
+   "exact": true
+  },
+  "OPENBIT": {
+   "bit": 25,
+   "exact": false
+  },
+  "OUTDOORSBIT": {
+   "bit": 7,
+   "exact": true
+  },
+  "READBIT": {
+   "bit": 5,
+   "exact": true
+  },
+  "RLANDBIT": {
+   "bit": 19,
+   "exact": true
+  },
+  "SEARCHBIT": {
+   "bit": 24,
+   "exact": true
+  },
+  "SURFACEBIT": {
+   "bit": 27,
+   "exact": true
+  },
+  "TAKEBIT": {
+   "bit": 17,
+   "exact": true
+  },
+  "TOOLBIT": {
+   "bit": 12,
+   "exact": true
+  },
+  "TOUCHBIT": {
+   "bit": 28,
+   "exact": false
+  },
+  "TRANSBIT": {
+   "bit": 23,
+   "exact": true
+  },
+  "TRUNK-LOCKED-BIT": {
+   "bit": 0,
+   "exact": false
+  },
+  "TRYTAKE": {
+   "bit": 1,
+   "exact": true
+  },
+  "TRYTAKEBIT": {
+   "bit": 26,
+   "exact": true
+  },
+  "VEHBIT": {
+   "bit": 8,
+   "exact": true
+  },
+  "VOWELBIT": {
+   "bit": 21,
+   "exact": true
+  },
+  "WEARBIT": {
+   "bit": 22,
+   "exact": true
+  }
+ },
+ "holder": {
+  "id": 54,
+  "name": ""
+ },
+ "kids": [
+  {
+   "id": 34,
+   "name": "hedge maze",
+   "invisible": false
+  },
+  {
+   "id": 175,
+   "name": "panel",
+   "invisible": false
+  },
+  {
+   "id": 107,
+   "name": "closet door",
+   "invisible": false
+  },
+  {
+   "id": 6,
+   "name": "closet",
+   "invisible": false
+  },
+  {
+   "id": 129,
+   "name": "sand",
+   "invisible": false
+  },
+  {
+   "id": 186,
+   "name": "gap",
+   "invisible": false
+  },
+  {
+   "id": 117,
+   "name": "oak door",
+   "invisible": false
+  },
+  {
+   "id": 57,
+   "name": "hole",
+   "invisible": true
+  },
+  {
+   "id": 26,
+   "name": "stone wall",
+   "invisible": false
+  },
+  {
+   "id": 241,
+   "name": "Aunt Hildegarde's garden",
+   "invisible": false
+  },
+  {
+   "id": 25,
+   "name": "patio door",
+   "invisible": false
+  },
+  {
+   "id": 89,
+   "name": "Aunt Hildegarde's house",
+   "invisible": false
+  },
+  {
+   "id": 115,
+   "name": "heavy wooden plank",
+   "invisible": false
+  },
+  {
+   "id": 155,
+   "name": "hatch",
+   "invisible": false
+  },
+  {
+   "id": 177,
+   "name": "water",
+   "invisible": false
+  },
+  {
+   "id": 17,
+   "name": "sofa",
+   "invisible": false
+  },
+  {
+   "id": 128,
+   "name": "bed",
+   "invisible": false
+  },
+  {
+   "id": 165,
+   "name": "seat",
+   "invisible": false
+  },
+  {
+   "id": 218,
+   "name": "toilet",
+   "invisible": false
+  },
+  {
+   "id": 195,
+   "name": "telephone",
+   "invisible": false
+  },
+  {
+   "id": 162,
+   "name": "closet door",
+   "invisible": false
+  },
+  {
+   "id": 44,
+   "name": "brick chimney",
+   "invisible": false
+  },
+  {
+   "id": 83,
+   "name": "hole",
+   "invisible": false
+  },
+  {
+   "id": 124,
+   "name": "fireplace",
+   "invisible": false
+  },
+  {
+   "id": 140,
+   "name": "closet door",
+   "invisible": false
+  },
+  {
+   "id": 112,
+   "name": "stairs",
+   "invisible": false
+  },
+  {
+   "id": 158,
+   "name": "closet door",
+   "invisible": false
+  },
+  {
+   "id": 164,
+   "name": "stairs",
+   "invisible": false
+  },
+  {
+   "id": 116,
+   "name": "crawl space door",
+   "invisible": false
+  },
+  {
+   "id": 180,
+   "name": "viewing screen",
+   "invisible": false
+  },
+  {
+   "id": 224,
+   "name": "image",
+   "invisible": false
+  },
+  {
+   "id": 13,
+   "name": "window",
+   "invisible": false
+  },
+  {
+   "id": 242,
+   "name": "pseudo",
+   "invisible": false
+  }
+ ],
+ "rooms": [
+  {
+   "id": 2,
+   "name": "South Junction",
+   "lit": true,
+   "lg": [
+    "164:stairs",
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney"
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Parlor",
+   "lit": false,
+   "lg": [
+    "116:crawl space door",
+    "165:seat"
+   ]
+  },
+  {
+   "id": 10,
+   "name": "Inlet",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 18,
+   "name": "Shaft Bottom",
+   "lit": false,
+   "lg": [
+    "140:closet door"
+   ]
+  },
+  {
+   "id": 24,
+   "name": "In the Chimney",
+   "lit": false,
+   "lg": [
+    "44:brick chimney",
+    "83:hole"
+   ]
+  },
+  {
+   "id": 30,
+   "name": "Kitchen",
+   "lit": false,
+   "lg": [
+    "164:stairs",
+    "13:window",
+    "177:water"
+   ]
+  },
+  {
+   "id": 31,
+   "name": "Southwest Junction",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden"
+   ]
+  },
+  {
+   "id": 35,
+   "name": "Dining Room",
+   "lit": false,
+   "lg": [
+    "13:window",
+    "165:seat",
+    "241:Aunt Hildegarde's garden"
+   ]
+  },
+  {
+   "id": 36,
+   "name": "Cellar",
+   "lit": false,
+   "lg": [
+    "164:stairs",
+    "140:closet door",
+    "6:closet"
+   ]
+  },
+  {
+   "id": 39,
+   "name": "Ledge",
+   "lit": false,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 45,
+   "name": "Underwater Passage",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 47,
+   "name": "West End of Roof",
+   "lit": true,
+   "lg": [
+    "44:brick chimney"
+   ]
+  },
+  {
+   "id": 50,
+   "name": "In the Chimney",
+   "lit": false,
+   "lg": [
+    "44:brick chimney",
+    "83:hole"
+   ]
+  },
+  {
+   "id": 54,
+   "name": "",
+   "lit": false,
+   "lg": [
+    "69:(par0)"
+   ]
+  },
+  {
+   "id": 60,
+   "name": "Patio",
+   "lit": true,
+   "lg": [
+    "25:patio door",
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden"
+   ]
+  },
+  {
+   "id": 70,
+   "name": "Projection Booth",
+   "lit": false,
+   "lg": [
+    "180:viewing screen",
+    "224:image",
+    "13:window"
+   ]
+  },
+  {
+   "id": 73,
+   "name": "Garden, East",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden",
+    "26:stone wall"
+   ]
+  },
+  {
+   "id": 78,
+   "name": "Top Landing",
+   "lit": true,
+   "lg": [
+    "164:stairs"
+   ]
+  },
+  {
+   "id": 79,
+   "name": "Middle of Beach Stairs",
+   "lit": true,
+   "lg": [
+    "164:stairs",
+    "186:gap"
+   ]
+  },
+  {
+   "id": 80,
+   "name": "Living Room",
+   "lit": false,
+   "lg": [
+    "195:telephone",
+    "124:fireplace",
+    "165:seat",
+    "13:window",
+    "17:sofa"
+   ]
+  },
+  {
+   "id": 84,
+   "name": "Ladies' Room",
+   "lit": false,
+   "lg": [
+    "218:toilet",
+    "177:water"
+   ]
+  },
+  {
+   "id": 86,
+   "name": "Garden, North",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden",
+    "177:water",
+    "26:stone wall"
+   ]
+  },
+  {
+   "id": 88,
+   "name": "Beach",
+   "lit": true,
+   "lg": [
+    "177:water",
+    "129:sand"
+   ]
+  },
+  {
+   "id": 90,
+   "name": "Bomb Shelter",
+   "lit": false,
+   "lg": [
+    "155:hatch",
+    "115:heavy wooden plank",
+    "57:hole"
+   ]
+  },
+  {
+   "id": 91,
+   "name": "In the Chimney",
+   "lit": false,
+   "lg": [
+    "44:brick chimney",
+    "83:hole"
+   ]
+  },
+  {
+   "id": 93,
+   "name": "Northwest Junction",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden",
+    "34:hedge maze",
+    "26:stone wall"
+   ]
+  },
+  {
+   "id": 95,
+   "name": "Garden, West",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden",
+    "26:stone wall"
+   ]
+  },
+  {
+   "id": 97,
+   "name": "Game Room",
+   "lit": false,
+   "lg": [
+    "25:patio door",
+    "13:window"
+   ]
+  },
+  {
+   "id": 99,
+   "name": "Northeast Junction",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden",
+    "34:hedge maze",
+    "26:stone wall"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Middle of Beach Stairs",
+   "lit": true,
+   "lg": [
+    "164:stairs",
+    "186:gap"
+   ]
+  },
+  {
+   "id": 108,
+   "name": "Hedge Maze",
+   "lit": true,
+   "lg": [
+    "34:hedge maze"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Cliff",
+   "lit": true,
+   "lg": [
+    "155:hatch",
+    "57:hole"
+   ]
+  },
+  {
+   "id": 121,
+   "name": "East End of Roof",
+   "lit": true,
+   "lg": [
+    "44:brick chimney"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "Foyer",
+   "lit": false,
+   "lg": [
+    "117:oak door",
+    "158:closet door",
+    "6:closet",
+    "112:stairs",
+    "13:window"
+   ]
+  },
+  {
+   "id": 125,
+   "name": "Surface of Pool",
+   "lit": false,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 143,
+   "name": "Hedge Maze",
+   "lit": true,
+   "lg": [
+    "34:hedge maze"
+   ]
+  },
+  {
+   "id": 147,
+   "name": "Surface of Grotto Pool",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 153,
+   "name": "Master Bedroom",
+   "lit": false,
+   "lg": [
+    "13:window",
+    "165:seat",
+    "128:bed",
+    "195:telephone"
+   ]
+  },
+  {
+   "id": 156,
+   "name": "Southeast Junction",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden"
+   ]
+  },
+  {
+   "id": 160,
+   "name": "Entrance to Hedge Maze",
+   "lit": true,
+   "lg": [
+    "34:hedge maze"
+   ]
+  },
+  {
+   "id": 166,
+   "name": "Closet",
+   "lit": false,
+   "lg": [
+    "6:closet",
+    "158:closet door",
+    "140:closet door",
+    "162:closet door"
+   ]
+  },
+  {
+   "id": 169,
+   "name": "Men's Room",
+   "lit": false,
+   "lg": [
+    "218:toilet",
+    "177:water"
+   ]
+  },
+  {
+   "id": 178,
+   "name": "Attic",
+   "lit": false,
+   "lg": [
+    "175:panel",
+    "107:closet door"
+   ]
+  },
+  {
+   "id": 182,
+   "name": "Garden, South",
+   "lit": true,
+   "lg": [
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney",
+    "241:Aunt Hildegarde's garden",
+    "26:stone wall"
+   ]
+  },
+  {
+   "id": 185,
+   "name": "Front Porch",
+   "lit": true,
+   "lg": [
+    "117:oak door",
+    "89:Aunt Hildegarde's house",
+    "44:brick chimney"
+   ]
+  },
+  {
+   "id": 189,
+   "name": "Guest Room",
+   "lit": false,
+   "lg": [
+    "13:window",
+    "165:seat",
+    "128:bed"
+   ]
+  },
+  {
+   "id": 192,
+   "name": "Crawl Space, North",
+   "lit": false,
+   "lg": [
+    "116:crawl space door"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "Underwater Passage",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 204,
+   "name": "Underwater",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 209,
+   "name": "Bedroom",
+   "lit": false,
+   "lg": [
+    "13:window",
+    "165:seat",
+    "128:bed"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "Tunnel",
+   "lit": false,
+   "lg": [
+    "66:rope(par90)"
+   ]
+  },
+  {
+   "id": 219,
+   "name": "Cannon Emplacement",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 223,
+   "name": "Fireplace",
+   "lit": false,
+   "lg": [
+    "124:fireplace",
+    "44:brick chimney"
+   ]
+  },
+  {
+   "id": 230,
+   "name": "Top of Closet",
+   "lit": false,
+   "lg": [
+    "158:closet door",
+    "162:closet door",
+    "107:closet door",
+    "6:closet"
+   ]
+  },
+  {
+   "id": 231,
+   "name": "Hallway",
+   "lit": false,
+   "lg": [
+    "13:window"
+   ]
+  },
+  {
+   "id": 232,
+   "name": "Upstairs Hall, Middle",
+   "lit": false,
+   "lg": [
+    "112:stairs",
+    "175:panel",
+    "162:closet door",
+    "6:closet"
+   ]
+  },
+  {
+   "id": 233,
+   "name": "Grotto, Underwater",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 234,
+   "name": "Short Hall",
+   "lit": false,
+   "lg": [
+    "13:window"
+   ]
+  },
+  {
+   "id": 238,
+   "name": "Screening Room",
+   "lit": false,
+   "lg": [
+    "165:seat",
+    "180:viewing screen",
+    "224:image",
+    "13:window"
+   ]
+  },
+  {
+   "id": 239,
+   "name": "Grotto",
+   "lit": true,
+   "lg": [
+    "177:water"
+   ]
+  },
+  {
+   "id": 244,
+   "name": "Upstairs Bathroom",
+   "lit": false,
+   "lg": [
+    "13:window",
+    "177:water",
+    "218:toilet"
+   ]
+  }
+ ]
+}

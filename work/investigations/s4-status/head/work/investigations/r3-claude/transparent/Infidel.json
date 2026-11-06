@@ -1,0 +1,311 @@
+{
+ "digest": "Infidel.z3.js",
+ "bits": {
+  "trans": 23,
+  "container": 20,
+  "open": 25
+ },
+ "objectCount": 249,
+ "status": "NOT-APPLICABLE",
+ "carriers": [
+  {
+   "id": 6,
+   "name": "granite table",
+   "container": true,
+   "openAtStart": true,
+   "parent": 10,
+   "contents": [
+    "silver chalice"
+   ]
+  },
+  {
+   "id": 9,
+   "name": "granite table",
+   "container": true,
+   "openAtStart": true,
+   "parent": 13,
+   "contents": [
+    "golden chalice"
+   ]
+  },
+  {
+   "id": 23,
+   "name": "packing crate",
+   "container": true,
+   "openAtStart": true,
+   "parent": 249,
+   "contents": []
+  },
+  {
+   "id": 39,
+   "name": "trunk",
+   "container": true,
+   "openAtStart": true,
+   "parent": 71,
+   "contents": []
+  },
+  {
+   "id": 51,
+   "name": "army cot",
+   "container": true,
+   "openAtStart": true,
+   "parent": 71,
+   "contents": [
+    "cretin"
+   ]
+  },
+  {
+   "id": 79,
+   "name": "pit",
+   "container": true,
+   "openAtStart": true,
+   "parent": 78,
+   "contents": []
+  },
+  {
+   "id": 107,
+   "name": "knothole",
+   "container": true,
+   "openAtStart": true,
+   "parent": 110,
+   "contents": []
+  },
+  {
+   "id": 108,
+   "name": "mast hole",
+   "container": true,
+   "openAtStart": true,
+   "parent": 114,
+   "contents": []
+  },
+  {
+   "id": 169,
+   "name": "middle disc",
+   "container": true,
+   "openAtStart": true,
+   "parent": 172,
+   "contents": [
+    "scarab"
+   ]
+  },
+  {
+   "id": 170,
+   "name": "right disc",
+   "container": true,
+   "openAtStart": true,
+   "parent": 172,
+   "contents": []
+  },
+  {
+   "id": 171,
+   "name": "left disc",
+   "container": true,
+   "openAtStart": true,
+   "parent": 172,
+   "contents": []
+  },
+  {
+   "id": 199,
+   "name": "stone altar",
+   "container": true,
+   "openAtStart": true,
+   "parent": 206,
+   "contents": []
+  },
+  {
+   "id": 249,
+   "name": "",
+   "container": false,
+   "openAtStart": true,
+   "parent": 0,
+   "contents": [
+    "",
+    "line",
+    "packing crate",
+    "manual",
+    "match",
+    "thicket",
+    "sip of water",
+    "airplane",
+    "parachute",
+    "you",
+    "empty hands",
+    "ceiling",
+    "wall",
+    "bulkhead",
+    "stones",
+    "writing implement",
+    "crack",
+    "floor",
+    "air",
+    "random object",
+    "direction",
+    "number",
+    "blessings",
+    "finger",
+    "Dracula",
+    "such thing",
+    "gasoline",
+    "Basie"
+   ]
+  }
+ ],
+ "containerTransCarriers": [
+  "6:granite table",
+  "9:granite table",
+  "23:packing crate",
+  "39:trunk",
+  "51:army cot",
+  "79:pit",
+  "107:knothole",
+  "108:mast hole",
+  "169:middle disc",
+  "170:right disc",
+  "171:left disc",
+  "199:stone altar"
+ ],
+ "positives": [],
+ "negatives": [],
+ "takeWhileClosed": "n/a",
+ "note": "All 12 TRANSBIT carriers are containers but every one is OPEN at start and after 80 walkthrough commands; no closed CONT+TRANS case reachable. Closed opaque containers exist (knapsack, matchbook, pink jar, ...).",
+ "closedOpaqueWithContentsAtStart": [
+  {
+   "id": 31,
+   "name": "knapsack",
+   "parent": 62,
+   "contents": [
+    "rope",
+    "canteen"
+   ]
+  },
+  {
+   "id": 35,
+   "name": "ancient map",
+   "parent": 0,
+   "contents": [
+    "stone cube"
+   ]
+  },
+  {
+   "id": 49,
+   "name": "matchbook",
+   "parent": 78,
+   "contents": [
+    "few matches"
+   ]
+  },
+  {
+   "id": 149,
+   "name": "ancient book",
+   "parent": 0,
+   "contents": [
+    "page"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "pink jar",
+   "parent": 206,
+   "contents": [
+    "liquid"
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "cmd": "look",
+   "reply": "Your Tent / (You are in the army cot.) / You are in your tent. Golden rays of the sun filter through the open tent flaps on the southern wall, but no breeze makes its way through. The dry, searing heat in the tent would be bearable if only the air stirred, even a little. / At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. / / You hear a plane flying high overhead, outside the tent. / / > ",
+   "closedTransContainers": []
+  },
+  {
+   "cmd": "look",
+   "reply": "",
+   "closedTransContainers": []
+  }
+ ],
+ "commands": [
+  "look",
+  "get out of cot",
+  "s",
+  "sw",
+  "w",
+  "get pickaxe",
+  "get shovel",
+  "e",
+  "se",
+  "s",
+  "read note",
+  "get knapsack",
+  "n",
+  "n",
+  "get matchbook",
+  "n",
+  "n",
+  "smash padlock with pickaxe",
+  "remove padlock",
+  "drop padlock",
+  "open trunk",
+  "get beef",
+  "get map",
+  "eat beef",
+  "s",
+  "w",
+  "w",
+  "drink water",
+  "drop knapsack",
+  "get canteen",
+  "open canteen",
+  "fill canteen",
+  "close canteen",
+  "put canteen in knapsack",
+  "get knapsack",
+  "e",
+  "e",
+  "e",
+  "se",
+  "se",
+  "dig in sand",
+  "dig in sand",
+  "dig in sand",
+  "dig in sand",
+  "dig in sand",
+  "open map",
+  "insert cube in opening",
+  "d",
+  "drop map",
+  "open jar",
+  "get torch",
+  "dip torch in liquid",
+  "close jar",
+  "drop knapsack",
+  "put jar in knapsack",
+  "open matchbook",
+  "get match",
+  "close matchbook",
+  "strike match",
+  "light torch",
+  "s",
+  "s",
+  "ne",
+  "nw",
+  "w",
+  "n",
+  "e",
+  "n",
+  "n",
+  "n",
+  "n",
+  "n",
+  "w",
+  "s",
+  "get golden chalice",
+  "n",
+  "e",
+  "e",
+  "s",
+  "get silver chalice",
+  "n",
+  "look"
+ ],
+ "driver": "work/investigations/r3-claude/transparent/drive-trans.cjs"
+}

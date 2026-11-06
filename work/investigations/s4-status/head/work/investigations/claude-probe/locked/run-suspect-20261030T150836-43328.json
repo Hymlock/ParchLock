@@ -1,0 +1,81 @@
+{
+ "bmw @68:open bmw trunk#0": {
+  "tag": "bmw",
+  "id": 134,
+  "name": "BMW's trunk",
+  "step": 68,
+  "cmd": "open bmw trunk",
+  "expect": 1,
+  "bit": 17,
+  "plan": "plan-sus-bmw.json",
+  "planSha": "31a7b8deef75baceb47d80da41ed7da0082cc4931d0b15fddcc462390e4f994c",
+  "gameSha": "075074c8de60801f83d0f422ee6ae512877cf12e4d6a4034f7e5b6c862f5b9b8",
+  "verdict": "TRUE",
+  "before": [
+   14,
+   16,
+   17,
+   19
+  ],
+  "after": [
+   14,
+   16,
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 135,
+  "here": 139,
+  "opsOnId": [
+   [
+    134,
+    10,
+    0,
+    26583
+   ],
+   [
+    134,
+    14,
+    1,
+    26503
+   ],
+   [
+    134,
+    31,
+    0,
+    28345
+   ],
+   [
+    134,
+    17,
+    1,
+    53632
+   ],
+   [
+    134,
+    12,
+    0,
+    21033
+   ],
+   [
+    134,
+    31,
+    0,
+    21033
+   ],
+   [
+    134,
+    4,
+    0,
+    21033
+   ]
+  ],
+  "nOps": 48,
+  "printedObjs": [
+   134
+  ],
+  "text": "The BMW's trunk is securely locked.\n \n> ",
+  "ts": "2026-10-30T15:09:16.557Z"
+ }
+}

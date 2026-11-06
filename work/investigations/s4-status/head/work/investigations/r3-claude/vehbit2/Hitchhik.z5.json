@@ -1,0 +1,112 @@
+{
+ "title": "Hitchhik.z5.js",
+ "sha256": "26dcdab275054e5899c9454a879816a1ced530e9172bd8d8cf101fb7acc27cb4",
+ "bit": 28,
+ "initialCarriers": [
+  {
+   "id": 49,
+   "name": "pilot seat",
+   "parent": 23,
+   "parentName": "Presidential Speedboat"
+  },
+  {
+   "id": 114,
+   "name": "bed",
+   "parent": 150,
+   "parentName": "Bedroom"
+  },
+  {
+   "id": 164,
+   "name": "poetry appreciatichair",
+   "parent": 233,
+   "parentName": "Captain's Quarters"
+  },
+  {
+   "id": 166,
+   "name": "bed",
+   "parent": 37,
+   "parentName": ""
+  }
+ ],
+ "status": "INCOMPLETE",
+ "priorCarriers": [
+  114
+ ],
+ "newCarriers": [],
+ "distinctPositiveCarriers": [
+  114
+ ],
+ "positives": [],
+ "verbMatrix": {
+  "49": [
+   {
+    "cmd": "get off seat",
+    "parentBefore": 70,
+    "parentAfter": 70,
+    "moved": false,
+    "reply": "You can't see that here!\n \n>",
+    "log": "hhd.log.json",
+    "step": 241
+   },
+   {
+    "cmd": "get off seat",
+    "parentBefore": 133,
+    "parentAfter": 133,
+    "moved": false,
+    "reply": "You can't see that here!\n \n>",
+    "log": "hhe1.log.json",
+    "step": 241
+   },
+   {
+    "cmd": "get off seat",
+    "parentBefore": 70,
+    "parentAfter": 70,
+    "moved": false,
+    "reply": "You can't see that here!\n \n>",
+    "log": "hhe2.log.json",
+    "step": 241
+   }
+  ]
+ },
+ "negatives": [
+  {
+   "cmd": "enter gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": "Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone. / There is a flathead screwdriver here. / There is a toothbrush here. /   / >enter gown / You can't be serious. /   / > ",
+   "log": "hh.log.json",
+   "step": 3
+  },
+  {
+   "cmd": "sit on gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": "There is a flathead screwdriver here. / There is a toothbrush here. /   / >enter gown / You can't be serious. /   / >sit on gown / You can't climb onto your gown. /   / > ",
+   "log": "hh.log.json",
+   "step": 4
+  },
+  {
+   "cmd": "enter gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": ">sit on bed / You are now in the bed. /   / >stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >enter gown / Not bloody likely. /   / > ",
+   "log": "hh0.log.json",
+   "step": 7
+  },
+  {
+   "cmd": "sit on gown",
+   "parentBefore": 150,
+   "parentAfter": 150,
+   "parentName": "Bedroom",
+   "reply": ">stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >enter gown / Not bloody likely. /   / >sit on gown / You can't climb onto your gown. /   / > ",
+   "log": "hh0.log.json",
+   "step": 8
+  }
+ ],
+ "priorEvidenceFile": "work/investigations/r3-claude/vehbit/Hitchhik.z5.json",
+ "notes": "Second carrier NOT reached. Walkthrough now passes the Vogon poem (TYPEPOEM reads the randomised word/verse from the game's own text), but the Heart of Gold improbability sequence lands in random scenes (Living Room party, Country Lane) rather than Zaphod's Presidential Speedboat, so pilot seat 49 was never in scope in 3 runs; bed 166 (initial parent 37) never appeared. INCOMPLETE.",
+ "method": "headless Chromium play.html via drive2.cjs: Input.Inject of ordinary commands only (no VM writes/snapshots). Navigation helpers GOTO/ENSURE only issue ordinary direction commands chosen by BFS over ExitCalibrator.exitsFor (read-only). parent = ZRamReader.objectLinks(mem, WorldModel.lastPayload.playerId).parent before/after each command."
+}

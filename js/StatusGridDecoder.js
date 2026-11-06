@@ -82,7 +82,7 @@ var StatusGridDecoder = {
             var namedDay = /^Day (zero|one|two|three|four|five|six|seven|eight|nine|ten)$/i.exec(segment);
             if(namedDay){add("Day",['zero','one','two','three','four','five','six','seven','eight','nine','ten'].indexOf(namedDay[1].toLowerCase()),null,null);return "";}
             var namedText = /^(Time|Season|Date|Tone|Memory)\s*[:=]\s*(.+)$/i.exec(segment);
-            var clock = /^(?:(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),?\s+)?\d{1,2}:\d{2}(?::\d{2})?(?:\s*[ap]m)?$/i.test(segment);
+            var clock = /^(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)(?:day|sday|nesday|rsday|urday)?\.?,?\s+)?\d{1,2}:\d{2}(?::\d{2})?(?:\s*[ap]\.?m\.?)?$/i.test(segment);
             var date = /^(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten) years? (?:before|after) \d{4}$/i.test(segment) || /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(segment) || /^(?:(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),?\s+)?(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4}$/i.test(segment);
             if ((namedText && !/^-?\d+(?:\s*\/\s*\d+|%)?$/.test(namedText[2])) || clock || date) {
                 var textLabel = namedText ? namedText[1] : clock ? "Time" : "Date";

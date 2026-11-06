@@ -1,0 +1,215 @@
+diff --git a/js/Actionable.js b/js/Actionable.js
+index f4bb71f..df22517 100644
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -1480,7 +1480,10 @@ var Actionable = {
+                             return String(o.name).toLowerCase() === ml || !!Actionable.nounWordsOf(o)[ml]
+                                 || (o.aliases || []).some(function (a) { return Actionable.vocabularyKey(a) === Actionable.vocabularyKey(ml); });
+                         });
+-                        if (sharers.length > 1 && !sharers.some(function (o) {
++                        // Rebind (v3 deadlock, 2026-10-11; narrowed per Codex #3354): the sameWords branch proved this object is
++                        // reprinted under a variant of its own head noun ("food pellets" -> "pellet"); the
++                        // retained mark still holds the old head until retired, so the head check would refuse.
++                        if (sharers.length > 1 && !meta.headVariantProof && !sharers.some(function (o) {
+                             var head = String(Actionable.headNounOf(o) || Actionable.headTokenOf(o) || "").toLowerCase();
+                             return head && Actionable.vocabularyKey(head) === Actionable.vocabularyKey(matched.toLowerCase());
+                         })) { from = idx + 1; continue; }
+@@ -1566,6 +1569,84 @@ var Actionable = {
+         }
+         return null;
+     },
++    _lastSubmit: null,
++    _submitWatch: false,
++    ensureSubmitWatch: function () {
++        if (Actionable._submitWatch || typeof TurnRecorder === "undefined" || !TurnRecorder.subscribeAcceptedSubmit) return;
++        Actionable._submitWatch = true;
++        TurnRecorder.subscribeAcceptedSubmit("actionable-inventory-confirm", function (e) {
++            // Codex #3334: keep the exact submission and its buffer line bound.
++            // Codex #3340: bind to the story load too (one page can load another story).
++            var storyEpoch = (typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0) + ':' + (typeof ParchLock !== 'undefined' ? ParchLock.GameFilename : '');
++            Actionable._lastSubmit = { submissionId: e.submissionId, pageEpoch: e.pageEpoch, storyEpoch: storyEpoch, port: document.getElementById('windowport'), command: e.command, source: e.source, lineAt: TurnRecorder._lineCount() };
++        });
++    },
++    // Which retained marks for t.objectId may yield to t (none = U1 holds). Two
++    // eligibility branches, both on marks outside the active lines whose own
++    // text is no longer printed there, and only when t's phrase is printed:
++    //  - same words, printed form differs only by a short ending (0ed5cdb,
++    //    "food pellets" -> "food pellet"); group marks allowed as before;
++    //  - rename: the mark resolves to this object ALONE, t is the object's own
++    //    preferred name/head noun, and the mark text is not a current name phrase
++    //    (alias only, wump2ka formation -> stone spear), or the reply is a
++    //    qualified inventory reply.
++    rebindCandidates: function (t, activeLines, idPool, invQualified) {
++        var lowPhrase = String(t.phrase).toLowerCase();
++        var activeText = activeLines.map(function (l) { return l.textContent.toLowerCase(); }).join("\n");
++        var printed = function (ph) {
++            var e = String(ph || "").toLowerCase().trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
++            return !!e && new RegExp("(^|[^a-z0-9])" + e + "([^a-z0-9]|$)").test(activeText);
++        };
++        if (!printed(lowPhrase)) return [];
++        var cur = null; (idPool || []).some(function (o) { if (String(o.id) === String(t.objectId)) { cur = o; return true; } return false; });
++        var curPhrases = cur ? Actionable.namePhrases(cur.name).map(function (x) { return String(x).toLowerCase(); }) : [];
++        var wordEq = function (w, v) {
++            if (Actionable.vocabularyKey(w) === Actionable.vocabularyKey(v)) return true;
++            var lo = w.length <= v.length ? w : v, hi = lo === w ? v : w;
++            return lo.length >= 3 && hi.indexOf(lo) === 0 && hi.length - lo.length <= 2;
++        };
++        // Codex #3354: headVariantProof only from the sameWords branch, for a single-word target that is
++        // ending/dictionary-equivalent to the object's current structural head noun.
++        var headVariant = false, curHead = cur ? String(Actionable.headNounOf(cur) || "").toLowerCase() : "";
++        var tWords = lowPhrase.split(/\s+/).filter(Boolean);
++        var picked = (Actionable.LiveMarks || []).filter(function (mark) {
++            if (mark.dataset.kind === "direction") return false;
++            var ids = []; try { ids = JSON.parse(mark.dataset.candidateIds || "[]"); } catch (e) {}
++            if (mark.dataset.objectId) ids.push(mark.dataset.objectId);
++            if (!ids.some(function (id) { return String(id) === String(t.objectId); })) return false;
++            if (activeLines.indexOf(mark.closest(".BufferLine")) >= 0) return false;
++            var text = String(mark.textContent).toLowerCase().trim();
++            if (printed(text)) return false;
++            var a = text.split(/\s+/).filter(Boolean), b = lowPhrase.split(/\s+/).filter(Boolean);
++            var shortP = a.length <= b.length ? a : b, longP = shortP === a ? b : a;
++            var sameWords = shortP.length > 0 && wordEq(a[a.length - 1], b[b.length - 1]) && shortP.every(function (w) { return longP.some(function (v) { return wordEq(w, v); }); });
++            if (sameWords) { if (tWords.length === 1 && curHead && wordEq(tWords[0], curHead)) headVariant = true; return true; }
++            var unique = ids.length > 0 && ids.every(function (id) { return String(id) === String(t.objectId); });
++            if (!unique || !t.preferred || !t.fromName || !curPhrases.length) return false;
++            return curPhrases.indexOf(text) < 0 || !!invQualified;
++        });
++        picked.headVariantProof = headVariant;
++        return picked;
++    },
++    // Retire only after the new phrase wrapped (transactional, Codex #3319/#3326).
++    retireMarks: function (marks, markedIds) {
++        marks.forEach(function (mark) {
++            if (!mark.isConnected) return;
++            var parent = mark.parentNode; mark.replaceWith(document.createTextNode(mark.textContent)); if (parent) parent.normalize();
++        });
++        Actionable.LiveMarks = (Actionable.LiveMarks || []).filter(function (m) { return marks.indexOf(m) < 0; });
++        // Codex #3334: recompute coverage for the retired marks' ids from surviving
++        // marks only, so other ids of a retired group are not falsely blocked.
++        var idsOf = function (m) { var ids = []; try { ids = JSON.parse(m.dataset.candidateIds || "[]"); } catch (e) {} if (m.dataset.objectId) ids.push(m.dataset.objectId); return ids.map(String); };
++        marks.forEach(function (m) { idsOf(m).forEach(function (id) {
++            if (!(Actionable.LiveMarks || []).some(function (x) { return x.isConnected && idsOf(x).indexOf(id) >= 0; })) delete markedIds[id];
++        }); });
++    },
++    phrasePrintedIn: function (lines, phrase) {
++        var e = String(phrase || "").toLowerCase().trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
++        if (!e) return false; var re = new RegExp("(^|[^a-z0-9])" + e + "([^a-z0-9]|$)");
++        return lines.some(function (l) { return re.test(l.textContent.toLowerCase()); });
++    },
+     relocateExactMarks: function (lines, suppliedMarks) {
+         // Phrase/ownership selection has already finished. Move those SAME
+         // marks, so latest-copy presentation cannot change the chosen noun.
+@@ -1646,6 +1727,7 @@ var Actionable = {
+             Actionable._lineVersions = new WeakMap();
+             Actionable._markEpoch = epoch;
+             Actionable._markPort = port;
++            if (Actionable._lastSubmit && (Actionable._lastSubmit.storyEpoch !== epoch || Actionable._lastSubmit.port !== port)) Actionable._lastSubmit = null; // Codex #3340: a prior story's command never qualifies (a submit already under this epoch stays)
+             Actionable.Signature = '';
+         }
+         var version = typeof BufferRevision !== 'undefined' ? BufferRevision.versionReader() : null;
+@@ -1990,6 +2072,15 @@ var Actionable = {
+         // order, so a longer phrase still wins across different objects.
+         var ordered = wrapTargets.filter(function (t) { return t.preferred; })
+             .concat(wrapTargets.filter(function (t) { return !t.preferred; }));
++        // Inventory reply provenance (Codex #3329): TurnRecorder accepted submit only;
++        // quiet/stat-probe or unknown provenance abstains.
++        Actionable.ensureSubmitWatch();
++        var sub = Actionable._lastSubmit, allLines = $("#windowport .BufferWindow .BufferLine").toArray();
++        var replyLines = sub ? latest.filter(function (l) { return allLines.indexOf(l) >= sub.lineAt; }) : [];
++        var invQualified = !!(inventory && sub && sub.pageEpoch === TurnRecorder.pageEpoch && sub.storyEpoch === Actionable._markEpoch && sub.port === Actionable._markPort && sub.source && sub.source !== "unknown" && sub.source !== "stat-probe" && !/quiet|probe/i.test(String(sub.source))
++            && replyLines.length > 0 && replyLines.length === latest.length
++            && String(sub.command).trim().toLowerCase() === command && (typeof StatTracker === "undefined" || !StatTracker._probeBaseline)
++            && replyLines.some(function (l) { return /\S/.test(l.textContent) && !/\?\s*$/.test(l.textContent.trim()); }));
+         ordered.forEach(function (t) {
+             if (t.preferred && String(t.phrase).indexOf(' ') >= 0 && markedIds[String(t.objectId)]
+                 && activeLines.some(function(l){return l.textContent.toLowerCase().indexOf(String(t.phrase).toLowerCase()) >= 0;})) {
+@@ -2004,52 +2095,21 @@ var Actionable = {
+                     return false;
+                 });
+             }
+-            // D214 U1 adaptation (Wumpus second pellet, a40f7ba): a retained mark
+-            // keeps its object only while the new output does not reprint that
+-            // object under a different phrase. After TAKE PELLET + LOOK the room
+-            // prints "a food pellet"; the retained "food pellets" mark on the old
+-            // line is no longer the object's current description, so it is
+-            // released (text kept) and the newly printed phrase is marked. A
+-            // retained phrase still printed in the active lines is untouched.
++            // D214 U1 + inventory confirmation (2026-10-11, Codex #3319/#3326/#3329): one
++            // shared transactional rebind. A retained mark for this object on an older
++            // line yields only through Actionable.rebindCandidates, and is retired only
++            // AFTER the new phrase actually wraps (below). Otherwise U1 holds.
++            var pendingRetire = null;
+             if (t.objectId != null && markedIds[String(t.objectId)]) {
+-                var lowPhrase = String(t.phrase).toLowerCase();
+-                var activeText = activeLines.map(function (l) { return l.textContent.toLowerCase(); }).join("\n");
+-                // Whole-phrase matches only (Grok #3281): "food" inside "food pellet" is not a reprint.
+-                var printed = function (ph) {
+-                    var e = String(ph || "").toLowerCase().trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+-                    return !!e && new RegExp("(^|[^a-z0-9])" + e + "([^a-z0-9]|$)").test(activeText);
+-                };
+-                if (printed(lowPhrase)) {
+-                    var released = false;
+-                    Actionable.LiveMarks = Actionable.LiveMarks.filter(function (mark) {
+-                        if (mark.dataset.kind === 'direction') return true;
+-                        var ids = []; try { ids = JSON.parse(mark.dataset.candidateIds || '[]'); } catch (e) {}
+-                        if (mark.dataset.objectId) ids.push(mark.dataset.objectId);
+-                        if (!ids.some(function (id) { return String(id) === String(t.objectId); })) return true;
+-                        var line = mark.closest('.BufferLine');
+-                        if (activeLines.indexOf(line) >= 0) return true;
+-                        if (printed(mark.textContent)) return true;
+-                        // Same words by dictionary key, different printed form only
+-                        // ("food pellets" -> "food pellet"); any other phrase keeps U1.
+-                        var a = String(mark.textContent).toLowerCase().split(/\s+/).filter(Boolean), b = lowPhrase.split(/\s+/).filter(Boolean);
+-                        var wordEq = function (w, v) {
+-                            if (Actionable.vocabularyKey(w) === Actionable.vocabularyKey(v)) return true;
+-                            var lo = w.length <= v.length ? w : v, hi = lo === w ? v : w;
+-                            return lo.length >= 3 && hi.indexOf(lo) === 0 && hi.length - lo.length <= 2;
+-                        };
+-                        var shortP = a.length <= b.length ? a : b, longP = shortP === a ? b : a;
+-                        var sameWords = shortP.length > 0 && wordEq(a[a.length - 1], b[b.length - 1]) && shortP.every(function (w) { return longP.some(function (v) { return wordEq(w, v); }); });
+-                        if (!sameWords) return true;
+-                        ids.forEach(function (id) { delete markedIds[String(id)]; });
+-                        var parent = mark.parentNode; mark.replaceWith(document.createTextNode(mark.textContent)); if (parent) parent.normalize();
+-                        released = true;
+-                        return false;
+-                    });
+-                    if (!released) return;
+-                } else return;
++                var invTarget = invQualified && !!invIds[String(t.objectId)] && Actionable.phrasePrintedIn(replyLines, t.phrase);
++                pendingRetire = Actionable.rebindCandidates(t, activeLines, idPool, invTarget);
++                if (!pendingRetire.length) return;
++                t.headVariantProof = !!pendingRetire.headVariantProof;
+             }
+             if (t.kind === 'direction' && markedDirections[String(t.phrase).toLowerCase()]) return;
+-            if (Actionable.wrapFirstExact(activeLines, t.phrase, t)) {
++            var wrappedNow; try { wrappedNow = Actionable.wrapFirstExact(activeLines, t.phrase, t); } finally { t.headVariantProof = false; }
++            if (wrappedNow) {
++                if (pendingRetire) Actionable.retireMarks(pendingRetire, markedIds, t);
+                 try { JSON.parse(t.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
+                 if (t.objectId != null && String(t.resolvedObjectId) === String(t.objectId)) {
+                     markedIds[String(t.objectId)] = true;
+@@ -2064,6 +2124,17 @@ var Actionable = {
+         });
+         Actionable.relocateExactMarks(activeLines);
+         Actionable.LiveMarks = $(".pl-act:not(.is-stale)").toArray();
++        if (invQualified) {
++            // Diagnostic only (Codex #3326): unconfirmed means not printed or not resolvable,
++            // never a fault and never an inventory-root signal.
++            var shown = {};
++            var grouped = {};
++            replyLines.forEach(function (l) { l.querySelectorAll(".pl-act").forEach(function (m) { var ids = []; try { ids = JSON.parse(m.dataset.candidateIds || "[]"); } catch (e) {} if (m.dataset.objectId) ids.push(m.dataset.objectId);
++                ids = ids.map(String).filter(function (id, i, a) { return a.indexOf(id) === i; });
++                if (ids.length === 1) shown[ids[0]] = true; else ids.forEach(function (id) { grouped[id] = true; }); }); });
++            Actionable.InventoryConfirm = { submissionId: sub.submissionId, pageEpoch: sub.pageEpoch, confirmed: Object.keys(invIds).filter(function (id) { return shown[id]; }),
++                grouped: Object.keys(invIds).filter(function (id) { return !shown[id] && grouped[id]; }), notShown: Object.keys(invIds).filter(function (id) { return !shown[id] && !grouped[id]; }) };
++        }
+         // Drain our own wrapping mutations before remembering tokens, so an
+         // idle tick does not re-scan prose because of its own last render.
+         version = typeof BufferRevision !== 'undefined' ? BufferRevision.versionReader() : null;
+@@ -2407,3 +2478,6 @@ var Actionable = {
+         ParchLockQol.OpenRadial(x, y, slices, context);
+     }
+ };
++// Inventory confirmation provenance (Codex #3334): TurnRecorder loads after this
++// file, so subscribe once every script has run and before any command is accepted.
++if (typeof window !== "undefined" && window.addEventListener) window.addEventListener("DOMContentLoaded", function () { try { Actionable.ensureSubmitWatch(); } catch (e) {} });

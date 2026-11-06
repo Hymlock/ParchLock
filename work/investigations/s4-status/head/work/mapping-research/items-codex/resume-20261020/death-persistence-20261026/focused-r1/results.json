@@ -1,0 +1,32 @@
+{
+  "source": "draft after fix-pending-selection.py, before independent final acceptance",
+  "guards": {
+    "death-terminal": {
+      "pass": 40,
+      "fail": 0,
+      "exit": 0
+    },
+    "save-state": {
+      "pass": 34,
+      "fail": 0,
+      "exit": 0
+    },
+    "stat-tracker": {
+      "pass": 211,
+      "fail": 0,
+      "exit": 0
+    },
+    "e4-transcript": {
+      "pass": 15,
+      "fail": 0,
+      "exit": 0
+    },
+    "stat-integration": {
+      "pass": 10,
+      "fail": 0,
+      "exit": 0
+    }
+  },
+  "native": "native-r2.json PASS; native-r1 picker mismatch preserved diagnostic",
+  "note": "Captured from actual tool command outputs; no rerun or invented full regression acceptance"
+}

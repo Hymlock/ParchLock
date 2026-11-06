@@ -1,0 +1,14 @@
+[
+  {
+    "file": "g1-soO3.json",
+    "sha256": "8310da1b3dd24282e288a3df4f2857cab95821ad68cb282e41972af928b91d1e"
+  },
+  {
+    "file": "g1-soO.json",
+    "sha256": "ec2a88ddcb1153a61416feef83d9ebf14ff78daafc098bb9a079dd5c11150825"
+  },
+  {
+    "file": "current-native-after.json",
+    "sha256": "c7a7a5ef30139beb393cc422aaecd784769ee7b9b082f8caa8df64d896abed2b"
+  }
+]

@@ -1,0 +1,4 @@
+bf77b0176c35cdac558cdc6f2beb756d617c005a3edd44855d573315e1e0f40c *infidel.config.json
+8321991997f6150e56f1c9b11c17be1a6884c2a3088889292cca02310c990c92 *infidel.log
+9bc28d723d731d724ce3ab772c0330e2dbb3e7841873c24ffb2e870e2e3145ac *infidel.run.json
+# tier: T1 native play.html walk (probe.cjs), JSEED RNG parity, passive test_attr recording; no RAM/fact writes. *.run.json absent = run aborted/unreached

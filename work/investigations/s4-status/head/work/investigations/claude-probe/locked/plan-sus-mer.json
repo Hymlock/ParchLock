@@ -1,0 +1,1 @@
+{"key":"suspect","tag":"mer","tests":[{"id":133,"name":"Mercedes' trunk","step":68,"cmd":"open mercedes trunk","expect":1,"bit":17}]}

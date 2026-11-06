@@ -1,0 +1,145 @@
+{
+ "title": "Enchanter",
+ "doorbit": 24,
+ "openbit": 12,
+ "openbitFromFacts": 12,
+ "containerbit": 21,
+ "digest": "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899",
+ "objectCount": 255,
+ "carriers": [
+  {
+   "id": 108,
+   "name": "rusty gate",
+   "parent": 58,
+   "parentName": "",
+   "container": true,
+   "open": true
+  },
+  {
+   "id": 147,
+   "name": "north cell door",
+   "parent": 58,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 152,
+   "name": "simple wooden door",
+   "parent": 58,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 194,
+   "name": "gate",
+   "parent": 58,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 202,
+   "name": "cell door",
+   "parent": 58,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 230,
+   "name": "guarded door",
+   "parent": 58,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 232,
+   "name": "iron gate",
+   "parent": 58,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 251,
+   "name": "south cell door",
+   "parent": 58,
+   "parentName": "",
+   "container": true,
+   "open": false
+  }
+ ],
+ "positives": [
+  {
+   "run": "_Enchanter.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "The door is very rusty and reluctantly opens. >",
+   "openToggles": [
+    {
+     "id": 202,
+     "name": "cell door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_Enchanter.run.json",
+   "cmd": "CLOSE DOOR",
+   "reply": "The door is very rusty and reluctantly closes. >",
+   "openToggles": [
+    {
+     "id": 202,
+     "name": "cell door",
+     "before": 1,
+     "after": 0
+    }
+   ]
+  },
+  {
+   "run": "_Enchanter.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "The door is very rusty and reluctantly opens. >",
+   "openToggles": [
+    {
+     "id": 202,
+     "name": "cell door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  }
+ ],
+ "doorSpecificRefusals": [
+  {
+   "run": "_EnchanterB.run.json",
+   "cmd": "OPEN GATE",
+   "reply": "The gate is secure; it cannot be unlocked. >",
+   "openToggles": []
+  },
+  {
+   "run": "_EnchanterB.run.json",
+   "cmd": "OPEN GATE",
+   "reply": "The gate is secure; it cannot be unlocked. >",
+   "openToggles": []
+  }
+ ],
+ "negatives": [
+  {
+   "run": "_Enchanter.run.json",
+   "cmd": "OPEN BREAD",
+   "reply": "You must tell me how to do that to a loaf of bread. >",
+   "openToggles": []
+  }
+ ],
+ "problemCarriers": {
+  "108": "rusty gate / 194 gate: opened only by REZROV",
+  "232": "iron gate: OPEN -> \"The gate is secure; it cannot be unlocked.\" even after REZROV set OPENBIT; CLOSE -> \"It is too heavy to move.\" Native Open/Close never works",
+  "container": "all carriers except iron gate 232 also carry container bit 21"
+ },
+ "status": "CONFIRMED (cell door 202 toggles; iron gate gives gate-specific refusal)",
+ "method": "headless Chromium play.html; ordinary commands via Input.Inject; Jericho walkthrough prefixes with inserted probes; JSEED-style random-opcode shim (seed 0) for walkthrough parity, no VM memory writes/snapshots"
+}

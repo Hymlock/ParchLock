@@ -1,0 +1,256 @@
+{
+ "talk-zork3 @68:look in man#0": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "look in man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "2cf9bf209b405abd0ba7585efd03d351b00812d91c23e88cae183e8da9942593",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ],
+   [
+    27,
+    9,
+    0,
+    31124
+   ],
+   [
+    27,
+    10,
+    1,
+    31166
+   ],
+   [
+    27,
+    11,
+    1,
+    31166
+   ]
+  ],
+  "nOps": 22,
+  "printedObjs": [],
+  "text": "There is nothing special to be seen.\nYour \"friend\" examines his valuables with great pride.\n \n> ",
+  "ts": "2026-10-30T11:08:50.361Z"
+ },
+ "talk-zork3 @68:find man#1": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "find man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "2cf9bf209b405abd0ba7585efd03d351b00812d91c23e88cae183e8da9942593",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ]
+  ],
+  "nOps": 19,
+  "printedObjs": [],
+  "text": "It's right here.\nYour \"friend\" examines his valuables with great pride.\n \n> ",
+  "ts": "2026-10-30T11:08:50.927Z"
+ },
+ "talk-zork3 @68:hello man#2": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "hello man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "2cf9bf209b405abd0ba7585efd03d351b00812d91c23e88cae183e8da9942593",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ]
+  ],
+  "nOps": 19,
+  "printedObjs": [],
+  "text": "He responds cheerfully. \"It is a wonderful day, isn't it?\"\nYour \"friend\" examines his valuables with great pride.\n \n> ",
+  "ts": "2026-10-30T11:08:51.492Z"
+ },
+ "talk-zork3 @68:kiss man#3": {
+  "tag": "talk-zork3",
+  "id": 27,
+  "name": "man",
+  "step": 68,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "kiss man",
+  "plan": "plan-zork3-68.json",
+  "planSha": "2cf9bf209b405abd0ba7585efd03d351b00812d91c23e88cae183e8da9942593",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 58,
+  "here": 58,
+  "opsOnId": [
+   [
+    27,
+    28,
+    0,
+    24663
+   ],
+   [
+    27,
+    12,
+    1,
+    24071
+   ],
+   [
+    27,
+    26,
+    0,
+    24083
+   ],
+   [
+    27,
+    31,
+    0,
+    24093
+   ]
+  ],
+  "nOps": 19,
+  "printedObjs": [],
+  "text": "I'd sooner kiss a pig.\nYour \"friend\" examines his valuables with great pride.\n \n> ",
+  "ts": "2026-10-30T11:08:52.059Z"
+ }
+}

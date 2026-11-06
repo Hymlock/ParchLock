@@ -1,0 +1,243 @@
+null undefined -> undefined undefined | THE HITCHHIKER'S GUIDE TO THE GALAXY Infocom interactive fiction - a science fiction story Copyright (c) 1984 by Infocom, Inc. All rights re
+"Get Up" 114 -> 150 Bedroom |  / / You wake up. The room is spinning very gently round your head. Or at least it would be if you could see it which you can't. / / It is p
+"Turn on Light" 150 -> 150 Bedroom | >Turn on Light / Good start to the day. Pity it's going to be the worst one of your life. The light is now on. / / Bedroom / The bedroom is 
+"Get Gown" 150 -> 150 Bedroom | Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty d
+"Wear Gown" 150 -> 150 Bedroom | There is a flathead screwdriver here. / There is a toothbrush here. / / >Get Gown / Luckily, this is large enough for you to get hold of. Yo
+"Look in pocket" 150 -> 150 Bedroom | >Get Gown / Luckily, this is large enough for you to get hold of. You notice something in the pocket. / / >Wear Gown / You are now wearing y
+"take analgesic" 150 -> 150 Bedroom | >Wear Gown / You are now wearing your gown. / / >Look in pocket / Opening your gown reveals a buffered analgesic, pocket fluff, and a thing 
+"Get all" 150 -> 150 Bedroom |  / >take analgesic / You swallow the tablet. After a few seconds the room begins to calm down and behave in an orderly manner. Your terrible
+"South" 150 -> 174 Front Porch | telephone: You pick up the receiver. A moment later, the dialing tone is suddenly cut off. Glancing through the window you can't help but no
+"Get Mail" 174 -> 174 Front Porch | You make your way down to the front porch. / / Front Porch / This is the enclosed front porch of your home. Your front garden lies to the so
+"South" 174 -> 71 Front of House | You gather up the pile of mail. / / >South / Front of House / You can enter your home to the north. A path leads around it to the northeast 
+"Lie Down In Front Of Bulldozer" 71 -> 71 Front of House | Front of House / You can enter your home to the north. A path leads around it to the northeast and northwest, and a country lane is visible 
+"Wait" 71 -> 71 Front of House |  / >Lie Down In Front Of Bulldozer / You lie down in the path of the advancing bulldozer. Prosser yells at you to for crissake move!!! / / >
+"Wait" 71 -> 71 Front of House | Time passes... / / The bulldozer thunders toward you. The ground is shaking beneath you as you lie in the mud. / / >Wait / Time passes... / 
+"Wait" 71 -> 71 Front of House | The noise of the giant bulldozer is now so violently loud that you can't even hear Prosser yelling to warn you that you will be killed if yo
+"Wait" 71 -> 71 Front of House | With a terrible grinding of gears the bulldozer comes to an abrupt halt just in front of you. It shakes, shudders, and emits noxious substan
+"Wait" 71 -> 71 Front of House | >Wait / Time passes... / / Ford seems oblivious to your trouble, so you ask "Ford, what about my home?" He looks startled, then guilty. He s
+"Wait" 71 -> 71 Front of House | He seems to come to a momentous decision, says he has something of Earth-shattering importance to tell you, and stresses the importance of a
+"Wait" 71 -> 71 Front of House | Time passes... / / Ford and Prosser stop talking and approach you. Ford says that Prosser has agreed to lie in your place so that the two of
+"Follow Ford" 71 -> 133 Country Lane | >Follow Ford / In a state of anxiety and confusion you follow Ford down the lane... / / Country Lane / The road runs from your home, to the 
+"Enter Pub" 133 -> 167 Pub | >Enter Pub / Pub / The Pub is pleasant and cheerful and full of pleasant and cheerful people who don't know they've got about twelve minutes
+"Look Shelf" 167 -> 167 Pub | Behind the bar is a shelf. It is full of the sort of items you find on shelves behind bars in pubs. / / Ford buys lots of beer and offers ha
+"Buy Sandwich" 167 -> 167 Pub | Use prepositions to indicate precisely what you want to do: LOOK AT the object, LOOK INSIDE it, LOOK UNDER it, etc. / / "Drink the beer," ur
+"Drink Beer" 167 -> 167 Pub | The barman gives you a cheese sandwich. The bread is like the stuff that stereos come packed in, the cheese would be great for rubbing out s
+"Drink Beer" 167 -> 167 Pub | It's very good beer, brewed by a small local company. You particularly like its flavour, which is why you woke up feeling so wretched this m
+"Drink Beer" 167 -> 167 Pub |  / >Drink Beer / It is really very pleasant stuff, with a very good dry, nutty flavour, some light froth on top, and a deep colour. It is at
+"Exit" 167 -> 133 Country Lane | >Drink Beer / There is a distant crash which Ford explains is nothing to worry about, probably just your house being knocked down. / / >Exit
+"Feed dog sandwich" 133 -> 133 Country Lane | >Exit / Country Lane / You see the huge bulldozer heaving itself among the cloud of brick dust which is all that remains of your home. As yo
+"Get towel" 133 -> 133 Country Lane |  / Ford hurries after you. / / >Feed dog sandwich / The dog is deeply moved. With powerful sweeps of its tail it indicates that it regards t
+"Wait" 133 -> 133 Country Lane | >Feed dog sandwich / The dog is deeply moved. With powerful sweeps of its tail it indicates that it regards this cheese sandwich as one of t
+"wait" 133 -> 133 Country Lane | >Get towel / Taken. / / >Wait / Time passes... / / >wait / Time passes... / / > 
+"wait" 133 -> 133 Country Lane | >Wait / Time passes... / / >wait / Time passes... / / >wait / Time passes... / / > 
+"wait" 133 -> 133 Country Lane | >wait / Time passes... / / >wait / Time passes... / / >wait / Time passes... / / > 
+"wait" 133 -> 133 Country Lane | >wait / Time passes... / / >wait / Time passes... / / >wait / Time passes... / / > 
+"wait" 133 -> 133 Country Lane | >wait / Time passes... / / >wait / Time passes... / / >wait / Time passes... / / > 
+"wait" 133 -> 133 Country Lane | Time passes... / / >wait / Time passes... / / With a noise like a cross between Led Zeppelin's farewell concert and the eruption of Krakatoa
+"wait" 133 -> 133 Country Lane | In all the turmoil, you drop the thing your aunt gave you which you don't know what it is and it rolls away. It is the least of your worries
+"get device" 133 -> 133 Country Lane | Throughout the noise, Ford is shouting at you. He removes a small black device from his satchel, but accidentally drops it at your feet. / /
+"push green button" 133 -> 125 Dark | Fierce gales whip across the land, and thunder bangs continuously through the air in the wake of the giant ships. Ford fights to reach you, 
+"n" 125 -> 125 Dark |  / >push green button / Lights whirl sickeningly around your head, the ground arches away beneath your feet, and every atom of your being is
+"s" 125 -> 125 Dark |  / Dark / / >n / There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you 
+"n" 125 -> 125 Dark | >n / There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even 
+"s" 125 -> 125 Dark | >s / You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. / / >n / You can't
+"smell" 125 -> 125 Dark | You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are o
+"examine shadow" 125 -> 99 Vogon Hold | Vogon Hold / This is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of smelly alien underwear. A door 
+"Eat Peanuts" 99 -> 99 Vogon Hold | It looks like the glass case contains: / an atomic vector plotter / Along one wall is a tall dispensing machine. / / Ford removes the bottle
+"Take off gown" 99 -> 99 Vogon Hold |  / Ford removes the bottle of Santraginean Mineral Water which he's been waving under your nose. He tells you that you are aboard a Vogon sp
+"Put Gown on hook" 99 -> 99 Vogon Hold | >Eat Peanuts / You feel stronger as the peanuts replace some of the protein you lost in the matter transference beam. / / >Take off gown / O
+"put towel over drain" 99 -> 99 Vogon Hold | >Take off gown / Okay, you're no longer wearing your gown. / / >Put Gown on hook / The gown is now hanging from the hook, covering a tiny ho
+"wait" 99 -> 99 Vogon Hold |  / >put towel over drain / The towel completely covers the drain. / / >wait / Time passes... / / Ford yawns. "Matter transference always tir
+"get satchel" 99 -> 99 Vogon Hold |  / >wait / Time passes... / / Ford yawns. "Matter transference always tires me out. I'm going to take a nap." He places something on top of 
+"put satchel in front of panel" 99 -> 99 Vogon Hold |  / Ford yawns. "Matter transference always tires me out. I'm going to take a nap." He places something on top of his satchel. "If you have a
+"put mail on satchel" 99 -> 99 Vogon Hold | >get satchel / Taken. / / >put satchel in front of panel / Okay, the satchel is lying on its side in front of the tiny robot panel. / / >put
+"push dispenser button" 99 -> 99 Vogon Hold | >put satchel in front of panel / Okay, the satchel is lying on its side in front of the tiny robot panel. / / >put mail on satchel / Okay, t
+"get gown" 99 -> 99 Vogon Hold | >put mail on satchel / Okay, the loose pile of junk mail is now sitting on the satchel. / / >push dispenser button / A single babel fish sho
+"wear gown" 99 -> 99 Vogon Hold | >push dispenser button / A single babel fish shoots out of the slot. It sails across the room and hits the dressing gown. The fish slides do
+"get all" 99 -> 99 Vogon Hold | You are now wearing your gown. / / >get all / satchel: Taken. / towel: Taken. / keyboard: Nice try. / / An announcement is coming over the s
+"push switch" 99 -> 99 Vogon Hold | keyboard: Nice try. / / An announcement is coming over the ship's intercom. "This is the Captain. My instruments show that we've picked up a
+"z" 99 -> 99 Vogon Hold | A recording plays: "To open the case, type in the second word from the second verse of the Captain's current favourite poem. WARNING: An inc
+"z" 99 -> 164 poetry appreciation chair | >z / Time passes... / / Guards burst in and grab you and Ford, who comes slowly awake. They drag you down the corridor to a large cabin, whe
+"z" 164 -> 164 poetry appreciation chair | The Captain is indescribably hideous, indescribably blubbery, and indescribably mid-to-dark green. He is holding samples of his favourite po
+"z" 164 -> 164 poetry appreciation chair | "If he's going to read us his poetry," mutters Ford, sweating profusely, "just pray he softens us up with some cudgels first..." / / "Hello,
+"z" 164 -> 164 poetry appreciation chair | Time passes... / / "Oh freddled gruntbuggly, thy nacturations are to me!" / / >z / Time passes... / / "As plurdled gabbleblotchits on a lurg
+"z" 164 -> 164 poetry appreciation chair | Time passes... / / "As plurdled gabbleblotchits on a lurgid bee." / / >z / Time passes... / / "Groop I implore thee, my foonting turlingdrom
+"z" 164 -> 164 poetry appreciation chair | Time passes... / / "Groop I implore thee, my foonting turlingdromes." / / >z / Time passes... / / "And hooptiously drangle me with crinkly b
+"enjoy poetry" 164 -> 164 poetry appreciation chair | Time passes... / / "And hooptiously drangle me with crinkly bindlewurdles, or I will rend thee in the gobberwarts with my blurglecruncheon, 
+"z" 164 -> 164 poetry appreciation chair | You realise that, although the Vogon poetry is indeed astoundingly bad, worse things happen at sea, and in fact, at school. With an effort f
+"z" 164 -> 164 poetry appreciation chair | Time passes... / / "Fripping lyshus wimbgunts, awhilst moongrovenly kormzibs." / / >z / Time passes... / / "Bleem miserable venchit! Bleem f
+"z" 164 -> 164 poetry appreciation chair | Time passes... / / "Bleem miserable venchit! Bleem forever mestinglish asunder frapt." / / >z / Time passes... / / "Gashee morphousite, thou
+"z" 164 -> 164 poetry appreciation chair | Time passes... / / "Gashee morphousite, thou expungiest quoopisk!" / / >z / Time passes... / / "Gerond withoutitude form into formless bloit
+"z" 164 -> 99 Vogon Hold | Vogon Hold / This is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of smelly alien underwear. A door 
+"type \"bleem\"" 99 -> 99 Vogon Hold |  / The guard releases you and Ford and begins cycling the air in the airlock. "Hey, guard!" shouts Ford, "do you really enjoy this sort of t
+"get plotter" 99 -> 99 Vogon Hold |  **** You have died **** / / / We are about to give you your score. Put on your peril-sensitive sunglasses now. (Hit RETURN or ENTER when re
+"z" 99 -> 99 Vogon Hold |  / Your score is 60 of a possible 400, in 86 turns. / / Would you like to start over, restore a saved position, get hints or end this sessio
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"examine thumb" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"press green button" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >examine thumb / / Would you like to start over, restore a saved position, get hints or end this s
+"n" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >press green button / / Would you like to start over, restore a saved position, get hints or end t
+"s" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >n / / Would you like to start over, restore a saved position, get hints or end this session of th
+"n" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >s / / Would you like to start over, restore a saved position, get hints or end this session of th
+"s" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >n / / Would you like to start over, restore a saved position, get hints or end this session of th
+"listen" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >s / / Would you like to start over, restore a saved position, get hints or end this session of th
+"Aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >listen / / Would you like to start over, restore a saved position, get hints or end this session 
+"read brochure" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >Aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >read brochure / / Would you like to start over, restore a saved position, get hints or end this s
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"inventory" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"take pincer" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >inventory / / Would you like to start over, restore a saved position, get hints or end this sessi
+"put all into thing" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >take pincer / / Would you like to start over, restore a saved position, get hints or end this ses
+"d" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put all into thing / / Would you like to start over, restore a saved position, get hints or end t
+"port" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >d / / Would you like to start over, restore a saved position, get hints or end this session of th
+"touch pad" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >port / / Would you like to start over, restore a saved position, get hints or end this session of
+"get cup" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch pad / / Would you like to start over, restore a saved position, get hints or end this sessi
+"starboard" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get cup / / Would you like to start over, restore a saved position, get hints or end this session
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >starboard / / Would you like to start over, restore a saved position, get hints or end this sessi
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"yes" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"yes" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >yes / / Would you like to start over, restore a saved position, get hints or end this session of 
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >yes / / Would you like to start over, restore a saved position, get hints or end this session of 
+"no" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"look" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >no / / Would you like to start over, restore a saved position, get hints or end this session of t
+"look" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >look / / Would you like to start over, restore a saved position, get hints or end this session of
+"drop thing" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >look / / Would you like to start over, restore a saved position, get hints or end this session of
+"get rasp" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop thing / / Would you like to start over, restore a saved position, get hints or end this sess
+"get pliers" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get rasp / / Would you like to start over, restore a saved position, get hints or end this sessio
+"put rasp into thing" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get pliers / / Would you like to start over, restore a saved position, get hints or end this sess
+"put pliers into thing" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put rasp into thing / / Would you like to start over, restore a saved position, get hints or end 
+"get improbability drive" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put pliers into thing / / Would you like to start over, restore a saved position, get hints or en
+"fore" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get improbability drive / / Would you like to start over, restore a saved position, get hints or 
+"fore" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >fore / / Would you like to start over, restore a saved position, get hints or end this session of
+"up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >fore / / Would you like to start over, restore a saved position, get hints or end this session of
+"drop drive" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >up / / Would you like to start over, restore a saved position, get hints or end this session of t
+"drop cup" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop drive / / Would you like to start over, restore a saved position, get hints or end this sess
+"drop plotter" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop cup / / Would you like to start over, restore a saved position, get hints or end this sessio
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter / / Would you like to start over, restore a saved position, get hints or end this se
+"drop plotter" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter / / Would you like to start over, restore a saved position, get hints or end this se
+"drop plotter" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"put small plug in plotter" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter / / Would you like to start over, restore a saved position, get hints or end this se
+"put bit in cup" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put small plug in plotter / / Would you like to start over, restore a saved position, get hints o
+"turn on drive" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put bit in cup / / Would you like to start over, restore a saved position, get hints or end this 
+"n" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive / / Would you like to start over, restore a saved position, get hints or end this s
+"s" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >n / / Would you like to start over, restore a saved position, get hints or end this session of th
+"n" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >s / / Would you like to start over, restore a saved position, get hints or end this session of th
+"s" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >n / / Would you like to start over, restore a saved position, get hints or end this session of th
+"smell" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >s / / Would you like to start over, restore a saved position, get hints or end this session of th
+"look at shadow" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >smell / / Would you like to start over, restore a saved position, get hints or end this session o
+"say my name" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >look at shadow / / Would you like to start over, restore a saved position, get hints or end this 
+"e" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >say my name / / Would you like to start over, restore a saved position, get hints or end this ses
+"examine memorial" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >e / / Would you like to start over, restore a saved position, get hints or end this session of th
+"get sharp stone" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >examine memorial / / Would you like to start over, restore a saved position, get hints or end thi
+"put towel on your head" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get sharp stone / / Would you like to start over, restore a saved position, get hints or end this
+"carve my name on the memorial" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put towel on your head / / Would you like to start over, restore a saved position, get hints or e
+"remove towel" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >carve my name on the memorial / / Would you like to start over, restore a saved position, get hin
+"drop stone" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >remove towel / / Would you like to start over, restore a saved position, get hints or end this se
+"w" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop stone / / Would you like to start over, restore a saved position, get hints or end this sess
+"sw" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >w / / Would you like to start over, restore a saved position, get hints or end this session of th
+"get interface" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >sw / / Would you like to start over, restore a saved position, get hints or end this session of t
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get interface / / Would you like to start over, restore a saved position, get hints or end this s
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"hear the dark" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >hear the dark / / Would you like to start over, restore a saved position, get hints or end this s
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"d" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >up / / Would you like to start over, restore a saved position, get hints or end this session of t
+"port" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >d / / Would you like to start over, restore a saved position, get hints or end this session of th
+"open panel" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >port / / Would you like to start over, restore a saved position, get hints or end this session of
+"take circuit" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >open panel / / Would you like to start over, restore a saved position, get hints or end this sess
+"insert interface in nutrimat" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >take circuit / / Would you like to start over, restore a saved position, get hints or end this se
+"close panel" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >insert interface in nutrimat / / Would you like to start over, restore a saved position, get hint
+"touch pad" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >close panel / / Would you like to start over, restore a saved position, get hints or end this ses
+"starboard" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch pad / / Would you like to start over, restore a saved position, get hints or end this sessi
+"up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >starboard / / Would you like to start over, restore a saved position, get hints or end this sessi
+"put large plug in large receptacle" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >up / / Would you like to start over, restore a saved position, get hints or end this session of t
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put large plug in large receptacle / / Would you like to start over, restore a saved position, ge
+"turn on drive" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"d" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive / / Would you like to start over, restore a saved position, get hints or end this s
+"port" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >d / / Would you like to start over, restore a saved position, get hints or end this session of th
+"get tea" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >port / / Would you like to start over, restore a saved position, get hints or end this session of
+"starboard" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get tea / / Would you like to start over, restore a saved position, get hints or end this session
+"up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >starboard / / Would you like to start over, restore a saved position, get hints or end this sessi
+"drop tea" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >up / / Would you like to start over, restore a saved position, get hints or end this session of t
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop tea / / Would you like to start over, restore a saved position, get hints or end this sessio
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"remove bit" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"put bit in tea" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >remove bit / / Would you like to start over, restore a saved position, get hints or end this sess
+"turn on drive" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put bit in tea / / Would you like to start over, restore a saved position, get hints or end this 
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive / / Would you like to start over, restore a saved position, get hints or end this s
+"touch" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"touch" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch / / Would you like to start over, restore a saved position, get hints or end this session o
+"drink liquid" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch / / Would you like to start over, restore a saved position, get hints or end this session o
+"examine arthur" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drink liquid / / Would you like to start over, restore a saved position, get hints or end this se
+"drop wine" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >examine arthur / / Would you like to start over, restore a saved position, get hints or end this 
+"get fluff" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drop wine / / Would you like to start over, restore a saved position, get hints or end this sessi
+"open bag" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get fluff / / Would you like to start over, restore a saved position, get hints or end this sessi
+"put fluff in bag" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >open bag / / Would you like to start over, restore a saved position, get hints or end this sessio
+"get wine" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put fluff in bag / / Would you like to start over, restore a saved position, get hints or end thi
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get wine / / Would you like to start over, restore a saved position, get hints or end this sessio
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"hear" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >hear / / Would you like to start over, restore a saved position, get hints or end this session of
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"open handbag" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >up / / Would you like to start over, restore a saved position, get hints or end this session of t
+"get tweezers" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >open handbag / / Would you like to start over, restore a saved position, get hints or end this se
+"get fluff" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get tweezers / / Would you like to start over, restore a saved position, get hints or end this se
+"put all in thing" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get fluff / / Would you like to start over, restore a saved position, get hints or end this sessi
+"turn on drive" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put all in thing / / Would you like to start over, restore a saved position, get hints or end thi
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive / / Would you like to start over, restore a saved position, get hints or end this s
+"touch" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"touch" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch / / Would you like to start over, restore a saved position, get hints or end this session o
+"touch" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch / / Would you like to start over, restore a saved position, get hints or end this session o
+"touch" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch / / Would you like to start over, restore a saved position, get hints or end this session o
+"drink liquid" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >touch / / Would you like to start over, restore a saved position, get hints or end this session o
+"get flowerpot" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >drink liquid / / Would you like to start over, restore a saved position, get hints or end this se
+"put it in thing" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get flowerpot / / Would you like to start over, restore a saved position, get hints or end this s
+"examine thumb" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >put it in thing / / Would you like to start over, restore a saved position, get hints or end this
+"press red button" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >examine thumb / / Would you like to start over, restore a saved position, get hints or end this s
+"give thumb to robot" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >press red button / / Would you like to start over, restore a saved position, get hints or end thi
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >give thumb to robot / / Would you like to start over, restore a saved position, get hints or end 
+"show warranty" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"press green button" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >show warranty / / Would you like to start over, restore a saved position, get hints or end this s
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >press green button / / Would you like to start over, restore a saved position, get hints or end t
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"z" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"hear" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >z / / Would you like to start over, restore a saved position, get hints or end this session of th
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >hear / / Would you like to start over, restore a saved position, get hints or end this session of
+"aft" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >aft / / Would you like to start over, restore a saved position, get hints or end this session of 
+"turn on drive" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >up / / Would you like to start over, restore a saved position, get hints or end this session of t
+"see" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive / / Would you like to start over, restore a saved position, get hints or end this s
+"see" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >see / / Would you like to start over, restore a saved position, get hints or end this session of 
+"see" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >see / / Would you like to start over, restore a saved position, get hints or end this session of 
+"see" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >see / / Would you like to start over, restore a saved position, get hints or end this session of 
+"examine light" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >see / / Would you like to start over, restore a saved position, get hints or end this session of 
+"look under seat" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >examine light / / Would you like to start over, restore a saved position, get hints or end this s
+"look" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >look under seat / / Would you like to start over, restore a saved position, get hints or end this
+"sit in seat" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >look / / Would you like to start over, restore a saved position, get hints or end this session of
+"stand up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >sit in seat / / Would you like to start over, restore a saved position, get hints or end this ses
+"get in pilot seat" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >stand up / / Would you like to start over, restore a saved position, get hints or end this sessio
+"get out" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get in pilot seat / / Would you like to start over, restore a saved position, get hints or end th
+"enter seat" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >get out / / Would you like to start over, restore a saved position, get hints or end this session
+"exit" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >enter seat / / Would you like to start over, restore a saved position, get hints or end this sess
+"sit on seat" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >exit / / Would you like to start over, restore a saved position, get hints or end this session of
+"stand up" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >sit on seat / / Would you like to start over, restore a saved position, get hints or end this ses
+"look" 99 -> 99 Vogon Hold | (Type RESTART, RESTORE, HINTS or QUIT): / >stand up / / Would you like to start over, restore a saved position, get hints or end this sessio

@@ -1,0 +1,135 @@
+{
+  "digest": "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4",
+  "first": 768,
+  "firstProperty": 3063,
+  "count": 255,
+  "bit": 20,
+  "owners": [
+    {
+      "id": 53,
+      "name": "Mr. Coates",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Mr. Coates",
+      "parent": 0,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 127,
+      "name": "Mr. Robner",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Mrs. Rourke",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 149,
+      "name": "Mrs. Rourke",
+      "parent": 196,
+      "bits": [
+        20,
+        28
+      ]
+    },
+    {
+      "id": 150,
+      "name": "Mrs. Robner",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 151,
+      "name": "Mrs. Robner",
+      "parent": 202,
+      "bits": [
+        20,
+        28
+      ]
+    },
+    {
+      "id": 152,
+      "name": "George",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 153,
+      "name": "George",
+      "parent": 164,
+      "bits": [
+        20,
+        28
+      ]
+    },
+    {
+      "id": 154,
+      "name": "Ms. Dunbar",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 155,
+      "name": "Ms. Dunbar",
+      "parent": 202,
+      "bits": [
+        20,
+        28
+      ]
+    },
+    {
+      "id": 156,
+      "name": "Mr. Baxter",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 157,
+      "name": "Mr. Baxter",
+      "parent": 0,
+      "bits": [
+        20,
+        28
+      ]
+    },
+    {
+      "id": 158,
+      "name": "Mr. McNabb",
+      "parent": 255,
+      "bits": [
+        20
+      ]
+    },
+    {
+      "id": 159,
+      "name": "Mr. McNabb",
+      "parent": 222,
+      "bits": [
+        20,
+        28
+      ]
+    }
+  ]
+}

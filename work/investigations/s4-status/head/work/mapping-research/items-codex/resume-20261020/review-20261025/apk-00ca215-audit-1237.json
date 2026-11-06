@@ -1,0 +1,25 @@
+{
+  "Scope": "Read-only independent verification of Grok-reported operator dev build; no build/install by Codex. Does not include isolated prototypes.",
+  "SHA256": "E668292AAD01E30D6744F3342DAFA7FB32FCE1BF2075A520B64FFEE5759542C0",
+  "Sources": [
+    {
+      "CommittedSourceParity": true,
+      "File": "GrammarProvider"
+    },
+    {
+      "CommittedSourceParity": true,
+      "File": "ZRamReader"
+    },
+    {
+      "CommittedSourceParity": true,
+      "File": "LearnedWords"
+    },
+    {
+      "CommittedSourceParity": true,
+      "File": "ModuleStatFactsClaude"
+    }
+  ],
+  "Commit": "00ca215",
+  "APK": "C:/Users/hymlo/Downloads/ParchLock-dist/ParchLock-dev.apk",
+  "Length": 88029935
+}

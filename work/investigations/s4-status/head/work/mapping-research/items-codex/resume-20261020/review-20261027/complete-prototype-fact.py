@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('work/mapping-research/items-codex/resume-20261020/review-20261027/z3-custody-prototype-r1/js/ModuleStatFactsClaude.js');s=p.read_bytes();a=b'"dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {';assert s.count(a)==1;end=b'\r\n' if a+b'\r\n' in s else b'\n';a+=end;b=a+b'        // PROTOTYPE ONLY: native generated consumer still held.'+end+b'        "equipmentState": { "wornWhen": "wearable-direct-player", "wornRemoval": "drop" },'+end;p.write_bytes(s.replace(a,b))

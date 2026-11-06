@@ -1,0 +1,5 @@
+Tier: native-behavioural (live game replies, JSEED 4 replay, g1-batch run mode). NOT a bit-test positive.
+Generator switch 96 (bit 32 set before/after): TURN ON / SWITCH ON -> "Nothing happens."; TURN OFF -> "You can't turn that off."
+Control same step: "turn on cup" -> "You can't turn that on."  => game routes ON for 96 to a handler (same reply as "turn on improbability drive").
+test_attr(96,32) never executed during any ON/OFF command (opsOnId bits 21,34,23,21/35 only) => g1 judge verdict NOTEST.
+Dipswitch 143: not reachable (inside circuit board 73 in closed Nutrimat 182, Galley); "You can't see any dipswitch here!" at step 89.

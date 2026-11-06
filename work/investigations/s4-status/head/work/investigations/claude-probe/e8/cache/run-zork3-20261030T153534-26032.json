@@ -1,0 +1,110 @@
+{
+ "e8climb24 @31:climb broken timber#0": {
+  "tag": "e8climb24",
+  "id": 26,
+  "name": "broken timber",
+  "step": 31,
+  "expect": 0,
+  "cmd": "climb broken timber",
+  "bit": 24,
+  "plan": "z3-ladder-plan.json",
+  "planSha": "c62a32389292bc402f338406d3191e40990136361ec159a9c9b9d0acc3a36bfb",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   20
+  ],
+  "after": [
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 25,
+  "here": 25,
+  "opsOnId": [
+   [
+    26,
+    28,
+    0,
+    24663
+   ]
+  ],
+  "nOps": 7,
+  "printedObjs": [],
+  "text": "Bizarre!\n \n> ",
+  "ts": "2026-10-30T15:35:52.457Z"
+ },
+ "e8climb24 @31:climb torch#1": {
+  "tag": "e8climb24",
+  "id": 41,
+  "name": "torch",
+  "step": 31,
+  "expect": 0,
+  "cmd": "climb torch",
+  "bit": 24,
+  "plan": "z3-ladder-plan.json",
+  "planSha": "c62a32389292bc402f338406d3191e40990136361ec159a9c9b9d0acc3a36bfb",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   15,
+   19,
+   20,
+   27
+  ],
+  "after": [
+   6,
+   15,
+   19,
+   20,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 202,
+  "here": 43,
+  "opsOnId": [
+   [
+    41,
+    28,
+    0,
+    24663
+   ]
+  ],
+  "nOps": 12,
+  "printedObjs": [],
+  "text": "Bizarre!\nYou suddenly find yourself back in the viewing room!\n \n> ",
+  "ts": "2026-10-30T15:35:53.036Z"
+ },
+ "e8climb24 @32:climb ladder#2": {
+  "tag": "e8climb24",
+  "id": 23,
+  "name": "wooden ladder",
+  "step": 32,
+  "expect": 1,
+  "cmd": "climb ladder",
+  "bit": 24,
+  "plan": "z3-ladder-plan.json",
+  "planSha": "c62a32389292bc402f338406d3191e40990136361ec159a9c9b9d0acc3a36bfb",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   24,
+   25
+  ],
+  "after": [
+   24,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 221,
+  "here": 43,
+  "opsOnId": [],
+  "nOps": 30,
+  "printedObjs": [],
+  "text": "I can't see any ladder here.\n \n> ",
+  "ts": "2026-10-30T15:35:54.189Z"
+ }
+}

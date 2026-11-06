@@ -1,0 +1,30 @@
+### castle.zil:558 (historicalsource/moonmist)
+	<COND (<NOT <ZERO? ,DRAGON-EYE-COLOR>>
+	       <SETG DRAGON-EYE-COLOR 0>)>
+	<COND (<NOT <FSET? ,FRONT-GATE ,LOCKED>>
+	       <FCLEAR ,FRONT-GATE ,OPENBIT>
+	       <FSET ,FRONT-GATE ,LOCKED>
+	       <TELL "The " 'FRONT-GATE " closes and locks behind you." CR>)>)
+       (<EQUAL? .RARG ,M-LOOK>
+	<COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+	       <FSET ,HERE ,TOUCHBIT>
+	       <TELL "As flood lights blaze on, you look around. ">)>
+	<TELL-LIKE-BROCHURE>
+	<TELL ,DARK-TURRETS>
+	<RTRUE>)
+
+### verbs.zil:821 (historicalsource/moonmist)
+		      (<AND .V? <SET STR <GETP ,HERE ,P?LDESC>>>
+		       <TELL .STR CR>)
+		      (T <APPLY <GETP ,HERE ,P?ACTION> ,M-FLASH>)>
+		;<COND (<NOT <==? ,HERE .L>>
+		       <APPLY <GETP .L ,P?ACTION> ,M-LOOK>)>)>
+	 <COND (<GETP ,HERE ,P?CORRIDOR>
+		<CORRIDOR-LOOK>)>
+	 <FSET ,HERE ,SEENBIT>
+	 <FSET ,HERE ,TOUCHBIT>
+	 T>
+
+"Lengths:"
+<CONSTANT REXIT 0>
+

@@ -1,0 +1,8 @@
+{"game":"paperchase.z5.js","exits":["in>18","south>18"],"marks":["south"],"inv1":["17:ballpoint pen"],"inv2":["17:ballpoint pen"],"rooms":["16:Outside","18:Entrance hall","19:Registration hall","24:Refectory","32:Ground floor stairwell"]}
+{"game":"reverb.z5.js","exits":["out>30","southwest>30"],"marks":["counter","Pizza","southwest"],"inv1":[],"inv2":[],"rooms":["29:Behind the Counter","30:Pizza Parlor","36:Street, by Pizza Parlor","40:Street, by Department Store","52:Street, Near Courthouse"]}
+{"game":"shade.z5.js","exits":[],"marks":["apartment","desk","paper","dusty computer","futon","stereo","cardboard crate","kitchen nook","bathroom nook","closet","broad mirror","window","front door","desk lamp","luggage","potted","to-do list","travel book"],"inv1":[],"inv2":[],"rooms":["41:apartment"]}
+{"game":"stiffmst.z5.js","error":"no-prompt"}
+{"game":"terror_tabby.z5.js","exits":["east>52","south>56"],"marks":["drawers","floor","mattress","south","east","bathroom","tabby cat"],"inv1":[],"inv2":[],"rooms":["43:Almost Bare Bedroom","56:Sparsely Furnished Living Room","62:Cramped Kitchen"]}
+{"game":"tryst205.z5.js","exits":[],"marks":[],"inv1":["26:gold watch"],"inv2":["26:gold watch"],"rooms":["24:On the Floor"]}
+{"game":"vision.z5.js","exits":["down>29","east>28","north>27","northeast>31","northwest>32","south>29","southeast>34","southwest>33","up>35","west>30"],"marks":[],"inv1":[],"inv2":[],"rooms":["26:Place","27:Place","28:Place","29:Place","30:Place","31:Place","32:Place","33:Place","34:Place","35:Place"]}
+{"game":"windhal1.z8.js","exits":[],"marks":[],"inv1":["16:pack","421:old shovel"],"inv2":["16:pack","421:old shovel"],"rooms":[]}

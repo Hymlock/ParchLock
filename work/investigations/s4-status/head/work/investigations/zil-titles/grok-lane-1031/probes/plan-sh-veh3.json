@@ -1,0 +1,31 @@
+{
+    "tag":  "sh-vehicle",
+    "game":  "Sherlock.z5.js",
+    "key":  "sherlock",
+    "bit":  1,
+    "tmpl":  "s",
+    "note":  "grok Sherlock lane native; single-run group; cab @53, Bligh rowboat @58, old boat @135",
+    "tests":  [
+                  {
+                      "cmd":  "ENTER CAB",
+                      "step":  53,
+                      "name":  "enter cab",
+                      "id":  295,
+                      "expect":  1
+                  },
+                  {
+                      "cmd":  "ENTER ROWBOAT",
+                      "step":  58,
+                      "name":  "enter rowboat",
+                      "id":  194,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ENTER BOAT",
+                      "step":  135,
+                      "name":  "enter boat",
+                      "id":  201,
+                      "expect":  1
+                  }
+              ]
+}

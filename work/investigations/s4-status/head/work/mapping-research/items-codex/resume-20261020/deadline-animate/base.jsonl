@@ -1,0 +1,3 @@
+{"game":"Alabaster.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Deadline.z3.js","exits":["north>246","northeast>238","northwest>240","south>null"],"marks":["South","north","northeast","northwest"],"inv1":[],"inv2":[],"rooms":["222:North Lawn","226:Orchard Path","228:Among the Roses","231:Garden Path","234:West Side of House","238:East Lawn","240:West Lawn","244:West of Front Door","246:Front Path","249:South Lawn"]}
+{"game":"LostPig.z8.js","exits":[],"marks":["Boss","moon","forest","strange animal","big field","stone wall","Farm"],"inv1":["92:torch","91:pants"],"inv2":["92:torch","91:pants"],"rooms":["93:Outside"]}

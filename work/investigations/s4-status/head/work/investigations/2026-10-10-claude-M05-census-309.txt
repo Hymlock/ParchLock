@@ -1,0 +1,9 @@
+dewdrops.z5.js boot room=39 (ONSTAGE) chain=24:(self object)>39:(ONSTAGE) heading="Stage (A German Forest)"
+dewdrops.z5.js look room=39 (ONSTAGE) chain=24:(self object)>39:(ONSTAGE) heading="Stage (A German Forest)"
+MakeItGood.zblorb.js boot room=391 (MainStreet) chain=20:(self object)>397:(Car)>391:(MainStreet) heading="Broken Top Boulevard, Outside No. 15"
+MakeItGood.zblorb.js look room=391 (MainStreet) chain=20:(self object)>397:(Car)>391:(MainStreet) heading="Broken Top Boulevard, Outside No. 15"
+selection.z5.js boot room=37 (desk_area) chain=20:(self object)>37:(desk_area) heading="Office of the Director"
+selection.z5.js look room=37 (desk_area) chain=20:(self object)>37:(desk_area) heading="Office of the Director"
+vespers.z8.js boot room=325 (your_bedroom) chain=20:(self object)>325:(your_bedroom) heading="Your Bedroom"
+vespers.z8.js look room=325 (your_bedroom) chain=20:(self object)>325:(your_bedroom) heading="Your Bedroom"
+DONE 309

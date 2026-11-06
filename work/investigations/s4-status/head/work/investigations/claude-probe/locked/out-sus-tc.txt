@@ -1,0 +1,2 @@
+run file work\investigations\claude-probe\locked\run-suspect-20261030T150836-49836.json
+suspect tc @68 open tool chest #132 FALSE "You open the tool chest and see a crowbar.\n \n> "

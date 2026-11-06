@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ParchLock</string>
+    <string name="title_activity_main">ParchLock</string>
+    <string name="package_name">com.parchlock.app</string>
+    <string name="custom_url_scheme">com.parchlock.app</string>
+</resources>

@@ -1,0 +1,3 @@
+{"game":"Adventureland.z5.js","exits":["east>35","north>32","south>32","west>32"],"marks":["North","South","East","West","trees"],"inv1":[],"inv2":[],"rooms":["32:Forest","35:Meadow"]}
+{"game":"Ballyhoo.z3.js","exits":["in>null","north>null","northeast>null","out>57","south>57","up>null"],"marks":["crowd","big top","north","south","northeast"],"inv1":[],"inv2":[],"rooms":["148:Near White Wagon","230:Beside the Big Top","4:Back Yard","57:Connection","81:In the Wings"]}
+{"game":"Borderzo.z5.js","error":"no-prompt"}

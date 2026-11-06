@@ -1,0 +1,237 @@
+{
+ "pass": 26,
+ "fail": 1,
+ "log": [
+  "PASS: Zork play wrote index entries owned by games/Zork1-TheGreatUndergroundEmpire.z3.js: [\"PL_AttrCalib_88-840726\",\"PL_LearnedWordOverrides_88-840726\",\"PM_ExitCalib_88-840726\",\"PM_Stats_88-840726\"]",
+  "PASS: Zork entries: key field == storage key, owner digests are sha256",
+  "PASS: Advent (tab 2) wrote its own keys: [\"PL_AttrCalib_9-060321\",\"PL_LearnedWordOverrides_9-060321\",\"PM_ExitCalib_9-060321\",\"PM_Stats_9-060321\"]",
+  "PASS: import via library file picker added one local module [{\"Path\":\"local/ca78a29bc239f946a6bb117ff684ab0046c1aeced5d38294075aa60c50eb23de.z5.js\",\"Title\":\"d13import\"}]",
+  "PASS: import play wrote keys: [\"PL_AttrCalib_1-000210\",\"PM_ExitCalib_1-000210\",\"PM_Stats_1-000210\"]",
+  "PASS: R7 IndexedDB-bytes digest of import == identity digest captured while playing (ca78a29bc239f946a6bb117ff684ab0046c1aeced5d38294075aa60c50eb23de)",
+  "PASS: R7 fetch digest of Advent == identity captured while playing",
+  "PASS: R7 fetch digest of Zork == current identity",
+  "PASS: Hid Advent via library UI",
+  "PASS: Removed import via library UI",
+  "PASS: installed set: Advent + import gone, Zork present",
+  "PASS: before Check: Check enabled, Erase disabled. status=\"Check to find learned data from uninstalled stories. Learned data: about 67.9 KB (UTF-16 estimate). 0 erasable, 4 kept for installed stories, 7 unknown, 0 unmanaged.\"",
+  "PASS: status after Check: \"Learned data: about 67.9 KB (UTF-16 estimate). 7 erasable, 4 kept for installed stories, 0 unknown, 0 unmanaged.\" (3045ms)",
+  "PASS: candidates == Advent+import keys exactly: [\"PL_AttrCalib_1-000210\",\"PL_AttrCalib_9-060321\",\"PL_LearnedWordOverrides_9-060321\",\"PM_ExitCalib_1-000210\",\"PM_ExitCalib_9-060321\",\"PM_Stats_1-000210\",\"PM_Stats_9-060321\"]",
+  "PASS: Erase enabled after Check found removable",
+  "PASS: R7: Check (fetch-hashing never-played built-ins) left current identity/digest unchanged",
+  "PASS: never-played built-in hashes via fetch without gaining an identity entry",
+  "PASS: confirm dialog: \"Erase learned data for 7 item(s) from stories that are no longer installed? Maps, saves and transcripts are kept.\"",
+  "FAIL: fail-closed: erase aborted because tab 2 (still playing hidden Advent) rewrote an erasable key between Check and Erase: \"Removed 7, failed 0. Learned data: about 23.3 KB (UTF-16 estimate). 0 erasable, 4 kept for installed stories, 0 unknown, 0 unmanaged.\"",
+  "PASS: status after erase: \"Removed 7, failed 0. Learned data: about 23.3 KB (UTF-16 estimate). 0 erasable, 4 kept for installed stories, 0 unknown, 0 unmanaged.\"",
+  "PASS: removed keys == exactly the uninstalled modules learning keys: [\"PL_AttrCalib_1-000210\",\"PL_AttrCalib_9-060321\",\"PL_LearnedWordOverrides_9-060321\",\"PM_ExitCalib_1-000210\",\"PM_ExitCalib_9-060321\",\"PM_Stats_1-000210\",\"PM_Stats_9-060321\"]",
+  "PASS: nothing else added/changed (index + live current-story Zork store only): changed=[\"PL_ModuleLearningOwner_v1\",\"PM_Stats_88-840726\"] added=[]",
+  "PASS: installed/current Zork learning keys kept",
+  "PASS: two-tab: no resurrection - tab 2 (hydrated before erase) reset its stores; keys it rewrote hold fresh data only: [{\"k\":\"PL_AttrCalib_9-060321\",\"beforeLen\":726,\"afterLen\":682},{\"k\":\"PM_Stats_9-060321\",\"beforeLen\":8770,\"afterLen\":3094}]",
+  "PASS: tombstones kept for un-rewritten Advent keys; fresh rewrites own new entries [\"PM_ExitCalib_9-060321\",\"PL_LearnedWordOverrides_9-060321\",\"PM_Stats_1-000210\",\"PL_AttrCalib_1-000210\",\"PM_ExitCalib_1-000210\"]",
+  "PASS: a new Check lists the freshly re-learned uninstalled-Advent keys as erasable again: [\"PL_AttrCalib_9-060321\",\"PM_Stats_9-060321\"]",
+  "PASS: no page errors []"
+ ],
+ "R": {
+  "zorkKeys": [
+   "PL_AttrCalib_88-840726",
+   "PL_LearnedWordOverrides_88-840726",
+   "PM_ExitCalib_88-840726",
+   "PM_Stats_88-840726"
+  ],
+  "zorkIndexEntries": [
+   {
+    "key": "PL_AttrCalib_88-840726",
+    "kind": "attrCalib",
+    "owners": [
+     {
+      "digest": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+      "path": "games/Zork1-TheGreatUndergroundEmpire.z3.js",
+      "inputs": {
+       "identityKey": "88-840726"
+      }
+     }
+    ]
+   },
+   {
+    "key": "PL_LearnedWordOverrides_88-840726",
+    "kind": "learnedWords",
+    "owners": [
+     {
+      "digest": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+      "path": "games/Zork1-TheGreatUndergroundEmpire.z3.js",
+      "inputs": {
+       "identityKey": "88-840726"
+      }
+     }
+    ]
+   },
+   {
+    "key": "PM_ExitCalib_88-840726",
+    "kind": "exitCalib",
+    "owners": [
+     {
+      "digest": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+      "path": "games/Zork1-TheGreatUndergroundEmpire.z3.js",
+      "inputs": {
+       "identityKey": "88-840726"
+      }
+     }
+    ]
+   },
+   {
+    "key": "PM_Stats_88-840726",
+    "kind": "stats",
+    "owners": [
+     {
+      "digest": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+      "path": "games/Zork1-TheGreatUndergroundEmpire.z3.js",
+      "inputs": {
+       "identityKey": "88-840726"
+      }
+     }
+    ]
+   }
+  ],
+  "zorkDigest": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+  "adventKeys": [
+   "PL_AttrCalib_9-060321",
+   "PL_LearnedWordOverrides_9-060321",
+   "PM_ExitCalib_9-060321",
+   "PM_Stats_9-060321"
+  ],
+  "adventDigestPlay": "6179b5d5b17d692ec83fe64101ff8e4092390166c2b05063e7310eb976b93ea0",
+  "importKeys": [
+   "PL_AttrCalib_1-000210",
+   "PM_ExitCalib_1-000210",
+   "PM_Stats_1-000210"
+  ],
+  "importDigestPlay": "ca78a29bc239f946a6bb117ff684ab0046c1aeced5d38294075aa60c50eb23de",
+  "importDigestR7": "ca78a29bc239f946a6bb117ff684ab0046c1aeced5d38294075aa60c50eb23de",
+  "adventDigestR7": "6179b5d5b17d692ec83fe64101ff8e4092390166c2b05063e7310eb976b93ea0",
+  "zorkDigestR7": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+  "dialogs": [
+   "Erase learned data for 7 item(s) from stories that are no longer installed? Maps, saves and transcripts are kept."
+  ],
+  "statusInitial": "Check to find learned data from uninstalled stories. Learned data: about 67.9 KB (UTF-16 estimate). 0 erasable, 4 kept for installed stories, 7 unknown, 0 unmanaged.",
+  "checkMs": 3045,
+  "statusAfterCheck": "Learned data: about 67.9 KB (UTF-16 estimate). 7 erasable, 4 kept for installed stories, 0 unknown, 0 unmanaged.",
+  "listing": {
+   "removable": 7,
+   "installed": 4,
+   "unknown": 0,
+   "unmanaged": 0,
+   "cands": [
+    "PL_AttrCalib_1-000210",
+    "PL_AttrCalib_9-060321",
+    "PL_LearnedWordOverrides_9-060321",
+    "PM_ExitCalib_1-000210",
+    "PM_ExitCalib_9-060321",
+    "PM_Stats_1-000210",
+    "PM_Stats_9-060321"
+   ]
+  },
+  "neverPlayed": {
+   "d": "8c64265e12a69be26b7827b5c0f9f25e3f805ef557fc2a586bb44f27e2353129",
+   "cur": null
+  },
+  "writesAroundErase": [],
+  "writesTab2": [
+   {
+    "t": 1793410435557,
+    "k": "PM_Stats_1-000210",
+    "own": 0
+   },
+   {
+    "t": 1793410435724,
+    "k": "PL_ModuleLearningOwner_v1",
+    "own": 0
+   },
+   {
+    "t": 1793410436148,
+    "k": "PM_Stats_1-000210",
+    "own": 0
+   },
+   {
+    "t": 1793410438860,
+    "k": "PL_Modules_Hidden",
+    "own": 0
+   },
+   {
+    "t": 1793410440549,
+    "k": "PL_Modules_Index",
+    "own": 0
+   },
+   {
+    "t": 1793410443545,
+    "k": "PM_Stats_88-840726",
+    "own": 0
+   },
+   {
+    "t": 1793410447684,
+    "k": "PL_ModuleLearningOwner_v1",
+    "own": 0
+   },
+   {
+    "t": 1793410447684,
+    "k": "PM_Stats_9-060321",
+    "own": 0
+   },
+   {
+    "t": 1793410447684,
+    "k": "PM_Stats_1-000210",
+    "own": 0
+   },
+   {
+    "t": 1793410447684,
+    "k": "PL_ModuleLearningOwner_v1",
+    "own": 0
+   }
+  ],
+  "firstEraseStatus": "Removed 7, failed 0. Learned data: about 23.3 KB (UTF-16 estimate). 0 erasable, 4 kept for installed stories, 0 unknown, 0 unmanaged.",
+  "eraseAttempts": 1,
+  "diag": {
+   "sigSame": true,
+   "sigA": "91c5d70ea7f1b0c1c0bb5a554e7b\",\"ff7865884cff4fc4a9b4c087c53d754f23deb090462a7b7247035b0dadb76f9b\",\"ffdecae479a6e5a4280c695fa67c39a0802005413e7221865fa0aa8ec32eac83\"],0,{\"digest\":\"0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd\",\"path\":\"games/Zork1-TheGreatUndergroundEmpire.z3.js\"},1]",
+   "sigB": "91c5d70ea7f1b0c1c0bb5a554e7b\",\"ff7865884cff4fc4a9b4c087c53d754f23deb090462a7b7247035b0dadb76f9b\",\"ffdecae479a6e5a4280c695fa67c39a0802005413e7221865fa0aa8ec32eac83\"],0,{\"digest\":\"0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd\",\"path\":\"games/Zork1-TheGreatUndergroundEmpire.z3.js\"},1]",
+   "diffVals": [],
+   "libRev": 6
+  },
+  "statusAfterErase": "Removed 7, failed 0. Learned data: about 23.3 KB (UTF-16 estimate). 0 erasable, 4 kept for installed stories, 0 unknown, 0 unmanaged.",
+  "diff": {
+   "gone": [
+    "PL_AttrCalib_1-000210",
+    "PL_AttrCalib_9-060321",
+    "PL_LearnedWordOverrides_9-060321",
+    "PM_ExitCalib_1-000210",
+    "PM_ExitCalib_9-060321",
+    "PM_Stats_1-000210",
+    "PM_Stats_9-060321"
+   ],
+   "added": [],
+   "changed": [
+    "PL_ModuleLearningOwner_v1",
+    "PM_Stats_88-840726"
+   ]
+  },
+  "tab2Pending": 0,
+  "tab2Rewritten": [
+   {
+    "k": "PL_AttrCalib_9-060321",
+    "beforeLen": 726,
+    "afterLen": 682
+   },
+   {
+    "k": "PM_Stats_9-060321",
+    "beforeLen": 8770,
+    "afterLen": 3094
+   }
+  ],
+  "recheck": {
+   "removable": 2,
+   "cands": [
+    "PL_AttrCalib_9-060321",
+    "PM_Stats_9-060321"
+   ]
+  },
+  "errors": []
+ }
+}

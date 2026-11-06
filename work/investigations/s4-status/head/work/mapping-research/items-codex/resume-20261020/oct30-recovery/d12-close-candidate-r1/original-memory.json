@@ -1,0 +1,57 @@
+{
+  "tier": "Original immutable story RAM + real readers, DataView adapter; not native execution or constructed custody",
+  "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+  "rows": [
+    {
+      "id": 8,
+      "name": "left end of the plank",
+      "capacity": "default",
+      "actual": false,
+      "want": false
+    },
+    {
+      "id": 68,
+      "name": "right end of the plank",
+      "capacity": "default",
+      "actual": false,
+      "want": false
+    },
+    {
+      "id": 216,
+      "name": "hopper",
+      "capacity": {
+        "num": 8,
+        "sz": 2,
+        "value": 8,
+        "dataAddr": 8108
+      },
+      "actual": true,
+      "want": true
+    },
+    {
+      "id": 225,
+      "name": "Buck Palace-endorsed, regulation mailbox",
+      "capacity": {
+        "num": 8,
+        "sz": 2,
+        "value": 11,
+        "dataAddr": 8338
+      },
+      "actual": true,
+      "want": true
+    },
+    {
+      "id": 194,
+      "name": "mantle",
+      "capacity": {
+        "num": 8,
+        "sz": 2,
+        "value": 60,
+        "dataAddr": 7660
+      },
+      "actual": false,
+      "want": false
+    }
+  ],
+  "sourceSha": "6162ddfc3855d9cab0c7ccdc392e669c0e46f7f7b1ba9dad4d9f505afb7d8bf6"
+}

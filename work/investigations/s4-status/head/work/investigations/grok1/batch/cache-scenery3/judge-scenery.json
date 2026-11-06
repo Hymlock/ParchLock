@@ -1,0 +1,3460 @@
+{
+ "ballyhoo": {
+  "verdict": "PASS",
+  "pos": [
+   "22:button",
+   "168:crowd"
+  ],
+  "neg": [
+   "49:barred passage",
+   "92:turnstile",
+   "208:gorilla suit"
+  ],
+  "detail": [
+   {
+    "id": 22,
+    "name": "button",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [
+     46920
+    ],
+    "exam": true,
+    "examText": "You see nothing unusual about the button.",
+    "samePc": true
+   },
+   {
+    "id": 32,
+    "name": "pair of sunglasses",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [],
+    "exam": true,
+    "examText": "You see nothing extraordinary about the pair of sunglasses.",
+    "samePc": false
+   },
+   {
+    "id": 49,
+    "name": "barred passage",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     46913
+    ],
+    "exam": true,
+    "examText": "It's empty.",
+    "samePc": true
+   },
+   {
+    "id": 66,
+    "name": "figure of President Taft",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 6,
+    "pcs": [
+     46913
+    ],
+    "exam": true,
+    "examText": "The imposing figure of President Taft stands quite still.",
+    "samePc": true
+   },
+   {
+    "id": 90,
+    "name": "drinking fountain",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 1,
+    "pcs": [
+     46913
+    ],
+    "exam": true,
+    "examText": "It's your standard drinking fountain, with a button next to ",
+    "samePc": true
+   },
+   {
+    "id": 92,
+    "name": "turnstile",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 5,
+    "pcs": [
+     46913
+    ],
+    "exam": true,
+    "examText": "It's the fish skeleton type, with three sets of horizontal r",
+    "samePc": true
+   },
+   {
+    "id": 93,
+    "name": "clown mask",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [],
+    "exam": true,
+    "examText": "You see nothing interesting about the clown mask.",
+    "samePc": false
+   },
+   {
+    "id": 113,
+    "name": "Chuckles",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [],
+    "exam": false,
+    "examText": "[You can't see Chuckles here.]",
+    "samePc": false
+   },
+   {
+    "id": 115,
+    "name": "uniform",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": false,
+    "examText": "[You can't see any uniform here.]",
+    "samePc": false
+   },
+   {
+    "id": 168,
+    "name": "crowd",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [
+     46913
+    ],
+    "exam": true,
+    "examText": "The crowd's gone south.",
+    "samePc": true
+   },
+   {
+    "id": 180,
+    "name": "flower",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [],
+    "exam": false,
+    "examText": "[You can't see any flower here.]",
+    "samePc": false
+   },
+   {
+    "id": 198,
+    "name": "burned cage",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [
+     46920
+    ],
+    "exam": false,
+    "examText": "[I don't know the word \"burned.\"]",
+    "samePc": true
+   },
+   {
+    "id": 208,
+    "name": "gorilla suit",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 6,
+    "pcs": [
+     46920
+    ],
+    "exam": true,
+    "examText": "It's a 3-H gorilla suit -- heavy, hairy and headless.",
+    "samePc": true
+   },
+   {
+    "id": 219,
+    "name": "Comrade Thumb",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": false,
+    "examText": "[You can't see Comrade Thumb here.]",
+    "samePc": false
+   }
+  ]
+ },
+ "cutthroat": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [
+   "11:Pete the Rat",
+   "12:Johnny Red"
+  ],
+  "detail": [
+   {
+    "id": 6,
+    "name": "wrist watch",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 14,
+    "pcs": [],
+    "exam": true,
+    "examText": "Your trusty old wind-up diver's watch is waterproof to 350 f",
+    "samePc": false
+   },
+   {
+    "id": 8,
+    "name": "Weasel's knife",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 14,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any Weasel's knife here.",
+    "samePc": false
+   },
+   {
+    "id": 9,
+    "name": "the Weasel",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": false,
+    "named": true,
+    "lookStep": 14,
+    "pcs": [
+     37950
+    ],
+    "exam": false,
+    "examText": "You can't see any Weasel here.",
+    "samePc": true
+   },
+   {
+    "id": 10,
+    "name": "Pete's eyepatch",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 20,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's a standard black eyepatch.",
+    "samePc": false
+   },
+   {
+    "id": 11,
+    "name": "Pete the Rat",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 20,
+    "pcs": [
+     37950
+    ],
+    "exam": true,
+    "examText": "Pete wears an eyepatch and got his name on a far-east voyage",
+    "samePc": true
+   },
+   {
+    "id": 12,
+    "name": "Johnny Red",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 20,
+    "pcs": [
+     37950
+    ],
+    "exam": true,
+    "examText": "Red got his name from flame-red hair which sprouts from his ",
+    "samePc": true
+   },
+   {
+    "id": 102,
+    "name": "liquor",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 20,
+    "pcs": [
+     37923
+    ],
+    "exam": true,
+    "examText": "You'll have to order one first.",
+    "samePc": false
+   },
+   {
+    "id": 103,
+    "name": "drink",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 20,
+    "pcs": [
+     37923
+    ],
+    "exam": true,
+    "examText": "You'll have to order one first.",
+    "samePc": false
+   },
+   {
+    "id": 105,
+    "name": "meal",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 20,
+    "pcs": [
+     37923
+    ],
+    "exam": false,
+    "examText": "You can't see any meal here.",
+    "samePc": false
+   },
+   {
+    "id": 106,
+    "name": "mirror",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 20,
+    "pcs": [
+     37923
+    ],
+    "exam": true,
+    "examText": "You see grime rather than a reflection.",
+    "samePc": false
+   },
+   {
+    "id": 107,
+    "name": "bar",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 20,
+    "pcs": [
+     37923
+    ],
+    "exam": true,
+    "examText": "It is a worn wooden bar that has had more than its share of ",
+    "samePc": false
+   },
+   {
+    "id": 108,
+    "name": "chair",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 20,
+    "pcs": [
+     37923
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the chair.",
+    "samePc": false
+   },
+   {
+    "id": 143,
+    "name": "room key",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 14,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's your room key.",
+    "samePc": false
+   },
+   {
+    "id": 144,
+    "name": "Mariners' Trust passbook",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 14,
+    "pcs": [],
+    "exam": true,
+    "examText": "This is a distinctive Mariners' Trust passbook which shows a",
+    "samePc": false
+   }
+  ]
+ },
+ "deadline": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [],
+  "detail": [
+   {
+    "id": 7,
+    "name": "mystery book",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 7,
+    "pcs": [
+     27174
+    ],
+    "exam": true,
+    "examText": "This is a novelization of DEADLINE, a classic work of comput",
+    "samePc": false
+   },
+   {
+    "id": 46,
+    "name": "fine wooden cabinets",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 7,
+    "pcs": [
+     27288
+    ],
+    "exam": true,
+    "examText": "The cabinets are beautifully handworked walnut and mahogany.",
+    "samePc": false
+   },
+   {
+    "id": 47,
+    "name": "collection of portraits",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 7,
+    "pcs": [
+     27288
+    ],
+    "exam": true,
+    "examText": "There are five portraits: two on each side of and one above ",
+    "samePc": false
+   },
+   {
+    "id": 48,
+    "name": "wood pile",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 7,
+    "pcs": [
+     27288
+    ],
+    "exam": true,
+    "examText": "There's nothing special about the wood pile.",
+    "samePc": false
+   },
+   {
+    "id": 49,
+    "name": "fieldstone fireplace",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 7,
+    "pcs": [
+     27288
+    ],
+    "exam": true,
+    "examText": "There's nothing special about the fieldstone fireplace.",
+    "samePc": false
+   },
+   {
+    "id": 50,
+    "name": "crystal lamp",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 3,
+    "pcs": [
+     27288
+    ],
+    "exam": true,
+    "examText": "There's nothing special about the crystal lamp.",
+    "samePc": false
+   },
+   {
+    "id": 103,
+    "name": "living room table",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 7,
+    "pcs": [
+     27288
+    ],
+    "exam": true,
+    "examText": "There is nothing on the living room table.",
+    "samePc": false
+   },
+   {
+    "id": 129,
+    "name": "marble-top table",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 3,
+    "pcs": [
+     27288
+    ],
+    "exam": true,
+    "examText": "There is nothing on the marble-top table.",
+    "samePc": false
+   }
+  ]
+ },
+ "enchanter": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [
+   "19:jug",
+   "94:battered lantern"
+  ],
+  "detail": [
+   {
+    "id": 19,
+    "name": "jug",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 2,
+    "pcs": [
+     31896
+    ],
+    "exam": true,
+    "examText": "The jug is empty.",
+    "samePc": true
+   },
+   {
+    "id": 25,
+    "name": "scribbled scroll",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 16,
+    "pcs": [],
+    "exam": true,
+    "examText": "The scroll reads \"rezrov spell: open even locked or enchante",
+    "samePc": false
+   },
+   {
+    "id": 41,
+    "name": "loaf of bread",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 9,
+    "pcs": [],
+    "exam": true,
+    "examText": "There's an entire loaf left.",
+    "samePc": false
+   },
+   {
+    "id": 59,
+    "name": "frotz spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "cause something to give off light",
+    "samePc": false
+   },
+   {
+    "id": 80,
+    "name": "gnusto spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "write a magic spell into a spell book",
+    "samePc": false
+   },
+   {
+    "id": 84,
+    "name": "nitfol spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "converse with the beasts in their own tongue",
+    "samePc": false
+   },
+   {
+    "id": 85,
+    "name": "oven",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 2,
+    "pcs": [
+     32001
+    ],
+    "exam": true,
+    "examText": "Strangely, the oven is still slightly warm, as if it had bee",
+    "samePc": false
+   },
+   {
+    "id": 94,
+    "name": "battered lantern",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 2,
+    "pcs": [
+     31896
+    ],
+    "exam": true,
+    "examText": "The lamp is made of brass and is old and battered. It doesn'",
+    "samePc": true
+   },
+   {
+    "id": 144,
+    "name": "spell book",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "The title is \"My Spell Book\". The book looks pretty new, and",
+    "samePc": false
+   },
+   {
+    "id": 157,
+    "name": "foundation",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 10,
+    "pcs": [
+     32001
+    ],
+    "exam": true,
+    "examText": "You see nothing special about the foundation.",
+    "samePc": false
+   },
+   {
+    "id": 182,
+    "name": "quantity of water",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 16,
+    "pcs": [],
+    "exam": true,
+    "examText": "You see nothing special about the quantity of water.",
+    "samePc": false
+   },
+   {
+    "id": 193,
+    "name": "blorb spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "safely protect a small object as though in a strong box",
+    "samePc": false
+   },
+   {
+    "id": 238,
+    "name": "rezrov spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 16,
+    "pcs": [],
+    "exam": true,
+    "examText": "open even locked or enchanted objects",
+    "samePc": false
+   },
+   {
+    "id": 239,
+    "name": "sign",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 9,
+    "pcs": [
+     32001
+    ],
+    "exam": true,
+    "examText": " ",
+    "samePc": false
+   }
+  ]
+ },
+ "hollywood": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [],
+  "detail": [
+   {
+    "id": 14,
+    "name": "small pond",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 19,
+    "pcs": [
+     36783
+    ],
+    "exam": true,
+    "examText": "You can see nothing in the small pond.",
+    "samePc": false
+   },
+   {
+    "id": 63,
+    "name": "business card",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     36783
+    ],
+    "exam": true,
+    "examText": " ",
+    "samePc": false
+   },
+   {
+    "id": 67,
+    "name": "photo of Uncle Buddy",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "The photo looks exactly like the one that came in your game ",
+    "samePc": false
+   },
+   {
+    "id": 104,
+    "name": "orchids",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 19,
+    "pcs": [
+     36783
+    ],
+    "exam": true,
+    "examText": "It's the lovely flora you would expect in Aunt Hildegarde's ",
+    "samePc": false
+   },
+   {
+    "id": 113,
+    "name": "yellowed piece of paper",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 19,
+    "pcs": [],
+    "exam": true,
+    "examText": "You see the following:",
+    "samePc": false
+   },
+   {
+    "id": 114,
+    "name": "bazooka",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     36783
+    ],
+    "exam": true,
+    "examText": "The bazooka is pointing to the north.",
+    "samePc": false
+   },
+   {
+    "id": 123,
+    "name": "flashlight",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "The rugged-looking flashlight is turned off.",
+    "samePc": false
+   },
+   {
+    "id": 181,
+    "name": "copy of The Status Line",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     36783
+    ],
+    "exam": true,
+    "examText": "It's a copy of Infocom's newsletter \"The Status Line\" (forme",
+    "samePc": false
+   },
+   {
+    "id": 228,
+    "name": "doorbell",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 2,
+    "pcs": [
+     36783
+    ],
+    "exam": true,
+    "examText": "You see nothing extraordinary about the doorbell.",
+    "samePc": false
+   },
+   {
+    "id": 235,
+    "name": "Aunt Hildegarde's letter",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "The letter looks exactly like the letter in your exquisitely",
+    "samePc": false
+   }
+  ]
+ },
+ "infidel": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [
+   "33:shovel",
+   "37:pick axe",
+   "39:trunk"
+  ],
+  "detail": [
+   {
+    "id": 28,
+    "name": "canteen",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 11,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any canteen here!",
+    "samePc": false
+   },
+   {
+    "id": 30,
+    "name": "farewell note",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 11,
+    "pcs": [
+     31038
+    ],
+    "exam": true,
+    "examText": "The note reads:",
+    "samePc": true
+   },
+   {
+    "id": 33,
+    "name": "shovel",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 4,
+    "pcs": [
+     31038
+    ],
+    "exam": true,
+    "examText": "It's a standard-issue garden shovel.",
+    "samePc": true
+   },
+   {
+    "id": 37,
+    "name": "pick axe",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 4,
+    "pcs": [
+     31038
+    ],
+    "exam": true,
+    "examText": "It's a small hand axe, similar to those used in mountain cli",
+    "samePc": true
+   },
+   {
+    "id": 38,
+    "name": "padlock",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     31140
+    ],
+    "exam": true,
+    "examText": "It's made of hardened steel and is very sturdy. It's also ve",
+    "samePc": true
+   },
+   {
+    "id": 39,
+    "name": "trunk",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     31140
+    ],
+    "exam": true,
+    "examText": "It's an old steamer trunk, very heavy and too clumsy for one",
+    "samePc": true
+   },
+   {
+    "id": 40,
+    "name": "broken lock",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any broken lock here!",
+    "samePc": false
+   },
+   {
+    "id": 51,
+    "name": "army cot",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's just an army cot. And you're in it!",
+    "samePc": false
+   }
+  ]
+ },
+ "moonmist": {
+  "verdict": "FAIL",
+  "pos": [
+   "187:dragon's eye"
+  ],
+  "neg": [
+   "178:Tamara"
+  ],
+  "detail": [
+   {
+    "id": 4,
+    "name": "nightshirt",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 16,
+    "pcs": [],
+    "exam": true,
+    "examText": "Your new red nightshirt is nothing to write home about, but ",
+    "samePc": false
+   },
+   {
+    "id": 21,
+    "name": "horn",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "You look over the horn for a minute and find nothing suspici",
+    "samePc": false
+   },
+   {
+    "id": 59,
+    "name": "your luggage",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "(You open your luggage first.)",
+    "samePc": false
+   },
+   {
+    "id": 78,
+    "name": "tweed outfit",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "These are sensible clothes for this clammy climate: your new",
+    "samePc": false
+   },
+   {
+    "id": 91,
+    "name": "Bolitho",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 29,
+    "pcs": [],
+    "exam": false,
+    "examText": "(You can't see Bolitho right here!)",
+    "samePc": false
+   },
+   {
+    "id": 171,
+    "name": "sports car",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "\"Did you say your name is Examine Sports Car?\"",
+    "samePc": false
+   },
+   {
+    "id": 178,
+    "name": "Tamara",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 29,
+    "pcs": [
+     41980
+    ],
+    "exam": true,
+    "examText": "She's a beautiful red-haired young woman of average height.",
+    "samePc": true
+   },
+   {
+    "id": 187,
+    "name": "dragon's eye",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [
+     41980
+    ],
+    "exam": true,
+    "examText": "The moonlight glints on its lone visible eye.",
+    "samePc": true
+   },
+   {
+    "id": 190,
+    "name": "dragon",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     41980
+    ],
+    "exam": true,
+    "examText": "In the moonlit gloom, you can make out an ornament on the ga",
+    "samePc": true
+   },
+   {
+    "id": 234,
+    "name": "butler's note",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 29,
+    "pcs": [],
+    "exam": true,
+    "examText": "(You are not holding it.)",
+    "samePc": false
+   },
+   {
+    "id": 247,
+    "name": "aerosol device",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 29,
+    "pcs": [],
+    "exam": true,
+    "examText": "It says, \"JUST PRESS THE BUTTON.\"",
+    "samePc": false
+   }
+  ]
+ },
+ "planetfall": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [],
+  "detail": [
+   {
+    "id": 8,
+    "name": "laser setting dial",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 33,
+    "pcs": [
+     48473
+    ],
+    "exam": true,
+    "examText": "I don't understand that sentence.",
+    "samePc": false
+   },
+   {
+    "id": 145,
+    "name": "large desk",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 64,
+    "pcs": [],
+    "exam": true,
+    "examText": " ",
+    "samePc": false
+   },
+   {
+    "id": 149,
+    "name": "small desk",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 61,
+    "pcs": [],
+    "exam": true,
+    "examText": " ",
+    "samePc": false
+   },
+   {
+    "id": 159,
+    "name": "crevice",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 39,
+    "pcs": [
+     48473
+    ],
+    "exam": true,
+    "examText": "Lying at the bottom of the narrow crack, partly covered by l",
+    "samePc": false
+   },
+   {
+    "id": 164,
+    "name": "dispenser unit",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 81,
+    "pcs": [],
+    "exam": true,
+    "examText": " ",
+    "samePc": false
+   },
+   {
+    "id": 169,
+    "name": "ladder",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 59,
+    "pcs": [
+     48493
+    ],
+    "exam": true,
+    "examText": "It is a heavy-duty ladder built of sturdy aluminum tubing. I",
+    "samePc": false
+   },
+   {
+    "id": 172,
+    "name": "padlock",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 27,
+    "pcs": [
+     48473
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the padlock.",
+    "samePc": false
+   },
+   {
+    "id": 210,
+    "name": "blob of green goo",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 27,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any green goo here!",
+    "samePc": false
+   },
+   {
+    "id": 211,
+    "name": "blob of brown goo",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 27,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any brown goo here!",
+    "samePc": false
+   },
+   {
+    "id": 215,
+    "name": "safety web",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 2,
+    "pcs": [
+     48473
+    ],
+    "exam": true,
+    "examText": "The safety webbing fills most of the pod. It could accomodat",
+    "samePc": false
+   },
+   {
+    "id": 224,
+    "name": "Patrol uniform",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 2,
+    "pcs": [],
+    "exam": true,
+    "examText": "It is a standard-issue one-pocket Stellar Patrol uniform, a ",
+    "samePc": false
+   },
+   {
+    "id": 225,
+    "name": "ID card",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 2,
+    "pcs": [],
+    "exam": true,
+    "examText": "\"STELLAR PATROL",
+    "samePc": false
+   },
+   {
+    "id": 226,
+    "name": "chronometer",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 2,
+    "pcs": [],
+    "exam": true,
+    "examText": "It is a standard wrist chronometer with a digital display. A",
+    "samePc": false
+   },
+   {
+    "id": 227,
+    "name": "Patrol-issue self-contained multi-purpose scrub brush",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 2,
+    "pcs": [],
+    "exam": true,
+    "examText": "I see nothing special about the Patrol-issue self-contained ",
+    "samePc": false
+   }
+  ]
+ },
+ "plundered": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [],
+  "detail": [
+   {
+    "id": 11,
+    "name": "smelling salts",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "You always carry your smelling salts, for emergencies. There",
+    "samePc": false
+   },
+   {
+    "id": 13,
+    "name": "your kid slippers",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any your kid slippers here!",
+    "samePc": false
+   },
+   {
+    "id": 16,
+    "name": "rapier",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 13,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any rapier here!",
+    "samePc": false
+   },
+   {
+    "id": 17,
+    "name": "linen chemise",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's covered by other clothes.",
+    "samePc": false
+   },
+   {
+    "id": 27,
+    "name": "ledge",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 13,
+    "pcs": [
+     42969
+    ],
+    "exam": true,
+    "examText": "Tall panes of glass are inset into the ledge.",
+    "samePc": false
+   },
+   {
+    "id": 45,
+    "name": "large cupboard",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 13,
+    "pcs": [
+     42969
+    ],
+    "exam": false,
+    "examText": "You can't see any large cupboard here!",
+    "samePc": false
+   },
+   {
+    "id": 69,
+    "name": "coffer",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [
+     42969
+    ],
+    "exam": true,
+    "examText": "It is a small heavy chest, with a lock. It is closed.",
+    "samePc": false
+   },
+   {
+    "id": 84,
+    "name": "cotton frock",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It is your favorite old frock, looking rather bedraggled wit",
+    "samePc": false
+   },
+   {
+    "id": 87,
+    "name": "new ring",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any new ring here!",
+    "samePc": false
+   },
+   {
+    "id": 186,
+    "name": "banknote",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "This is the banknote that came in your game package.",
+    "samePc": false
+   },
+   {
+    "id": 190,
+    "name": "Captain Jamison",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 11,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see captain Jamison here!",
+    "samePc": false
+   },
+   {
+    "id": 213,
+    "name": "bed",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "Other than yourself, you can see nothing on the bed.",
+    "samePc": false
+   },
+   {
+    "id": 223,
+    "name": "your reticule",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "You and Mama made the little drawstring bag a few months bef",
+    "samePc": false
+   },
+   {
+    "id": 235,
+    "name": "pcc k wI'm x i sgv",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 6,
+    "pcs": [],
+    "exam": false,
+    "examText": "[I don't know the word \"pcc.\"]",
+    "samePc": false
+   }
+  ]
+ },
+ "sorcerer": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [
+   "90:parrot"
+  ],
+  "detail": [
+   {
+    "id": 11,
+    "name": "scribbled note",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [
+     48858
+    ],
+    "exam": true,
+    "examText": "\"I have taken the apprentices into town to shop for the Guil",
+    "samePc": true
+   },
+   {
+    "id": 22,
+    "name": "rezrov spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 27,
+    "name": "vezza spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 87,
+    "name": "infotater",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 9,
+    "pcs": [
+     48956
+    ],
+    "exam": true,
+    "examText": "Like most infotaters, this one has several windows and a rot",
+    "samePc": false
+   },
+   {
+    "id": 90,
+    "name": "parrot",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [
+     48858
+    ],
+    "exam": true,
+    "examText": "You see nothing special about the parrot.",
+    "samePc": true
+   },
+   {
+    "id": 102,
+    "name": "tiny box",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 9,
+    "pcs": [
+     48956
+    ],
+    "exam": true,
+    "examText": "There is writing on the lid of the box.",
+    "samePc": false
+   },
+   {
+    "id": 128,
+    "name": "bed",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 139,
+    "name": "spell book",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 140,
+    "name": "izyuk spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 147,
+    "name": "frotz spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 162,
+    "name": "pulver spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 180,
+    "name": "hellhound",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     48956
+    ],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 183,
+    "name": "yomin spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 214,
+    "name": "gnusto spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   }
+  ]
+ },
+ "spellbrkr": {
+  "verdict": "PASS",
+  "pos": [
+   "19:Orkan of Thriff",
+   "21:sorcerer",
+   "30:Gzornenplatz",
+   "59:Hoobly"
+  ],
+  "neg": [
+   "238:cube"
+  ],
+  "detail": [
+   {
+    "id": 1,
+    "name": "Sneffle",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     54920
+    ],
+    "exam": true,
+    "examText": "Sneffle is a small doughy gentleman whose person is splotche",
+    "samePc": true
+   },
+   {
+    "id": 14,
+    "name": "rezrov spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "The spell reads \"rezrov spell: open even locked or enchanted",
+    "samePc": false
+   },
+   {
+    "id": 19,
+    "name": "Orkan of Thriff",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [
+     54920
+    ],
+    "exam": true,
+    "examText": "Orkan is now a hellbender.",
+    "samePc": true
+   },
+   {
+    "id": 21,
+    "name": "sorcerer",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [
+     54920
+    ],
+    "exam": true,
+    "examText": "The former mages are scuttling hither and yon across the flo",
+    "samePc": true
+   },
+   {
+    "id": 30,
+    "name": "Gzornenplatz",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [
+     54920
+    ],
+    "exam": true,
+    "examText": "Gzornenplatz has become a leopard frog.",
+    "samePc": true
+   },
+   {
+    "id": 35,
+    "name": "lesoch spell",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "The spell reads \"lesoch spell: gust of wind.\"",
+    "samePc": false
+   },
+   {
+    "id": 43,
+    "name": "chunk of rye bread",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 6,
+    "pcs": [],
+    "exam": true,
+    "examText": "You see nothing special about the chunk of rye bread.",
+    "samePc": false
+   },
+   {
+    "id": 47,
+    "name": "roc",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 18,
+    "pcs": [],
+    "exam": true,
+    "examText": "The roc is a female of enormous size. It resembles a huge ra",
+    "samePc": false
+   },
+   {
+    "id": 59,
+    "name": "Hoobly",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [
+     54920
+    ],
+    "exam": true,
+    "examText": "Hoobly has become a salamander.",
+    "samePc": true
+   },
+   {
+    "id": 136,
+    "name": "shadowy figure",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": false,
+    "examText": "I don't see any shadowy figure anywhere.",
+    "samePc": false
+   },
+   {
+    "id": 144,
+    "name": "spell book",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "This is your well-used old spell book, first given to you by",
+    "samePc": false
+   },
+   {
+    "id": 149,
+    "name": "magic burin",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "This is a magical burin, used for inscribing objects with wo",
+    "samePc": false
+   },
+   {
+    "id": 170,
+    "name": "knife",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "You see nothing special about the knife.",
+    "samePc": false
+   },
+   {
+    "id": 238,
+    "name": "cube",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 7,
+    "pcs": [
+     54920
+    ],
+    "exam": true,
+    "examText": "This is a featureless white cube.",
+    "samePc": true
+   }
+  ]
+ },
+ "starcross": {
+  "verdict": "PASS",
+  "pos": [
+   "22:small bump",
+   "56:seat belt"
+  ],
+  "neg": [
+   "71:tape library"
+  ],
+  "detail": [
+   {
+    "id": 22,
+    "name": "small bump",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 30,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the small bump.",
+    "samePc": true
+   },
+   {
+    "id": 23,
+    "name": "metal relief",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 30,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "A closer examination reveals that there are exactly ten circ",
+    "samePc": true
+   },
+   {
+    "id": 24,
+    "name": "computer",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the computer.",
+    "samePc": true
+   },
+   {
+    "id": 45,
+    "name": "red rod",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 43,
+    "pcs": [],
+    "exam": true,
+    "examText": "I see nothing special about the red rod.",
+    "samePc": false
+   },
+   {
+    "id": 56,
+    "name": "seat belt",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 3,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "You must sit down first.",
+    "samePc": true
+   },
+   {
+    "id": 71,
+    "name": "tape library",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "You don't have the tape library.",
+    "samePc": true
+   },
+   {
+    "id": 84,
+    "name": "black rod",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 31,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the black rod.",
+    "samePc": true
+   },
+   {
+    "id": 88,
+    "name": "blue button",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the blue button.",
+    "samePc": true
+   },
+   {
+    "id": 123,
+    "name": "bunk",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [],
+    "exam": true,
+    "examText": "I see nothing special about the bunk.",
+    "samePc": false
+   },
+   {
+    "id": 144,
+    "name": "space suit",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 30,
+    "pcs": [],
+    "exam": true,
+    "examText": "I see nothing special about the space suit.",
+    "samePc": false
+   },
+   {
+    "id": 200,
+    "name": "red button",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "The alarm is ringing.",
+    "samePc": true
+   },
+   {
+    "id": 220,
+    "name": "safety line",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 30,
+    "pcs": [],
+    "exam": true,
+    "examText": "The line is not attached to anything.",
+    "samePc": false
+   },
+   {
+    "id": 221,
+    "name": "mass detector",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "The display reads: \"mass UM08.\"",
+    "samePc": true
+   },
+   {
+    "id": 238,
+    "name": "registration",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 3,
+    "pcs": [
+     24111
+    ],
+    "exam": true,
+    "examText": "   Mining Class Ship \"Starcross\"",
+    "samePc": true
+   }
+  ]
+ },
+ "stationfall": {
+  "verdict": "PASS",
+  "pos": [
+   "46:SB radio",
+   "50:pilot seat",
+   "90:copilot seat"
+  ],
+  "neg": [
+   "26:Floyd"
+  ],
+  "detail": [
+   {
+    "id": 1,
+    "name": "chronometer",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": true,
+    "examText": "It is a standard wrist chronometer with a digital display. C",
+    "samePc": false
+   },
+   {
+    "id": 26,
+    "name": "Floyd",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [
+     52787
+    ],
+    "exam": true,
+    "examText": "Floyd is a multi-purpose robot with slightly-crossed eyes an",
+    "samePc": true
+   },
+   {
+    "id": 46,
+    "name": "SB radio",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [
+     52787
+    ],
+    "exam": true,
+    "examText": "The radio seems to be damaged, because the microphone is mis",
+    "samePc": true
+   },
+   {
+    "id": 50,
+    "name": "pilot seat",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [
+     52787
+    ],
+    "exam": true,
+    "examText": "There's nothing unusual about the pilot seat.",
+    "samePc": true
+   },
+   {
+    "id": 55,
+    "name": "Plato's volume of poetry",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 26,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any Plato's volume of poetry here!",
+    "samePc": false
+   },
+   {
+    "id": 81,
+    "name": "ID card",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": true,
+    "examText": "\"STELLAR PATROL",
+    "samePc": false
+   },
+   {
+    "id": 90,
+    "name": "copilot seat",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [
+     52787
+    ],
+    "exam": true,
+    "examText": "There's nothing noteworthy about the copilot seat.",
+    "samePc": true
+   },
+   {
+    "id": 96,
+    "name": "pulpit",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 63,
+    "pcs": [
+     52787
+    ],
+    "exam": true,
+    "examText": "You discover that the pulpit seems openable!",
+    "samePc": true
+   },
+   {
+    "id": 98,
+    "name": "Class Three Spacecraft Activation Form HB-56-V",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": true,
+    "examText": "[This form can be found in your STATIONFALL package.]",
+    "samePc": false
+   },
+   {
+    "id": 132,
+    "name": "blob of orange goo",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any orange goo here!",
+    "samePc": false
+   },
+   {
+    "id": 138,
+    "name": "seven-pointed star",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 63,
+    "pcs": [
+     52787
+    ],
+    "exam": true,
+    "examText": "It's blinking with a gentle, rhythmic light. The star is abo",
+    "samePc": true
+   },
+   {
+    "id": 160,
+    "name": "Thermos bottle",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any Thermos bottle here!",
+    "samePc": false
+   },
+   {
+    "id": 205,
+    "name": "eternal flame",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 63,
+    "pcs": [
+     52787
+    ],
+    "exam": true,
+    "examText": "The eternal flame burns high above the floor of the chapel. ",
+    "samePc": true
+   },
+   {
+    "id": 247,
+    "name": "Plato",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 26,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see Plato here!",
+    "samePc": false
+   }
+  ]
+ },
+ "wishbringer": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [
+   "148:poodle",
+   "214:umbrella"
+  ],
+  "detail": [
+   {
+    "id": 4,
+    "name": "little mailbox",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 1,
+    "pcs": [
+     33826
+    ],
+    "exam": true,
+    "examText": "The little mailboxes are closed and locked.",
+    "samePc": false
+   },
+   {
+    "id": 14,
+    "name": "violet note",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 23,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's a folded sheet of pale violet paper, sealed with a dab ",
+    "samePc": false
+   },
+   {
+    "id": 18,
+    "name": "service counter",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 1,
+    "pcs": [
+     33819
+    ],
+    "exam": true,
+    "examText": "You can see a mysterious envelope on the service counter.",
+    "samePc": true
+   },
+   {
+    "id": 24,
+    "name": "gravedigger",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 11,
+    "pcs": [
+     33826
+    ],
+    "exam": true,
+    "examText": "He's the town gravedigger, a village fixture since before yo",
+    "samePc": false
+   },
+   {
+    "id": 43,
+    "name": "mysterious envelope",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 11,
+    "pcs": [],
+    "exam": true,
+    "examText": "(You'll find the envelope inside your Wishbringer package.)",
+    "samePc": false
+   },
+   {
+    "id": 64,
+    "name": "open grave",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 11,
+    "pcs": [
+     33819
+    ],
+    "exam": true,
+    "examText": "It's six feet deep and freshly dug. You can see an old bone ",
+    "samePc": true
+   },
+   {
+    "id": 96,
+    "name": "wanted poster",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 1,
+    "pcs": [
+     33826
+    ],
+    "exam": true,
+    "examText": " ",
+    "samePc": false
+   },
+   {
+    "id": 98,
+    "name": "Alexis",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 20,
+    "pcs": [
+     33826
+    ],
+    "exam": true,
+    "examText": "The poodle decides that you're only guessing its name, and y",
+    "samePc": false
+   },
+   {
+    "id": 117,
+    "name": "old bone",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 11,
+    "pcs": [],
+    "exam": true,
+    "examText": "You see nothing unusual about the old bone.",
+    "samePc": false
+   },
+   {
+    "id": 148,
+    "name": "poodle",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 20,
+    "pcs": [
+     33819
+    ],
+    "exam": true,
+    "examText": "The poodle is tiny, mean and hungry-looking.",
+    "samePc": true
+   },
+   {
+    "id": 191,
+    "name": "willow tree",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 11,
+    "pcs": [
+     33826
+    ],
+    "exam": true,
+    "examText": "The droopy boughs sway eerily in the breeze.",
+    "samePc": false
+   },
+   {
+    "id": 214,
+    "name": "umbrella",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 12,
+    "pcs": [
+     33819
+    ],
+    "exam": true,
+    "examText": "The handle of the closed umbrella is carved like a parrot's ",
+    "samePc": true
+   },
+   {
+    "id": 244,
+    "name": "open grave",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 14,
+    "pcs": [
+     33826
+    ],
+    "exam": true,
+    "examText": "Open Grave",
+    "samePc": false
+   },
+   {
+    "id": 250,
+    "name": "gold coin",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 27,
+    "pcs": [],
+    "exam": true,
+    "examText": "The gold coin is etched with a profile of one of Festeron's ",
+    "samePc": false
+   }
+  ]
+ },
+ "zork1": {
+  "verdict": "PASS",
+  "pos": [
+   "192:carpet",
+   "204:kitchen table"
+  ],
+  "neg": [
+   "160:small mailbox"
+  ],
+  "detail": [
+   {
+    "id": 87,
+    "name": "jewel-encrusted egg",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 9,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any jewel-encrusted egg here!",
+    "samePc": false
+   },
+   {
+    "id": 109,
+    "name": "ancient map",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 12,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any ancient map here!",
+    "samePc": false
+   },
+   {
+    "id": 111,
+    "name": "wooden door",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 12,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "The engravings translate to \"This space intentionally left b",
+    "samePc": true
+   },
+   {
+    "id": 160,
+    "name": "small mailbox",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "The small mailbox is closed.",
+    "samePc": true
+   },
+   {
+    "id": 181,
+    "name": "door",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 0,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "The door is closed.",
+    "samePc": true
+   },
+   {
+    "id": 183,
+    "name": "trap door",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 12,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any trap door here!",
+    "samePc": false
+   },
+   {
+    "id": 192,
+    "name": "carpet",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 12,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "There's nothing special about the carpet.",
+    "samePc": true
+   },
+   {
+    "id": 194,
+    "name": "trophy case",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 12,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "The trophy case is empty.",
+    "samePc": true
+   },
+   {
+    "id": 202,
+    "name": "table",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 15,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see!",
+    "samePc": false
+   },
+   {
+    "id": 204,
+    "name": "kitchen table",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 9,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "On the table is an elongated brown sack, smelling of hot pep",
+    "samePc": true
+   },
+   {
+    "id": 218,
+    "name": "bloody axe",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 27,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "There's nothing special about the bloody axe.",
+    "samePc": true
+   },
+   {
+    "id": 224,
+    "name": "brown sack",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 9,
+    "pcs": [
+     36607
+    ],
+    "exam": true,
+    "examText": "The brown sack is closed.",
+    "samePc": false
+   },
+   {
+    "id": 236,
+    "name": "glass bottle",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 9,
+    "pcs": [
+     36607
+    ],
+    "exam": true,
+    "examText": "The glass bottle contains:",
+    "samePc": false
+   },
+   {
+    "id": 237,
+    "name": "quantity of water",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 9,
+    "pcs": [
+     36719
+    ],
+    "exam": true,
+    "examText": "There's nothing special about the quantity of water.",
+    "samePc": true
+   }
+  ]
+ },
+ "zork2": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [],
+  "detail": [
+   {
+    "id": 23,
+    "name": "sword",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": true,
+    "examText": "There's nothing special about the sword.",
+    "samePc": false
+   },
+   {
+    "id": 32,
+    "name": "china teapot",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": false,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [
+     37200
+    ],
+    "exam": true,
+    "examText": "The china teapot is empty.",
+    "samePc": false
+   },
+   {
+    "id": 33,
+    "name": "place mat",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 26,
+    "pcs": [],
+    "exam": true,
+    "examText": "You used the word \"place\" in a way that I don't understand.",
+    "samePc": false
+   },
+   {
+    "id": 34,
+    "name": "newspaper",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": false,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [
+     37200
+    ],
+    "exam": true,
+    "examText": "** U.S. News and Dungeon Report **",
+    "samePc": false
+   },
+   {
+    "id": 37,
+    "name": "letter opener",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [
+     37200
+    ],
+    "exam": true,
+    "examText": "There's nothing special about the letter opener.",
+    "samePc": false
+   },
+   {
+    "id": 38,
+    "name": "keyhole",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 34,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any keyhole here!",
+    "samePc": false
+   },
+   {
+    "id": 39,
+    "name": "keyhole",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 24,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any keyhole here!",
+    "samePc": false
+   },
+   {
+    "id": 40,
+    "name": "narrow crack",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 34,
+    "pcs": [],
+    "exam": true,
+    "examText": "The crack is fairly wide. You should be able to get into it.",
+    "samePc": false
+   },
+   {
+    "id": 41,
+    "name": "table",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 34,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any table here!",
+    "samePc": false
+   },
+   {
+    "id": 43,
+    "name": "metal lid",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 24,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any metal lid here!",
+    "samePc": false
+   },
+   {
+    "id": 76,
+    "name": "lamp",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 8,
+    "pcs": [],
+    "exam": true,
+    "examText": "The lamp is on.",
+    "samePc": false
+   },
+   {
+    "id": 104,
+    "name": "table",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [
+     37200
+    ],
+    "exam": true,
+    "examText": "Sitting on the table is: ",
+    "samePc": false
+   },
+   {
+    "id": 105,
+    "name": "matchbook",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": false,
+    "trunc": true,
+    "named": true,
+    "lookStep": 8,
+    "pcs": [
+     37200
+    ],
+    "exam": true,
+    "examText": "No match is burning.",
+    "samePc": false
+   },
+   {
+    "id": 217,
+    "name": "hedge",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 14,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any hedge here!",
+    "samePc": false
+   }
+  ]
+ },
+ "zork3": {
+  "verdict": "FAIL",
+  "pos": [],
+  "neg": [],
+  "detail": [
+   {
+    "id": 32,
+    "name": "tree",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 5,
+    "pcs": [
+     25769
+    ],
+    "exam": true,
+    "examText": "There seems to be nobody there, but it's hard to tell.",
+    "samePc": false
+   },
+   {
+    "id": 33,
+    "name": "rope",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": true,
+    "lookStep": 5,
+    "pcs": [
+     25769
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the rope.",
+    "samePc": false
+   },
+   {
+    "id": 34,
+    "name": "piece of waybread",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [
+     25662
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the piece of waybread.",
+    "samePc": false
+   },
+   {
+    "id": 35,
+    "name": "shiny object",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 24,
+    "pcs": [
+     25769
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the shiny object.",
+    "samePc": false
+   },
+   {
+    "id": 36,
+    "name": "plants and algae",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 24,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any plants and algae here.",
+    "samePc": false
+   },
+   {
+    "id": 38,
+    "name": "sand",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 24,
+    "pcs": [],
+    "exam": true,
+    "examText": "I see nothing special about the ground.",
+    "samePc": false
+   },
+   {
+    "id": 39,
+    "name": "golden amulet",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 27,
+    "pcs": [],
+    "exam": false,
+    "examText": "You can't see any golden amulet here.",
+    "samePc": false
+   },
+   {
+    "id": 44,
+    "name": "reeds",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 27,
+    "pcs": [
+     25769
+    ],
+    "exam": true,
+    "examText": "I see nothing special about the reeds.",
+    "samePc": false
+   },
+   {
+    "id": 116,
+    "name": "old man",
+    "expect": 0,
+    "look": "FALSE",
+    "direct": true,
+    "trunc": true,
+    "named": false,
+    "lookStep": 13,
+    "pcs": [
+     25769
+    ],
+    "exam": true,
+    "examText": "The man is very, very old and wizened. He has a long, string",
+    "samePc": false
+   },
+   {
+    "id": 132,
+    "name": "runes",
+    "expect": 1,
+    "look": "TRUE",
+    "direct": true,
+    "trunc": false,
+    "named": true,
+    "lookStep": 10,
+    "pcs": [
+     25769
+    ],
+    "exam": true,
+    "examText": "The runes are in an ancient language. Some pictures, among t",
+    "samePc": false
+   },
+   {
+    "id": 196,
+    "name": "great rock",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 2,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see.",
+    "samePc": false
+   },
+   {
+    "id": 197,
+    "name": "sword",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": false,
+    "named": false,
+    "lookStep": 2,
+    "pcs": [],
+    "exam": true,
+    "examText": "It's too dark to see.",
+    "samePc": false
+   },
+   {
+    "id": 198,
+    "name": "lamp",
+    "expect": 0,
+    "look": "NOTEST",
+    "direct": false,
+    "trunc": true,
+    "named": false,
+    "lookStep": 5,
+    "pcs": [],
+    "exam": true,
+    "examText": "The lamp is on.",
+    "samePc": false
+   },
+   {
+    "id": 238,
+    "name": "imo",
+    "expect": 1,
+    "look": "NOTEST",
+    "direct": true,
+    "trunc": false,
+    "named": false,
+    "lookStep": 27,
+    "pcs": [],
+    "exam": false,
+    "examText": "I don't know the word \"imo\".",
+    "samePc": false
+   }
+  ]
+ }
+}

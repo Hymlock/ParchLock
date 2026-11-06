@@ -1,0 +1,462 @@
+[
+ {
+  "cmd": "Get Up",
+  "tag": null,
+  "parentBefore": 114,
+  "parentBeforeName": "bed",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Very difficult, but you manage it. The room is still spinning. It dips and sways a little.\n \n>"
+ },
+ {
+  "cmd": "Turn on Light",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Good start to the day. Pity it's going to be the worst one of your life. The light is now on.\n \nBedroom\nThe bedroom is a mess.\nIt is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone.\nThere is a flathead screwdriver here.\nThere is a toothbrush here.\n \n>"
+ },
+ {
+  "cmd": "Get Gown",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Luckily, this is large enough for you to get hold of. You notice something in the pocket.\n \n>"
+ },
+ {
+  "cmd": "Wear Gown",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "You are now wearing your gown.\n \n>"
+ },
+ {
+  "cmd": "Look in pocket",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Opening your gown reveals a buffered analgesic, pocket fluff, and a thing your aunt gave you which you don't know what it is.\n \n>"
+ },
+ {
+  "cmd": "take analgesic",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "You swallow the tablet. After a few seconds the room begins to calm down and behave in an orderly manner. Your terrible headache goes.\n \n>"
+ },
+ {
+  "cmd": "Get all",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "flathead screwdriver: Taken.\ntoothbrush: As you pick up the toothbrush a tree outside the window collapses. There is no causal relationship between these two events.\ntelephone: You pick up the receiver. A moment later, the dialing tone is suddenly cut off. Glancing through the window you can't help but notice the large old oak tree of which you are particularly fond crashing down through the phone cable. Shouldn't you be taking more interest in events in the world around you? While you've got it...?\n \n>"
+ },
+ {
+  "cmd": "South",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 174,
+  "parentAfterName": "Front Porch",
+  "playerId": 202,
+  "reply": "You make your way down to the front porch.\n \nFront Porch\nThis is the enclosed front porch of your home. Your front garden lies to the south, and you can reenter your home to the north.\nOn the doormat is a pile of junk mail.\n \n>"
+ },
+ {
+  "cmd": "Get Mail",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Front Porch",
+  "parentAfter": 174,
+  "parentAfterName": "Front Porch",
+  "playerId": 202,
+  "reply": "You gather up the pile of mail.\n \n>"
+ },
+ {
+  "cmd": "South",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Front Porch",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Front of House\nYou can enter your home to the north. A path leads around it to the northeast and northwest, and a country lane is visible to the south. All that lies between your home and the huge yellow bulldozer bearing down on it is a few yards of mud.\nMr. Prosser, from the local council, is standing on the other side of the bulldozer. He seems to be wearing a digital watch. He looks startled to see you emerge, and yells at you to get out of the way.\n \nThe bulldozer rumbles slowly toward your home.\n \n>"
+ },
+ {
+  "cmd": "Lie Down In Front Of Bulldozer",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You lie down in the path of the advancing bulldozer. Prosser yells at you to for crissake move!!!\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nThe bulldozer thunders toward you. The ground is shaking beneath you as you lie in the mud.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nThe noise of the giant bulldozer is now so violently loud that you can't even hear Prosser yelling to warn you that you will be killed if you don't get the hell out of the way. You just see him gesticulating wildly.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nWith a terrible grinding of gears the bulldozer comes to an abrupt halt just in front of you. It shakes, shudders, and emits noxious substances all over your rose bed. Prosser is incoherent with rage.\n \nMoments later, your friend Ford Prefect arrives. He hardly seems to notice your predicament, but keeps glancing nervously at the sky. He says, \"Hello, Arthur,\" takes a towel from his battered leather satchel, and offers it to you.\n \n>"
+ },
+ {
+  "cmd": "get in bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "That's not important; leave it alone.\n \nFord glances uncomfortably at the sky. He offers you the towel again.\n \n>"
+ },
+ {
+  "cmd": "get out of bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "That's not important; leave it alone.\n \nFord seems oblivious to your trouble, so you ask \"Ford, what about my home?\" He looks startled, then guilty. He starts to say something and stops. He starts to say something else and stops. Suddenly, he seems to see the bulldozer for the first time, stops starting to say things and starts.\n \nHe seems to come to a momentous decision, says he has something of Earth-shattering importance to tell you, and stresses the importance of a quick drink at the Horse 'n Groom.\n \nPointing toward Prosser, you exclaim, \"But that man wants to knock my house down!\" Ford goes off for a quiet word with Prosser. From where you're lying, you cannot hear what's happening, al"
+ },
+ {
+  "cmd": "enter bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "That's not important; leave it alone.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't do that while you're lying down!\n \nFord and Prosser stop talking and approach you. Ford says that Prosser has agreed to lie in your place so that the two of you can go off to the Pub. Reluctantly, Prosser steps forward and lies down in front of the bulldozer. You stand up.\n \n>"
+ },
+ {
+  "cmd": "sit on bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "That's not important; leave it alone.\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You are already standing.\n \nFord, urging you to follow, hurries toward the country lane.\n \n>"
+ },
+ {
+  "cmd": "board bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "That's not important; leave it alone.\n \n>"
+ },
+ {
+  "cmd": "get out of bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "That's not important; leave it alone.\n \n>"
+ },
+ {
+  "cmd": "climb on bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "That's not important; leave it alone.\n \n>"
+ },
+ {
+  "cmd": "get off bed",
+  "tag": "probe:bed",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You're not holding it.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "Follow Ford",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You have no idea where Ford Prefect is.\n \n>"
+ },
+ {
+  "cmd": "Enter Pub",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see any pub here!\n \n>"
+ },
+ {
+  "cmd": "Look Shelf",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see any shelf here!\n \n>"
+ },
+ {
+  "cmd": "Buy Sandwich",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see any sandwich here!\n \n>"
+ },
+ {
+  "cmd": "Drink Beer",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see any beer here!\n \n>"
+ },
+ {
+  "cmd": "Drink Beer",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see any beer here!\n \n>"
+ },
+ {
+  "cmd": "Drink Beer",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see any beer here!\n \n>"
+ },
+ {
+  "cmd": "Exit",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Did you have any particular direction in mind?\n \n>"
+ },
+ {
+  "cmd": "Feed dog sandwich",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see that here!\n \n>"
+ },
+ {
+  "cmd": "Get towel",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You can't see any towel here!\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nWith a noise like a cross between Led Zeppelin's farewell concert and the eruption of Krakatoa, a huge fleet of Vogon Constructor ships flies overhead and announces that the Earth will be demolished to make way for a new hyperspace bypass in \"two of your Earth minutes.\"\n \nIn all the turmoil, you drop the thing your aunt gave you which you don't know what it is and it rolls away. It is the least of your worries. Anyway, you've been trying to get rid of it for years.\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nThe vast yellow ships thunder across the sky, spreading waves of terror and panic in their wake. The voice of the Vogon Captain slams across the country, insisting that the planning charts and demolition orders have been available at the local planning office in Alpha Centauri for fifty years and it's too late to start making a fuss about it now.\n \nThroughout the noise, Ford is shouting at you. He removes a small black device from his satchel, but accidentally drops it at your feet.\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFierce gales whip across the land, and thunder bangs continuously through the air in the wake of the giant ships. Ford fights to reach you, but the wind is too fierce. Further announcements from the Vogon Captain make it clear that demolition will begin in just a few seconds.\n \nThrough the blinding rain, you see lights flickering on the small device.\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "The Earth is destroyed by the fleet of Vogon Constructor ships.\n \n    ****  You have died  ****\n \n \nWe are about to give you your score. Put on your peril-sensitive sunglasses now. (Hit RETURN or ENTER when ready.) >"
+ }
+]

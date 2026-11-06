@@ -1,0 +1,117 @@
+{
+  "scope": "Sole paired309 gate for independently reviewed Claude-authored P10 candidate, not r44/D1 rerun",
+  "script": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\investigations\\regression-gate.cjs",
+  "scriptSha": "acc1229f9dd243f21d414a9bc8f19dbd340cf06bd2a1f99566480eeddcf071ab",
+  "started": "2026-10-30T16:46:19.753Z",
+  "processes": [
+    {
+      "side": "base",
+      "shard": 0,
+      "pid": 3048,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\base.s0.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "base",
+      "shard": 1,
+      "pid": 54588,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\base.s1.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "base",
+      "shard": 2,
+      "pid": 5916,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\base.s2.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "base",
+      "shard": 3,
+      "pid": 30192,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\base.s3.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "base",
+      "shard": 4,
+      "pid": 51544,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\base.s4.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "base",
+      "shard": 5,
+      "pid": 54532,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\base.s5.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "candidate",
+      "shard": 0,
+      "pid": 54368,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\candidate.s0.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "candidate",
+      "shard": 1,
+      "pid": 49388,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\candidate.s1.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "candidate",
+      "shard": 2,
+      "pid": 16060,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\candidate.s2.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "candidate",
+      "shard": 3,
+      "pid": 54768,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\candidate.s3.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "candidate",
+      "shard": 4,
+      "pid": 43380,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\candidate.s4.jsonl",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "side": "candidate",
+      "shard": 5,
+      "pid": 47044,
+      "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\oct30-recovery\\p10-takeover\\candidate.s5.jsonl",
+      "code": 0,
+      "stderr": ""
+    }
+  ],
+  "base": {
+    "rows": 309,
+    "invalid": [],
+    "sourceStable": true
+  },
+  "candidate": {
+    "rows": 309,
+    "invalid": [],
+    "sourceStable": true
+  },
+  "scriptStable": true,
+  "finished": "2026-10-30T16:55:27.818Z",
+  "status": "CAPTURED_REQUIRES_CLASSIFICATION"
+}

@@ -1,0 +1,253 @@
+Accuse.zblorb.js marks
+  base: ["east","south","up","Mr Thyme","Ms Pepper"]
+  cand: ["east","south","up","jar of poison","Mr Thyme"]
+Accuse.zblorb.js inv2
+  base: []
+  cand: ["61:rusty knife"]
+Advent.z5.js rooms
+  base: ["29:At End Of Road","34:At Hill In Road","37:Inside Building","46:In Forest","47:In Forest","48:In A Valley"]
+  cand: ["29:At End Of Road","34:At Hill In Road","37:Inside Building","46:In Forest","48:In A Valley"]
+Cyclops.z5.js marks
+  base: ["shelves","with","flocks","fence","lambkin","cavern","friends","goats","fire","dust","mat of bands","monster","big rock","beautiful ram"]
+  cand: ["shelves","with","flocks","fence","lambkin","cavern","friends","goats","fire","dust","mat of bands","monster","milk","big rock","beautiful ram"]
+Cyclops.z5.js inv1
+  base: ["48:red wine","43:sword"]
+  cand: ["48:wineskin with red wine","43:sword"]
+Cyclops.z5.js inv2
+  base: ["48:red wine","43:sword"]
+  cand: ["48:wineskin with red wine","43:sword"]
+Damnatio-Memoriae.zblorb.js inv2
+  base: ["55:phaenomena","46:old letter","47:lamp","48:quantity of oil"]
+  cand: ["55:Phaenomena","46:old letter","47:lamp","48:quantity of oil"]
+Delusns.z5.js inv1
+  base: ["181:fingerwatch","180:suit suit"]
+  cand: ["181:fingerwatch","180:technician's jumpsuit"]
+Delusns.z5.js inv2
+  base: ["181:fingerwatch","180:suit suit"]
+  cand: ["181:fingerwatch","180:technician's jumpsuit"]
+GreatXavio.z5.js inv1
+  base: ["218:wallet","219:one dollar bills","220:one dollar bills","221:student id","217:cellphone"]
+  cand: ["218:wallet","219:one dollar bills","220:one dollar bills","221:student ID","217:cellphone"]
+GreatXavio.z5.js inv2
+  base: ["48:pink newspaper","218:wallet","219:one dollar bills","220:one dollar bills","221:student id","217:cellphone"]
+  cand: ["48:pink newspaper","218:wallet","219:one dollar bills","220:one dollar bills","221:student ID","217:cellphone"]
+Gumshoe.z5.js inv1
+  base: ["231:trenchcoat","230:private investigator's","228:money"]
+  cand: ["231:trenchcoat","230:private investigator's license","228:money"]
+Gumshoe.z5.js inv2
+  base: ["44:Los Angeles Times","231:trenchcoat","230:private investigator's","228:money"]
+  cand: ["44:Los Angeles Times","231:trenchcoat","230:private investigator's license","228:money"]
+HollywoodHijinx.z3.js inv1
+  base: ["123:flashlight","67:uncle buddy's","235:Aunt Hildegarde's letter"]
+  cand: ["123:flashlight","67:Uncle Buddy's","235:Aunt Hildegarde's letter"]
+HollywoodHijinx.z3.js inv2
+  base: ["123:flashlight","67:uncle buddy's","235:Aunt Hildegarde's letter"]
+  cand: ["123:flashlight","67:Uncle Buddy's","235:Aunt Hildegarde's letter"]
+HouseOfDreamOfMoon.z8.js inv1
+  base: ["55:house key","56:every child's almanac of lunar conspiracy"]
+  cand: ["55:house key","56:Every Child's Almanac of Lunar Conspiracy"]
+HouseOfDreamOfMoon.z8.js inv2
+  base: ["57:sheet","55:house key","56:every child's almanac of lunar conspiracy"]
+  cand: ["57:sheet","55:house key","56:Every Child's Almanac of Lunar Conspiracy"]
+Inevita.z5.js marks
+  base: ["sheets of rain","canopy","console","engine","switch"]
+  cand: ["vessel","engines","straps","stick","pouch","sheets of rain","canopy","console","switch"]
+Jigsaw.z8.js marks
+  base: ["west","northeast","Crowds","east"]
+  cand: ["party","attractive stranger","in","west","northeast","east"]
+Jigsaw.z8.js inv2
+  base: ["71:jigsaw piece","144:white party ticket"]
+  cand: ["71:corner piece","144:white party ticket"]
+LLR3.z8.js rooms
+  base: ["218:East-west corridor","219:Cold room"]
+  cand: ["220:North-South-West junction","223:Round room"]
+LLR3.z8.js exits
+  base: ["east>219","west>217"]
+  cand: ["east>220"]
+LLR3.z8.js marks
+  base: ["east","west","trapdoor"]
+  cand: []
+MakeItGood.zblorb.js inv1
+  base: ["388:trenchcoat pockets","386:your wide-brimmed hat your","384:your badge","383:car","387:your scuffed black shoes","389:black leather gloves"]
+  cand: ["388:trenchcoat pockets","386:your wide-brimmed hat","384:your badge","383:car","387:your scuffed black shoes","389:black leather gloves"]
+MakeItGood.zblorb.js inv2
+  base: ["388:trenchcoat pockets","386:your wide-brimmed hat your","384:your badge","383:car","387:your scuffed black shoes","389:black leather gloves"]
+  cand: ["388:trenchcoat pockets","386:your wide-brimmed hat","384:your badge","383:car","387:your scuffed black shoes","389:black leather gloves"]
+Peacock.z5.js inv1
+  base: ["120:trusty pack","124:polaroid camera"]
+  cand: ["120:trusty pack","124:Polaroid camera"]
+Peacock.z5.js inv2
+  base: ["120:trusty pack","124:polaroid camera"]
+  cand: ["120:trusty pack","124:Polaroid camera"]
+Planetfall.z3.js inv1
+  base: ["217:brochure","227:Patrol-issue self-contained multi-purpose scrub brush","224:Patrol uniform","225:ID card","226:chronometer"]
+  cand: ["227:Patrol-issue self-contained multi-purpose scrub brush","224:Patrol uniform","225:ID card","226:chronometer"]
+Planetfall.z3.js inv2
+  base: ["217:brochure","227:Patrol-issue self-contained multi-purpose scrub brush","224:Patrol uniform","225:ID card","226:chronometer"]
+  cand: ["227:Patrol-issue self-contained multi-purpose scrub brush","224:Patrol uniform","225:ID card","226:chronometer"]
+Ralph.z5.js marks
+  base: ["out","beam of sunlight","frozen drops of tar","somewhat rectangular hole in","friend Blamant"]
+  cand: ["beam of sunlight","frozen drops of tar","somewhat rectangular hole in","friend Blamant"]
+Relief.z5.js marks
+  base: ["computer","oak wood desk","dirty window","bed","closet","oven","fridge","door","cupboard","south"]
+  cand: ["drive","good","computer","oak wood desk","dirty window","bed","closet","oven","fridge","door","cupboard","south"]
+ShadowOfMemories.zblorb.js inv2
+  base: ["50:snow covered key","49:digipad","47:manuscript about information","46:large leather bound book about time"]
+  cand: ["50:Snow covered key","49:digipad","47:manuscript about Information","46:large leather bound book about Time"]
+Slackerx.z5.js inv1
+  base: ["16:satchel","46:no pot","45:\"Dolemite\" night-light"]
+  cand: ["16:satchel","46:No Pot","45:\"Dolemite\" night-light"]
+Slackerx.z5.js inv2
+  base: ["27:copy of 'SPANK' magazine","16:satchel","46:no pot","45:\"Dolemite\" night-light"]
+  cand: ["27:copy of 'SPANK' magazine","16:satchel","46:No Pot","45:\"Dolemite\" night-light"]
+SpAdventure.z5.js rooms
+  base: ["34:At End Of Road","39:At Hill In Road","42:Inside Building","51:In Forest","52:In Forest","53:In A Valley"]
+  cand: ["34:At End Of Road","39:At Hill In Road","42:Inside Building","51:In Forest","53:In A Valley"]
+Sushi.zblorb.js marks
+  base: ["lingerie","windows","easel","cabinet","painting","table","vase","aquarium","evil fish","gravel"]
+  cand: ["lingerie","windows","easel","cabinet","painting","table","vase","aquarium","evil fish"]
+TCOTY.zblorb.js inv2
+  base: ["51:rifles","49:dead parrots","53:letter","52:shark head"]
+  cand: ["51:rifles","49:dead parrots","53:Letter","52:Shark Head"]
+TreasuresofaSlaversKingdom.z8.js inv2
+  base: ["151:suit of burlap armor"]
+  cand: ["151:SUIT OF BURLAP ARMOR"]
+WiR1.zblorb.js inv1
+  base: ["61:jackets","62:shirts","63:undershir","64:trousers","65:shorts","66:sockses","67:shoes"]
+  cand: ["61:jackets","62:shirts","63:undershir","64:trousers","65:shorts","66:sockses","67:shoeses"]
+WiR1.zblorb.js inv2
+  base: ["61:jackets","62:shirts","63:undershir","64:pair","65:pair","66:pair","67:shoes"]
+  cand: ["61:jackets","62:shirts","63:undershir","64:trousers","65:shorts","66:sockses","67:shoeses"]
+WiR2.zblorb.js inv1
+  base: ["55:ballpoint pen","53:slide rule","68:shirt","69:undershir","70:pair of slacks","71:pair","72:pair","73:pair of shoes"]
+  cand: ["55:ballpoint pen","53:slide rule","68:shirt","69:undershir","70:pair of slacks","71:pair","73:pair of shoes"]
+WiR2.zblorb.js inv2
+  base: ["79:autographed picture of joe dimaggio","94:carrot","93:meatball","91:scrap of wrapping paper","90:sampler platter","82:probe kit","55:ballpoint pen","53:slide rule","68:shirt","69:undershir","70:pair of slacks","71:pair","72:pair","73:pair of shoes"]
+  cand: ["79:autographed picture of Joe DiMaggio","94:carrot","93:meatball","91:scrap of wrapping paper","90:sampler platter","82:Probe kit","55:ballpoint pen","53:slide rule","68:shirt","69:undershir","70:pair of slacks","71:pair","73:pair of shoes"]
+acorncourt.z5.js inv2
+  base: ["56:tennis ball launching machine","25:tin pail","33:ball","34:ball","35:ball","36:ball","37:ball","38:ball","39:ball","40:ball","41:ball","42:ball","43:ball","44:ball","45:ball","46:ball","47:ball","48:ball","49:ball","50:ball","51:ball","52:ball","53:ball"]
+  cand: ["56:tennis ball launching machine","25:tin bucket","33:ball","34:ball","35:ball","36:ball","37:ball","38:ball","39:ball","40:ball","41:ball","42:ball","43:ball","44:ball","45:ball","46:ball","47:ball","48:ball","49:ball","50:ball","51:ball","52:ball","53:ball"]
+alice3.z5.js inv2
+  base: ["32:ball of worsted","26:chess board"]
+  cand: ["36:white kitten","32:ball of worsted","26:chess board"]
+beneath.z5.js inv1
+  base: ["173:paper bag","179:the book"]
+  cand: ["173:small paper bag","179:the book"]
+beneath.z5.js inv2
+  base: ["173:paper bag","179:the book"]
+  cand: ["173:small paper bag","179:the book"]
+blair.z5.js inv1
+  base: ["27:your laundry basket your","28:your dirty laundry"]
+  cand: ["27:your laundry basket","28:your dirty laundry"]
+blair.z5.js inv2
+  base: ["27:your laundry basket your","28:your dirty laundry"]
+  cand: ["27:your laundry basket","28:your dirty laundry"]
+bofh.z5.js inv1
+  base: ["27:travel request form","24:swipe card","26:cattle prod"]
+  cand: ["27:travel request form","24:swipe card","26:Cattle Prod"]
+bofh.z5.js inv2
+  base: ["27:travel request form","24:swipe card","26:cattle prod"]
+  cand: ["27:travel request form","24:swipe card","26:Cattle Prod"]
+boothdye.z5.js inv2
+  base: ["27:bucket","28:dye","26:phone booth"]
+  cand: ["27:bucket","28:dye","26:Phone Booth"]
+burglar.z5.js inv2
+  base: ["41:answering machine","40:dirty coat","36:junk mail","128:leather gloves","127:swag bag"]
+  cand: ["41:answering machine","40:dirty overcoat","36:item of junk mail","128:leather gloves","127:swag bag"]
+curves.z8.js inv1
+  base: ["661:ring","662:door","663:automobile","664:office","666:bills","667:bills"]
+  cand: ["661:ring","662:keys","663:automobile","664:office","666:bills","667:bills"]
+curves.z8.js inv2
+  base: ["666:bills","667:bills","661:ring","662:door","663:automobile","664:office","585:twenty-dollar bills","584:twenty-dollar bills","583:twenty-dollar bills","582:twenty-dollar bills","581:twenty-dollar bills"]
+  cand: ["666:bills","667:bills","661:ring","662:keys","663:automobile","664:office","585:twenty-dollar bills","584:twenty-dollar bills","583:twenty-dollar bills","582:twenty-dollar bills","581:twenty-dollar bills"]
+deephome.z5.js inv1
+  base: ["63:king's order","62:lantern"]
+  cand: ["63:King's Order","62:lantern"]
+deephome.z5.js inv2
+  base: ["63:king's order","62:lantern"]
+  cand: ["63:King's Order","62:lantern"]
+degen.z5.js inv1
+  base: ["158:sacred blade holy","159:holy symbol","161:suit of Chain-Mail","164:leather sheath","165:wooden scroll-case"]
+  cand: ["158:sacred blade","159:holy symbol","161:suit of Chain-Mail","164:leather sheath","165:wooden Scroll-Case"]
+degen.z5.js inv2
+  base: ["158:sacred blade holy","159:holy symbol","161:suit of Chain-Mail","164:leather sheath","165:wooden scroll-case"]
+  cand: ["158:sacred blade","159:holy symbol","161:suit of Chain-Mail","164:leather sheath","165:wooden Scroll-Case"]
+dejavu.z3.js inv1
+  base: ["18:elvish-made sword","19:white cube","20:brass lantern"]
+  cand: ["18:Elvish-made sword","19:featureless white cube","20:brass lantern"]
+dejavu.z3.js inv2
+  base: ["18:elvish-made sword","19:white cube","20:brass lantern"]
+  cand: ["18:Elvish-made sword","19:featureless white cube","20:brass lantern"]
+doll.z5.js inv2
+  base: ["41:clean white sheet","40:small golden talisman","35:bathrobe tie bathrobe","33:bathrobe","34:zipo lighter"]
+  cand: ["41:clean white sheet","40:small golden Talisman","35:bathrobe tie","33:bathrobe","34:zipo lighter"]
+gamlet.z5.js marks
+  base: ["eyes"]
+  cand: ["balcony","balustrade","wall","night","stars","distant artillery","breeze","naked","Light","eyes"]
+gourmet.zblorb.js marks
+  base: ["First","small","north","office","swinging double doors","back door","iron-wrought spiral staircase","large oven","rangetop","counter","pneumatic tube station","hanging utensils","oven","fishtanks","Rows of cupboards","ugly glass cabinet","industrial dishwasher","refrigerator","large sink","down","
+  cand: ["First","small","north","office","swinging double doors","back door","iron-wrought spiral staircase","large oven","rangetop","counter","pneumatic tube station","hanging utensils","oven","fishtanks","Rows of cupboards","ugly glass cabinet","industrial dishwasher","refrigerator","large sink","down"]
+heist.z8.js inv1
+  base: ["20:curious envelope strange","19:black canvas bag"]
+  cand: ["20:curious envelope","19:black canvas bag"]
+heist.z8.js inv2
+  base: ["20:curious envelope strange","19:black canvas bag"]
+  cand: ["20:curious envelope","19:black canvas bag"]
+jet.z8.js inv1
+  base: ["64:omega watch","65:space suit"]
+  cand: ["64:Omega watch","65:Space Suit"]
+jet.z8.js inv2
+  base: ["64:omega watch","65:space suit"]
+  cand: ["64:Omega watch","65:Space Suit"]
+library.z5.js inv1
+  base: ["74:id card"]
+  cand: ["74:ID card"]
+library.z5.js inv2
+  base: ["74:id card"]
+  cand: ["74:ID card"]
+mimesis.z5.js inv2
+  base: ["179:diskette case","184:zork i","190:mimesis plant"]
+  cand: ["179:diskette case","184:Zork I","190:variegated mimesis plant"]
+muse.z5.js inv2
+  base: ["88:pocket new testament"]
+  cand: ["88:pocket New Testament"]
+oad.z5.js inv1
+  base: ["34:your clothes your","37:your talisman"]
+  cand: ["34:your clothes","37:your talisman"]
+oad.z5.js inv2
+  base: ["34:your clothes your","37:your talisman"]
+  cand: ["34:your clothes","37:your talisman"]
+schooldays.z5.js inv1
+  base: ["152:pair of nike running shoes","144:white pair of underwear","140:pair of shorts","134:yellow long-sleeved shirt","124:white pair of socks"]
+  cand: ["152:pair of Nike running shoes","144:white pair of underwear","140:pair of shorts","133:blue short-sleeved shirt","128:grey pair of socks"]
+schooldays.z5.js inv2
+  base: ["170:garbage can","152:pair of nike running shoes","144:white pair of underwear","140:pair of shorts","134:yellow long-sleeved shirt","124:white pair of socks"]
+  cand: ["170:garbage can","152:pair of Nike running shoes","144:white pair of underwear","140:pair of shorts","133:blue short-sleeved shirt","128:grey pair of socks"]
+spacest2.z5.js inv1
+  base: ["44:mechanical translator","49:chronometer","42:patrol uniform","50:radioactive isotopes"]
+  cand: ["44:mechanical translator","49:chronometer","42:Patrol uniform","50:box of radioactive isotopes"]
+spacest2.z5.js inv2
+  base: ["114:toolbox","44:mechanical translator","49:chronometer","42:patrol uniform","50:radioactive isotopes"]
+  cand: ["114:toolbox","44:mechanical translator","49:chronometer","42:Patrol uniform","50:box of radioactive isotopes"]
+spring.z8.js inv1
+  base: ["79:note","235:guidebook","234:pair of","233:shirt","232:flip flop"]
+  cand: ["79:note","235:guidebook","234:pair of","233:shirt","232:flipflops"]
+spring.z8.js inv2
+  base: ["79:note","235:guidebook","234:pair of","233:shirt","232:flip flop"]
+  cand: ["79:note","235:guidebook","234:pair of","233:shirt","232:flipflops"]
+thorn.z5.js marks
+  base: ["scotch","chair","fire","Professor Wilkens","shadows","desk","window","east"]
+  cand: ["scotch","fire","Professor Wilkens","shadows","desk","window","east","chair"]
+uhoh-demo.z5.js inv1
+  base: ["179:wrist watch","25:demo fairy"]
+  cand: ["179:wrist watch","25:demo fairy (flitting about your head)"]
+uhoh-demo.z5.js inv2
+  base: ["179:wrist watch","25:demo fairy"]
+  cand: ["179:wrist watch","25:demo fairy (flitting about your head)"]
+vespers.z8.js inv2
+  base: ["474:box tinderbox","475:candle","476:frock"]
+  cand: ["474:tinderbox","475:candle","476:frock"]
+whispers.z5.js inv2
+  base: ["25:black floor lamp"]
+  cand: ["25:halogen torchiere"]
+GATE: 298 games, 84 differences (each must be an intended, reviewed change)

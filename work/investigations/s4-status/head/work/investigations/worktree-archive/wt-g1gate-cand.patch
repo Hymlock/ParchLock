@@ -1,0 +1,278 @@
+diff --git a/harness/d198-grammar-decoder.js b/harness/d198-grammar-decoder.js
+index eb54c76..5345a76 100644
+--- a/harness/d198-grammar-decoder.js
++++ b/harness/d198-grammar-decoder.js
+@@ -76,6 +76,62 @@ for (const file of infocom) {
+     ok(again.vocabulary[0] === originalWord && again.templates[0].verb !== 'mutated', file + ' cached result is immutable to callers');
+ }
+ 
++// R4: real-title admission precedes synthetic boundary controls. The orphan
++// remains part of the parsed layout but supplies no dictionary-owned command.
++const suspect = story('Suspect.z3.js');
++const suspectResult = GP.decodeD198(suspect);
++ok(suspectResult.classification === 'confirmed-zil-family' && suspectResult.evidence === 'validated', 'Suspect real grammar validates');
++ok(JSON.stringify(suspectResult.orphanVerbIndices) === '[45]', 'Suspect records its one unreferenced syntax index');
++ok(!suspectResult.templates.some(t => t.verbIndex === 45), 'orphan syntax emits no command templates');
++ok(suspectResult.evidenceRefs.includes('bounded-unreferenced-syntax-index'), 'orphan admission has distinct provenance');
++suspectResult.orphanVerbIndices[0] = 999;
++ok(JSON.stringify(GP.decodeD198(suspect).orphanVerbIndices) === '[45]', 'orphan metadata is immutable to callers');
++
++function orphanFixture() {
++    const mem = new DataView(suspect.slice().buffer);
++    const h = sandbox.ZRamReader.header(mem);
++    const dict = GP._d198RawDictionary(mem, h, mem.byteLength);
++    return { mem, h, dict, decode: () => GP._d198InfocomGrammar(mem, h, mem.byteLength, dict) };
++}
++for (const offset of [1, 2]) {
++    const f = orphanFixture();
++    const entry = f.dict.entries.find(e => (e.flags & 0x40) && (((e.flags & 3) === 1) === (offset === 2)));
++    ok(!!entry, 'alternate verb-byte fixture exists at offset ' + offset);
++    entry.data[offset] = 255 - 45;
++    ok(f.decode() === null, 'raw alternate-offset reference rejects orphan admission at ' + offset);
++}
++{
++    const f = orphanFixture();
++    f.dict.entries.find(e => e.flags & 0x40).data = [1];
++    ok(f.decode() === null, 'short verb record cannot become an orphan loophole');
++}
++{
++    const f = orphanFixture(), entry = f.dict.entries.find(e => e.flags & 0x40);
++    entry.word = ''; entry.data[1] = 255 - 45;
++    ok(f.decode() === null, 'undecodable dictionary spelling does not erase a raw reference');
++}
++{
++    const f = orphanFixture();
++    for (const entry of f.dict.entries) {
++        if (!(entry.flags & 0x40)) continue;
++        const offset = (entry.flags & 3) === 1 ? 1 : 2;
++        if (255 - entry.data[offset] === 44) entry.data[offset] = 255 - 46;
++    }
++    ok(f.decode() === null, 'two missing syntax indices reject');
++}
++{
++    const f = orphanFixture(), pointer = sandbox.ZRamReader.u16(f.mem, f.h.staticMem + 45 * 2);
++    f.mem.setUint8(pointer, 0);
++    ok(f.decode() === null, 'malformed orphan syntax still rejects');
++}
++{
++    const f = orphanFixture(), pointer = sandbox.ZRamReader.u16(f.mem, f.h.staticMem + 45 * 2);
++    f.mem.setUint8(pointer + 2, 128);
++    ok(f.decode() === null, 'unresolved orphan preposition still rejects');
++}
++const sherlock = GP.decodeD198(story('Sherlock.z5.js'));
++ok(sherlock.classification === 'unknown' && sherlock.reason === 'invalid-dictionary', 'Sherlock stays rejected for its independent dictionary failure');
++
+ const malformed = story('Zork1-TheGreatUndergroundEmpire.z3.js').slice();
+ const staticBase = (malformed[14] << 8) | malformed[15];
+ malformed[staticBase] = 0;
+diff --git a/harness/zil-authored-edible.js b/harness/zil-authored-edible.js
+index ceb8de0..9ecc019 100644
+--- a/harness/zil-authored-edible.js
++++ b/harness/zil-authored-edible.js
+@@ -29,9 +29,9 @@ for(const bad of [null,[],['eat'],['drink','eat'],['eat','drink','quaff'],['eat'
+ for(const bad of [null,[],[200,200],[200,999999],[200,'205']])check('malformed owner list '+JSON.stringify(bad)+' never yields Drink',()=>{const old=F.attributeObjects.edible;try{F.attributeObjects.edible=bad;hold(B,[200]);const z=verbs(B,200);assert(!z.menu.includes('drink'));}finally{F.attributeObjects.edible=old;}});
+ check('missing DRINK template rejects the whole pair',()=>{const family=A._familyOf;try{const f=family(B.mem);A._familyOf=()=>Object.assign({},f,{templates:f.templates.filter(t=>t.verb!=='drink')});pair(200,false);}finally{A._familyOf=family;}});
+ check('unknown family rejects the pair',()=>{const family=A._familyOf;try{A._familyOf=()=>({classification:'unknown'});hold(B,[200]);assert(!verbs(B,200).menu.includes('drink'));}finally{A._familyOf=family;}});
+-// D238 menu coexistence contract. Non-nested independent-provider parity is a separate open defect
+-// (native Cutthroats witness: resume-20261020/concealed/cutthroats-drink-consumer-native.json).
+-check('D238 listed owner keeps menu Eat and Drink alongside a numeric edible map',()=>{try{F.attributeMap.edible=8;hold(B,[200]);const z=verbs(B,200);assert(z.menu.includes('eat'));assert(z.menu.includes('drink'));}finally{delete F.attributeMap.edible;}});
++// D238 menu/provider coexistence regression. Native Cutthroats baseline witness:
++// resume-20261020/concealed/cutthroats-drink-consumer-native.json.
++check('D238 mapped listed owner keeps menu and independent Eat and Drink',()=>{try{F.attributeMap.edible=8;hold(B,[200]);const z=verbs(B,200);for(const list of [z.menu,z.independent])for(const v of ['eat','drink'])assert.equal(list.filter(x=>x===v).length,1);}finally{delete F.attributeMap.edible;}});
+ check('D238 unlisted cigarette gets no Drink alongside a numeric edible map',()=>{try{F.attributeMap.edible=8;hold(B,[101]);const z=verbs(B,101);assert(!z.menu.includes('drink'));assert(!z.independent.includes('drink'));}finally{delete F.attributeMap.edible;}});
+ check('Inform Drink inference stays off for ZIL',()=>{hold(B,[200]);assert.equal(S.edibleDrinkAllowed(verbs(B,200).obj.attrs,{}),false);});
+ const SB=load('Spellbreaker.z3.js',1);
+diff --git a/harness/zil-drink-mapped.js b/harness/zil-drink-mapped.js
+index 80a85b5..36385da 100644
+--- a/harness/zil-drink-mapped.js
++++ b/harness/zil-drink-mapped.js
+@@ -19,8 +19,8 @@ const verbs=(id,ctx)=>S.commandsForPayloadObjectId(id,ctx).map(x=>x.verb);
+ let n=0;function check(name,fn){n++;fn();console.log('PASS '+name);}
+ check('1 mapped title: unlisted FOODBIT lunch keeps the bit path (null) and Eat',()=>withRule(()=>{assert.strictEqual(A.edibleForms(mem,225,'inventory'),null);parent(225,4);payload.inventory=[object(225)];assert(verbs(225,'inventory').includes('eat'));}));
+ check('2 no attributeObjects.edible: FOODBIT Eat unchanged',()=>{parent(225,4);payload.inventory=[object(225)];assert.strictEqual(A.edibleForms(mem,225,'inventory'),null);assert(verbs(225,'inventory').includes('eat'));});
+-check('3a held bottle closed: water gets no Drink (nested and top level)',()=>withRule(()=>{held(false);assert.deepEqual(A.edibleForms(mem,237,'inventory'),[]);assert(!verbs(237,'inventory').includes('drink'));}));
+-check('3b held bottle open: water gets Drink (owner policy and synthesized candidate)',()=>withRule(()=>{held(true);assert.deepEqual(A.edibleForms(mem,237,'inventory'),['drink']);assert(verbs(237,'inventory').includes('drink'));}));
++check('3a held bottle closed: water gets no Drink (nested and top level)',()=>withRule(()=>{held(false);assert.deepEqual(A.edibleForms(mem,237,'inventory'),[]);assert(!verbs(237,'inventory').includes('drink'));assert.deepEqual(Array.from(c.LearnedWords.independentForms(payload.inventory.find(o=>o.id===237))),['take']);}));
++check('3b held bottle open: water gets Drink (owner policy and synthesized candidate)',()=>withRule(()=>{held(true);assert.deepEqual(A.edibleForms(mem,237,'inventory'),['drink']);assert(verbs(237,'inventory').includes('drink'));assert.deepEqual(Array.from(c.LearnedWords.independentForms(payload.inventory.find(o=>o.id===237))),['take','drink']);}));
+ check('4 held scope rejects room context (open bottle on the floor)',()=>withRule(()=>{onFloor(true);assert.deepEqual(A.edibleForms(mem,237,'room'),[]);assert(!verbs(237,'room').includes('drink'));}));
+ check('5 malformed held value fails closed for the owner only',()=>withRule(()=>{F.capabilityForms.edible[0].scope.held='yes';held(true);assert.deepEqual(A.edibleForms(mem,237,'inventory'),[]);assert.strictEqual(A.edibleForms(mem,225,'inventory'),null);}));
+ check('6 plain objectCapabilityIds stays null in a mapped title; allowMapped opts in',()=>withRule(()=>{assert.strictEqual(A.objectCapabilityIds(mem,'edible'),null);assert.deepEqual(Array.from(A.objectCapabilityIds(mem,'edible',{allowMapped:true})),[237]);}));
+diff --git a/js/GrammarProvider.js b/js/GrammarProvider.js
+index 34f822d..09417e1 100644
+--- a/js/GrammarProvider.js
++++ b/js/GrammarProvider.js
+@@ -353,7 +353,30 @@ var GrammarProvider = {
+             mappedIndices[verbIndex] = true;
+             verbEntries.push({ word: de.word, verbIndex: verbIndex });
+         }
+-        if (Object.keys(mappedIndices).length !== verbCount) return null;
++        var orphanVerbIndices = [];
++        for (i = 0; i < verbCount; i++) {
++            if (!mappedIndices[i]) orphanVerbIndices.push(i);
++        }
++        if (orphanVerbIndices.length) {
++            // A bounded syntax entry can be authored without a dictionary
++            // spelling. It still participates in action/preposition layout,
++            // but can never supply a command template by itself.
++            if (orphanVerbIndices.length > 1 || orphanVerbIndices.length * 100 > verbCount) return null;
++            var orphanIndex = orphanVerbIndices[0];
++            var orphanLines = syntaxByIndex[orphanIndex];
++            if (!orphanLines || !orphanLines.length || orphanLines.some(function (line) {
++                return line.prepIndices.some(function (prep) { return !prepByIndex[prep]; });
++            })) return null;
++            for (i = 0; i < dict.entries.length; i++) {
++                var rawVerb = dict.entries[i];
++                if (!(rawVerb.flags & 0x40)) continue;
++                // Check both possible data positions, including records whose
++                // undecodable word was excluded by the mapped-word pass.
++                if (!rawVerb.data || rawVerb.data.length < 3
++                    || 255 - rawVerb.data[1] === orphanIndex
++                    || 255 - rawVerb.data[2] === orphanIndex) return null;
++            }
++        }
+ 
+         var vocabulary = [], seenWords = {}, templates = [];
+         verbEntries.forEach(function (verb) {
+@@ -377,7 +400,7 @@ var GrammarProvider = {
+             });
+         });
+         if (!templates.length) return null;
+-        return {
++        var decoded = {
+             classification: "confirmed-zil-family",
+             family: "infocom-pre-v6-" + family,
+             evidence: "validated",
+@@ -391,6 +414,11 @@ var GrammarProvider = {
+             prepositions: prepositions,
+             templates: templates
+         };
++        if (orphanVerbIndices.length) {
++            decoded.orphanVerbIndices = orphanVerbIndices;
++            decoded.evidenceRefs.push("bounded-unreferenced-syntax-index");
++        }
++        return decoded;
+     },
+ 
+     d198Diagnostics: function (mem) {
+diff --git a/js/LearnedWords.js b/js/LearnedWords.js
+index f3262f8..f3ff9ba 100644
+--- a/js/LearnedWords.js
++++ b/js/LearnedWords.js
+@@ -135,6 +135,12 @@ var LearnedWords = {
+             if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.formsForAttribute
+                 ? ActionSynth.formsForAttribute(key, obj.id, context) : ActionSynth.rules[key]);
+         });
++        // D238: direct owner verbs can coexist with a mapped edible bit, even
++        // when this object's bit is clear. Keep the menu's scope policy; the
++        // nested branch below still replaces candidates with its own policy.
++        if (!attrs.edible && typeof ActionSynth.edibleFormPolicy === 'function') {
++            forms = forms.concat(ActionSynth.edibleFormPolicy(obj.id, context) || []);
++        }
+         // Use the same compiler/evidence policy as menu synthesis, not learned admission.
+         if (ActionSynth.edibleDrinkAllowed(attrs, { directEvidenceOnly: !!obj.examineOnly })) forms.push('drink');
+         var nested = held && ActionSynth.heldContainerName && ActionSynth.heldContainerName(obj,WorldModel.lastPayload);
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 73bde42..756ab1b 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -68,7 +68,8 @@ var ModuleStatFactsClaude = {
+         "attributeObjects": { "edible": [103] },
+         // transparent 19 = source TRANSBIT exact (9 objects, fp 0 fn 0; historicalsource 2febadb); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+         // moved 29 = TOUCHBIT (native, codex batch3-native.cjs output resume-20261020/moved/Cutthroats.z3.js.json; packet via grok1 #5201): GET PASSBOOK AND ROOM KEY: room key 143 and passbook 144 each set bit 29; air tank 136 stays clear.
+-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12, "transparent": 19, "moved": 29 },
++        // enterable 9 = source VEHBIT exact (5 carriers incl. bunk 79, bed 146, cask 40, chair 108); native (grok1 #4853 grok1/enter/cutthroats.json, probes ect3/ect4): ENTER/GET IN BED -> player 184 parent 183->146 (step 3), ENTER/GET IN CHAIR -> 112->108 (step 27); GET OUT OF/STAND UP return; ENTER DRESSER / ENTER TABLE "You hit your head" (parent unchanged).
++        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12, "transparent": 19, "moved": 29, "enterable": 9 },
+         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
+         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
+         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
+@@ -159,7 +160,8 @@ var ModuleStatFactsClaude = {
+ // scenery 25 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos tree 32, rope 33, shiny object 35, reeds 44, runes 132 (look omits, pc 25769); neg man 27 (listed, same pc). Listing routine: historicalsource 3ec9ed4 gverbs.zil:1824.
+         // climbable 24 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRS 216 Aqueduct View -> Lake Shore, bit read 1; CLIMB LAMP "Bizarre!". Ladder 23 unreached (low risk).
+         // moved 27 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork3.json; the source catalog candidate 0 is wrong): TAKE lamp 198 and waybread 34 set bit 27; stairs 216 stay clear.
+-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24, "moved": 27 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
++        // enterable 7 = source VEHBIT exact (tier: seeded-native, g1-batch default zork3 seed 0; not a fresh unforced run); single carrier in object table (gold machine 91; whole-source exception, Enchanter precedent); native (grok1 g1-batch grok1/enter/zork3/run-zork3-20261025T230255-59496.json, G1PLAYER 202, step 131 Technology Museum): ENTER GOLD MACHINE -> player parent 101->91, test_attr 91:7=1, LOOK "(You are in the gold machine.)", GET OUT -> 101; ENTER GREY MACHINE 90 / BLACK MACHINE 89 read 7=0, "You hit your head", parent unchanged.
++        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24, "moved": 27, "enterable": 7 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
+     },
+     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+@@ -377,7 +379,11 @@ var ModuleStatFactsClaude = {
+         // moved 1 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P1 probe5/moved/suspect): TAKE pen 95 / costume receipt 12 set 1 (ITAKE verbs.zil:436-438); negative bar 119 stays clear (mask EXAMINE was ambiguous, excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
+         "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "transparent": 7, "talkable": 31, "moved": 1 },
+         "inventoryHiddenAttribute": 19,
+-        "inventoryHiddenPreservesWorn": true
++        "inventoryHiddenPreservesWorn": true,
++        // inventoryInvisibleAttribute 10 = source INVISIBLE exact 7/7 (historicalsource a18e100): native i omits an INVISIBLE child and its subtree, worn items included (Codex R2 #5300, native resume-20261020/concealed/suspect-equipment-*-native.json, R4+R2 Equipment PASS #5357). Tested on the root's children only, never the root: reporter 99 itself carries 10.
++        "inventoryInvisibleAttribute": 10,
++        // playerObject 99 = source PLAYER "reporter" (people.zil sha256 96A22C9C, a18e100; no SETG PLAYER anywhere, SETG WINNER swaps for NPC orders are restored); ME 98 "yourself" is the GLOBAL-OBJECTS parser stand-in (negative: parent 246, no children). Native (Codex #5366/#5374 review-20261025/packet-suspect-player99.json, raw0128): 99.parent follows statusG0 118/120/121/207 over LOOK/W/W/W; TAKE pen 95 and receipt 12 land under 99. Player may sit in a vehicle (chair 153, window seat 233), so the room stays statusG0, not parent(99).
++        "playerObject": 99
+     },
+     // Native i tests bit17 and skips arm111 (including gash110) and badge184;
+     // the held Logbook195 has this bit clear and is printed.
+@@ -538,7 +544,8 @@ var ModuleStatFactsClaude = {
+         // door 43 = source DOORBIT exact (4 carriers: bedroom, screening, corridor, inner door; none a room); native (grok1 #5199 probe4/cache19, G1PLAYER=19): bedroom door 205 CLOSE/OPEN read 43=1 and toggle OPENBIT 39; screening door 180 refuses natively.
+         // moved 20 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): toothbrush 31, screwdriver 105, junk mail 198 (separate takes); doormat 101 stays clear. Gown/analgesic take via own routines (exceptions).
+         // concealed 21 = INVISIBLE (native, codex #5245 resume-20261020/concealed/packet-hitchhik.json): bulldozer 228 reads 21=1 and the parser refuses it until OPEN CURTAINS clears 21 (then EXAMINE describes it); conversation 169 hidden until WAIT (Ford decides) clears 21 and LISTEN resolves it; curtains 63 visible with 21 clear. Parser visibility only.
+-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "enterable": 28, "transparent": 33, "door": 43, "moved": 20, "concealed": 21 },
++        // enterable withdrawn (grok1 facts-D2, Codex #5367): VEHBIT 28 not proven by native evidence (bed entry raw all NOTEST; seated chair 164 alone is not 2 owners). Status UNKNOWN (ledger U), not feature-absent.
++        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "transparent": 33, "door": 43, "moved": 20, "concealed": 21 },
+         "wornAttribute": 24,
+         // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
+         // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).
+@@ -709,7 +716,8 @@ var ModuleStatFactsClaude = {
+         // openCapability: Open/Close for containers that are not surfaces (the disks/sphere carry CONTBIT but refuse CLOSE natively, grok1 #5213).
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+         // moved 29 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 probe5/moved/starcross2 D7C9410E): TAKE space suit 144 / black rod 84 set 29 (ITAKE verbs.zil:580-583); mass detector 221 and metal relief 23 stay clear; room entry is supporting only. Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
+-        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28, "moved": 29 },
++        // talkable 11 = VICBIT (seeded-native tier: g1-batch default seed; grok1 2026-10-25, packet E1 probe5/talk/run-starcross-20261026T011323-35324.json, test_attr during the named TELL command only): computer 24 "tell computer to look" 24:11 TRUE, giant spider 196 "tell spider to look" 196:11 TRUE; nest 6 "tell nest to look" 6:11 FALSE ("You can't talk to the nest!"), translator 9 "tell translator to look" 9:11 FALSE.
++        "attributeMap": { "animate": 11, "talkable": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28, "moved": 29 },
+         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
+         "wornAttribute": 24
+     },
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index 65f5506..7fe5d52 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -2809,10 +2809,43 @@ var ZRamReader = {
+         var header = ZRamReader.header(mem);
+         var hasHiddenBit = Number.isInteger(hiddenBit) && hiddenBit >= 0
+             && hiddenBit < (header && header.version <= 3 ? 32 : 48);
++        // Explicit inventory rollout, independent of NDESC's worn exception.
++        // A concealed/local-scope mapping alone never opts a title in.
++        var invisibleBit = fact && fact.inventoryInvisibleAttribute;
++        var hasInvisibleBit = false;
++        try {
++            var validBit = function (bit) {
++                return Number.isInteger(bit) && bit >= 0
++                    && bit < (header.version === 3 ? 32 : 48);
++            };
++            if (header && header.version >= 3 && header.version <= 5
++                && validBit(invisibleBit) && !ZRamReader.informAttributeNames(mem)
++                && typeof GrammarProvider !== 'undefined' && GrammarProvider.decodeD198) {
++                var inventoryFamily = GrammarProvider.decodeD198(mem);
++                hasInvisibleBit = !!inventoryFamily
++                    && inventoryFamily.classification === 'confirmed-zil-family'
++                    && inventoryFamily.evidence === 'validated';
++                [ ['attributeMap', 'concealed'], ['localScope', 'invisible'] ].forEach(function (entry) {
++                    var owner = fact[entry[0]];
++                    if (owner !== undefined) {
++                        if (!owner || typeof owner !== 'object' || Array.isArray(owner)) hasInvisibleBit = false;
++                        else if (Object.prototype.hasOwnProperty.call(owner, entry[1])
++                            && (!validBit(owner[entry[1]]) || owner[entry[1]] !== invisibleBit)) hasInvisibleBit = false;
++                    }
++                });
++            }
++        } catch (eInventoryInvisible) { hasInvisibleBit = false; }
+         function walk(id, d, viaUnnamedBypass) {
+             if (!id || seen[id] || d < 0) return;
+             seen[id] = 1;
+             ZRamReader.children(mem, id).forEach(function (cid) {
++                // Re-read current RAM before names or wrapper traversal. Native
++                // INVISIBLE omits the object and subtree, including worn items.
++                if (hasInvisibleBit) {
++                    var invisibleLinks = ZRamReader.objectLinks(mem, cid);
++                    if (invisibleLinks && (invisibleLinks.attrBytes[invisibleBit >> 3]
++                        & (128 >> (invisibleBit & 7)))) return;
++                }
+                 // Native inventory omission is executable-owned, never a
+                 // universal ZIL flag. Native omission wins by default; only an
+                 // executable-owned wardrobe exception preserves worn gear.

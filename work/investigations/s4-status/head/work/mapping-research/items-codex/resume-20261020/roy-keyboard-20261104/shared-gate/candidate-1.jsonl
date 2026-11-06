@@ -1,0 +1,13 @@
+{"game":"AOTYRZ.z5.js","exits":["east>48","north>39"],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Balances.z5.js","exits":["out>53","west>53"],"marks":["furniture"],"inv1":["44:spell book","43:silver coin","25:magic burin"],"inv2":["44:spell book","43:silver coin","25:magic burin"],"rooms":["49:Ramshackle Hut","53:Grasslands, near Hut","54:Pocket Valley"]}
+{"game":"Bronze.zblorb.js","exits":[],"marks":["castle"],"inv1":[],"inv2":[],"rooms":["53:Drawbridge"]}
+{"game":"CtDoom.z5.js","exits":["north>27","out>27"],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"DreamTooReal.zblorb.js","exits":["east>51"],"marks":["Jane Doe","east","table","bagel","kitchen counter","Kids' Lunchbox"],"inv1":[],"inv2":["47:bagel"],"rooms":["44:Living Room"]}
+{"game":"Galatea.zblorb.js","exits":[],"marks":["spotlight","black velvet","placard","pedestal","Galatea"],"inv1":[],"inv2":[],"rooms":["29:The Gallery's End"]}
+{"game":"Hitchhik.z5.js","exits":["down>null","out>null","south>null"],"marks":[],"inv1":[],"inv2":[],"rooms":["150:Bedroom"]}
+{"game":"Jigsaw.z8.js","exits":["east>148","in>148","northeast>154","southeast>150","west>162"],"marks":["west","northeast","Crowds","east"],"inv1":["144:white party ticket"],"inv2":["71:corner piece","144:white party ticket"],"rooms":["145:Century Park","148:Beer Tent","150:Behind Beer Tent","154:Churchyard","162:Kaldecki's Monument"]}
+{"game":"Mask.z5.js","exits":["exit-31>3"],"marks":["Men","Mr.","Mr.","Sean","floor","Dark stained oak paneling","well-polished brass knobs","plush red sofa","painting","oak door","door","main room","hat","coat","Simon"],"inv1":["79:pair of shoes","78:pair of stockings","77:dress"],"inv2":["79:pair of shoes","78:pair of stockings","77:dress"],"rooms":[]}
+{"game":"PataNoir.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Ralph.z5.js","exits":["east>34","out>34"],"marks":["beam of sunlight","frozen drops of tar","somewhat rectangular hole in","friend Blamant"],"inv1":[],"inv2":[],"rooms":["29:Your Hut","34:Lawn","39:Front of House","45:Under a Tree","52:Lawn","56:Ruined Shed"]}
+{"game":"ScrollThief.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Somewhere.z5.js","exits":["in>45"],"marks":[],"inv1":[],"inv2":["47:note","46:box"],"rooms":["43:Nowhere","45:Somewhere"]}

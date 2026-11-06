@@ -1,0 +1,671 @@
+{
+ "story": "Zork2-TheWizardofFrobozz.z3.js",
+ "digest": "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e",
+ "flags": {
+  "ACTORBIT": {
+   "bit": 30,
+   "exact": true
+  },
+  "BURNBIT": {
+   "bit": 26,
+   "exact": true
+  },
+  "CLIMBBIT": {
+   "bit": 23,
+   "exact": true
+  },
+  "CONTBIT": {
+   "bit": 18,
+   "exact": false
+  },
+  "DOORBIT": {
+   "bit": 22,
+   "exact": true
+  },
+  "DRINKBIT": {
+   "bit": 21,
+   "exact": true
+  },
+  "FOODBIT": {
+   "bit": 20,
+   "exact": true
+  },
+  "INVISIBLE": {
+   "bit": 9,
+   "exact": false
+  },
+  "LIGHTBIT": {
+   "bit": 31,
+   "exact": true
+  },
+  "NDESCBIT": {
+   "bit": 14,
+   "exact": true
+  },
+  "NONLANDBIT": {
+   "bit": 6,
+   "exact": true
+  },
+  "NWALLBIT": {
+   "bit": 5,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 19,
+   "exact": true
+  },
+  "OPENBIT": {
+   "bit": 11,
+   "exact": false
+  },
+  "READBIT": {
+   "bit": 16,
+   "exact": true
+  },
+  "RLANDBIT": {
+   "bit": 12,
+   "exact": true
+  },
+  "SACREDBIT": {
+   "bit": 0,
+   "exact": true
+  },
+  "SEARCHBIT": {
+   "bit": 4,
+   "exact": false
+  },
+  "STAGGERED": {
+   "bit": 10,
+   "exact": true
+  },
+  "SURFACEBIT": {
+   "bit": 8,
+   "exact": true
+  },
+  "TAKEBIT": {
+   "bit": 17,
+   "exact": true
+  },
+  "TOOLBIT": {
+   "bit": 28,
+   "exact": true
+  },
+  "TOUCHBIT": {
+   "bit": 2,
+   "exact": false
+  },
+  "TRANSBIT": {
+   "bit": 7,
+   "exact": true
+  },
+  "TRYTAKEBIT": {
+   "bit": 13,
+   "exact": true
+  },
+  "TURNBIT": {
+   "bit": 15,
+   "exact": true
+  },
+  "VEHBIT": {
+   "bit": 27,
+   "exact": true
+  },
+  "WEAPONBIT": {
+   "bit": 29,
+   "exact": true
+  },
+  "WEARBIT": {
+   "bit": 3,
+   "exact": true
+  }
+ },
+ "holder": {
+  "id": 249,
+  "name": ""
+ },
+ "kids": [
+  {
+   "id": 250,
+   "name": "stream",
+   "invisible": false
+  },
+  {
+   "id": 188,
+   "name": "stairs",
+   "invisible": false
+  },
+  {
+   "id": 13,
+   "name": "pseudo",
+   "invisible": false
+  },
+  {
+   "id": 20,
+   "name": "sphere",
+   "invisible": false
+  },
+  {
+   "id": 221,
+   "name": "gazebo",
+   "invisible": false
+  },
+  {
+   "id": 101,
+   "name": "barred window",
+   "invisible": false
+  },
+  {
+   "id": 102,
+   "name": "door made of oak",
+   "invisible": false
+  },
+  {
+   "id": 150,
+   "name": "Wizard's trophy cabinet",
+   "invisible": false
+  },
+  {
+   "id": 171,
+   "name": "secret door",
+   "invisible": true
+  },
+  {
+   "id": 173,
+   "name": "crypt door",
+   "invisible": false
+  },
+  {
+   "id": 176,
+   "name": "three:headed dog",
+   "invisible": false
+  },
+  {
+   "id": 186,
+   "name": "diamond shaped window",
+   "invisible": false
+  },
+  {
+   "id": 194,
+   "name": "enormous menhir",
+   "invisible": false
+  },
+  {
+   "id": 193,
+   "name": "enormous menhir",
+   "invisible": false
+  },
+  {
+   "id": 197,
+   "name": "door partly covered in cobwebs",
+   "invisible": false
+  },
+  {
+   "id": 224,
+   "name": "unicorn",
+   "invisible": false
+  },
+  {
+   "id": 232,
+   "name": "north wall",
+   "invisible": false
+  },
+  {
+   "id": 233,
+   "name": "south wall",
+   "invisible": false
+  },
+  {
+   "id": 234,
+   "name": "west wall",
+   "invisible": false
+  },
+  {
+   "id": 235,
+   "name": "east wall",
+   "invisible": false
+  },
+  {
+   "id": 236,
+   "name": "well",
+   "invisible": false
+  },
+  {
+   "id": 238,
+   "name": "water",
+   "invisible": false
+  },
+  {
+   "id": 245,
+   "name": "bridge",
+   "invisible": false
+  },
+  {
+   "id": 246,
+   "name": "roses",
+   "invisible": false
+  },
+  {
+   "id": 247,
+   "name": "mosses",
+   "invisible": false
+  },
+  {
+   "id": 248,
+   "name": "chasm",
+   "invisible": false
+  }
+ ],
+ "rooms": [
+  {
+   "id": 18,
+   "name": "Room of White Mist",
+   "lit": true,
+   "lg": [
+    "20:sphere"
+   ]
+  },
+  {
+   "id": 19,
+   "name": "Room of Blue Mist",
+   "lit": true,
+   "lg": [
+    "20:sphere"
+   ]
+  },
+  {
+   "id": 21,
+   "name": "Room of Red Mist",
+   "lit": true,
+   "lg": [
+    "20:sphere"
+   ]
+  },
+  {
+   "id": 100,
+   "name": "Tiny Room",
+   "lit": false,
+   "lg": [
+    "102:door made of oak",
+    "101:barred window",
+    "248:chasm"
+   ]
+  },
+  {
+   "id": 103,
+   "name": "Dreary Room",
+   "lit": true,
+   "lg": [
+    "102:door made of oak",
+    "101:barred window"
+   ]
+  },
+  {
+   "id": 107,
+   "name": "Safety Depository",
+   "lit": true,
+   "lg": [
+    "232:north wall"
+   ]
+  },
+  {
+   "id": 108,
+   "name": "Vault",
+   "lit": false,
+   "lg": [
+    "235:east wall",
+    "234:west wall",
+    "232:north wall",
+    "233:south wall"
+   ]
+  },
+  {
+   "id": 109,
+   "name": "Small Room",
+   "lit": false,
+   "lg": [
+    "235:east wall",
+    "234:west wall",
+    "232:north wall",
+    "233:south wall"
+   ]
+  },
+  {
+   "id": 110,
+   "name": "East Viewing Room",
+   "lit": false,
+   "lg": [
+    "235:east wall",
+    "234:west wall",
+    "232:north wall",
+    "233:south wall"
+   ]
+  },
+  {
+   "id": 111,
+   "name": "West Viewing Room",
+   "lit": false,
+   "lg": [
+    "235:east wall",
+    "234:west wall",
+    "232:north wall",
+    "233:south wall"
+   ]
+  },
+  {
+   "id": 116,
+   "name": "Posts Room",
+   "lit": true,
+   "lg": [
+    "248:chasm"
+   ]
+  },
+  {
+   "id": 118,
+   "name": "Circular Room",
+   "lit": false,
+   "lg": [
+    "236:well"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Top of Well",
+   "lit": false,
+   "lg": [
+    "236:well"
+   ]
+  },
+  {
+   "id": 147,
+   "name": "Pentagram Room",
+   "lit": true,
+   "lg": [
+    "193:enormous menhir",
+    "176:three:headed dog",
+    "150:Wizard's trophy cabinet"
+   ]
+  },
+  {
+   "id": 165,
+   "name": "Wizard's Workshop",
+   "lit": false,
+   "lg": [
+    "197:door partly covered in cobwebs"
+   ]
+  },
+  {
+   "id": 167,
+   "name": "Guarded Room",
+   "lit": false,
+   "lg": [
+    "197:door partly covered in cobwebs"
+   ]
+  },
+  {
+   "id": 172,
+   "name": "Crypt",
+   "lit": false,
+   "lg": [
+    "173:crypt door",
+    "171:secret door"
+   ]
+  },
+  {
+   "id": 174,
+   "name": "Crypt Anteroom",
+   "lit": false,
+   "lg": [
+    "173:crypt door"
+   ]
+  },
+  {
+   "id": 177,
+   "name": "Cerberus Room",
+   "lit": false,
+   "lg": [
+    "188:stairs"
+   ]
+  },
+  {
+   "id": 178,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 179,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 180,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 181,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 182,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "188:stairs",
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 183,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 184,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 185,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 187,
+   "name": "Oddly:angled Room",
+   "lit": false,
+   "lg": [
+    "186:diamond shaped window"
+   ]
+  },
+  {
+   "id": 189,
+   "name": "Stairway",
+   "lit": false,
+   "lg": [
+    "188:stairs"
+   ]
+  },
+  {
+   "id": 192,
+   "name": "Kennel",
+   "lit": false,
+   "lg": [
+    "194:enormous menhir"
+   ]
+  },
+  {
+   "id": 195,
+   "name": "Menhir Room",
+   "lit": false,
+   "lg": [
+    "194:enormous menhir"
+   ]
+  },
+  {
+   "id": 201,
+   "name": "Cool Room",
+   "lit": false,
+   "lg": [
+    "245:bridge"
+   ]
+  },
+  {
+   "id": 202,
+   "name": "Stone Bridge",
+   "lit": false,
+   "lg": [
+    "245:bridge",
+    "248:chasm"
+   ]
+  },
+  {
+   "id": 211,
+   "name": "Dragon Room",
+   "lit": false,
+   "lg": [
+    "245:bridge"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "Ledge in Ravine",
+   "lit": false,
+   "lg": [
+    "248:chasm"
+   ]
+  },
+  {
+   "id": 214,
+   "name": "Deep Ford",
+   "lit": false,
+   "lg": [
+    "238:water",
+    "248:chasm",
+    "250:stream"
+   ]
+  },
+  {
+   "id": 215,
+   "name": "Marble Hall",
+   "lit": false,
+   "lg": [
+    "250:stream"
+   ]
+  },
+  {
+   "id": 216,
+   "name": "Path Near Stream",
+   "lit": false,
+   "lg": [
+    "245:bridge",
+    "248:chasm",
+    "250:stream"
+   ]
+  },
+  {
+   "id": 218,
+   "name": "Topiary",
+   "lit": true,
+   "lg": [
+    "224:unicorn",
+    "247:mosses",
+    "246:roses"
+   ]
+  },
+  {
+   "id": 219,
+   "name": "Formal Garden",
+   "lit": true,
+   "lg": [
+    "224:unicorn",
+    "247:mosses"
+   ]
+  },
+  {
+   "id": 220,
+   "name": "Gazebo",
+   "lit": true,
+   "lg": [
+    "224:unicorn",
+    "221:gazebo"
+   ]
+  },
+  {
+   "id": 222,
+   "name": "North End of Garden",
+   "lit": true,
+   "lg": [
+    "224:unicorn",
+    "221:gazebo",
+    "247:mosses",
+    "246:roses"
+   ]
+  },
+  {
+   "id": 226,
+   "name": "Shallow Ford",
+   "lit": true,
+   "lg": [
+    "238:water"
+   ]
+  },
+  {
+   "id": 227,
+   "name": "Great Cavern",
+   "lit": true,
+   "lg": [
+    "247:mosses"
+   ]
+  },
+  {
+   "id": 228,
+   "name": "Foot Bridge",
+   "lit": true,
+   "lg": [
+    "245:bridge",
+    "248:chasm"
+   ]
+  },
+  {
+   "id": 229,
+   "name": "Narrow Tunnel",
+   "lit": true,
+   "lg": [
+    "245:bridge",
+    "248:chasm",
+    "250:stream",
+    "247:mosses"
+   ]
+  },
+  {
+   "id": 249,
+   "name": "",
+   "lit": false,
+   "lg": [
+    "243:(par0)"
+   ]
+  }
+ ]
+}

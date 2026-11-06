@@ -1,0 +1,38 @@
+{
+    "key":  "sherlock",
+    "game":  "Sherlock.z5.js",
+    "bit":  39,
+    "tmpl":  "take",
+    "tag":  "shertake",
+    "note":  "RT-ITAKE parser.zil:1651 refuses NOT FL-TAKEABLE(39) with RT-IMPOSSIBLE-MSG; static map exact 58/58; dynamic setters charles:98/884, people:955, things2:1717 (none on tested objects).",
+    "tests":  [
+                  {
+                      "cmd":  "take violin",
+                      "step":  7,
+                      "name":  "violin",
+                      "id":  207,
+                      "expect":  1
+                  },
+                  {
+                      "cmd":  "take slipper",
+                      "step":  7,
+                      "name":  "persian slipper",
+                      "id":  228,
+                      "expect":  1
+                  },
+                  {
+                      "cmd":  "take sofa",
+                      "step":  7,
+                      "name":  "sofa",
+                      "id":  239,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "take mantelpiece",
+                      "step":  7,
+                      "name":  "mantelpiece",
+                      "id":  292,
+                      "expect":  0
+                  }
+              ]
+}

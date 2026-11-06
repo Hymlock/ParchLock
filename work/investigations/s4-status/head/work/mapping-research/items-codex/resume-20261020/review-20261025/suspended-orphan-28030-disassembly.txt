@@ -1,0 +1,62 @@
+routine 28030 locals 8
+28047: store #124,#0
+28050: loadw G103,#0 -> L2
+28054: jz L2 ?28065
+28057: loadw G102,#0 -> sp
+28061: je L2,sp ?~RFALSE
+28065: je G100,#2 ?RFALSE
+28069: loadw G102,#6 -> sp
+28073: je sp,#1 ?~28113
+28077: loadw G103,#2 -> L1
+28081: loadw G102,#2 -> sp
+28085: je L1,sp ?28092
+28089: jz L1 ?~RFALSE
+28092: loadw G103,#6 -> sp
+28096: storew G102,#6,sp
+28101: loadw G103,#7 -> sp
+28105: storew G102,#7,sp
+28110: jump #147
+28113: loadw G102,#8 -> sp
+28117: je sp,#1 ?~28160
+28121: loadw G103,#2 -> L1
+28125: loadw G102,#4 -> sp
+28129: je L1,sp ?28136
+28133: jz L1 ?~RFALSE
+28136: loadw G103,#6 -> sp
+28140: storew G102,#8,sp
+28145: loadw G103,#7 -> sp
+28149: storew G102,#9,sp
+28154: store #116,#2
+28157: jump #100
+28160: jz G106 ?28258
+28164: je G100,#1 ?28172
+28168: store #122,#0
+28171: rfalse 
+28172: loadw G103,#6 -> L3
+28176: loadw G103,#7 -> L4
+28180: je L3,L4 ?~28200
+28184: jz L5 ?28196
+28187: call #28278,L5 -> sp
+28193: jump #64
+28196: store #122,#0
+28199: rfalse 
+28200: jz L5 ?~28221
+28203: loadw L3,#0 -> L6
+28207: loadb L6,#4 -> sp
+28211: test sp,#32 ?~28221
+28215: store #6,L6
+28218: jump #32
+28221: loadb L6,#4 -> sp
+28225: test sp,#128 ?28235
+28229: je L6,#15444 ?~28251
+28235: je L6,G105,#15444 ?~RFALSE
+28242: call #28278,L5 -> sp
+28248: jump #9
+28251: add L3,#4 -> L3
+28255: jump #65460
+28258: inc_chk #1,#9 ?~28266
+28262: store #123,#1
+28265: rtrue 
+28266: loadw G102,L0 -> sp
+28270: storew G103,L0,sp
+28275: jump #65518

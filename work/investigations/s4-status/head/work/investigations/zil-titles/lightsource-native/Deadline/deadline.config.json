@@ -1,0 +1,10 @@
+{"story":"Deadline.z3.js","key":"deadline","seed":0,"route":"walk","until":50,"tests":[
+ {"cmd":"look","role":"setup"},
+ {"cmd":"examine crystal lamp","id":50,"role":"setup"},
+ {"cmd":"turn on crystal lamp","id":50,"role":"pos"},
+ {"cmd":"light crystal lamp","id":50,"role":"pos"},
+ {"cmd":"take crystal lamp","id":50,"role":"setup"},
+ {"cmd":"turn on crystal lamp","id":50,"role":"pos"},
+ {"cmd":"turn off crystal lamp","id":50,"role":"off"},
+ {"cmd":"blow out crystal lamp","id":50,"role":"off"}
+]}

@@ -1,0 +1,51 @@
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index a0d17d6..0d3345b 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -345,7 +345,9 @@ var ZRamReader = {
+                 var packed = ZRamReader.u16(mem, namesAt + bit * 2);
+                 if (!packed) continue;
+                 var entry = decode(packed);
+-                if (entry === "unknown attribute") continue;
++                // Inform symbols.c initializes unnamed slots with this exact
++                // sentinel; its angle brackets use ten-bit ZSCII escapes.
++                if (entry === "<unknown attribute>") continue;
+                 if (!entry) return null;
+                 // D193: one bit may carry several declared names. Inform's
+                 // symbols.c writes every alias for a position into a single
+@@ -675,11 +677,25 @@ var ZRamReader = {
+         var out = "";
+         var abbrev = false;
+         var abbrevZ = 0;
++        var escapeUnits = 0;
++        var escapeCode = 0;
+         for (var w = 0; w < maxWords; w++) {
+             var word = ZRamReader.u16(mem, addr + w * 2);
+             var zchars = [(word >> 10) & 0x1f, (word >> 5) & 0x1f, word & 0x1f];
+             for (var i = 0; i < 3; i++) {
+                 var z = zchars[i];
++                // A2/6 owns the next two units, even across packed words.
++                // Payload values are never abbreviation/shift controls.
++                if (escapeUnits) {
++                    escapeCode = (escapeCode << 5) | z;
++                    if (--escapeUnits === 0) {
++                        if (escapeCode >= 32 && escapeCode <= 126) out += String.fromCharCode(escapeCode);
++                        else if (escapeCode === 13) out += "\n";
++                        // Null/unsupported extended codes add no invented Unicode.
++                        alph = 0;
++                    }
++                    continue;
++                }
+                 if (abbrev) {
+                     var h = ZRamReader.header(mem);
+                     var table = h ? h.abbrev : 0;
+@@ -693,7 +709,8 @@ var ZRamReader = {
+                 if (z === 4) { alph = 1; continue; }
+                 if (z === 5) { alph = 2; continue; }
+                 if (z === 6 && alph === 2) {
+-                    // next two zchars form ZSCII - simplified skip
++                    escapeUnits = 2;
++                    escapeCode = 0;
+                     alph = 0;
+                     continue;
+                 }

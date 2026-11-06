@@ -1,0 +1,32 @@
+{
+  "originalRoot": "C:/Users/hymlo/agent-tools/gate-r4b1",
+  "retainedAt": "2026-10-26T06:07:11.217Z",
+  "gateOwner": "grok",
+  "independentRuling": "codex bus5401/5407",
+  "baseline": "7ce456339450196a7e2b173a3c2625c9b4e4e0af",
+  "candidate": "6732a7a77c138af198502672452fcb3feb88a33b plus exact frozen six files and noD1b facts",
+  "sourceCommit": "b0e2f9e039081137c649a89812eefce8bc85d903",
+  "factsIntegration": "pending Grok lane",
+  "files": {
+    "base-source.sha256": "71655afdfd6215e9a8d8fbe8fe7d3f21607ac69494ada98f5effe22221c3c85f",
+    "base.jsonl": "ed5fc0dce1d7cc4e47065a23a96e2a5f0cab0eec33d9c545060daf5d0c46b642",
+    "cand-source.sha256": "f9ef62627a224f3db1d632aa380ed972e6df699a1afe94eedb0b469c63c90b53",
+    "cand.jsonl": "baa20acd791ace23b8c45e977172f8f0e351c82f6dc3ee796f658917ce1f2b37",
+    "classify.txt": "7989d90ae612b833e4d87b723f4aa10c56882571d3b0a98e737043aa0978a9b9",
+    "diff.txt": "33211481b4f553f9cce1c07eb9e91bcd2966c144cc6472a62416f9cb69bf204f",
+    "operator-base.txt": "8a5f43bbfae2b47d3416352e44479fba34627b5998f2d13904d575ebf8cdcadd",
+    "operator-cand.txt": "8a5f43bbfae2b47d3416352e44479fba34627b5998f2d13904d575ebf8cdcadd",
+    "rerun-base-1.jsonl": "fa549ad86571ee7d5a5d21afd8b14a5487d3ac7bf9712a0dcddf78b6a67e31bc",
+    "rerun-base-2.jsonl": "fa549ad86571ee7d5a5d21afd8b14a5487d3ac7bf9712a0dcddf78b6a67e31bc",
+    "rerun-cand-1.jsonl": "32c9e698454a9075f9f3a02c7d6e478df9a57adeeb912e7ce9bb63905cf9c3c4",
+    "rerun-cand-2.jsonl": "82bdfc62e22e694a918fc14f3324cb409289d52c5d673eab72f1e81b72048ab3",
+    "wir2-base-3.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc",
+    "wir2-base-4.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc",
+    "wir2-base-5.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc",
+    "wir2-base-6.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc",
+    "wir2-cand-3.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc",
+    "wir2-cand-4.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc",
+    "wir2-cand-5.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc",
+    "wir2-cand-6.jsonl": "d43ab358c9615bbe742c54fc92983dcab62b1acb0691dfb55f93b381b6acc3fc"
+  }
+}

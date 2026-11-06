@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-26T21:56:33.179Z",
+  "changes": [
+    {
+      "title": "Zork2-TheWizardofFrobozz",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Zork3-TheDungeonMaster",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Ballyhoo",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Deadline",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Moonmist",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "PlunderedHearts",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Planetfall",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Sorcerer",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Spellbreaker",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Starcross",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "Suspect",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    },
+    {
+      "title": "TheWitness",
+      "key": "concealed",
+      "before": "U",
+      "after": "C"
+    }
+  ],
+  "scope": "Twelve mapped semantics only; not full completion"
+}

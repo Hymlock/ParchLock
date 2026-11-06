@@ -1,0 +1,66 @@
+{
+  "results": [
+    {
+      "name": "base-d31-nested-inventory",
+      "exit": 1
+    },
+    {
+      "name": "base-attr-calibrator-inventory-root",
+      "exit": 0
+    },
+    {
+      "name": "candidate-d31-nested-inventory",
+      "exit": 1
+    },
+    {
+      "name": "candidate-attr-calibrator-inventory-root",
+      "exit": 0
+    },
+    {
+      "name": "zil-garment-worn-domain",
+      "exit": 0
+    },
+    {
+      "name": "zil-direct-player-worn",
+      "exit": 0
+    },
+    {
+      "name": "zil-object-food",
+      "exit": 0
+    },
+    {
+      "name": "zil-food-drink",
+      "exit": 0
+    },
+    {
+      "name": "d198-contract-matrix",
+      "exit": 0
+    }
+  ],
+  "d31": {
+    "base": [
+      "FAIL: nested lamp offers exactly one command",
+      "FAIL: nested lamp's REAL command is plain 'take lamp' (D78 -- 'take X out of Y' is never actually understood as a completed take, confirmed live on Anchorhead)",
+      "FAIL: nested lamp's DISPLAY label still shows its container context (take out of box)",
+      "FAIL: nested take-out-of label still fires when only probe.playerId is set, with the D78 plain-take real command",
+      "FAIL: RAM-backed nested lamp offers exactly one command",
+      "FAIL: RAM-backed nested lamp's real command is plain 'take lamp' (D78)",
+      "FAIL: RAM-backed nested lamp's display label is still take out of box",
+      "FAIL: radial has exactly one verb slice besides optional Use with...",
+      "FAIL: d31-nested-inventory (8 failed, 52 passed)"
+    ],
+    "candidate": [
+      "FAIL: nested lamp offers exactly one command",
+      "FAIL: nested lamp's REAL command is plain 'take lamp' (D78 -- 'take X out of Y' is never actually understood as a completed take, confirmed live on Anchorhead)",
+      "FAIL: nested lamp's DISPLAY label still shows its container context (take out of box)",
+      "FAIL: nested take-out-of label still fires when only probe.playerId is set, with the D78 plain-take real command",
+      "FAIL: RAM-backed nested lamp offers exactly one command",
+      "FAIL: RAM-backed nested lamp's real command is plain 'take lamp' (D78)",
+      "FAIL: RAM-backed nested lamp's display label is still take out of box",
+      "FAIL: radial has exactly one verb slice besides optional Use with...",
+      "FAIL: d31-nested-inventory (8 failed, 52 passed)"
+    ],
+    "same": true
+  },
+  "limits": "Existing paired failures are retained, not green passes."
+}

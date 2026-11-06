@@ -1,0 +1,13 @@
+{
+ "task": "DEFERRED E2 inventoryHiddenAttribute (NDESCBIT-type; INVISIBLE is the separate inventoryInvisibleAttribute, cf. Suspect 19/10 in js/ModuleStatFactsClaude.js)",
+ "Moonmist.z3.js": {"bit": 19, "source": "NDESCBIT exact 73/73", "verdict": "PARTIAL",
+   "positives": [], "negative": "tweed outfit 78 held d1 bits [5,17,21,26,29], listed by i (Moonmist.z3.js.json startup)",
+   "blocker": "full fixed walk grok1/routes/moonmist-red-bsmt.json + i after every take (g1/bsmt/heldp-moonmist.json, 100 steps): 13 held depth-1 objects, none carry 19 (take clears it). Only bit-19 held object is coat of paint 163 inside cane 49 (depth 2), which flat i omits anyway."},
+ "Wishbringer.z3.js": {"bit": 16, "source": "NDESCBIT inexact 120/123; INVISIBLE not in 2026-10-11-zil-source-flags.json (unresolved)", "verdict": "PARTIAL",
+   "positives": [], "negative": "e.g. mysterious envelope 43 held d1 bit16=0",
+   "blocker": "grok1/invh/cache/heldp-wishbringer.json (Jericho 184-step walk): no depth-1 held object ever carries 16. Bit-16 held only at depth 2: false bottom 181 in can (step 59), rusty key 7 in lab coat (step 147). Prior note says Wishbringer i filters INVISIBLE only, so NDESC 16 may not be its inventory filter at all; INVISIBLE bit not resolvable from the catalog."},
+ "Suspended.z3.js": {"bit": 4, "source": "NDESCBIT exact 46/46; verbs.zil PRINT-CONT skips INVISIBLE, NDESCBIT, ROBOT, non-DESCRIBABLE", "verdict": "PARTIAL (1 of 2 positives)",
+   "positives": ["panel 80 child of Iris 158 (initial WINNER) bits [4,19]; 'iris, i' and 'i' -> 'I am holding nothing in my dainty extensions.' (susp-iris.json)"],
+   "negative": "Sensa 152 after route steps 1-6: BASKET 76 bits [7,8,12,18,19] (no 4) listed 'A small container' (susp-sensa.json)",
+   "blocker": "V-TAKE (verbs.zil:680-681) FCLEARs NDESCBIT; PANEL is the only source object starting in a robot; V-REPLACE (verbs.zil:2182) moves PRSO to WINNER without FCLEAR but the route's REPLACE moves a non-NDESC chip. Note: Suspended i is NOT flat - Sensa's i listed the container's 5 ICs nested (PRINT-CONT recurses via DESCRIBE-OBJECT)."}
+}

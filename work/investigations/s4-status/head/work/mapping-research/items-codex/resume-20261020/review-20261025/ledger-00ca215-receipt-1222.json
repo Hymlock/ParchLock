@@ -1,0 +1,8 @@
+{
+  "commit": "00ca215",
+  "exactReviewedResultBlob": "64e70aeaf26b94ab85d69b9cb9eccedff611b618",
+  "matches": true,
+  "patchSha": "dccf99d44b1924d3cc301c9839b5b22f19e95383d4d19ceaa316668a4070fa43",
+  "physicalLines": 39,
+  "scope": "Exactly accepted3 U-to-Ccells; not fullZILcompletion"
+}

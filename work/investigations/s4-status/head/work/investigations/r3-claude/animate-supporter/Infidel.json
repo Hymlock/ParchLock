@@ -1,0 +1,79 @@
+{
+ "title": "Infidel",
+ "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+ "flag": "animate (ACTORBIT)",
+ "bit": 17,
+ "containerBitSource": 20,
+ "method": "drive.cjs headless Chromium, ordinary commands only; snapshot bits c=containerBit o=surface a=animate",
+ "appRowNow": {
+  "attributeMap": {
+   "container": 20,
+   "supporter": 28,
+   "open": 25,
+   "isOpen": 25,
+   "edible": 7,
+   "enterable": 14
+  },
+  "openCapability": {
+   "all": [
+    "container"
+   ],
+   "none": [
+    "supporter"
+   ]
+  }
+ },
+ "carriersInitial": [
+  {
+   "id": 221,
+   "name": "you",
+   "parent": 249,
+   "containerBit": 0
+  },
+  {
+   "id": 223,
+   "name": "cretin",
+   "parent": 51,
+   "containerBit": 0
+  }
+ ],
+ "evidence": [
+  {
+   "run": "_inf.run.json",
+   "cmd": "talk to cot",
+   "room": 71,
+   "reply": ">talk to cot You can't talk to the army cot! > ",
+   "diff": []
+  },
+  {
+   "run": "_inf.run.json",
+   "cmd": "cot, hello",
+   "room": 71,
+   "reply": ">cot, hello You can't talk to the army cot! > ",
+   "diff": []
+  },
+  {
+   "run": "_inf.run.json",
+   "cmd": "talk to trunk",
+   "room": 71,
+   "reply": ">talk to trunk You can't talk to the trunk! > ",
+   "diff": []
+  },
+  {
+   "run": "_inf.run.json",
+   "cmd": "talk to myself",
+   "room": 71,
+   "reply": ">talk to myself Talking to yourself is diverting, but unnecessary. > ",
+   "diff": []
+  },
+  {
+   "run": "_inf.run.json",
+   "cmd": "hello",
+   "room": 71,
+   "reply": ">hello Good day. You hear a plane flying high overhead, outside the tent. > ",
+   "diff": []
+  }
+ ],
+ "status": "INCOMPLETE",
+ "notes": "Only carriers are player objects you(221) and cretin(223); no NPC in Infidel carries bit 17, so >=2 distinct NPC positives cannot exist. talk to myself -> Talking to yourself is diverting, but unnecessary. (actor-type reply); negatives cot/trunk -> You can't talk to the army cot!/trunk!. Mapping animate:17 would be harmless but nearly inert. Infidel supporters also all carry container bit 20 (e.g. trunk, army cot); put padlock on cot/trunk -> Nice try."
+}

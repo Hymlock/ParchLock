@@ -1,0 +1,5 @@
+hg7 r45hh3 @54 switch on switch #134 NOTEST "A recording plays: \"To open the case, type in the first word from the second ver"
+hg7 r45hh3 @54 switch off switch #134 NOTEST "You can't turn that off.\n \nAn announcement is coming over the ship's intercom. \""
+hg7 r45hh3 @63 look #164 NOTEST "Vogon Hold\nThis is a squalid room filled with grubby mattresses, unwashed cups, "
+hg7 r45hh3 @63 get out of chair #164 NOTEST "You can't see any of chair here!\n \n> "
+hg7 r45hh3 @63 sit in chair #164 NOTEST "You can't see any chair here!\n \n> "

@@ -1,0 +1,2 @@
+run file work\investigations\claude-probe\locked\run-suspect-20261030T150836-38872.json
+suspect mer @68 open mercedes trunk #133 TRUE "The Mercedes' trunk is securely locked.\n \n> "

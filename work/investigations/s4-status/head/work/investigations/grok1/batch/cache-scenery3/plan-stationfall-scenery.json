@@ -1,0 +1,233 @@
+{
+ "key": "stationfall",
+ "game": "Stationfall.z3.js",
+ "bit": 10,
+ "tmpl": "look|examine X",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 46,
+   "name": "SB radio",
+   "step": 8,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 46,
+   "name": "SB radio",
+   "step": 8,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine sb radio"
+  },
+  {
+   "id": 50,
+   "name": "pilot seat",
+   "step": 8,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 50,
+   "name": "pilot seat",
+   "step": 8,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine pilot seat"
+  },
+  {
+   "id": 90,
+   "name": "copilot seat",
+   "step": 8,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 90,
+   "name": "copilot seat",
+   "step": 8,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine copilot seat"
+  },
+  {
+   "id": 55,
+   "name": "Plato's volume of poetry",
+   "step": 26,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 55,
+   "name": "Plato's volume of poetry",
+   "step": 26,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine plato's volume of poetry"
+  },
+  {
+   "id": 247,
+   "name": "Plato",
+   "step": 26,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 247,
+   "name": "Plato",
+   "step": 26,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine plato"
+  },
+  {
+   "id": 96,
+   "name": "pulpit",
+   "step": 63,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 96,
+   "name": "pulpit",
+   "step": 63,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine pulpit"
+  },
+  {
+   "id": 138,
+   "name": "seven-pointed star",
+   "step": 63,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 138,
+   "name": "seven-pointed star",
+   "step": 63,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine seven-pointed star"
+  },
+  {
+   "id": 205,
+   "name": "eternal flame",
+   "step": 63,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 205,
+   "name": "eternal flame",
+   "step": 63,
+   "expect": 1,
+   "bit": 10,
+   "cmd": "examine eternal flame"
+  },
+  {
+   "id": 1,
+   "name": "chronometer",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 1,
+   "name": "chronometer",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "examine chronometer"
+  },
+  {
+   "id": 26,
+   "name": "Floyd",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 26,
+   "name": "Floyd",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "examine floyd"
+  },
+  {
+   "id": 81,
+   "name": "ID card",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 81,
+   "name": "ID card",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "examine id card"
+  },
+  {
+   "id": 98,
+   "name": "Class Three Spacecraft Activation Form HB-56-V",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 98,
+   "name": "Class Three Spacecraft Activation Form HB-56-V",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "examine class three spacecraft activation form hb-56-v"
+  },
+  {
+   "id": 132,
+   "name": "blob of orange goo",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 132,
+   "name": "blob of orange goo",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "examine blob of orange goo"
+  },
+  {
+   "id": 160,
+   "name": "Thermos bottle",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "look"
+  },
+  {
+   "id": 160,
+   "name": "Thermos bottle",
+   "step": 8,
+   "expect": 0,
+   "bit": 10,
+   "cmd": "examine thermos bottle"
+  }
+ ]
+}

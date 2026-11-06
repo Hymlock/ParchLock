@@ -1,0 +1,106 @@
+﻿{
+ "story": "Tokyo2.z5.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 20,
+    "playerSource": "named-player",
+    "roomId": 0,
+    "roomSource": "none",
+    "measuredDark": null,
+    "scopeCount": 0
+   },
+   "parent": 0,
+   "tail": " WARNING: Your screen may not be wide enough to display some menu items correctly. It is recommended that you enlarge your screen size, if possible, before continuing. [Press any key] ",
+   "status": "",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 81,
+    "playerSource": "named-player",
+    "roomId": 29,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 3
+   },
+   "parent": 0,
+   "tail": "ers snort at some whispered wisecrack. Suddenly the lights dim. The murmur of conversation dies away and all eyes turn toward the screen... * * * * * Release 2 / Serial number 000615 / Inform v6.21 Library 6/10 New players type INFO or HELP [MORE] ",
+   "status": "",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 81,
+    "playerSource": "named-player",
+    "roomId": 29,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 3
+   },
+   "parent": 0,
+   "tail": " [MORE] ",
+   "status": "DOWNTOWN TOKYO. PRESENT DAY.",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 81,
+    "playerSource": "named-player",
+    "roomId": 29,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 3
+   },
+   "parent": 0,
+   "tail": "owds. He turns a page of his newspaper and takes a sip from a bowl of steaming soup. >look A Streetside Cafe The man sits at an outdoor table surrounded by swirling crowds. He turns a page of his newspaper and takes a sip from a bowl of steaming soup. > ",
+   "status": "Prologue",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "stand",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 81,
+    "playerSource": "named-player",
+    "roomId": 29,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 3
+   },
+   "parent": 0,
+   "tail": "Streetside Cafe The man sits at an outdoor table surrounded by swirling crowds. He turns a page of his newspaper and takes a sip from a bowl of steaming soup. >stand Though ordinarily a man of action, our hero has no urge to leave his comfortable table. > ",
+   "status": "Prologue",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+

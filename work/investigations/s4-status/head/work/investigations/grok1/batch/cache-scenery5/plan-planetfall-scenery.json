@@ -1,0 +1,57 @@
+{
+ "key": "planetfall",
+ "game": "Planetfall.z3.js",
+ "bit": 8,
+ "tmpl": "look",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 212,
+   "name": "blob of red goo",
+   "step": 27,
+   "expect": 0,
+   "bit": 8,
+   "cmd": "look"
+  },
+  {
+   "id": 213,
+   "name": "survival kit",
+   "step": 27,
+   "expect": 0,
+   "bit": 8,
+   "cmd": "look"
+  },
+  {
+   "id": 124,
+   "name": "curved metal bar",
+   "step": 39,
+   "expect": 0,
+   "bit": 8,
+   "cmd": "look"
+  },
+  {
+   "id": 158,
+   "name": "key",
+   "step": 39,
+   "expect": 0,
+   "bit": 8,
+   "cmd": "look"
+  },
+  {
+   "id": 214,
+   "name": "towel",
+   "step": 14,
+   "expect": 0,
+   "bit": 8,
+   "cmd": "look"
+  },
+  {
+   "id": 7,
+   "name": "old battery",
+   "step": 33,
+   "expect": 0,
+   "bit": 8,
+   "cmd": "look"
+  }
+ ]
+}

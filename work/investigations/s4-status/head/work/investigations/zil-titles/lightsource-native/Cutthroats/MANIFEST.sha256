@@ -1,0 +1,7 @@
+a30dc542e7211cfc931e7f6ce957158880088d1844d44dd7bd84ae0c6d365079 *cutthroats.config.json
+e79fc14178fc5a3e202ce67ddf440477ad5fa3d1709926ab3cfbed7308cbdce6 *cutthroats.log
+31b62cd019fb909165e9cad37784bf9b05e4865d4f1ced6a9132d5467b067b97 *cutthroats.run.json
+489cbbbabd47373dece024c9b1868f99e7c804467b991e3e5cc55256822912a8 *cutthroats2.config.json
+fa00d85603c735d1b966cfabf28f00da1d5b9e1e92dd7539776c7196ddbed424 *cutthroats2.log
+a8429f4f1193041c3ac32fa2615a6df45a10794033584dcfc353f09e8e7f613b *cutthroats2.run.json
+# tier: T1 native play.html walk (probe.cjs), JSEED RNG parity, passive test_attr recording; no RAM/fact writes. *.run.json absent = run aborted/unreached

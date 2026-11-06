@@ -1,0 +1,29 @@
+{
+  "reason": "Initial operator run missing games outside9-row gate; own operator PID39860 and descendants stopped. Original failure retained. Only these previously absent assets added;9-row gate inputs unchanged.",
+  "assets": [
+    {
+      "game": "Zork1-TheGreatUndergroundEmpire.z3.js",
+      "sha256": "7da3731fbfde5d0548f4bc6cbaa46b80fbc374e1e97f8fe894a5924a41b7b2a8"
+    },
+    {
+      "game": "wump2ka.z5.js",
+      "sha256": "a2bc9b375147695bc901eca6a64e27ae33a10bc8628a481bb9504bb33b704250"
+    },
+    {
+      "game": "weather.z5.js",
+      "sha256": "97e65397a33b6cc0d7009bbc825ca75ae6de153763c3fe7c1e6cb3a4e70d85a0"
+    },
+    {
+      "game": "suvehnux.z5.js",
+      "sha256": "15ebb27a47c99e2c011dae6e7936715a418be15104144daf8a2bf1e95738866c"
+    },
+    {
+      "game": "Jigsaw.z8.js",
+      "sha256": "80e069cb1b3d4136de5a31422096078fcdcffe981a8d75b9599e65b568710042"
+    },
+    {
+      "game": "Planetfall.z3.js",
+      "sha256": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064"
+    }
+  ]
+}

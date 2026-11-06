@@ -1,0 +1,1483 @@
+{
+ "story": "Planetfall.z3.js",
+ "version": 3,
+ "digest": "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf",
+ "flags": {
+  "ACIDBIT": {
+   "bit": 4,
+   "exact": true
+  },
+  "ACTORBIT": {
+   "bit": 31,
+   "exact": false
+  },
+  "CLIMBBIT": {
+   "bit": 29,
+   "exact": true
+  },
+  "CONTBIT": {
+   "bit": 24,
+   "exact": true
+  },
+  "DOORBIT": {
+   "bit": 26,
+   "exact": true
+  },
+  "FLOYDBIT": {
+   "bit": 2,
+   "exact": true
+  },
+  "FOODBIT": {
+   "bit": 27,
+   "exact": true
+  },
+  "INVISIBLE": {
+   "bit": 19,
+   "exact": true
+  },
+  "LIGHTBIT": {
+   "bit": 21,
+   "exact": true
+  },
+  "MUNGBIT": {
+   "bit": 15,
+   "exact": true
+  },
+  "NDESCBIT": {
+   "bit": 8,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 5,
+   "exact": true
+  },
+  "OPENBIT": {
+   "bit": 11,
+   "exact": true
+  },
+  "READBIT": {
+   "bit": 23,
+   "exact": true
+  },
+  "RLANDBIT": {
+   "bit": 6,
+   "exact": true
+  },
+  "RWATERBIT": {
+   "bit": 3,
+   "exact": true
+  },
+  "SEARCHBIT": {
+   "bit": 10,
+   "exact": true
+  },
+  "TAKEBIT": {
+   "bit": 25,
+   "exact": true
+  },
+  "TOOLBIT": {
+   "bit": 20,
+   "exact": true
+  },
+  "TRANSBIT": {
+   "bit": 9,
+   "exact": true
+  },
+  "TRYTAKEBIT": {
+   "bit": 16,
+   "exact": true
+  },
+  "VEHBIT": {
+   "bit": 30,
+   "exact": true
+  },
+  "VOWELBIT": {
+   "bit": 7,
+   "exact": true
+  },
+  "WEARBIT": {
+   "bit": 22,
+   "exact": true
+  },
+  "WORNBIT": {
+   "bit": 12,
+   "exact": true
+  }
+ },
+ "holder": {
+  "id": 254,
+  "name": ""
+ },
+ "kids": [
+  {
+   "id": 249,
+   "name": "stairway",
+   "invisible": false,
+   "attrs": [
+    8,
+    29
+   ],
+   "listedBy": [
+    "57L",
+    "60L",
+    "74L",
+    "78L",
+    "84L",
+    "85L",
+    "86L",
+    "99L",
+    "100L",
+    "129d",
+    "131L",
+    "191L",
+    "192L",
+    "193L",
+    "221L",
+    "222L",
+    "235L"
+   ]
+  },
+  {
+   "id": 15,
+   "name": "silicon strip",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "12L",
+    "13L",
+    "14L",
+    "16L"
+   ]
+  },
+  {
+   "id": 28,
+   "name": "office door",
+   "invisible": false,
+   "attrs": [
+    7,
+    8,
+    26
+   ],
+   "listedBy": [
+    "24L",
+    "29L"
+   ]
+  },
+  {
+   "id": 39,
+   "name": "radiation:lock door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "32L",
+    "41L"
+   ]
+  },
+  {
+   "id": 30,
+   "name": "lab door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "27L",
+    "31L"
+   ]
+  },
+  {
+   "id": 40,
+   "name": "bio:lock door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "34L",
+    "41L"
+   ]
+  },
+  {
+   "id": 33,
+   "name": "lab door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "29L",
+    "42L"
+   ]
+  },
+  {
+   "id": 50,
+   "name": "cryo:elevator door",
+   "invisible": true,
+   "attrs": [
+    8,
+    19
+   ],
+   "listedBy": [
+    "49L",
+    "51L"
+   ]
+  },
+  {
+   "id": 98,
+   "name": "large vehicle",
+   "invisible": false,
+   "attrs": [
+    8,
+    30
+   ],
+   "listedBy": [
+    "97L",
+    "99L"
+   ]
+  },
+  {
+   "id": 127,
+   "name": "button",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "104L",
+    "105L",
+    "128L"
+   ]
+  },
+  {
+   "id": 106,
+   "name": "red door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "88L",
+    "104L",
+    "108L"
+   ]
+  },
+  {
+   "id": 107,
+   "name": "blue door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "100L",
+    "105L",
+    "108L"
+   ]
+  },
+  {
+   "id": 130,
+   "name": "reactor elevator door",
+   "invisible": false,
+   "attrs": [
+    26
+   ],
+   "listedBy": [
+    "128L",
+    "131L"
+   ]
+  },
+  {
+   "id": 156,
+   "name": "rift",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "155L",
+    "157L"
+   ]
+  },
+  {
+   "id": 166,
+   "name": "door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "165L",
+    "167L"
+   ]
+  },
+  {
+   "id": 173,
+   "name": "door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "171L",
+    "174L"
+   ]
+  },
+  {
+   "id": 187,
+   "name": "door",
+   "invisible": false,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "186L",
+    "188L"
+   ]
+  },
+  {
+   "id": 196,
+   "name": "bed",
+   "invisible": false,
+   "attrs": [
+    8,
+    29,
+    30
+   ],
+   "listedBy": [
+    "83L",
+    "176L",
+    "178L",
+    "180L",
+    "182L"
+   ]
+  },
+  {
+   "id": 203,
+   "name": "door",
+   "invisible": true,
+   "attrs": [
+    11,
+    19,
+    26
+   ],
+   "listedBy": [
+    "197L",
+    "198L",
+    "199L",
+    "200L",
+    "202L",
+    "204L"
+   ]
+  },
+  {
+   "id": 201,
+   "name": "lever",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "197L",
+    "198L",
+    "200L",
+    "202L"
+   ]
+  },
+  {
+   "id": 205,
+   "name": "shuttle car",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "86L",
+    "87L",
+    "197L",
+    "198L",
+    "199L",
+    "200L",
+    "202L",
+    "204L"
+   ]
+  },
+  {
+   "id": 206,
+   "name": "tan button",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "101L",
+    "184L"
+   ]
+  },
+  {
+   "id": 207,
+   "name": "beige button",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "58L",
+    "184L"
+   ]
+  },
+  {
+   "id": 208,
+   "name": "brown button",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "58L",
+    "101L"
+   ]
+  },
+  {
+   "id": 209,
+   "name": "slot",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "44L",
+    "58L",
+    "101L",
+    "104L",
+    "105L",
+    "128L",
+    "167L",
+    "184L",
+    "197L",
+    "198L",
+    "200L",
+    "202L"
+   ]
+  },
+  {
+   "id": 229,
+   "name": "narrow bulkhead",
+   "invisible": true,
+   "attrs": [
+    8,
+    11,
+    19,
+    26
+   ],
+   "listedBy": [
+    "222L",
+    "235L"
+   ]
+  },
+  {
+   "id": 230,
+   "name": "wide bulkhead",
+   "invisible": true,
+   "attrs": [
+    8,
+    11,
+    19,
+    26
+   ],
+   "listedBy": [
+    "223L",
+    "235L"
+   ]
+  },
+  {
+   "id": 231,
+   "name": "escape pod bulkhead",
+   "invisible": false,
+   "attrs": [
+    7,
+    8,
+    26
+   ],
+   "listedBy": [
+    "216L",
+    "235L"
+   ]
+  },
+  {
+   "id": 228,
+   "name": "escape pod",
+   "invisible": false,
+   "attrs": [
+    7,
+    8,
+    30
+   ],
+   "listedBy": [
+    "216L",
+    "235L"
+   ]
+  },
+  {
+   "id": 240,
+   "name": "set of controls",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "58L",
+    "63L",
+    "70L",
+    "97L",
+    "101L",
+    "104L",
+    "105L",
+    "128L",
+    "131L",
+    "184L",
+    "216L"
+   ]
+  },
+  {
+   "id": 242,
+   "name": "light",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "46L",
+    "63L",
+    "70L",
+    "96L",
+    "104L",
+    "105L",
+    "216L"
+   ]
+  },
+  {
+   "id": 243,
+   "name": "shelf",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "38L",
+    "83L",
+    "126L",
+    "139L",
+    "171L"
+   ]
+  },
+  {
+   "id": 244,
+   "name": "table",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "27L",
+    "57L",
+    "60L",
+    "153L",
+    "167L",
+    "186L"
+   ]
+  },
+  {
+   "id": 245,
+   "name": "ocean",
+   "invisible": false,
+   "attrs": [
+    7,
+    8
+   ],
+   "listedBy": [
+    "89L",
+    "97L",
+    "143L",
+    "190L",
+    "193L",
+    "194L"
+   ]
+  },
+  {
+   "id": 246,
+   "name": "cliff",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "190L",
+    "192L",
+    "193L",
+    "194L"
+   ]
+  },
+  {
+   "id": 247,
+   "name": "window",
+   "invisible": false,
+   "attrs": [
+    8
+   ],
+   "listedBy": [
+    "29L",
+    "42L",
+    "97L",
+    "143L",
+    "193L",
+    "197L",
+    "198L",
+    "200L",
+    "202L",
+    "216L"
+   ]
+  }
+ ],
+ "rooms": [
+  {
+   "id": 12,
+   "name": "Strip Near Relay",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "15:silicon strip"
+   ]
+  },
+  {
+   "id": 13,
+   "name": "Middle of Strip",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "15:silicon strip"
+   ]
+  },
+  {
+   "id": 14,
+   "name": "Strip Near Station",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "15:silicon strip"
+   ]
+  },
+  {
+   "id": 16,
+   "name": "Station 384",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "15:silicon strip"
+   ]
+  },
+  {
+   "id": 24,
+   "name": "Lab Office",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "28:office door"
+   ]
+  },
+  {
+   "id": 27,
+   "name": "Radiation Lab",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "244:table",
+    "30:lab door"
+   ]
+  },
+  {
+   "id": 29,
+   "name": "Bio Lab",
+   "parent": 253,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "33:lab door",
+    "247:window",
+    "28:office door"
+   ]
+  },
+  {
+   "id": 31,
+   "name": "Radiation Lock East",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "30:lab door"
+   ]
+  },
+  {
+   "id": 32,
+   "name": "Radiation Lock West",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "39:radiation:lock door"
+   ]
+  },
+  {
+   "id": 34,
+   "name": "Bio Lock West",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "40:bio:lock door"
+   ]
+  },
+  {
+   "id": 38,
+   "name": "Lab Storage",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "243:shelf"
+   ]
+  },
+  {
+   "id": 41,
+   "name": "Main Lab",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "40:bio:lock door",
+    "39:radiation:lock door"
+   ]
+  },
+  {
+   "id": 42,
+   "name": "Bio Lock East",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "33:lab door",
+    "247:window"
+   ]
+  },
+  {
+   "id": 44,
+   "name": "Miniaturization Booth",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "209:slot"
+   ]
+  },
+  {
+   "id": 46,
+   "name": "Computer Room",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "242:light"
+   ]
+  },
+  {
+   "id": 49,
+   "name": "Cryo:Elevator",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "50:cryo:elevator door"
+   ]
+  },
+  {
+   "id": 51,
+   "name": "ProjCon Office",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "50:cryo:elevator door"
+   ]
+  },
+  {
+   "id": 57,
+   "name": "Library",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "244:table",
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 58,
+   "name": "Booth 3",
+   "parent": 253,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "240:set of controls",
+    "209:slot",
+    "208:brown button",
+    "207:beige button"
+   ]
+  },
+  {
+   "id": 60,
+   "name": "Library Lobby",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "244:table",
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 63,
+   "name": "Course Control",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "240:set of controls",
+    "242:light"
+   ]
+  },
+  {
+   "id": 70,
+   "name": "Planetary Defense",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "240:set of controls",
+    "242:light"
+   ]
+  },
+  {
+   "id": 74,
+   "name": "Systems Corridor West",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 78,
+   "name": "Repair Room",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 83,
+   "name": "Infirmary",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "196:bed",
+    "243:shelf"
+   ]
+  },
+  {
+   "id": 84,
+   "name": "Fork",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 85,
+   "name": "Escalator",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 86,
+   "name": "Lawanda Platform",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "205:shuttle car",
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 87,
+   "name": "Kalamontee Platform",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "205:shuttle car"
+   ]
+  },
+  {
+   "id": 88,
+   "name": "Waiting Area",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "106:red door"
+   ]
+  },
+  {
+   "id": 89,
+   "name": "Observation Deck",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "245:ocean"
+   ]
+  },
+  {
+   "id": 96,
+   "name": "Comm Room",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "242:light"
+   ]
+  },
+  {
+   "id": 97,
+   "name": "Helicopter",
+   "parent": 253,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "245:ocean",
+    "240:set of controls",
+    "247:window",
+    "98:large vehicle"
+   ]
+  },
+  {
+   "id": 99,
+   "name": "Helipad",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "249:stairway",
+    "98:large vehicle"
+   ]
+  },
+  {
+   "id": 100,
+   "name": "Tower Core",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "249:stairway",
+    "107:blue door"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Booth 2",
+   "parent": 253,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "240:set of controls",
+    "209:slot",
+    "208:brown button",
+    "206:tan button"
+   ]
+  },
+  {
+   "id": 104,
+   "name": "Lower Elevator",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "242:light",
+    "240:set of controls",
+    "209:slot",
+    "127:button",
+    "106:red door"
+   ]
+  },
+  {
+   "id": 105,
+   "name": "Upper Elevator",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "242:light",
+    "240:set of controls",
+    "209:slot",
+    "127:button",
+    "107:blue door"
+   ]
+  },
+  {
+   "id": 108,
+   "name": "Elevator Lobby",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "107:blue door",
+    "106:red door"
+   ]
+  },
+  {
+   "id": 126,
+   "name": "Tool Room",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "243:shelf"
+   ]
+  },
+  {
+   "id": 128,
+   "name": "Reactor Elevator",
+   "parent": 253,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "130:reactor elevator door",
+    "209:slot",
+    "127:button",
+    "240:set of controls"
+   ]
+  },
+  {
+   "id": 129,
+   "name": "Reactor Access Stairs",
+   "parent": 253,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 131,
+   "name": "Reactor Control",
+   "parent": 253,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "240:set of controls",
+    "249:stairway",
+    "130:reactor elevator door"
+   ]
+  },
+  {
+   "id": 139,
+   "name": "Storage East",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "243:shelf"
+   ]
+  },
+  {
+   "id": 143,
+   "name": "Large Office",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "247:window",
+    "245:ocean"
+   ]
+  },
+  {
+   "id": 153,
+   "name": "Systems Monitors",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "244:table"
+   ]
+  },
+  {
+   "id": 155,
+   "name": "Admin Corridor North",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "156:rift"
+   ]
+  },
+  {
+   "id": 157,
+   "name": "Admin Corridor",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "156:rift"
+   ]
+  },
+  {
+   "id": 165,
+   "name": "Kitchen",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "166:door"
+   ]
+  },
+  {
+   "id": 167,
+   "name": "Mess Hall",
+   "parent": 253,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "244:table",
+    "166:door",
+    "209:slot"
+   ]
+  },
+  {
+   "id": 171,
+   "name": "Storage West",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "243:shelf",
+    "173:door"
+   ]
+  },
+  {
+   "id": 174,
+   "name": "Mess Corridor",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "173:door"
+   ]
+  },
+  {
+   "id": 176,
+   "name": "Dorm D",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "196:bed"
+   ]
+  },
+  {
+   "id": 178,
+   "name": "Dorm C",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "196:bed"
+   ]
+  },
+  {
+   "id": 180,
+   "name": "Dorm B",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "196:bed"
+   ]
+  },
+  {
+   "id": 182,
+   "name": "Dorm A",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "196:bed"
+   ]
+  },
+  {
+   "id": 184,
+   "name": "Booth 1",
+   "parent": 253,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "240:set of controls",
+    "209:slot",
+    "207:beige button",
+    "206:tan button"
+   ]
+  },
+  {
+   "id": 186,
+   "name": "Conference Room",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "187:door",
+    "244:table"
+   ]
+  },
+  {
+   "id": 188,
+   "name": "Rec Area",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "187:door"
+   ]
+  },
+  {
+   "id": 190,
+   "name": "West Wing",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "246:cliff",
+    "245:ocean"
+   ]
+  },
+  {
+   "id": 191,
+   "name": "Courtyard",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 192,
+   "name": "Winding Stair",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "246:cliff",
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 193,
+   "name": "Balcony",
+   "parent": 253,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "246:cliff",
+    "245:ocean",
+    "249:stairway",
+    "247:window"
+   ]
+  },
+  {
+   "id": 194,
+   "name": "Crag",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "246:cliff",
+    "245:ocean"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "Betty Control West",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "205:shuttle car",
+    "209:slot",
+    "201:lever",
+    "247:window",
+    "203:door"
+   ]
+  },
+  {
+   "id": 198,
+   "name": "Betty Control East",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "205:shuttle car",
+    "209:slot",
+    "247:window",
+    "201:lever",
+    "203:door"
+   ]
+  },
+  {
+   "id": 199,
+   "name": "Shuttle Car Betty",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "205:shuttle car",
+    "203:door"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "Alfie Control West",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "209:slot",
+    "201:lever",
+    "247:window",
+    "203:door",
+    "205:shuttle car"
+   ]
+  },
+  {
+   "id": 202,
+   "name": "Alfie Control East",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "209:slot",
+    "247:window",
+    "201:lever",
+    "203:door",
+    "205:shuttle car"
+   ]
+  },
+  {
+   "id": 204,
+   "name": "Shuttle Car Alfie",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "205:shuttle car",
+    "203:door"
+   ]
+  },
+  {
+   "id": 216,
+   "name": "Escape Pod",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "231:escape pod bulkhead",
+    "240:set of controls",
+    "242:light",
+    "228:escape pod",
+    "247:window"
+   ]
+  },
+  {
+   "id": 221,
+   "name": "Deck Eight",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 222,
+   "name": "Gangway",
+   "parent": 253,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "229:narrow bulkhead",
+    "249:stairway"
+   ]
+  },
+  {
+   "id": 223,
+   "name": "Reactor Lobby",
+   "parent": 253,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "230:wide bulkhead"
+   ]
+  },
+  {
+   "id": 235,
+   "name": "Deck Nine",
+   "parent": 253,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "231:escape pod bulkhead",
+    "230:wide bulkhead",
+    "229:narrow bulkhead",
+    "249:stairway",
+    "228:escape pod"
+   ]
+  }
+ ]
+}

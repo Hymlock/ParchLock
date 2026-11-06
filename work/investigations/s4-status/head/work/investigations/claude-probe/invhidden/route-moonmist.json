@@ -1,0 +1,386 @@
+[
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:wait",
+  "root": 42,
+  "reply": ">NP:wait\n[I don't know the word \"np:wait.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:Codex Audit",
+  "root": 42,
+  "reply": ">NP:Codex Audit\n[I don't know the word \"np:codex.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:yes",
+  "root": 42,
+  "reply": ">NP:yes\n[I don't know the word \"np:yes.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:red",
+  "root": 42,
+  "reply": ">NP:red\n[I don't know the word \"np:red.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:yes",
+  "root": 42,
+  "reply": ">NP:yes\n[I don't know the word \"np:yes.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:take all",
+  "root": 42,
+  "reply": ">NP:take all\n[I don't know the word \"np:take.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open luggage",
+  "root": 42,
+  "reply": ">NP:open luggage\n[I don't know the word \"np:open.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:close luggage",
+  "root": 42,
+  "reply": ">NP:close luggage\n[I don't know the word \"np:close.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open luggage",
+  "root": 42,
+  "reply": ">NP:open luggage\n[I don't know the word \"np:open.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:close luggage",
+  "root": 42,
+  "reply": ">NP:close luggage\n[I don't know the word \"np:close.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open car",
+  "root": 42,
+  "reply": ">NP:open car\n[I don't know the word \"np:open.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open gate",
+  "root": 42,
+  "reply": ">NP:open gate\n[I don't know the word \"np:open.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:close gate",
+  "root": 42,
+  "reply": ">NP:close gate\n[I don't know the word \"np:close.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open gate",
+  "root": 42,
+  "reply": ">NP:open gate\n[I don't know the word \"np:open.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "n",
+  "root": 42,
+  "reply": ">n\n(The castle is south of here.)\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open door",
+  "root": 42,
+  "reply": ">NP:open door\n[I don't know the word \"np:open.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:close door",
+  "root": 42,
+  "reply": ">NP:close door\n[I don't know the word \"np:close.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open door",
+  "root": 42,
+  "reply": ">NP:open door\n[I don't know the word \"np:open.\"]\n \nWhat would you like to do?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "look",
+  "root": 42,
+  "reply": ">look\n(You are now in the driveway.)\n(You're sitting in the sports car.)\nYou are by the front gate of Tresyllian Castle. You can hear the ocean beating urgently against the rocks far below.\nIn the moonlit gloom, you can make out an ornament on the gate. It's a winged, two-legged dragon called a wyvern, which crests the Tresyllian family's coat of arms.\nThe dragon appears in profile. The moonlight glints on its lone visible eye.\n \nWhat next?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "n",
+  "root": 42,
+  "reply": ">n\n(The castle is south of here.)\n \nWhat next?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "look",
+  "root": 42,
+  "reply": ">look\n(You are in the driveway.)\n(You're sitting in the sports car.)\nYou are by the front gate of Tresyllian Castle. You can hear the ocean beating urgently against the rocks far below.\nIn the moonlit gloom, you can make out an ornament on the gate. It's a winged, two-legged dragon called a wyvern, which crests the Tresyllian family's coat of arms.\nThe dragon appears in profile. The moonlight glints on its lone visible eye.\n \n[You won't see \"What next?\" any more.]\n \n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:open door",
+  "root": 42,
+  "reply": ">NP:open door\n[I don't know the word \"np:open.\"]\n \n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ },
+ {
+  "cmd": "NP:close door",
+  "root": 42,
+  "reply": ">NP:close door\n[I don't know the word \"np:close.\"]\n \n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ }
+]

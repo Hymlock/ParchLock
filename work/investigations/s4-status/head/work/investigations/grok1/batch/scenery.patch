@@ -1,0 +1,54 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index d914d97..4a2c92a 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -173,7 +173,8 @@ var ModuleStatFactsClaude = {
+         // RADIO the sole mutable non-room owner (single-owner exception). Adjacent source is not
+         // asserted exact-build; room/global owners do not imply switchability. See ballyhoo-on/.
+         // door 27 = source DOORBIT exact; native (codex door-ballyhoo-native.json + negative): trailer door 44 and cage door 164 toggle 15; pole refuses.
+-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27 },
++        // scenery 6 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 9f779e8 verbs.zil:3084 PRINT-CONTENTS) testing NDESCBIT on that object at pc 46920/46913 during that look, examine works. Positives 22:button, 168:crowd; negative 49:barred passage, 92:turnstile, 208:gorilla suit (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-ballyhoo.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
++        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6 },
+         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
+         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
+         // exact (114/114).
+@@ -245,7 +246,8 @@ var ModuleStatFactsClaude = {
+         // 183, piles 15/48, carving 26, octagonal hole 40, grouper nest 113, construction 148, crack 160, mouth 172). Surfaces are
+         // NOT excluded: the rodent idol 78 is surface + container + openable and must keep Open/Close.
+         "openCapability": { "all": ["container"], "none": ["animate"] },
+-        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21 }
++        // scenery 19 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 6f83ba4 verbs.zil:1889 PRINT-CONT) testing NDESCBIT on that object at pc 54920 during that look, examine works. Positives 19:Orkan of Thriff, 21:sorcerer, 30:Gzornenplatz, 59:Hoobly; negative 238:cube (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-spellbrkr.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
++        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19 }
+     },
+     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
+         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 17, holder 58. Native: Outside of
+@@ -431,7 +433,8 @@ var ModuleStatFactsClaude = {
+         // TURN OFF clears 26; off again "It isn't on!"; on again sets 26. No ONBIT 30 (not a light). Native walkthrough replay, no relocation.
+         "attributeObjects": { "switchable": [141, 233] },
+         "capabilityForms": { "switchable": ["turn on", "turn off"] },
+-        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15 },
++        // scenery 10 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 5d05d5e verbs.zil:2893 DESCRIBABLE?) testing NDESCBIT on that object at pc 52787 during that look, examine works. Positives 46:SB radio, 50:pilot seat, 90:copilot seat; negative 26:Floyd (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-stationfall.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
++        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10 },
+         "playerGlobal": 183,
+         "wornAttribute": 21
+     },
+@@ -592,7 +595,8 @@ var ModuleStatFactsClaude = {
+         // Switch (grok1 #4847 grok1/switch/starcross.json): tape library 71: TURN ON -> "The tape library comes on.", TURN OFF -> "...is now off."; bunk refuses. State is the global TAPE-ON (no object bit), so no activationState/on.
+         "attributeObjects": { "switchable": [71] },
+         "capabilityForms": { "switchable": ["turn on", "turn off"] },
+-        "attributeMap": { "animate": 11 },
++        // scenery 23 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 3ceaa9f verbs.zil:134 PRINT-CONT) testing NDESCBIT on that object at pc 24111 during that look, examine works. Positives 22:small bump, 56:seat belt; negative 71:tape library (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-starcross.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
++        "attributeMap": { "animate": 11, "scenery": 23 },
+         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
+         "wornAttribute": 24
+     },
+@@ -942,7 +946,8 @@ var ModuleStatFactsClaude = {
+             // talkable 30 = the proven animate bit (grok1 2026-10-24, item 4 talkable batch; same mapping as Spellbreaker/Stationfall): talk-command scoped,
+             // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'troll, hello' @27 tests troll 217:30 TRUE ("The troll isn't much of a conversationalist."), 'tell thief' @260 tests thief 114:30 TRUE ("The thief is a strong, silent type."); 'tell sword' @27 tests sword 110:30 FALSE ("You can't talk to the sword!").
+             // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
+-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23 },
++            // scenery 14 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 97b7b3d gverbs.zil:1780 PRINT-CONT) testing NDESCBIT on that object at pc 36719 during that look, examine works. Positives 192:carpet, 204:kitchen table; negative 160:small mailbox (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-zork1.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
++            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14 },
+         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },

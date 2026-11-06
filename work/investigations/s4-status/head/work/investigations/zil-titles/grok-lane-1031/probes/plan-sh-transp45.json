@@ -1,0 +1,31 @@
+{
+    "tag":  "sh-transp",
+    "game":  "Sherlock.z5.js",
+    "key":  "sherlock",
+    "bit":  2,
+    "tmpl":  "s",
+    "note":  "grok Sherlock lane native; single-run group; phial 128 @45, wax pool 179 @44 after MELT HEAD, pipe negative @44",
+    "tests":  [
+                  {
+                      "cmd":  "EXAMINE TORCH THROUGH POOL",
+                      "step":  44,
+                      "name":  "examine torch through pool",
+                      "id":  179,
+                      "expect":  1
+                  },
+                  {
+                      "cmd":  "EXAMINE POOL THROUGH PIPE",
+                      "step":  44,
+                      "name":  "examine pool through pipe",
+                      "id":  218,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "LOOK IN PHIAL",
+                      "step":  45,
+                      "name":  "look in phial",
+                      "id":  128,
+                      "expect":  1
+                  }
+              ]
+}

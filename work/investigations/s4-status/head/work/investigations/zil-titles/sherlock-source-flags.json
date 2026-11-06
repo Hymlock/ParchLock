@@ -1,0 +1,669 @@
+{
+ "Sherlock.z5.js": {
+  "repo": "sherlock",
+  "source": "https://github.com/historicalsource/sherlock",
+  "files": 27,
+  "sourceObjects": 314,
+  "matched": 277,
+  "ramObjects": 314,
+  "flags": {
+   ";FL-NO-ETHERIUM": {
+    "bit": 7,
+    "positives": 2,
+    "negatives": 275,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "28:Bank of England",
+     "58:Evangelist Chapel"
+    ]
+   },
+   ";FL-NOARTC": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 276,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "180:Prime Minister"
+    ]
+   },
+   "FL-ALIVE": {
+    "bit": 40,
+    "positives": 29,
+    "negatives": 248,
+    "tp": 29,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "273:hansom cabbie",
+     "213:growler cabbie",
+     "80:ravens"
+    ]
+   },
+   "FL-ASLEEP": {
+    "bit": 24,
+    "positives": 4,
+    "negatives": 273,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "293:Holmes",
+     "16:Sherman's Shop",
+     "166:lamp"
+    ]
+   },
+   "FL-BODYPART": {
+    "bit": 14,
+    "positives": 7,
+    "negatives": 270,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "125:hands",
+     "260:heart",
+     "244:feet"
+    ]
+   },
+   "FL-BROKEN": {
+    "bit": 22,
+    "positives": 1,
+    "negatives": 276,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "294:Wiggins"
+    ]
+   },
+   "FL-BURNABLE": {
+    "bit": 13,
+    "positives": 16,
+    "negatives": 261,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "248:tobacco",
+     "150:pound note",
+     "203:mail"
+    ]
+   },
+   "FL-BUYABLE": {
+    "bit": 12,
+    "positives": 3,
+    "negatives": 274,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "185:telescope",
+     "298:opium",
+     "221:trinkets"
+    ]
+   },
+   "FL-BYHAND": {
+    "bit": 36,
+    "positives": 1,
+    "negatives": 276,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "125:hands"
+    ]
+   },
+   "FL-CLOTHING": {
+    "bit": 11,
+    "positives": 8,
+    "negatives": 269,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:ring",
+     "173:whistle",
+     "183:clothes"
+    ]
+   },
+   "FL-COLLECTIVE": {
+    "bit": 10,
+    "positives": 5,
+    "negatives": 272,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "248:tobacco",
+     "203:mail",
+     "189:cigar ash"
+    ]
+   },
+   "FL-CONTAINER": {
+    "bit": 9,
+    "positives": 33,
+    "negatives": 244,
+    "tp": 33,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "137:safety deposit box",
+     "264:lock",
+     "222:safety deposit boxes"
+    ]
+   },
+   "FL-DOOR": {
+    "bit": 8,
+    "positives": 8,
+    "negatives": 269,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "35:front door",
+     "102:parlour door",
+     "70:study door"
+    ]
+   },
+   "FL-FEMALE": {
+    "bit": 27,
+    "positives": 3,
+    "negatives": 274,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "131:her",
+     "184:Mrs Hudson",
+     "299:Queen Victoria"
+    ]
+   },
+   "FL-FOOD": {
+    "bit": 41,
+    "positives": 4,
+    "negatives": 273,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "229:orange pill",
+     "237:yellow pill",
+     "149:malmsey"
+    ]
+   },
+   "FL-HAS-DESCFCN": {
+    "bit": 23,
+    "positives": 184,
+    "negatives": 93,
+    "tp": 184,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "137:safety deposit box",
+     "178:key",
+     "222:safety deposit boxes"
+    ]
+   },
+   "FL-HAS-SDESC": {
+    "bit": 21,
+    "positives": 3,
+    "negatives": 274,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "308:opal",
+     "253:topaz",
+     "153:garnet"
+    ]
+   },
+   "FL-INDOORS": {
+    "bit": 20,
+    "positives": 45,
+    "negatives": 232,
+    "tp": 45,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "111:entry hall",
+     "37:parlour",
+     "3:vestibule"
+    ]
+   },
+   "FL-KEY": {
+    "bit": 6,
+    "positives": 1,
+    "negatives": 276,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "196:Moriarty's key"
+    ]
+   },
+   "FL-KNIFE": {
+    "bit": 43,
+    "positives": 1,
+    "negatives": 276,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "151:knife"
+    ]
+   },
+   "FL-LAMP": {
+    "bit": 42,
+    "positives": 1,
+    "negatives": 276,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "166:lamp"
+    ]
+   },
+   "FL-LIGHTED": {
+    "bit": 38,
+    "positives": 49,
+    "negatives": 228,
+    "tp": 49,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "295:hansom cab",
+     "300:growler cab",
+     "38:221-B Baker Street"
+    ]
+   },
+   "FL-LOCKED": {
+    "bit": 15,
+    "positives": 8,
+    "negatives": 269,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "137:safety deposit box",
+     "35:front door",
+     "104:bedroom door"
+    ]
+   },
+   "FL-LOSE-IDENTITY": {
+    "bit": 21,
+    "positives": 3,
+    "negatives": 274,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "308:opal",
+     "253:topaz",
+     "153:garnet"
+    ]
+   },
+   "FL-MONEY": {
+    "bit": 37,
+    "positives": 7,
+    "negatives": 270,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "263:shilling",
+     "150:pound note",
+     "276:sixpence"
+    ]
+   },
+   "FL-NEEDS-IDENTITY": {
+    "bit": 31,
+    "positives": 4,
+    "negatives": 273,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "111:entry hall",
+     "308:opal",
+     "253:topaz"
+    ]
+   },
+   "FL-NO-CROWDS": {
+    "bit": 17,
+    "positives": 9,
+    "negatives": 268,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "40:Covent Garden",
+     "24:Tower of London entrance",
+     "25:Swan Lane"
+    ]
+   },
+   "FL-NO-ETHERIUM": {
+    "bit": 18,
+    "positives": 24,
+    "negatives": 253,
+    "tp": 24,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "73:Madame Tussaud's",
+     "1:Chamber of Horrors",
+     "22:Diogenes Club"
+    ]
+   },
+   "FL-NOALL": {
+    "bit": 25,
+    "positives": 81,
+    "negatives": 196,
+    "tp": 81,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:ring",
+     "273:hansom cabbie",
+     "213:growler cabbie"
+    ]
+   },
+   "FL-NOARTC": {
+    "bit": 29,
+    "positives": 83,
+    "negatives": 194,
+    "tp": 83,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "284:them",
+     "168:yourself",
+     "133:myself"
+    ]
+   },
+   "FL-NODESC": {
+    "bit": 32,
+    "positives": 98,
+    "negatives": 179,
+    "tp": 98,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "266:number",
+     "137:safety deposit box",
+     "264:lock"
+    ]
+   },
+   "FL-OPENABLE": {
+    "bit": 44,
+    "positives": 22,
+    "negatives": 255,
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "137:safety deposit box",
+     "222:safety deposit boxes",
+     "204:blue bottle"
+    ]
+   },
+   "FL-OPENED": {
+    "bit": 5,
+    "positives": 22,
+    "negatives": 255,
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "264:lock",
+     "278:guard's pocket",
+     "295:hansom cab"
+    ]
+   },
+   "FL-PERSON": {
+    "bit": 47,
+    "positives": 25,
+    "negatives": 252,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "273:hansom cabbie",
+     "213:growler cabbie",
+     "168:yourself"
+    ]
+   },
+   "FL-PLURAL": {
+    "bit": 28,
+    "positives": 27,
+    "negatives": 250,
+    "tp": 27,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "222:safety deposit boxes",
+     "248:tobacco",
+     "32:shops"
+    ]
+   },
+   "FL-READABLE": {
+    "bit": 35,
+    "positives": 35,
+    "negatives": 242,
+    "tp": 35,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "204:blue bottle",
+     "135:brown bottle",
+     "229:orange pill"
+    ]
+   },
+   "FL-SEEN": {
+    "bit": 4,
+    "positives": 21,
+    "negatives": 256,
+    "tp": 21,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "266:number",
+     "152:rooms",
+     "247:room"
+    ]
+   },
+   "FL-SURFACE": {
+    "bit": 16,
+    "positives": 47,
+    "negatives": 230,
+    "tp": 47,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:sign",
+     "86:London Bridge",
+     "42:drawbridge"
+    ]
+   },
+   "FL-TAKEABLE": {
+    "bit": 39,
+    "positives": 58,
+    "negatives": 219,
+    "tp": 58,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:ring",
+     "263:shilling",
+     "178:key"
+    ]
+   },
+   "FL-TOOL": {
+    "bit": 36,
+    "positives": 1,
+    "negatives": 276,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "125:hands"
+    ]
+   },
+   "FL-TOUCHED": {
+    "bit": 3,
+    "positives": 2,
+    "negatives": 275,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "233:it",
+     "125:hands"
+    ]
+   },
+   "FL-TRANSPARENT": {
+    "bit": 2,
+    "positives": 8,
+    "negatives": 269,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "8:window",
+     "97:streetlight",
+     "185:telescope"
+    ]
+   },
+   "FL-TRYTAKE": {
+    "bit": 26,
+    "positives": 79,
+    "negatives": 198,
+    "tp": 79,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "278:guard's pocket",
+     "273:hansom cabbie",
+     "213:growler cabbie"
+    ]
+   },
+   "FL-VEHICLE": {
+    "bit": 1,
+    "positives": 3,
+    "negatives": 274,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "295:hansom cab",
+     "300:growler cab",
+     "201:old boat"
+    ]
+   },
+   "FL-VOWEL": {
+    "bit": 19,
+    "positives": 25,
+    "negatives": 252,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "229:orange pill",
+     "111:entry hall",
+     "45:Oxford Street"
+    ]
+   },
+   "FL-WEAPON": {
+    "bit": 33,
+    "positives": 3,
+    "negatives": 274,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "122:pistol",
+     "151:knife",
+     "261:mace"
+    ]
+   },
+   "FL-WORN": {
+    "bit": 34,
+    "positives": 4,
+    "negatives": 273,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "173:whistle",
+     "183:clothes",
+     "188:hat"
+    ]
+   },
+   "FL-YOUR": {
+    "bit": 0,
+    "positives": 11,
+    "negatives": 266,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "125:hands",
+     "260:heart",
+     "244:feet"
+    ]
+   }
+  },
+  "sourceSha": "85ab6e5385446cb1ac8cdfe1007cbb372407c76e"
+ }
+}

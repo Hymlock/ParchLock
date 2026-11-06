@@ -1,0 +1,37 @@
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index dfdac6a..ca64500 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -96,7 +96,13 @@ var ZRamReader = {
+         if (id > count) return false;
+         if ([obj.parent, obj.child, obj.sibling].some(function (v) { return v < 0 || v > count; })) return false;
+         var name = ZRamReader.shortName(mem, id);
+-        if (String(name || "").charAt(0) === "(") return false;
++        // M05 (mapping research, Make It Good "(MainStreet)"): an internal
++        // compiled name is normally metadata, EXCEPT a top-level object (no
++        // parent of its own) that actually encloses the player: that is the
++        // room. Meta holders (darkness, self, class) stay rejected.
++        if (String(name || "").charAt(0) === "(") {
++            if (obj.parent !== 0 || /^\((darkness|self|class|object|thedark)/i.test(String(name))) return false;
++        }
+         if (/^(class|object|routine|string|kind|nothing|compass|compassdirection|directions?)$/i.test(name)) return false;
+         // Inform class instances are children of the actual Class metaclass.
+         if (obj.parent && /^class$/i.test(ZRamReader.shortName(mem, obj.parent))) return false;
+@@ -108,7 +114,16 @@ var ZRamReader = {
+         seen[playerId] = true;
+         for (var depth = 0; obj && obj.parent && depth < 64; depth++) {
+             var id = obj.parent;
+-            if (seen[id] || !ZRamReader.isLocationObject(mem, id, playerId)) return 0;
++            if (seen[id]) return 0;
++            if (!ZRamReader.isLocationObject(mem, id, playerId)) {
++                // M05: an internal-named container between the player and the
++                // room (Make It Good's "(Car)") is climbed past, not a dead end.
++                var inner = ZRamReader.objectLinks(mem, id), nm = String(ZRamReader.shortName(mem, id) || "");
++                if (inner && inner.parent && nm.charAt(0) === "(" && !/^\((darkness|self|class|object|thedark)/i.test(nm)) {
++                    seen[id] = true; obj = inner; continue;
++                }
++                return 0;
++            }
+             seen[id] = true;
+             obj = ZRamReader.objectLinks(mem, id);
+             // Inform attribute positions are not the Infocom/ZIL ABI.

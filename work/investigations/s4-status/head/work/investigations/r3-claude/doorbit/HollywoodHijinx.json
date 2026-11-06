@@ -1,0 +1,158 @@
+{
+ "title": "HollywoodHijinx",
+ "doorbit": 10,
+ "openbit": 25,
+ "openbitFromFacts": null,
+ "containerbit": 4,
+ "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+ "objectCount": 244,
+ "carriers": [
+  {
+   "id": 25,
+   "name": "patio door",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 69,
+   "name": "",
+   "parent": 0,
+   "parentName": "",
+   "container": true,
+   "open": true
+  },
+  {
+   "id": 107,
+   "name": "closet door",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 116,
+   "name": "crawl space door",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 117,
+   "name": "oak door",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 140,
+   "name": "closet door",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 155,
+   "name": "hatch",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 158,
+   "name": "closet door",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 162,
+   "name": "closet door",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 175,
+   "name": "panel",
+   "parent": 54,
+   "parentName": "",
+   "container": false,
+   "open": false
+  }
+ ],
+ "positives": [],
+ "doorSpecificRefusals": [
+  {
+   "run": "_HollywoodHijinx.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "You'll have to unlock it first. >",
+   "openToggles": []
+  },
+  {
+   "run": "_HollywoodHijinx.run.json",
+   "cmd": "OPEN IT",
+   "reply": "You'll have to unlock it first. >",
+   "openToggles": []
+  },
+  {
+   "run": "_HollywoodHijinxB.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "You'll have to unlock it first. >",
+   "openToggles": []
+  },
+  {
+   "run": "_HollywoodHijinxD.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "You'll have to unlock it first. >",
+   "openToggles": []
+  },
+  {
+   "run": "_HollywoodHijinxD.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "You'll have to unlock it first. >",
+   "openToggles": []
+  },
+  {
+   "run": "_HollywoodHijinxD.run.json",
+   "cmd": "OPEN PATIO DOOR",
+   "reply": "You'll have to unlock it first. >",
+   "openToggles": []
+  },
+  {
+   "run": "_HollywoodHijinxD.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "You'll have to unlock it first. >",
+   "openToggles": []
+  },
+  {
+   "run": "_HollywoodHijinxD.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "You'll have to unlock it first. You can hear dogs howling in the distance. >",
+   "openToggles": []
+  }
+ ],
+ "negatives": [
+  {
+   "run": "_HollywoodHijinxE.run.json",
+   "cmd": "OPEN CARD",
+   "reply": "How can you do that to a business card? >",
+   "openToggles": []
+  }
+ ],
+ "problemCarriers": {
+  "69": "unnamed DOORBIT object 69 (container+open set)",
+  "155": "hatch",
+  "175": "panel",
+  "note": "walkthrough diverged (front door stayed locked); no unlocked door reached, so OPENBIT 25 (source-flags inexact) never observed toggling"
+ },
+ "status": "CONFIRMED via door-specific locked refusal on oak door 117 and patio door 25; OPENBIT toggle unproven",
+ "method": "headless Chromium play.html; ordinary commands via Input.Inject; Jericho walkthrough prefixes with inserted probes; JSEED-style random-opcode shim (seed 0) for walkthrough parity, no VM memory writes/snapshots"
+}

@@ -1,0 +1,219 @@
+{
+ "r45hh3 @54:switch on switch#0": {
+  "tag": "r45hh3",
+  "id": 134,
+  "name": "switch",
+  "step": 54,
+  "cmd": "switch on switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hh3.json",
+  "planSha": "2d6b1c8e5e7fde0722400ae7d0b06592b5206ac5056e839f2e06db71b40b6297",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 99,
+  "here": 99,
+  "opsOnId": [
+   [
+    134,
+    21,
+    0,
+    50501
+   ]
+  ],
+  "nOps": 62,
+  "printedObjs": [],
+  "text": "A recording plays: \"To open the case, type in the first word from the second verse of the Captain's current favourite poem. WARNING: An incorrect input will cause the case to explode.\"\n \nAn announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\"\n \n> ",
+  "ts": "2026-10-30T16:18:26.212Z"
+ },
+ "r45hh3 @54:switch off switch#1": {
+  "tag": "r45hh3",
+  "id": 134,
+  "name": "switch",
+  "step": 54,
+  "cmd": "switch off switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hh3.json",
+  "planSha": "2d6b1c8e5e7fde0722400ae7d0b06592b5206ac5056e839f2e06db71b40b6297",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 99,
+  "here": 99,
+  "opsOnId": [
+   [
+    134,
+    21,
+    0,
+    50501
+   ],
+   [
+    134,
+    37,
+    0,
+    50021
+   ],
+   [
+    134,
+    38,
+    0,
+    62774
+   ],
+   [
+    134,
+    41,
+    0,
+    62776
+   ],
+   [
+    134,
+    21,
+    0,
+    64961
+   ],
+   [
+    134,
+    35,
+    0,
+    55910
+   ]
+  ],
+  "nOps": 67,
+  "printedObjs": [],
+  "text": "You can't turn that off.\n \nAn announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\"\n \n> ",
+  "ts": "2026-10-30T16:18:27.935Z"
+ },
+ "r45hh3 @63:look#2": {
+  "tag": "r45hh3",
+  "id": 164,
+  "name": "poetry appreciation chair",
+  "step": 63,
+  "cmd": "look",
+  "expect": 1,
+  "bit": 28,
+  "plan": "plan-hh3.json",
+  "planSha": "2d6b1c8e5e7fde0722400ae7d0b06592b5206ac5056e839f2e06db71b40b6297",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "after": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 233,
+  "here": 99,
+  "opsOnId": [],
+  "nOps": 113,
+  "printedObjs": [
+   99,
+   20,
+   217,
+   7
+  ],
+  "text": "Vogon Hold\nThis is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of smelly alien underwear. A door lies to port, and an airlock lies to starboard.\nFord Prefect is here.\nIn the corner is a glass case with a switch and a keyboard.\nIt looks like the glass case contains:\n  an atomic vector plotter\nAlong one wall is a tall dispensing machine.\n \nFord continues trying to talk the guard into a sudden career change.\n \n> ",
+  "ts": "2026-10-30T16:18:39.632Z"
+ },
+ "r45hh3 @63:get out of chair#3": {
+  "tag": "r45hh3",
+  "id": 164,
+  "name": "poetry appreciation chair",
+  "step": 63,
+  "cmd": "get out of chair",
+  "expect": 1,
+  "bit": 28,
+  "plan": "plan-hh3.json",
+  "planSha": "2d6b1c8e5e7fde0722400ae7d0b06592b5206ac5056e839f2e06db71b40b6297",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "after": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 233,
+  "here": 99,
+  "opsOnId": [],
+  "nOps": 98,
+  "printedObjs": [],
+  "text": "You can't see any of chair here!\n \n> ",
+  "ts": "2026-10-30T16:18:40.203Z"
+ },
+ "r45hh3 @63:sit in chair#4": {
+  "tag": "r45hh3",
+  "id": 164,
+  "name": "poetry appreciation chair",
+  "step": 63,
+  "cmd": "sit in chair",
+  "expect": 1,
+  "bit": 28,
+  "plan": "plan-hh3.json",
+  "planSha": "2d6b1c8e5e7fde0722400ae7d0b06592b5206ac5056e839f2e06db71b40b6297",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "after": [
+   23,
+   28,
+   34,
+   39,
+   40
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 233,
+  "here": 99,
+  "opsOnId": [],
+  "nOps": 98,
+  "printedObjs": [],
+  "text": "You can't see any chair here!\n \n> ",
+  "ts": "2026-10-30T16:18:40.776Z"
+ }
+}

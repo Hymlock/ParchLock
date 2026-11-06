@@ -1,0 +1,162 @@
+diff --git a/css/ParchLock.css b/css/ParchLock.css
+index a85ea70..4a61d5e 100644
+--- a/css/ParchLock.css
++++ b/css/ParchLock.css
+@@ -5226,3 +5226,8 @@ body.pl-mobile #exits .row.horizontal.top .room-name {
+ 	line-height: 1.2;
+ 	vertical-align: middle;
+ }
++
++/* D5: passive object status, separate from command buttons and Tools. */
++#radial-menu .pl-object-status { position: absolute; left: 50%; top: calc(50% - 34px); transform: translate(-50%, -50%); max-inline-size: 96px; font-size: 12px; line-height: 1.3; padding: 2px 4px; color: var(--pl-text); background: var(--pl-surface); pointer-events: none; text-align: center; overflow-wrap: anywhere; }
++
++
+diff --git a/js/Actionable.js b/js/Actionable.js
+index 999f5ce..716a426 100644
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -2800,6 +2800,7 @@ var Actionable = {
+             }
+         }
+         var context = { source: "text", noun: (sharedCommands && sharedCommands[0] && sharedCommands[0].noun) || noun, kind: kind, objectId: objectId || null, candidateIds: sharedCommands ? choices.map(function (o) { return o.id; }) : undefined };
++        context.objectStatusStamp = ParchLockQol.ObjectStatusStamp ? ParchLockQol.ObjectStatusStamp() : null;
+         var slices = [];
+         // Score is a static confidence prior. Usage stays separate so the
+         // shared D110 ranker can apply the strict usage/prior/order tuple.
+@@ -2891,7 +2892,7 @@ var Actionable = {
+                             ParchLockQol.OpenRadial(x, y, targets.map(function (t) {
+                                 var full = command + Actionable.referenceFor(t).noun;
+                                 return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { if (!Actionable.radialCommandCurrent(c)) return; if (Actionable.runChosenCommand(full, sharedCommands ? "ambiguous-reference" : undefined) && c.intent) Actionable.noteIntentUsage(c.intent); } };
+-                            }), context);
++                            }), Object.assign({}, context, { objectStatusStamp: null }));
+                         }
+                     };
+                 }
+@@ -2951,7 +2952,7 @@ var Actionable = {
+                                     ? inst.build(Actionable.disambiguatedNoun(other), sourceNoun)
+                                     : inst.build(sourceNoun, Actionable.disambiguatedNoun(other));
+                                 return { Label: other.name, Command: cmd, Score: scoreFor(cmd, 50), Usage: usageFor(cmd), Action: function () { Actionable.Submit(cmd, sharedCommands ? "ambiguous-reference" : undefined); } };
+-                            }), context);
++                            }), Object.assign({}, context, { objectStatusStamp: null }));
+                         }});
+                     });
+                 }
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index e156556..f14191c 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -156,6 +156,25 @@ var AttributeSchema = {
+             return !!((has("container") && !has("supporter") && value !== 0) || has("door"));
+         } catch (eCloseRule) { return null; }
+     },
++    // D5 R2: current observed status on an audited owner domain; never capability.
++    lockedObjectStatus: function (objectId) {
++        try {
++            var mem = AttributeSchema._getMem(), fact = mem && ZRamReader.executableLayoutFacts(mem);
++            var ids = fact && fact.lockedStatusObjects, h = mem && ZRamReader.header(mem);
++            if (!Array.isArray(ids) || !ids.length || !h || h.version < 3 || h.version > 5) return null;
++            var first = ZRamReader.objectBase(h, 1), size = mem.byteLength;
++            if (!Number.isInteger(first) || first < 64 || first + h.entrySize > size) return null;
++            var frontier = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
++            var count = (frontier - first) / h.entrySize, seen = {};
++            if (!Number.isInteger(count) || count < 2 || frontier >= h.staticMem || h.staticMem > size ||
++                !ids.every(function (id) { if (!Number.isInteger(id) || id < 2 || id > count || seen[id]) return false; seen[id] = true; return true; }) || ids.indexOf(objectId) < 0) return null;
++            var family = AttributeSchema._familyOf(mem);
++            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated" ||
++                !AttributeSchema.measuredFlagOwner(mem, "locked", objectId)) return null;
++            var raw = ZRamReader.objectLinks(mem, objectId), bit = fact.attributeMap && fact.attributeMap.locked;
++            return raw && Number.isInteger(bit) && ZRamReader.attr(raw, bit) ? "Locked" : null;
++        } catch (eLockedStatus) { return null; }
++    },
+     openCapability: function () {
+         try {
+             var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;
+diff --git a/js/EquipmentUI.js b/js/EquipmentUI.js
+index 0e24b36..75d1b0f 100644
+--- a/js/EquipmentUI.js
++++ b/js/EquipmentUI.js
+@@ -142,7 +142,7 @@ var EquipmentUI = {
+             item.Command = item.ScopedCommand ? item.ScopedCommand.command : item.Form + " " + Actionable.referenceFor(obj).noun;
+             item.Usage = Actionable.usageCount ? Actionable.usageCount(item.Command) : 0;
+         });
+-        ParchLockQol.OpenRadial(d.lastX, d.lastY, candidates, { source: "inventory", noun: obj.name, objectId: obj.id });
++        ParchLockQol.OpenRadial(d.lastX, d.lastY, candidates, { source: "inventory", noun: obj.name, objectId: obj.id, objectStatusStamp: ParchLockQol.ObjectStatusStamp ? ParchLockQol.ObjectStatusStamp() : null });
+     },
+ 
+     // ---- persistence of first-seen order (there are no timestamps in the
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index e835c24..6884b36 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -1082,6 +1082,8 @@ var ModuleStatFactsClaude = {
+     },
+     // The Lurking Horror (Infocom v3)
+     "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af": {
++        // D5 R2 narrow audited status domain: native/source hatch119 and detached padlock135; not a lockable capability or route-block fact.
++        "lockedStatusObjects": [119, 135],
+         // CONTBIT 27: tested TRUE on refrigerator, cardboard carton, access panel; FALSE on Funny Bones package, microwave controls, display (zil-walk). Q8 player root: G188 is the only global holding object 56; walkthrough TAKEs (4) move items into 56; app read 29 with an empty inventory. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+         "playerGlobal": 188,
+         // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
+diff --git a/js/Qol.js b/js/Qol.js
+index 352437f..0935555 100644
+--- a/js/Qol.js
++++ b/js/Qol.js
+@@ -766,6 +766,29 @@ var ParchLockQol = {
+         return ParchLockQol.RankRadialCommands(commands);
+     },
+ 
++    ObjectStatusStamp: () => {
++        try {
++            var mem = AttributeSchema._getMem(), digest = ModuleLibrary.currentExecutableDigest();
++            if (!mem || !digest) return null;
++            return { generation: typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0, digest: digest, buffer: mem.buffer, offset: mem.byteOffset, length: mem.byteLength };
++        } catch (eStamp) { return null; }
++    },
++    ObjectStatusForRadial: (context) => {
++        try {
++            var stamp = context && context.objectStatusStamp, now = ParchLockQol.ObjectStatusStamp();
++            if (!stamp || !now || stamp.generation !== now.generation || stamp.digest !== now.digest || stamp.buffer !== now.buffer || stamp.offset !== now.offset || stamp.length !== now.length ||
++                ["text", "inventory"].indexOf(context.source) < 0 || context.kind === "direction" || !Number.isInteger(context.objectId) ||
++                (typeof UndoRestoreSync !== "undefined" && UndoRestoreSync.pending) || (typeof CharKeys !== "undefined" && CharKeys._composing)) return null;
++            var fields = document.querySelectorAll(".Input.LineInput");
++            if (fields.length !== 1 || fields[0].value || document.getElementById("dialog") || (typeof Message !== "undefined" && Message.IsOpen) ||
++                (typeof StatTracker !== "undefined" && (StatTracker._probeActive || StatTracker._hideCarryProbe))) return null;
++            var pool = Actionable.payloadPool(), objects = pool.filter(o => o && o.id === context.objectId);
++            if (objects.length !== 1) return null;
++            var ref = Actionable.referenceFor(objects[0]);
++            if (!ref.unique || !ref.verified) return null;
++            return AttributeSchema.lockedObjectStatus(context.objectId);
++        } catch (eStatus) { return null; }
++    },
+     OpenRadial: (clientX, clientY, commands, context, pageIndex) => {
+ 
+         if (typeof LearnedWords !== "undefined" && context && context.objectId != null) commands = commands.map(function (c) {
+@@ -915,6 +938,8 @@ var ParchLockQol = {
+             ? Actionable.MAX_USAGE_BONUS : 36;
+ 
+         menu.empty().addClass("show").attr("aria-hidden", "false");
++        var objectStatus = ParchLockQol.ObjectStatusForRadial(context);
++        if (objectStatus) $("<span>").addClass("pl-object-status").text(objectStatus).appendTo(menu);
+ 
+         var menuSize = menu.outerWidth();
+         // D215: give the desktop game-menu labels room; keep its outer ring.
+@@ -1083,6 +1108,7 @@ var ParchLockQol = {
+         if (e && e.type === "mousedown" && ParchLockQol._radialOpenedAt
+             && (Date.now() - ParchLockQol._radialOpenedAt) < 400) return;
+         ParchLockQol.EndRadialSelection();
++        $("#radial-menu .pl-object-status").remove();
+         $("#radial-menu").removeClass("show").removeClass("pl-tools-list").attr("aria-hidden", "true");
+         $("body").removeClass("radial-open");
+     },
+diff --git a/js/UndoRestoreSync.js b/js/UndoRestoreSync.js
+index 665c8df..ae06897 100644
+--- a/js/UndoRestoreSync.js
++++ b/js/UndoRestoreSync.js
+@@ -20,6 +20,7 @@ var UndoRestoreSync = {
+         clearTimeout(UndoRestoreSync._commandTimer);
+         UndoRestoreSync._commandTimer = null;
+         UndoRestoreSync.generation++;
++        try { $("#radial-menu .pl-object-status").remove(); } catch (eStatus) {}
+         if (typeof LearnedWords !== 'undefined') { LearnedWords.clearProjection(); if (LearnedWords._open) LearnedWords.close(false); }
+         UndoRestoreSync.pending = false;
+         if (typeof Actionable !== "undefined") {

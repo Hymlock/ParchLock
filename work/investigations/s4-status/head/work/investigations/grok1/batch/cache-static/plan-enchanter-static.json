@@ -1,0 +1,73 @@
+{
+ "key": "enchanter",
+ "game": "Enchanter.z3.js",
+ "bit": 19,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 144,
+   "name": "spell book",
+   "step": 0,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "take spell book"
+  },
+  {
+   "id": 19,
+   "name": "jug",
+   "step": 2,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "take jug"
+  },
+  {
+   "id": 59,
+   "name": "frotz spell",
+   "step": 0,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "take frotz spell"
+  },
+  {
+   "id": 80,
+   "name": "gnusto spell",
+   "step": 0,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "take gnusto spell"
+  },
+  {
+   "id": 84,
+   "name": "nitfol spell",
+   "step": 0,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "take nitfol spell"
+  },
+  {
+   "id": 193,
+   "name": "blorb spell",
+   "step": 0,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "take blorb spell"
+  },
+  {
+   "id": 85,
+   "name": "oven",
+   "step": 2,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "take oven"
+  },
+  {
+   "id": 239,
+   "name": "sign",
+   "step": 9,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "take sign"
+  }
+ ]
+}

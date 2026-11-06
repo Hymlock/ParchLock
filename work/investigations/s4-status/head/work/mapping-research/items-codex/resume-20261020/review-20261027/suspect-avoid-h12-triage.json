@@ -1,0 +1,6 @@
+{
+  "tier": "source-only unconditional graph excluding HALLWAY12; not native or safe timing proof",
+  "routes": {},
+  "reachable": 16,
+  "limits": "Room actions, conditional exits and NPC timing still require explicit review."
+}

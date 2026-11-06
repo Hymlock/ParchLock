@@ -1,0 +1,34 @@
+{
+ "sx178 @178:look#0": {
+  "tag": "sx178",
+  "id": 178,
+  "name": "x",
+  "step": 178,
+  "expect": 0,
+  "cmd": "look",
+  "bit": 0,
+  "plan": "plan-sx-178.json",
+  "planSha": "81719dfaa52528e71afcc90168507b4ae403c33246b4add78b11581fd64f3f0f",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   15,
+   16,
+   17
+  ],
+  "after": [
+   15,
+   16,
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T04:06:54.624Z"
+ }
+}

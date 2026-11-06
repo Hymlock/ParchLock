@@ -1,0 +1,22 @@
+Help.z8.js marks
+  base: []
+  cand: ["Snark","large piece of equipment","trophy"]
+cycles.z5.js rooms
+  base: ["191:Charles St. Station","199:Darkness"]
+  cand: ["199:Darkness"]
+cycles.z5.js inv2
+  base: ["70:money card"]
+  cand: []
+jet.z8.js marks
+  base: ["wing"]
+  cand: ["dragon's"]
+medusa.z5.js marks
+  base: ["vampire","elevator","red","toga","snakes","floor indicator","buttons"]
+  cand: ["toga","snakes","elevator","floor indicator","buttons","red","mirror","vampire"]
+suvehnux.z5.js marks
+  base: ["vault","golden key","black","dark","sliver of light","door","shelf","walls","brass cage","scroll"]
+  cand: ["sliver of light","under","door","darkness","shelf","walls","brass cage","scroll"]
+vespers.z8.js marks
+  base: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
+  cand: ["room","west","desk","bed","blanket"]
+GATE: 309 games, 7 differences (each must be an intended, reviewed change)

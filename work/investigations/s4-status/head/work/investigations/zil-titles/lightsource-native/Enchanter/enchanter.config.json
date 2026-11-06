@@ -1,0 +1,114 @@
+{
+ "story": "Enchanter.z3.js",
+ "key": "enchanter",
+ "seed": 0,
+ "route": [
+  "NE",
+  "enter shack",
+  "OPEN OVEN",
+  "GET BREAD",
+  "take JUG",
+  "take LANTERN"
+ ],
+ "until": null,
+ "tests": [
+  {
+   "cmd": "i"
+  },
+  {
+   "cmd": "turn on lantern",
+   "id": 94,
+   "role": "pos"
+  },
+  {
+   "cmd": "light lantern",
+   "id": 94,
+   "role": "pos"
+  },
+  {
+   "cmd": "turn on bread",
+   "id": 0,
+   "role": "neg"
+  },
+  {
+   "cmd": "light bread",
+   "role": "neg"
+  },
+  {
+   "cmd": "exit shack"
+  },
+  {
+   "cmd": "NE"
+  },
+  {
+   "cmd": "SE"
+  },
+  {
+   "cmd": "NE"
+  },
+  {
+   "cmd": "FILL JUG"
+  },
+  {
+   "cmd": "SW"
+  },
+  {
+   "cmd": "SE"
+  },
+  {
+   "cmd": "SW"
+  },
+  {
+   "cmd": "SW"
+  },
+  {
+   "cmd": "S"
+  },
+  {
+   "cmd": "READ SCROLL"
+  },
+  {
+   "cmd": "GNUSTO REZROV SPELL"
+  },
+  {
+   "cmd": "NE"
+  },
+  {
+   "cmd": "NE"
+  },
+  {
+   "cmd": "E"
+  },
+  {
+   "cmd": "E"
+  },
+  {
+   "cmd": "LEARN REZROV"
+  },
+  {
+   "cmd": "REZROV GATE"
+  },
+  {
+   "cmd": "E"
+  },
+  {
+   "cmd": "frotz lantern",
+   "id": 94,
+   "role": "pos"
+  },
+  {
+   "cmd": "turn off lantern",
+   "id": 94,
+   "role": "off"
+  },
+  {
+   "cmd": "extinguish lantern",
+   "id": 94,
+   "role": "off"
+  },
+  {
+   "cmd": "turn on jug",
+   "role": "neg"
+  }
+ ]
+}

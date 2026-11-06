@@ -1,0 +1,1196 @@
+{
+ "Hitchhik.z5.js": {
+  "ts": "2026-10-16T03:50:29.311Z",
+  "checks": [
+   {
+    "step": 10,
+    "text": "You have:\n  no tea\n  a loose pile of junk mail\n  a toothbrush\n  a flathead screwdriver\n  your gown (being worn)\n  It looks like your gown contains:\n    pocket fluff\n    a thing your aunt gave you which you don't know what it is\n \nThe bulldozer rumbles slowly toward your home.\n \n> ",
+    "items": [
+     {
+      "text": "no tea",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "a loose pile of junk mail",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a toothbrush",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a flathead screwdriver",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "your gown (being worn)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "It looks like your gown contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "pocket fluff",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "a thing your aunt gave you which you don't know what it is",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "The bulldozer rumbles slowly toward your home.",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 198,
+      "name": "loose pile of junk mail",
+      "parent": 202
+     },
+     {
+      "id": 31,
+      "name": "toothbrush",
+      "parent": 202
+     },
+     {
+      "id": 105,
+      "name": "flathead screwdriver",
+      "parent": 202
+     },
+     {
+      "id": 206,
+      "name": "tatty dressing gown",
+      "parent": 202
+     },
+     {
+      "id": 75,
+      "name": "pocket fluff",
+      "parent": 206
+     },
+     {
+      "id": 216,
+      "name": "thing your aunt gave you which you don't know what it is",
+      "parent": 206
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You have:\n  no tea\n  a towel\n  a satchel\n  your gown (being worn)\n  It looks like your gown contains:\n    pocket fluff\n  a babel fish (in your ear)\n  The Hitchhiker's Guide\n  a thing your aunt gave you which you don't know what it is\n  an electronic Sub-Etha signaling device\n  a toothbrush\n  a flathead screwdriver\n \n\"Oh freddled gruntbuggly, thy nacturations are to me!\"\n \n> ",
+    "items": [
+     {
+      "text": "no tea",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "a towel",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a satchel",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "your gown (being worn)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "It looks like your gown contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "pocket fluff",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "a babel fish (in your ear)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The Hitchhiker's Guide",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a thing your aunt gave you which you don't know what it is",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "an electronic Sub-Etha signaling device",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a toothbrush",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a flathead screwdriver",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "\"Oh freddled gruntbuggly, thy nacturations are to me!\"",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 121,
+      "name": "towel",
+      "parent": 202
+     },
+     {
+      "id": 80,
+      "name": "battered leather satchel",
+      "parent": 202
+     },
+     {
+      "id": 206,
+      "name": "tatty dressing gown",
+      "parent": 202
+     },
+     {
+      "id": 75,
+      "name": "pocket fluff",
+      "parent": 206
+     },
+     {
+      "id": 181,
+      "name": "babel fish",
+      "parent": 202
+     },
+     {
+      "id": 201,
+      "name": "The Hitchhiker's Guide",
+      "parent": 202
+     },
+     {
+      "id": 216,
+      "name": "thing your aunt gave you which you don't know what it is",
+      "parent": 202
+     },
+     {
+      "id": 211,
+      "name": "electronic Sub-Etha signaling device",
+      "parent": 202
+     },
+     {
+      "id": 31,
+      "name": "toothbrush",
+      "parent": 202
+     },
+     {
+      "id": 105,
+      "name": "flathead screwdriver",
+      "parent": 202
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You have:\n  no tea\n  your gown (being worn)\n  a babel fish (in your ear)\n  a thing your aunt gave you which you don't know what it is\n  It looks like the thing your aunt gave you which you don't know what it is contains:\n    a flathead screwdriver\n    a toothbrush\n    an electronic Sub-Etha signaling device\n    The Hitchhiker's Guide\n    pocket fluff\n    a towel\n    a sales brochure\n    a molecular hyperwave pincer\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n> ",
+    "items": [
+     {
+      "text": "no tea",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "your gown (being worn)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a babel fish (in your ear)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a thing your aunt gave you which you don't know what it is",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "It looks like the thing your aunt gave you which you don't know what it is contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "a flathead screwdriver",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "a toothbrush",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "an electronic Sub-Etha signaling device",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "The Hitchhiker's Guide",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "pocket fluff",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "a towel",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "a sales brochure",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "a molecular hyperwave pincer",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "You feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 206,
+      "name": "tatty dressing gown",
+      "parent": 202
+     },
+     {
+      "id": 181,
+      "name": "babel fish",
+      "parent": 202
+     },
+     {
+      "id": 216,
+      "name": "thing your aunt gave you which you don't know what it is",
+      "parent": 202
+     },
+     {
+      "id": 105,
+      "name": "flathead screwdriver",
+      "parent": 216
+     },
+     {
+      "id": 31,
+      "name": "toothbrush",
+      "parent": 216
+     },
+     {
+      "id": 211,
+      "name": "electronic Sub-Etha signaling device",
+      "parent": 216
+     },
+     {
+      "id": 201,
+      "name": "The Hitchhiker's Guide",
+      "parent": 216
+     },
+     {
+      "id": 75,
+      "name": "pocket fluff",
+      "parent": 216
+     },
+     {
+      "id": 121,
+      "name": "towel",
+      "parent": 216
+     },
+     {
+      "id": 235,
+      "name": "sales brochure",
+      "parent": 216
+     },
+     {
+      "id": 236,
+      "name": "molecular hyperwave pincer",
+      "parent": 216
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 20,
+   "descriptorShortened": [],
+   "missing": [
+    "10:no tea",
+    "10:gown",
+    "10:it looks like your gown contains",
+    "10:bulldozer rumbles slowly toward your home",
+    "60:no tea",
+    "60:satchel",
+    "60:gown",
+    "60:it looks like your gown contains",
+    "60:\"oh freddled gruntbuggly, thy nacturations are to me!\"",
+    "90:no tea",
+    "90:gown"
+   ],
+   "extra": [
+    "10:thing your aunt gave you which you don't know what it is",
+    "60:thing your aunt gave you which you don't know what it is",
+    "90:thing your aunt gave you which you don't know what it is"
+   ],
+   "unmarked": [
+    "10:no tea",
+    "10:it looks like your gown contains",
+    "60:no tea",
+    "60:it looks like your gown contains",
+    "60:\"oh freddled gruntbuggly, thy nacturations are to me!\"",
+    "90:no tea"
+   ]
+  }
+ },
+ "Ballyhoo.z3.js": {
+  "ts": "2026-10-16T02:25:38.402Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You have a balloon, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [],
+    "shown": [
+     {
+      "id": 165,
+      "name": "balloon",
+      "parent": 211
+     },
+     {
+      "id": 134,
+      "name": "helium",
+      "parent": 165
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You have your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [],
+    "shown": [
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You have a rawhide bullwhip, a bucket, a skeleton key, your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \nInside the bucket you see a corpuscular lump of meat.\n \n> ",
+    "items": [
+     {
+      "text": "Inside the bucket you see a corpuscular lump of meat.",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 65,
+      "name": "bucket",
+      "parent": 211
+     },
+     {
+      "id": 102,
+      "name": "corpuscular lump of meat",
+      "parent": 65
+     },
+     {
+      "id": 16,
+      "name": "rawhide bullwhip",
+      "parent": 211
+     },
+     {
+      "id": 14,
+      "name": "skeleton key",
+      "parent": 211
+     },
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You have a cigarette case, a stool, a bucket, a rawhide bullwhip, a skeleton key, your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [],
+    "shown": [
+     {
+      "id": 216,
+      "name": "cigarette case",
+      "parent": 211
+     },
+     {
+      "id": 133,
+      "name": "stool",
+      "parent": 211
+     },
+     {
+      "id": 65,
+      "name": "bucket",
+      "parent": 211
+     },
+     {
+      "id": 16,
+      "name": "rawhide bullwhip",
+      "parent": 211
+     },
+     {
+      "id": 14,
+      "name": "skeleton key",
+      "parent": 211
+     },
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You have an one-dollar-and-85-cent granola bar, a stool, a bucket, a rawhide bullwhip, a skeleton key, your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [],
+    "shown": [
+     {
+      "id": 163,
+      "name": "one-dollar-and-85-cent granola bar",
+      "parent": 211
+     },
+     {
+      "id": 133,
+      "name": "stool",
+      "parent": 211
+     },
+     {
+      "id": 65,
+      "name": "bucket",
+      "parent": 211
+     },
+     {
+      "id": 16,
+      "name": "rawhide bullwhip",
+      "parent": 211
+     },
+     {
+      "id": 14,
+      "name": "skeleton key",
+      "parent": 211
+     },
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 0,
+   "descriptorShortened": [],
+   "missing": [],
+   "extra": [
+    "30:balloon",
+    "30:helium",
+    "30:fiberglass pole",
+    "60:ticket",
+    "60:pink dot",
+    "60:blue dot",
+    "60:scrap of newsprint",
+    "60:fiberglass pole",
+    "90:bucket",
+    "90:corpuscular lump of meat",
+    "90:rawhide bullwhip",
+    "90:skeleton key",
+    "90:ticket",
+    "90:pink dot",
+    "90:blue dot",
+    "90:scrap of newsprint",
+    "90:fiberglass pole",
+    "120:cigarette case",
+    "120:stool",
+    "120:bucket",
+    "120:rawhide bullwhip",
+    "120:skeleton key",
+    "120:ticket",
+    "120:pink dot",
+    "120:blue dot",
+    "120:scrap of newsprint",
+    "120:fiberglass pole",
+    "180:one-dollar-and-85-cent granola bar",
+    "180:stool",
+    "180:bucket",
+    "180:rawhide bullwhip",
+    "180:skeleton key",
+    "180:ticket",
+    "180:pink dot",
+    "180:blue dot",
+    "180:scrap of newsprint",
+    "180:fiberglass pole"
+   ],
+   "unmarked": []
+  }
+ },
+ "Cutthroats.z3.js": {
+  "ts": "2026-10-16T02:27:27.775Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You are carrying:\n  A room key\n  A Mariners' Trust passbook\n  A wrist watch (being worn)\nYou have $13 in your pocket.\n \n> ",
+    "items": [
+     {
+      "text": "A room key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A Mariners' Trust passbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wrist watch (being worn)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 143,
+      "name": "room key",
+      "parent": 184
+     },
+     {
+      "id": 144,
+      "name": "Mariners' Trust passbook",
+      "parent": 184
+     },
+     {
+      "id": 6,
+      "name": "wrist watch",
+      "parent": 184
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are carrying:\n  A room key\n  A wrist watch (being worn)\nYou have $616 in your pocket.\n \n> ",
+    "items": [
+     {
+      "text": "A room key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wrist watch (being worn)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 143,
+      "name": "room key",
+      "parent": 184
+     },
+     {
+      "id": 6,
+      "name": "wrist watch",
+      "parent": 184
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You are carrying:\n  A room key\n  A wrist watch (being worn)\nYou have $614 in your pocket.\n \n> ",
+    "items": [
+     {
+      "text": "A room key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wrist watch (being worn)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 143,
+      "name": "room key",
+      "parent": 184
+     },
+     {
+      "id": 6,
+      "name": "wrist watch",
+      "parent": 184
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You are carrying:\n  A room key\n  A wrist watch (being worn)\nYou have $149 in your pocket.\n \n> ",
+    "items": [
+     {
+      "text": "A room key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wrist watch (being worn)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 143,
+      "name": "room key",
+      "parent": 184
+     },
+     {
+      "id": 6,
+      "name": "wrist watch",
+      "parent": 184
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You are carrying:\n  A pair of flippers\n  A diving mask\n  An air tank\n  A wet suit\n  An envelope\n  A room key\n  A wrist watch (being worn)\nYou have $142 in your pocket.\n \n> ",
+    "items": [
+     {
+      "text": "A pair of flippers",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A diving mask",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "An air tank",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wet suit",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "An envelope",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A room key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wrist watch (being worn)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 138,
+      "name": "pair of flippers",
+      "parent": 184
+     },
+     {
+      "id": 137,
+      "name": "diving mask",
+      "parent": 184
+     },
+     {
+      "id": 136,
+      "name": "air tank",
+      "parent": 184
+     },
+     {
+      "id": 139,
+      "name": "wet suit",
+      "parent": 184
+     },
+     {
+      "id": 133,
+      "name": "envelope",
+      "parent": 184
+     },
+     {
+      "id": 143,
+      "name": "room key",
+      "parent": 184
+     },
+     {
+      "id": 6,
+      "name": "wrist watch",
+      "parent": 184
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 16,
+   "descriptorShortened": [],
+   "missing": [],
+   "extra": [],
+   "unmarked": []
+  }
+ },
+ "Infidel.z3.js": {
+  "ts": "2026-10-16T02:29:18.221Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You are carrying:\n  A canteen\n  An ancient map\n  A matchbook\n  A shovel\n  A pick axe\n \n> ",
+    "items": [
+     {
+      "text": "A canteen",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "An ancient map",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A shovel",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A pick axe",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 28,
+      "name": "canteen",
+      "parent": 223
+     },
+     {
+      "id": 35,
+      "name": "ancient map",
+      "parent": 223
+     },
+     {
+      "id": 49,
+      "name": "matchbook",
+      "parent": 223
+     },
+     {
+      "id": 33,
+      "name": "shovel",
+      "parent": 223
+     },
+     {
+      "id": 37,
+      "name": "pick axe",
+      "parent": 223
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are carrying:\n  A bronze torch (lit and burning)\n  A matchbook\n  A shovel\n  A pick axe\n \n> ",
+    "items": [
+     {
+      "text": "A bronze torch (lit and burning)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A shovel",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A pick axe",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 198,
+      "name": "bronze torch",
+      "parent": 223
+     },
+     {
+      "id": 49,
+      "name": "matchbook",
+      "parent": 223
+     },
+     {
+      "id": 33,
+      "name": "shovel",
+      "parent": 223
+     },
+     {
+      "id": 37,
+      "name": "pick axe",
+      "parent": 223
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You are carrying:\n  A silver chalice\n  A golden chalice\n  A bronze torch (lit and burning)\n  A matchbook\n  A shovel\n  A pick axe\n \n> ",
+    "items": [
+     {
+      "text": "A silver chalice",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A golden chalice",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A bronze torch (lit and burning)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A shovel",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A pick axe",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 7,
+      "name": "silver chalice",
+      "parent": 223
+     },
+     {
+      "id": 8,
+      "name": "golden chalice",
+      "parent": 223
+     },
+     {
+      "id": 198,
+      "name": "bronze torch",
+      "parent": 223
+     },
+     {
+      "id": 49,
+      "name": "matchbook",
+      "parent": 223
+     },
+     {
+      "id": 33,
+      "name": "shovel",
+      "parent": 223
+     },
+     {
+      "id": 37,
+      "name": "pick axe",
+      "parent": 223
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You are carrying:\n  A knapsack (being worn)\n  A bronze torch (lit and burning)\n  A wooden beam\n  A papyrus scroll\n  A matchbook\n  A pick axe\n \n> ",
+    "items": [
+     {
+      "text": "A knapsack (being worn)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A bronze torch (lit and burning)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wooden beam",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A papyrus scroll",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A pick axe",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 31,
+      "name": "knapsack",
+      "parent": 223
+     },
+     {
+      "id": 198,
+      "name": "bronze torch",
+      "parent": 223
+     },
+     {
+      "id": 104,
+      "name": "wooden beam",
+      "parent": 223
+     },
+     {
+      "id": 103,
+      "name": "papyrus scroll",
+      "parent": 223
+     },
+     {
+      "id": 49,
+      "name": "matchbook",
+      "parent": 223
+     },
+     {
+      "id": 37,
+      "name": "pick axe",
+      "parent": 223
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You are carrying:\n  A knapsack (being worn)\n  A wooden beam\n  A papyrus scroll\n  A matchbook\n  A pick axe\n  A diamond cluster\n  A bronze torch (lit and burning)\n \n> ",
+    "items": [
+     {
+      "text": "A knapsack (being worn)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A wooden beam",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A papyrus scroll",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A pick axe",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A diamond cluster",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A bronze torch (lit and burning)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 31,
+      "name": "knapsack",
+      "parent": 223
+     },
+     {
+      "id": 104,
+      "name": "wooden beam",
+      "parent": 223
+     },
+     {
+      "id": 103,
+      "name": "papyrus scroll",
+      "parent": 223
+     },
+     {
+      "id": 49,
+      "name": "matchbook",
+      "parent": 223
+     },
+     {
+      "id": 37,
+      "name": "pick axe",
+      "parent": 223
+     },
+     {
+      "id": 143,
+      "name": "diamond cluster",
+      "parent": 223
+     },
+     {
+      "id": 198,
+      "name": "bronze torch",
+      "parent": 223
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 28,
+   "descriptorShortened": [],
+   "missing": [],
+   "extra": [],
+   "unmarked": []
+  }
+ }
+}

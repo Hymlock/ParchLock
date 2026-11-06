@@ -1,0 +1,164 @@
+{
+  "kind": "retained evidence extraction, NOT a new native run or independent semantic qualification",
+  "original": {
+    "path": "work/mapping-research/items-codex/resume-20261020/door-moonmist-tour-final.json",
+    "sha256": "17abe3bd819111ee84ade173f35bc09cf503737cc96929882f19db2f1d1c94bc",
+    "tier": "Fresh ordinary native commands/passive RAM; no snapshots/RNG forcing/fact or VM writes",
+    "status": "DISCOVERY ONLY; native route and owners require qualification, not proven",
+    "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0"
+  },
+  "priorPacketBindingMatches": true,
+  "selected": [
+    {
+      "row": 13,
+      "id": 52,
+      "command": "yes",
+      "accepted": true,
+      "before": {
+        "name": "front gate",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          8,
+          9,
+          17
+        ]
+      },
+      "after": {
+        "name": "front gate",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          9,
+          14,
+          17
+        ]
+      },
+      "reply": [
+        ">yes",
+        "\"Jolly good! The spare bedroom is decorated in red! Please enter.\"",
+        "The red eye turns green, and the front gate creaks open.",
+        " ",
+        "What next?",
+        "> "
+      ]
+    },
+    {
+      "row": 21,
+      "id": 52,
+      "command": "close gate",
+      "accepted": true,
+      "before": {
+        "name": "front gate",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          9,
+          14,
+          17
+        ]
+      },
+      "after": {
+        "name": "front gate",
+        "parent": 44,
+        "door7": true,
+        "bits": [
+          7,
+          8,
+          9,
+          17
+        ]
+      },
+      "reply": [
+        ">close gate",
+        "Okay, it is now closed.",
+        "When a door opens in the castle and the front gate creaks open, you decide to drive through the gate and get out of the car.",
+        "The front gate closes and locks behind you.",
+        "(You are now in the courtyard.)",
+        "As flood lights blaze on, you look around. It looks even lovelier than it sounds in the tourist brochure.",
+        "The dark stone turrets rise toward the misty sky.",
+        "Your new little red sports car is parked here.",
+        " ",
+        "Someone comes running out of the wing to greet you. She's a beautiful red-haired young woman of average height. You recognize her as your friend, Tamara Lynd.",
+        "\"Codex!\" she cries with outflung arms. \"You sweet thing, to answer my letter in person this way! And all the people I wrote about are here tonight for Lionel's memorial birthday dinner!\"",
+        "After a warm hug, she asks anxiously, \"You did read my letter, and not just give it a hasty glance?\"",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "row": 21,
+      "id": 120,
+      "command": "close gate",
+      "accepted": true,
+      "before": {
+        "name": "front door",
+        "parent": 37,
+        "door7": true,
+        "bits": [
+          7,
+          8,
+          14,
+          17
+        ]
+      },
+      "after": {
+        "name": "front door",
+        "parent": 37,
+        "door7": true,
+        "bits": [
+          7,
+          14,
+          17
+        ]
+      },
+      "reply": [
+        ">close gate",
+        "Okay, it is now closed.",
+        "When a door opens in the castle and the front gate creaks open, you decide to drive through the gate and get out of the car.",
+        "The front gate closes and locks behind you.",
+        "(You are now in the courtyard.)",
+        "As flood lights blaze on, you look around. It looks even lovelier than it sounds in the tourist brochure.",
+        "The dark stone turrets rise toward the misty sky.",
+        "Your new little red sports car is parked here.",
+        " ",
+        "Someone comes running out of the wing to greet you. She's a beautiful red-haired young woman of average height. You recognize her as your friend, Tamara Lynd.",
+        "\"Codex!\" she cries with outflung arms. \"You sweet thing, to answer my letter in person this way! And all the people I wrote about are here tonight for Lionel's memorial birthday dinner!\"",
+        "After a warm hug, she asks anxiously, \"You did read my letter, and not just give it a hasty glance?\"",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\moonmist\\historicalsource-moonmist-c85885f\\castle.zil",
+      "sha256": "f6361e60f57de05cf50355611102b75a97fb8e14cf5036c9ba438412054a9a02"
+    },
+    {
+      "path": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\moonmist\\historicalsource-moonmist-c85885f\\verbs.zil",
+      "sha256": "a65d75680c3e84cfa716b689e4672c78fbe4fd4eca82d05f05eb37088cfccc27"
+    },
+    {
+      "path": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\moonmist\\historicalsource-moonmist-c85885f\\goal.zil",
+      "sha256": "6d6a6988d4f4caa60e1145f1c214c378e73669d1386659c97beca4ad0ab959ee"
+    },
+    {
+      "path": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\moonmist\\historicalsource-moonmist-c85885f\\tower.zil",
+      "sha256": "354b36fdff21866e1a129916b49b06b7350cea6522b3b2348a204ad77bf36d8e"
+    },
+    {
+      "path": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\moonmist\\historicalsource-moonmist-c85885f\\people.zil",
+      "sha256": "96bae02a8c65d184452caf67848d6d967c641060f2417fcbed289d89109fac2f"
+    }
+  ],
+  "limits": [
+    "discovery census not true-frontier-certified",
+    "second-owner clear is automatic story effect, not manual UNLOCK",
+    "DOOR/OPEN qualification is separate from LOCKED",
+    "no rendered UI proof or navigation policy accepted"
+  ]
+}

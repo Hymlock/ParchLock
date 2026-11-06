@@ -1,0 +1,4 @@
+Error: R3 candidate shard failed 0
+    at ChildProcess.<anonymous> (C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\work\mapping-research\items-codex\resume-20261020\roy-keyboard-20261104\run-gate.cjs:20:146)
+    at ChildProcess.emit (node:events:508:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:294:12)

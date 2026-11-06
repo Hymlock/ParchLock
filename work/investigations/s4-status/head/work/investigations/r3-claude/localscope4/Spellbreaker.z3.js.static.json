@@ -1,0 +1,1155 @@
+{
+ "story": "Spellbreaker.z3.js",
+ "version": 3,
+ "digest": "2d097ac9e4081b68658d0331345176946253cb349ed66eeff88533826cae29d0",
+ "flags": {
+  ";SEARCHBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  "AN": {
+   "bit": 14,
+   "exact": true
+  },
+  "BRIEFBIT": {
+   "bit": 13,
+   "exact": true
+  },
+  "CONTBIT": {
+   "bit": 27,
+   "exact": true
+  },
+  "DOORBIT": {
+   "bit": 25,
+   "exact": true
+  },
+  "INVISIBLE": {
+   "bit": 12,
+   "exact": true
+  },
+  "LOCKED": {
+   "bit": 11,
+   "exact": true
+  },
+  "MAGICBIT": {
+   "bit": 20,
+   "exact": true
+  },
+  "NDESCBIT": {
+   "bit": 19,
+   "exact": true
+  },
+  "NOABIT": {
+   "bit": 10,
+   "exact": true
+  },
+  "NOTHEBIT": {
+   "bit": 9,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 8,
+   "exact": true
+  },
+  "OPENBIT": {
+   "bit": 21,
+   "exact": true
+  },
+  "OUTSIDE": {
+   "bit": 1,
+   "exact": true
+  },
+  "PERSON": {
+   "bit": 31,
+   "exact": true
+  },
+  "RAIRBIT": {
+   "bit": 7,
+   "exact": true
+  },
+  "READBIT": {
+   "bit": 23,
+   "exact": true
+  },
+  "RLANDBIT": {
+   "bit": 28,
+   "exact": true
+  },
+  "RMUNGBIT": {
+   "bit": 6,
+   "exact": true
+  },
+  "RWATERBIT": {
+   "bit": 5,
+   "exact": true
+  },
+  "SCROLLBIT": {
+   "bit": 16,
+   "exact": true
+  },
+  "SEARCHBIT": {
+   "bit": 4,
+   "exact": true
+  },
+  "SURFACEBIT": {
+   "bit": 3,
+   "exact": true
+  },
+  "TAKEBIT": {
+   "bit": 24,
+   "exact": true
+  },
+  "THE": {
+   "bit": 2,
+   "exact": true
+  },
+  "TOOLBIT": {
+   "bit": 26,
+   "exact": true
+  },
+  "TOUCHBIT": {
+   "bit": 22,
+   "exact": false
+  },
+  "TRANSBIT": {
+   "bit": 15,
+   "exact": true
+  },
+  "TRYTAKEBIT": {
+   "bit": 17,
+   "exact": true
+  },
+  "VEHBIT": {
+   "bit": 29,
+   "exact": true
+  },
+  "WEAPONBIT": {
+   "bit": 30,
+   "exact": true
+  }
+ },
+ "holder": {
+  "id": 54,
+  "name": ""
+ },
+ "kids": [
+  {
+   "id": 207,
+   "name": "cell door",
+   "invisible": false,
+   "attrs": [
+    11,
+    25
+   ],
+   "listedBy": [
+    "38L"
+   ]
+  },
+  {
+   "id": 8,
+   "name": "southwest rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 191,
+   "name": "southeast rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 61,
+   "name": "northwest rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 239,
+   "name": "northeast rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 236,
+   "name": "south rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 104,
+   "name": "west rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 126,
+   "name": "east rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 17,
+   "name": "north rune",
+   "invisible": false,
+   "attrs": [
+    19,
+    23
+   ],
+   "listedBy": [
+    "28d",
+    "56d",
+    "62d",
+    "93d",
+    "119d",
+    "140d",
+    "167d",
+    "190d",
+    "220d"
+   ]
+  },
+  {
+   "id": 163,
+   "name": "lines",
+   "invisible": false,
+   "attrs": [
+    10,
+    19
+   ],
+   "listedBy": [
+    "152L"
+   ]
+  },
+  {
+   "id": 223,
+   "name": "iron door",
+   "invisible": false,
+   "attrs": [
+    11,
+    25
+   ],
+   "listedBy": [
+    "227d"
+   ]
+  },
+  {
+   "id": 2,
+   "name": "vault door",
+   "invisible": false,
+   "attrs": [
+    25
+   ],
+   "listedBy": [
+    "164d",
+    "227d"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "pillar",
+   "invisible": false,
+   "attrs": [
+    3,
+    19,
+    23
+   ],
+   "listedBy": [
+    "51d",
+    "111d",
+    "162d"
+   ]
+  },
+  {
+   "id": 183,
+   "name": "outcropping",
+   "invisible": false,
+   "attrs": [
+    3,
+    14,
+    19,
+    21,
+    27
+   ],
+   "listedBy": [
+    "80L",
+    "194L"
+   ]
+  },
+  {
+   "id": 188,
+   "name": "shop door",
+   "invisible": false,
+   "attrs": [
+    21,
+    25
+   ],
+   "listedBy": [
+    "115L",
+    "122L"
+   ]
+  },
+  {
+   "id": 244,
+   "name": "trap door",
+   "invisible": false,
+   "attrs": [
+    25
+   ],
+   "listedBy": [
+    "97d",
+    "137d"
+   ]
+  },
+  {
+   "id": 233,
+   "name": "pipe",
+   "invisible": false,
+   "attrs": [
+    19,
+    29
+   ],
+   "listedBy": [
+    "37d",
+    "116d",
+    "127d",
+    "180d",
+    "230d"
+   ]
+  },
+  {
+   "id": 210,
+   "name": "cave",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "7d",
+    "51d",
+    "102d",
+    "111d",
+    "162d",
+    "176d",
+    "231L"
+   ]
+  },
+  {
+   "id": 23,
+   "name": "rock",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "3d",
+    "24d",
+    "29L",
+    "49d",
+    "80L",
+    "102d",
+    "109L",
+    "179L",
+    "194L",
+    "219L",
+    "231L",
+    "242L"
+   ]
+  },
+  {
+   "id": 96,
+   "name": "cliff",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "29L",
+    "109L",
+    "179L",
+    "231L",
+    "242L"
+   ]
+  },
+  {
+   "id": 226,
+   "name": "stone hut",
+   "invisible": false,
+   "attrs": [
+    19,
+    21,
+    29
+   ],
+   "listedBy": [
+    "109L",
+    "199L",
+    "242L"
+   ]
+  },
+  {
+   "id": 131,
+   "name": "serpent",
+   "invisible": false,
+   "attrs": [
+    2,
+    17,
+    19,
+    24,
+    29,
+    31
+   ],
+   "listedBy": [
+    "74d",
+    "101d"
+   ]
+  },
+  {
+   "id": 185,
+   "name": "water",
+   "invisible": false,
+   "attrs": [
+    10,
+    19
+   ],
+   "listedBy": [
+    "37d",
+    "79L",
+    "88d",
+    "89L",
+    "97d",
+    "114d",
+    "116d",
+    "127d",
+    "180d",
+    "200d",
+    "211L",
+    "230d"
+   ]
+  },
+  {
+   "id": 174,
+   "name": "grue",
+   "invisible": false,
+   "attrs": [
+    2,
+    19,
+    31
+   ],
+   "listedBy": [
+    "51d",
+    "111d",
+    "162d"
+   ]
+  },
+  {
+   "id": 117,
+   "name": "hole",
+   "invisible": false,
+   "attrs": [
+    19,
+    22
+   ],
+   "listedBy": [
+    "39d",
+    "156d",
+    "225d"
+   ]
+  }
+ ],
+ "rooms": [
+  {
+   "id": 3,
+   "name": "Boulder",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "23:rock"
+   ]
+  },
+  {
+   "id": 7,
+   "name": "Ogre Lair",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "210:cave"
+   ]
+  },
+  {
+   "id": 24,
+   "name": "Boulder",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "23:rock"
+   ]
+  },
+  {
+   "id": 28,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 29,
+   "name": "Cliff Middle",
+   "parent": 41,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "23:rock",
+    "96:cliff"
+   ]
+  },
+  {
+   "id": 37,
+   "name": "In Pipe",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "185:water",
+    "233:pipe"
+   ]
+  },
+  {
+   "id": 38,
+   "name": "Dungeon Cell",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "207:cell door"
+   ]
+  },
+  {
+   "id": 39,
+   "name": "Air Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "117:hole"
+   ]
+  },
+  {
+   "id": 49,
+   "name": "Boulder",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "23:rock"
+   ]
+  },
+  {
+   "id": 51,
+   "name": "Grue Cave",
+   "parent": 41,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "174:grue",
+    "210:cave",
+    "213:pillar"
+   ]
+  },
+  {
+   "id": 56,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 62,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 74,
+   "name": "North of Serpent",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "131:serpent"
+   ]
+  },
+  {
+   "id": 79,
+   "name": "Mid:Ocean",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "185:water"
+   ]
+  },
+  {
+   "id": 80,
+   "name": "Volcano",
+   "parent": 41,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "183:outcropping",
+    "23:rock"
+   ]
+  },
+  {
+   "id": 88,
+   "name": "Water Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "185:water"
+   ]
+  },
+  {
+   "id": 89,
+   "name": "Open Ocean",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "185:water"
+   ]
+  },
+  {
+   "id": 93,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 97,
+   "name": "Oubliette",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "244:trap door",
+    "185:water"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Smooth Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "131:serpent"
+   ]
+  },
+  {
+   "id": 102,
+   "name": "Cave",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "210:cave",
+    "23:rock"
+   ]
+  },
+  {
+   "id": 109,
+   "name": "Cliff Top",
+   "parent": 41,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "23:rock",
+    "96:cliff",
+    "226:stone hut"
+   ]
+  },
+  {
+   "id": 111,
+   "name": "Light Pool",
+   "parent": 41,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "213:pillar",
+    "174:grue",
+    "210:cave"
+   ]
+  },
+  {
+   "id": 114,
+   "name": "Ruins Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "185:water"
+   ]
+  },
+  {
+   "id": 115,
+   "name": "Bazaar",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "188:shop door"
+   ]
+  },
+  {
+   "id": 116,
+   "name": "Ruined Pipe",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "185:water",
+    "233:pipe"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "Emporium",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "188:shop door"
+   ]
+  },
+  {
+   "id": 127,
+   "name": "In Pipe",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "185:water",
+    "233:pipe"
+   ]
+  },
+  {
+   "id": 137,
+   "name": "Dungeon",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "244:trap door",
+    "159:east wall(par73)"
+   ]
+  },
+  {
+   "id": 140,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 152,
+   "name": "Plain",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "163:lines"
+   ]
+  },
+  {
+   "id": 156,
+   "name": "Packed Earth",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "117:hole"
+   ]
+  },
+  {
+   "id": 162,
+   "name": "On Pillar",
+   "parent": 41,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "213:pillar",
+    "174:grue",
+    "210:cave"
+   ]
+  },
+  {
+   "id": 164,
+   "name": "Inner Vault",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "2:vault door"
+   ]
+  },
+  {
+   "id": 167,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 176,
+   "name": "Dark Cave",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "210:cave"
+   ]
+  },
+  {
+   "id": 179,
+   "name": "Cliff Bottom",
+   "parent": 41,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "23:rock",
+    "96:cliff"
+   ]
+  },
+  {
+   "id": 180,
+   "name": "In Channel",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "185:water",
+    "233:pipe"
+   ]
+  },
+  {
+   "id": 190,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 194,
+   "name": "Outcropping",
+   "parent": 41,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "183:outcropping",
+    "23:rock"
+   ]
+  },
+  {
+   "id": 199,
+   "name": "Stone Hut",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "226:stone hut"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "Ruins Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "185:water"
+   ]
+  },
+  {
+   "id": 211,
+   "name": "Ocean Floor",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "185:water"
+   ]
+  },
+  {
+   "id": 219,
+   "name": "Volcano Base",
+   "parent": 41,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "23:rock"
+   ]
+  },
+  {
+   "id": 220,
+   "name": "Octagonal Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "17:north rune",
+    "239:northeast rune",
+    "126:east rune",
+    "191:southeast rune",
+    "236:south rune",
+    "8:southwest rune",
+    "104:west rune",
+    "61:northwest rune"
+   ]
+  },
+  {
+   "id": 225,
+   "name": "Sand Room",
+   "parent": 41,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "117:hole"
+   ]
+  },
+  {
+   "id": 227,
+   "name": "Outer Vault",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "223:iron door",
+    "2:vault door"
+   ]
+  },
+  {
+   "id": 230,
+   "name": "In Pipe",
+   "parent": 41,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "185:water",
+    "233:pipe"
+   ]
+  },
+  {
+   "id": 231,
+   "name": "Cave Entrance",
+   "parent": 41,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "96:cliff",
+    "210:cave",
+    "23:rock"
+   ]
+  },
+  {
+   "id": 242,
+   "name": "Mountain Top",
+   "parent": 41,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "23:rock",
+    "96:cliff",
+    "226:stone hut"
+   ]
+  }
+ ]
+}

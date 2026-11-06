@@ -1,0 +1,334 @@
+{
+ "Sorcerer.z3.js": {
+  "ts": "2026-10-16T04:00:11.469Z",
+  "checks": [
+   {
+    "step": 10,
+    "text": "You are carrying:\n  a journal\n  a tiny box\n  a spell book (providing light)\n \n\"Squawk! This tea is cold! Get me another cup. Squawk!\"\n \n> ",
+    "items": [
+     {
+      "text": "a journal",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a tiny box",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a spell book (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "\"Squawk! This tea is cold! Get me another cup. Squawk!\"",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 225,
+      "name": "journal",
+      "parent": 223
+     },
+     {
+      "id": 102,
+      "name": "tiny box",
+      "parent": 223
+     },
+     {
+      "id": 139,
+      "name": "spell book",
+      "parent": 223
+     },
+     {
+      "id": 214,
+      "name": "gnusto spell",
+      "parent": 139
+     },
+     {
+      "id": 27,
+      "name": "vezza spell",
+      "parent": 139
+     },
+     {
+      "id": 162,
+      "name": "pulver spell",
+      "parent": 139
+     },
+     {
+      "id": 140,
+      "name": "izyuk spell",
+      "parent": 139
+     },
+     {
+      "id": 183,
+      "name": "yomin spell",
+      "parent": 139
+     },
+     {
+      "id": 22,
+      "name": "rezrov spell",
+      "parent": 139
+     },
+     {
+      "id": 147,
+      "name": "frotz spell",
+      "parent": 139
+     }
+    ]
+   },
+   {
+    "step": 30,
+    "text": "You are carrying:\n  a calendar (providing light)\n  an ochre vial\n  a tiny box\n  a spell book (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "a calendar (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "an ochre vial",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a tiny box",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a spell book (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 61,
+      "name": "calendar",
+      "parent": 223
+     },
+     {
+      "id": 211,
+      "name": "ochre vial",
+      "parent": 223
+     },
+     {
+      "id": 102,
+      "name": "tiny box",
+      "parent": 223
+     },
+     {
+      "id": 139,
+      "name": "spell book",
+      "parent": 223
+     },
+     {
+      "id": 233,
+      "name": "meef spell",
+      "parent": 139
+     },
+     {
+      "id": 214,
+      "name": "gnusto spell",
+      "parent": 139
+     },
+     {
+      "id": 27,
+      "name": "vezza spell",
+      "parent": 139
+     },
+     {
+      "id": 162,
+      "name": "pulver spell",
+      "parent": 139
+     },
+     {
+      "id": 140,
+      "name": "izyuk spell",
+      "parent": 139
+     },
+     {
+      "id": 183,
+      "name": "yomin spell",
+      "parent": 139
+     },
+     {
+      "id": 22,
+      "name": "rezrov spell",
+      "parent": 139
+     },
+     {
+      "id": 147,
+      "name": "frotz spell",
+      "parent": 139
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are carrying:\n  an indigo vial\n  an amber vial\n  a pile of bat guano\n  an orange vial\n  a calendar (providing light)\n  a tiny box\n  a spell book (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "an indigo vial",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "an amber vial",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a pile of bat guano",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "an orange vial",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a calendar (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a tiny box",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "a spell book (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 138,
+      "name": "indigo vial",
+      "parent": 223
+     },
+     {
+      "id": 241,
+      "name": "amber vial",
+      "parent": 223
+     },
+     {
+      "id": 64,
+      "name": "pile of bat guano",
+      "parent": 223
+     },
+     {
+      "id": 205,
+      "name": "orange vial",
+      "parent": 223
+     },
+     {
+      "id": 61,
+      "name": "calendar",
+      "parent": 223
+     },
+     {
+      "id": 102,
+      "name": "tiny box",
+      "parent": 223
+     },
+     {
+      "id": 139,
+      "name": "spell book",
+      "parent": 223
+     },
+     {
+      "id": 20,
+      "name": "fweep spell",
+      "parent": 139
+     },
+     {
+      "id": 179,
+      "name": "gaspar spell",
+      "parent": 139
+     },
+     {
+      "id": 233,
+      "name": "meef spell",
+      "parent": 139
+     },
+     {
+      "id": 214,
+      "name": "gnusto spell",
+      "parent": 139
+     },
+     {
+      "id": 27,
+      "name": "vezza spell",
+      "parent": 139
+     },
+     {
+      "id": 162,
+      "name": "pulver spell",
+      "parent": 139
+     },
+     {
+      "id": 140,
+      "name": "izyuk spell",
+      "parent": 139
+     },
+     {
+      "id": 183,
+      "name": "yomin spell",
+      "parent": 139
+     },
+     {
+      "id": 22,
+      "name": "rezrov spell",
+      "parent": 139
+     },
+     {
+      "id": 147,
+      "name": "frotz spell",
+      "parent": 139
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 14,
+   "descriptorShortened": [],
+   "missing": [],
+   "extra": [
+    "10:gnusto spell",
+    "10:vezza spell",
+    "10:pulver spell",
+    "10:izyuk spell",
+    "10:yomin spell",
+    "10:rezrov spell",
+    "10:frotz spell",
+    "30:meef spell",
+    "30:gnusto spell",
+    "30:vezza spell",
+    "30:pulver spell",
+    "30:izyuk spell",
+    "30:yomin spell",
+    "30:rezrov spell",
+    "30:frotz spell",
+    "60:fweep spell",
+    "60:gaspar spell",
+    "60:meef spell",
+    "60:gnusto spell",
+    "60:vezza spell",
+    "60:pulver spell",
+    "60:izyuk spell",
+    "60:yomin spell",
+    "60:rezrov spell",
+    "60:frotz spell"
+   ],
+   "unmarked": []
+  }
+ }
+}

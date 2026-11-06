@@ -1,0 +1,566 @@
+{
+ "Sherlock@396": {
+  "off": {
+   "probeExcluded": true,
+   "raw": " 221-B Baker Street            Sat  5:11 AM     0",
+   "metrics": [
+    {
+     "key": "time",
+     "label": "Time",
+     "value": "Sat  5:11 AM",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "221-B Baker Street",
+   "visibleStats": 1,
+   "layout": [
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "28px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    },
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "806px",
+     "rows": 1,
+     "cols": [
+      49
+     ]
+    }
+   ],
+   "grids": [
+    {
+     "oneline": true,
+     "visibility": "visible",
+     "display": "block",
+     "top": 8,
+     "bottom": 36,
+     "rows": 1
+    }
+   ],
+   "buffers": [
+    {
+     "top": 36,
+     "below": false
+    }
+   ],
+   "hideClass": false,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": false,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  },
+  "on": {
+   "probeExcluded": true,
+   "raw": " 221-B Baker Street            Sat  5:11 AM     0",
+   "metrics": [
+    {
+     "key": "time",
+     "label": "Time",
+     "value": "Sat  5:11 AM",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "221-B Baker Street",
+   "visibleStats": 1,
+   "layout": [
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "28px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    },
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "806px",
+     "rows": 1,
+     "cols": [
+      49
+     ]
+    }
+   ],
+   "grids": [
+    {
+     "oneline": true,
+     "visibility": "hidden",
+     "display": "block",
+     "top": 8,
+     "bottom": 36,
+     "rows": 1
+    }
+   ],
+   "buffers": [
+    {
+     "top": 8,
+     "below": true
+    }
+   ],
+   "hideClass": true,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": true,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  }
+ },
+ "Sherlock@1280": {
+  "off": {
+   "probeExcluded": true,
+   "raw": "Saturday  5:11:00 a.m.                                                ",
+   "metrics": [
+    {
+     "key": "time",
+     "label": "Time",
+     "value": "Saturday  5:11:00 a.m.",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "",
+   "visibleStats": 1,
+   "layout": [
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "28px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    },
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "816px",
+     "rows": 1,
+     "cols": [
+      70
+     ]
+    }
+   ],
+   "grids": [
+    {
+     "oneline": true,
+     "visibility": "visible",
+     "display": "block",
+     "top": 28,
+     "bottom": 56,
+     "rows": 1
+    }
+   ],
+   "buffers": [
+    {
+     "top": 56,
+     "below": false
+    }
+   ],
+   "hideClass": false,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": false,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  },
+  "on": {
+   "probeExcluded": true,
+   "raw": "Saturday  5:11:00 a.m.                                                ",
+   "metrics": [
+    {
+     "key": "time",
+     "label": "Time",
+     "value": "Saturday  5:11:00 a.m.",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "",
+   "visibleStats": 1,
+   "layout": [
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "28px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    },
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "816px",
+     "rows": 1,
+     "cols": [
+      70
+     ]
+    }
+   ],
+   "grids": [
+    {
+     "oneline": true,
+     "visibility": "visible",
+     "display": "block",
+     "top": 28,
+     "bottom": 56,
+     "rows": 1
+    }
+   ],
+   "buffers": [
+    {
+     "top": 56,
+     "below": false
+    }
+   ],
+   "hideClass": false,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": true,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  }
+ },
+ "curses@396": {
+  "off": {
+   "probeExcluded": true,
+   "raw": " Attic       Score: 0                             (in Meldrew Hall)              June 3rd, 1993                                                                                                       Four be the things I'd been better without:      Love, curiosity, freckles and doubt.                                                              -- Dorothy Parker, \"Inventory\"                                                                                                                   ",
+   "metrics": [
+    {
+     "key": "score",
+     "label": "Score",
+     "value": 0,
+     "max": null,
+     "unit": "plain",
+     "source": "status-grid"
+    },
+    {
+     "key": "date",
+     "label": "Date",
+     "value": "June 3rd, 1993",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "Attic",
+   "visibleStats": 3,
+   "layout": [
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "670px",
+     "rows": 10,
+     "cols": [
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49
+     ]
+    },
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "164px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    }
+   ],
+   "grids": [
+    {
+     "oneline": false,
+     "visibility": "visible",
+     "display": "block",
+     "top": 8,
+     "bottom": 172,
+     "rows": 10
+    }
+   ],
+   "buffers": [
+    {
+     "top": 172,
+     "below": false
+    }
+   ],
+   "hideClass": false,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": false,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  },
+  "on": {
+   "probeExcluded": true,
+   "raw": " Attic       Score: 0                             (in Meldrew Hall)              June 3rd, 1993                                                                                                       Four be the things I'd been better without:      Love, curiosity, freckles and doubt.                                                              -- Dorothy Parker, \"Inventory\"                                                                                                                   ",
+   "metrics": [
+    {
+     "key": "score",
+     "label": "Score",
+     "value": 0,
+     "max": null,
+     "unit": "plain",
+     "source": "status-grid"
+    },
+    {
+     "key": "date",
+     "label": "Date",
+     "value": "June 3rd, 1993",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "Attic",
+   "visibleStats": 3,
+   "layout": [
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "670px",
+     "rows": 10,
+     "cols": [
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49,
+      49
+     ]
+    },
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "164px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    }
+   ],
+   "grids": [
+    {
+     "oneline": false,
+     "visibility": "visible",
+     "display": "block",
+     "top": 8,
+     "bottom": 172,
+     "rows": 10
+    }
+   ],
+   "buffers": [
+    {
+     "top": 172,
+     "below": false
+    }
+   ],
+   "hideClass": false,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": true,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  }
+ },
+ "curses@1280": {
+  "off": {
+   "probeExcluded": true,
+   "raw": " Attic                                                                 (in Meldrew Hall)                       4           June 3rd, 1993                                                                                                                                                           Four be the things I'd been better without:                           Love, curiosity, freckles and doubt.                                                                                                        -- Dorothy Parker, \"Inventory\"                                                                                                                                                                        ",
+   "metrics": [
+    {
+     "key": "date",
+     "label": "Date",
+     "value": "June 3rd, 1993",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "Attic",
+   "visibleStats": 3,
+   "layout": [
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "672px",
+     "rows": 10,
+     "cols": [
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70
+     ]
+    },
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "172px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    }
+   ],
+   "grids": [
+    {
+     "oneline": false,
+     "visibility": "visible",
+     "display": "block",
+     "top": 28,
+     "bottom": 200,
+     "rows": 10
+    }
+   ],
+   "buffers": [
+    {
+     "top": 200,
+     "below": false
+    }
+   ],
+   "hideClass": false,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": false,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  },
+  "on": {
+   "probeExcluded": true,
+   "raw": " Attic                                                                 (in Meldrew Hall)                       4           June 3rd, 1993                                                                                                                                                           Four be the things I'd been better without:                           Love, curiosity, freckles and doubt.                                                                                                        -- Dorothy Parker, \"Inventory\"                                                                                                                                                                        ",
+   "metrics": [
+    {
+     "key": "date",
+     "label": "Date",
+     "value": "June 3rd, 1993",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ],
+   "roomLabel": "Attic",
+   "visibleStats": 3,
+   "layout": [
+    {
+     "id": "window108",
+     "cls": "grid",
+     "left": "0px",
+     "top": "0px",
+     "right": "0px",
+     "bottom": "672px",
+     "rows": 10,
+     "cols": [
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70
+     ]
+    },
+    {
+     "id": "window102",
+     "cls": "other",
+     "left": "0px",
+     "top": "172px",
+     "right": "0px",
+     "bottom": "0px",
+     "rows": 0,
+     "cols": []
+    }
+   ],
+   "grids": [
+    {
+     "oneline": false,
+     "visibility": "visible",
+     "display": "block",
+     "top": 28,
+     "bottom": 200,
+     "rows": 10
+    }
+   ],
+   "buffers": [
+    {
+     "top": 200,
+     "below": false
+    }
+   ],
+   "hideClass": false,
+   "testPaneTouched": false,
+   "checkbox": {
+    "checked": true,
+    "inInterface": true
+   },
+   "ariaHidden": false
+  }
+ }
+}

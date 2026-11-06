@@ -1,0 +1,60 @@
+diff --git a/harness/operator-regressions.js b/harness/operator-regressions.js
+index de17926..a9c56f0 100644
+--- a/harness/operator-regressions.js
++++ b/harness/operator-regressions.js
+@@ -70,7 +70,7 @@ async function open(b, story, seeded) {
+     await p.cmd('look');
+     const info = await p.evaluate(() => {
+       const ms = [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(m => m.dataset.kind !== 'direction');
+-      const cov = ms.flatMap(m => Actionable.markCoverIds(m)); const dup = cov.filter((id, i) => cov.indexOf(id) !== i);
++      const cov = ms.flatMap(m => [...new Set(Actionable.markCoverIds(m))]); const dup = cov.filter((id, i) => cov.indexOf(id) !== i);
+       const inside = ms.filter(m => m.textContent.toLowerCase() === 'cage' && /brass\s*$/i.test((m.previousSibling && m.previousSibling.nodeValue) || ''));
+       const brass = ms.filter(m => m.textContent.toLowerCase() === 'brass cage').map(m => Actionable.markCoverIds(m));
+       return { dup, inside: inside.length, brass };
+@@ -92,9 +92,13 @@ async function open(b, story, seeded) {
+     const info = await p.evaluate(() => {
+       const inv = ((WorldModel.lastPayload || {}).inventory || []).map(o => o.id);
+       const text = String((Actionable.Scope && Actionable.Scope.lastInventoryText) || '');
+-      return { inv, has217: inv.indexOf(217) >= 0, textHasBrochure: /brochure/i.test(text) };
++      const mem = ZRamProvider.getMem(), links = ZRamReader.objectLinks(mem, 217);
++      const root = ((WorldModel.lastPayload || {}).probe || {}).inventoryRootId;
++      return { inv, has217: inv.indexOf(217) >= 0, textHasBrochure: /brochure/i.test(text), root, brochureParent: links && links.parent }; 
+     });
+-    check('planetfall cold inventory has no brochure 217', !info.has217 && !info.textHasBrochure, info);
++    // Planetfall globals.zil PROB15 may hand over the brochure during this turn.
++    // Native RAM custody, not a mention in ambient text, determines inventory.
++    check('planetfall brochure inventory matches native custody', info.root === 236 && info.has217 === (info.brochureParent === 236), info);
+     await p.close();
+   } catch (e) { check('planetfall brochure run', false, e.message); }
+   await b.close(); console.log(pass + ' PASS / ' + fail + ' FAIL'); process.exit(fail ? 1 : 0);
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 53126b6..f4c4ec7 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -38,7 +38,13 @@ var ModuleStatFactsClaude = {
+         // WEARBIT 18 (grok1 2026-10-17, same replay): 'wear wet suit' @280 tests 139:18 TRUE, 'wear flippers' @284 tests 138:18 TRUE
+         // ("You are now wearing ..."); 'wear flashlight' @291 tests flashlight 116:18 FALSE ("You can't wear the flashlight."). RAM 18 =
+         // watch 6, diving suit 81, air tank 136, mask 137, flippers 138, wet suit 139 = source WEARBIT exact 6/6.
+-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18 }
++        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18 },
++        // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
++        // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
++        // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
++        // tests flashlight 116:13 FALSE. Codex cold WEAR WATCH (items-codex/2026-10-17-cutthroats-wear-watch.json) 6:13 TRUE. Source V-WEAR
++        // (verbs:2742) checks WEARBIT 18 then FSETs WORNBIT 13; UNWEAR (2756) FCLEARs it.
++        "wornAttribute": 13
+     },
+     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
+     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
+@@ -724,6 +730,11 @@ var ModuleStatFactsClaude = {
+         // thought."). Source: WEARABLEBIT is carried ONLY by SURGERY-HAND (objects.zil:393, IN SUPPLIES-MID); bounded compiled object-table
+         // scan (191 objects, ends at first property 2527): bit 31 carriers = {63} -> rule-5 single-owner exception + source 1/1.
+         "attributeMap": { "wearable": 31 },
++        // WEARBIT 15 = worn (grok1 2026-10-17, route suspW): grasper 63:15 FALSE before 'waldo,install grasper', TRUE after; 'waldo,detach grasper'
++        // tests 63:15 TRUE x3 ("It's been removed."); 'waldo,remove container' tests basket 76:15 FALSE (agent-tools/g1-suE.json). Single owner:
++        // the only runtime FSET is V-WEAR (verbs.zil:1745), gated on WEARABLEBIT = SURGERY-HAND only; the bounded boot scan carrier {191} is
++        // GLOBAL-OBJECTS (globals.zil:14-16, the flag-list pseudo object, never in inventory).
++        "wornAttribute": 15,
+         "command": "score", "fields": ["casualties", "population", "cycles"], "replyFamily": "casualty-cycles", "outcome": "line",
+         "evidence": "2026-10-05 live SCORE: There have been 3,000 casualties (original population: 30,172,000) in 0 cycles."
+     },

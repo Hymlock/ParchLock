@@ -1,0 +1,58 @@
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -354,6 +354,43 @@
+         if (current && current === seed.name) return current;
+         return casedStructural() || seed.name || current;
+     },
++    // Positive admission (Codex #3509/#3527): only genuine listing entries of the native inventory reply, never its
++    // incidental prose ("A troll drops a cube."). Headers are only the player's inventory headers ("You are carrying:",
++    // "You have:", ...) or "<known pool object> contains:"; block rows must be INDENTED and end at the first unindented
++    // line. Sentence lists are only "You are/You're carrying|holding|wearing ...", "You have ..." or "<known pool object>
++    // contains ...". Commas separate items; " and " separates only when its left side ends with another pool object's
++    // name (compounds such as "tourist guide and phrase book" stay whole). Uncertain formats yield no row.
++    listingRows: function (invText, pool) {
++        var names = (pool || []).map(function (o) { return String((o && (o.structuralName || o.name)) || "").toLowerCase().replace(/\s+/g, " ").trim(); }).filter(Boolean);
++        var esc = function (x) { return x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); };
++        var known = names.length ? "(?:(?:the|your|a|an)\\s+)?(?:" + names.map(esc).join("|") + ")" : "(?!)";
++        var player = "you(?: are|'re) (?:carrying|holding|wearing)|you have";
++        var headRe = new RegExp("^(?:" + player + "|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s*:$", "i");
++        var sentRe = new RegExp("^(?:" + player + "|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s+(.+)$", "i");
++        var endsKnown = function (s) { s = s.toLowerCase().trim(); return names.some(function (n) { return s === n || s.slice(-n.length - 1) === " " + n; }); };
++        var rows = [], inBlock = false;
++        var pushItem = function (x) { if (/^(?:a|an|the|some|your|my|his|her|their|our|two|three|four|five|six|seven|eight|nine|ten|\d+)\s|^["']/i.test(x)) rows.push(x); };
++        String(invText || "").split(/\n/).forEach(function (raw) {
++            var line = String(raw || ""), t = line.trim();
++            if (!t) { inBlock = false; return; }
++            if (headRe.test(t)) { inBlock = true; return; }
++            if (inBlock && /^\s/.test(line)) { rows.push(t); return; }
++            inBlock = false;
++            // Each sentence of the line separately (Plundered Hearts prints "You have ... . It seems that your
++            // reticule contains ... . You are wearing ..." on one line). An item must START like an item entry
++            // (article, possessive, numeral or quoted label), so "You have dropped a cube." admits nothing.
++            t.split(/\.(?:\s+|$)/).forEach(function (sentence) {
++                var m = sentRe.exec(sentence.trim()); if (!m) return;
++                m[1].split(/,\s*/).forEach(function (seg) {
++                    seg = seg.replace(/^and\s+/i, "").trim(); if (!seg) return;
++                    var parts = seg.split(/\s+and\s+/), cur = parts[0];
++                    for (var i = 1; i < parts.length; i++) { if (endsKnown(cur)) { pushItem(cur); cur = parts[i]; } else cur += " and " + parts[i]; }
++                    pushItem(cur);
++                });
++            });
++        });
++        return rows;
++    },
+     inventoryLineLabel: function (seed, pool, invText, structuralDisp) {
+         try {
+             if (!invText || !structuralDisp || structuralDisp.charAt(0) === "(") return "";
+@@ -364,9 +401,9 @@
+             var esc = structuralDisp.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+             var tail = new RegExp("(^|\\s)" + esc + "$", "i");
+             var hits = [];
+-            String(invText).split(/\n/).forEach(function (raw) {
++            Actionable.listingRows(invText, pool).forEach(function (raw) {
+                 var line = String(raw || "").replace(/\s*\([^()]*\)\s*$/, "").replace(/[.,;:!]+\s*$/, "").trim();
+-                if (!line || /:\s*$/.test(raw) || !tail.test(line)) return;
++                if (!line || !tail.test(line)) return;
+                 // Articles and the narrator's possessive are not descriptors.
+                 line = line.replace(/^(a|an|the|some|your|my|his|her|their|our)\s+/i, "");
+                 hits.push(line);

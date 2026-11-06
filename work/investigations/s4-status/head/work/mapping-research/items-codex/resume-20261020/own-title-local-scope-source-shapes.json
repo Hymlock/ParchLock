@@ -1,0 +1,649 @@
+{
+  "records": [
+    {
+      "title": "Wishbringer.z3.js",
+      "tier": "Historical source shape and evidence reuse only; not exact executable recompilation, no flag/native promotion",
+      "sourceRoot": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed",
+      "files": [
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\boxes.zil",
+          "sha256": "e0acbab8b3576a3e8c55fbcc7f6d9ff099eb187389b8bcc020c70ad29fe212b9"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\bridge.zil",
+          "sha256": "506a728428acd05305c15bcb098c88e722c8602d88a049409d3b80839c1dacf9"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\cemetery.zil",
+          "sha256": "786dccc8d0d9c13a65246b182322214e235ae9ccbd54006aaa5af35899035b71"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\center.zil",
+          "sha256": "be9bd4c3fb20836f9171e76dcc4dffed95e52bfabe610b162b4ab52faac38c46"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\east.zil",
+          "sha256": "35496851fd6fbcba9ecf96c38c93e3f59a6611f0f693dd8de37d7e7b7d0e6abc"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\fog.zil",
+          "sha256": "19a6978435935325eb19c69626b7e0c26d899e31a5dea0671e2296ec384b629c"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\globals.zil",
+          "sha256": "36403d8dafeaa00b3ea8919f4ac106a8ebc3822c0ff4ae685d6c3b2e3da5071c"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\island.zil",
+          "sha256": "1a64f1bf2c45826e89755f266e51856a6eb74f5894aa3ffde43f76025b1cb86c"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\j2.zil",
+          "sha256": "b13621a528e78ed19ec2264ff08f19066ea63ed3e100d94b3cfb4dde3b200be7"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\magick.zil",
+          "sha256": "beb8dfdb35bbde90329ff0bb3ff3c9db5eb63d7ca98f960569fab771b9ed92e6"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\misc.zil",
+          "sha256": "340f733879c32eecd851524e52531038b13cbacaf6ce05b479d3436988ab880c"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\north.zil",
+          "sha256": "453ece9d7df76276a0393038dd2d87f9859d01f97c521e4a775c88f8ce518a54"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\parser.zil",
+          "sha256": "fbcc689d42e52d6d6ac6e9851306145c68e58924fffe6e8f514f131b0da4dc3c"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\people.zil",
+          "sha256": "a0bfeaee1144618118639a46d216051d39b908142e2e7a0e5bfbb2f79c2ed338"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\shoppe.zil",
+          "sha256": "821cbdbaf43caf9094ca0dd02cd88e61cd8baf399105e65d2d8aedf5bad7d004"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\south.zil",
+          "sha256": "f6e4de357a77194350fd8ba70d67e83906656d469a52243b85cb36f19a6c67d8"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\syntax.zil",
+          "sha256": "85ca6b6ad469812eea07b60a2d7e0931764d88fb1c133dd5359aef992aa85c85"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\tower.zil",
+          "sha256": "0f3ad6a03e88a16cc3a091c82fe8d044daa626190024e0648a2c8086a9a1d7d3"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\under.zil",
+          "sha256": "cc128643fc95d1cf57104b73bec5887a545055fb69f4697b0444078290a88d23"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\verbs.zil",
+          "sha256": "1f701cdea0ada2264b299263d70988e9d5df2536b84c3b80ee904c96ca4e1fb6"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\west.zil",
+          "sha256": "ceb5d3e7000bbc712ef8da2921919b273f5b2041dca0244373bd8e3f80c01138"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\wishbringer.zil",
+          "sha256": "3eb7cc2f4a0d11f6811b175230c3cb300477428a29b36357d7f7f249d4e532ce"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\z0.zil",
+          "sha256": "3eb7cc2f4a0d11f6811b175230c3cb300477428a29b36357d7f7f249d4e532ce"
+        }
+      ],
+      "globalCheck": {
+        "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\wishbringer\\historicalsource-wishbringer-e46c2ed\\parser.zil",
+        "startLine": 1653,
+        "endLine": 1693,
+        "lines": [
+          "<ROUTINE GLOBAL-CHECK (TBL \"AUX\" LEN RMG RMGL (CNT 0) OBJ OBITS FOO) ",
+          "\t<SET LEN <GET .TBL ,P-MATCHLEN>>",
+          "\t<SET OBITS ,P-SLOCBITS>",
+          "\t<COND (<SET RMG <GETPT ,HERE ,P?GLOBAL>>",
+          "\t       <SET RMGL <- <PTSIZE .RMG> 1>>",
+          "\t       ;<COND (,DEBUG <TELL \"[GLBCHK: (LG) RMGL=\" N .RMGL \"]\" CR>)>",
+          "\t       <REPEAT ()",
+          "\t\t       <SET OBJ <GETB .RMG .CNT>>",
+          "\t\t       <COND (<FIRST? .OBJ>",
+          "\t\t\t      <SEARCH-LIST .OBJ .TBL ,P-SRCALL>)>",
+          "\t\t       <COND (<THIS-IT? .OBJ>",
+          "\t\t\t      <OBJ-FOUND .OBJ .TBL>)>",
+          "\t\t       <COND (<IGRTR? CNT .RMGL> <RETURN>)>>)>",
+          "\t<COND (<SET RMG <GETPT ,HERE ,P?PSEUDO>>",
+          "\t       <SET RMGL <- </ <PTSIZE .RMG> 4> 1>>",
+          "\t       <SET CNT 0>",
+          "\t       ;<COND (,DEBUG <TELL \"[GLBCHK: (PS) RMGL=\" N .RMGL \"]\" CR>)>",
+          "\t       <REPEAT ()",
+          "\t\t       <COND (<EQUAL? ,P-NAM <GET .RMG <* .CNT 2>>>",
+          "\t\t\t      <SETG LAST-PSEUDO-LOC ,HERE>",
+          "\t\t\t      <PUTP ,PSEUDO-OBJECT",
+          "\t\t\t\t    ,P?ACTION",
+          "\t\t\t\t    <GET .RMG <+ <* .CNT 2> 1>>>",
+          "\t\t\t      <SET FOO",
+          "\t\t\t\t   <BACK <GETPT ,PSEUDO-OBJECT ,P?ACTION> 5>>",
+          "\t\t\t      <PUT .FOO 0 <GET ,P-NAM 0>>",
+          "\t\t\t      <PUT .FOO 1 <GET ,P-NAM 1>>",
+          "\t\t\t      <OBJ-FOUND ,PSEUDO-OBJECT .TBL>",
+          "\t\t\t      <RETURN>)",
+          "\t\t             (<IGRTR? CNT .RMGL> <RETURN>)>>)>",
+          "\t<COND (<EQUAL? <GET .TBL ,P-MATCHLEN> .LEN>",
+          "\t       <SETG P-SLOCBITS -1>",
+          "\t       <SETG P-TABLE .TBL>",
+          "\t       <DO-SL ,GLOBAL-OBJECTS 1 1>",
+          "\t       <SETG P-SLOCBITS .OBITS>",
+          "\t       <COND (<ZERO? <GET .TBL ,P-MATCHLEN>>",
+          "\t\t      <COND (<VERB? EXAMINE DUMB-EXAMINE LOOK-INSIDE FIND",
+          "\t\t\t\t    FOLLOW LEAVE SEARCH SMELL THROUGH WALK-TO",
+          "\t\t\t\t    WAIT-FOR LOOK-ON>",
+          "\t\t\t     <DO-SL ,ROOMS 1 1>)>)>)>>",
+          ""
+        ]
+      },
+      "invisibleRefs": [
+        {
+          "file": "globals.zil",
+          "line": 13,
+          "text": "\t(FLAGS RMUNGBIT INVISIBLE TOUCHBIT SURFACEBIT"
+        },
+        {
+          "file": "globals.zil",
+          "line": 219,
+          "text": "\t(FLAGS NDESCBIT NARTICLEBIT INVISIBLE)"
+        },
+        {
+          "file": "misc.zil",
+          "line": 425,
+          "text": "         <COND (<FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "file": "misc.zil",
+          "line": 438,
+          "text": "               (<FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "file": "misc.zil",
+          "line": 476,
+          "text": "\t\t       (<FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "file": "parser.zil",
+          "line": 1741,
+          "text": " <COND (<FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "file": "parser.zil",
+          "line": 2184,
+          "text": "\t\t       <COND (<OR <FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "file": "parser.zil",
+          "line": 2256,
+          "text": "\t\t       <COND (<OR <FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "file": "parser.zil",
+          "line": 2347,
+          "text": "\t\t\t<COND (<AND <NOT <FSET? .OBJ ,INVISIBLE>>"
+        },
+        {
+          "file": "verbs.zil",
+          "line": 1533,
+          "text": "\t\t    <FSET? .OBJ ,INVISIBLE>"
+        }
+      ],
+      "analysis": "GLOBAL-CHECK explicitly SEARCH-LISTs children before THIS-IT? on root. Roots-only is bounded subset, not full parser closure; do not copy LH contents predicate. INVISIBLE refs exist despite old source-flags omission. globals declares PROTAGONIST INVISIBLE and sentinel; candidates require exact-byte/native correlation. SEARCHBIT text includes commented expressions: do not count every token as executable logic."
+    },
+    {
+      "title": "Zork3-TheDungeonMaster.z3.js",
+      "tier": "Historical source shape and evidence reuse only; not exact executable recompilation, no flag/native promotion",
+      "sourceRoot": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4",
+      "files": [
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\3actions.zil",
+          "sha256": "c441144ccca34ddca9b294e26a95f0ce09b609e0e123d31c6c43c5eb6974a32c"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\3dungeon.zil",
+          "sha256": "dd00105b6eff276bde6e6ef4e1b5fe9d175052de684e7f591c243d85ce695cc1"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\actions.zil",
+          "sha256": "2f678a9191ac7389564fc2b47f58ff4805f6fea16b6fc69b8d008f20e82f0535"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\clock.zil",
+          "sha256": "32b3fcb08c63051b73ac6ee7d10ec7209afc62fa127539ea17a788f598709a47"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\demons.zil",
+          "sha256": "bd22b667ab848c4ea965465e3d2707a37583c65e54ce9dcd8933f024636a0eb0"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\dungeon.zil",
+          "sha256": "3f4a7916d282b3be7f8e853cc237314a188d2b473753b0869562e5f7930c7fa3"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\gclock.zil",
+          "sha256": "92c4d66f18eeba8de1497215a0e17ade6c2cf1e5e050f016cf99160e41b154c6"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\gglobals.zil",
+          "sha256": "4551033ab2e72f38d5768ace09ad884d19582f16c93df0d3970a7e2a7df30935"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\gmacros.zil",
+          "sha256": "1382243535d75a676d6cd6246895ac74aef77c226c29b4eb27bce3f595a1c282"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\gmain.zil",
+          "sha256": "712e27ab29d36f3d36c7994ec6d41011cb869990d8780a03bb2ee8148d3f1740"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\gparser.zil",
+          "sha256": "42e36335e310e86bba07ebf75971020c8903cdd679c9863d3b62f69bb11fd9f5"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\gsyntax.zil",
+          "sha256": "c62cf25aa09ca40b48a2714cd74607f1b28f96bd064d12cd24a4962e0f889435"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\gverbs.zil",
+          "sha256": "d957259fccfb26fc2457b29117e6a2e0d23f3b74bcb151e903d4f593898675eb"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\macros.zil",
+          "sha256": "28be871ffa33b095d0cf8c8a263f7956d4d2803523a37672a54dbc5b6293b18e"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\main.zil",
+          "sha256": "40333ef228e5d889d5ab017620ec8e9109a8714a423a40a31b51a61fdc11702b"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\parser.zil",
+          "sha256": "3ab261a3626abc16f39c29c7787772207efc4d9e8c086edd60d1a143808e2b1d"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\shadow.zil",
+          "sha256": "ceac5ed9a5ef44ddaa93dab5a1dbfb4e4f971c6fbaa2d4265ecbf88bffa3c573"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\syntax.zil",
+          "sha256": "ea9a958faaccda99b6b8f11e228e8b3cf59c107136fd273d86a63a2a371dfa7e"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\tm.zil",
+          "sha256": "cc20822e91b7b306ad45b941c83fb1360f30c393fc5e50c7633de3fdb3b0d76c"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\verbs.zil",
+          "sha256": "97c402b633119ac8abc2db06bdc735c215188935bd028895e63f515b32503283"
+        },
+        {
+          "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\zork3.zil",
+          "sha256": "62c543d6a9a13348a4558c665ac1689f2043c5c25f721e3055257bc921939b5d"
+        }
+      ],
+      "globalCheck": {
+        "file": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\zork3\\historicalsource-zork3-3ec9ed4\\parser.zil",
+        "startLine": 950,
+        "endLine": 983,
+        "lines": [
+          "<ROUTINE GLOBAL-CHECK (TBL \"AUX\" LEN RMG RMGL (CNT 0) OBJ OBITS FOO) ",
+          "\t#DECL ((TBL) TABLE (RMG) <OR FALSE TABLE> (RMGL CNT) FIX (OBJ) OBJECT)",
+          "\t<SET LEN <GET .TBL ,P-MATCHLEN>>",
+          "\t<SET OBITS ,P-SLOCBITS>",
+          "\t<COND (<SET RMG <GETPT ,HERE ,P?GLOBAL>>",
+          "\t       <SET RMGL <- <PTSIZE .RMG> 1>>",
+          "\t       <REPEAT ()",
+          "\t\t       <COND (<THIS-IT? <SET OBJ <GETB .RMG .CNT>> .TBL>",
+          "\t\t\t      <OBJ-FOUND .OBJ .TBL>)>",
+          "\t\t       <COND (<IGRTR? CNT .RMGL> <RETURN>)>>)>",
+          "\t<COND (<SET RMG <GETPT ,HERE ,P?PSEUDO>>",
+          "\t       <SET RMGL <- </ <PTSIZE .RMG> 4> 1>>",
+          "\t       <SET CNT 0>",
+          "\t       <REPEAT ()",
+          "\t\t       <COND (<==? ,P-NAM <GET .RMG <* .CNT 2>>>",
+          "\t\t\t      <PUTP ,PSEUDO-OBJECT",
+          "\t\t\t\t    ,P?ACTION",
+          "\t\t\t\t    <GET .RMG <+ <* .CNT 2> 1>>>",
+          "\t\t\t      <SET FOO",
+          "\t\t\t\t   <BACK <GETPT ,PSEUDO-OBJECT ,P?ACTION> 5>>",
+          "\t\t\t      <PUT .FOO 0 <GET ,P-NAM 0>>",
+          "\t\t\t      <PUT .FOO 1 <GET ,P-NAM 1>>",
+          "\t\t\t      <OBJ-FOUND ,PSEUDO-OBJECT .TBL>",
+          "\t\t\t      <RETURN>)",
+          "\t\t             (<IGRTR? CNT .RMGL> <RETURN>)>>)>",
+          "\t<COND (<==? <GET .TBL ,P-MATCHLEN> .LEN>",
+          "\t       <SETG P-SLOCBITS -1>",
+          "\t       <SETG P-TABLE .TBL>",
+          "\t       <DO-SL ,GLOBAL-OBJECTS 1 1>",
+          "\t       <SETG P-SLOCBITS .OBITS>",
+          "\t       <COND (<AND <0? <GET .TBL ,P-MATCHLEN>>",
+          "\t\t\t   <EQUAL? ,PRSA ,V?LOOK-INSIDE ,V?SEARCH ,V?EXAMINE>>",
+          "\t\t      <DO-SL ,ROOMS 1 1>)>)>>",
+          " "
+        ]
+      },
+      "invisibleRefs": [
+        {
+          "file": "3actions.zil",
+          "line": 46,
+          "text": "\t\t       (<AND <FSET? .F ,ACTORBIT> <NOT <FSET? .F ,INVISIBLE>>>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 1564,
+          "text": "\t        <COND (<==? ,PNUMB 4> <FCLEAR ,BRONZE-DOOR ,INVISIBLE>)"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 1565,
+          "text": "\t\t      (ELSE <FSET ,BRONZE-DOOR ,INVISIBLE>)>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 1571,
+          "text": "\t\t\t\t    <FCLEAR ,BRONZE-DOOR ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 1738,
+          "text": "\t <COND (<FSET? ,BRONZE-DOOR ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 1777,
+          "text": "\t\t      (<NOT <FSET? ,SECRET-DOOR ,INVISIBLE>>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 1809,
+          "text": "\t\t\t      <FCLEAR ,SECRET-DOOR ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 2170,
+          "text": "\t(FLAGS DOORBIT OPENBIT INVISIBLE)>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 2475,
+          "text": "\t <FCLEAR ,CLEFT ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 2504,
+          "text": "\t\t<COND (<FSET? ,CAGE ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 2755,
+          "text": "\t\t       <FSET ,CAGE ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 2756,
+          "text": "\t\t       ;<FSET ,PEDESTAL ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 2990,
+          "text": "\t\t<COND (<NOT <FSET? ,CAGE ,INVISIBLE>>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 3008,
+          "text": "\t\t\t   <FSET? ,CAGE ,INVISIBLE>>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 3026,
+          "text": "\t\t<COND (<FSET? ,CAGE ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 3169,
+          "text": "\t       (<AND <VERB? PUT PUT-ON TAKE> <NOT <FSET? ,CAGE ,INVISIBLE>>>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 5189,
+          "text": "\t\t<COND (<NOT <FSET? ,VIKING-SHIP ,INVISIBLE>>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 5204,
+          "text": "\t\t<FCLEAR ,VIKING-SHIP ,INVISIBLE>)>>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 5209,
+          "text": "\t <FSET ,VIKING-SHIP ,INVISIBLE>"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 5218,
+          "text": "\t(FLAGS NDESCBIT INVISIBLE)"
+        },
+        {
+          "file": "3actions.zil",
+          "line": 5234,
+          "text": "\t(ADJECTIVE HEAVY SWEET INVISIBLE SMELLING)"
+        },
+        {
+          "file": "3dungeon.zil",
+          "line": 738,
+          "text": "\t(FLAGS CONTBIT DOORBIT INVISIBLE)"
+        },
+        {
+          "file": "3dungeon.zil",
+          "line": 902,
+          "text": "\t(FLAGS DOORBIT CONTBIT INVISIBLE)"
+        },
+        {
+          "file": "actions.zil",
+          "line": 1513,
+          "text": "\t        <COND (<==? ,PNUMB 4> <FCLEAR ,BRONZE-DOOR ,INVISIBLE>)"
+        },
+        {
+          "file": "actions.zil",
+          "line": 1514,
+          "text": "\t\t      (ELSE <FSET ,BRONZE-DOOR ,INVISIBLE>)>"
+        },
+        {
+          "file": "actions.zil",
+          "line": 1520,
+          "text": "\t\t\t\t    <FCLEAR ,BRONZE-DOOR ,INVISIBLE>"
+        },
+        {
+          "file": "actions.zil",
+          "line": 1687,
+          "text": "\t <COND (<FSET? ,BRONZE-DOOR ,INVISIBLE>"
+        },
+        {
+          "file": "actions.zil",
+          "line": 1726,
+          "text": "\t\t      (<NOT <FSET? ,SECRET-DOOR ,INVISIBLE>>"
+        },
+        {
+          "file": "actions.zil",
+          "line": 1758,
+          "text": "\t\t\t      <FCLEAR ,SECRET-DOOR ,INVISIBLE>"
+        },
+        {
+          "file": "demons.zil",
+          "line": 43,
+          "text": "\t\t       (<AND <FSET? .F ,ACTORBIT> <NOT <FSET? .F ,INVISIBLE>>>"
+        },
+        {
+          "file": "dungeon.zil",
+          "line": 730,
+          "text": "\t(FLAGS CONTBIT DOORBIT INVISIBLE)"
+        },
+        {
+          "file": "dungeon.zil",
+          "line": 894,
+          "text": "\t(FLAGS DOORBIT CONTBIT INVISIBLE)"
+        },
+        {
+          "file": "gglobals.zil",
+          "line": 8,
+          "text": "\t(FLAGS RMUNGBIT INVISIBLE TOUCHBIT SURFACEBIT TRYTAKEBIT"
+        },
+        {
+          "file": "gglobals.zil",
+          "line": 162,
+          "text": "\t\t\t '<COND (<NOT <FSET? ,VIKING-SHIP ,INVISIBLE>>"
+        },
+        {
+          "file": "gglobals.zil",
+          "line": 172,
+          "text": "\t\t\t '<COND (<NOT <FSET? ,VIKING-SHIP ,INVISIBLE>>"
+        },
+        {
+          "file": "gglobals.zil",
+          "line": 179,
+          "text": "\t\t                 <FSET ,VIKING-SHIP ,INVISIBLE>"
+        },
+        {
+          "file": "gglobals.zil",
+          "line": 303,
+          "text": "\t(FLAGS NDESCBIT INVISIBLE SACREDBIT ACTORBIT)"
+        },
+        {
+          "file": "gparser.zil",
+          "line": 1397,
+          "text": " <COND (<FSET? .OBJ ,INVISIBLE> <RFALSE>)"
+        },
+        {
+          "file": "gparser.zil",
+          "line": 1413,
+          "text": "\t <COND (<FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "file": "gverbs.zil",
+          "line": 162,
+          "text": "\t\t\t\t  <FSET? ,L-PRSO ,INVISIBLE>>"
+        },
+        {
+          "file": "gverbs.zil",
+          "line": 166,
+          "text": "\t\t\t\t  <FSET? ,L-PRSI ,INVISIBLE>>"
+        },
+        {
+          "file": "gverbs.zil",
+          "line": 1821,
+          "text": "\t\t\t      (<AND <NOT <FSET? .Y ,INVISIBLE>>"
+        },
+        {
+          "file": "gverbs.zil",
+          "line": 1842,
+          "text": "\t\t       (<AND <NOT <FSET? .Y ,INVISIBLE>>"
+        },
+        {
+          "file": "gverbs.zil",
+          "line": 1882,
+          "text": "\t <AND <NOT <FSET? .OBJ ,INVISIBLE>>"
+        },
+        {
+          "file": "gverbs.zil",
+          "line": 1902,
+          "text": "\t\t         <FCLEAR ,MAP ,INVISIBLE>"
+        },
+        {
+          "file": "shadow.zil",
+          "line": 2011,
+          "text": "\t\t<COND (<NOT <FSET? ,VIKING-SHIP ,INVISIBLE>>"
+        },
+        {
+          "file": "shadow.zil",
+          "line": 2026,
+          "text": "\t\t<FCLEAR ,VIKING-SHIP ,INVISIBLE>)>>"
+        },
+        {
+          "file": "shadow.zil",
+          "line": 2031,
+          "text": "\t <FSET ,VIKING-SHIP ,INVISIBLE>"
+        },
+        {
+          "file": "shadow.zil",
+          "line": 2040,
+          "text": "\t(FLAGS NDESCBIT INVISIBLE)"
+        },
+        {
+          "file": "shadow.zil",
+          "line": 2056,
+          "text": "\t(ADJECTIVE HEAVY SWEET INVISIBLE SMELLING)"
+        },
+        {
+          "file": "tm.zil",
+          "line": 92,
+          "text": "\t(FLAGS DOORBIT OPENBIT INVISIBLE)>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 373,
+          "text": "\t <FCLEAR ,CLEFT ,INVISIBLE>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 402,
+          "text": "\t\t<COND (<FSET? ,CAGE ,INVISIBLE>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 646,
+          "text": "\t\t       <FSET ,CAGE ,INVISIBLE>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 647,
+          "text": "\t\t       <FSET ,PEDESTAL ,INVISIBLE>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 884,
+          "text": "\t\t<COND (<NOT <FSET? ,CAGE ,INVISIBLE>>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 902,
+          "text": "\t\t\t   <FSET? ,CAGE ,INVISIBLE>>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 920,
+          "text": "\t\t<COND (<FSET? ,CAGE ,INVISIBLE>"
+        },
+        {
+          "file": "tm.zil",
+          "line": 1063,
+          "text": "\t       (<AND <VERB? PUT PUT-ON TAKE> <NOT <FSET? ,CAGE ,INVISIBLE>>>"
+        },
+        {
+          "file": "verbs.zil",
+          "line": 142,
+          "text": "\t\t\t      (<AND <NOT <FSET? .Y ,INVISIBLE>>"
+        },
+        {
+          "file": "verbs.zil",
+          "line": 159,
+          "text": "\t\t       (<AND <NOT <FSET? .Y ,INVISIBLE>>"
+        },
+        {
+          "file": "verbs.zil",
+          "line": 1057,
+          "text": "\t <AND <NOT <FSET? .OBJ ,INVISIBLE>>"
+        }
+      ],
+      "analysis": "GLOBAL-CHECK admits byte-list roots via THIS-IT? only; no descendant SEARCH-LIST call on local roots. Roots-only validation fix removes unrelated SEARCHBIT dependency. Existing proposal native positives absent: still need 2 distinct native positive owners/rooms plus negative and lit/invisible qualification."
+    }
+  ]
+}

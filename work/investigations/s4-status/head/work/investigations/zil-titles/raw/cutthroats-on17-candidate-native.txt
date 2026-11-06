@@ -1,0 +1,40 @@
+STEP 19 "w" -> >w / Wharf Road / The Weasel is to the west, heading toward the east. / >
+   changed: 
+   app: []
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 20 "w" -> >w / Wharf Road / The Weasel heads off to the east. / >
+   changed: 
+   app: []
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 21 "n" -> >n / Wharf / You're on Hardscrabble Island's weatherbeaten wharf, north of the Wharf Road. A trawler called the Night Wind is berthed here to the west. The Mary Margaret is moored to the east. / >
+   changed: 97:Wharf +29 -
+   app: []
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 22 "e" -> >e / Port Deck / You are on the port side of the Mary Margaret, a sturdy vessel designed for deep-sea salvaging. To starboard is a small wheelhouse, while to port is the gangway leading to the dock. T
+   changed: 92:Port Deck +29 -
+   app: []
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 23 "s" -> >s / Aft Deck / The smell of diesel fuel is strong but reassuring here on the aft deck. A ladder leads below deck, while forward you can see the entrance to the command center of the boat, the wheelho
+   changed: 91:Aft Deck +29 -
+   app: ["89:large air compressor -> examine compressor | search compressor | empty compressor | open compressor | close compressor"]
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 24 "examine large compressor" -> The smell of diesel fuel is strong but reassuring here on the aft deck. A ladder leads below deck, while forward you can see the entrance to the command center of the boat, the wheelhouse. A huge air 
+   changed: 
+   app: ["89:large air compressor -> examine compressor | search compressor | empty compressor | open compressor | close compressor"]
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 25 "turn on large compressor" -> >turn on large compressor / Okay. The compressor is on. / Your stomach begins to bother you. Better find some food! / >
+   changed: 89:large air compressor +17 -
+   app: ["89:large air compressor -> examine compressor | search compressor | empty compressor | open compressor | close compressor"]
+   dump: 89:large air compressor [11,12,17,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 26 "examine large compressor" -> Your stomach begins to bother you. Better find some food! / >examine large compressor / The large, gasoline-powered air compressor is on. You can quickly see it started with fuel for an hour and a hal
+   changed: 
+   app: ["89:large air compressor -> examine compressor | search compressor | empty compressor | open compressor | close compressor"]
+   dump: 89:large air compressor [11,12,17,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 27 "turn off large compressor" -> The large, gasoline-powered air compressor is on. You can quickly see it started with fuel for an hour and a half's operation. A retractable airhose is built in. / >turn off large compressor / The lar
+   changed: 89:large air compressor + -17
+   app: ["89:large air compressor -> examine compressor | search compressor | empty compressor | open compressor | close compressor"]
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131
+STEP 28 "examine large compressor" -> The large air compressor is now off. / >examine large compressor / The large, gasoline-powered air compressor is off. You can quickly see it started with fuel for an hour and a half's operation. A ret
+   changed: 
+   app: ["89:large air compressor -> examine compressor | search compressor | empty compressor | open compressor | close compressor"]
+   dump: 89:large air compressor [11,12,21] parent 91 ; 120:small air compressor [12,15] parent 131

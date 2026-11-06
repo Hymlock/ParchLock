@@ -1,0 +1,28 @@
+STEP 0 "n" -> >n / Front Path / You are at the Robners' front door, which is closed. / You can walk around the house from here to the east or west. To the south a rolling lawn leads to the entrance of the estate. /
+   changed: 246:Front Path +30 -
+   app: []
+   dump: 80:body of Ms. Dunbar [] parent 0 ; 154:Ms. Dunbar [20] parent 255 ; 155:Ms. Dunbar [20,28] parent 202 ; 167:Dunbar's Bedroom [23,24] parent 253 ; 168:Dunbar's Bathroom [23,24] parent 253
+STEP 1 "knock on door" -> Foyer / This is the foyer of the Robner house, beautifully appointed with a fine crystal chandelier, marble floors, and a large marble-topped table. The front door, to the south, is closed. The foyer 
+   changed: 221:Foyer +30 -
+   app: []
+   dump: 80:body of Ms. Dunbar [] parent 0 ; 154:Ms. Dunbar [20] parent 255 ; 155:Ms. Dunbar [20,28] parent 202 ; 167:Dunbar's Bedroom [23,24] parent 253 ; 168:Dunbar's Bathroom [23,24] parent 253
+STEP 2 "n" -> >n / North of Foyer / This is a hallway north of the foyer. To the west is an open doorway, and to the east is the foot of a staircase. The hall continues north. / Mrs. Robner heads off to the north. 
+   changed: 220:North of Foyer +30 -
+   app: []
+   dump: 80:body of Ms. Dunbar [] parent 0 ; 154:Ms. Dunbar [20] parent 255 ; 155:Ms. Dunbar [20,28] parent 202 ; 167:Dunbar's Bedroom [23,24] parent 253 ; 168:Dunbar's Bathroom [23,24] parent 253
+STEP 3 "w" -> This is a large and impressive room, whose furnishings bespeak the great personal wealth of the Robners. The south side of the room is a large bay window, now closed, which looks out onto the front ya
+   changed: 202:Living Room +30 -
+   app: ["155:Ms. Dunbar -> examine dunbar"]
+   dump: 80:body of Ms. Dunbar [] parent 0 ; 154:Ms. Dunbar [20] parent 255 ; 155:Ms. Dunbar [20,28] parent 202 ; 167:Dunbar's Bedroom [23,24] parent 253 ; 168:Dunbar's Bathroom [23,24] parent 253
+STEP 4 "turn on dunbar" -> Ms. Dunbar is sitting on the sofa here. / >turn on dunbar / Ahem!  You may or may not realize this, but you are on a case. You shouldn't be wasting your time attempting to flirt with the suspects. In 
+   changed: 
+   app: ["155:Ms. Dunbar -> examine dunbar"]
+   dump: 80:body of Ms. Dunbar [] parent 0 ; 154:Ms. Dunbar [20] parent 255 ; 155:Ms. Dunbar [20,28] parent 202 ; 167:Dunbar's Bedroom [23,24] parent 253 ; 168:Dunbar's Bathroom [23,24] parent 253
+STEP 5 "turn off dunbar" -> Ahem!  You may or may not realize this, but you are on a case. You shouldn't be wasting your time attempting to flirt with the suspects. In any event, it's unlikely that you are person enough to do it
+   changed: 
+   app: ["155:Ms. Dunbar -> examine dunbar | switch on dunbar | switch off dunbar"]
+   dump: 80:body of Ms. Dunbar [] parent 0 ; 154:Ms. Dunbar [20] parent 255 ; 155:Ms. Dunbar [20,28] parent 202 ; 167:Dunbar's Bedroom [23,24] parent 253 ; 168:Dunbar's Bathroom [23,24] parent 253
+STEP 6 "turn on sofa" -> Your uncouth manner is certain to turn anyone off. / >turn on sofa / You can't turn that on. / >
+   changed: 
+   app: ["155:Ms. Dunbar -> examine dunbar | switch on dunbar | switch off dunbar"]
+   dump: 80:body of Ms. Dunbar [] parent 0 ; 154:Ms. Dunbar [20] parent 255 ; 155:Ms. Dunbar [20,28] parent 202 ; 167:Dunbar's Bedroom [23,24] parent 253 ; 168:Dunbar's Bathroom [23,24] parent 253

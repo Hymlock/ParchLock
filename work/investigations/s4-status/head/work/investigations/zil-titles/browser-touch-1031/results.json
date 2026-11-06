@@ -1,0 +1,152 @@
+[
+  {
+    "check": "1a Sherlock start inventory",
+    "pass": true,
+    "detail": {
+      "names": [
+        "coatwornopen",
+        "hatwornclosed",
+        "whistleworn",
+        "black bagclosed"
+      ]
+    }
+  },
+  {
+    "check": "1b Sherlock intro \"coat\" radial",
+    "pass": true,
+    "detail": {
+      "found": true,
+      "opts": [
+        "Examine",
+        "Remove",
+        "Search",
+        "Empty",
+        "Close",
+        "More...",
+        "Tools"
+      ]
+    }
+  },
+  {
+    "check": "4 Sherlock lamp turn on -> turn off",
+    "pass": true,
+    "detail": {
+      "lightFormsAfterOn": {
+        "fact": {
+          "capabilityBit": 42,
+          "stateBit": 38,
+          "objects": [
+            166
+          ],
+          "on": {
+            "default": "turn on"
+          },
+          "off": {
+            "default": "turn off"
+          }
+        },
+        "forms": [
+          "turn off"
+        ],
+        "scope": {
+          "kind": "lightForms",
+          "digest": "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0",
+          "generation": 0,
+          "id": 166,
+          "noun": "lamp",
+          "verb": "turn off",
+          "command": "turn off lamp",
+          "side": "off",
+          "stateBit": 38,
+          "context": "inventory"
+        }
+      },
+      "player": 232,
+      "lampOrigParent": 275,
+      "seededParent": 232,
+      "before": [
+        "Examine",
+        "Drop",
+        "Give to...",
+        "Put in...",
+        "Turn on",
+        "More...",
+        "Tools"
+      ],
+      "reply": "\n \n>diagnose\n[What do you want to diagnose?]\n \n>turn on lamp\nYou turn up the wick. The lamp emits a warm glow that lights up the area around you.\n \n> \n 221-B Baker Street            Sat  5:02 AM     0",
+      "after": [
+        "Examine",
+        "Drop",
+        "Give to...",
+        "Put in...",
+        "Turn off",
+        "More...",
+        "Tools"
+      ]
+    }
+  },
+  {
+    "check": "2 LH hyrax Wear -> fits -> Remove/Drop",
+    "pass": true,
+    "detail": {
+      "player": 56,
+      "origParent": 250,
+      "seededParent": 56,
+      "gloves203": "pair of electrician's gloves parent 202",
+      "invNames": [
+        "assignment",
+        "brass hyrax"
+      ],
+      "before": [
+        "Examine",
+        "Drop",
+        "Give to...",
+        "Put in...",
+        "Wear",
+        "More",
+        "Tools"
+      ],
+      "reply": "ying a brass hyrax and an assignment.\n \n>score\nYour score is 0 of a possible 100, in 4 moves. Graded on the curve, you are in the class of Freshman.\n \n>diagnose\nYou are wide awake, and are in good health.\n \n>wear hyrax\nIt fits surprisingly well.\n \n> ",
+      "after": [
+        "Examine",
+        "Remove",
+        "More",
+        "Tools"
+      ]
+    }
+  },
+  {
+    "check": "3 Starcross junk suit Wear -> worn",
+    "pass": true,
+    "detail": {
+      "worn24": true,
+      "tapped": true,
+      "player": 239,
+      "origParent": 169,
+      "seededParent": 239,
+      "invNames": [
+        "safety line",
+        "space suit",
+        "tape library",
+        "tattered suit"
+      ],
+      "before": [
+        "Examine",
+        "Drop",
+        "Give to...",
+        "Put in...",
+        "Wear",
+        "More...",
+        "Tools"
+      ],
+      "reply": " library\n \n>score\nYour score would be 0 (total of 400 points), in 53 moves.\nThis score gives you the rank of Beginner.\n \n>diagnose\nYou are in perfect health.\n \n>wear tattered suit\nYou are now wearing the tattered old suit, which smells of alien.\n \n> ",
+      "after": [
+        "Examine",
+        "Remove",
+        "Unlock with...",
+        "More",
+        "Tools"
+      ]
+    }
+  }
+]

@@ -1,0 +1,133 @@
+[
+  {
+    "source": "g1-bzU.json",
+    "key": "Borderzo.z5.js @21:wear parka",
+    "nativeReply": "You are now wearing the white down parka.\n \n> ",
+    "ops": [
+      [
+        244,
+        41,
+        1
+      ]
+    ],
+    "targets": [
+      {
+        "id": 4,
+        "name": "can of household oil",
+        "parent": 80,
+        "bits": [
+          42
+        ]
+      },
+      {
+        "id": 81,
+        "name": "chronograph",
+        "parent": 305,
+        "bits": [
+          39,
+          40,
+          41,
+          42
+        ]
+      },
+      {
+        "id": 244,
+        "name": "white down parka",
+        "parent": 305,
+        "bits": [
+          37,
+          39,
+          41,
+          42
+        ]
+      }
+    ]
+  },
+  {
+    "source": "g1-bzU.json",
+    "key": "Borderzo.z5.js @21:wear oil can",
+    "nativeReply": "[taking the can of household oil first]\nYou can't wear the can of household oil.\n \n> ",
+    "ops": [
+      [
+        4,
+        41,
+        0
+      ]
+    ],
+    "targets": [
+      {
+        "id": 4,
+        "name": "can of household oil",
+        "parent": 305,
+        "bits": [
+          37,
+          42
+        ]
+      },
+      {
+        "id": 81,
+        "name": "chronograph",
+        "parent": 305,
+        "bits": [
+          39,
+          40,
+          41,
+          42
+        ]
+      },
+      {
+        "id": 244,
+        "name": "white down parka",
+        "parent": 305,
+        "bits": [
+          37,
+          39,
+          41,
+          42
+        ]
+      }
+    ]
+  },
+  {
+    "source": "g1-bzX.json",
+    "key": "Borderzo.z5.js @2:wear chronograph",
+    "nativeReply": "You are now wearing the chronograph.\n \n> ",
+    "ops": [
+      [
+        81,
+        41,
+        1
+      ]
+    ],
+    "targets": [
+      {
+        "id": 4,
+        "name": "can of household oil",
+        "parent": 80,
+        "bits": [
+          42
+        ]
+      },
+      {
+        "id": 81,
+        "name": "chronograph",
+        "parent": 305,
+        "bits": [
+          39,
+          40,
+          41,
+          42
+        ]
+      },
+      {
+        "id": 244,
+        "name": "white down parka",
+        "parent": 80,
+        "bits": [
+          41,
+          42
+        ]
+      }
+    ]
+  }
+]

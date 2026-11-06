@@ -1,0 +1,112 @@
+{
+  "tier": "Constructed public counter events for rendering only; not native ending proof",
+  "before": {
+    "totals": {
+      "deaths": 0,
+      "wins": 0
+    },
+    "model": 0,
+    "visible": [],
+    "host": "<div id=\"pl-stats\">\n\t\t\t\t<h2 id=\"pl-stats-title\">Status</h2>\n\t\t\t\t<div id=\"pl-stats-rows\"></div>\n\t\t\t\t<button id=\"pl-stats-identify\" type=\"button\" class=\"pl-secondary\" title=\"Ask the story for its score and condition (costs a turn)\">Identify stats</button>\n\t\t\t</div>",
+    "rows": "<div id=\"pl-stats-rows\"></div>",
+    "deathTiles": [],
+    "equip": "pl-mobile pl-portrait app-dialog-open pl-mic-available"
+  },
+  "shown": {
+    "totals": {
+      "deaths": 2,
+      "wins": 0
+    },
+    "model": 2,
+    "visible": [
+      {
+        "key": "score",
+        "label": "Score",
+        "value": 0,
+        "max": null,
+        "unit": "plain",
+        "kind": "score",
+        "seen": 14,
+        "source": "status",
+        "confirmed": true,
+        "lastChange": null
+      },
+      {
+        "key": "turns",
+        "label": "Turns",
+        "value": 0,
+        "max": null,
+        "unit": "plain",
+        "kind": "counter",
+        "seen": 14,
+        "source": "status",
+        "confirmed": true,
+        "lastChange": null
+      },
+      {
+        "key": "deaths",
+        "label": "Deaths this playthrough",
+        "value": 2,
+        "unit": "plain",
+        "kind": "counter",
+        "confirmed": true,
+        "source": "observed"
+      }
+    ],
+    "host": "<div id=\"pl-stats\">\n\t\t\t\t<h2 id=\"pl-stats-title\">Status</h2>\n\t\t\t\t<div id=\"pl-stats-rows\"><div class=\"pl-stat pl-stat-score\" data-kind=\"score\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Score</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-turns\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Turns</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-deaths\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Deaths this playthrough</span><span class=\"pl-stat-value\">2</span></div></div>\n\t\t\t\t<button id=\"pl-stats-identify\" type=\"button\" class=\"pl-secondary\" title=\"Ask the story for its score and condition (costs a turn)\">Identify stats</button>\n\t\t\t</div>",
+    "rows": "<div id=\"pl-stats-rows\"><div class=\"pl-stat pl-stat-score\" data-kind=\"score\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Score</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-turns\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Turns</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-deaths\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Deaths this playthrough</span><span class=\"pl-stat-value\">2</span></div></div>",
+    "deathTiles": [
+      "<div class=\"pl-stat pl-stat-deaths\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Deaths this playthrough</span><span class=\"pl-stat-value\">2</span></div>"
+    ],
+    "equip": "pl-mobile pl-portrait app-dialog-open pl-mic-available equip-open has-line-input"
+  },
+  "ticked": {
+    "totals": {
+      "deaths": 2,
+      "wins": 0
+    },
+    "model": 2,
+    "visible": [
+      {
+        "key": "score",
+        "label": "Score",
+        "value": 0,
+        "max": null,
+        "unit": "plain",
+        "kind": "score",
+        "seen": 15,
+        "source": "status",
+        "confirmed": true,
+        "lastChange": null
+      },
+      {
+        "key": "turns",
+        "label": "Turns",
+        "value": 0,
+        "max": null,
+        "unit": "plain",
+        "kind": "counter",
+        "seen": 15,
+        "source": "status",
+        "confirmed": true,
+        "lastChange": null
+      },
+      {
+        "key": "deaths",
+        "label": "Deaths this playthrough",
+        "value": 2,
+        "unit": "plain",
+        "kind": "counter",
+        "confirmed": true,
+        "source": "observed"
+      }
+    ],
+    "host": "<div id=\"pl-stats\">\n\t\t\t\t<h2 id=\"pl-stats-title\">Status</h2>\n\t\t\t\t<div id=\"pl-stats-rows\"><div class=\"pl-stat pl-stat-score\" data-kind=\"score\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Score</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-turns\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Turns</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-deaths\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Deaths this playthrough</span><span class=\"pl-stat-value\">2</span></div></div>\n\t\t\t\t<button id=\"pl-stats-identify\" type=\"button\" class=\"pl-secondary\" title=\"Ask the story for its score and condition (costs a turn)\">Identify stats</button>\n\t\t\t</div>",
+    "rows": "<div id=\"pl-stats-rows\"><div class=\"pl-stat pl-stat-score\" data-kind=\"score\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Score</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-turns\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Turns</span><span class=\"pl-stat-value\">0</span></div><div class=\"pl-stat pl-stat-deaths\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Deaths this playthrough</span><span class=\"pl-stat-value\">2</span></div></div>",
+    "deathTiles": [
+      "<div class=\"pl-stat pl-stat-deaths\" data-kind=\"counter\" data-value-type=\"numeric\"><span class=\"pl-stat-label\">Deaths this playthrough</span><span class=\"pl-stat-value\">2</span></div>"
+    ],
+    "equip": "pl-mobile pl-portrait app-dialog-open pl-mic-available equip-open has-line-input"
+  },
+  "errors": []
+}

@@ -1,0 +1,179 @@
+diff --git a/harness/zil-light-forms.js b/harness/zil-light-forms.js
+new file mode 100644
+index 00000000..0bc8a8cd
+--- /dev/null
++++ b/harness/zil-light-forms.js
+@@ -0,0 +1,54 @@
++// lightForms consumer (four-seat ACCEPT; grok2 draft sha 76e755d4, codex 0231, grok review) on real story bytes.
++// Custody/state bit edits are X-tier consumer controls; native evidence is work/investigations/zil-titles/lightsource-native/.
++const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
++const root=process.env.LIGHT_SOURCE_ROOT||'.';
++const story=require(process.cwd()+'/work/investigations/zil-attr-analyzer.js').story;
++let checks=0;
++function check(name,fn){try{fn();checks++;console.log('PASS '+name);}catch(e){e.message=name+': '+e.message;throw e;}}
++function load(file){
++  const bytes=Uint8Array.from(story(file)),mem=new DataView(bytes.buffer);
++  const digest=crypto.createHash('sha256').update(bytes).digest('hex'),header=Array.from(bytes.slice(0,28));
++  const T={payload:{inventory:[],discoveredObjects:[]},mem,digest,bytes};
++  const c=vm.createContext({console,setTimeout,clearTimeout,window:{},ModuleLibrary:{currentExecutableDigest:()=>T.digest,currentExecutableIdentity:()=>({digest:T.digest,header})},ZRamProvider:{getMem:()=>mem},WorldModel:{get lastPayload(){return T.payload;}},Actionable:{payloadPool:()=>T.payload.inventory.concat(T.payload.discoveredObjects),referenceFor:o=>({unique:true,verified:true,noun:o.name}),commandNounFor:o=>o.name,isGameWord:()=>true},AttrCalibrator:{hydrate(){},overrideFor:()=>({}),objectOverrideFor:()=>null,hasConfirmedFlag:()=>false,allowedVerbsFor:()=>[]}});
++  for(const f of ['ModuleStatFactsClaude','ZRamReader','GrammarProvider','AttributeSchema','ActionSynth','LearnedWords','EquipmentUI','SemanticActions'])vm.runInContext(fs.readFileSync(root+'/js/'+f+'.js','utf8'),c);
++  Object.assign(T,{c,A:c.AttributeSchema,R:c.ZRamReader,S:c.ActionSynth,F:c.ModuleStatFactsClaude[digest]});
++  T.h=T.R.header(mem);
++  const pl=T.R.resolvePlayer(mem);T.player=pl&&pl.id;T.room=T.player&&T.R.enclosingRoom(mem,T.player);T.count=T.R.objectCount(mem,T.h);
++  T.payload.playerId=T.player;
++  T.bit=(id,b,v)=>{const a=T.R.objectBase(T.h,id)+(b>>3),m=0x80>>(b&7);if(v===undefined)return !!(mem.getUint8(a)&m);mem.setUint8(a,v?(mem.getUint8(a)|m):(mem.getUint8(a)&~m));};
++  T.parent=(id,p)=>mem.setUint8(T.R.objectBase(T.h,id)+4,p);
++  T.obj=id=>{const raw=T.R.objectLinks(mem,id);return{id,name:T.R.shortName(mem,id),parentId:raw.parent,attrs:T.A.applyTo({},raw,mem)};};
++  T.menu=(id,ctx)=>{const o=T.obj(id);if(ctx==='inventory'){T.payload.inventory=[o];T.payload.discoveredObjects=[];}else{T.payload.inventory=[];T.payload.discoveredObjects=[o];}return Array.from(T.S.commandsForObject(o,ctx).map(x=>x.command));};
++  T.held=id=>{T.parent(id,T.player);return T.menu(id,'inventory');};
++  return T;
++}
++const LIGHT=/^(light|blow out|extinguish|turn on|turn off|strike) /;
++const lv=list=>list.filter(x=>LIGHT.test(x));
++const titles={Infidel:'Infidel.z3.js',Cutthroats:'Cutthroats.z3.js',Enchanter:'Enchanter.z3.js'};
++const words={Infidel:['light','blow','out','extinguish'],Cutthroats:['turn','on','off'],Enchanter:['turn','off']};
++const G={};for(const k in titles)G[k]=load(titles[k]);
++for(const k in G)check(k+' exact fact, validated confirmed-zil-family, dictionary literals',()=>{const T=G[k];assert(T.F&&T.F.lightForms);assert.strictEqual(T.R.executableLayoutFacts(T.mem),T.F);const f=T.A._familyOf(T.mem);assert.equal(f.classification,'confirmed-zil-family');assert.equal(f.evidence,'validated');for(const w of words[k])assert(T.R.hasDictionaryWord(T.mem,w),w);});
++const I=G.Infidel,Cu=G.Cutthroats,E=G.Enchanter,torchRoom=I.R.objectLinks(I.mem,198).parent;
++const nm=(T,id)=>T.obj(id).name;
++check('Infidel match 46 unlit -> light; lit -> blow out',()=>{I.bit(46,21,0);assert.deepStrictEqual(lv(I.held(46)),['light '+nm(I,46)]);I.bit(46,21,1);assert.deepStrictEqual(lv(I.held(46)),['blow out '+nm(I,46)]);I.bit(46,21,0);});
++check('Infidel torch 198 unlit -> light; lit -> extinguish',()=>{I.bit(198,21,0);assert.deepStrictEqual(lv(I.held(198)),['light '+nm(I,198)]);I.bit(198,21,1);assert.deepStrictEqual(lv(I.held(198)),['extinguish '+nm(I,198)]);I.bit(198,21,0);});
++check('Infidel shovel 33 / pickaxe 37 with BURNBIT 11 forced set get no light forms',()=>{for(const id of [33,37]){I.bit(id,11,1);assert.deepStrictEqual(lv(I.held(id)),[]);I.bit(id,21,1);assert.deepStrictEqual(lv(I.held(id)),[]);I.bit(id,21,0);}});
++check('Infidel capabilityBit 11 does not gate an owner',()=>{const old=I.bit(198,11);I.bit(198,11,0);assert.deepStrictEqual(lv(I.held(198)),['light '+nm(I,198)]);I.bit(198,11,old);});
++check('Infidel owner in player room (Chamber of Ra) -> forms; in another room -> none',()=>{const ra=torchRoom;I.parent(I.player,ra);I.room=I.R.enclosingRoom(I.mem,I.player);assert.equal(I.room,ra);I.parent(198,I.room);assert.deepStrictEqual(lv(I.menu(198,'room')),['light '+nm(I,198)]);const rp=I.R.objectLinks(I.mem,I.room).parent;let other=0;for(let id=1;id<=I.count&&!other;id++)if(id!==I.room&&id!==I.player&&I.R.objectLinks(I.mem,id).parent===rp)other=id;assert(other);I.parent(198,other);assert.deepStrictEqual(lv(I.menu(198,'room')),[]);I.parent(198,I.player);});
++check('Cutthroats flashlight 116 off -> turn on; on -> turn off; key 143 / watch 6 none',()=>{Cu.bit(116,17,0);assert.deepStrictEqual(lv(Cu.held(116)),['turn on '+nm(Cu,116)]);Cu.bit(116,17,1);assert.deepStrictEqual(lv(Cu.held(116)),['turn off '+nm(Cu,116)]);Cu.bit(116,17,0);for(const id of [143,6]){Cu.bit(id,27,1);Cu.bit(id,17,1);assert.deepStrictEqual(lv(Cu.held(id)),[]);}});
++check('Enchanter lantern 94 off-only: unlit none, lit turn off; candle 204 lit none',()=>{E.bit(94,22,0);assert.deepStrictEqual(lv(E.held(94)),[]);E.bit(94,22,1);assert.deepStrictEqual(lv(E.held(94)),['turn off '+nm(E,94)]);E.bit(94,22,0);E.bit(204,22,1);assert.deepStrictEqual(lv(E.held(204)),[]);});
++// Malformed => absent => identical to no fact, for every object of the title.
++function sweep(T){const out=[];for(let id=1;id<=T.count;id++){if(id===T.player)continue;let s;try{s=T.menu(id,'inventory').join('|');}catch(e){s='ERR';}out.push(id+':'+s);}return out;}
++const clone=o=>JSON.parse(JSON.stringify(o));
++const good=clone(I.F.lightForms);
++const noneI=(()=>{delete I.F.lightForms;const s=sweep(I);I.F.lightForms=clone(good);return s;})();
++const w=(o)=>Object.assign(clone(good),o),wo=k=>{const g=clone(good);delete g[k];return g;};
++const bads=[null,[],{},'x',w({extra:1}),w({objects:[]}),w({objects:[46,46]}),w({objects:[46,99999]}),w({objects:[46,'198']}),w({objects:[0,198]}),w({stateBit:32}),w({stateBit:'21'}),w({capabilityBit:40}),w({on:{'33':'light'}}),w({on:{default:''}}),w({on:{default:'Light!'}}),w({on:null,off:null}),w({off:[]}),wo('on'),wo('off'),wo('stateBit'),wo('objects')];
++for(const b of bads)check('Infidel malformed '+JSON.stringify(b)+' -> every menu identical to no fact',()=>{I.F.lightForms=b;try{assert.deepStrictEqual(sweep(I),noneI);}finally{I.F.lightForms=clone(good);}});
++check('Infidel wrong executable digest -> absent',()=>{const d=I.digest;I.digest='0'.repeat(64);try{assert.deepStrictEqual(lv(I.held(198)),[]);}finally{I.digest=d;}});
++check('Infidel unvalidated family -> absent',()=>{const f=I.A._familyOf;I.A._familyOf=()=>({classification:'unknown'});try{assert.deepStrictEqual(lv(I.held(198)),[]);}finally{I.A._familyOf=f;}});
++check('Infidel/Cutthroats/Enchanter non-owners identical to no fact',()=>{for(const T of [I,Cu,E]){const g=T.F.lightForms,own=new Set(g.objects),keep=l=>!own.has(+l.split(':')[0]);const a=sweep(T).filter(keep);delete T.F.lightForms;const b=sweep(T).filter(keep);T.F.lightForms=g;assert.deepStrictEqual(a,b);}});
++// Other titles (switchable owners included): lightForms absent for every object.
++const others=fs.readdirSync(root+'/games').filter(f=>/\.z[345]\.js$/.test(f)&&!Object.values(titles).includes(f));
++check('other Z titles: lightForms absent for every object (switchable titles unchanged)',()=>{let n=0;for(const f of others){let T;try{T=load(f);}catch(e){continue;}if(!T.h||!T.count)continue;for(let id=1;id<=T.count;id++)assert.strictEqual(T.A.lightForms(T.mem,id,'inventory'),null,f+' '+id);n++;}console.log('  other titles checked: '+n);assert(n>10);});
++console.log(checks+' lightForms controls passed');
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index 5374fb31..0d94369a 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -89,6 +89,15 @@ var ActionSynth = {
+         }
+         return ActionSynth.rules[key] || [];
+     },
++    // Per-title light owner verbs (AttributeSchema.lightForms); [] when absent or not offered.
++    lightFormsFor: (objectId, context) => {
++        try {
++            var id = Number(objectId);
++            if (objectId == null || typeof AttributeSchema === "undefined" || !AttributeSchema.lightForms || !Number.isInteger(id)) return [];
++            var forms = AttributeSchema.lightForms(AttributeSchema._getMem(), id, context);
++            return (forms || []).filter(ActionSynth.literalAvailable);
++        } catch (eLight) { return []; }
++    },
+     // The title's measured enter verb (fact enterForms.enter), or null.
+     enterFormFor: (mem) => {
+         try {
+@@ -475,6 +484,11 @@ var ActionSynth = {
+                     .filter(function (v) { return v !== enterForm || ActionSynth.literalAvailable(enterForm); });
+             }
+         }
++        // lightForms (four-seat ACCEPT): a listed light owner, held or in the player's room, gets its
++        // own on or off verb chosen by the live state bit. Additive; no fact leaves verbs unchanged.
++        if (!containerName) ActionSynth.lightFormsFor(obj.id, context).forEach(function (v) {
++            if (verbs.indexOf(v) < 0) verbs.push(v);
++        });
+         var result = verbs.map(function (v) {
+             var cmd = v === "examine" ? ("examine " + name) : (v + " " + name);
+             if (v === "talk to") cmd = "talk to " + name;
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index 2990f7f8..6b3bc80e 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -517,6 +517,50 @@ var AttributeSchema = {
+             return Number.isInteger(objectId) && Object.prototype.hasOwnProperty.call(scope, String(objectId));
+         } catch (eScope) { return false; }
+     },
++    // lightForms (four-seat ACCEPT, grok2 draft sha 76e755d4; codex 0231 + grok review): per-title light
++    // owners with per-owner on/off verbs. The objects list is AUTHORITATIVE; capabilityBit is informational
++    // only and never gates (Infidel BURNBIT 11 also marks flammable non-lights). The live stateBit picks
++    // on (clear) or off (set). Only the exact executable fact of a validated confirmed-zil-family title;
++    // any malformed descriptor makes the whole fact absent (null), leaving every other path unchanged.
++    lightForms: function (mem, objectId, context) {
++        try {
++            if (!mem || !Number.isInteger(objectId) || objectId < 1 || typeof ModuleLibrary === "undefined" ||
++                typeof ModuleStatFactsClaude === "undefined" || typeof ZRamReader === "undefined") return null;
++            var digest = ModuleLibrary.currentExecutableDigest(), fact = digest && ModuleStatFactsClaude[digest];
++            if (!fact || ZRamReader.executableLayoutFacts(mem) !== fact ||
++                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return null;
++            var lf = fact.lightForms, own = Object.prototype.hasOwnProperty;
++            var plain = function (o) { return !!o && typeof o === "object" && Object.getPrototypeOf(o) === Object.prototype; };
++            if (!plain(lf) || !Object.keys(lf).every(function (k) { return ["capabilityBit", "stateBit", "objects", "on", "off"].indexOf(k) >= 0; }) ||
++                !own.call(lf, "stateBit") || !own.call(lf, "objects") || !own.call(lf, "on") || !own.call(lf, "off")) return null;
++            var family = AttributeSchema._familyOf(mem), h = ZRamReader.header(mem);
++            if (!h || h.version < 3 || h.version > 5 || !family || family.classification !== "confirmed-zil-family" ||
++                family.evidence !== "validated") return null;
++            var bits = h.version <= 3 ? 32 : 48, count = ZRamReader.objectCount(mem, h);
++            var bitOk = function (b) { return Number.isInteger(b) && b >= 0 && b < bits; };
++            if (!bitOk(lf.stateBit) || (own.call(lf, "capabilityBit") && lf.capabilityBit !== null && !bitOk(lf.capabilityBit))) return null;
++            var objs = lf.objects;
++            if (!Array.isArray(objs) || !objs.length || !Number.isInteger(count) || !objs.every(function (id, i) {
++                return Number.isInteger(id) && id >= 1 && id <= count && objs.indexOf(id) === i;
++            })) return null;
++            var formOk = function (side) {
++                if (side === null) return true;
++                if (!plain(side) || !Object.keys(side).length) return false;
++                return Object.keys(side).every(function (k) {
++                    return (k === "default" || (/^[1-9][0-9]*$/.test(k) && objs.indexOf(Number(k)) >= 0)) &&
++                        typeof side[k] === "string" && /^[a-z]+( [a-z]+)?$/.test(side[k]);
++                });
++            };
++            if (!formOk(lf.on) || !formOk(lf.off) || (lf.on === null && lf.off === null)) return null;
++            if (objs.indexOf(objectId) < 0) return null;
++            if (context !== "inventory" && !(context === "room" && AttributeSchema.inPlayerRoom(mem, objectId))) return [];
++            var base = ZRamReader.objectBase(h, objectId), size = mem.byteLength || mem.length;
++            if (!Number.isInteger(base) || base < 0 || base + 6 > size) return [];
++            var lit = !!(mem.getUint8(base + (lf.stateBit >> 3)) & (0x80 >> (lf.stateBit & 7)));
++            var side = lit ? lf.off : lf.on, form = side && (own.call(side, String(objectId)) ? side[String(objectId)] : side["default"]);
++            return typeof form === "string" ? [form] : [];
++        } catch (eLight) { return null; }
++    },
+     // Live RAM: the object's parent chain reaches the player's actual current room, passing only
+     // supporters and open or transparent containers. Another actor's possessions never qualify.
+     inPlayerRoom: function (mem, objectId) {
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 1e3989ca..13d87fda 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -46,6 +46,8 @@ var ModuleStatFactsClaude = {
+     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
+     // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
+     "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
++        // lightForms (work/investigations/grok2/lightForms-DRAFT.md sha 76e755d4; four-seat ACCEPT (codex-votes-0231, grok-review-lightforms-draft); native lightsource-native/): flashlight 116 tests bit 27; TURN ON sets ONBIT 17, TURN OFF clears it; key 143/watch 6 refuse.
++        "lightForms": { "capabilityBit": 27, "stateBit": 17, "objects": [116], "on": { "default": "turn on" }, "off": { "default": "turn off" } },
+         // D1 source-proven (r44): inventoryHiddenAttribute 12 = NDESCBIT (tp 48 fp 0 fn 1); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
+         "inventoryHiddenAttribute": 12,
+         "inventoryHiddenRecurses": true,
+@@ -317,6 +319,8 @@ var ModuleStatFactsClaude = {
+         "inventoryHiddenScopeRetained": true,
+     },
+     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
++        // lightForms (work/investigations/grok2/lightForms-DRAFT.md sha 76e755d4; four-seat ACCEPT (codex-votes-0231, grok-review-lightforms-draft); native lightsource-native/): battered lantern 94 is lit only by FROTZ (not an ordinary on form); TURN OFF clears ONBIT 8 + LIGHTBIT 22, after which TURN ON is refused. Off-only.
++        "lightForms": { "capabilityBit": null, "stateBit": 22, "objects": [94], "on": null, "off": { "94": "turn off" } },
+         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 17, holder 58. Native: Outside of
+         // Shack 227 EXAMINE SHACK, Long Road 45 EXAMINE FOREST, Fork EXAMINE HILLS succeed; Fork refuses shack and forest, Long Road
+         // refuses shack. Lit ONBIT 8 (grok2 lit/dark pair: Fork on, Tower off). INVISIBLE 16 exact 7 of 7. No contents key.
+@@ -340,6 +344,9 @@ var ModuleStatFactsClaude = {
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+     },
+     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
++        // lightForms (work/investigations/grok2/lightForms-DRAFT.md sha 76e755d4; four-seat ACCEPT (codex-votes-0231, grok-review-lightforms-draft); native lightsource-native/): match 46 + bronze torch 198 LIGHT tests BURNBIT 11 and sets ONBIT 21; EXTINGUISH TORCH / BLOW OUT MATCH clear it.
++        // capabilityBit is informational only (BURNBIT also marks flammable non-lights; shovel 33/pickaxe 37 refuse). Other match objects: declared under-offer.
++        "lightForms": { "capabilityBit": 11, "stateBit": 21, "objects": [46, 198], "on": { "default": "light" }, "off": { "198": "extinguish", "46": "blow out" } },
+         // D1 source-proven (r44): inventoryHiddenAttribute 18 = NDESCBIT (tp 87 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
+         "inventoryHiddenAttribute": 18,
+         "inventoryHiddenRecurses": true,

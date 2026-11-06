@@ -1,0 +1,6 @@
+{"key":"hhgg","tag":"r45hh2","bit":28,"tests":[{"id":134,"name":"switch","step":61,"cmd":"switch on switch","expect":1,"bit":32},
+{"id":134,"name":"switch","step":61,"cmd":"switch off switch","expect":1,"bit":32},
+{"id":164,"name":"poetry appreciation chair","step":70,"cmd":"get out of chair","expect":1,"bit":28},
+{"id":164,"name":"poetry appreciation chair","step":70,"cmd":"get in chair","expect":1,"bit":28},
+{"id":96,"name":"generator switch","step":124,"cmd":"switch off generator switch","expect":1,"bit":32},
+{"id":96,"name":"generator switch","step":124,"cmd":"switch on generator switch","expect":1,"bit":32}]}

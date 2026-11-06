@@ -1,0 +1,4 @@
+sherlock sh-door @4 KNOCK ON BEDROOM DOOR #104 TRUE "There's no answer.\n \n> "
+sherlock sh-door @4 KNOCK ON STUDY DOOR #70 TRUE "It is already open.\n \n> "
+sherlock sh-door @4 KNOCK ON VIOLIN #207 FALSE "That would not do anything useful.\n \n> "
+sherlock sh-door @19 KNOCK ON PARLOUR DOOR #102 TRUE "There's no answer.\n \n> "

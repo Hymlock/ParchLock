@@ -1,0 +1,30 @@
+{
+  "tier": "X-only actual reachability helper with constructed links/attributes; not native semantic proof",
+  "sourceSha256": "6f4f07a20abf51c698704b3f530085f689db04909004f83c2818bebcaac094da",
+  "rows": [
+    {
+      "name": "direct held tool: player flags are not a box",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "closed transparent box below player still blocks",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "open box below player allows held tool",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "room boundary prevents offstage metadata container suppression",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    }
+  ]
+}

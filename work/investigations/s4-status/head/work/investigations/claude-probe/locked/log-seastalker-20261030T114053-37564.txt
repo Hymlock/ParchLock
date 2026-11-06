@@ -1,0 +1,6 @@
+seastalker e3seafix @36 open hatch #251 FALSE "Okay, the entry hatch is now open.\n \n> "
+seastalker e3seafix @104 open locker #155 NOTEST "(You can't see any locker here!)\n \n> "
+seastalker e3seafix @104 unlock locker #155 NOTEST "(You can't see any locker here!)\n \n> "
+seastalker e3seafix @105 open locker with tool #155 NOTEST "(You can't see any locker here!)\n \n> "
+seastalker e3seafix @106 close locker #155 NOTEST "(You can't see any locker here!)\n \n> "
+seastalker e3seafix @106 open locker #155 NOTEST "(You can't see any locker here!)\n \n> "

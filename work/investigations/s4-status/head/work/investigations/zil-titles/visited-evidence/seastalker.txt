@@ -1,0 +1,30 @@
+### verbs.zil:260 (historicalsource/seastalker)
+		;<SET L ,PLAYER-HIDING>
+		<COND (<FSET? <SET L <LOC ,WINNER>> ,VEHBIT>
+		       <TELL "(You're ">
+		       <COND (<FSET? .L ,SURFACEBIT>
+			      <TELL "sitting o">)
+			     (T <TELL "standing i">)>
+		       <TELL "n" THE .L ".)" CR>)>
+		<COND (<AND .V? <APPLY <GETP ,HERE ,P?ACTION> ,M-LOOK>>
+		       <FSET ,HERE ,TOUCHBIT>
+		       <RTRUE>)
+		      (<AND .V? <SET STR <GETP ,HERE ,P?FDESC>>>
+		       <TELL .STR CR>)
+		      (<AND .V? <SET STR <GETP ,HERE ,P?LDESC>>>
+
+### verbs.zil:270 (historicalsource/seastalker)
+		      (<AND .V? <SET STR <GETP ,HERE ,P?FDESC>>>
+		       <TELL .STR CR>)
+		      (<AND .V? <SET STR <GETP ,HERE ,P?LDESC>>>
+		       <TELL .STR CR>)
+		      (T <APPLY <GETP ,HERE ,P?ACTION> ,M-FLASH>)>
+		<COND (<NOT <==? ,HERE .L>>
+		       <APPLY <GETP .L ,P?ACTION> ,M-LOOK>)>)>
+	 <COND (<GETP ,HERE ,P?CORRIDOR> <CORRIDOR-LOOK>)>
+	 <FSET ,HERE ,TOUCHBIT>
+	 T>
+
+<ROUTINE FAR-AWAY? (L)
+ <COND (<EQUAL? .L ,GLOBAL-OBJECTS> <RTRUE>)
+

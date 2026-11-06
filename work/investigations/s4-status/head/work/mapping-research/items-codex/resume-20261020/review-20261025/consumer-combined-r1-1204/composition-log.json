@@ -1,0 +1,51 @@
+{
+  "base": "ccd9b58",
+  "changes": [
+    {
+      "title": "infidel-state-r3-candidate",
+      "rel": "js/ActionSynth.js",
+      "conflicts": 1
+    },
+    {
+      "title": "infidel-state-r3-candidate",
+      "rel": "js/AttributeSchema.js",
+      "conflicts": 1
+    },
+    {
+      "title": "infidel-state-r3-candidate",
+      "rel": "js/EquipmentUI.js",
+      "conflicts": 1
+    },
+    {
+      "title": "infidel-state-r3-candidate",
+      "rel": "js/ModuleStatFactsClaude.js",
+      "conflicts": 1
+    },
+    {
+      "title": "infidel-state-r3-candidate",
+      "rel": "js/ZRamReader.js",
+      "conflicts": 0
+    },
+    {
+      "title": "absent-r1-candidate",
+      "rel": "js/AttributeSchema.js",
+      "conflicts": 0
+    },
+    {
+      "title": "sorcerer-illumination-r1-candidate",
+      "rel": "js/AttributeSchema.js",
+      "conflicts": 1
+    },
+    {
+      "title": "sorcerer-illumination-r1-candidate",
+      "rel": "js/EquipmentUI.js",
+      "conflicts": 0
+    },
+    {
+      "title": "sorcerer-illumination-r1-candidate",
+      "rel": "js/ModuleStatFactsClaude.js",
+      "conflicts": 0
+    }
+  ],
+  "scope": "copied candidate only; conflicts not yet resolved"
+}

@@ -1,0 +1,233 @@
+{
+ "key": "cutthroat",
+ "game": "Cutthroats.z3.js",
+ "bit": 12,
+ "tmpl": "look|examine X",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 8,
+   "name": "Weasel's knife",
+   "step": 14,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 8,
+   "name": "Weasel's knife",
+   "step": 14,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine weasel's knife"
+  },
+  {
+   "id": 10,
+   "name": "Pete's eyepatch",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 10,
+   "name": "Pete's eyepatch",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine pete's eyepatch"
+  },
+  {
+   "id": 102,
+   "name": "liquor",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 102,
+   "name": "liquor",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine liquor"
+  },
+  {
+   "id": 103,
+   "name": "drink",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 103,
+   "name": "drink",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine drink"
+  },
+  {
+   "id": 105,
+   "name": "meal",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 105,
+   "name": "meal",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine meal"
+  },
+  {
+   "id": 106,
+   "name": "mirror",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 106,
+   "name": "mirror",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine mirror"
+  },
+  {
+   "id": 107,
+   "name": "bar",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 107,
+   "name": "bar",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine bar"
+  },
+  {
+   "id": 108,
+   "name": "chair",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 108,
+   "name": "chair",
+   "step": 20,
+   "expect": 1,
+   "bit": 12,
+   "cmd": "examine chair"
+  },
+  {
+   "id": 6,
+   "name": "wrist watch",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 6,
+   "name": "wrist watch",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "examine wrist watch"
+  },
+  {
+   "id": 9,
+   "name": "the Weasel",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 9,
+   "name": "the Weasel",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "examine the weasel"
+  },
+  {
+   "id": 143,
+   "name": "room key",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 143,
+   "name": "room key",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "examine room key"
+  },
+  {
+   "id": 144,
+   "name": "Mariners' Trust passbook",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 144,
+   "name": "Mariners' Trust passbook",
+   "step": 14,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "examine mariners' trust passbook"
+  },
+  {
+   "id": 11,
+   "name": "Pete the Rat",
+   "step": 20,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 11,
+   "name": "Pete the Rat",
+   "step": 20,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "examine pete the rat"
+  },
+  {
+   "id": 12,
+   "name": "Johnny Red",
+   "step": 20,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "look"
+  },
+  {
+   "id": 12,
+   "name": "Johnny Red",
+   "step": 20,
+   "expect": 0,
+   "bit": 12,
+   "cmd": "examine johnny red"
+  }
+ ]
+}

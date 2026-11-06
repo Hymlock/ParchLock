@@ -1,0 +1,108 @@
+{
+ "title": "Zork2-TheWizardofFrobozz",
+ "doorbit": 22,
+ "openbit": 11,
+ "openbitFromFacts": 11,
+ "containerbit": 18,
+ "digest": "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e",
+ "objectCount": 250,
+ "carriers": [
+  {
+   "id": 101,
+   "name": "barred window",
+   "parent": 249,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 102,
+   "name": "door made of oak",
+   "parent": 249,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 136,
+   "name": "stone door",
+   "parent": 137,
+   "parentName": "Riddle Room",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 171,
+   "name": "secret door",
+   "parent": 249,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 173,
+   "name": "crypt door",
+   "parent": 249,
+   "parentName": "",
+   "container": true,
+   "open": false
+  },
+  {
+   "id": 197,
+   "name": "door partly covered in cobwebs",
+   "parent": 249,
+   "parentName": "",
+   "container": true,
+   "open": false
+  }
+ ],
+ "positives": [
+  {
+   "run": "_Zork2-TheWizardofFrobozz.run.json",
+   "cmd": "OPEN WINDOW",
+   "reply": "The barred window opens. >",
+   "openToggles": [
+    {
+     "id": 101,
+     "name": "barred window",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_Zork2-TheWizardofFrobozz.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "The door is now open. >",
+   "openToggles": [
+    {
+     "id": 102,
+     "name": "door made of oak",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  }
+ ],
+ "doorSpecificRefusals": [
+  {
+   "run": "_Zork2-TheWizardofFrobozz.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "The door is locked. >",
+   "openToggles": []
+  }
+ ],
+ "negatives": [
+  {
+   "run": "_Zork2-TheWizardofFrobozz.run.json",
+   "cmd": "OPEN SWORD",
+   "reply": "You must tell me how to do that to a sword. >",
+   "openToggles": []
+  }
+ ],
+ "problemCarriers": {
+  "container": "oak door 102, stone door 136, secret door 171, crypt door 173, cobweb door 197 all also carry container bit 18"
+ },
+ "status": "CONFIRMED (oak door locked refusal then OPEN toggles; barred window OPEN toggles; CLOSE not exercised)",
+ "method": "headless Chromium play.html; ordinary commands via Input.Inject; Jericho walkthrough prefixes with inserted probes; JSEED-style random-opcode shim (seed 0) for walkthrough parity, no VM memory writes/snapshots"
+}

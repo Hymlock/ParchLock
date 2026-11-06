@@ -1,0 +1,224 @@
+# Lurking Horror ONBIT complete source search
+source: historicalsource-lurkinghorror rev 51d8060 (dir /tmp/hs-src/lurkinghorror/historicalsource-lurkinghorror-51d8060)
+files + sha256:
+23cef08c136a9a013f03d4e37fb4b9b16187a4d8c4bb764ed0ecac9f46acdd6d *cs.zil
+972701092445e85434aa65dd75ade75bbda1695eab681e776eb5de367418974e *debug.zil
+12cf1a4d6f1c7cf6d7bb0ed444ed83b4594fb1983864015a3bde144dbc944e4d *desc.zil
+66d72389330e2c8e3405a0d8f4c7aa11c3d2b98ff782f99299ab204633431cd7 *frob.zil
+c3f82d9d6f2d640fe38700e9f4d9487e4229db5c4220f4cea1e2c0bd55c110b2 *globals.zil
+1ae4d2fdaab788429c6fbf7b16dfa845ec12c2a0722d61e2ef139e2d457e8aa8 *green.zil
+6c3bf0547144a86afb955550e0fd9b7580aa7e80d8465aa462856b57fe3224ab *h1.zil
+276cec37b50dc19bb258051a4f2d82c6f6c63949b134c20bcda0455bbe898b30 *hacker.zil
+b1f64d2c50c1a8acc78b3489dacb9477756efc06d671602e8568c1d9d07558c1 *interrupts.zil
+39cff0ec152f9e5881966fe5ecba6d020d3b2beb5624769b6725b556cd951d92 *misc.zil
+31b867a21ec13dd191f3246688f7208df1081e6f6178b6210dc846426b17b85e *parser.zil
+544a559061a3fec40fd6e1feab06ee6bdb394a59757d5b7cae79379b1751ed9d *pc.zil
+bbabfeed5ae8842a65603785b8838c3a63cf6c23c4be17bc7a28f1acb10e569a *record.zil
+4dfb097f8254c588fbd694e7133d8c5509ab52d34832bb81c54e9e552cd9165b *syntax.zil
+e4f23d943d64ae7582efa4c1281cc22b9e013a767a3a9c64c7a1a176699ed9d8 *verbs.zil
+cee3ca8da2aa49cc53bdd3fb9ecb8cbae94e1a79ac4138f01b4a597d57614a3b *yuggoth.zil
+
+## every ONBIT occurrence (grep -n -w ONBIT *.zil)
+cs.zil:35:      (FLAGS ONBIT OUTSIDE)>
+cs.zil:58:      (FLAGS ONBIT OUTSIDE)>
+cs.zil:114:      (FLAGS ONBIT)
+cs.zil:142:      (FLAGS ONBIT)
+cs.zil:180:      (FLAGS ONBIT)
+cs.zil:210:      (FLAGS ONBIT OUTSIDE)>
+cs.zil:240:      (FLAGS ONBIT)
+cs.zil:353:      (FLAGS ONBIT)
+cs.zil:400:      (FLAGS ONBIT)>
+cs.zil:1306:      (FLAGS ONBIT)
+cs.zil:1372:		<COND (<FSET? ,FLASHLIGHT ,ONBIT>
+cs.zil:1379:		      (<FSET? ,FLASHLIGHT ,ONBIT>
+cs.zil:1383:		       <FSET ,FLASHLIGHT ,ONBIT>
+cs.zil:1393:		<COND (<NOT <FSET? ,FLASHLIGHT ,ONBIT>>
+cs.zil:1397:		       <FCLEAR ,FLASHLIGHT ,ONBIT>
+cs.zil:1412:		<FCLEAR ,FLASHLIGHT ,ONBIT>
+cs.zil:2447:      (FLAGS ONBIT)>
+cs.zil:2459:      (FLAGS ONBIT)>
+cs.zil:2503:      (FLAGS ONBIT)>
+cs.zil:2516:      (FLAGS ONBIT)
+cs.zil:2608:		       <FSET ,TUNNEL ,ONBIT>
+cs.zil:2609:		       <FSET ,TUNNEL-EAST ,ONBIT>
+cs.zil:2610:		       <FSET ,TUNNEL-WEST ,ONBIT>
+cs.zil:2627:		       <FCLEAR ,TUNNEL ,ONBIT>
+cs.zil:2628:		       <FCLEAR ,TUNNEL-EAST ,ONBIT>
+cs.zil:2629:		       <FCLEAR ,TUNNEL-WEST ,ONBIT>
+cs.zil:4407:      (FLAGS OUTSIDE ONBIT)
+cs.zil:4433:      (FLAGS ONBIT)
+cs.zil:4476:			    <FSET? ,ALCHEMY-DEPT ,ONBIT>
+cs.zil:4484:		      (<NOT <FSET? ,ALCHEMY-DEPT ,ONBIT>>
+cs.zil:4697:      (FLAGS ONBIT)
+cs.zil:4718:		<FSET ,ALCHEMY-LAB ,ONBIT>
+cs.zil:4856:			      <FCLEAR ,ALCHEMY-LAB ,ONBIT>
+cs.zil:5610:      (FLAGS ONBIT)
+cs.zil:5624:      (FLAGS ONBIT)
+cs.zil:5637:      (FLAGS ONBIT)
+cs.zil:5651:      (FLAGS ONBIT)
+cs.zil:5675:      (FLAGS ONBIT)
+cs.zil:5686:      (FLAGS ONBIT)
+cs.zil:5989:	(FLAGS NDESCBIT VEHBIT SURFACEBIT ONBIT OPENBIT CONTBIT SEARCHBIT)
+cs.zil:6602:      (FLAGS ONBIT)>
+cs.zil:6613:      (FLAGS ONBIT)
+cs.zil:6623:      (FLAGS ONBIT)
+cs.zil:6637:      (FLAGS ONBIT)
+cs.zil:6713:      (FLAGS ONBIT)
+cs.zil:6977:      (FLAGS ONBIT OUTSIDE)
+cs.zil:7004:      (FLAGS ONBIT OUTSIDE)
+desc.zil:221:	 <COND (<FSET? .OBJ ,ONBIT>
+frob.zil:690:      (FLAGS ONBIT)
+frob.zil:936:      (FLAGS ONBIT)
+globals.zil:140:	       ONBIT
+green.zil:12:      (FLAGS ONBIT)
+green.zil:52:      (FLAGS ONBIT OUTSIDE)
+green.zil:106:      (FLAGS ONBIT OUTSIDE)
+green.zil:133:      (FLAGS ONBIT)
+green.zil:153:      (FLAGS ONBIT)
+green.zil:216:      (FLAGS ONBIT OUTSIDE)
+green.zil:306:      (FLAGS ONBIT)
+hacker.zil:945:	(FLAGS RLANDBIT ONBIT)
+parser.zil:1728:	 <SETG P-GWIMBIT ,ONBIT>
+parser.zil:1732:		     <FSET? .RM ,ONBIT>>
+parser.zil:1740:		     <FSET? ,ALCHEMY-LAB ,ONBIT>>
+parser.zil:1742:	       (<AND <FSET? ,WINNER ,ONBIT>
+yuggoth.zil:28:      (FLAGS ONBIT)
+yuggoth.zil:50:      (FLAGS ONBIT)
+yuggoth.zil:60:      (FLAGS ONBIT)
+
+## indirect: routines/macros that FSET/FCLEAR a flag passed as a variable (grep FSET/FCLEAR with a non-constant flag)
+cs.zil:1603:	 <FCLEAR .DOOR ,OPENBIT>
+cs.zil:2097:	 <FCLEAR .WEDGER ,NDESCBIT>
+cs.zil:2724:			      <FCLEAR .LP ,LOCKED>
+frob.zil:793:			      <FSET .W ,SLIMEBIT>
+frob.zil:844:			      <FSET .W ,RMUNGBIT>
+frob.zil:859:				     <FSET .WHAT ,SLIMEBIT>
+hacker.zil:850:			       <FCLEAR .M ,PERSON>
+hacker.zil:857:			       <FSET .M ,RMUNGBIT>)>)
+verbs.zil:1750:	 <FSET .OBJ ,TOUCHBIT>>
+
+## Classification (claude, 2026-10-20) - whole-word ONBIT only (note: a naive FLAGS.*ONBIT regex also matches WEAPONBIT;
+## an earlier draft of this classification made that mistake and is superseded)
+Static carriers (FLAGS ... ONBIT): 43 <ROOM> definitions (lit state) + exactly 1 object: GLOBAL-FLOOR-WAXER (a GLOBAL
+scenery object; its handler cs.zil ~6047-6053 answers WALK/LAMP-OFF/LAMP-ON/STOP with a message and never FSETs/FCLEARs
+ONBIT -> a permanent "running" state, not player-switchable).
+Dynamic FSET/FCLEAR ONBIT: FLASHLIGHT (cs.zil:1383/1397/1412) - the only item; TUNNEL/TUNNEL-EAST/TUNNEL-WEST
+(2608-2629) and ALCHEMY-LAB (4718/4856) are rooms. Indirect setters (FSET/FCLEAR with a variable object): the 9 listed
+above all set other flags (OPENBIT, NDESCBIT, LOCKED, SLIMEBIT, RMUNGBIT, PERSON, TOUCHBIT); none touches ONBIT.
+Conclusion: the only player-switchable ONBIT item is the flashlight; one static non-room carrier (global waxer) is
+always-on scenery.
+
+## Two-operand scan (codex #4343): whole files, newlines collapsed, comments stripped; tool = node flagscan (below)
+two-operand FSET/FSET?/FCLEAR forms scanned: 643
+forms whose FLAG operand is not a literal ,FLAG constant: 3
+  desc.zil: <FSET? .OBJ <- ,D-BIT>>
+  misc.zil: <FSET? .OBJ ,.A>
+  verbs.zil: <FSET? .W .WHAT>
+DEFMAC macros containing FSET/FCLEAR: 3
+  misc.zil: DEFMAC BSET
+  misc.zil: DEFMAC BCLEAR
+  misc.zil: DEFMAC BSET
+All non-literal flag operands above are FSET? TESTS (read-only), not setters.
+BSET/BCLEAR (the only FSET/FCLEAR-forwarding macros, via MULTIBITS): call sites = 0
+
+## GLOBAL-FLOOR-WAXER excerpts (inline, rev 51d8060)
+5984:<OBJECT GLOBAL-FLOOR-WAXER
+5985-	(IN LOCAL-GLOBALS)
+5986-	(DESC "floor waxer")
+5987-	(SYNONYM WAXER POLISHER MACHINE)
+5988-	(ADJECTIVE FLOOR LARGE NOISY)
+5989-	(FLAGS NDESCBIT VEHBIT SURFACEBIT ONBIT OPENBIT CONTBIT SEARCHBIT)
+5990-	(GENERIC GENERIC-FLOOR-WAXER-F)
+5991-	(ACTION GLOBAL-FLOOR-WAXER-F)>
+5992-
+5993-<ROUTINE GENERIC-FLOOR-WAXER-F ()
+5994-	 <COND (<IN? ,FLOOR-WAXER ,HERE> ,FLOOR-WAXER)
+...
+  6040			      (ELSE
+  6041			       <TELL
+  6042	"A disabled " 'FLOOR-WAXER " looms nearby.">)>
+  6043			<RFATAL>)>>
+  6044	
+  6045	<ROUTINE FLOOR-WAXER-F ("OPT" (RARG <>))
+  6046		 <COND (<RARG? BEG>
+  6047			<COND (<AND <VERB? WALK>
+  6048				    <EQUAL? ,P-WALK-DIR ,P?DOWN>>
+  6049			       <PERFORM ,V?DISEMBARK>
+  6050			       <RTRUE>)
+  6051			      (<VERB? WALK LAMP-OFF LAMP-ON STOP>
+  6052			       <TELL
+  6053	CTHE ,POWER-CORD " is severed. It's not going anywhere." CR>)>)
+  6054		       (<RARG? CONTAINER>
+  6055			<COND (<AND <VERB? TAKE>
+  6056				    <NOT <IN? ,WINNER ,FLOOR-WAXER>>>
+  6057			       <CANT-REACH-THAT>
+  6058			       <RTRUE>)>)
+  6059		       (<RARG? <>>
+  6060			<COND (<VERB? EXAMINE>
+
+## R3 (codex #4345): tokenizing scan supersedes the regex flagscan.js section above
+tool: work/investigations/zil-titles/source-search/zilscan.js (strings skipped, ';' drops the next whole object, any nesting depth, unbalanced brackets reported)
+command: node zilscan.js <rev 51d8060 dir> ONBIT
+flag-operation forms (FSET/FCLEAR/FSET?/BSET/BCLEAR/BSET?) parsed: 632 ; filter ONBIT + all non-literal
+cs.zil:1372 FSET? ,FLASHLIGHT ,ONBIT
+cs.zil:1379 FSET? ,FLASHLIGHT ,ONBIT
+cs.zil:1383 FSET ,FLASHLIGHT ,ONBIT
+cs.zil:1393 FSET? ,FLASHLIGHT ,ONBIT
+cs.zil:1397 FCLEAR ,FLASHLIGHT ,ONBIT
+cs.zil:1412 FCLEAR ,FLASHLIGHT ,ONBIT
+cs.zil:2608 FSET ,TUNNEL ,ONBIT
+cs.zil:2609 FSET ,TUNNEL-EAST ,ONBIT
+cs.zil:2610 FSET ,TUNNEL-WEST ,ONBIT
+cs.zil:2627 FCLEAR ,TUNNEL ,ONBIT
+cs.zil:2628 FCLEAR ,TUNNEL-EAST ,ONBIT
+cs.zil:2629 FCLEAR ,TUNNEL-WEST ,ONBIT
+cs.zil:4476 FSET? ,ALCHEMY-DEPT ,ONBIT
+cs.zil:4484 FSET? ,ALCHEMY-DEPT ,ONBIT
+cs.zil:4718 FSET ,ALCHEMY-LAB ,ONBIT
+cs.zil:4856 FCLEAR ,ALCHEMY-LAB ,ONBIT
+desc.zil:221 FSET? .OBJ ,ONBIT
+desc.zil:250 FSET? .OBJ <form>   [NON-LITERAL FLAG OPERAND]
+misc.zil:261 FSET? .OBJ ,.A   [NON-LITERAL FLAG OPERAND]
+parser.zil:1732 FSET? .RM ,ONBIT
+parser.zil:1740 FSET? ,ALCHEMY-LAB ,ONBIT
+parser.zil:1742 FSET? ,WINNER ,ONBIT
+UNBALANCED syntax.zil: 1
+verbs.zil:376 FSET? .W .WHAT   [NON-LITERAL FLAG OPERAND]
+Reading: every ONBIT SETTER (FSET/FCLEAR) is FLASHLIGHT or a ROOM (TUNNEL x3, ALCHEMY-LAB). Non-literal flag operands: 3, all FSET? tests (desc.zil:250, misc.zil:261 inside DEFINE MULTIBITS, verbs.zil:376). No BSET/BCLEAR/BSET? form exists anywhere (0 parsed). syntax.zil has 1 unbalanced bracket (grammar table file; no flag operation is affected, reported for completeness).
+
+## CORRECTION: the excerpt at 6040-6060 above is FLOOR-WAXER-F, NOT the global object's handler. The real one:
+5984:<OBJECT GLOBAL-FLOOR-WAXER
+5985-	(IN LOCAL-GLOBALS)
+5986-	(DESC "floor waxer")
+5987-	(SYNONYM WAXER POLISHER MACHINE)
+5988-	(ADJECTIVE FLOOR LARGE NOISY)
+5989-	(FLAGS NDESCBIT VEHBIT SURFACEBIT ONBIT OPENBIT CONTBIT SEARCHBIT)
+5990-	(GENERIC GENERIC-FLOOR-WAXER-F)
+5991-	(ACTION GLOBAL-FLOOR-WAXER-F)>
+5992-
+5993-<ROUTINE GENERIC-FLOOR-WAXER-F ()
+  5997	<ROUTINE GLOBAL-FLOOR-WAXER-F ()
+  5998		 <COND (<VERB? WALK-TO>
+  5999			<COND (<HERE? ,INF-1>
+  6000			       <DO-WALK ,P?EAST>)
+  6001			      (<HERE? ,INF-2>
+  6002			       <COND (<IN? ,FLOOR-WAXER ,INF-1>
+  6003				      <DO-WALK ,P?WEST>)
+  6004				     (ELSE <DO-WALK ,P?EAST>)>)
+  6005			      (<HERE? ,INF-3>
+  6006			       <COND (<OR <IN? ,FLOOR-WAXER ,INF-1>
+  6007					  <IN? ,FLOOR-WAXER ,INF-2>>
+  6008				      <DO-WALK ,P?WEST>)
+  6009				     (ELSE <DO-WALK ,P?EAST>)>)
+  6010			      (<HERE? ,INF-4>
+  6011			       <COND (<IN? ,FLOOR-WAXER ,INF-5>
+  6012				      <DO-WALK ,P?EAST>)
+  6013				     (ELSE <DO-WALK ,P?WEST>)>)
+  6014			      (ELSE
+  6015			       <DO-WALK ,P?WEST>)>)
+  6016		       (<HOSTILE-VERB?>
+  6017			<TELL "It" ,IS-DOWN-THE-HALL>)
+  6018		       (ELSE
+  6019			<FLOOR-WAXER-F>)>>
+  6020	
+GLOBAL-FLOOR-WAXER-F contains no FSET/FCLEAR of ONBIT (see the tokenized list: no setter on GLOBAL-FLOOR-WAXER).

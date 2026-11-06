@@ -1,0 +1,4 @@
+starcross e8climb22 @2 climb #170 NOTEST "(on the bunk)\nYou are now in the bunk.\nThe alarm bell on the mass detector is ri"
+starcross e8climb22 @2 climb wall #170 NOTEST "Bizarre!\nThe alarm bell on the mass detector is ringing stridently.\n \n> "
+starcross e8climb22 @2 climb #191 NOTEST "(on the bunk)\nYou are already in it!\nThe alarm bell on the mass detector is ring"
+starcross e8climb22 @2 climb #227 NOTEST "(on the bunk)\nYou are already in it!\nThe alarm bell on the mass detector is ring"

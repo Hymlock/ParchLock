@@ -1,0 +1,7 @@
+starcross e8climb22b @25 climb #170 TRUE "(on the wall)\nYou can't climb onto the wall.\n \n> "
+starcross e8climb22b @29 climb #170 TRUE "(on the wall)\nYou can't climb onto the wall.\n \n> "
+starcross e8climb22b @33 climb #170 TRUE "(on the wall)\nYou can't climb onto the wall.\n \n> "
+starcross e8climb22b @37 climb #170 NOTEST "(on the stairs)\nYou can't climb onto the stairs.\n \n> "
+starcross e8climb22b @38 climb #170 TRUE "(on the wall)\nYou can't climb onto the wall.\n \n> "
+starcross e8climb22b @40 climb #170 TRUE "(on the wall)\nYou can't climb onto the wall.\n \n> "
+starcross e8climb22b @42 climb #170 TRUE "(on the wall)\nYou can't climb onto the wall.\n \n> "

@@ -1,0 +1,261 @@
+{
+ "story": "yagwad.z5.js",
+ "pg": 21,
+ "trace": [
+  {
+   "input": "(start)",
+   "lp": {
+    "playerId": 20,
+    "roomId": 143,
+    "roomName": "Basement",
+    "pSrc": "measured-player-global",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "20:(self object)"
+   ],
+   "glob": [
+    "3=22:(Inform Library)",
+    "21=20:(self object)",
+    "24=19:(darkness object)",
+    "56=20:(self object)",
+    "235=22:(Inform Library)"
+   ],
+   "dig": "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c",
+   "factPG": 21,
+   "inv": [],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "measured-player-global",
+    "roomId": 143,
+    "roomSource": "existing-resolver"
+   },
+   "status": "",
+   "tail": " WARNING: Your screen may not be wide enough to display some menu items correctly. It is recommended that you enlarge your screen size, if possible, before continuing. [Press any key] ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "lp": {
+    "playerId": 20,
+    "roomId": 143,
+    "roomName": "Basement",
+    "pSrc": "measured-player-global",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "20:(self object)"
+   ],
+   "glob": [
+    "3=22:(Inform Library)",
+    "21=20:(self object)",
+    "24=19:(darkness object)",
+    "56=20:(self object)",
+    "235=22:(Inform Library)"
+   ],
+   "dig": "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c",
+   "factPG": 21,
+   "inv": [],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "measured-player-global",
+    "roomId": 143,
+    "roomSource": "existing-resolver"
+   },
+   "status": "",
+   "tail": "ended that you enlarge your screen size, if possible, before continuing. [Press any key] WARNING: This game contains mild off-scene violence and some adult innuendo. Do you wish to continue? > ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "yes",
+   "lp": {
+    "playerId": 20,
+    "roomId": 143,
+    "roomName": "Basement",
+    "pSrc": "measured-player-global",
+    "rSrc": "existing-resolver"
+   },
+   "chain": [
+    "20:(self object)"
+   ],
+   "glob": [
+    "3=22:(Inform Library)",
+    "21=20:(self object)",
+    "24=19:(darkness object)",
+    "56=20:(self object)",
+    "235=22:(Inform Library)"
+   ],
+   "dig": "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c",
+   "factPG": 21,
+   "inv": [],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "measured-player-global",
+    "roomId": 143,
+    "roomSource": "existing-resolver"
+   },
+   "status": "",
+   "tail": "[Press any key] WARNING: This game contains mild off-scene violence and some adult innuendo. Do you wish to continue? >yes WARNING: This game contains dragons. Do you still wish to continue? > ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "yes",
+   "lp": {
+    "playerId": 30,
+    "roomId": 29,
+    "roomName": "Treasure Cave",
+    "pSrc": "measured-player-global",
+    "rSrc": "player-containment"
+   },
+   "chain": [
+    "30:Me",
+    "29:Treasure Cave"
+   ],
+   "glob": [
+    "21=30:Me",
+    "56=30:Me",
+    "234=22:(Inform Library)",
+    "235=21:(Inform Parser)"
+   ],
+   "dig": "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c",
+   "factPG": 21,
+   "inv": [
+    "mighty broadsword",
+    "burnished shield",
+    "sling"
+   ],
+   "probe": {
+    "playerId": 30,
+    "playerSource": "measured-player-global",
+    "roomId": 29,
+    "roomSource": "player-containment"
+   },
+   "status": "Treasure Cave Score: 10 Moves: 1",
+   "tail": "an is chained near the cliff edge, her hair tangled and clothes ripped to the merest rags. She looks up as you approach. Her chest heaves - \"You've come!\" she breathes. [New players type ABOUT] > ",
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  },
+  {
+   "input": "look",
+   "lp": {
+    "playerId": 30,
+    "roomId": 29,
+    "roomName": "Treasure Cave",
+    "pSrc": "measured-player-global",
+    "rSrc": "player-containment"
+   },
+   "chain": [
+    "30:Me",
+    "29:Treasure Cave"
+   ],
+   "glob": [
+    "21=30:Me",
+    "56=30:Me",
+    "234=22:(Inform Library)",
+    "235=21:(Inform Parser)"
+   ],
+   "dig": "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c",
+   "factPG": 21,
+   "inv": [
+    "mighty broadsword",
+    "burnished shield",
+    "sling"
+   ],
+   "probe": {
+    "playerId": 30,
+    "playerSource": "measured-player-global",
+    "roomId": 29,
+    "roomSource": "player-containment"
+   },
+   "status": "Treasure Cave Score: 10 Moves: 2",
+   "tail": "dances as it reflects back from the tonnes of gold coins and precious stones piled carelessly about. Amidst the loot stands a stalagmite encrusted with saltpetre. The woman is chained nearby. > ",
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  },
+  {
+   "input": "n",
+   "lp": {
+    "playerId": 30,
+    "roomId": 29,
+    "roomName": "Treasure Cave",
+    "pSrc": "measured-player-global",
+    "rSrc": "player-containment"
+   },
+   "chain": [
+    "30:Me",
+    "29:Treasure Cave"
+   ],
+   "glob": [
+    "21=30:Me",
+    "56=30:Me",
+    "234=22:(Inform Library)",
+    "235=21:(Inform Parser)"
+   ],
+   "dig": "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c",
+   "factPG": 21,
+   "inv": [
+    "mighty broadsword",
+    "burnished shield",
+    "sling"
+   ],
+   "probe": {
+    "playerId": 30,
+    "playerSource": "measured-player-global",
+    "roomId": 29,
+    "roomSource": "player-containment"
+   },
+   "status": "Treasure Cave Score: 10 Moves: 3",
+   "tail": " >n \"Don't leave me here!\" cries the woman, and the passion in her voice makes you stay. There is a far-off swish in the blackness that crowds the cliff edge. Out of the dark swoops the dragon. > ",
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  },
+  {
+   "input": "look",
+   "lp": {
+    "playerId": 30,
+    "roomId": 29,
+    "roomName": "Treasure Cave",
+    "pSrc": "measured-player-global",
+    "rSrc": "player-containment"
+   },
+   "chain": [
+    "30:Me",
+    "29:Treasure Cave"
+   ],
+   "glob": [
+    "21=30:Me",
+    "56=30:Me",
+    "234=22:(Inform Library)",
+    "235=21:(Inform Parser)"
+   ],
+   "dig": "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c",
+   "factPG": 21,
+   "inv": [
+    "mighty broadsword",
+    "burnished shield",
+    "sling"
+   ],
+   "probe": {
+    "playerId": 30,
+    "playerSource": "measured-player-global",
+    "roomId": 29,
+    "roomSource": "player-containment"
+   },
+   "status": "Treasure Cave Score: 10 Moves: 4",
+   "tail": " the loot stands a stalagmite encrusted with saltpetre. The woman is chained nearby. The dragon approaches through the void, leathery wings creaking, eyes narrowed to a pair of burning slits. > ",
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  }
+ ]
+}

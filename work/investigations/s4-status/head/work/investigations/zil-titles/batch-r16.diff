@@ -1,0 +1,124 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 8566c57..705a8d2 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -23,7 +23,8 @@ var ModuleStatFactsClaude = {
+         // 2992): bit-31 carriers = {76} -> rule-5 single-owner exception. Consumers (#3904): ZRamReader 1679 applies only to blank-named
+         // objects (the lamp is named), 1749 is Inform-only, 2718 is inventory item-likeness; no map-room effect.
+         // enterable 27 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): bucket 51 and basket 98 (ENTER/GET IN move the player inside; GET OUT returns; bare EXIT refused).
+-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27 },
++        // door 22 = source DOORBIT exact; native (r3-claude/doorbit): oak door 102 (locked, then opens), barred window 101.
++        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22 },
+         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+         // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
+@@ -77,7 +78,8 @@ var ModuleStatFactsClaude = {
+         // FALSE on ledge 27, skiff 52, coffer 69 (p1). Source pin (zil-source-flags.json): CONTBIT 24 and
+         // SURFACEBIT 18 exact (tp 35/9, fp 0). Both together, so surfaces are never offered Open/Close
+         // (openCapability above). Closes the coffer/invitation leak (app listed the invitation inside the closed coffer).
+-        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "wearable": 21, "container": 24, "supporter": 18 },
++        // door 26 = source DOORBIT exact; native (codex door-ph-native.json): large cupboard 45 and canvas hatch 137 toggle 16; slippers refuse.
++        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "wearable": 21, "container": 24, "supporter": 18, "door": 26 },
+         "wornAttribute": 22,
+         // Native i (walkthrough step 119, 2026-10-16-zil-inv-hidden-ops.json) tests bit9 TRUE on gunpowder 144 in the open
+         // powder horn and laudanum 102 in the transparent bottle, omitting both; FALSE on 15 printed held items. Source
+@@ -120,7 +122,8 @@ var ModuleStatFactsClaude = {
+         // recognised, reciprocal negatives refused. Room lit ONBIT 15 (exact 27 of 27; true both rooms, Junction 63 dark reply).
+         // INVISIBLE 28 exact 5 of 5. Zork-era GLOBAL-CHECK never searches inside local globals, so no contents key.
+         "localScope": { "property": 7, "width": 1, "holder": 221, "roomLitAttribute": 15, "invisible": 28 },
+-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
++        // door 9 = source DOORBIT exact; native (r3-claude/doorbit): secret door 156, stone door 104, wooden door 103 toggle; cleft 106 is a disclosed extra.
++        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
+     },
+     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+@@ -153,7 +156,8 @@ var ModuleStatFactsClaude = {
+         // ONBIT24: native radio48 on/off tests and bit transitions; cited whole-source scan finds
+         // RADIO the sole mutable non-room owner (single-owner exception). Adjacent source is not
+         // asserted exact-build; room/global owners do not imply switchability. See ballyhoo-on/.
+-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24 },
++        // door 27 = source DOORBIT exact; native (codex door-ballyhoo-native.json + negative): trailer door 44 and cage door 164 toggle 15; pole refuses.
++        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27 },
+         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
+         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
+         // exact (114/114).
+@@ -185,7 +189,8 @@ var ModuleStatFactsClaude = {
+         // tray, painting PUT IN wicker basket succeed; painting (no 24) refuses put-in. Source exact 22/22; walk CB 24. Trent, gorillas,
+         // salesman carry CONTBIT: excluded by animate 31. Close on the lidless wicker basket is a disclosed harmless extra.
+         "openCapability": { "all": ["container"], "none": ["animate"] },
+-        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24 }
++        // door 26 = source DOORBIT exact; native (codex door-lgop-native.json): wide cell door 202 and narrow cell door 176 toggle 15; tray refuses.
++        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26 }
+     },
+     // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
+     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
+@@ -228,7 +233,8 @@ var ModuleStatFactsClaude = {
+         // refuses shack. Lit ONBIT 8 (grok2 lit/dark pair: Fork on, Tower off). INVISIBLE 16 exact 7 of 7. No contents key.
+         "localScope": { "property": 17, "width": 1, "holder": 58, "roomLitAttribute": 8, "invisible": 16 },
+         // light 22 / on 8 (codex #4349: FROTZ sets both on the battered lantern, candle carries both; bread/jug negatives).
+-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8 },
++        // door 24 = source DOORBIT exact; native (r3-claude/doorbit): cell door 202 toggles; iron gate 232 door-specific refusal.
++        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24 },
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+     },
+     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+@@ -259,7 +265,8 @@ var ModuleStatFactsClaude = {
+         // 'GNOME, HELLO' tests 31 TRUE on gnome 245, 'TWIN, HELLO' TRUE on your older self 26, 'BOOK, HELLO' FALSE on spell
+         // book 139 ("You can't talk to a spell book!"). Source exact 9/9.
+         // Grok4119 independently audited: FROTZ box102/book139 test11 true; desk144 false. Illumination state, not switchability.
+-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "wearable": 21, "on": 11 },
++        // door 24 = source DOORBIT exact; native (r3-claude/doorbit): heavy door 164 and heavy wooden door 251 toggle; toll gate 56 opened by the gnome.
++        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "wearable": 21, "on": 11, "door": 24 },
+         // Native amulet/suit inventory marks direct-held WEARBIT gear worn;
+         // amulet dropped or nested in the carried box is not worn (no state bit).
+         "equipmentState": { "wornWhen": "wearable-direct-player" },
+@@ -285,7 +292,8 @@ var ModuleStatFactsClaude = {
+         // SURFACEBIT 15 (claude 2026-10-24, r3-claude/animate-supporter/Suspect.json): PUT notebook ON table / ON mantel -> "Okay."
+         // (parent changes); pen-on-notebook refused. Source exact 11 of 11. 10 surfaces also carry CONTBIT 16, so supporter joins
+         // the Open/Close none list (tables, desks, mantel, workbench are not openable).
+-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15 },
++        // door 27 = source DOORBIT exact; native (codex door-suspect-native.json): east/west entry hall doors 241/240 toggle 13; ribbon refuses.
++        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27 },
+         "inventoryHiddenAttribute": 19,
+         "inventoryHiddenPreservesWorn": true
+     },
+@@ -458,7 +466,8 @@ var ModuleStatFactsClaude = {
+         // FAIL-CLOSED: FLOYD carries CONTBIT + OPENBIT (compone.zil 1846), so animate joins the openCapability none list (P3/R pattern).
+         // Residual: when FLOYD is switched off, FCLEAR ACTORBIT (1939) removes the exclusion; this is the dynamic-ACTORBIT gap of #4027 (family-default lane).
+         // enterable 30 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): safety web 215 and bed 196 (ENTER moves the player inside; GET OUT returns; bare EXIT refused). Harmless extra: large vehicle 98 untested.
+-        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30 }
++        // door 26 = source DOORBIT exact; native (r3-claude/doorbit): door 173 toggles, escape pod bulkhead 231 opens (floods: real game action).
++        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26 }
+     },
+     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
+     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
+@@ -470,7 +479,8 @@ var ModuleStatFactsClaude = {
+         // SURFACEBIT 27 (claude 2026-10-24, r3-claude/animate-supporter/HollywoodHijinx.json, ordinary commands): PUT photo ON table and
+         // ON mantle -> "Done." (parent changes); letter, flashlight, sofa, telephone refuse ("no good surface"). Source exact 7 of 7.
+         // The three wax statuettes carry it but refuse ("no room"): disclosed harmless extra Put on.
+-        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27 },
++        // door 10 = source DOORBIT exact; native (r3-claude/doorbit): oak door 117 and patio door 25: door-specific "unlock it first" refusals (no toggle reached).
++        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10 },
+         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
+         "wornAttribute": 14
+     },
+@@ -824,7 +834,8 @@ var ModuleStatFactsClaude = {
+         // counter 160 (no bit) refuses. CLOSE on the package natively refuses: the extra Close offer is a disclosed harmless one.
+         // enterable 29 = source VEHBIT, carriers exact 7 of 7; native (codex #4771): ENTER chair 62 and forklift 197 move PLAYER 56
+         // inside, EXIT returns; ENTER pc 191 (no bit) refuses with the player unmoved.
+-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29 },
++        // door 25 = source DOORBIT exact; native (r3-claude/doorbit): outside door 84 toggles, elevator doors spring open.
++        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25 },
+         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
+         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
+         // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
+@@ -880,7 +891,8 @@ var ModuleStatFactsClaude = {
+         // does not handle LAMP-ON, so V-LAMP-ON gverbs.zil:786-789 tests FSET? PRSO LIGHTBIT); cold 'turn on' negatives mailbox 160:31 and leaflet
+         // 161:31 FALSE ("You can't turn that on."). Source LIGHTBIT = torch, candles, lamp; bounded compiled-table scan (250 objects, ends at
+         // first property 3000): bit-31 carriers = {104, 147, 164} = source 3/3. Consumers (#3904 audit, which answers the #3380 capability concern): no map-room effect (1679 blank names only).
+-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21, "light": 31 },
++        // door 23 = source DOORBIT exact; native (r3-claude/doorbit): kitchen window 235, trap door 183 toggle; front/wooden doors refuse ("cannot be opened": harmless extra).
++            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21, "light": 31, "door": 23 },
+         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },

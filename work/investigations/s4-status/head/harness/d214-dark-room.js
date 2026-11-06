@@ -1,0 +1,11 @@
+const {chromium}=require('playwright'),{pathToFileURL}=require('url'),path=require('path');
+(async()=>{const b=await chromium.launch();try{const p=await b.newPage();await p.addInitScript(()=>{sessionStorage.setItem('PL_ParchLockSplashSeen','1');localStorage.setItem('PL_MobileTutorialSeen','1');});
+await p.goto(pathToFileURL(path.resolve('play.html')).href+'?story=games/Zork1-TheGreatUndergroundEmpire.z3.js');await p.waitForTimeout(2300);await p.evaluate(()=>{Message.Hide();ExitCalibrator.D198ExitValve._testOverride='off';});
+const send=async c=>{await p.locator('.Input.LineInput').fill(c);await p.locator('.Input.LineInput').press('Enter');await p.waitForTimeout(650);};
+for(const c of ['north','east','open window','in','west','take lamp','move rug','open trap door','down'])await send(c);
+const snap=()=>p.evaluate(()=>{const w=WorldModel.lastPayload;return{roomId:w.roomId,roomName:w.roomName,rooms:ParchLockMap.Rooms.filter(r=>String(r.ObjectId)===String(w.roomId)).map(r=>({id:r.Id,name:r.Name})),reply:Actionable.Scope.lastReplyText};});
+const dark=await snap();await send('turn on lamp');const lit=await snap();console.log(JSON.stringify({dark,lit}));
+if(!/dark/i.test(dark.reply))throw Error('route did not prove dark arrival');
+if(!/cellar/i.test(lit.reply)||dark.roomId!==lit.roomId||dark.rooms.length!==1||lit.rooms.length!==1||dark.rooms[0].id!==lit.rooms[0].id)throw Error('dark-to-lit same-room proof failed');
+console.log('PASS native dark arrival -> lit Cellar: same RAM identity, one map record, same map Id');
+}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

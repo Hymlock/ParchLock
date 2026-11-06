@@ -1,0 +1,24 @@
+C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\harness\zil-object-food.js:12
+const check=(name,fn)=>{try{fn();checks++;}catch(e){e.message=name+': '+e.message;throw e;}};
+                                                                                  ^
+
+AssertionError [ERR_ASSERTION]: false == true
+    at offers (C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\harness\zil-object-food.js:15:150)
+    at C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\harness\zil-object-food.js:17:56
+    at check (C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\harness\zil-object-food.js:12:29)
+    at Object.<anonymous> (C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\harness\zil-object-food.js:17:1)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.12.0

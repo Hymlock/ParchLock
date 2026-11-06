@@ -1,0 +1,20 @@
+PASS original Sherlock dictionary 21410
+PASS original Sherlock dictionary 21418
+PASS original Sherlock dictionary 21426
+PASS packed escape 5,6,1,4,6
+PASS packed escape 6,5,6,1,4,7
+PASS packed escape 5,6,0,0,6
+PASS packed escape 5,6,0,13,6
+PASS packed escape 5,6,0,31,6
+PASS packed escape 5,6,1,0,6
+PASS packed escape 5,6,3,30,6
+PASS packed escape 5,6,3,31,6
+PASS packed escape 5,6,4,27,6
+PASS packed escape 5,6,1,4,5,6,1,4,6
+PASS final-word incomplete escape emits nothing
+PASS final-word single payload emits nothing
+PASS maxWords does not read escape continuation
+PASS ordinary alphabet and shift unchanged
+PASS D143 raw abbreviation trailing space survives recursive decode
+PASS D143 public normalization runs once
+19 Z-text escape checks passed

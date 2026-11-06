@@ -1,0 +1,974 @@
+{
+ "seG @80:examine sonarscope#0": {
+  "tag": "seG",
+  "cmd": "examine sonarscope",
+  "step": 80,
+  "name": "x",
+  "id": 80,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   19,
+   20
+  ],
+  "after": [
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 301,
+  "printedObjs": [
+   231,
+   233
+  ],
+  "text": "Tip says, \"You wouldn't have to keep looking at the sonarscope if you set it to automatic.\"\n(+=you, .=open water, *=obstacle)\n----------------------\n            DEPTH:ORANGE       \n . . . . . . . . . . .\n . . . . . . . . . . .\n . . . . . . . . . . .\n . . . . . . . . . . . HDG:NE \n . . . . . . . . . . .    /\n . . . . . + . . . . .   +  \n . . . . . . . . . . .     \n . . . . . . . . . . .\n . . . . . . * . . . .\n . . . . . . . . . . *\n . . . . . . . . . * *\n----------------------\n \n> ",
+  "ts": "2026-10-31T06:26:20.674Z"
+ },
+ "seG @80:nw#1": {
+  "tag": "seG",
+  "cmd": "nw",
+  "step": 80,
+  "name": "x",
+  "id": 81,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   17,
+   26
+  ],
+  "after": [
+   4,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 84,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   254,
+   234,
+   139
+  ],
+  "text": "Okay, the SCIMITAR is now moving toward the northwest.\nThe depth finder warning light is still glowing orange, and the alarm bell is still ringing.\n \n> ",
+  "ts": "2026-10-31T06:26:22.101Z"
+ },
+ "seG @80:rise to 5 meters#2": {
+  "tag": "seG",
+  "cmd": "rise to 5 meters",
+  "step": 80,
+  "name": "x",
+  "id": 82,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   17,
+   19
+  ],
+  "after": [
+   14,
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 84,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 76,
+  "printedObjs": [
+   254,
+   217,
+   234,
+   139
+  ],
+  "text": "The SCIMITAR noses upward. You're now rising at a speed of 5 meters per sea square.\nThe depth finder warning light fades to dark again, and the alarm bell ceases.\n \n> ",
+  "ts": "2026-10-31T06:26:23.472Z"
+ },
+ "seG @80:n#3": {
+  "tag": "seG",
+  "cmd": "n",
+  "step": 80,
+  "name": "x",
+  "id": 83,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   27
+  ],
+  "after": [
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   254,
+   217,
+   230
+  ],
+  "text": "Okay, the SCIMITAR is now moving toward the north.\nThe SCIMITAR quickly levels out at the desired depth of 10 meters. It's still moving toward the north at a speed of 1 sea square per turn.\nThe sonarscope warning light is flashing yellow! A ship is approaching!\nThe yellow light on the sonarscope continues to glow.\n \n> ",
+  "ts": "2026-10-31T06:26:24.672Z"
+ },
+ "seG @80:n#4": {
+  "tag": "seG",
+  "cmd": "n",
+  "step": 80,
+  "name": "x",
+  "id": 84,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the north.\nThe yellow light on the sonarscope continues to glow.\n \n> ",
+  "ts": "2026-10-31T06:26:25.494Z"
+ },
+ "seG @80:turn on autopilot#5": {
+  "tag": "seG",
+  "cmd": "turn on autopilot",
+  "step": 80,
+  "name": "x",
+  "id": 85,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 65,
+  "printedObjs": [
+   254,
+   179,
+   47
+  ],
+  "text": "You must be your own pilot for now.\n \nYou and Tip are hurled from your seats as the SCIMITAR and the ship collide! The sub is up-ended and swept aside by the momentum of the ship. Thanks to the strength of your revolutionary hull design, the SCIMITAR is still okay, but its machinery is hopelessly damaged.\n \nBecause you didn't change heading or dive under the ship, you and Tip are now adrift and must wait to be rescued by the Audit Research Lab. Your mission to save the Aquadome and its crew from attack by the Snark will have to be abandoned.\n \nYour score is 24 points out of 100, in 79 turns.\nT",
+  "ts": "2026-10-31T06:26:26.075Z"
+ },
+ "seG @80:set throttle to fast#6": {
+  "tag": "seG",
+  "cmd": "set throttle to fast",
+  "step": 80,
+  "name": "x",
+  "id": 86,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:26.670Z"
+ },
+ "seG @80:z#7": {
+  "tag": "seG",
+  "cmd": "z",
+  "step": 80,
+  "name": "x",
+  "id": 87,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:27.241Z"
+ },
+ "seG @80:yes#8": {
+  "tag": "seG",
+  "cmd": "yes",
+  "step": 80,
+  "name": "x",
+  "id": 88,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18,
+   27
+  ],
+  "after": [
+   14,
+   18,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:27.812Z"
+ },
+ "seG @80:z#9": {
+  "tag": "seG",
+  "cmd": "z",
+  "step": 80,
+  "name": "x",
+  "id": 89,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   14,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   14,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:28.387Z"
+ },
+ "seG @80:yes#10": {
+  "tag": "seG",
+  "cmd": "yes",
+  "step": 80,
+  "name": "x",
+  "id": 90,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 92,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:28.960Z"
+ },
+ "seG @80:dock#11": {
+  "tag": "seG",
+  "cmd": "dock",
+  "step": 80,
+  "name": "x",
+  "id": 91,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   11,
+   17,
+   19
+  ],
+  "after": [
+   11,
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 92,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:29.530Z"
+ },
+ "seG @80:z#12": {
+  "tag": "seG",
+  "cmd": "z",
+  "step": 80,
+  "name": "x",
+  "id": 92,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:30.160Z"
+ },
+ "seG @80:open hatch#13": {
+  "tag": "seG",
+  "cmd": "open hatch",
+  "step": 80,
+  "name": "x",
+  "id": 93,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17,
+   30
+  ],
+  "after": [
+   17,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:30.733Z"
+ },
+ "seG @80:exit scimitar#14": {
+  "tag": "seG",
+  "cmd": "exit scimitar",
+  "step": 80,
+  "name": "x",
+  "id": 94,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 0,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:31.311Z"
+ },
+ "seG @80:n#15": {
+  "tag": "seG",
+  "cmd": "n",
+  "step": 80,
+  "name": "x",
+  "id": 95,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   14,
+   30
+  ],
+  "after": [
+   3,
+   4,
+   14,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:31.897Z"
+ },
+ "seG @80:n#16": {
+  "tag": "seG",
+  "cmd": "n",
+  "step": 80,
+  "name": "x",
+  "id": 96,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   14,
+   30
+  ],
+  "after": [
+   3,
+   14,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:32.470Z"
+ },
+ "seG @80:n#17": {
+  "tag": "seG",
+  "cmd": "n",
+  "step": 80,
+  "name": "x",
+  "id": 97,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   30
+  ],
+  "after": [
+   4,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:33.124Z"
+ },
+ "seG @80:open air supply system with tool#18": {
+  "tag": "seG",
+  "cmd": "open air supply system with tool",
+  "step": 80,
+  "name": "x",
+  "id": 98,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:33.707Z"
+ },
+ "seG @80:get relay#19": {
+  "tag": "seG",
+  "cmd": "get relay",
+  "step": 80,
+  "name": "x",
+  "id": 99,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   30
+  ],
+  "after": [
+   4,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:34.277Z"
+ },
+ "seG @80:screw relay into space#20": {
+  "tag": "seG",
+  "cmd": "screw relay into space",
+  "step": 80,
+  "name": "x",
+  "id": 100,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:34.849Z"
+ },
+ "seG @80:se#21": {
+  "tag": "seG",
+  "cmd": "se",
+  "step": 80,
+  "name": "x",
+  "id": 101,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   30
+  ],
+  "after": [
+   4,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:35.510Z"
+ },
+ "seG @80:s#22": {
+  "tag": "seG",
+  "cmd": "s",
+  "step": 80,
+  "name": "x",
+  "id": 102,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:36.081Z"
+ },
+ "seG @80:get bazooka#23": {
+  "tag": "seG",
+  "cmd": "get bazooka",
+  "step": 80,
+  "name": "x",
+  "id": 103,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   30
+  ],
+  "after": [
+   4,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:36.654Z"
+ },
+ "seG @80:n#24": {
+  "tag": "seG",
+  "cmd": "n",
+  "step": 80,
+  "name": "x",
+  "id": 104,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:37.363Z"
+ },
+ "seG @80:e#25": {
+  "tag": "seG",
+  "cmd": "e",
+  "step": 80,
+  "name": "x",
+  "id": 105,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   30
+  ],
+  "after": [
+   3,
+   4,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:38.009Z"
+ },
+ "seG @80:z#26": {
+  "tag": "seG",
+  "cmd": "z",
+  "step": 80,
+  "name": "x",
+  "id": 106,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   17,
+   30
+  ],
+  "after": [
+   3,
+   17,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:38.589Z"
+ },
+ "seG @80:yes#27": {
+  "tag": "seG",
+  "cmd": "yes",
+  "step": 80,
+  "name": "x",
+  "id": 107,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   8,
+   14,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   8,
+   14,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:39.166Z"
+ },
+ "seG @80:ask about evidence#28": {
+  "tag": "seG",
+  "cmd": "ask about evidence",
+  "step": 80,
+  "name": "x",
+  "id": 108,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   17,
+   30
+  ],
+  "after": [
+   3,
+   17,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:39.836Z"
+ },
+ "seG @80:open box with tool#29": {
+  "tag": "seG",
+  "cmd": "open box with tool",
+  "step": 80,
+  "name": "x",
+  "id": 109,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:40.416Z"
+ },
+ "seG @80:look in box#30": {
+  "tag": "seG",
+  "cmd": "look in box",
+  "step": 80,
+  "name": "x",
+  "id": 110,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-seG.json",
+  "planSha": "892ed7ed25208c266c7e5dcd4fc5fe3deedd3ef1f214cb8bdf412c3cacb607e8",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   12,
+   17
+  ],
+  "after": [
+   12,
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 111,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:26:41.001Z"
+ }
+}

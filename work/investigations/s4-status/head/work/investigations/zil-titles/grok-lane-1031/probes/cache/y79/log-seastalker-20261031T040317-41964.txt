@@ -1,0 +1,1 @@
+seastalker sd79 @79 ne #79 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

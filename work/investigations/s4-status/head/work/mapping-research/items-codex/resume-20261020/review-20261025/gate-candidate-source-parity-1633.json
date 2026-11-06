@@ -1,0 +1,22 @@
+[
+  {
+    "file": "js/ActionSynth.js",
+    "LFmatches": true
+  },
+  {
+    "file": "js/AttributeSchema.js",
+    "LFmatches": true
+  },
+  {
+    "file": "js/EquipmentUI.js",
+    "LFmatches": true
+  },
+  {
+    "file": "js/ModuleStatFactsClaude.js",
+    "LFmatches": true
+  },
+  {
+    "file": "js/ZRamReader.js",
+    "LFmatches": true
+  }
+]

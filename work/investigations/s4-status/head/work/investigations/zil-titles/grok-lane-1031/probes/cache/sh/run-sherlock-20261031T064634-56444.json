@@ -1,0 +1,426 @@
+{
+ "sh-surface @4:LOOK ON SOFA#0": {
+  "tag": "sh-surface",
+  "cmd": "LOOK ON SOFA",
+  "step": 4,
+  "name": "look on sofa",
+  "id": 239,
+  "expect": 1,
+  "bit": 16,
+  "plan": "plan-sh-surface.json",
+  "planSha": "69cdc59b5158ddf6f7e28ce989e94c4529d1c8473beb8566a84ca96bca4b5af3",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "TRUE",
+  "before": [
+   4,
+   16,
+   25,
+   26,
+   32
+  ],
+  "after": [
+   4,
+   16,
+   25,
+   26,
+   32
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 93,
+  "here": 93,
+  "opsOnId": [
+   [
+    239,
+    31,
+    0,
+    40953
+   ],
+   [
+    239,
+    16,
+    1,
+    32229
+   ],
+   [
+    239,
+    16,
+    1,
+    40792
+   ],
+   [
+    239,
+    47,
+    0,
+    37617
+   ],
+   [
+    239,
+    16,
+    1,
+    37650
+   ],
+   [
+    239,
+    47,
+    0,
+    37852
+   ],
+   [
+    239,
+    47,
+    0,
+    37864
+   ],
+   [
+    239,
+    10,
+    0,
+    37876
+   ],
+   [
+    239,
+    28,
+    0,
+    37887
+   ],
+   [
+    239,
+    31,
+    0,
+    37895
+   ],
+   [
+    239,
+    16,
+    1,
+    60317
+   ],
+   [
+    239,
+    29,
+    0,
+    32637
+   ],
+   [
+    239,
+    0,
+    0,
+    32637
+   ],
+   [
+    239,
+    30,
+    0,
+    32577
+   ],
+   [
+    239,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 141,
+  "printedObjs": [
+   239,
+   304,
+   293
+  ],
+  "text": "On the sofa you see a morocco case and Holmes.\n \n> ",
+  "ts": "2026-10-31T06:46:37.760Z"
+ },
+ "sh-surface @4:LOOK ON MANTELPIECE#1": {
+  "tag": "sh-surface",
+  "cmd": "LOOK ON MANTELPIECE",
+  "step": 4,
+  "name": "look on mantelpiece",
+  "id": 292,
+  "expect": 1,
+  "bit": 16,
+  "plan": "plan-sh-surface.json",
+  "planSha": "69cdc59b5158ddf6f7e28ce989e94c4529d1c8473beb8566a84ca96bca4b5af3",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "TRUE",
+  "before": [
+   4,
+   16,
+   25,
+   26,
+   32
+  ],
+  "after": [
+   4,
+   16,
+   25,
+   26,
+   32
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 93,
+  "here": 93,
+  "opsOnId": [
+   [
+    292,
+    31,
+    0,
+    40953
+   ],
+   [
+    292,
+    16,
+    1,
+    32229
+   ],
+   [
+    292,
+    16,
+    1,
+    40792
+   ],
+   [
+    292,
+    47,
+    0,
+    37617
+   ],
+   [
+    292,
+    16,
+    1,
+    37650
+   ],
+   [
+    292,
+    47,
+    0,
+    37852
+   ],
+   [
+    292,
+    47,
+    0,
+    37864
+   ],
+   [
+    292,
+    10,
+    0,
+    37876
+   ],
+   [
+    292,
+    28,
+    0,
+    37887
+   ],
+   [
+    292,
+    31,
+    0,
+    37895
+   ],
+   [
+    292,
+    16,
+    1,
+    60305
+   ],
+   [
+    292,
+    29,
+    0,
+    32637
+   ],
+   [
+    292,
+    0,
+    0,
+    32637
+   ],
+   [
+    292,
+    30,
+    0,
+    32577
+   ],
+   [
+    292,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 166,
+  "printedObjs": [
+   292,
+   218,
+   228,
+   151,
+   203,
+   122
+  ],
+  "text": "On the mantelpiece you see a pipe, a persian slipper, a knife, some mail and a pistol.\n \n> ",
+  "ts": "2026-10-31T06:46:38.342Z"
+ },
+ "sh-surface @4:LOOK ON VIOLIN#2": {
+  "tag": "sh-surface",
+  "cmd": "LOOK ON VIOLIN",
+  "step": 4,
+  "name": "look on violin",
+  "id": 207,
+  "expect": 0,
+  "bit": 16,
+  "plan": "plan-sh-surface.json",
+  "planSha": "69cdc59b5158ddf6f7e28ce989e94c4529d1c8473beb8566a84ca96bca4b5af3",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "FALSE",
+  "before": [
+   4,
+   23,
+   39
+  ],
+  "after": [
+   4,
+   23,
+   39
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 93,
+  "here": 93,
+  "opsOnId": [
+   [
+    207,
+    31,
+    0,
+    40953
+   ],
+   [
+    207,
+    47,
+    0,
+    37617
+   ],
+   [
+    207,
+    16,
+    0,
+    37650
+   ],
+   [
+    207,
+    9,
+    0,
+    37650
+   ],
+   [
+    207,
+    47,
+    0,
+    37852
+   ],
+   [
+    207,
+    47,
+    0,
+    37864
+   ],
+   [
+    207,
+    10,
+    0,
+    37876
+   ],
+   [
+    207,
+    28,
+    0,
+    37887
+   ],
+   [
+    207,
+    31,
+    0,
+    37895
+   ],
+   [
+    207,
+    16,
+    0,
+    60305
+   ],
+   [
+    207,
+    35,
+    0,
+    60337
+   ],
+   [
+    207,
+    29,
+    0,
+    32637
+   ],
+   [
+    207,
+    0,
+    0,
+    32637
+   ],
+   [
+    207,
+    30,
+    0,
+    32577
+   ],
+   [
+    207,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 126,
+  "printedObjs": [
+   207
+  ],
+  "text": "You do not see anything unusual on the violin.\n \n> ",
+  "ts": "2026-10-31T06:46:38.919Z"
+ },
+ "sh-surface @14:LOOK ON BED#3": {
+  "tag": "sh-surface",
+  "cmd": "LOOK ON BED",
+  "step": 14,
+  "name": "look on bed",
+  "id": 254,
+  "expect": 1,
+  "bit": 16,
+  "plan": "plan-sh-surface.json",
+  "planSha": "69cdc59b5158ddf6f7e28ce989e94c4529d1c8473beb8566a84ca96bca4b5af3",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   16,
+   25,
+   26,
+   32
+  ],
+  "after": [
+   16,
+   25,
+   26,
+   32
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 33,
+  "here": 93,
+  "opsOnId": [],
+  "nOps": 238,
+  "printedObjs": [],
+  "text": "You cannot see any bed here.\n \n> ",
+  "ts": "2026-10-31T06:46:45.208Z"
+ }
+}

@@ -1,0 +1,106 @@
+﻿{
+ "story": "rameses.zblorb.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 20,
+    "playerSource": "named-player",
+    "roomId": 0,
+    "roomSource": "none",
+    "measuredDark": null,
+    "scopeCount": 0
+   },
+   "parent": 0,
+   "tail": "-up grannies and biddies and ghastly yacht-clubbers waiting at the station stare at us as if we are mad. But we carry on, running up and down, screaming profanities, and let the rest of the world GO FUCK ITSELF! . . . ",
+   "status": "",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 20,
+    "playerSource": "named-player",
+    "roomId": 26,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 17
+   },
+   "parent": 0,
+   "tail": "ow fits four bunkbeds, which are stacked up on opposite walls. There is a sink in one corner and an old wardrobe in another. The doorway leads east. A solitary window allows a cold light into the room. Wayne and Paddy are lying asleep in their bunkbeds. > ",
+   "status": "Dormitory Room Score: 7 Moves: 57",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 20,
+    "playerSource": "named-player",
+    "roomId": 26,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 17
+   },
+   "parent": 0,
+   "tail": "ow fits four bunkbeds, which are stacked up on opposite walls. There is a sink in one corner and an old wardrobe in another. The doorway leads east. A solitary window allows a cold light into the room. Wayne and Paddy are lying asleep in their bunkbeds. > ",
+   "status": "Dormitory Room Score: 7 Moves: 57",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "get off my bunkbed",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 20,
+    "playerSource": "named-player",
+    "roomId": 26,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 17
+   },
+   "parent": 0,
+   "tail": " in another. The doorway leads east. A solitary window allows a cold light into the room. Wayne and Paddy are lying asleep in their bunkbeds. >get off my bunkbed But I don't want to get out of bed. It's a cold day outside, and it's nice and warm here. > ",
+   "status": "Dormitory Room Score: 7 Moves: 57",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "e",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 20,
+    "playerSource": "named-player",
+    "roomId": 26,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 17
+   },
+   "parent": 0,
+   "tail": "ary window allows a cold light into the room. Wayne and Paddy are lying asleep in their bunkbeds. >get off my bunkbed But I don't want to get out of bed. It's a cold day outside, and it's nice and warm here. >e I'll have to get off my bunkbed first. > ",
+   "status": "Dormitory Room Score: 7 Moves: 58",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+

@@ -1,0 +1,78 @@
+{
+ "e8climb24c @32:climb#0": {
+  "tag": "e8climb24c",
+  "id": 23,
+  "name": "wooden ladder",
+  "step": 32,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 24,
+  "plan": "z3-ladder-plan2.json",
+  "planSha": "2c3c5cb65aca63bca44a92aeacbb0d6a2b02de45d52e9c1622ad5311716bb9c5",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "TRUE",
+  "before": [
+   24,
+   25
+  ],
+  "after": [
+   24,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 221,
+  "here": 43,
+  "opsOnId": [
+   [
+    23,
+    28,
+    0,
+    24663
+   ],
+   [
+    23,
+    24,
+    1,
+    24724
+   ]
+  ],
+  "nOps": 30,
+  "printedObjs": [
+   23,
+   24
+  ],
+  "text": "(up the wooden ladder)\nLadder Top\nThis is a very small room. In the corner is a rickety wooden ladder, leading downward. It might be safe to descend. There is also a staircase leading upward.\nYou suddenly find yourself back in the viewing room!\n \n> ",
+  "ts": "2026-10-30T15:37:06.405Z"
+ },
+ "e8climb24c @32:climb#1": {
+  "tag": "e8climb24c",
+  "id": 216,
+  "name": "stairs",
+  "step": 32,
+  "expect": 1,
+  "cmd": "climb",
+  "bit": 24,
+  "plan": "z3-ladder-plan2.json",
+  "planSha": "2c3c5cb65aca63bca44a92aeacbb0d6a2b02de45d52e9c1622ad5311716bb9c5",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   24,
+   25
+  ],
+  "after": [
+   24,
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 221,
+  "here": 43,
+  "opsOnId": [],
+  "nOps": 54,
+  "printedObjs": [],
+  "text": "What do you want to climb up?\n \n> ",
+  "ts": "2026-10-30T15:37:06.986Z"
+ }
+}

@@ -1,0 +1,2002 @@
+{
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 4 = the RAM parent of the first walkthrough TAKE; app inventory lists jewel-encrusted egg (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork1@97b7b3d V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork1@97b7b3d V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "lightSource": {
+   "s": "O",
+   "r": "SOLO/SELF-AUDIT 2026-10-16: LIGHTBIT 31 original scene target-scoped (2026-10-16-zil-inv-hidden-ops.json): Light lamp TRUE on brass lantern 164, light torch (already on) TRUE on torch 104; light egg / light garlic FALSE (You cannot turn that on); source exact 3/3. NO FACT: no runtime consumer reads lightSource, and LIGHTBIT=switchable is not an accepted equivalence (Codex #3533)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 60 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). Invisible flag: source check only."
+  },
+  "clothing": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): WEARBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 6 read/syntax refs. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 598 objects, room+inventory): no /^(wear|take off|remove)\\b/ verb offered."
+  },
+  "wearable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): WEARBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 6 read/syntax refs. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 598 objects, room+inventory): no /^(wear|take off|remove)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 598 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork1@97b7b3d (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 598 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork2@3da9661 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork2@3da9661 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 4 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET LAMP AND SWORD\"; the game's own i names each (sword, lamp); zil-root-check.cjs 2026-10-15"
+  },
+  "animate": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: ACTORBIT 30 robot 58 / demon 26 TRUE when addressed; teapot 32 / mat 33 FALSE (cannot talk to); source exact 9/9. Gate 0 diffs."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 50 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "on": {
+   "s": "U",
+   "r": "U untestable-by-rule-7 (grok #4035, claude #4036 item 3): ONBIT 19 has target-named positives, but no different-object target-named negative exists (handlers short-circuit on LIGHTBIT/FLAMEBIT first), and a DESCRIBE-OBJECT inventory read is not target-named. The flag exists, so it stays U, not N/A."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661 (11 .zil files). Invisible flag: source check only."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661. In-app (grok1 nq-inapp.cjs, start-state RAM, 296 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork2@3da9661. In-app (grok1 nq-inapp.cjs, start-state RAM, 296 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Zork3-TheDungeonMaster.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 20 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 202 = the RAM parent of the first walkthrough TAKE; app inventory lists lamp (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork3@3ec9ed4 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork3@3ec9ed4 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wearable": {
+   "s": "S",
+   "r": "Zork III fact (ModuleStatFactsClaude dce7e6f7): WEARBIT 4 original scene walk n4: get amulet / get ring test 4 TRUE; key, chest, torch, book, lamp FALSE; source exact 4/4. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: SURFACEBIT 26 put staff on pedestal/cage TRUE, put staff on machine FALSE (pgapz3); source exact 2/2. Gate 0 diffs."
+  },
+  "container": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: CONTBIT 10 look in machine / look in cage TRUE, look in staff / lamp FALSE (pgapz3e/pgapz3c); hooded figure excluded (not target-scoped); source exact. With openCapability. Gate 0 diffs."
+  },
+  "animate": {
+   "s": "X",
+   "r": "SOLO/SELF-AUDIT 2026-10-16: addressed orders do not test ACTORBIT 21 natively (DUNGEON MASTER, WAIT tests bit 11 on the master; OLD MAN, HELLO tests nothing), so the addressed-actor method gives no evidence for this title. Needs a verb whose routine tests 21 (GIVE/ATTACK) at a step with two distinct actors."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4 (21 .zil files). Invisible flag: source check only."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/zork3@3ec9ed4. In-app (grok1 nq-inapp.cjs, start-state RAM, 466 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 6 read/syntax refs. Source https://github.com/historicalsource/zork3@3ec9ed4. In-app (grok1 nq-inapp.cjs, start-state RAM, 466 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Enchanter.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 19 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 55 = the RAM parent of the first walkthrough TAKE; app inventory lists loaf of bread, spell book (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "open": {
+   "s": "S",
+   "r": "56a170f: OPENBIT 12 (Codex ACCEPT #3517; walk m3 oven/cell door/jewelled box SET after tested-closed; source exact). With the coverage split the Book underline stays; jug water now shown as native i."
+  },
+  "nested": {
+   "s": "S",
+   "r": "56a170f: jug contents (quantity of water) shown as native i prints them; spells under the book (D148)."
+  },
+  "supporter_gap": {
+   "s": "SELF",
+   "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap closed: put lantern on bed tests SURFACEBIT 14 TRUE on fourposter bed 133 (There is no room = capacity), put lantern on post FALSE (no good surface) (pgapench2); plus lily pad 118."
+  },
+  "nested_eggparts": {
+   "s": "OPEN",
+   "r": "OPERATOR DECISION PENDING (2026-10-16): native i tests NDESCBIT 7 TRUE on the egg parts (button 139, crank 136, slide 151, knob 149, handle 148) AND on every spell, omitting all; FALSE on every printed item (2026-10-16-zil-inv-hidden-ops.json @59). A blanket inventoryHiddenAttribute 7 would also hide the spells, contradicting D148 (spells usable from inventory). Options: hide egg parts only (executable-owned exemption for the spell book), or keep both listed."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 33 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). Invisible flag: source check only."
+  },
+  "animate": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): ACTORBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; PERSONBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 388 objects, room+inventory): no /^(talk|ask|tell)\\b/ verb offered."
+  },
+  "clothing": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): WEARBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 4 commented. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 388 objects, room+inventory): no /^(wear|take off|remove)\\b/ verb offered."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 388 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 388 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  }
+ },
+ "Hitchhik.z5.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 41 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n4.json)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "41/50 walkthrough turns: app room = status-line location; the 9 others differ only by status decoration (\"Darkness\" while dark, \", lying down\" posture), app room correct; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": "HHGG fact (ModuleStatFactsClaude 26dcdab2): CONTBIT 40 original scene pzhhgg target-scoped: gown, bed TRUE; curtains FALSE; source exact 22/22. With openCapability. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": "HHGG fact (ModuleStatFactsClaude 26dcdab2): SURFACEBIT 23 pzhhgg2 (walkthrough + spliced look on bed/bar): bed, bar TRUE; Ford, towel FALSE; source exact 3/3."
+  },
+  "nested": {
+   "s": "S",
+   "r": "HHGG fact (ModuleStatFactsClaude 26dcdab2): inventoryHiddenAttribute 44 (native i tests NDESCBIT 44 TRUE on guarantee/green/red button inside the Sub-Etha device and omits them; FALSE on every printed item). zil-inv-check steps 10/60/90: app list and nesting equal native (gown>fluff,thing; thing>8 items)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 45 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 236 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 236 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 236 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Ballyhoo.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (tp 38/fp 1); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "nested": {
+   "s": "S",
+   "r": "FIXED: Ballyhoo inventoryHiddenAttribute 6 (native i tests bit6 TRUE on pink/blue dot inside the open ticket and omits them; FALSE on printed bucket/meat/whip/ticket). Source NDESCBIT 6 exact. zil-inv-check steps 30-120: dots no longer shown; helium hidden in closed balloon; bucket contents shown as native. Gate 0 diffs."
+  },
+  "supporter_gap": {
+   "s": "SELF",
+   "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap: put pole on stand tests SURFACEBIT 17 TRUE on lion stand 96 (pgapbally2); with leather sofa 20 (pzballyhoo) = 2 distinct positives; bunk109 excluded. look on stand does not test the bit in this game."
+  },
+  "lightSource": {
+   "s": "U",
+   "r": "U untestable-by-rule-7 (claude #4040, d7077a1): LIGHTBIT 26 exists, but V-LAMP-ON is an unconditional refusal and nothing target-named tests or writes it; only a parser FIND reads it. The flag exists, so it stays U, not N/A."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 372 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 372 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Cutthroats.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 7 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n1.json)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 184 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get passbook and room key\"; the game's own i names each (room key, mariners' trust passbook, wrist watch); zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 21 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). Invisible flag: source check only."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 273 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 3 read/syntax refs, 1 commented. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 273 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 4 commented. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 273 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  }
+ },
+ "Deadline.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 19 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/deadline@2602bd5 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/deadline@2602bd5 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/deadline@2602bd5 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 160 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "13/13 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": " Deadline fact (ModuleStatFactsClaude 9c6eadbb): original scene pzdeadline, target-scoped; source exact. CONTBIT 21: living room table, marble-top table, front door positive; cabinets, portraits, wood pile, fireplace, lamp, book negative. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": " Deadline fact (ModuleStatFactsClaude 9c6eadbb): original scene pzdeadline, target-scoped; source exact. SURFACEBIT 29: living room table, marble-top table positive; same negatives. Applied with openCapability (surfaces get no Open/Close)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 37 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). Invisible flag: source check only."
+  },
+  "clothing": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): WEARBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 379 objects, room+inventory): no /^(wear|take off|remove)\\b/ verb offered."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 2 read/syntax refs. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 379 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 379 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 379 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 5 read/syntax refs. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 379 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "moved": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "transparent": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "visited": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Infidel.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 15 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 223 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get pickaxe\"; the game's own i names each (pick axe); zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container_gap": {
+   "s": "SELF",
+   "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap closed: target-scoped original-scene negatives look in pickaxe 37 / look in shovel 33 test CONTBIT 20 FALSE (2026-10-11-zil-walk-pgapinfidel.json); positives retained n2."
+  },
+  "animate_method": {
+   "s": "NOTE",
+   "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). Invisible flag: source check only."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 438 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 438 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 4 commented. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 438 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "clothing": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "wearable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "HollywoodHijinx.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 52 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET PIECE OF PAPER AND BUSINESS CARD\"; the game's own i names each (business card, yellowed piece of paper, flashlight, photo of uncle buddy, aunt hildegarde's letter); zil-root-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "O",
+   "r": "CONTBIT 4 original scene target-scoped MEETS 2+1 (pond, compartment, cannon, mailbox; neg orchids, bazooka, statue, doors; pzhollywood2/3). NOT applied: OPENBIT 25 only 1+3 (mailbox) - every other openable is indoors; front door \"can't unlock it from this side\", patio door locked; this release desyncs from the Jericho walkthrough at OPEN DOOR. SURFACEBIT 27 native-proven exact."
+  },
+  "animate_method": {
+   "s": "NOTE",
+   "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 57 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 393 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 393 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "6/6 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share a head noun. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (no shared head noun in 31 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 86 read/syntax refs. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 258 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 258 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "transparent": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; WORNBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Moonmist.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 26 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 42 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
+  },
+  "nested": {
+   "s": "S",
+   "r": "FIXED: Moonmist fact (ModuleStatFactsClaude bcf65075): CONTBIT 27 + SURFACEBIT 23 (original scene, pzmoonmist5, target-scoped, source-exact) + OPENBIT 14 (native dispatch). Closed luggage now hides dinner outfit/exercise outfit/nightshirt/brochure; open luggage shows exactly what OPEN printed. Gate: 1 INTENDED diff."
+  },
+  "rooms": {
+   "s": "O",
+   "r": "4/4 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): CONTBIT 27: chest of drawers, sports car, wardrobe positive; horn, wing chair, bed, lamp, figurine negative (pzmoonmist5); source exact 25/25"
+  },
+  "supporter": {
+   "s": "S",
+   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): SURFACEBIT 23: wing chair, bed, night table, bench positive; chest, wardrobe, box negative (pzmoonmist4); source exact 19/19"
+  },
+  "open": {
+   "s": "S",
+   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): OPENBIT 14 original scene target-scoped (pzmoonmist6): open luggage sets 14 (59), open gate finds it set on front gate (52), close gate clears it; source exact 57/57. (Native dispatch is controlled insertion and is NOT cited.)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 27 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 256 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 256 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "pluralname": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; PLURALBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "PlunderedHearts.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "nested": {
+   "s": "S",
+   "r": "56a170f: inventoryHiddenAttribute 9 (native i tests NDESCBIT 9 TRUE on gunpowder in open horn and laudanum in transparent bottle, omits both; FALSE on 15 printed). Codex GO #3525."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 28 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 6 read/syntax refs. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 257 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 257 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Borderzo.z5.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 42 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 42 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "lightSource": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/borderzone@5c80126 has no LIGHTBIT anywhere (15 .zil files grepped); TURN ON / LIGHT (syntax.zil:618/317) have no FIND, V-ON (verbs.zil:851) is <CANT-TURN>, and LIT? is commented out (parser.zil:11, every room lit), so no light-source capability bit exists (grok1 2026-10-17); in-app device check (grok1 g1-udB.json and claude #4065, chapter 3 untouched boot): 'turn on revolver' -> \"You can't turn that on.\" (V-ON = CANT-TURN, verbs.zil:851), and 'light match' is a scripted refusal. No alternative mechanism (no light-source object). Review: claude #4064/#4065"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "enterable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): VEHBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 351 objects, room+inventory): no /^(enter|get in|get on|sit|get out|get off|board)\\b/ verb offered."
+  },
+  "light": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): ONBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 1 read/syntax refs. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 351 objects, room+inventory): attribute-only key offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 351 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 1 commented; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 351 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "on": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): ONBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 1 read/syntax refs. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 351 objects, room+inventory): no /^(turn|switch) off\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 351 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  }
+ },
+ "TheLurkingHorror.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 24 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n3.json)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "supporter": {
+   "s": "S",
+   "r": "Lurking fact (ModuleStatFactsClaude 1862ef7c): SURFACEBIT 8 original scene pzlurking target-scoped: chair, kitchen counter, forklift, floor waxer TRUE; catwalk, ladder, flask, refrigerator, oven, flashlight, crowbar FALSE; source exact 10/10. With openCapability. Gate 0 diffs."
+  },
+  "nested": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT 2026-10-16: inventoryHiddenAttribute 18 (native i tests NDESCBIT 18 TRUE on the pc mouse/HELP key and omits them; FALSE on printed chair/pc/assignment; source exact 72/72). Gate 0 diffs. Open: pc labelled computer terminals vs native pc."
+  },
+  "lightSource": {
+   "s": "U",
+   "r": "U untestable-by-rule-7 (claude #4028/#4040): LIGHTBIT 22 is read only by a parser FIND/GWIM scan (bare light/turn on); no target-named command tests or writes it, so a rule-7 positive is impossible. The flag exists, so this is not N/A; it stays U with this reason."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 323 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "clothing": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "wearable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  }
+ },
+ "Planetfall.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 25 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 236 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET KIT\"; the game's own i names each (survival kit, patrol-issue self-contained multi-purpose scrub brush, patrol uniform, id card, chronometer); zil-root-check.cjs 2026-10-15"
+  },
+  "supporter": {
+   "s": "UD",
+   "r": "No SURFACEBIT in the Planetfall source (historicalsource; 2026-10-11-zil-source-flags.json has no SURFACEBIT entry): no surface capability to decode."
+  },
+  "animate_method": {
+   "s": "NOTE",
+   "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 44 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). Invisible flag: source check only."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 325 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 325 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "moved": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "visited": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Seastalker.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/seastalker@258f825 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/seastalker@258f825 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/seastalker@258f825 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 194 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get microphone\"; the game's own i names each (microphone, logbook); zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "open": {
+   "s": "S",
+   "r": "Seastalker fact (ModuleStatFactsClaude 502e5c8e): original scene, target-scoped, source exact 16/16. OPENBIT 18 pzseastalker3: open access panel / open gate set; lab door already-open; close hatch/reactor/circuit breaker clear. Gate 0 diffs."
+  },
+  "container": {
+   "s": "S",
+   "r": "Seastalker fact (ModuleStatFactsClaude 502e5c8e): original scene, target-scoped, source exact 16/16. CONTBIT 26 pzseastalker: look in shelf, reactor TRUE; Snark, gangplank, supply bunches, scanner FALSE. With openCapability."
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share a head noun. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (no shared head noun in 15 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 2 read/syntax refs. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "clothing": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): WEARBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 387 objects, room+inventory): no /^(wear|take off|remove)\\b/ verb offered."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 2 commented. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 387 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 387 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 11 read/syntax refs. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 387 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "enterable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; VEHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "transparent": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "female": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; FEMALE/FEMALEBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Sorcerer.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n3.json)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": "Sorcerer fact (ModuleStatFactsClaude 3bf24a3d): original scene, target-scoped, source exact. CONTBIT 27 pzsorcerer: desk drawer, tiny box, ochre vial, sturdy trunk, receptacle TRUE; 6 negatives. Gate 0 diffs; inventory steps 10/30/60 equal native (spells under the book, D148)."
+  },
+  "supporter": {
+   "s": "S",
+   "r": "Sorcerer fact (ModuleStatFactsClaude 3bf24a3d): original scene, target-scoped, source exact. SURFACEBIT 17 pzsorcerer3: look on bed, put key on desk TRUE; tapestry FALSE (no good surface). With openCapability."
+  },
+  "animate": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: ACTORBIT 31 gnome 245 / older self 26 TRUE when addressed, spell book 139 FALSE; source exact 9/9. Gate 0 diffs."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 36 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 311 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 311 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 311 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Spellbreaker.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 24 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 verbs.zil V-WEAR is unconditional <YOU-CANT-X-PRSO \"wear\">, no WEARBIT/WORNBIT anywhere, no object <VERB? WEAR/TAKE-OFF> handler"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 verbs.zil V-WEAR is unconditional <YOU-CANT-X-PRSO \"wear\">, no WEARBIT/WORNBIT anywhere, no object <VERB? WEAR/TAKE-OFF> handler"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 verbs.zil V-WEAR is unconditional <YOU-CANT-X-PRSO \"wear\">, no WEARBIT/WORNBIT anywhere, no object <VERB? WEAR/TAKE-OFF> handler"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). Invisible flag: source check only."
+  },
+  "clothing": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): WEARBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 476 objects, room+inventory): no /^(wear|take off|remove)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 476 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/spellbreaker@6f83ba4 (16 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 476 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  }
+ },
+ "Starcross.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 16 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 239 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "2/2 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 25 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 1 read/syntax refs. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 246 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 246 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 246 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "clothing": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "wearable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "moved": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "visited": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Stationfall.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "4/4 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 53 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 2 commented. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1 N? batch 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 352 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/stationfall@5d05d5e (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 352 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  }
+ },
+ "Suspect.z3.js": {
+  "takeable": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "container": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "open": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "supporter": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "lightSource": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "on": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "animate": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "edible": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "playerRoot": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "status": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "rooms": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "actors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "underlineVsDict": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "onoff": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "consumed": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "nested": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 536 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 536 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "moved": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "visited": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Suspended.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 18 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "1/1 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "animate": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): ACTORBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; PERSONBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): no /^(talk|ask|tell)\\b/ verb offered."
+  },
+  "door": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): DOORBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 11 read/syntax refs. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): attribute-only key offered."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 1 read/syntax refs. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "locked": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "static": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): TRYTAKEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 3 read/syntax refs. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): attribute-only key offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "clothing": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "transparent": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Wishbringer.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 219 = the RAM parent of the first walkthrough TAKE; app inventory lists mysterious envelope (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "supporter": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: SURFACEBIT 27 put envelope on counter TRUE (counter 18), look in trunk TRUE (trunk 230), 19 negatives; source exact. With openCapability. Gate 0 diffs."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 352 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "enterable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): VEHBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 5 read/syntax refs, 11 commented. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 352 objects, room+inventory): no /^(enter|get in|get on|sit|get out|get off|board)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 352 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "switchable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 1 read/syntax refs, 5 commented. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 352 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
+  },
+  "female": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): source scan PASS, but grok2 kept it conservative U (gender word handling unverified natively). Stays U."
+  }
+ },
+ "TheWitness.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/witness@8fe092a has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12); story dictionary (715 words) has no \"wear\"/\"don\""
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/witness@8fe092a has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12); story dictionary (715 words) has no \"wear\"/\"don\""
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/witness@8fe092a has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12); story dictionary (715 words) has no \"wear\"/\"don\""
+  },
+  "rooms": {
+   "s": "O",
+   "r": "6/6 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": " Witness fact (ModuleStatFactsClaude 2290bb34): original scene pzwitness2 (ring door bell, entry, office), target-scoped, source exact. CONTBIT 9: file cabinet, liquor cabinet, lounge positive; cat, Monica, Linder, newspaper, putty, door bell negative. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": " Witness fact (ModuleStatFactsClaude 2290bb34): original scene pzwitness2 (ring door bell, entry, office), target-scoped, source exact. SURFACEBIT 16: lounge, carved chair, desk positive; same negatives. With openCapability."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 22 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "lightSource": {
+   "s": "U",
+   "r": "U untestable-by-rule-7 (claude #4040, de32205): LIGHTBIT 25 exists, but V-LAMP-ON never tests it; only a parser FIND reads it. The flag exists, so it stays U, not N/A."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "clothing": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): WEARBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 525 objects, room+inventory): no /^(wear|take off|remove)\\b/ verb offered."
+  },
+  "edible": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): FOODBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 2 read/syntax refs, 1 commented. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 525 objects, room+inventory): no /^(eat|drink)\\b/ verb offered."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 525 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "moved": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "talkable": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "visited": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  }
+ },
+ "Sherlock.z5.js": {
+  "container": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: container 9 from raw target-scoped PUT IN tests (bag, pocket TRUE beyond background; whistle FALSE); census containers/vehicles. No source pin. Gate: closed bag/hat contents hidden as native."
+  },
+  "open": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: open 5 (OPEN BAG sets it, CLOSE finds it set; open pocket/coat carry it; doors carry it)."
+  },
+  "supporter": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "lightSource": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "on": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "animate": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "edible": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "takeable": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "855616c: measured constant PC object 232 (native i lists exactly its children; G201=232 and its parent follows the status-line room across KNOCK ON DOOR). SOLO/SELF-AUDIT; no source pin."
+  },
+  "status": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "855616c: payload room = parent(232) = 221-B Baker Street 38 / Entry Hall 111, matching the status line (was the black bag 172)."
+  },
+  "actors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "underlineVsDict": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "onoff": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "consumed": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "nested": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  }
+ }
+}

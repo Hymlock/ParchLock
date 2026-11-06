@@ -1,0 +1,1 @@
+suspect tc @68 open tool chest #132 FALSE "You open the tool chest and see a crowbar.\n \n> "

@@ -1,0 +1,587 @@
+{
+ "sdE @82:nw#0": {
+  "tag": "sdE",
+  "cmd": "nw",
+  "step": 82,
+  "name": "x",
+  "id": 82,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   17,
+   19
+  ],
+  "after": [
+   14,
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 84,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   254,
+   234,
+   139
+  ],
+  "text": "Okay, the SCIMITAR is now moving toward the northwest.\nThe depth finder warning light is still glowing orange, and the alarm bell is still ringing.\n \n> ",
+  "ts": "2026-10-31T06:20:32.988Z"
+ },
+ "sdE @82:nw#1": {
+  "tag": "sdE",
+  "cmd": "nw",
+  "step": 82,
+  "name": "x",
+  "id": 83,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   27
+  ],
+  "after": [
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   254,
+   234,
+   139
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northwest.\nThe depth finder warning light is still glowing orange, and the alarm bell is still ringing.\n \n> ",
+  "ts": "2026-10-31T06:20:33.876Z"
+ },
+ "sdE @82:n#2": {
+  "tag": "sdE",
+  "cmd": "n",
+  "step": 82,
+  "name": "x",
+  "id": 84,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   254,
+   234,
+   139
+  ],
+  "text": "Okay, the SCIMITAR is now moving toward the north.\nThe depth finder warning light is still glowing orange, and the alarm bell is still ringing.\n \n> ",
+  "ts": "2026-10-31T06:20:34.794Z"
+ },
+ "sdE @82:n#3": {
+  "tag": "sdE",
+  "cmd": "n",
+  "step": 82,
+  "name": "x",
+  "id": 85,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   254,
+   33,
+   234,
+   139
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the north.\n(You didn't change the SCIMITAR's heading. Remember, you don't have to type a compass direction every turn if you want to WAIT or do something else.)\nThe depth finder warning light is still glowing orange, and the alarm bell is still ringing.\n \n> ",
+  "ts": "2026-10-31T06:20:35.756Z"
+ },
+ "sdE @82:turn on autopilot#4": {
+  "tag": "sdE",
+  "cmd": "turn on autopilot",
+  "step": 82,
+  "name": "x",
+  "id": 86,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 67,
+  "printedObjs": [
+   234,
+   139
+  ],
+  "text": "You must be your own pilot for now.\nThe depth finder warning light is still glowing orange, and the alarm bell is still ringing.\n \n> ",
+  "ts": "2026-10-31T06:20:36.616Z"
+ },
+ "sdE @82:set throttle to fast#5": {
+  "tag": "sdE",
+  "cmd": "set throttle to fast",
+  "step": 82,
+  "name": "x",
+  "id": 87,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 135,
+  "printedObjs": [
+   226,
+   217,
+   234,
+   139,
+   231,
+   254
+  ],
+  "text": "You feel the seat press harder against you, and the hydrojet gets louder. You're now travelling at a speed of 3 sea squares per turn.\nThe depth finder warning light is still glowing orange, and the alarm bell is still ringing.\nThe depth finder warning light turns red, and the alarm bell rises to a shriller whine.\nThe sonarscope shows an obstacle ahead! Unless you change course, you will crash the SCIMITAR!\n \n> ",
+  "ts": "2026-10-31T06:20:37.724Z"
+ },
+ "sdE @82:z#6": {
+  "tag": "sdE",
+  "cmd": "z",
+  "step": 82,
+  "name": "x",
+  "id": 88,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18,
+   27
+  ],
+  "after": [
+   14,
+   18,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 15,
+  "printedObjs": [],
+  "text": "(I assume you mean: wait 10 turns.)\nTime passes...\n \nIf you don't change course or stop, you'll crash!\nDo you want to keep waiting? > ",
+  "ts": "2026-10-31T06:20:38.661Z"
+ },
+ "sdE @82:yes#7": {
+  "tag": "sdE",
+  "cmd": "yes",
+  "step": 82,
+  "name": "x",
+  "id": 89,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   14,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   14,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 4,
+  "printedObjs": [
+   254,
+   179,
+   203
+  ],
+  "text": " \nSuddenly you're thrown out of your seat by a thunderous crash, and the SCIMITAR comes to a shuddering halt!\nTip says, \"Skipper! You've plowed into the floor of the bay! Jumpin' jets, let's hope your new SCIMITAR isn't wrecked!\"\nUnfortunately, the SCIMITAR is now disabled. You must call the Audit Research Lab for help, and the situation forces you to abandon hope of saving the Aquadome from attacks by the Snark.\n \nYour score is 24 points out of 100, in 83 turns.\nThis score gives you the rank of a fair adventurer.\n \nWould you like to:\n   RESTORE your place from where you saved it,\n   RESTART the story from the beginning, or\n   QUIT for now?\n> ",
+  "ts": "2026-10-31T06:20:39.237Z"
+ },
+ "sdE @82:z#8": {
+  "tag": "sdE",
+  "cmd": "z",
+  "step": 82,
+  "name": "x",
+  "id": 90,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 92,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:39.834Z"
+ },
+ "sdE @82:yes#9": {
+  "tag": "sdE",
+  "cmd": "yes",
+  "step": 82,
+  "name": "x",
+  "id": 91,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   11,
+   17,
+   19
+  ],
+  "after": [
+   11,
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 92,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:40.454Z"
+ },
+ "sdE @82:dock#10": {
+  "tag": "sdE",
+  "cmd": "dock",
+  "step": 82,
+  "name": "x",
+  "id": 92,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:41.061Z"
+ },
+ "sdE @82:z#11": {
+  "tag": "sdE",
+  "cmd": "z",
+  "step": 82,
+  "name": "x",
+  "id": 93,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17,
+   30
+  ],
+  "after": [
+   17,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:41.631Z"
+ },
+ "sdE @82:open hatch#12": {
+  "tag": "sdE",
+  "cmd": "open hatch",
+  "step": 82,
+  "name": "x",
+  "id": 94,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 0,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:42.205Z"
+ },
+ "sdE @82:exit scimitar#13": {
+  "tag": "sdE",
+  "cmd": "exit scimitar",
+  "step": 82,
+  "name": "x",
+  "id": 95,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   14,
+   30
+  ],
+  "after": [
+   3,
+   4,
+   14,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:42.810Z"
+ },
+ "sdE @82:n#14": {
+  "tag": "sdE",
+  "cmd": "n",
+  "step": 82,
+  "name": "x",
+  "id": 96,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   14,
+   30
+  ],
+  "after": [
+   3,
+   14,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:43.385Z"
+ },
+ "sdE @82:n#15": {
+  "tag": "sdE",
+  "cmd": "n",
+  "step": 82,
+  "name": "x",
+  "id": 97,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   30
+  ],
+  "after": [
+   4,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:43.958Z"
+ },
+ "sdE @82:n#16": {
+  "tag": "sdE",
+  "cmd": "n",
+  "step": 82,
+  "name": "x",
+  "id": 98,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   30
+  ],
+  "after": [
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:44.533Z"
+ },
+ "sdE @82:open air supply system with tool#17": {
+  "tag": "sdE",
+  "cmd": "open air supply system with tool",
+  "step": 82,
+  "name": "x",
+  "id": 99,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sdE.json",
+  "planSha": "8526ee46617d583278b6b4fcea0f888fad27bc98fc233cd4c68ae26ebbcbe7a9",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   30
+  ],
+  "after": [
+   4,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:20:45.103Z"
+ }
+}

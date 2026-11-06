@@ -1,0 +1,10550 @@
+{
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "repo": "zork1",
+  "source": "https://github.com/historicalsource/zork1",
+  "files": 10,
+  "sourceObjects": 250,
+  "matched": 193,
+  "ramObjects": 255,
+  "flags": {
+   ";\"CANT-HAVE-ONBIT\"": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 192,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "190:Treasure Room"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 30,
+    "positives": 7,
+    "negatives": 186,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "233:number of ghosts",
+     "223:bat",
+     "186:cyclops"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 26,
+    "positives": 12,
+    "negatives": 181,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "211:black book",
+     "224:brown sack",
+     "161:leaflet"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 24,
+    "positives": 9,
+    "negatives": 184,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "241:tree",
+     "240:mountain range",
+     "234:chimney"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 19,
+    "positives": 18,
+    "negatives": 175,
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "211:black book",
+     "204:kitchen table",
+     "202:table"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 23,
+    "positives": 6,
+    "negatives": 187,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "235:kitchen window",
+     "183:trap door",
+     "181:door"
+    ]
+   },
+   "DRINKBIT": {
+    "bit": 22,
+    "positives": 2,
+    "negatives": 191,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "238:water",
+     "237:quantity of water"
+    ]
+   },
+   "FLAMEBIT": {
+    "bit": 25,
+    "positives": 2,
+    "negatives": 191,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "147:pair of candles",
+     "104:torch"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 21,
+    "positives": 2,
+    "negatives": 191,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "225:lunch",
+     "189:clove of garlic"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 7,
+    "positives": 9,
+    "negatives": 184,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "183:trap door",
+     "174:grating",
+     "159:leak"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 31,
+    "positives": 3,
+    "negatives": 190,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "164:brass lantern",
+     "147:pair of candles",
+     "104:torch"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 14,
+    "positives": 52,
+    "negatives": 141,
+    "tp": 52,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "250:board",
+     "248:set of teeth",
+     "244:songbird"
+    ]
+   },
+   "NONLANDBIT": {
+    "bit": 4,
+    "positives": 2,
+    "negatives": 191,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "100:Reservoir",
+     "48:Stream"
+    ]
+   },
+   "ONBIT": {
+    "bit": 20,
+    "positives": 23,
+    "negatives": 170,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "147:pair of candles",
+     "104:torch",
+     "180:West of House"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 11,
+    "positives": 10,
+    "negatives": 183,
+    "tp": 9,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "204:kitchen table",
+     "202:table",
+     "200:group of tool chests"
+    ]
+   },
+   "READBIT": {
+    "bit": 16,
+    "positives": 11,
+    "negatives": 182,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "211:black book",
+     "161:leaflet",
+     "155:matchbook"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 6,
+    "positives": 64,
+    "negatives": 129,
+    "tp": 64,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "180:West of House",
+     "81:North of House",
+     "80:South of House"
+    ]
+   },
+   "SACREDBIT": {
+    "bit": 9,
+    "positives": 29,
+    "negatives": 164,
+    "tp": 29,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "200:group of tool chests",
+     "208:gold coffin",
+     "139:platinum bar"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 8,
+    "positives": 6,
+    "negatives": 187,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "194:trophy case",
+     "208:gold coffin",
+     "156:magic boat"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 10,
+    "positives": 3,
+    "negatives": 190,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "204:kitchen table",
+     "202:table",
+     "106:pedestal"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 17,
+    "positives": 60,
+    "negatives": 133,
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:quantity of water",
+     "231:crystal skull",
+     "225:lunch"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 28,
+    "positives": 9,
+    "negatives": 184,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "173:hand-held air pump",
+     "128:rusty knife",
+     "123:screwdriver"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 3,
+    "positives": 1,
+    "negatives": 192,
+    "tp": 1,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "12:random object"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 12,
+    "positives": 3,
+    "negatives": 190,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "194:trophy case",
+     "236:glass bottle",
+     "111:wooden door"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 13,
+    "positives": 25,
+    "negatives": 168,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:quantity of water",
+     "223:bat",
+     "219:red hot brass bell"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 15,
+    "positives": 3,
+    "negatives": 190,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "216:bolt",
+     "211:black book",
+     "112:switch"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 27,
+    "positives": 1,
+    "negatives": 192,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "156:magic boat"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 29,
+    "positives": 6,
+    "negatives": 187,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "218:bloody axe",
+     "209:sceptre",
+     "169:nasty knife"
+    ]
+   }
+  }
+ },
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "repo": "zork2",
+  "source": "https://github.com/historicalsource/zork2",
+  "files": 11,
+  "sourceObjects": 251,
+  "matched": 205,
+  "ramObjects": 255,
+  "flags": {
+   "ACTORBIT": {
+    "bit": 30,
+    "positives": 9,
+    "negatives": 196,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "207:huge red dragon",
+     "141:baby sea serpent",
+     "99:Volcano Gnome"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 26,
+    "positives": 15,
+    "negatives": 190,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:wooden club",
+     "97:blue label",
+     "94:brick"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 23,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "188:stairs"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 18,
+    "positives": 28,
+    "negatives": 177,
+    "tp": 27,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "209:rotten wooden chest",
+     "197:door partly covered in cobwebs",
+     "173:crypt door"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 22,
+    "positives": 6,
+    "negatives": 199,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:door partly covered in cobwebs",
+     "173:crypt door",
+     "171:secret door"
+    ]
+   },
+   "DRINKBIT": {
+    "bit": 21,
+    "positives": 3,
+    "negatives": 202,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "238:water",
+     "31:quantity of water",
+     "30:quantity of salty water"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 20,
+    "positives": 5,
+    "negatives": 200,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "71:cake frosted with green letters",
+     "70:cake frosted with blue letters",
+     "69:cake frosted with orange letters"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 9,
+    "positives": 7,
+    "negatives": 198,
+    "tp": 6,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "190:wooden club",
+     "171:secret door",
+     "83:steel box"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 31,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:lamp"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 14,
+    "positives": 50,
+    "negatives": 155,
+    "tp": 50,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "250:stream",
+     "248:chasm",
+     "247:mosses"
+    ]
+   },
+   "NONLANDBIT": {
+    "bit": 6,
+    "positives": 9,
+    "negatives": 196,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "134:Volcano Bottom",
+     "133:Volcano Core",
+     "132:Volcano Near Small Ledge"
+    ]
+   },
+   "NWALLBIT": {
+    "bit": 5,
+    "positives": 5,
+    "negatives": 200,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "133:Volcano Core",
+     "132:Volcano Near Small Ledge",
+     "131:Volcano by Viewing Ledge"
+    ]
+   },
+   "ONBIT": {
+    "bit": 19,
+    "positives": 26,
+    "negatives": 179,
+    "tp": 26,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "231:Inside the Barrow",
+     "229:Narrow Tunnel",
+     "228:Foot Bridge"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 11,
+    "positives": 18,
+    "negatives": 187,
+    "tp": 17,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "162:Wizard's workbench",
+     "161:ruby stand",
+     "160:sapphire stand"
+    ]
+   },
+   "READBIT": {
+    "bit": 16,
+    "positives": 25,
+    "negatives": 180,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:wooden club",
+     "169:marble crypt",
+     "155:degree"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 12,
+    "positives": 72,
+    "negatives": 133,
+    "tp": 72,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "231:Inside the Barrow",
+     "229:Narrow Tunnel",
+     "228:Foot Bridge"
+    ]
+   },
+   "SACREDBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "4:cretin"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 4,
+    "positives": 3,
+    "negatives": 202,
+    "tp": 2,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "94:brick",
+     "63:purple book",
+     "59:receptacle"
+    ]
+   },
+   "STAGGERED": {
+    "bit": 10,
+    "positives": 17,
+    "negatives": 188,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "208:golden dragon statuette",
+     "191:gigantic dog collar",
+     "157:black crystal sphere"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 8,
+    "positives": 8,
+    "negatives": 197,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "162:Wizard's workbench",
+     "161:ruby stand",
+     "160:sapphire stand"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 17,
+    "positives": 49,
+    "negatives": 156,
+    "tp": 49,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "209:rotten wooden chest",
+     "208:golden dragon statuette",
+     "191:gigantic dog collar"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 28,
+    "positives": 4,
+    "negatives": 201,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "37:letter opener",
+     "36:rusty iron key",
+     "14:number"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 2,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "12:random object"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 7,
+    "positives": 6,
+    "negatives": 199,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "157:black crystal sphere",
+     "143:clear crystal sphere",
+     "85:red crystal sphere"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 13,
+    "positives": 12,
+    "negatives": 193,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "247:mosses",
+     "246:roses",
+     "186:diamond shaped window"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 15,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "36:rusty iron key"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 27,
+    "positives": 2,
+    "negatives": 203,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "98:basket",
+     "51:wooden bucket"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 29,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:wooden club"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 3,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "86:gaudy crown"
+    ]
+   }
+  }
+ },
+ "Zork3-TheDungeonMaster.z3.js": {
+  "repo": "zork3",
+  "source": "https://github.com/historicalsource/zork3",
+  "files": 21,
+  "sourceObjects": 228,
+  "matched": 142,
+  "ramObjects": 255,
+  "flags": {
+   "ACTORBIT": {
+    "bit": 21,
+    "positives": 5,
+    "negatives": 137,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "67:hooded figure",
+     "182:Guardians of Zork",
+     "116:old man"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 13,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "187:warning note"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 24,
+    "positives": 2,
+    "negatives": 140,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "23:wooden ladder",
+     "216:stairs"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 10,
+    "positives": 12,
+    "negatives": 130,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "91:gold machine",
+     "107:iron door",
+     "104:stone door"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 9,
+    "positives": 5,
+    "negatives": 137,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "106:cleft",
+     "107:iron door",
+     "104:stone door"
+    ]
+   },
+   "DRINKBIT": {
+    "bit": 22,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "203:water"
+    ]
+   },
+   "FLAMEBIT": {
+    "bit": 6,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "41:torch"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 5,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "34:piece of waybread"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 28,
+    "positives": 5,
+    "negatives": 137,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "106:cleft",
+     "5:Viking Ship",
+     "146:bronze door"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 6,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "41:torch"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 25,
+    "positives": 59,
+    "negatives": 83,
+    "tp": 59,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "114:voices",
+     "111:rock structure",
+     "109:Royal Seal of Dimwit Flathead"
+    ]
+   },
+   "NONLANDBIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 140,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "48:On the Lake",
+     "46:Underwater"
+    ]
+   },
+   "ONBIT": {
+    "bit": 15,
+    "positives": 27,
+    "negatives": 115,
+    "tp": 27,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "112:Crystal Grotto",
+     "64:Endless Stair",
+     "60:Cliff Base"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 12,
+    "positives": 8,
+    "negatives": 134,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "106:cleft",
+     "91:gold machine",
+     "84:pedestal"
+    ]
+   },
+   "READBIT": {
+    "bit": 14,
+    "positives": 8,
+    "negatives": 134,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:Royal Seal of Dimwit Flathead",
+     "80:plaque",
+     "79:bronze plaque"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 16,
+    "positives": 42,
+    "negatives": 100,
+    "tp": 42,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "113:Tight Squeeze",
+     "112:Crystal Grotto",
+     "110:Royal Hall"
+    ]
+   },
+   "SACREDBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "202:cretin"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 26,
+    "positives": 2,
+    "negatives": 140,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "84:pedestal",
+     "81:steel cage"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 20,
+    "positives": 20,
+    "negatives": 122,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "85:sceptre",
+     "83:jewelled knife",
+     "82:golden ring"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 23,
+    "positives": 3,
+    "negatives": 139,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "183:direction",
+     "184:number",
+     "208:pair of hands"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "218:random object"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 30,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "67:hooded figure"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 17,
+    "positives": 7,
+    "negatives": 135,
+    "tp": 4,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "85:sceptre",
+     "83:jewelled knife",
+     "82:golden ring"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 8,
+    "positives": 2,
+    "negatives": 140,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "86:dial",
+     "120:sundial"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "91:gold machine"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 18,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:sword"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 4,
+    "positives": 4,
+    "negatives": 138,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "82:golden ring",
+     "66:hood",
+     "65:cloak"
+    ]
+   }
+  }
+ },
+ "Enchanter.z3.js": {
+  "repo": "enchanter",
+  "source": "https://github.com/historicalsource/enchanter",
+  "files": 27,
+  "sourceObjects": 256,
+  "matched": 198,
+  "ramObjects": 255,
+  "flags": {
+   "BURNBIT": {
+    "bit": 3,
+    "positives": 13,
+    "negatives": 185,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "117:black scroll",
+     "245:faded scroll",
+     "134:gold leaf scroll"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 26,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "168:stairs"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 21,
+    "positives": 35,
+    "negatives": 163,
+    "tp": 35,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "133:fourposter feather bed",
+     "3:bedpost",
+     "202:cell door"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 24,
+    "positives": 7,
+    "negatives": 191,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "232:iron gate",
+     "202:cell door",
+     "108:rusty gate"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 16,
+    "positives": 7,
+    "negatives": 191,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "234:shredded scroll",
+     "179:Flathead portrait",
+     "167:Frobozz portrait"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 22,
+    "positives": 22,
+    "negatives": 176,
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "243:Inside Gate",
+     "219:Pebbled Path",
+     "164:Bedroom"
+    ]
+   },
+   "LOCKEDBIT": {
+    "bit": 1,
+    "positives": 3,
+    "negatives": 195,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "232:iron gate",
+     "194:gate",
+     "152:simple wooden door"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 7,
+    "positives": 84,
+    "negatives": 114,
+    "tp": 84,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "232:iron gate",
+     "15:chains",
+     "3:bedpost"
+    ]
+   },
+   "ONBIT": {
+    "bit": 8,
+    "positives": 33,
+    "negatives": 165,
+    "tp": 33,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "243:Inside Gate",
+     "219:Pebbled Path",
+     "77:West Hall"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 12,
+    "positives": 13,
+    "negatives": 185,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "133:fourposter feather bed",
+     "108:rusty gate",
+     "153:festive decorations"
+    ]
+   },
+   "POINTBIT": {
+    "bit": 6,
+    "positives": 9,
+    "negatives": 189,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:point B",
+     "52:point R",
+     "91:point K"
+    ]
+   },
+   "READBIT": {
+    "bit": 18,
+    "positives": 37,
+    "negatives": 161,
+    "tp": 37,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "208:stone wall",
+     "234:shredded scroll",
+     "144:spell book"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 25,
+    "positives": 45,
+    "negatives": 153,
+    "tp": 45,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "243:Inside Gate",
+     "219:Pebbled Path",
+     "77:West Hall"
+    ]
+   },
+   "RMUNGBIT": {
+    "bit": 17,
+    "positives": 3,
+    "negatives": 195,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "247:Junction",
+     "105:Landing",
+     "35:Sacrificial Altar"
+    ]
+   },
+   "SCROLLBIT": {
+    "bit": 3,
+    "positives": 13,
+    "negatives": 185,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "117:black scroll",
+     "245:faded scroll",
+     "134:gold leaf scroll"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 11,
+    "positives": 3,
+    "negatives": 195,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "133:fourposter feather bed",
+     "3:bedpost",
+     "114:niche"
+    ]
+   },
+   "SPELLBIT": {
+    "bit": 4,
+    "positives": 17,
+    "negatives": 181,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "80:gnusto spell",
+     "59:frotz spell",
+     "197:ozmoo spell"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 14,
+    "positives": 3,
+    "negatives": 195,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "133:fourposter feather bed",
+     "118:lily pad",
+     "88:pedestal"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 19,
+    "positives": 32,
+    "negatives": 166,
+    "tp": 32,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "63:square block of stone",
+     "107:worn silver spoon",
+     "112:beautiful, ornamented egg"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 23,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "107:worn silver spoon",
+     "5:bare hands of a novice enchanter"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 15,
+    "positives": 8,
+    "negatives": 190,
+    "tp": 8,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "79:random object",
+     "82:castle wall",
+     "198:ceiling"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 10,
+    "positives": 16,
+    "negatives": 182,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "153:festive decorations",
+     "112:beautiful, ornamented egg",
+     "19:jug"
+    ]
+   },
+   "TREASURE": {
+    "bit": 2,
+    "positives": 4,
+    "negatives": 194,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "107:worn silver spoon",
+     "112:beautiful, ornamented egg",
+     "221:jewelled box"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 13,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "106:portraits of unknown persons",
+     "176:strong box"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 29,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "133:fourposter feather bed"
+    ]
+   },
+   "VICBIT": {
+    "bit": 20,
+    "positives": 8,
+    "negatives": 190,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "192:group of hairy shapes",
+     "62:frog",
+     "30:tangle of rope"
+    ]
+   },
+   "VICTIM": {
+    "bit": 5,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "188:dragon"
+    ]
+   },
+   "VILLAIN": {
+    "bit": 31,
+    "positives": 7,
+    "negatives": 191,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "62:frog",
+     "179:Flathead portrait",
+     "167:Frobozz portrait"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 9,
+    "positives": 10,
+    "negatives": 188,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "232:iron gate",
+     "200:arch",
+     "115:ornate button"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 30,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "169:sacrificial dagger",
+     "222:sword"
+    ]
+   }
+  }
+ },
+ "Hitchhik.z5.js": {
+  "repo": "hitchhikersguide",
+  "source": "https://github.com/historicalsource/hitchhikersguide",
+  "files": 10,
+  "sourceObjects": 221,
+  "matched": 186,
+  "ramObjects": 236,
+  "flags": {
+   "ACTORBIT": {
+    "bit": 42,
+    "positives": 20,
+    "negatives": 166,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "4:bulldozer driver",
+     "155:Mr. Prosser",
+     "20:Ford Prefect"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 40,
+    "positives": 22,
+    "negatives": 164,
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "206:your gown",
+     "216:thing your aunt gave you which you don't know what it is",
+     "155:Mr. Prosser"
+    ]
+   },
+   "DARKBIT": {
+    "bit": 27,
+    "positives": 2,
+    "negatives": 184,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "169:conversation",
+     "44:Vogon poetry"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 43,
+    "positives": 4,
+    "negatives": 182,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "180:screening door",
+     "200:corridor door",
+     "161:inner door"
+    ]
+   },
+   "DRINKBIT": {
+    "bit": 30,
+    "positives": 6,
+    "negatives": 180,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "156:lots of beer",
+     "15:liquid",
+     "79:tea"
+    ]
+   },
+   "EATBIT": {
+    "bit": 36,
+    "positives": 5,
+    "negatives": 181,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "116:buffered analgesic",
+     "212:peanuts",
+     "94:cheese sandwich"
+    ]
+   },
+   "INTEGRALBIT": {
+    "bit": 38,
+    "positives": 8,
+    "negatives": 178,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:red button",
+     "128:green button",
+     "18:guarantee"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 21,
+    "positives": 3,
+    "negatives": 183,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "228:bulldozer",
+     "169:conversation",
+     "178:other name"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 35,
+    "positives": 6,
+    "negatives": 180,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "98:jukebox",
+     "182:Nutrimat",
+     "52:Eddie (the shipboard computer)"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 47,
+    "positives": 42,
+    "negatives": 144,
+    "tp": 42,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "24:your home",
+     "63:your curtains",
+     "206:your gown"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 44,
+    "positives": 77,
+    "negatives": 109,
+    "tp": 77,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "10:pile of rubble",
+     "190:telephone",
+     "63:your curtains"
+    ]
+   },
+   "ONBIT": {
+    "bit": 45,
+    "positives": 26,
+    "negatives": 160,
+    "tp": 26,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "174:Front Porch",
+     "71:Front of House",
+     "72:Back of House"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 39,
+    "positives": 12,
+    "negatives": 174,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "216:thing your aunt gave you which you don't know what it is",
+     "155:Mr. Prosser",
+     "20:Ford Prefect"
+    ]
+   },
+   "OUTSIDEBIT": {
+    "bit": 22,
+    "positives": 5,
+    "negatives": 181,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "71:Front of House",
+     "72:Back of House",
+     "133:Country Lane"
+    ]
+   },
+   "READBIT": {
+    "bit": 29,
+    "positives": 7,
+    "negatives": 179,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "198:loose pile of junk mail",
+     "201:The Hitchhiker's Guide",
+     "183:shipping carton"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 46,
+    "positives": 25,
+    "negatives": 161,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "174:Front Porch",
+     "71:Front of House",
+     "72:Back of House"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 34,
+    "positives": 14,
+    "negatives": 172,
+    "tp": 14,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "206:your gown",
+     "216:thing your aunt gave you which you don't know what it is",
+     "20:Ford Prefect"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 23,
+    "positives": 3,
+    "negatives": 183,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "185:bar",
+     "49:pilot seat",
+     "164:poetry appreciation chair"
+    ]
+   },
+   "SWITCHBIT": {
+    "bit": 32,
+    "positives": 3,
+    "negatives": 183,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "143:dipswitch",
+     "96:generator switch",
+     "134:switch"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 41,
+    "positives": 45,
+    "negatives": 141,
+    "tp": 45,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:telephone",
+     "206:your gown",
+     "216:thing your aunt gave you which you don't know what it is"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 17,
+    "positives": 10,
+    "negatives": 176,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "31:toothbrush",
+     "105:flathead screwdriver",
+     "223:laser-assisted monkey wrench"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 20,
+    "positives": 4,
+    "negatives": 182,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:wall",
+     "188:ceiling",
+     "6:your hand"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 33,
+    "positives": 7,
+    "negatives": 179,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "11:window",
+     "73:circuit board",
+     "118:spare Improbability Drive"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 37,
+    "positives": 23,
+    "negatives": 163,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:telephone",
+     "206:your gown",
+     "198:loose pile of junk mail"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 28,
+    "positives": 2,
+    "negatives": 184,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "49:pilot seat",
+     "164:poetry appreciation chair"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 31,
+    "positives": 18,
+    "negatives": 168,
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "152:Arthur Dent",
+     "2:air",
+     "53:object of the game"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 25,
+    "positives": 1,
+    "negatives": 185,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "206:your gown"
+    ]
+   }
+  }
+ },
+ "Ballyhoo.z3.js": {
+  "repo": "ballyhoo",
+  "source": "https://github.com/historicalsource/ballyhoo",
+  "files": 11,
+  "sourceObjects": 247,
+  "matched": 198,
+  "ramObjects": 255,
+  "flags": {
+   ";CONTBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "198:burned cage"
+    ]
+   },
+   ";INVISIBLE": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "111:voice"
+    ]
+   },
+   ";NARTICLEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "152:money"
+    ]
+   },
+   ";NDESCBIT": {
+    "bit": 26,
+    "positives": 5,
+    "negatives": 193,
+    "tp": 2,
+    "fp": 2,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "49:barred passage",
+     "176:spreadsheet",
+     "203:telephone"
+    ]
+   },
+   ";ONBIT": {
+    "bit": 26,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 2,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "36:pair of headphones",
+     "48:transistor radio"
+    ]
+   },
+   ";OPENBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "198:burned cage"
+    ]
+   },
+   ";SEARCHBIT": {
+    "bit": 26,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 2,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "36:pair of headphones",
+     "48:transistor radio"
+    ]
+   },
+   ";SURFACEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "198:burned cage"
+    ]
+   },
+   ";TAKEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "69:refreshment"
+    ]
+   },
+   ";TRANSBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "198:burned cage"
+    ]
+   },
+   ";TRYTAKEBIT": {
+    "bit": 26,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 2,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "36:pair of headphones",
+     "48:transistor radio"
+    ]
+   },
+   ";VEHBIT": {
+    "bit": 12,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 1,
+    "fp": 1,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "96:lion stand",
+     "17:short line"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 31,
+    "positives": 31,
+    "negatives": 167,
+    "tp": 31,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:hawker",
+     "168:crowd",
+     "31:shaggy lion"
+    ]
+   },
+   "AIRBIT": {
+    "bit": 29,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "134:helium",
+     "6:air"
+    ]
+   },
+   "CLEARBIT": {
+    "bit": 3,
+    "positives": 6,
+    "negatives": 192,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "134:helium",
+     "24:conversation",
+     "111:voice"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 23,
+    "positives": 32,
+    "negatives": 166,
+    "tp": 32,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:hawker",
+     "165:balloon",
+     "96:lion stand"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 27,
+    "positives": 6,
+    "negatives": 192,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "38:rusty grate",
+     "40:square aluminum panel",
+     "100:office door"
+    ]
+   },
+   "EATBIT": {
+    "bit": 25,
+    "positives": 5,
+    "negatives": 193,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "69:refreshment",
+     "102:corpuscular lump of meat",
+     "163:one-dollar-and-85-cent granola bar"
+    ]
+   },
+   "FEMALE": {
+    "bit": 5,
+    "positives": 4,
+    "negatives": 194,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "117:smooth-bodied lion",
+     "84:Chelsea",
+     "205:fat lady"
+    ]
+   },
+   "INDOORSBIT": {
+    "bit": 11,
+    "positives": 17,
+    "negatives": 181,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "206:Under the Bleachers",
+     "182:Standing Room Only",
+     "81:In the Wings"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 19,
+    "positives": 5,
+    "negatives": 193,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "24:conversation",
+     "123:crawl space",
+     "233:trap door"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 26,
+    "positives": 4,
+    "negatives": 194,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "58:light",
+     "36:pair of headphones",
+     "74:chandelier"
+    ]
+   },
+   "LOCKEDBIT": {
+    "bit": 10,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "100:office door",
+     "103:cherry-hardwood desk"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 1,
+    "positives": 30,
+    "negatives": 168,
+    "tp": 28,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "134:helium",
+     "179:your back",
+     "186:dollar"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 6,
+    "positives": 114,
+    "negatives": 84,
+    "tp": 114,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "86:circus",
+     "195:garbage",
+     "217:grandstand"
+    ]
+   },
+   "NOA": {
+    "bit": 4,
+    "positives": 3,
+    "negatives": 195,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "195:garbage",
+     "152:money",
+     "191:straw"
+    ]
+   },
+   "ONBIT": {
+    "bit": 24,
+    "positives": 31,
+    "negatives": 167,
+    "tp": 31,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "206:Under the Bleachers",
+     "182:Standing Room Only",
+     "81:In the Wings"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 15,
+    "positives": 30,
+    "negatives": 168,
+    "tp": 30,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:hawker",
+     "96:lion stand",
+     "65:bucket"
+    ]
+   },
+   "PERSON": {
+    "bit": 8,
+    "positives": 25,
+    "negatives": 173,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:hawker",
+     "168:crowd",
+     "162:Jerry"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 24,
+    "positives": 31,
+    "negatives": 167,
+    "tp": 31,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "206:Under the Bleachers",
+     "182:Standing Room Only",
+     "81:In the Wings"
+    ]
+   },
+   "RMUNGBIT": {
+    "bit": 12,
+    "positives": 2,
+    "negatives": 196,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "96:lion stand",
+     "223:sideshow front"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 14,
+    "positives": 20,
+    "negatives": 178,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:hawker",
+     "96:lion stand",
+     "65:bucket"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 17,
+    "positives": 6,
+    "negatives": 192,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "96:lion stand",
+     "103:cherry-hardwood desk",
+     "54:chair"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 22,
+    "positives": 38,
+    "negatives": 160,
+    "tp": 38,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "129:fiberglass pole",
+     "165:balloon",
+     "133:stool"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 18,
+    "positives": 4,
+    "negatives": 194,
+    "tp": 4,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "83:wall",
+     "202:ceiling",
+     "11:your hand"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 13,
+    "positives": 7,
+    "negatives": 191,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "165:balloon",
+     "49:barred passage",
+     "103:cherry-hardwood desk"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 16,
+    "positives": 26,
+    "negatives": 172,
+    "tp": 26,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "69:refreshment",
+     "159:big top",
+     "72:tightrope"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 30,
+    "positives": 4,
+    "negatives": 194,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "133:stool",
+     "80:long line",
+     "54:chair"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 7,
+    "positives": 11,
+    "negatives": 187,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "220:apparatus",
+     "120:egress",
+     "6:air"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 21,
+    "positives": 7,
+    "negatives": 191,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "93:clown mask",
+     "208:gorilla suit",
+     "85:ribbon"
+    ]
+   }
+  }
+ },
+ "Cutthroats.z3.js": {
+  "repo": "cutthroats",
+  "source": "https://github.com/historicalsource/cutthroats",
+  "files": 16,
+  "sourceObjects": 233,
+  "matched": 133,
+  "ramObjects": 255,
+  "flags": {
+   "CLIMBBIT": {
+    "bit": 5,
+    "positives": 4,
+    "negatives": 129,
+    "tp": 3,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "175:stairs",
+     "40:wooden cask",
+     "30:maple chest"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 11,
+    "positives": 21,
+    "negatives": 112,
+    "tp": 20,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "89:large air compressor",
+     "85:small machine",
+     "82:machine compartment"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 25,
+    "positives": 2,
+    "negatives": 131,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "177:bedroom door",
+     "164:front door"
+    ]
+   },
+   "DRINKBIT": {
+    "bit": 10,
+    "positives": 3,
+    "negatives": 130,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "176:ocean",
+     "103:drink",
+     "102:liquor"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 8,
+    "positives": 1,
+    "negatives": 132,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "105:meal"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 30,
+    "positives": 4,
+    "negatives": 129,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "184:cretin",
+     "133:envelope",
+     "38:row of fallen bunks"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 12,
+    "positives": 49,
+    "negatives": 84,
+    "tp": 48,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "89:large air compressor",
+     "88:airhose",
+     "84:machine label"
+    ]
+   },
+   "ONBIT": {
+    "bit": 17,
+    "positives": 11,
+    "negatives": 122,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:Red Boar Inn",
+     "147:Upstairs Hallway",
+     "183:Your Room"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 21,
+    "positives": 17,
+    "negatives": 116,
+    "tp": 16,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "89:large air compressor",
+     "81:deep-sea diving suit",
+     "79:bunk"
+    ]
+   },
+   "PERSON": {
+    "bit": 23,
+    "positives": 6,
+    "negatives": 127,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "184:cretin",
+     "182:you",
+     "14:McGinty"
+    ]
+   },
+   "PUSHBIT": {
+    "bit": 5,
+    "positives": 3,
+    "negatives": 130,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "40:wooden cask",
+     "30:maple chest",
+     "21:oak chest"
+    ]
+   },
+   "READBIT": {
+    "bit": 6,
+    "positives": 14,
+    "negatives": 119,
+    "tp": 14,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "84:machine label",
+     "2:gold coin",
+     "1:dinner plate"
+    ]
+   },
+   "RENTBIT": {
+    "bit": 15,
+    "positives": 4,
+    "negatives": 129,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "201:Night Wind",
+     "200:Mary Margaret",
+     "120:small air compressor"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 4,
+    "positives": 12,
+    "negatives": 121,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:Red Boar Inn",
+     "147:Upstairs Hallway",
+     "183:Your Room"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 20,
+    "positives": 3,
+    "negatives": 130,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "85:small machine",
+     "35:safe",
+     "25:skeleton"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 28,
+    "positives": 9,
+    "negatives": 124,
+    "tp": 8,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "79:bunk",
+     "76:stove",
+     "170:such thing"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 7,
+    "positives": 19,
+    "negatives": 114,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "85:small machine",
+     "81:deep-sea diving suit",
+     "64:portable drill"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 16,
+    "positives": 3,
+    "negatives": 130,
+    "tp": 2,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "64:portable drill",
+     "218:direction",
+     "143:room key"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 29,
+    "positives": 6,
+    "negatives": 127,
+    "tp": 4,
+    "fp": 1,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "170:such thing",
+     "216:random object",
+     "207:bulkhead"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 19,
+    "positives": 9,
+    "negatives": 124,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "85:small machine",
+     "79:bunk",
+     "146:bed"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 27,
+    "positives": 14,
+    "negatives": 119,
+    "tp": 14,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:airhose",
+     "2:gold coin",
+     "1:dinner plate"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 24,
+    "positives": 2,
+    "negatives": 131,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "83:machine switch",
+     "6:wrist watch"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 9,
+    "positives": 5,
+    "negatives": 128,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:bunk",
+     "146:bed",
+     "40:wooden cask"
+    ]
+   },
+   "VICBIT": {
+    "bit": 26,
+    "positives": 9,
+    "negatives": 124,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "184:cretin",
+     "182:you",
+     "181:yourself"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 22,
+    "positives": 10,
+    "negatives": 123,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:airhose",
+     "215:air",
+     "197:abandoned field"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 3,
+    "positives": 2,
+    "negatives": 131,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "8:Weasel's knife",
+     "23:sword"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 18,
+    "positives": 6,
+    "negatives": 127,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "81:deep-sea diving suit",
+     "139:wet suit",
+     "138:pair of flippers"
+    ]
+   },
+   "WORNBIT": {
+    "bit": 13,
+    "positives": 1,
+    "negatives": 132,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "6:wrist watch"
+    ]
+   }
+  }
+ },
+ "Deadline.z3.js": {
+  "repo": "deadline",
+  "source": "https://github.com/historicalsource/deadline",
+  "files": 12,
+  "sourceObjects": 254,
+  "matched": 183,
+  "ramObjects": 255,
+  "flags": {
+   ";TRANSBIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 181,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "18:bottle of Sneezo brand decongestant",
+     "15:bottle of Allergone"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 17,
+    "positives": 6,
+    "negatives": 177,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "146:note pad",
+     "145:desk calendar",
+     "144:stack of papers"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 15,
+    "positives": 1,
+    "negatives": 182,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "122:wooden ladder"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 21,
+    "positives": 24,
+    "negatives": 159,
+    "tp": 24,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "215:south closet door",
+     "245:front door",
+     "192:south door"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 22,
+    "positives": 4,
+    "negatives": 179,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "215:south closet door",
+     "245:front door",
+     "192:south door"
+    ]
+   },
+   "DRUGBIT": {
+    "bit": 10,
+    "positives": 5,
+    "negatives": 178,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "92:couple of LoBLO tablets",
+     "90:handful of aspirin tablets",
+     "86:couple of Ebullion tablets"
+    ]
+   },
+   "DUPLICATE": {
+    "bit": 14,
+    "positives": 1,
+    "negatives": 182,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "119:collection of garden tools"
+    ]
+   },
+   "FURNITURE": {
+    "bit": 13,
+    "positives": 14,
+    "negatives": 169,
+    "tp": 14,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "207:sink",
+     "209:toilet",
+     "208:shower"
+    ]
+   },
+   "FURTINTURE": {
+    "bit": 9,
+    "positives": 1,
+    "negatives": 182,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "70:trestle table"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 31,
+    "positives": 4,
+    "negatives": 179,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "144:stack of papers",
+     "125:black button",
+     "107:mud spots"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 25,
+    "positives": 60,
+    "negatives": 123,
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "160:player",
+     "147:desk",
+     "129:marble-top table"
+    ]
+   },
+   "ONBIT": {
+    "bit": 23,
+    "positives": 41,
+    "negatives": 142,
+    "tp": 41,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "249:South Lawn",
+     "246:Front Path",
+     "244:West of Front Door"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 28,
+    "positives": 12,
+    "negatives": 171,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "215:south closet door",
+     "147:desk",
+     "129:marble-top table"
+    ]
+   },
+   "PERSON": {
+    "bit": 20,
+    "positives": 1,
+    "negatives": 182,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "127:Mr. Robner"
+    ]
+   },
+   "READBIT": {
+    "bit": 18,
+    "positives": 20,
+    "negatives": 163,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "146:note pad",
+     "145:desk calendar",
+     "144:stack of papers"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 23,
+    "positives": 41,
+    "negatives": 142,
+    "tp": 41,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "249:South Lawn",
+     "246:Front Path",
+     "244:West of Front Door"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 26,
+    "positives": 1,
+    "negatives": 182,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "30:liquor cabinet"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 29,
+    "positives": 10,
+    "negatives": 173,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "147:desk",
+     "129:marble-top table",
+     "209:toilet"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 19,
+    "positives": 36,
+    "negatives": 147,
+    "tp": 36,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "146:note pad",
+     "145:desk calendar",
+     "144:stack of papers"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 11,
+    "positives": 3,
+    "negatives": 180,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "208:shower",
+     "44:set of silverware",
+     "43:glass collection"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 16,
+    "positives": 1,
+    "negatives": 182,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "145:desk calendar"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 12,
+    "positives": 5,
+    "negatives": 178,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "209:toilet",
+     "105:bathtub",
+     "200:sofa"
+    ]
+   }
+  }
+ },
+ "Infidel.z3.js": {
+  "repo": "infidel",
+  "source": "https://github.com/historicalsource/infidel",
+  "files": 20,
+  "sourceObjects": 246,
+  "matched": 185,
+  "ramObjects": 255,
+  "flags": {
+   "ACTORBIT": {
+    "bit": 17,
+    "positives": 2,
+    "negatives": 183,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "223:cretin",
+     "221:you"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 11,
+    "positives": 15,
+    "negatives": 170,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "148:page",
+     "105:shim",
+     "104:wooden beam"
+    ]
+   },
+   "CLAMPBIT": {
+    "bit": 1,
+    "positives": 4,
+    "negatives": 181,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "159:Isis statue",
+     "158:Nephthys statue",
+     "157:Neith statue"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 16,
+    "positives": 8,
+    "negatives": 177,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:plank",
+     "32:rope",
+     "218:stairs"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 20,
+    "positives": 45,
+    "negatives": 140,
+    "tp": 45,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "188:timber frame",
+     "184:rocks",
+     "180:slab"
+    ]
+   },
+   "DONTTAKE": {
+    "bit": 2,
+    "positives": 40,
+    "negatives": 145,
+    "tp": 40,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "193:timber lintel",
+     "189:tiles",
+     "188:timber frame"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 9,
+    "positives": 3,
+    "negatives": 182,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "162:inner door",
+     "194:burial door",
+     "185:annex door"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 184,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "34:piece of dried beef"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 30,
+    "positives": 7,
+    "negatives": 178,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "191:deep pit",
+     "52:opening",
+     "42:burned wrapper"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 18,
+    "positives": 87,
+    "negatives": 98,
+    "tp": 87,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "193:timber lintel",
+     "189:tiles",
+     "191:deep pit"
+    ]
+   },
+   "ONBIT": {
+    "bit": 21,
+    "positives": 13,
+    "negatives": 172,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "82:River Bank",
+     "73:Near the Nile",
+     "72:Outside Your Tent"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 25,
+    "positives": 37,
+    "negatives": 148,
+    "tp": 37,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "188:timber frame",
+     "184:rocks",
+     "180:slab"
+    ]
+   },
+   "READBIT": {
+    "bit": 5,
+    "positives": 10,
+    "negatives": 175,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "150:scarab",
+     "148:page",
+     "103:papyrus scroll"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 3,
+    "positives": 40,
+    "negatives": 145,
+    "tp": 40,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "181:Annex",
+     "174:Burial Chamber",
+     "173:Treasury"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 24,
+    "positives": 7,
+    "negatives": 178,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "31:knapsack",
+     "23:packing crate",
+     "8:golden chalice"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 28,
+    "positives": 15,
+    "negatives": 170,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "184:rocks",
+     "180:slab",
+     "171:left disc"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 15,
+    "positives": 49,
+    "negatives": 136,
+    "tp": 49,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "150:scarab",
+     "146:small spatula",
+     "105:shim"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 19,
+    "positives": 5,
+    "negatives": 180,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "146:small spatula",
+     "37:pick axe",
+     "33:shovel"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 29,
+    "positives": 27,
+    "negatives": 158,
+    "tp": 27,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "146:small spatula",
+     "83:crocodile",
+     "81:Nile"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 23,
+    "positives": 10,
+    "negatives": 175,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "171:left disc",
+     "170:right disc",
+     "169:middle disc"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 27,
+    "positives": 30,
+    "negatives": 155,
+    "tp": 30,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "189:tiles",
+     "150:scarab",
+     "148:page"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 4,
+    "positives": 5,
+    "negatives": 180,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "159:Isis statue",
+     "158:Nephthys statue",
+     "157:Neith statue"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 14,
+    "positives": 5,
+    "negatives": 180,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "108:mast hole",
+     "104:wooden beam",
+     "51:army cot"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 26,
+    "positives": 11,
+    "negatives": 174,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "162:inner door",
+     "185:annex door",
+     "52:opening"
+    ]
+   }
+  }
+ },
+ "HollywoodHijinx.z3.js": {
+  "repo": "hollywoodhijinx",
+  "source": "https://github.com/historicalsource/hollywoodhijinx",
+  "files": 18,
+  "sourceObjects": 299,
+  "matched": 188,
+  "ramObjects": 255,
+  "flags": {
+   ";CONTBIT": {
+    "bit": 9,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:small, smoldering fire"
+    ]
+   },
+   ";FURNITBIT": {
+    "bit": 0,
+    "positives": 3,
+    "negatives": 185,
+    "tp": 0,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "218:toilet",
+     "128:bed",
+     "17:sofa"
+    ]
+   },
+   ";NDESCBIT": {
+    "bit": 23,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "226:slide"
+    ]
+   },
+   ";ONBIT": {
+    "bit": 9,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:small, smoldering fire"
+    ]
+   },
+   ";TAKEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "66:rope"
+    ]
+   },
+   ";VEHBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "128:bed"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 18,
+    "positives": 2,
+    "negatives": 186,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "126:Aunt Hildegarde",
+     "163:Cousin Herman"
+    ]
+   },
+   "BLACK-CAT-BIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "2:South Junction"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 2,
+    "positives": 12,
+    "negatives": 176,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "111:matchbox",
+     "20:red match",
+     "171:green match"
+    ]
+   },
+   "CANT-MOVE-POST-BIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 186,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "49:dirty pillar",
+     "190:dusty pillar"
+    ]
+   },
+   "CAVEBIT": {
+    "bit": 6,
+    "positives": 11,
+    "negatives": 177,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "239:Grotto",
+     "147:Surface of Grotto Pool",
+     "233:Grotto, Underwater"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 4,
+    "positives": 25,
+    "negatives": 163,
+    "tp": 24,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "111:matchbox",
+     "20:red match",
+     "171:green match"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 10,
+    "positives": 5,
+    "negatives": 183,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "155:hatch",
+     "175:panel",
+     "25:patio door"
+    ]
+   },
+   "EVERYBIT": {
+    "bit": 31,
+    "positives": 3,
+    "negatives": 185,
+    "tp": 3,
+    "fp": 5,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "99:Northeast Junction",
+     "78:Top Landing",
+     "118:Upstairs Hall, West"
+    ]
+   },
+   "FLAMEBIT": {
+    "bit": 9,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:small, smoldering fire"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 29,
+    "positives": 4,
+    "negatives": 184,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "22:indigo punch card",
+     "46:green punch card",
+     "144:red punch card"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 3,
+    "positives": 3,
+    "negatives": 185,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "103:computer",
+     "191:film projector",
+     "133:slide projector"
+    ]
+   },
+   "LOCKEDBIT": {
+    "bit": 15,
+    "positives": 8,
+    "negatives": 180,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "90:Bomb Shelter",
+     "227:safe",
+     "178:Attic"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 30,
+    "positives": 18,
+    "negatives": 170,
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "126:Aunt Hildegarde",
+     "163:Cousin Herman",
+     "221:giant nail clippers"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 16,
+    "positives": 77,
+    "negatives": 111,
+    "tp": 77,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "1:sawhorse",
+     "155:hatch",
+     "61:long, greasy chain"
+    ]
+   },
+   "ON-MONUMENT-BIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "127:Big Diamond Ring"
+    ]
+   },
+   "ONBIT": {
+    "bit": 20,
+    "positives": 26,
+    "negatives": 162,
+    "tp": 26,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "239:Grotto",
+     "147:Surface of Grotto Pool",
+     "233:Grotto, Underwater"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 25,
+    "positives": 20,
+    "negatives": 168,
+    "tp": 19,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "20:red match",
+     "171:green match",
+     "8:left end of the plank"
+    ]
+   },
+   "OUTDOORSBIT": {
+    "bit": 7,
+    "positives": 17,
+    "negatives": 171,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "47:West End of Roof",
+     "121:East End of Roof",
+     "160:Entrance to Hedge Maze"
+    ]
+   },
+   "READBIT": {
+    "bit": 5,
+    "positives": 5,
+    "negatives": 183,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "149:plaque",
+     "235:Aunt Hildegarde's letter",
+     "63:business card"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 19,
+    "positives": 49,
+    "negatives": 139,
+    "tp": 49,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "239:Grotto",
+     "147:Surface of Grotto Pool",
+     "233:Grotto, Underwater"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 24,
+    "positives": 26,
+    "negatives": 162,
+    "tp": 26,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "111:matchbox",
+     "20:red match",
+     "171:green match"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 27,
+    "positives": 7,
+    "negatives": 181,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "194:mantle",
+     "82:blue wax statuette",
+     "9:white wax statuette"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 17,
+    "positives": 52,
+    "negatives": 136,
+    "tp": 52,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "111:matchbox",
+     "20:red match",
+     "171:green match"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 12,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "4:your hand"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 28,
+    "positives": 6,
+    "negatives": 182,
+    "tp": 6,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "71:it",
+     "179:ground",
+     "72:wall"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 23,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "226:slide"
+    ]
+   },
+   "TRUNK-LOCKED-BIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "220:dusty trunk"
+    ]
+   },
+   "TRYTAKE": {
+    "bit": 1,
+    "positives": 1,
+    "negatives": 187,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "59:Jack Valenti bath mat"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 26,
+    "positives": 15,
+    "negatives": 173,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "61:long, greasy chain",
+     "115:heavy wooden plank",
+     "227:safe"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 8,
+    "positives": 2,
+    "negatives": 186,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "8:left end of the plank",
+     "68:right end of the plank"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 21,
+    "positives": 5,
+    "negatives": 183,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "215:elvish sword of great antiquity",
+     "22:indigo punch card",
+     "236:orange punch card"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 22,
+    "positives": 4,
+    "negatives": 184,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "142:Uncle Buddy's toupee",
+     "85:catcher's mask",
+     "127:Big Diamond Ring"
+    ]
+   }
+  }
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "repo": "leathergoddesses",
+  "source": "https://github.com/historicalsource/leathergoddesses",
+  "files": 13,
+  "sourceObjects": 231,
+  "matched": 181,
+  "ramObjects": 255,
+  "flags": {
+   ";ACTORBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 180,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "16:yourself"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 31,
+    "positives": 10,
+    "negatives": 171,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "117:Joe",
+     "3:King Mitre",
+     "123:proprietor"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 27,
+    "positives": 16,
+    "negatives": 165,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:wooden rake",
+     "192:canvas sack",
+     "140:whole bunch of leaves"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 24,
+    "positives": 22,
+    "negatives": 159,
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "192:canvas sack",
+     "113:bed",
+     "212:toilet"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 26,
+    "positives": 6,
+    "negatives": 175,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "59:igloo door",
+     "202:wide cell door",
+     "176:narrow cell door"
+    ]
+   },
+   "FEMALEBIT": {
+    "bit": 1,
+    "positives": 2,
+    "negatives": 179,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "35:the Leather Goddesses of Phobos",
+     "122:female gorilla"
+    ]
+   },
+   "INBIT": {
+    "bit": 2,
+    "positives": 3,
+    "negatives": 178,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "116:royal barge",
+     "24:tree hole",
+     "8:cage"
+    ]
+   },
+   "INDOORSBIT": {
+    "bit": 11,
+    "positives": 33,
+    "negatives": 148,
+    "tp": 33,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "70:Teensy-Weensy House",
+     "147:Bedroom",
+     "61:Joe's Bar"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 25,
+    "positives": 2,
+    "negatives": 179,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "110:flashlight",
+     "186:common household blender"
+    ]
+   },
+   "LOCKEDBIT": {
+    "bit": 9,
+    "positives": 2,
+    "negatives": 179,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "59:igloo door",
+     "71:door"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 5,
+    "positives": 26,
+    "negatives": 155,
+    "tp": 26,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "183:sod",
+     "61:Joe's Bar",
+     "117:Joe"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 8,
+    "positives": 41,
+    "negatives": 140,
+    "tp": 41,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:wooden rake",
+     "192:canvas sack",
+     "183:sod"
+    ]
+   },
+   "ONBIT": {
+    "bit": 30,
+    "positives": 60,
+    "negatives": 121,
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "29:Lawn",
+     "70:Teensy-Weensy House",
+     "227:Garden"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 15,
+    "positives": 18,
+    "negatives": 163,
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "113:bed",
+     "212:toilet",
+     "114:stool"
+    ]
+   },
+   "PARTBIT": {
+    "bit": 4,
+    "positives": 7,
+    "negatives": 174,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "5:your hand",
+     "41:your head",
+     "128:your eyes"
+    ]
+   },
+   "PLURALBIT": {
+    "bit": 3,
+    "positives": 7,
+    "negatives": 174,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "140:whole bunch of leaves",
+     "128:your eyes",
+     "187:your ears"
+    ]
+   },
+   "READBIT": {
+    "bit": 22,
+    "positives": 7,
+    "negatives": 174,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "148:sign",
+     "186:common household blender",
+     "135:coded message"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 28,
+    "positives": 56,
+    "negatives": 125,
+    "tp": 56,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "29:Lawn",
+     "70:Teensy-Weensy House",
+     "227:Garden"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 14,
+    "positives": 20,
+    "negatives": 161,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "192:canvas sack",
+     "125:trellis",
+     "113:bed"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 17,
+    "positives": 7,
+    "negatives": 174,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "113:bed",
+     "114:stool",
+     "150:front stoop"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 23,
+    "positives": 29,
+    "negatives": 152,
+    "tp": 29,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:wooden rake",
+     "192:canvas sack",
+     "140:whole bunch of leaves"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 18,
+    "positives": 5,
+    "negatives": 176,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "127:him",
+     "44:her",
+     "184:ceiling"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 16,
+    "positives": 10,
+    "negatives": 171,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:wooden rake",
+     "192:canvas sack",
+     "140:whole bunch of leaves"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 29,
+    "positives": 10,
+    "negatives": 171,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "113:bed",
+     "212:toilet",
+     "114:stool"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 10,
+    "positives": 6,
+    "negatives": 175,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "23:odor",
+     "51:eighty-two degree angle",
+     "2:exit"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 20,
+    "positives": 1,
+    "negatives": 180,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "170:white suit"
+    ]
+   }
+  }
+ },
+ "Moonmist.z3.js": {
+  "repo": "moonmist",
+  "source": "https://github.com/historicalsource/moonmist",
+  "files": 15,
+  "sourceObjects": 262,
+  "matched": 202,
+  "ramObjects": 255,
+  "flags": {
+   ";\"evidence\"": {
+    "bit": 30,
+    "positives": 3,
+    "negatives": 199,
+    "tp": 3,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "103:Tamara's receipt",
+     "102:lab notebook",
+     "147:Vivien's diary"
+    ]
+   },
+   ";\"so": {
+    "bit": 16,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 1,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "169:wine rack"
+    ]
+   },
+   ";BURNBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "220:tourist brochure"
+    ]
+   },
+   ";CONTBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "139:stained-glass window"
+    ]
+   },
+   ";LOCKED": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "148:Vivien's bedroom"
+    ]
+   },
+   ";NDESCBIT": {
+    "bit": 9,
+    "positives": 6,
+    "negatives": 196,
+    "tp": 3,
+    "fp": 4,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "202:dining table",
+     "35:contact lens",
+     "101:first contact lens"
+    ]
+   },
+   ";ONBIT": {
+    "bit": 0,
+    "positives": 12,
+    "negatives": 190,
+    "tp": 0,
+    "fp": 0,
+    "fn": 12,
+    "exact": false,
+    "examples": [
+     "235:basement",
+     "121:secret crypt",
+     "2:dungeon"
+    ]
+   },
+   ";OPENBIT": {
+    "bit": 0,
+    "positives": 6,
+    "negatives": 196,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "exact": false,
+    "examples": [
+     "233:suit of armour",
+     "22:bronze bust",
+     "148:Vivien's bedroom"
+    ]
+   },
+   ";PERSONBIT": {
+    "bit": 4,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO"
+    ]
+   },
+   ";PLURALBIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 200,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "135:keyhole",
+     "60:eye"
+    ]
+   },
+   ";READBIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 200,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "119:family crest",
+     "151:master bedroom"
+    ]
+   },
+   ";RMUNGBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "85:Dr. Wendish"
+    ]
+   },
+   ";SECRETBIT": {
+    "bit": 0,
+    "positives": 3,
+    "negatives": 199,
+    "tp": 0,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "1:Moonmist",
+     "206:history book",
+     "201:magazine"
+    ]
+   },
+   ";SEENBIT": {
+    "bit": 9,
+    "positives": 5,
+    "negatives": 197,
+    "tp": 3,
+    "fp": 4,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "153:brass lantern",
+     "232:sculpted figurine",
+     "35:contact lens"
+    ]
+   },
+   ";SURFACEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "52:front gate"
+    ]
+   },
+   ";TAKEBIT": {
+    "bit": 0,
+    "positives": 5,
+    "negatives": 197,
+    "tp": 0,
+    "fp": 0,
+    "fn": 5,
+    "exact": false,
+    "examples": [
+     "130:first clue",
+     "181:third clue",
+     "237:fourth clue"
+    ]
+   },
+   ";TOUCHBIT": {
+    "bit": 0,
+    "positives": 4,
+    "negatives": 198,
+    "tp": 0,
+    "fp": 0,
+    "fn": 4,
+    "exact": false,
+    "examples": [
+     "118:Ian",
+     "106:Vivien",
+     "101:first contact lens"
+    ]
+   },
+   ";TRANSBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "207:small plastic box"
+    ]
+   },
+   ";TRY": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "201:magazine"
+    ]
+   },
+   ";TRYTAKEBIT": {
+    "bit": 0,
+    "positives": 3,
+    "negatives": 199,
+    "tp": 0,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "104:hidden switch",
+     "97:maid's note",
+     "166:stuffed rhino head"
+    ]
+   },
+   ";WEARBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "172:Deirdre's necklace"
+    ]
+   },
+   ";WORNBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "61:black pearl necklace"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 27,
+    "positives": 25,
+    "negatives": 177,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "16:goldfish pond",
+     "116:umbrella stand",
+     "233:suit of armour"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 7,
+    "positives": 28,
+    "negatives": 174,
+    "tp": 28,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "52:front gate",
+     "120:front door",
+     "132:foyer"
+    ]
+   },
+   "FEMALE": {
+    "bit": 15,
+    "positives": 5,
+    "negatives": 197,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO",
+     "178:Tamara",
+     "205:Iris"
+    ]
+   },
+   "GO": {
+    "bit": 16,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 1,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "169:wine rack"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 6,
+    "positives": 2,
+    "negatives": 200,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO",
+     "122:brick hole"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 24,
+    "positives": 3,
+    "negatives": 199,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "153:brass lantern",
+     "164:your lamp",
+     "66:GO"
+    ]
+   },
+   "LOCKED": {
+    "bit": 8,
+    "positives": 4,
+    "negatives": 198,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "52:front gate",
+     "120:front door",
+     "66:GO"
+    ]
+   },
+   "MUNGBIT": {
+    "bit": 5,
+    "positives": 2,
+    "negatives": 200,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO",
+     "78:tweed outfit"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 20,
+    "positives": 53,
+    "negatives": 149,
+    "tp": 52,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "182:Tresyllian Castle",
+     "17:Deirdre's portrait",
+     "231:your dinner"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 19,
+    "positives": 73,
+    "negatives": 129,
+    "tp": 73,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "51:voice",
+     "21:horn",
+     "190:dragon"
+    ]
+   },
+   "ONBIT": {
+    "bit": 10,
+    "positives": 32,
+    "negatives": 170,
+    "tp": 32,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "9:driveway",
+     "13:courtyard",
+     "241:hedge maze"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 14,
+    "positives": 57,
+    "negatives": 145,
+    "tp": 57,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "16:goldfish pond",
+     "120:front door",
+     "116:umbrella stand"
+    ]
+   },
+   "PERSONBIT": {
+    "bit": 31,
+    "positives": 10,
+    "negatives": 192,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "178:Tamara",
+     "112:Lord Jack",
+     "205:Iris"
+    ]
+   },
+   "READBIT": {
+    "bit": 22,
+    "positives": 19,
+    "negatives": 183,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "50:piece of music",
+     "245:medical text",
+     "130:first clue"
+    ]
+   },
+   "RMUNGBIT": {
+    "bit": 30,
+    "positives": 4,
+    "negatives": 198,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO",
+     "103:Tamara's receipt",
+     "102:lab notebook"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 18,
+    "positives": 19,
+    "negatives": 183,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "227:piano",
+     "22:bronze bust",
+     "202:dining table"
+    ]
+   },
+   "SECRETBIT": {
+    "bit": 13,
+    "positives": 38,
+    "negatives": 164,
+    "tp": 38,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "104:hidden switch",
+     "49:cane",
+     "163:coat of paint"
+    ]
+   },
+   "SEENBIT": {
+    "bit": 17,
+    "positives": 88,
+    "negatives": 114,
+    "tp": 88,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "182:Tresyllian Castle",
+     "127:tower",
+     "84:full moon"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 23,
+    "positives": 19,
+    "negatives": 183,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "240:coat rack",
+     "188:writing desk",
+     "227:piano"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 26,
+    "positives": 26,
+    "negatives": 176,
+    "tp": 26,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "50:piece of music",
+     "153:brass lantern",
+     "49:cane"
+    ]
+   },
+   "TO": {
+    "bit": 16,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 1,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "169:wine rack"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 4,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 16,
+    "positives": 2,
+    "negatives": 200,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO",
+     "169:wine rack"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 9,
+    "positives": 7,
+    "negatives": 195,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "52:front gate",
+     "66:GO",
+     "35:contact lens"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 12,
+    "positives": 19,
+    "negatives": 183,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:dragon",
+     "22:bronze bust",
+     "18:punchbowl"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 28,
+    "positives": 10,
+    "negatives": 192,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "227:piano",
+     "134:your bed",
+     "213:bench"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 11,
+    "positives": 21,
+    "negatives": 181,
+    "tp": 21,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "230:ocean",
+     "116:umbrella stand",
+     "28:oil painting"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 25,
+    "positives": 4,
+    "negatives": 198,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:GO",
+     "72:blowgun",
+     "247:aerosol device"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 29,
+    "positives": 28,
+    "negatives": 174,
+    "tp": 28,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "132:foyer",
+     "12:drawing room",
+     "124:new great hall"
+    ]
+   },
+   "WORNBIT": {
+    "bit": 21,
+    "positives": 12,
+    "negatives": 190,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "12:drawing room",
+     "33:your bedroom",
+     "62:your bathroom"
+    ]
+   },
+   "works\"": {
+    "bit": 16,
+    "positives": 1,
+    "negatives": 201,
+    "tp": 1,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "169:wine rack"
+    ]
+   }
+  }
+ },
+ "PlunderedHearts.z3.js": {
+  "repo": "plunderedhearts",
+  "source": "https://github.com/historicalsource/plunderedhearts",
+  "files": 12,
+  "sourceObjects": 229,
+  "matched": 196,
+  "ramObjects": 255,
+  "flags": {
+   ";ACTORBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 195,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "15:yourself"
+    ]
+   },
+   ";BURNBIT": {
+    "bit": 21,
+    "positives": 7,
+    "negatives": 189,
+    "tp": 6,
+    "fp": 6,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "194:breeches",
+     "130:shirt",
+     "84:cotton frock"
+    ]
+   },
+   ";NARTICLEBIT": {
+    "bit": 0,
+    "positives": 4,
+    "negatives": 192,
+    "tp": 0,
+    "fp": 0,
+    "fn": 4,
+    "exact": false,
+    "examples": [
+     "191:pirate",
+     "166:water",
+     "25:spices"
+    ]
+   },
+   ";NDESCBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 195,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "100:slab of pork"
+    ]
+   },
+   ";OPENBIT": {
+    "bit": 5,
+    "positives": 2,
+    "negatives": 194,
+    "tp": 1,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "121:leather bottle",
+     "218:knob"
+    ]
+   },
+   ";TAKEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 195,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "100:slab of pork"
+    ]
+   },
+   ";TRANSBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 195,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "187:crocodile"
+    ]
+   },
+   ";TRYTAKEBIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 194,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "209:gold ring",
+     "87:new ring"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 31,
+    "positives": 14,
+    "negatives": 182,
+    "tp": 13,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "8:Crulley",
+     "215:Davis",
+     "163:Cookie"
+    ]
+   },
+   "BODYBIT": {
+    "bit": 3,
+    "positives": 5,
+    "negatives": 191,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "5:your hand",
+     "38:your head",
+     "124:your eyes"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 27,
+    "positives": 2,
+    "negatives": 194,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "156:drapes",
+     "56:rope"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 24,
+    "positives": 35,
+    "negatives": 161,
+    "tp": 35,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:garter",
+     "223:your reticule",
+     "121:leather bottle"
+    ]
+   },
+   "DEADBIT": {
+    "bit": 5,
+    "positives": 1,
+    "negatives": 195,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "218:knob"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 26,
+    "positives": 12,
+    "negatives": 184,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "217:door",
+     "12:curtain",
+     "53:french door"
+    ]
+   },
+   "EVERYBIT": {
+    "bit": 6,
+    "positives": 3,
+    "negatives": 193,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "17:linen chemise",
+     "133:hat",
+     "56:rope"
+    ]
+   },
+   "FEMALEBIT": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 195,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "177:Lucy"
+    ]
+   },
+   "INBIT": {
+    "bit": 8,
+    "positives": 3,
+    "negatives": 193,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:garter",
+     "45:large cupboard",
+     "93:cask"
+    ]
+   },
+   "INDOORSBIT": {
+    "bit": 12,
+    "positives": 28,
+    "negatives": 168,
+    "tp": 28,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "21:Kitchen",
+     "159:Hall",
+     "112:Foyer"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 20,
+    "positives": 3,
+    "negatives": 193,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:garter",
+     "86:hole",
+     "188:fuse"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 25,
+    "positives": 2,
+    "negatives": 194,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "9:torch",
+     "59:chandelier"
+    ]
+   },
+   "LOCKEDBIT": {
+    "bit": 10,
+    "positives": 4,
+    "negatives": 192,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "217:door",
+     "221:ornate door",
+     "104:iron door"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 4,
+    "positives": 70,
+    "negatives": 126,
+    "tp": 69,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "13:your kid slippers",
+     "116:unmentionables",
+     "223:your reticule"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 9,
+    "positives": 62,
+    "negatives": 134,
+    "tp": 61,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "194:breeches",
+     "130:shirt",
+     "116:unmentionables"
+    ]
+   },
+   "ONBIT": {
+    "bit": 29,
+    "positives": 54,
+    "negatives": 142,
+    "tp": 54,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "205:fire",
+     "73:Beach",
+     "24:Lawn"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 16,
+    "positives": 31,
+    "negatives": 165,
+    "tp": 31,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:garter",
+     "223:your reticule",
+     "8:Crulley"
+    ]
+   },
+   "PLURALBIT": {
+    "bit": 2,
+    "positives": 17,
+    "negatives": 179,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "194:breeches",
+     "13:your kid slippers",
+     "11:smelling salts"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 30,
+    "positives": 49,
+    "negatives": 147,
+    "tp": 49,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "73:Beach",
+     "24:Lawn",
+     "142:In the Hedge"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 15,
+    "positives": 30,
+    "negatives": 166,
+    "tp": 30,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:garter",
+     "223:your reticule",
+     "121:leather bottle"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 18,
+    "positives": 9,
+    "negatives": 187,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "203:bench",
+     "152:long table",
+     "218:knob"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 23,
+    "positives": 27,
+    "negatives": 169,
+    "tp": 27,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "194:breeches",
+     "130:shirt",
+     "125:pile of clothes"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 19,
+    "positives": 6,
+    "negatives": 190,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "122:him",
+     "41:her",
+     "64:wall"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 14,
+    "positives": 11,
+    "negatives": 185,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:garter",
+     "121:leather bottle",
+     "8:Crulley"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 17,
+    "positives": 22,
+    "negatives": 174,
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "125:pile of clothes",
+     "102:laudanum",
+     "6:whip"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 28,
+    "positives": 6,
+    "negatives": 190,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "203:bench",
+     "40:chair",
+     "82:cot"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 11,
+    "positives": 2,
+    "negatives": 194,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "175:invitation",
+     "18:anchor"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 21,
+    "positives": 12,
+    "negatives": 184,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "194:breeches",
+     "130:shirt",
+     "125:pile of clothes"
+    ]
+   },
+   "WORNBIT": {
+    "bit": 22,
+    "positives": 3,
+    "negatives": 193,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "84:cotton frock",
+     "17:linen chemise",
+     "13:your kid slippers"
+    ]
+   }
+  }
+ },
+ "Borderzo.z5.js": {
+  "repo": "borderzone",
+  "source": "https://github.com/historicalsource/borderzone",
+  "files": 15,
+  "sourceObjects": 351,
+  "matched": 238,
+  "ramObjects": 351,
+  "flags": {
+   ";INVISIBLE": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "43:blood stain"
+    ]
+   },
+   "AN": {
+    "bit": 19,
+    "positives": 3,
+    "negatives": 235,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "68:open field",
+     "208:old roll of film",
+     "79:GloObj"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 43,
+    "positives": 16,
+    "negatives": 222,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "196:trash can",
+     "259:pen",
+     "306:knapsack"
+    ]
+   },
+   "CROSSBIT": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 45,
+    "positives": 12,
+    "negatives": 226,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "271:side door",
+     "278:counter door",
+     "217:metal door"
+    ]
+   },
+   "FENCEBENTBIT": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "FENCEBLOWNBIT": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "FENCECUTBIT": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "FILMBIT": {
+    "bit": 5,
+    "positives": 2,
+    "negatives": 236,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "207:roll of color film",
+     "208:old roll of film"
+    ]
+   },
+   "FORESTBIT": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "124:Road Spur"
+    ]
+   },
+   "GVIEWBIT": {
+    "bit": 13,
+    "positives": 3,
+    "negatives": 235,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "148:Tower, South Side",
+     "20:Tower Entrance",
+     "35:Center Tower"
+    ]
+   },
+   "HUTBIT": {
+    "bit": 21,
+    "positives": 14,
+    "negatives": 224,
+    "tp": 14,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "301:Hallway, Fire Escape",
+     "262:Hallway, South",
+     "220:Hallway, Middle"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "METALBIT": {
+    "bit": 14,
+    "positives": 6,
+    "negatives": 232,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "176:northwest post",
+     "249:northeast post",
+     "243:southwest post"
+    ]
+   },
+   "MUNGEDBIT": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 27,
+    "positives": 8,
+    "negatives": 230,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj",
+     "192:him",
+     "56:her"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 29,
+    "positives": 61,
+    "negatives": 177,
+    "tp": 61,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "169:sign",
+     "271:side door",
+     "278:counter door"
+    ]
+   },
+   "NOABIT": {
+    "bit": 16,
+    "positives": 6,
+    "negatives": 232,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "24:Huttinger",
+     "79:GloObj",
+     "195:your eyes"
+    ]
+   },
+   "NOTHEBIT": {
+    "bit": 16,
+    "positives": 6,
+    "negatives": 232,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "24:Huttinger",
+     "79:GloObj",
+     "195:your eyes"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 34,
+    "positives": 19,
+    "negatives": 219,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "196:trash can",
+     "259:pen",
+     "176:northwest post"
+    ]
+   },
+   "OUTHUTBIT": {
+    "bit": 8,
+    "positives": 4,
+    "negatives": 234,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "274:Outside Hut",
+     "112:North Side of Hut",
+     "58:South Side of Hut"
+    ]
+   },
+   "PENBIT": {
+    "bit": 23,
+    "positives": 6,
+    "negatives": 232,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "52:Fire Escape, 1st Floor",
+     "177:Fire Escape, 2nd Floor",
+     "140:Fire Escape, 3rd Floor"
+    ]
+   },
+   "PERSON": {
+    "bit": 47,
+    "positives": 12,
+    "negatives": 226,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "191:proprietor",
+     "15:customer",
+     "24:Huttinger"
+    ]
+   },
+   "PLATFORMBIT": {
+    "bit": 20,
+    "positives": 3,
+    "negatives": 235,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "61:Platform, North End",
+     "78:Platform, South End",
+     "79:GloObj"
+    ]
+   },
+   "PLURALBIT": {
+    "bit": 15,
+    "positives": 2,
+    "negatives": 236,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "8:hand",
+     "195:your eyes"
+    ]
+   },
+   "READBIT": {
+    "bit": 40,
+    "positives": 7,
+    "negatives": 231,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "169:sign",
+     "183:directory",
+     "234:business card"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "ROADBIT": {
+    "bit": 10,
+    "positives": 2,
+    "negatives": 236,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "3:Mouth of Tunnel",
+     "124:Road Spur"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 33,
+    "positives": 15,
+    "negatives": 223,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "349:men from the car",
+     "306:knapsack",
+     "38:luggage rack"
+    ]
+   },
+   "SLVIEWBIT": {
+    "bit": 26,
+    "positives": 5,
+    "negatives": 233,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "181:Border Zone, Station",
+     "143:Border Zone, Left",
+     "105:Border Zone, Center"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 36,
+    "positives": 6,
+    "negatives": 232,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "259:pen",
+     "38:luggage rack",
+     "218:rear-facing seat"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 42,
+    "positives": 41,
+    "negatives": 197,
+    "tp": 41,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "63:Gurthark Mark VI revolver",
+     "152:matchbook",
+     "101:cigarette"
+    ]
+   },
+   "THE": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 237,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 11,
+    "positives": 2,
+    "negatives": 236,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "227:wood saw",
+     "41:bolt-cutter"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 37,
+    "positives": 7,
+    "negatives": 231,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:GloObj",
+     "192:him",
+     "56:her"
+    ]
+   },
+   "TRACKSBIT": {
+    "bit": 12,
+    "positives": 2,
+    "negatives": 236,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "216:Border Zone, Tracks",
+     "3:Mouth of Tunnel"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 32,
+    "positives": 5,
+    "negatives": 233,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "231:pair of binoculars",
+     "38:luggage rack",
+     "45:space under the rear bench"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 35,
+    "positives": 3,
+    "negatives": 235,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "196:trash can",
+     "96:briefcase",
+     "79:GloObj"
+    ]
+   },
+   "VILLAGEBIT": {
+    "bit": 9,
+    "positives": 9,
+    "negatives": 229,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "293:Clearing",
+     "274:Outside Hut",
+     "112:North Side of Hut"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 30,
+    "positives": 4,
+    "negatives": 234,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "298:alley",
+     "68:open field",
+     "208:old roll of film"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 41,
+    "positives": 10,
+    "negatives": 228,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "98:pair of rubber gloves",
+     "236:pair of everyday black shoes",
+     "244:white down parka"
+    ]
+   },
+   "WORNBIT": {
+    "bit": 39,
+    "positives": 6,
+    "negatives": 232,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "236:pair of everyday black shoes",
+     "159:rumpled white carnation",
+     "79:GloObj"
+    ]
+   }
+  }
+ },
+ "TheLurkingHorror.z3.js": {
+  "repo": "lurkinghorror",
+  "source": "https://github.com/historicalsource/lurkinghorror",
+  "files": 16,
+  "sourceObjects": 253,
+  "matched": 194,
+  "ramObjects": 255,
+  "flags": {
+   "AN": {
+    "bit": 21,
+    "positives": 13,
+    "negatives": 181,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "26:iron plate",
+     "120:access panel",
+     "228:open button"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 27,
+    "positives": 33,
+    "negatives": 161,
+    "tp": 33,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:forklift",
+     "31:manhole",
+     "77:manhole cover"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 25,
+    "positives": 9,
+    "negatives": 185,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "102:office",
+     "31:manhole",
+     "119:hatch"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 1,
+    "positives": 4,
+    "negatives": 190,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "58:cardboard carton",
+     "90:Chinese food",
+     "61:two liter bottle of Classic Coke"
+    ]
+   },
+   "FURNITURE": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 193,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "62:chair"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 20,
+    "positives": 4,
+    "negatives": 190,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "231:reinforcing rod",
+     "170:urchins",
+     "45:bolt cutter"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 22,
+    "positives": 1,
+    "negatives": 193,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "132:flashlight"
+    ]
+   },
+   "LOCKED": {
+    "bit": 19,
+    "positives": 6,
+    "negatives": 188,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "119:hatch",
+     "135:padlock",
+     "108:Alchemy Department door"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 18,
+    "positives": 72,
+    "negatives": 122,
+    "tp": 72,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "102:office",
+     "79:junk",
+     "194:slab of granite"
+    ]
+   },
+   "NOABIT": {
+    "bit": 17,
+    "positives": 16,
+    "negatives": 178,
+    "tp": 15,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "79:junk",
+     "223:sewer rats",
+     "243:floor wax"
+    ]
+   },
+   "NOTHEBIT": {
+    "bit": 16,
+    "positives": 7,
+    "negatives": 187,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "148:him",
+     "24:your feet",
+     "6:your hand"
+    ]
+   },
+   "ONBIT": {
+    "bit": 15,
+    "positives": 34,
+    "negatives": 160,
+    "tp": 34,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "65:Computer Center",
+     "137:Second Floor",
+     "110:Third Floor"
+    ]
+   },
+   "OPENABLE": {
+    "bit": 2,
+    "positives": 22,
+    "negatives": 172,
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "102:office",
+     "26:iron plate",
+     "53:metal flask"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 13,
+    "positives": 23,
+    "negatives": 171,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:forklift",
+     "31:manhole",
+     "77:manhole cover"
+    ]
+   },
+   "OUTSIDE": {
+    "bit": 14,
+    "positives": 7,
+    "negatives": 187,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "127:Roof",
+     "190:Mass. Ave.",
+     "121:Roof of Great Dome"
+    ]
+   },
+   "PERSON": {
+    "bit": 31,
+    "positives": 8,
+    "negatives": 186,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "72:missing students",
+     "230:missing urchins",
+     "250:professor"
+    ]
+   },
+   "READBIT": {
+    "bit": 23,
+    "positives": 19,
+    "negatives": 175,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "229:carvings",
+     "108:Alchemy Department door",
+     "239:frosted glass window"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 28,
+    "positives": 1,
+    "negatives": 193,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "33:Kitchen"
+    ]
+   },
+   "RMUNGBIT": {
+    "bit": 11,
+    "positives": 1,
+    "negatives": 193,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "31:manhole"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 10,
+    "positives": 30,
+    "negatives": 164,
+    "tp": 30,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:forklift",
+     "31:manhole",
+     "77:manhole cover"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 8,
+    "positives": 10,
+    "negatives": 184,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:forklift",
+     "77:manhole cover",
+     "194:slab of granite"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 24,
+    "positives": 41,
+    "negatives": 153,
+    "tp": 41,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "77:manhole cover",
+     "175:knife",
+     "53:metal flask"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 26,
+    "positives": 4,
+    "negatives": 190,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "175:knife",
+     "45:bolt cutter",
+     "24:your feet"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 6,
+    "positives": 7,
+    "negatives": 187,
+    "tp": 7,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "133:brass hyrax",
+     "243:floor wax",
+     "148:him"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 5,
+    "positives": 6,
+    "negatives": 188,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "26:iron plate",
+     "239:frosted glass window",
+     "23:vat"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 4,
+    "positives": 13,
+    "negatives": 181,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "77:manhole cover",
+     "135:padlock",
+     "183:sign-up sheet"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 29,
+    "positives": 7,
+    "negatives": 187,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:forklift",
+     "194:slab of granite",
+     "219:pentagram"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 30,
+    "positives": 10,
+    "negatives": 184,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "175:knife",
+     "48:cold liquid",
+     "156:crowbar"
+    ]
+   }
+  }
+ },
+ "Planetfall.z3.js": {
+  "repo": "planetfall",
+  "source": "https://github.com/historicalsource/planetfall",
+  "files": 9,
+  "sourceObjects": 255,
+  "matched": 232,
+  "ramObjects": 255,
+  "flags": {
+   "ACIDBIT": {
+    "bit": 4,
+    "positives": 21,
+    "negatives": 211,
+    "tp": 21,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "158:key",
+     "136:cracked seventeen-centimeter fromitz board",
+     "135:B-series megafuse"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 31,
+    "positives": 7,
+    "negatives": 225,
+    "tp": 7,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "5:microbe",
+     "4:rat-like, ant-like man-sized monster",
+     "3:hairy growling biped"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 29,
+    "positives": 3,
+    "negatives": 229,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "249:stairway",
+     "215:safety web",
+     "196:bed"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 24,
+    "positives": 17,
+    "negatives": 215,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "164:dispenser unit",
+     "163:canteen",
+     "149:small desk"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 26,
+    "positives": 9,
+    "negatives": 223,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "130:reactor elevator door",
+     "107:blue door",
+     "106:red door"
+    ]
+   },
+   "FLOYDBIT": {
+    "bit": 2,
+    "positives": 37,
+    "negatives": 195,
+    "tp": 37,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "191:Courtyard",
+     "190:West Wing",
+     "188:Rec Area"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 27,
+    "positives": 6,
+    "negatives": 226,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "162:quantity of protein-rich liquid",
+     "79:quantity of medicine",
+     "218:piece of celery"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 19,
+    "positives": 7,
+    "negatives": 225,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "158:key",
+     "75:shiny seventeen-centimeter fromitz board",
+     "50:cryo-elevator door"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 21,
+    "positives": 3,
+    "negatives": 229,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "110:multiple purpose robot",
+     "56:terminal",
+     "55:microfilm reader"
+    ]
+   },
+   "MUNGBIT": {
+    "bit": 15,
+    "positives": 8,
+    "negatives": 224,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "185:combination dial",
+     "172:padlock",
+     "164:dispenser unit"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 8,
+    "positives": 63,
+    "negatives": 169,
+    "tp": 63,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "185:combination dial",
+     "172:padlock",
+     "164:dispenser unit"
+    ]
+   },
+   "ONBIT": {
+    "bit": 5,
+    "positives": 100,
+    "negatives": 132,
+    "tp": 100,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "195:Underwater",
+     "194:Crag",
+     "193:Balcony"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 11,
+    "positives": 9,
+    "negatives": 223,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "164:dispenser unit",
+     "137:cardboard box",
+     "125:glass flask"
+    ]
+   },
+   "READBIT": {
+    "bit": 23,
+    "positives": 17,
+    "negatives": 215,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "148:kitchen access card",
+     "147:upper elevator access card",
+     "146:shuttle access card"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 6,
+    "positives": 101,
+    "negatives": 131,
+    "tp": 101,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "194:Crag",
+     "193:Balcony",
+     "192:Winding Stair"
+    ]
+   },
+   "RWATERBIT": {
+    "bit": 3,
+    "positives": 1,
+    "negatives": 231,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "195:Underwater"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 10,
+    "positives": 15,
+    "negatives": 217,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "164:dispenser unit",
+     "163:canteen",
+     "149:small desk"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 25,
+    "positives": 44,
+    "negatives": 188,
+    "tp": 44,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "172:padlock",
+     "170:tin can",
+     "169:ladder"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 20,
+    "positives": 1,
+    "negatives": 231,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "158:key"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 9,
+    "positives": 6,
+    "negatives": 226,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "164:dispenser unit",
+     "110:multiple purpose robot",
+     "80:medicine bottle"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 16,
+    "positives": 5,
+    "negatives": 227,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "172:padlock",
+     "158:key",
+     "124:curved metal bar"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 30,
+    "positives": 3,
+    "negatives": 229,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "98:large vehicle",
+     "215:safety web",
+     "196:bed"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 7,
+    "positives": 10,
+    "negatives": 222,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "147:upper elevator access card",
+     "138:oil can",
+     "69:access panel"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 22,
+    "positives": 4,
+    "negatives": 228,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "37:lab uniform",
+     "22:gas mask",
+     "226:chronometer"
+    ]
+   },
+   "WORNBIT": {
+    "bit": 12,
+    "positives": 2,
+    "negatives": 230,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "226:chronometer",
+     "224:Patrol uniform"
+    ]
+   }
+  }
+ },
+ "Seastalker.z3.js": {
+  "repo": "seastalker",
+  "source": "https://github.com/historicalsource/seastalker",
+  "files": 18,
+  "sourceObjects": 255,
+  "matched": 178,
+  "ramObjects": 255,
+  "flags": {
+   ";\"VOWELBIT\"": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 177,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "111:your arm"
+    ]
+   },
+   ";BURNBIT": {
+    "bit": 7,
+    "positives": 2,
+    "negatives": 176,
+    "tp": 1,
+    "fp": 1,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "77:lot of business papers",
+     "195:Logbook"
+    ]
+   },
+   ";FURNITURE": {
+    "bit": 21,
+    "positives": 1,
+    "negatives": 177,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "160:chair"
+    ]
+   },
+   ";INVISIBLE": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 177,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "152:photograph"
+    ]
+   },
+   ";NARTICLEBIT": {
+    "bit": 9,
+    "positives": 7,
+    "negatives": 171,
+    "tp": 3,
+    "fp": 0,
+    "fn": 4,
+    "exact": false,
+    "examples": [
+     "200:Aquadome laboratory",
+     "132:Aquadome office",
+     "54:turn"
+    ]
+   },
+   ";NDESCBIT": {
+    "bit": 24,
+    "positives": 5,
+    "negatives": 173,
+    "tp": 1,
+    "fp": 1,
+    "fn": 4,
+    "exact": false,
+    "examples": [
+     "28:himself or herself",
+     "227:reactor",
+     "193:magazine"
+    ]
+   },
+   ";ON?BIT": {
+    "bit": 0,
+    "positives": 4,
+    "negatives": 174,
+    "tp": 0,
+    "fp": 0,
+    "fn": 4,
+    "exact": false,
+    "examples": [
+     "138:Aquadome sonar equipment",
+     "188:other Gear",
+     "187:divers' Gear"
+    ]
+   },
+   ";OPENBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 177,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "125:Emergency Survival Unit"
+    ]
+   },
+   ";PERSON": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 177,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "61:technician"
+    ]
+   },
+   ";SURFACEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 177,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "208:extensor claw"
+    ]
+   },
+   ";TAKEBIT": {
+    "bit": 7,
+    "positives": 3,
+    "negatives": 175,
+    "tp": 1,
+    "fp": 1,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "201:dart gun",
+     "153:diary",
+     "191:article"
+    ]
+   },
+   ";VOWELBIT": {
+    "bit": 0,
+    "positives": 3,
+    "negatives": 175,
+    "tp": 0,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "184:your badge",
+     "183:Tip's badge",
+     "182:Sharon's badge"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 26,
+    "positives": 16,
+    "negatives": 162,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "155:Horvak's locker",
+     "153:diary",
+     "131:Bly's desk"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 27,
+    "positives": 9,
+    "negatives": 169,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "163:red door",
+     "162:blue door",
+     "150:workshop door"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 12,
+    "positives": 2,
+    "negatives": 176,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "110:gash",
+     "211:whale"
+    ]
+   },
+   "LOCKED": {
+    "bit": 15,
+    "positives": 3,
+    "negatives": 175,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "178:window",
+     "155:Horvak's locker",
+     "243:viewport"
+    ]
+   },
+   "MUNGBIT": {
+    "bit": 13,
+    "positives": 3,
+    "negatives": 175,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "201:dart gun",
+     "115:electrolyte relay",
+     "239:voltage regulator"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 8,
+    "positives": 28,
+    "negatives": 150,
+    "tp": 28,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "155:Horvak's locker",
+     "154:Horvak's key",
+     "138:Aquadome sonar equipment"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 17,
+    "positives": 78,
+    "negatives": 100,
+    "tp": 78,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "201:dart gun",
+     "199:bazooka",
+     "178:window"
+    ]
+   },
+   "ON?BIT": {
+    "bit": 11,
+    "positives": 7,
+    "negatives": 171,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "91:Computestor",
+     "235:depth finder",
+     "231:sonarscope"
+    ]
+   },
+   "ONBIT": {
+    "bit": 19,
+    "positives": 24,
+    "negatives": 154,
+    "tp": 24,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "169:reception area",
+     "151:northwest deck",
+     "148:workshop"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 18,
+    "positives": 16,
+    "negatives": 162,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "150:workshop door",
+     "149:laboratory door",
+     "145:comm center door"
+    ]
+   },
+   "PERSON": {
+    "bit": 30,
+    "positives": 2,
+    "negatives": 176,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:Tip Randall",
+     "192:Tip"
+    ]
+   },
+   "READBIT": {
+    "bit": 22,
+    "positives": 6,
+    "negatives": 172,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "153:diary",
+     "77:lot of business papers",
+     "231:sonarscope"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 20,
+    "positives": 19,
+    "negatives": 159,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "169:reception area",
+     "151:northwest deck",
+     "148:workshop"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 10,
+    "positives": 16,
+    "negatives": 162,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "155:Horvak's locker",
+     "153:diary",
+     "131:Bly's desk"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 6,
+    "positives": 9,
+    "negatives": 169,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "138:Aquadome sonar equipment",
+     "119:special hook",
+     "85:lab desk"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 23,
+    "positives": 12,
+    "negatives": 166,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "199:bazooka",
+     "152:photograph",
+     "130:black box"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 24,
+    "positives": 3,
+    "negatives": 175,
+    "tp": 2,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "154:Horvak's key",
+     "33:compass direction",
+     "180:Universal Tool"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 4,
+    "positives": 2,
+    "negatives": 176,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "192:Tip",
+     "81:circuit breaker"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 7,
+    "positives": 2,
+    "negatives": 176,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "201:dart gun",
+     "77:lot of business papers"
+    ]
+   },
+   "UNITBIT": {
+    "bit": 9,
+    "positives": 3,
+    "negatives": 175,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "54:turn",
+     "217:sea square",
+     "216:meter"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 14,
+    "positives": 34,
+    "negatives": 144,
+    "tp": 33,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "179:Aquadome",
+     "177:exercise track",
+     "173:emergency ladder"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 29,
+    "positives": 3,
+    "negatives": 175,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "201:dart gun",
+     "199:bazooka",
+     "124:hypodermic syringe"
+    ]
+   },
+   "WINDOWBIT": {
+    "bit": 16,
+    "positives": 2,
+    "negatives": 176,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "178:window",
+     "243:viewport"
+    ]
+   }
+  }
+ },
+ "Sorcerer.z3.js": {
+  "repo": "sorcerer",
+  "source": "https://github.com/historicalsource/sorcerer",
+  "files": 14,
+  "sourceObjects": 254,
+  "matched": 230,
+  "ramObjects": 255,
+  "flags": {
+   "ACTORBIT": {
+    "bit": 31,
+    "positives": 9,
+    "negatives": 221,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "26:your older self",
+     "97:your younger self",
+     "4:troglodyte"
+    ]
+   },
+   "CLIMBBIT": {
+    "bit": 8,
+    "positives": 1,
+    "negatives": 229,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "177:stairs"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 27,
+    "positives": 29,
+    "negatives": 201,
+    "tp": 29,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "241:amber vial",
+     "35:soiled scroll",
+     "138:indigo vial"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 24,
+    "positives": 5,
+    "negatives": 225,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "164:heavy door",
+     "42:black marble door",
+     "63:shiny silver door"
+    ]
+   },
+   "INSIDEBIT": {
+    "bit": 6,
+    "positives": 54,
+    "negatives": 176,
+    "tp": 54,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:Slimy Room",
+     "203:Hidden Cave",
+     "148:Torture Chamber"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 19,
+    "positives": 3,
+    "negatives": 227,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "165:vardik spell",
+     "91:pile of identical scrolls",
+     "223:protagonist"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 25,
+    "positives": 1,
+    "negatives": 229,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "192:brass lantern"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 10,
+    "positives": 24,
+    "negatives": 206,
+    "tp": 24,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "227:moss and lichens",
+     "57:undergrowth",
+     "248:amber potion"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 9,
+    "positives": 83,
+    "negatives": 147,
+    "tp": 83,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "107:gnarled tree",
+     "180:hellhound",
+     "112:boa constrictor"
+    ]
+   },
+   "NONLANDBIT": {
+    "bit": 3,
+    "positives": 1,
+    "negatives": 229,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "222:Tree Branch"
+    ]
+   },
+   "ONBIT": {
+    "bit": 11,
+    "positives": 34,
+    "negatives": 196,
+    "tp": 34,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "36:Twisted Forest",
+     "222:Tree Branch",
+     "168:Forest Edge"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 15,
+    "positives": 10,
+    "negatives": 220,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "26:your older self",
+     "97:your younger self",
+     "182:kerosene lamp"
+    ]
+   },
+   "READBIT": {
+    "bit": 22,
+    "positives": 29,
+    "negatives": 201,
+    "tp": 29,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "104:signpost",
+     "241:amber vial",
+     "35:soiled scroll"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 28,
+    "positives": 71,
+    "negatives": 159,
+    "tp": 71,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "36:Twisted Forest",
+     "168:Forest Edge",
+     "85:Mine Field"
+    ]
+   },
+   "SCROLLBIT": {
+    "bit": 5,
+    "positives": 9,
+    "negatives": 221,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "35:soiled scroll",
+     "146:smelly scroll",
+     "122:shimmering scroll"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 14,
+    "positives": 19,
+    "negatives": 211,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "241:amber vial",
+     "138:indigo vial",
+     "26:your older self"
+    ]
+   },
+   "SPELLBIT": {
+    "bit": 7,
+    "positives": 16,
+    "negatives": 214,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "20:fweep spell",
+     "165:vardik spell",
+     "93:golmac spell"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 17,
+    "positives": 1,
+    "negatives": 229,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "144:darkwood desk"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 23,
+    "positives": 36,
+    "negatives": 194,
+    "tp": 36,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "64:pile of bat guano",
+     "241:amber vial",
+     "35:soiled scroll"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 26,
+    "positives": 2,
+    "negatives": 228,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "7:your hand",
+     "10:small key"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 18,
+    "positives": 6,
+    "negatives": 224,
+    "tp": 6,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "72:it",
+     "75:wall",
+     "213:ceiling"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 5,
+    "positives": 9,
+    "negatives": 221,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "35:soiled scroll",
+     "146:smelly scroll",
+     "122:shimmering scroll"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 16,
+    "positives": 13,
+    "negatives": 217,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "64:pile of bat guano",
+     "241:amber vial",
+     "35:soiled scroll"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 29,
+    "positives": 2,
+    "negatives": 228,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "199:log boat",
+     "176:car"
+    ]
+   },
+   "VIALBIT": {
+    "bit": 4,
+    "positives": 5,
+    "negatives": 225,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "241:amber vial",
+     "138:indigo vial",
+     "78:aqua vial"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 12,
+    "positives": 25,
+    "negatives": 205,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "57:undergrowth",
+     "241:amber vial",
+     "248:amber potion"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 30,
+    "positives": 1,
+    "negatives": 229,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "167:diamond-studded knife"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 21,
+    "positives": 2,
+    "negatives": 228,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "95:grue suit",
+     "60:magic amulet"
+    ]
+   }
+  }
+ },
+ "Spellbreaker.z3.js": {
+  "repo": "spellbreaker",
+  "source": "https://github.com/historicalsource/spellbreaker",
+  "files": 16,
+  "sourceObjects": 273,
+  "matched": 159,
+  "ramObjects": 255,
+  "flags": {
+   ";SEARCHBIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 157,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "78:rodent idol",
+     "172:mouth"
+    ]
+   },
+   "AN": {
+    "bit": 14,
+    "positives": 7,
+    "negatives": 152,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "124:opal eye",
+     "247:opal shard",
+     "50:ice floe"
+    ]
+   },
+   "BRIEFBIT": {
+    "bit": 13,
+    "positives": 3,
+    "negatives": 156,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "232:ogre",
+     "43:chunk of rye bread",
+     "123:smoked fish"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 27,
+    "positives": 23,
+    "negatives": 136,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:rodent idol",
+     "172:mouth",
+     "198:zipper"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 25,
+    "positives": 6,
+    "negatives": 153,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "244:trap door",
+     "188:shop door",
+     "2:vault door"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 12,
+    "positives": 2,
+    "negatives": 157,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "70:label",
+     "186:cloud of orange smoke"
+    ]
+   },
+   "LOCKED": {
+    "bit": 11,
+    "positives": 2,
+    "negatives": 157,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "223:iron door",
+     "207:cell door"
+    ]
+   },
+   "MAGICBIT": {
+    "bit": 20,
+    "positives": 7,
+    "negatives": 152,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "149:magic burin",
+     "198:zipper",
+     "4:gold box"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 19,
+    "positives": 55,
+    "negatives": 104,
+    "tp": 55,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "131:serpent",
+     "78:rodent idol",
+     "234:fangs"
+    ]
+   },
+   "NOABIT": {
+    "bit": 10,
+    "positives": 17,
+    "negatives": 142,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "234:fangs",
+     "163:lines",
+     "128:ice"
+    ]
+   },
+   "NOTHEBIT": {
+    "bit": 9,
+    "positives": 11,
+    "negatives": 148,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "9:your hand",
+     "55:your head",
+     "146:your eyes"
+    ]
+   },
+   "ONBIT": {
+    "bit": 8,
+    "positives": 28,
+    "negatives": 131,
+    "tp": 28,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:Cliff Top",
+     "242:Mountain Top",
+     "29:Cliff Middle"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 21,
+    "positives": 20,
+    "negatives": 139,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:rodent idol",
+     "172:mouth",
+     "232:ogre"
+    ]
+   },
+   "OUTSIDE": {
+    "bit": 1,
+    "positives": 15,
+    "negatives": 144,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:Cliff Top",
+     "242:Mountain Top",
+     "29:Cliff Middle"
+    ]
+   },
+   "PERSON": {
+    "bit": 31,
+    "positives": 21,
+    "negatives": 138,
+    "tp": 21,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "131:serpent",
+     "65:hermit",
+     "232:ogre"
+    ]
+   },
+   "RAIRBIT": {
+    "bit": 7,
+    "positives": 2,
+    "negatives": 157,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "147:Midair",
+     "177:In Thick Clouds"
+    ]
+   },
+   "READBIT": {
+    "bit": 23,
+    "positives": 11,
+    "negatives": 148,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "75:moldy book",
+     "70:label",
+     "213:pillar"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 28,
+    "positives": 50,
+    "negatives": 109,
+    "tp": 50,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "184:Nondescript Room",
+     "156:Packed Earth",
+     "197:Hall of Stone"
+    ]
+   },
+   "RMUNGBIT": {
+    "bit": 6,
+    "positives": 2,
+    "negatives": 157,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "75:moldy book",
+     "71:lava fragment"
+    ]
+   },
+   "RWATERBIT": {
+    "bit": 5,
+    "positives": 5,
+    "negatives": 154,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:Mid-Ocean",
+     "89:Open Ocean",
+     "211:Ocean Floor"
+    ]
+   },
+   "SCROLLBIT": {
+    "bit": 16,
+    "positives": 1,
+    "negatives": 158,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "75:moldy book"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 4,
+    "positives": 11,
+    "negatives": 148,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "4:gold box",
+     "113:grouper nest",
+     "145:bottle"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 3,
+    "positives": 7,
+    "negatives": 152,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:rodent idol",
+     "50:ice floe",
+     "139:scruffy red carpet"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 24,
+    "positives": 28,
+    "negatives": 131,
+    "tp": 28,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "149:magic burin",
+     "131:serpent",
+     "78:rodent idol"
+    ]
+   },
+   "THE": {
+    "bit": 2,
+    "positives": 15,
+    "negatives": 144,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "131:serpent",
+     "78:rodent idol",
+     "65:hermit"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 26,
+    "positives": 4,
+    "negatives": 155,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "149:magic burin",
+     "10:wrought iron key",
+     "34:pair of pruning shears"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 22,
+    "positives": 6,
+    "negatives": 153,
+    "tp": 6,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "149:magic burin",
+     "117:hole",
+     "202:ceiling"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 15,
+    "positives": 5,
+    "negatives": 154,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "145:bottle",
+     "160:crack",
+     "203:merchant"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 17,
+    "positives": 10,
+    "negatives": 149,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "131:serpent",
+     "78:rodent idol",
+     "124:opal eye"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 29,
+    "positives": 11,
+    "negatives": 148,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "131:serpent",
+     "78:rodent idol",
+     "198:zipper"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 30,
+    "positives": 3,
+    "negatives": 156,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "149:magic burin",
+     "34:pair of pruning shears",
+     "170:knife"
+    ]
+   }
+  }
+ },
+ "Starcross.z3.js": {
+  "repo": "starcross",
+  "source": "https://github.com/historicalsource/starcross",
+  "files": 13,
+  "sourceObjects": 239,
+  "matched": 174,
+  "ramObjects": 246,
+  "flags": {
+   "CLIMBBIT": {
+    "bit": 22,
+    "positives": 7,
+    "negatives": 167,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "155:stairs",
+     "128:control couch",
+     "123:bunk"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 8,
+    "positives": 27,
+    "negatives": 147,
+    "tp": 27,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "23:metal relief",
+     "196:giant spider",
+     "34:scorched alien"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 12,
+    "positives": 12,
+    "negatives": 162,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "189:outer door",
+     "39:inner door",
+     "121:red outer door"
+    ]
+   },
+   "FURNITURE": {
+    "bit": 14,
+    "positives": 2,
+    "negatives": 172,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "128:control couch",
+     "123:bunk"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 30,
+    "positives": 4,
+    "negatives": 170,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "239:cretin",
+     "8:clear rod",
+     "47:violet rod"
+    ]
+   },
+   "KEYBIT": {
+    "bit": 10,
+    "positives": 12,
+    "negatives": 162,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "84:black rod",
+     "173:yellow rod",
+     "219:pink rod"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 23,
+    "positives": 78,
+    "negatives": 96,
+    "tp": 78,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "61:random object",
+     "129:planter",
+     "155:stairs"
+    ]
+   },
+   "ONBIT": {
+    "bit": 18,
+    "positives": 45,
+    "negatives": 129,
+    "tp": 45,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "202:Bridge",
+     "10:Living Quarters",
+     "198:Storage"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 9,
+    "positives": 25,
+    "negatives": 149,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "23:metal relief",
+     "196:giant spider",
+     "34:scorched alien"
+    ]
+   },
+   "RAIRBIT": {
+    "bit": 6,
+    "positives": 2,
+    "negatives": 172,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "4:On Drive Bubble",
+     "207:On Control Bubble"
+    ]
+   },
+   "READBIT": {
+    "bit": 17,
+    "positives": 3,
+    "negatives": 171,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "238:registration",
+     "199:mass detector output",
+     "181:chewed sign"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 19,
+    "positives": 43,
+    "negatives": 131,
+    "tp": 43,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "202:Bridge",
+     "10:Living Quarters",
+     "198:Storage"
+    ]
+   },
+   "RMUNGBIT": {
+    "bit": 6,
+    "positives": 2,
+    "negatives": 172,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "4:On Drive Bubble",
+     "207:On Control Bubble"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 26,
+    "positives": 10,
+    "negatives": 164,
+    "tp": 9,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "23:metal relief",
+     "196:giant spider",
+     "34:scorched alien"
+    ]
+   },
+   "SPACEBIT": {
+    "bit": 13,
+    "positives": 6,
+    "negatives": 168,
+    "tp": 5,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "197:Outside Ship",
+     "95:Floating in Space",
+     "188:Red Dock"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 28,
+    "positives": 2,
+    "negatives": 172,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "66:red disk",
+     "103:blue disk"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 16,
+    "positives": 25,
+    "negatives": 149,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "199:mass detector output",
+     "144:space suit",
+     "176:tattered suit"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 21,
+    "positives": 1,
+    "negatives": 173,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "203:pair of hands"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 25,
+    "positives": 13,
+    "negatives": 161,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "84:black rod",
+     "173:yellow rod",
+     "219:pink rod"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 27,
+    "positives": 13,
+    "negatives": 161,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "144:space suit",
+     "176:tattered suit",
+     "220:safety line"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 15,
+    "positives": 5,
+    "negatives": 169,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "128:control couch",
+     "108:window",
+     "123:bunk"
+    ]
+   },
+   "VICBIT": {
+    "bit": 11,
+    "positives": 2,
+    "negatives": 172,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "196:giant spider",
+     "138:rat-ant"
+    ]
+   },
+   "VILLAIN": {
+    "bit": 20,
+    "positives": 10,
+    "negatives": 164,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "239:cretin",
+     "73:you",
+     "196:giant spider"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 173,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "14:ray gun"
+    ]
+   }
+  }
+ },
+ "Stationfall.z3.js": {
+  "repo": "stationfall",
+  "source": "https://github.com/historicalsource/stationfall",
+  "files": 10,
+  "sourceObjects": 260,
+  "matched": 239,
+  "ramObjects": 255,
+  "flags": {
+   ";\"Floyd's": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 238,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "247:Plato"
+    ]
+   },
+   ";ACTORBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 238,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "28:yourself"
+    ]
+   },
+   "ACTIVEBIT": {
+    "bit": 26,
+    "positives": 2,
+    "negatives": 237,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "26:Floyd",
+     "205:eternal flame"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 31,
+    "positives": 4,
+    "negatives": 235,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "26:Floyd",
+     "135:Helen",
+     "120:Rex"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 25,
+    "positives": 31,
+    "negatives": 208,
+    "tp": 31,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "119:bed",
+     "229:Patrol uniform",
+     "26:Floyd"
+    ]
+   },
+   "DESC": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 238,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "247:Plato"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 27,
+    "positives": 6,
+    "negatives": 233,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "176:spacetruck hatch",
+     "21:auto-door",
+     "107:security door"
+    ]
+   },
+   "FLOYDBIT": {
+    "bit": 6,
+    "positives": 8,
+    "negatives": 231,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "198:Deck Twelve",
+     "137:Forms Storage Room",
+     "54:Cargo Bay Entrance"
+    ]
+   },
+   "INBIT": {
+    "bit": 8,
+    "positives": 5,
+    "negatives": 234,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "90:copilot seat",
+     "50:pilot seat",
+     "111:exercise machine"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 24,
+    "positives": 10,
+    "negatives": 229,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "46:SB radio",
+     "233:jammer",
+     "29:log reader"
+    ]
+   },
+   "LOCKEDBIT": {
+    "bit": 11,
+    "positives": 3,
+    "negatives": 236,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "123:safe",
+     "244:storage bin",
+     "172:strong box"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 7,
+    "positives": 18,
+    "negatives": 221,
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "129:him",
+     "2:air",
+     "8:your hand"
+    ]
+   },
+   "NDESCBBIT": {
+    "bit": 3,
+    "positives": 1,
+    "negatives": 238,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "77:scrap sculpture"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 10,
+    "positives": 25,
+    "negatives": 214,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "151:keypad",
+     "90:copilot seat",
+     "50:pilot seat"
+    ]
+   },
+   "NWELDERBIT": {
+    "bit": 5,
+    "positives": 45,
+    "negatives": 194,
+    "tp": 45,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "32:Docking Bay #2",
+     "18:Sick Bay",
+     "49:Brig"
+    ]
+   },
+   "ONBIT": {
+    "bit": 30,
+    "positives": 96,
+    "negatives": 143,
+    "tp": 96,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "198:Deck Twelve",
+     "137:Forms Storage Room",
+     "54:Cargo Bay Entrance"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 15,
+    "positives": 16,
+    "negatives": 223,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "119:bed",
+     "229:Patrol uniform",
+     "26:Floyd"
+    ]
+   },
+   "PLURALBIT": {
+    "bit": 9,
+    "positives": 2,
+    "negatives": 237,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "25:pair of dice",
+     "83:pair of magnetic boots"
+    ]
+   },
+   "Plato\"": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 238,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "247:Plato"
+    ]
+   },
+   "READBIT": {
+    "bit": 22,
+    "positives": 25,
+    "negatives": 214,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "161:sign",
+     "210:Assignment Completion Form QX-17-T",
+     "248:Robot Use Authorization Form JZ-59-G"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 28,
+    "positives": 100,
+    "negatives": 139,
+    "tp": 100,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "198:Deck Twelve",
+     "137:Forms Storage Room",
+     "54:Cargo Bay Entrance"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 14,
+    "positives": 30,
+    "negatives": 209,
+    "tp": 30,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "119:bed",
+     "229:Patrol uniform",
+     "26:Floyd"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 17,
+    "positives": 2,
+    "negatives": 237,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "70:pedestal",
+     "23:counter"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 23,
+    "positives": 53,
+    "negatives": 186,
+    "tp": 53,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "210:Assignment Completion Form QX-17-T",
+     "248:Robot Use Authorization Form JZ-59-G",
+     "98:Class Three Spacecraft Activation Form HB-56-V"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 18,
+    "positives": 4,
+    "negatives": 235,
+    "tp": 4,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "129:him",
+     "8:your hand",
+     "28:yourself"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 13,
+    "positives": 1,
+    "negatives": 238,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "9:cage"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 16,
+    "positives": 9,
+    "negatives": 230,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "81:ID card",
+     "29:log reader",
+     "138:seven-pointed star"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 29,
+    "positives": 6,
+    "negatives": 233,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "119:bed",
+     "90:copilot seat",
+     "50:pilot seat"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 12,
+    "positives": 23,
+    "negatives": 216,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "2:air",
+     "84:equipment",
+     "236:everyone"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 20,
+    "positives": 5,
+    "negatives": 234,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "1:chronometer",
+     "229:Patrol uniform",
+     "141:headlamp"
+    ]
+   },
+   "WEIGHTLESSBIT": {
+    "bit": 4,
+    "positives": 30,
+    "negatives": 209,
+    "tp": 30,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "116:Air Shaft",
+     "127:Makeshift Connector",
+     "238:Broadway"
+    ]
+   },
+   "WORNBIT": {
+    "bit": 21,
+    "positives": 2,
+    "negatives": 237,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "1:chronometer",
+     "229:Patrol uniform"
+    ]
+   },
+   "includes": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 238,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "247:Plato"
+    ]
+   }
+  }
+ },
+ "Suspect.z3.js": {
+  "repo": "suspect",
+  "source": "https://github.com/historicalsource/suspect",
+  "files": 16,
+  "sourceObjects": 255,
+  "matched": 220,
+  "ramObjects": 255,
+  "flags": {
+   "'the'\"": {
+    "bit": 4,
+    "positives": 3,
+    "negatives": 217,
+    "tp": 3,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "82:Veronica's hair",
+     "81:Alicia's hair",
+     "79:Linda's hair"
+    ]
+   },
+   ";\"means": {
+    "bit": 4,
+    "positives": 3,
+    "negatives": 217,
+    "tp": 3,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "82:Veronica's hair",
+     "81:Alicia's hair",
+     "79:Linda's hair"
+    ]
+   },
+   ";TAKEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 219,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "87:fairy costume"
+    ]
+   },
+   ";TRYTAKEBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 219,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "87:fairy costume"
+    ]
+   },
+   "ALICIABIT": {
+    "bit": 2,
+    "positives": 2,
+    "negatives": 218,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "74:wet overcoat",
+     "49:hair analysis"
+    ]
+   },
+   "AN": {
+    "bit": 8,
+    "positives": 3,
+    "negatives": 217,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "46:irrelevant analysis",
+     "230:oriental rug",
+     "26:it"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 29,
+    "positives": 23,
+    "negatives": 197,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "96:gunbelt",
+     "94:notebook",
+     "93:reporter's overcoat"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 16,
+    "positives": 33,
+    "negatives": 187,
+    "tp": 33,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "96:gunbelt",
+     "93:reporter's overcoat",
+     "89:Veronica's body"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 27,
+    "positives": 28,
+    "negatives": 192,
+    "tp": 28,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "39:police car",
+     "251:front door",
+     "241:east entry hall door"
+    ]
+   },
+   "FEMALE": {
+    "bit": 4,
+    "positives": 4,
+    "negatives": 216,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "89:Veronica's body",
+     "82:Veronica's hair",
+     "81:Alicia's hair"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 25,
+    "positives": 1,
+    "negatives": 219,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "143:food"
+    ]
+   },
+   "FURNITURE": {
+    "bit": 20,
+    "positives": 8,
+    "negatives": 212,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "234:secretary",
+     "233:window seat",
+     "229:end table"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 10,
+    "positives": 7,
+    "negatives": 213,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "99:reporter",
+     "89:Veronica's body",
+     "88:silver bullet"
+    ]
+   },
+   "LOCKED": {
+    "bit": 17,
+    "positives": 18,
+    "negatives": 202,
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "39:police car",
+     "251:front door",
+     "191:west office door"
+    ]
+   },
+   "MICHAELBIT": {
+    "bit": 9,
+    "positives": 2,
+    "negatives": 218,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "172:sheaf of documents",
+     "171:sheet of paper"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 19,
+    "positives": 120,
+    "negatives": 100,
+    "tp": 120,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "102:him or her",
+     "101:himself or herself",
+     "99:reporter"
+    ]
+   },
+   "ONBIT": {
+    "bit": 11,
+    "positives": 1,
+    "negatives": 219,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:projection TV"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 13,
+    "positives": 36,
+    "negatives": 184,
+    "tp": 36,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "96:gunbelt",
+     "93:reporter's overcoat",
+     "89:Veronica's body"
+    ]
+   },
+   "PERSON": {
+    "bit": 31,
+    "positives": 10,
+    "negatives": 210,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "99:reporter",
+     "98:yourself",
+     "89:Veronica's body"
+    ]
+   },
+   "READBIT": {
+    "bit": 21,
+    "positives": 17,
+    "negatives": 203,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "94:notebook",
+     "73:label",
+     "49:hair analysis"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 14,
+    "positives": 13,
+    "negatives": 207,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "89:Veronica's body",
+     "74:wet overcoat",
+     "56:trash basket"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 15,
+    "positives": 11,
+    "negatives": 209,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "89:Veronica's body",
+     "233:window seat",
+     "229:end table"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 22,
+    "positives": 40,
+    "negatives": 180,
+    "tp": 40,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "96:gunbelt",
+     "95:pen",
+     "94:notebook"
+    ]
+   },
+   "THE": {
+    "bit": 12,
+    "positives": 5,
+    "negatives": 215,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "99:reporter",
+     "69:Richard",
+     "204:party guest"
+    ]
+   },
+   "TOLD": {
+    "bit": 3,
+    "positives": 1,
+    "negatives": 219,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "89:Veronica's body"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 23,
+    "positives": 1,
+    "negatives": 219,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "131:crowbar"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 7,
+    "positives": 10,
+    "negatives": 210,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "99:reporter",
+     "98:yourself",
+     "93:reporter's overcoat"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 18,
+    "positives": 19,
+    "negatives": 201,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "88:silver bullet",
+     "84:fairy mask",
+     "74:wet overcoat"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 28,
+    "positives": 9,
+    "negatives": 211,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "233:window seat",
+     "229:end table",
+     "154:side table"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 30,
+    "positives": 1,
+    "negatives": 219,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "70:lariat"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 5,
+    "positives": 3,
+    "negatives": 217,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "97:western outfit",
+     "96:gunbelt",
+     "38:western mask"
+    ]
+   },
+   "WINDOWBIT": {
+    "bit": 6,
+    "positives": 4,
+    "negatives": 216,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "39:police car",
+     "136:Mercedes 280SL",
+     "135:BMW 320i"
+    ]
+   },
+   "never": {
+    "bit": 4,
+    "positives": 3,
+    "negatives": 217,
+    "tp": 3,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "82:Veronica's hair",
+     "81:Alicia's hair",
+     "79:Linda's hair"
+    ]
+   },
+   "use": {
+    "bit": 4,
+    "positives": 3,
+    "negatives": 217,
+    "tp": 3,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "82:Veronica's hair",
+     "81:Alicia's hair",
+     "79:Linda's hair"
+    ]
+   }
+  }
+ },
+ "Suspended.z3.js": {
+  "repo": "suspended",
+  "source": "https://github.com/historicalsource/suspended",
+  "files": 19,
+  "sourceObjects": 191,
+  "matched": 149,
+  "ramObjects": 255,
+  "flags": {
+   "CLIMBBIT": {
+    "bit": 27,
+    "positives": 1,
+    "negatives": 148,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "161:stairs"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 19,
+    "positives": 13,
+    "negatives": 136,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "81:HOME",
+     "76:BASKET",
+     "65:top shelf"
+    ]
+   },
+   "CUTABLEBIT": {
+    "bit": 22,
+    "positives": 1,
+    "negatives": 148,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "59:wire"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 13,
+    "positives": 5,
+    "negatives": 144,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "61:flowswitch",
+     "59:wire",
+     "24:crushed box"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 4,
+    "positives": 46,
+    "negatives": 103,
+    "tp": 46,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "181:random object",
+     "180:underground complex",
+     "178:Zork"
+    ]
+   },
+   "ONBIT": {
+    "bit": 2,
+    "positives": 63,
+    "negatives": 86,
+    "tp": 63,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "33:first switch",
+     "32:third switch",
+     "31:second switch"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 8,
+    "positives": 6,
+    "negatives": 143,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:BASKET",
+     "65:top shelf",
+     "14:work table"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 3,
+    "positives": 60,
+    "negatives": 89,
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "151:Central Chamber",
+     "157:Weather Monitors",
+     "138:Sub Supply Room"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 7,
+    "positives": 2,
+    "negatives": 147,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:BASKET",
+     "13:machine"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 11,
+    "positives": 3,
+    "negatives": 146,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "65:top shelf",
+     "14:work table",
+     "9:front panel"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 18,
+    "positives": 19,
+    "negatives": 130,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "76:BASKET",
+     "59:wire",
+     "52:camera"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 23,
+    "positives": 1,
+    "negatives": 148,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "171:extensions"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 12,
+    "positives": 60,
+    "negatives": 89,
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "181:random object",
+     "180:underground complex",
+     "178:Zork"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 14,
+    "positives": 9,
+    "negatives": 140,
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "61:flowswitch",
+     "57:first dial",
+     "56:third dial"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 28,
+    "positives": 1,
+    "negatives": 148,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "58:vehicle"
+    ]
+   },
+   "VILLAIN": {
+    "bit": 30,
+    "positives": 1,
+    "negatives": 148,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "170:cylinder occupant"
+    ]
+   }
+  }
+ },
+ "Wishbringer.z3.js": {
+  "repo": "wishbringer",
+  "source": "https://github.com/historicalsource/wishbringer",
+  "files": 23,
+  "sourceObjects": 254,
+  "matched": 205,
+  "ramObjects": 255,
+  "flags": {
+   ";": {
+    "bit": 0,
+    "positives": 7,
+    "negatives": 198,
+    "tp": 0,
+    "fp": 0,
+    "fn": 7,
+    "exact": false,
+    "examples": [
+     "230:gnarled tree trunk",
+     "36:police radio",
+     "200:joystick"
+    ]
+   },
+   "ACTORBIT": {
+    "bit": 18,
+    "positives": 21,
+    "negatives": 184,
+    "tp": 21,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:boots",
+     "153:troll",
+     "107:vulture"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 1,
+    "positives": 2,
+    "negatives": 203,
+    "tp": 1,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "60:dead branch",
+     "230:gnarled tree trunk"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 4,
+    "positives": 26,
+    "negatives": 179,
+    "tp": 25,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "228:big mailbox",
+     "4:little mailbox",
+     "214:umbrella"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 2,
+    "positives": 15,
+    "negatives": 190,
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "190:toll gate",
+     "233:entrance",
+     "1:police station door"
+    ]
+   },
+   "FLAMEBIT": {
+    "bit": 11,
+    "positives": 1,
+    "negatives": 204,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "65:candle"
+    ]
+   },
+   "INDOORSBIT": {
+    "bit": 12,
+    "positives": 11,
+    "negatives": 194,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "116:Bridge",
+     "10:Theater Lobby",
+     "240:Inside Theater"
+    ]
+   },
+   "LOCKEDBIT": {
+    "bit": 14,
+    "positives": 7,
+    "negatives": 198,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "233:entrance",
+     "40:library door",
+     "209:display case"
+    ]
+   },
+   "NARTICLEBIT": {
+    "bit": 31,
+    "positives": 30,
+    "negatives": 175,
+    "tp": 30,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "78:boots",
+     "243:eldritch vapor",
+     "41:stunted humanoids"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 16,
+    "positives": 123,
+    "negatives": 82,
+    "tp": 120,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "4:little mailbox",
+     "78:boots",
+     "63:covered bridge"
+    ]
+   },
+   "ONBIT": {
+    "bit": 20,
+    "positives": 39,
+    "negatives": 166,
+    "tp": 39,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "116:Bridge",
+     "162:North of Bridge",
+     "177:Cliff Bottom"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 25,
+    "positives": 19,
+    "negatives": 186,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "37:carton",
+     "61:fountain",
+     "1:police station door"
+    ]
+   },
+   "READBIT": {
+    "bit": 6,
+    "positives": 29,
+    "negatives": 176,
+    "tp": 29,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "178:tombstone",
+     "120:marquee",
+     "37:carton"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 19,
+    "positives": 39,
+    "negatives": 166,
+    "tp": 39,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "116:Bridge",
+     "162:North of Bridge",
+     "177:Cliff Bottom"
+    ]
+   },
+   "RMUNGBIT": {
+    "bit": 30,
+    "positives": 20,
+    "negatives": 185,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "153:troll",
+     "105:ticket",
+     "89:pair of 3D glasses"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 27,
+    "positives": 10,
+    "negatives": 195,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "230:gnarled tree trunk",
+     "174:seat",
+     "79:desk"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 17,
+    "positives": 33,
+    "negatives": 172,
+    "tp": 33,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "60:dead branch",
+     "214:umbrella",
+     "105:ticket"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 15,
+    "positives": 4,
+    "negatives": 201,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "153:troll",
+     "5:your hand",
+     "158:small stone"
+    ]
+   },
+   "TOUCHBIT": {
+    "bit": 28,
+    "positives": 6,
+    "negatives": 199,
+    "tp": 6,
+    "fp": 1,
+    "fn": 0,
+    "exact": false,
+    "examples": [
+     "67:lobby",
+     "52:it",
+     "56:wall"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 23,
+    "positives": 7,
+    "negatives": 198,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "142:fossil exhibit",
+     "209:display case",
+     "175:thick blanket"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 26,
+    "positives": 36,
+    "negatives": 169,
+    "tp": 33,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "107:vulture",
+     "37:carton",
+     "202:goldfish"
+    ]
+   },
+   "VOWELBIT": {
+    "bit": 21,
+    "positives": 6,
+    "negatives": 199,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "243:eldritch vapor",
+     "214:umbrella",
+     "52:it"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 22,
+    "positives": 5,
+    "negatives": 200,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "89:pair of 3D glasses",
+     "175:thick blanket",
+     "150:wizard's hat"
+    ]
+   },
+   "WETBIT": {
+    "bit": 8,
+    "positives": 13,
+    "negatives": 192,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "116:Bridge",
+     "162:North of Bridge",
+     "177:Cliff Bottom"
+    ]
+   },
+   "WISHBIT": {
+    "bit": 13,
+    "positives": 7,
+    "negatives": 198,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "196:Flight",
+     "211:Freedom",
+     "32:rain"
+    ]
+   }
+  }
+ },
+ "TheWitness.z3.js": {
+  "repo": "witness",
+  "source": "https://github.com/historicalsource/witness",
+  "files": 13,
+  "sourceObjects": 252,
+  "matched": 203,
+  "ramObjects": 255,
+  "flags": {
+   ";BURNBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 202,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "114:lot of business papers"
+    ]
+   },
+   ";CONTBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 202,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "177:shower"
+    ]
+   },
+   ";DUPLICATE": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "144:range",
+     "87:other wire"
+    ]
+   },
+   ";FURNITURE": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 201,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "103:blue sedan",
+     "101:red sport car"
+    ]
+   },
+   ";NDESCBIT": {
+    "bit": 0,
+    "positives": 3,
+    "negatives": 200,
+    "tp": 0,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "114:lot of business papers",
+     "34:clock key",
+     "12:body of Mr. Linder"
+    ]
+   },
+   ";OPENBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 202,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "187:closet"
+    ]
+   },
+   ";VEHBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 202,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "103:blue sedan"
+    ]
+   },
+   "AN": {
+    "bit": 11,
+    "positives": 13,
+    "negatives": 190,
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "218:office path",
+     "214:office porch",
+     "212:office window"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 9,
+    "positives": 27,
+    "negatives": 176,
+    "tp": 27,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "199:rocks",
+     "198:dressing table",
+     "186:counter"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 28,
+    "positives": 16,
+    "negatives": 187,
+    "tp": 16,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "232:front gate",
+     "217:back gate",
+     "191:cedar door"
+    ]
+   },
+   "FEMALE": {
+    "bit": 5,
+    "positives": 2,
+    "negatives": 201,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "63:Terry",
+     "62:late Mrs. Linder"
+    ]
+   },
+   "FURNITURE": {
+    "bit": 20,
+    "positives": 23,
+    "negatives": 180,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "246:sink",
+     "245:toilet",
+     "186:counter"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 12,
+    "positives": 13,
+    "negatives": 190,
+    "tp": 12,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "108:powder",
+     "107:sample of powder",
+     "55:gun receipt"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 25,
+    "positives": 1,
+    "negatives": 202,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "43:cigarette"
+    ]
+   },
+   "LOCKED": {
+    "bit": 17,
+    "positives": 6,
+    "negatives": 197,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "248:window",
+     "235:French door",
+     "231:front door"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 19,
+    "positives": 93,
+    "negatives": 110,
+    "tp": 93,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "82:him or her",
+     "81:himself or herself",
+     "79:detective"
+    ]
+   },
+   "ON-NOT-IN": {
+    "bit": 13,
+    "positives": 3,
+    "negatives": 200,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "228:front porch",
+     "218:office path",
+     "214:office porch"
+    ]
+   },
+   "ONBIT": {
+    "bit": 14,
+    "positives": 24,
+    "negatives": 179,
+    "tp": 24,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:front yard",
+     "228:front porch",
+     "224:driveway entrance"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 8,
+    "positives": 24,
+    "negatives": 179,
+    "tp": 24,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "199:rocks",
+     "198:dressing table",
+     "191:cedar door"
+    ]
+   },
+   "READBIT": {
+    "bit": 21,
+    "positives": 14,
+    "negatives": 189,
+    "tp": 14,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "196:stuff on the table",
+     "194:book case",
+     "175:stuff in the room"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 15,
+    "positives": 23,
+    "negatives": 180,
+    "tp": 23,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "237:front yard",
+     "228:front porch",
+     "224:driveway entrance"
+    ]
+   },
+   "SEARCHBIT": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 202,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "161:liquor cabinet"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 16,
+    "positives": 17,
+    "negatives": 186,
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "245:toilet",
+     "199:rocks",
+     "198:dressing table"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 22,
+    "positives": 21,
+    "negatives": 182,
+    "tp": 21,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "220:side-yard cast",
+     "216:back-yard cast",
+     "107:sample of powder"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 23,
+    "positives": 3,
+    "negatives": 200,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "51:pair of handcuffs",
+     "34:clock key",
+     "33:set of house keys"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 6,
+    "positives": 1,
+    "negatives": 202,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "79:detective"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 10,
+    "positives": 19,
+    "negatives": 184,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "208:green wire piece",
+     "206:chunk of putty",
+     "196:stuff on the table"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 29,
+    "positives": 11,
+    "negatives": 192,
+    "tp": 11,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "245:toilet",
+     "179:bathtub",
+     "173:four-poster bed"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 30,
+    "positives": 3,
+    "negatives": 200,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "52:snub-nosed Colt",
+     "40:hidden handgun",
+     "39:muddy handgun"
+    ]
+   },
+   "WINDOWBIT": {
+    "bit": 18,
+    "positives": 6,
+    "negatives": 197,
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "248:window",
+     "212:office window",
+     "200:bath window"
+    ]
+   }
+  }
+ }
+}

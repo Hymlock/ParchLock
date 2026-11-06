@@ -1,0 +1,26 @@
+{
+  "verdict": "ACCEPT",
+  "reviewer": "/root/sorcerer_worn_blind",
+  "provenance": "Independent non-author subagent, not old bus-seat identity",
+  "scope": "Spellbreaker identity-defined Eat capability and shared-owner extension",
+  "source": {
+    "js/AttributeSchema.js": "ecacb8c77c01331f0a41e5944dec14744e7e7b78beb5b3507d9e9b2425c0f6a6",
+    "js/ActionSynth.js": "341442f89638a535ec042834e5d1e528f3a519e01d2ffd2e8d1095b2c02b2bbb",
+    "js/ModuleStatFactsClaude.js": "ef060f2b5e9c96d0ba1cc33462fbb005d792d7368f3b1ab90320f3a621e82634"
+  },
+  "immutableHashesVerified": 124,
+  "rowsEach": 309,
+  "variableFieldDifferences": 7,
+  "gamesWithDifferences": 6,
+  "unresolved": 0,
+  "operator": {
+    "pass": 13,
+    "fail": 0
+  },
+  "limits": [
+    "Seven matching no-prompt coverage gaps",
+    "Eight existing D31 failures on both baseline and candidate",
+    "No whole-title/full26 closure",
+    "No restore or physical Android certification"
+  ]
+}

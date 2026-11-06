@@ -1,0 +1,1413 @@
+[
+  {
+    "file": "img/icons/archive-16.png",
+    "width": 16,
+    "height": 16,
+    "motif": {
+      "width": 16,
+      "height": 16
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "6012b13bccc308783a3bfa2007eb7db8c2e98a029999faff1b1f0505425dc704"
+  },
+  {
+    "file": "img/icons/archive-32.png",
+    "width": 32,
+    "height": 32,
+    "motif": {
+      "width": 32,
+      "height": 32
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "f381cf2b09bf3932e811e08e43e66813100d0375ca1afe3a18f34e7f7a4e0447"
+  },
+  {
+    "file": "img/icons/archive-48.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 29.43703204047217
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "9988b4c820774a6e0012cdea771f3609ec6b8613ada1e994402221d1897de19a"
+  },
+  {
+    "file": "img/icons/archive-192.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 117.74812816188869
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "82a3ce6453ff40a6d1617e42d58fd0253ddfaf1aededbf6ad1d6221f3ff28dc6"
+  },
+  {
+    "file": "img/icons/archive-256.png",
+    "width": 256,
+    "height": 256,
+    "motif": {
+      "width": 209.92,
+      "height": 156.9975042158516
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "007202fbff222997625a5327bf84b85c9f41682cfcc92a6e5948c2472b4755d7"
+  },
+  {
+    "file": "img/icons/archive-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 419.84,
+      "height": 313.9950084317032
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "6815d2d8fe126e90cf53da1c73389971d40a7d1775e0b69406cce2692f5822d9"
+  },
+  {
+    "file": "img/icons/archive-maskable-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 255.1940663915264,
+      "height": 190.857619636833
+    },
+    "safeRadius": 156.44444444444446,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "113ac17e03c184e5af9368ccf27c4a348202f93105e59c3b67f91876233f2958"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_archive.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 29.43703204047217
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "9988b4c820774a6e0012cdea771f3609ec6b8613ada1e994402221d1897de19a"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_archive_foreground.png",
+    "width": 108,
+    "height": 108,
+    "motif": {
+      "width": 52.208129208074936,
+      "height": 39.04604604347594
+    },
+    "safeRadius": 33,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "c1e11a3bb80137e9beee6f69d1fbd2e559074caa53fa04dc7c848b44ca259e8c"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 29.43703204047217
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "9988b4c820774a6e0012cdea771f3609ec6b8613ada1e994402221d1897de19a"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 22.06170289370096,
+      "height": 16.49977273753183
+    },
+    "safeRadius": 14.666666666666666,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "773e52fde9c07d2dab372b090d0eb7c00d6cb134f21feb103587a24806737ce9"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+    "width": 108,
+    "height": 108,
+    "motif": {
+      "width": 52.208129208074936,
+      "height": 39.04604604347594
+    },
+    "safeRadius": 33,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "c1e11a3bb80137e9beee6f69d1fbd2e559074caa53fa04dc7c848b44ca259e8c"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_archive.png",
+    "width": 72,
+    "height": 72,
+    "motif": {
+      "width": 59.04,
+      "height": 44.15554806070826
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "171fcefadce54898cbadc0a1a7662e8c5a69e9e7a8b94fab99d53cdf2078fc82"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_archive_foreground.png",
+    "width": 162,
+    "height": 162,
+    "motif": {
+      "width": 79.33991289101152,
+      "height": 59.337692018825656
+    },
+    "safeRadius": 49.5,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "f78c44badf3c1cc4a61ea615e05a4e070046937cfef33e83f1447b0ce2c87944"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+    "width": 72,
+    "height": 72,
+    "motif": {
+      "width": 59.04,
+      "height": 44.15554806070826
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "171fcefadce54898cbadc0a1a7662e8c5a69e9e7a8b94fab99d53cdf2078fc82"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+    "width": 72,
+    "height": 72,
+    "motif": {
+      "width": 34.12027341945055,
+      "height": 25.518282059909474
+    },
+    "safeRadius": 22,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "dbf43aada1de0ee331f1ed7d56cd1f370805a29caae2b21f083d17460c2a5144"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+    "width": 162,
+    "height": 162,
+    "motif": {
+      "width": 79.33991289101152,
+      "height": 59.337692018825656
+    },
+    "safeRadius": 49.5,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "f78c44badf3c1cc4a61ea615e05a4e070046937cfef33e83f1447b0ce2c87944"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_archive.png",
+    "width": 96,
+    "height": 96,
+    "motif": {
+      "width": 78.72,
+      "height": 58.87406408094434
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "326dc8d949e283b0f437062cf4a4d41eddcc4a54d62f19289168198f1854a45c"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_archive_foreground.png",
+    "width": 216,
+    "height": 216,
+    "motif": {
+      "width": 106.47169657394811,
+      "height": 79.62933799417536
+    },
+    "safeRadius": 66,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "321af5a621f0b7b770299397e20be40abf74afbe567f1473f687cea61ae8b0d1"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+    "width": 96,
+    "height": 96,
+    "motif": {
+      "width": 78.72,
+      "height": 58.87406408094434
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "326dc8d949e283b0f437062cf4a4d41eddcc4a54d62f19289168198f1854a45c"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+    "width": 96,
+    "height": 96,
+    "motif": {
+      "width": 46.17884394520014,
+      "height": 34.53679138228712
+    },
+    "safeRadius": 29.333333333333332,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "0df3d1883cc7b6c53485b96d3588f06b802fc9b6e08294603a9ca9f08f1f9339"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+    "width": 216,
+    "height": 216,
+    "motif": {
+      "width": 106.47169657394811,
+      "height": 79.62933799417536
+    },
+    "safeRadius": 66,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "321af5a621f0b7b770299397e20be40abf74afbe567f1473f687cea61ae8b0d1"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_archive.png",
+    "width": 144,
+    "height": 144,
+    "motif": {
+      "width": 118.08,
+      "height": 88.31109612141653
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "544da8adcda2c8d6173d47431d417f2ad627b042543ce2f64ffc7c9872ff5c51"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_archive_foreground.png",
+    "width": 324,
+    "height": 324,
+    "motif": {
+      "width": 160.73526393982127,
+      "height": 120.21262994487475
+    },
+    "safeRadius": 99,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "299bcad937cdb653d634d7625d691b69588e0238d7d145bd82393aa9198fc580"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+    "width": 144,
+    "height": 144,
+    "motif": {
+      "width": 118.08,
+      "height": 88.31109612141653
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "544da8adcda2c8d6173d47431d417f2ad627b042543ce2f64ffc7c9872ff5c51"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+    "width": 144,
+    "height": 144,
+    "motif": {
+      "width": 70.29598499669933,
+      "height": 52.57381002704241
+    },
+    "safeRadius": 44,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "404acb4e22cfe4c27e41d442a6a2caf3537b48a7890851db1716fe8302530289"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+    "width": 324,
+    "height": 324,
+    "motif": {
+      "width": 160.73526393982127,
+      "height": 120.21262994487475
+    },
+    "safeRadius": 99,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "299bcad937cdb653d634d7625d691b69588e0238d7d145bd82393aa9198fc580"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_archive.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 117.74812816188869
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "82a3ce6453ff40a6d1617e42d58fd0253ddfaf1aededbf6ad1d6221f3ff28dc6"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_archive_foreground.png",
+    "width": 432,
+    "height": 432,
+    "motif": {
+      "width": 214.99883130569444,
+      "height": 160.79592189557417
+    },
+    "safeRadius": 132,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "3bce68dc126c1c1fc89a0d9701ed5c89974d63a3d13d9097444d2723f219dec2"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 117.74812816188869
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "82a3ce6453ff40a6d1617e42d58fd0253ddfaf1aededbf6ad1d6221f3ff28dc6"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 94.4131260481985,
+      "height": 70.6108286717977
+    },
+    "safeRadius": 58.666666666666664,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "d32f437a47b4830b1ad042dd7fd45a700de6badf35a1480f304bb83b948b0013"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+    "width": 432,
+    "height": 432,
+    "motif": {
+      "width": 214.99883130569444,
+      "height": 160.79592189557417
+    },
+    "safeRadius": 132,
+    "sourceBox": {
+      "x": 34,
+      "y": 203,
+      "w": 1186,
+      "h": 887
+    },
+    "sha256": "3bce68dc126c1c1fc89a0d9701ed5c89974d63a3d13d9097444d2723f219dec2"
+  },
+  {
+    "file": "img/icons/dungeon-16.png",
+    "width": 16,
+    "height": 16,
+    "motif": {
+      "width": 16,
+      "height": 16
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "3edd6561a114ea5f9887b511b8b10f5b887769962884bde261357e1290d4a74a"
+  },
+  {
+    "file": "img/icons/dungeon-32.png",
+    "width": 32,
+    "height": 32,
+    "motif": {
+      "width": 32,
+      "height": 32
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "fc10b4623b3ed8b2d6fc2bb359a62de34e7980d11a7e97c4239b94a0b710c2a5"
+  },
+  {
+    "file": "img/icons/dungeon-48.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 29.174293059125965
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "b02047b2634cc74a693183ea0a3e3919f7b497bb1d0bbd5aa7531c6873105c09"
+  },
+  {
+    "file": "img/icons/dungeon-192.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 116.69717223650386
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "91ed32594dc72155bfa2b6ddf584293e99d2cc9f613e74f9524ce36fabe696a0"
+  },
+  {
+    "file": "img/icons/dungeon-256.png",
+    "width": 256,
+    "height": 256,
+    "motif": {
+      "width": 209.91999999999996,
+      "height": 155.5962296486718
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "d65ced60ab8133c25de5900a5cb22b887ab7a5d919da8a579f3a91ab936a461c"
+  },
+  {
+    "file": "img/icons/dungeon-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 419.8399999999999,
+      "height": 311.1924592973436
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "887df3f03c60c05a6c829637dc4d7d9f64027229e2384a26540915aaf7dda618"
+  },
+  {
+    "file": "img/icons/dungeon-maskable-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 266.7182678703813,
+      "height": 197.69605973254482
+    },
+    "safeRadius": 156.44444444444446,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "a8662fdbd6c23f9b3777dad61e88fb3b0f881bd9973a1640d6e12221796452fe"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_dungeon.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 29.174293059125965
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "b02047b2634cc74a693183ea0a3e3919f7b497bb1d0bbd5aa7531c6873105c09"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_dungeon_foreground.png",
+    "width": 108,
+    "height": 108,
+    "motif": {
+      "width": 54.56577414996345,
+      "height": 40.44506824311773
+    },
+    "safeRadius": 33,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "93783817f4d030c62692bcdb754f14bd38df990fa89346e6ffb9764460738349"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_dungeon.png",
+    "width": 72,
+    "height": 72,
+    "motif": {
+      "width": 59.04,
+      "height": 43.761439588688944
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "04ce0bb8edf571785c6340c3b5b31cf0e8cf5aa895c76b19fd44d99f8af9c09f"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_dungeon_foreground.png",
+    "width": 162,
+    "height": 162,
+    "motif": {
+      "width": 82.92279063734603,
+      "height": 61.46376512536788
+    },
+    "safeRadius": 49.5,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "53f3ef2952ed08e2755874394c84660aa9e0c97ca2a00540cf72a86e4b04e6c8"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_dungeon.png",
+    "width": 96,
+    "height": 96,
+    "motif": {
+      "width": 78.72,
+      "height": 58.34858611825193
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "e2c64ab5f310fb87507732b51770cf5777c1c816f5d597e1ffee01e64ffc1520"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_dungeon_foreground.png",
+    "width": 216,
+    "height": 216,
+    "motif": {
+      "width": 111.2798071247286,
+      "height": 82.48246200761804
+    },
+    "safeRadius": 66,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "caa89e56626c46634de2f00122c26bf16ee3179900598fee2ec60888013e2e59"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_dungeon.png",
+    "width": 144,
+    "height": 144,
+    "motif": {
+      "width": 118.08,
+      "height": 87.52287917737789
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "40e6e9cf0afa2cedf137fb3ea87da37fc6ca6dc1e66fb852deefef0e58364fb7"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_dungeon_foreground.png",
+    "width": 324,
+    "height": 324,
+    "motif": {
+      "width": 167.99384009949378,
+      "height": 124.51985577211836
+    },
+    "safeRadius": 99,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "b214627766361c50086d6208c962ff0a3f5e8b69f913048906a6efacbd316c31"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_dungeon.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 116.69717223650386
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "91ed32594dc72155bfa2b6ddf584293e99d2cc9f613e74f9524ce36fabe696a0"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_dungeon_foreground.png",
+    "width": 432,
+    "height": 432,
+    "motif": {
+      "width": 224.70787307425894,
+      "height": 166.55724953661868
+    },
+    "safeRadius": 132,
+    "sourceBox": {
+      "x": 44,
+      "y": 217,
+      "w": 1167,
+      "h": 865
+    },
+    "sha256": "37f6fc91a9e8cfe7c5c37cfc9c5d6ec0aac54519445922d19c9e57ab08ea6f1c"
+  },
+  {
+    "file": "img/icons/forest-16.png",
+    "width": 16,
+    "height": 16,
+    "motif": {
+      "width": 16,
+      "height": 16
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "b188f04f23dfd52010ed559a4bcbde73105d960d042e8e339b4fb7c07518e4bc"
+  },
+  {
+    "file": "img/icons/forest-32.png",
+    "width": 32,
+    "height": 32,
+    "motif": {
+      "width": 32,
+      "height": 32
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "f1c86736995d93df709b62f32ae5f45245aa0d039c99bbbdcf4812da859d34b3"
+  },
+  {
+    "file": "img/icons/forest-48.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 30.070293838862558
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "501c0a48689a0a1086a909c135e8824dd2095f8791da0eb769555486e3bdc372"
+  },
+  {
+    "file": "img/icons/forest-192.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 120.28117535545023
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "030da6e68c1bec216f1379e9a6ec06514287c0bf986ebf37af7bb5bf88f322c9"
+  },
+  {
+    "file": "img/icons/forest-256.png",
+    "width": 256,
+    "height": 256,
+    "motif": {
+      "width": 209.92000000000002,
+      "height": 160.37490047393365
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "4e0c66e40a5d9da2d64eba053ed2c69e2baec9c4409d5368b5726444fbffc2cc"
+  },
+  {
+    "file": "img/icons/forest-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 419.84000000000003,
+      "height": 320.7498009478673
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "b64de14382d497f58e38c8144429a6236ecb11daf326467e0e60d67c86055428"
+  },
+  {
+    "file": "img/icons/forest-maskable-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 264.01622951415146,
+      "height": 201.7033943018067
+    },
+    "safeRadius": 156.44444444444446,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "352284d3333da6f63017eee1a8582ba5af43ad5b043f173c6e2453e63f943987"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_forest.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 30.070293838862558
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "501c0a48689a0a1086a909c135e8824dd2095f8791da0eb769555486e3bdc372"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_forest_foreground.png",
+    "width": 108,
+    "height": 108,
+    "motif": {
+      "width": 54.01298556196081,
+      "height": 41.2648970264838
+    },
+    "safeRadius": 33,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "f9c3e4b5f9d877e10ae65f89b8290edd61fd281ffd3cf3e051441ffe09992430"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_forest.png",
+    "width": 72,
+    "height": 72,
+    "motif": {
+      "width": 59.04,
+      "height": 45.10544075829384
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "c684946232ca5dd3bd6ac17b099ee4e0be263ab225b28550c1e398d2e4be8a34"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_forest_foreground.png",
+    "width": 162,
+    "height": 162,
+    "motif": {
+      "width": 82.0827260902239,
+      "height": 62.70964666229428
+    },
+    "safeRadius": 49.5,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "36e85794c1a749abac125d9033befbf12e997ffba388960e296425fbdb57b130"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_forest.png",
+    "width": 96,
+    "height": 96,
+    "motif": {
+      "width": 78.72,
+      "height": 60.140587677725115
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "f762254b4084ac26ab2e9ee405bbeb44f08790628b2cba14184b82542af50b3a"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_forest_foreground.png",
+    "width": 216,
+    "height": 216,
+    "motif": {
+      "width": 110.152466618487,
+      "height": 84.15439629810476
+    },
+    "safeRadius": 66,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "f0e6eefb41fdf7ff2bc4268b819dd095aa83610e4b0b5ab063a2c6e04bc1cd24"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_forest.png",
+    "width": 144,
+    "height": 144,
+    "motif": {
+      "width": 118.08,
+      "height": 90.21088151658768
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "c2d463897970d11abf62a297786972bb51c4586bca7311360f63e53c9001e6b4"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_forest_foreground.png",
+    "width": 324,
+    "height": 324,
+    "motif": {
+      "width": 166.2919476750132,
+      "height": 127.04389556972573
+    },
+    "safeRadius": 99,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "3294367c802add85a3bceb3cd148cebae2c57852dd5ade82cf92a02758b4c333"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_forest.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 120.28117535545023
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "030da6e68c1bec216f1379e9a6ec06514287c0bf986ebf37af7bb5bf88f322c9"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_forest_foreground.png",
+    "width": 432,
+    "height": 432,
+    "motif": {
+      "width": 222.4314287315394,
+      "height": 169.93339484134668
+    },
+    "safeRadius": 132,
+    "sourceBox": {
+      "x": 100,
+      "y": 219,
+      "w": 1055,
+      "h": 806
+    },
+    "sha256": "f33d12c8d6c61252a8bcb63bcd299e302d7f78af7833bd5194ba5a9057237649"
+  },
+  {
+    "file": "img/icons/map-16.png",
+    "width": 16,
+    "height": 16,
+    "motif": {
+      "width": 16,
+      "height": 16
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "abff4edcf0c369823ff594a9f62b8b4601902b43a25db8c1bd63c84e128d33eb"
+  },
+  {
+    "file": "img/icons/map-32.png",
+    "width": 32,
+    "height": 32,
+    "motif": {
+      "width": 32,
+      "height": 32
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "sha256": "4600a4515eb5becd6a68b02c1e5df1c7bb191e15e6538f56bfb6d60c6dd17e2c"
+  },
+  {
+    "file": "img/icons/map-48.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 29.444885496183204
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "b166b0ed3687fd9e22c652dbc13e0de3b0838a108f6fd68ea10dd73f63570cdd"
+  },
+  {
+    "file": "img/icons/map-192.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 117.77954198473282
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "b374e7189215320c9ae3b36ba43d499f602d4ebd2fb3de63d6c4ded38fc347b0"
+  },
+  {
+    "file": "img/icons/map-256.png",
+    "width": 256,
+    "height": 256,
+    "motif": {
+      "width": 209.91999999999996,
+      "height": 157.03938931297708
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "0dcef84be122ecc5e2a6610802e82b806c163f2218162ba624673a3d807239ac"
+  },
+  {
+    "file": "img/icons/map-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 419.8399999999999,
+      "height": 314.07877862595416
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "dec61ac5fead32c7debdb1ad9f5d5e541f7c9d6dff239fc174befd6016136f03"
+  },
+  {
+    "file": "img/icons/map-maskable-512.png",
+    "width": 512,
+    "height": 512,
+    "motif": {
+      "width": 266.11058513070134,
+      "height": 199.07509421991398
+    },
+    "safeRadius": 156.44444444444446,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "665053d2b57d09835ca0162c08cd6347108d77336c36c94f907ac965f4871bc4"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_map.png",
+    "width": 48,
+    "height": 48,
+    "motif": {
+      "width": 39.36,
+      "height": 29.444885496183204
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "b166b0ed3687fd9e22c652dbc13e0de3b0838a108f6fd68ea10dd73f63570cdd"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_map_foreground.png",
+    "width": 108,
+    "height": 108,
+    "motif": {
+      "width": 54.441453159905414,
+      "height": 40.72719396695214
+    },
+    "safeRadius": 33,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "12dbffb29b4f882fc3df15bcf46db9eb8434bb95427c54075feb3ce8e5ad46dd"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_map.png",
+    "width": 72,
+    "height": 72,
+    "motif": {
+      "width": 59.04,
+      "height": 44.167328244274806
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "66e4d929a305c7d45856309fe7ec083b27b924fb7978ff2a201e03fbeaec256b"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_map_foreground.png",
+    "width": 162,
+    "height": 162,
+    "motif": {
+      "width": 82.73386188867516,
+      "height": 61.89250736710051
+    },
+    "safeRadius": 49.5,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "bc782b953d009d93eaf68706f27e26ceebcd8704090441caff239ee402c9c43a"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_map.png",
+    "width": 96,
+    "height": 96,
+    "motif": {
+      "width": 78.72,
+      "height": 58.88977099236641
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "627db9f2b015c72d195fb724e69920e9cc2cec4c4b3901326ce4916684f0e1de"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_map_foreground.png",
+    "width": 216,
+    "height": 216,
+    "motif": {
+      "width": 111.02627061744491,
+      "height": 83.05782076724887
+    },
+    "safeRadius": 66,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "403b535cace835c17a0362896a39175a6983ba1a63e2972fcfa5fdd398a5a6a8"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_map.png",
+    "width": 144,
+    "height": 144,
+    "motif": {
+      "width": 118.08,
+      "height": 88.33465648854961
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "1b46b5c7057c5d51df5afa8c03c81c749a29b30d0b714a69f372ecdc8e1d9df7"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_map_foreground.png",
+    "width": 324,
+    "height": 324,
+    "motif": {
+      "width": 167.6110880749844,
+      "height": 125.38844756754558
+    },
+    "safeRadius": 99,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "7eeb8eee7fa2af5d6e894f2cfe24125edd4696021e743424a8ca20414d2949f3"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_map.png",
+    "width": 192,
+    "height": 192,
+    "motif": {
+      "width": 157.44,
+      "height": 117.77954198473282
+    },
+    "safeRadius": null,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "b374e7189215320c9ae3b36ba43d499f602d4ebd2fb3de63d6c4ded38fc347b0"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_map_foreground.png",
+    "width": 432,
+    "height": 432,
+    "motif": {
+      "width": 224.1959055325239,
+      "height": 167.7190743678423
+    },
+    "safeRadius": 132,
+    "sourceBox": {
+      "x": 38,
+      "y": 196,
+      "w": 1179,
+      "h": 882
+    },
+    "sha256": "06e21a8c88eace694227870aa2c3bf5e545fe806b037c13c25ebce22d56e5ad5"
+  }
+]

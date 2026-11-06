@@ -1,0 +1,572 @@
+{
+  "base": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-codex-ztext-r2-base-20261021",
+  "candidate": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-codex-ztext-r2-candidate-20261021",
+  "baseCommit": "7e1fa822d63e7264dc03c3852e6fb969a76a369c",
+  "sharedFiles": [
+    "js/ZRamReader.js"
+  ],
+  "hashes": {
+    "play.html": {
+      "base": "a0b6dd039e5697402783ec14a78dfc59c725484967d6ceca1dad07e5aa69106a",
+      "candidate": "a0b6dd039e5697402783ec14a78dfc59c725484967d6ceca1dad07e5aa69106a"
+    },
+    "js/Actionable.js": {
+      "base": "9f326a2924fb967c7bb7bc133152ad06064b50a1a4d975a811fd2d3099857225",
+      "candidate": "9f326a2924fb967c7bb7bc133152ad06064b50a1a4d975a811fd2d3099857225"
+    },
+    "js/ActionSynth.js": {
+      "base": "341442f89638a535ec042834e5d1e528f3a519e01d2ffd2e8d1095b2c02b2bbb",
+      "candidate": "341442f89638a535ec042834e5d1e528f3a519e01d2ffd2e8d1095b2c02b2bbb"
+    },
+    "js/AttrCalibrator.js": {
+      "base": "378f505c66b90c63ecc216cdd746c54d72ae906800b375b22f0998b4d91b1175",
+      "candidate": "378f505c66b90c63ecc216cdd746c54d72ae906800b375b22f0998b4d91b1175"
+    },
+    "js/AttributeSchema.js": {
+      "base": "ecacb8c77c01331f0a41e5944dec14744e7e7b78beb5b3507d9e9b2425c0f6a6",
+      "candidate": "ecacb8c77c01331f0a41e5944dec14744e7e7b78beb5b3507d9e9b2425c0f6a6"
+    },
+    "js/Autocomplete.js": {
+      "base": "e4b293af38fcd68448b3ad3dd8f65de78e721906bdd2dfe8ad14cd0ec2400c83",
+      "candidate": "e4b293af38fcd68448b3ad3dd8f65de78e721906bdd2dfe8ad14cd0ec2400c83"
+    },
+    "js/BufferRevision.js": {
+      "base": "e2bd1c438b0c38c4f92670895768b611a8f1c5d4ed6eafa18f369a445a8945ce",
+      "candidate": "e2bd1c438b0c38c4f92670895768b611a8f1c5d4ed6eafa18f369a445a8945ce"
+    },
+    "js/BufferTapProvider.js": {
+      "base": "c3e453ebcc2484b20ae1b7038cf0b5d3c339bce467ab05100b22af556091fd33",
+      "candidate": "c3e453ebcc2484b20ae1b7038cf0b5d3c339bce467ab05100b22af556091fd33"
+    },
+    "js/CharKeys.js": {
+      "base": "783f9c960e8a8c9e03d5f6ca22ebd9b8e1cbf9cbc8c007165b60fdf1f8e851d5",
+      "candidate": "783f9c960e8a8c9e03d5f6ca22ebd9b8e1cbf9cbc8c007165b60fdf1f8e851d5"
+    },
+    "js/Consts.js": {
+      "base": "0d48930fa361e450d52ce022abf690dee633cb2a9112a15e0adc9eba94a59194",
+      "candidate": "0d48930fa361e450d52ce022abf690dee633cb2a9112a15e0adc9eba94a59194"
+    },
+    "js/DarkScope.js": {
+      "base": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9",
+      "candidate": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9"
+    },
+    "js/DirectionalRadial.js": {
+      "base": "58e250cd9dd4ef6f01eea48c18b39b227bd1db8867dd0a5aa185d023d7c5e0ac",
+      "candidate": "58e250cd9dd4ef6f01eea48c18b39b227bd1db8867dd0a5aa185d023d7c5e0ac"
+    },
+    "js/Directions.js": {
+      "base": "a3df946e0235cabe92a5cc3d7cc1564433bd7027c43832e285221453d717df90",
+      "candidate": "a3df946e0235cabe92a5cc3d7cc1564433bd7027c43832e285221453d717df90"
+    },
+    "js/EmglkenHost.js": {
+      "base": "30aef40616ea18f0260453b60659d79c8d5e179b6a9ce54d259b9942e9287f86",
+      "candidate": "30aef40616ea18f0260453b60659d79c8d5e179b6a9ce54d259b9942e9287f86"
+    },
+    "js/EmglkenProvider.js": {
+      "base": "30d5e51b046472f0a15716566dd51ce052f452d6ac26364389a532d5dbc1ff4e",
+      "candidate": "30d5e51b046472f0a15716566dd51ce052f452d6ac26364389a532d5dbc1ff4e"
+    },
+    "js/EquipmentUI.js": {
+      "base": "ad312bee61bc35253141bea6d7c6ec745fd1a1f6e2ceb22564cf573728de9277",
+      "candidate": "ad312bee61bc35253141bea6d7c6ec745fd1a1f6e2ceb22564cf573728de9277"
+    },
+    "js/ExitCalibrator.js": {
+      "base": "e814ba8e170041d84d6c6ed5813ffe7fe6d9427a807610609ce26d510b6e26da",
+      "candidate": "e814ba8e170041d84d6c6ed5813ffe7fe6d9427a807610609ce26d510b6e26da"
+    },
+    "js/GameList.js": {
+      "base": "6f68e444731e948228f1463934b9eccabd569fa6db79e083c5b9774fad6b42b6",
+      "candidate": "6f68e444731e948228f1463934b9eccabd569fa6db79e083c5b9774fad6b42b6"
+    },
+    "js/GlkTapProvider.js": {
+      "base": "0e4fb31a4b8194159589504600ae2421d65acda0b0489f9dbdd3f911536dc273",
+      "candidate": "0e4fb31a4b8194159589504600ae2421d65acda0b0489f9dbdd3f911536dc273"
+    },
+    "js/Global.js": {
+      "base": "19cd7e731ba98f09607156ada04cb7f64be1708253294c6245d74fd07534932d",
+      "candidate": "19cd7e731ba98f09607156ada04cb7f64be1708253294c6245d74fd07534932d"
+    },
+    "js/GrammarProvider.js": {
+      "base": "e905241f68c296439b217e2560b3e5357ce569e7292d87f44400e6f028e2f372",
+      "candidate": "e905241f68c296439b217e2560b3e5357ce569e7292d87f44400e6f028e2f372"
+    },
+    "js/GraphicsDock.js": {
+      "base": "c0c183eb6a4eb779ce7b0ba4e7ec14dafc1c8ac2532e222cb1919c0203b59f9c",
+      "candidate": "c0c183eb6a4eb779ce7b0ba4e7ec14dafc1c8ac2532e222cb1919c0203b59f9c"
+    },
+    "js/HostEmglkenBridge.js": {
+      "base": "63e6b8f4bf9cf9153d81426e44e0a5627aa665e111c891cb94a2005b9d29cf07",
+      "candidate": "63e6b8f4bf9cf9153d81426e44e0a5627aa665e111c891cb94a2005b9d29cf07"
+    },
+    "js/IconRotation.js": {
+      "base": "5a6084e898fd57852174d261db64cbb0fd03ac7c58d11874bdb836795d6e3a0a",
+      "candidate": "5a6084e898fd57852174d261db64cbb0fd03ac7c58d11874bdb836795d6e3a0a"
+    },
+    "js/Input.js": {
+      "base": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681",
+      "candidate": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681"
+    },
+    "js/LearnedWords.js": {
+      "base": "d9cdc28085942d02e37aecf30a1dc7c0f32c2aaf2f0a706628a8e85c236dbcee",
+      "candidate": "d9cdc28085942d02e37aecf30a1dc7c0f32c2aaf2f0a706628a8e85c236dbcee"
+    },
+    "js/LiveHeapProvider.js": {
+      "base": "bf170f4c45fa5c434a049c7b01af0a464560d32b3564d73d8a41d8a5c08aa59d",
+      "candidate": "bf170f4c45fa5c434a049c7b01af0a464560d32b3564d73d8a41d8a5c08aa59d"
+    },
+    "js/MainMenu.js": {
+      "base": "6881269dc8e15a4dee3a69fcf2fe0a31ebba8048e4d5887a7f5a4e3b33c83541",
+      "candidate": "6881269dc8e15a4dee3a69fcf2fe0a31ebba8048e4d5887a7f5a4e3b33c83541"
+    },
+    "js/Map.js": {
+      "base": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed",
+      "candidate": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed"
+    },
+    "js/MapBeautify.js": {
+      "base": "17772927f8068c31c6ddd1b37f31fbe63f7df939125be2e55b765985966c4514",
+      "candidate": "17772927f8068c31c6ddd1b37f31fbe63f7df939125be2e55b765985966c4514"
+    },
+    "js/MapIdentity.js": {
+      "base": "8c8081bb08a44a7e5d40f4bf6e91f7196851363ede8f0d951b61da0f63964dd0",
+      "candidate": "8c8081bb08a44a7e5d40f4bf6e91f7196851363ede8f0d951b61da0f63964dd0"
+    },
+    "js/MapTopology.js": {
+      "base": "040c03a9383e2f0db5ac24a96784b8e1e441d206571a8e6683bfd4219094a91e",
+      "candidate": "040c03a9383e2f0db5ac24a96784b8e1e441d206571a8e6683bfd4219094a91e"
+    },
+    "js/Message.js": {
+      "base": "a718a237abebbab24dfd689d20b7f1246c574f92f9f0daadddabe3be12e9e799",
+      "candidate": "a718a237abebbab24dfd689d20b7f1246c574f92f9f0daadddabe3be12e9e799"
+    },
+    "js/MobileLayout.js": {
+      "base": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8",
+      "candidate": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8"
+    },
+    "js/ModuleLibrary.js": {
+      "base": "917c3b9425d29b76086fb74524a84ea93f4ab38dfc4540e89d0d52e550d6855b",
+      "candidate": "917c3b9425d29b76086fb74524a84ea93f4ab38dfc4540e89d0d52e550d6855b"
+    },
+    "js/ModuleStatFacts.js": {
+      "base": "60262729d81c8d951355b36ab416484b760e1a9224c88592fadaeaab2615e94b",
+      "candidate": "60262729d81c8d951355b36ab416484b760e1a9224c88592fadaeaab2615e94b"
+    },
+    "js/ModuleStatFactsClaude.js": {
+      "base": "a5f7e96c9222b412034f7b6e854071eafb98032a42f393daccf0b3a58d360f31",
+      "candidate": "a5f7e96c9222b412034f7b6e854071eafb98032a42f393daccf0b3a58d360f31"
+    },
+    "js/Navigator.js": {
+      "base": "cdb9963dd0d5646daa015d09a005c16e24bc8948117b85686fb1ebfa6521b6e7",
+      "candidate": "cdb9963dd0d5646daa015d09a005c16e24bc8948117b85686fb1ebfa6521b6e7"
+    },
+    "js/ParchLock.js": {
+      "base": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010",
+      "candidate": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010"
+    },
+    "js/ProductInfo.js": {
+      "base": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff",
+      "candidate": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff"
+    },
+    "js/PronunciationCatalog.js": {
+      "base": "74a470e7bbb87f829b0f13c957dbdc422a869210ae782dca150120b16f0730ad",
+      "candidate": "74a470e7bbb87f829b0f13c957dbdc422a869210ae782dca150120b16f0730ad"
+    },
+    "js/Qol.js": {
+      "base": "c10f61bd186c6403acec8020bac6986fbd50cd9df0ed631c84361f302d6ecbe1",
+      "candidate": "c10f61bd186c6403acec8020bac6986fbd50cd9df0ed631c84361f302d6ecbe1"
+    },
+    "js/ReadAloud.js": {
+      "base": "e514d732e60005d1ac848e2de056210058554c33ce8dacea27bde13909ee291a",
+      "candidate": "e514d732e60005d1ac848e2de056210058554c33ce8dacea27bde13909ee291a"
+    },
+    "js/RemGlkTapProvider.js": {
+      "base": "8c03ad6f868dd7dfffdfb8392d8d92062139b371204fe193ffa1a7210a497000",
+      "candidate": "8c03ad6f868dd7dfffdfb8392d8d92062139b371204fe193ffa1a7210a497000"
+    },
+    "js/SaveState.js": {
+      "base": "b41adcc1170addfca0f04ebd92551eef71dc0b430bc9599a349df314c74556a1",
+      "candidate": "b41adcc1170addfca0f04ebd92551eef71dc0b430bc9599a349df314c74556a1"
+    },
+    "js/SemanticActions.js": {
+      "base": "899ca60f3e66560944fa6ca244bb5b614a56cbac4efcd9d88200683b8642f73f",
+      "candidate": "899ca60f3e66560944fa6ca244bb5b614a56cbac4efcd9d88200683b8642f73f"
+    },
+    "js/StatTracker.js": {
+      "base": "c339a1930d24e7d281ea5b26e3da138f4079247153d53c25ebdc60f72311c069",
+      "candidate": "c339a1930d24e7d281ea5b26e3da138f4079247153d53c25ebdc60f72311c069"
+    },
+    "js/StatusGridDecoder.js": {
+      "base": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75",
+      "candidate": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75"
+    },
+    "js/TextGate.js": {
+      "base": "d62d3e49aa1b818700a13486e4d1c4d9ec97e0b8e96a2767c71d9c5ec291cd56",
+      "candidate": "d62d3e49aa1b818700a13486e4d1c4d9ec97e0b8e96a2767c71d9c5ec291cd56"
+    },
+    "js/Transcript.js": {
+      "base": "a3fc5c0f192890d232e3a7d2b8bd00486d2e5b15e6ef9631dc88ad2cae1ddd50",
+      "candidate": "a3fc5c0f192890d232e3a7d2b8bd00486d2e5b15e6ef9631dc88ad2cae1ddd50"
+    },
+    "js/TranslatorUI.js": {
+      "base": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd",
+      "candidate": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd"
+    },
+    "js/TurnRecorder.js": {
+      "base": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8",
+      "candidate": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8"
+    },
+    "js/Tutorial.js": {
+      "base": "fd71d986b4825aec3155a90146fe75c5ec8c4561157fa9d747ae223f9b07df70",
+      "candidate": "fd71d986b4825aec3155a90146fe75c5ec8c4561157fa9d747ae223f9b07df70"
+    },
+    "js/UndoRestoreSync.js": {
+      "base": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed",
+      "candidate": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed"
+    },
+    "js/VmProbeLoader.js": {
+      "base": "9d64ccd89783f73138095914a4c30b4664262de7e1a78eeb2d6d2faceb1c7c7c",
+      "candidate": "9d64ccd89783f73138095914a4c30b4664262de7e1a78eeb2d6d2faceb1c7c7c"
+    },
+    "js/WorkspaceUI.js": {
+      "base": "44e53e381de130860fd6b3df78355fa044850b4a87eb36a39c8081356b646672",
+      "candidate": "44e53e381de130860fd6b3df78355fa044850b4a87eb36a39c8081356b646672"
+    },
+    "js/WorldMap.js": {
+      "base": "fb23c125541b6cf9950c8cf647ac54d58dd7aae227cfef4eff6aacc4a480da01",
+      "candidate": "fb23c125541b6cf9950c8cf647ac54d58dd7aae227cfef4eff6aacc4a480da01"
+    },
+    "js/WorldMapLayout.js": {
+      "base": "208197d5d383e67b60d4ac538c8716dfc7ef5f3d52a91f6962cdf24057820fec",
+      "candidate": "208197d5d383e67b60d4ac538c8716dfc7ef5f3d52a91f6962cdf24057820fec"
+    },
+    "js/WorldModel.js": {
+      "base": "7ba2b8bf0f200f2b49a3c931646dc11044247c356f0799fa90332cab2576f084",
+      "candidate": "7ba2b8bf0f200f2b49a3c931646dc11044247c356f0799fa90332cab2576f084"
+    },
+    "js/ZRamProvider.js": {
+      "base": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109",
+      "candidate": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109"
+    },
+    "js/ZRamReader.js": {
+      "base": "028d620f0eec4e8dac08ca6db98799b2b56925623b146e9a4dca5e1fee1af418",
+      "candidate": "9e4778c4a76185812b464350cbdd1faa8a65a8bc2b2d7237eb6e5f5fa2ef2f06"
+    },
+    "js/ZvmCapture.js": {
+      "base": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d",
+      "candidate": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d"
+    }
+  },
+  "catalog": {
+    "905.z5.js": "ecea264e4e50277206e42299a3d9628362dd60a50c8e4fb5f323e794e811871b",
+    "Accuse.zblorb.js": "f8b86e8b8dd900fb04e33a2d972bdfc47c70f8e51b326d57fa554101c1bdb97e",
+    "acorncourt.z5.js": "9f9a75a026fb5b86e5b3e66ffba7fb1e4033c99890ab070eacadcc17b82c43fd",
+    "Advent.z5.js": "1612d731f796799ac400f02ec4973a426beeecefd917798df96f41df9205697a",
+    "Adventureland.z5.js": "9cc1bee2907937b95881107369d95f9508733d7ef913e66770b7f79b3ec8b369",
+    "adverbum.z5.js": "6939796e6b874fed5ef7136cd766471a6735bdf61003f6da5526ef262c1ac7d8",
+    "Alabaster.gblorb.js": "a2ac5db7501b73d8d6225908a4e6ec024acb0c5049eb934f40acb21aaa2e0434",
+    "alice3.z5.js": "a4549d48fc488430937fb7a405c908c6a248cbe0946cead971a311867c390a2d",
+    "AllRoads.z5.js": "1c7692c06732a7cde8660024bafd4403f1a1c5fd7e7e159ec60700919d7b3aab",
+    "amish.z5.js": "ec4f53c8f8e1bd327ec81e69011a2fd8a630ff09bf97f1848d69d1d352eb2373",
+    "amiss.z5.js": "e5d5bfe0d469788ce352692f0c6134421b2045282dc1107bdad658da00bbb67f",
+    "anchor.z8.js": "b861abbe706f1f5bc341f00897977c0ed6383ee7f7f2ae1c513489d6ffa71aa1",
+    "AndromedaApocalypse.gblorb.js": "960e9d35a76cd4bd801a383cdecc032e4a2df4b0f99c76075acde06acb327807",
+    "annoy.z5.js": "b1f315ff64b04b533ca4fa26cc2adb112552c9c32e3f4aa0d6fa872926522e1e",
+    "AOTYRZ.z5.js": "4824e80e5f9fc3315f8d6ecb57cc03d5e085266316ade4da394178d4a13bff79",
+    "appall.z5.js": "576e995b8f0f37503d12fd039bb88621f083e0fbcf4fad139982f11d3a034afe",
+    "Aug4.z8.js": "47851affaf95c2d162da68f970d4a14c89bc260a87fad8409fac23227632f44a",
+    "awaken.z5.js": "c2a21648bca9b94dbed3c407e7224eb8ab981085ca290e4d91161321bbc396ce",
+    "ayac.z5.js": "6cb1e96eb6117e69b72767697ff884b7779bd03cfbb9e6aecd80c7e42990d3e7",
+    "b2demo.z5.js": "9f73ffc46c37b4329b0d19cb185a19f3f4b87a14be83362ab6ad5605ece59ad8",
+    "Balances.z5.js": "f8db5800d7acc53dba378ae4dc5d99132861121d1cf31b153f955ea537988295",
+    "ballerina102.z8.js": "de468b884248f1c888459c862f94ab7e2b304083b0ffd39f0b59327a6ed6edc5",
+    "Ballyhoo.z3.js": "a3cd79ae5bd483027ee43c1235cca6514115daadc6056d8c4aa4c3488fd6a6fb",
+    "baron_EN.z8.js": "d96bceb7bf048c03f2a25615ebc9d0a0cfa7a6eda8654ee5578ee5dbe3e56c33",
+    "bear.z5.js": "e10458a56d1ee205f965dd381e12d6333b25fde452e37aeb288b7832a12b4e61",
+    "bedlam.z5.js": "497ba69eaaec3a7c5d7437f4cd3121c5c2435e11786bd77a9d5f423028749bcb",
+    "BeingAndrewPlotkin.zblorb.js": "4111fa5fa5a08832252b06bc014f5f2134a3b582ba0ed32c5c159fd34e78dc47",
+    "BeingSteve.zblorb.js": "ea65519956d69c1f3f4c97c76a8f128cd5b37061f49fb63904732ff26dbbcec5",
+    "beneath.z5.js": "fae502a245454a2e0ae78d0b2e2749be1ba000d5398e16592156b4a45715a036",
+    "BibleRetold.z5.js": "320bad89b34e667aeb97cee8c6aa90d3db21b5bea123730312b327db7e454ed2",
+    "Biscuit.z5.js": "558961ff9713cd293437a5d7eb5b18275d585b48518bcf8e8d92a39c75dfac77",
+    "bj.z5.js": "e5b185ecfb3ac65be59802c7ae9c974276cdc0e532a2a78e9849ff3b6e709c7a",
+    "blair.z5.js": "f19e5968d36aedcf56f5487f0e0f150e587e9795efb0fd2f0c88586931452057",
+    "bluechairs.z5.js": "ec341f0b3d0b156eed0c00c84bea11a00427e1f70ea9689c7b4559f3e6ef5d19",
+    "BlueLacuna.gblorb.js": "0812a14e06f5c86e20b1fd984e65ed9663f0e7a21f14982fe33c8a248b3c73c4",
+    "blues.z5.js": "eb5511c3e3ec2d29268fca3a19e9a64d1d82035ecbc92c6f937709209e65b7e2",
+    "bofh.z5.js": "bddfbc9a87b4cbcbdfebb4ee7cd9c28a7c1ce969fb223b7562017312df88c551",
+    "bookvol.z5.js": "2077b8c29f334d269b99d12c1493ffaf9e945fe8e57e09fb4ba8d4ccae933236",
+    "booth.z5.js": "017b867e5894bd6f09b300fba262c7d69a245cab637af999b97bd6caa7229b8c",
+    "boothdye.z5.js": "79a5fc141cd7108e1912faae8da785dbe093cc4237bf2dd3fcff87586c75561b",
+    "Borderzo.z5.js": "f8f5985c60427c7612f58dfe089211252497b7e7b7216d84173be438439e4d5b",
+    "break-in.z5.js": "23917a9e4b15bb5cf5ecc79cc4de3f0b5425d22d05fb8c98d316db4fdafea174",
+    "Bronze.zblorb.js": "9555924b978ad457d45ee51082712337e72459a3ad204cf619731683d309b377",
+    "bse.z5.js": "be14ceb25a2355d3952bde31cf4abe8a7c4148543bc14eebd4eef2e44f06b23e",
+    "building.z5.js": "8df3e7e3e8ff434d90b539544f26d1581455d63af4894071a4a9cb7b96cc07f3",
+    "bunny.z5.js": "462fe0ab3adb63af0d88cc1d29188ffb12d46bb8f78b27d83d96939859d80e39",
+    "burglar.z5.js": "621f42663ad588587d9ad82b55d46ec3cf8dd316af229c8ea0ee0f36fab993f4",
+    "cabal.z5.js": "9c42d7d627564cc1ca434b5fc1fb6e9ee2e01e3674f192741d003f3e74bae5ae",
+    "candy.z5.js": "3ee84f97c011c1df9117c2a814eb68898fe14f51afc384d61c56d8ebc362fe28",
+    "CatcherInTheRye.zblorb.js": "a602c0bd5da0e2a4ec4aeedb0c449932cb2f4cd737bba9418d489336da2b7bd2",
+    "catseye.z3.js": "b583bf7353a938dd0057ae2b4cd2f08a19d9b7e33f61edd7737d80536250cbc8",
+    "causality.z5.js": "c0cd0f9e897b1a2387f35293591d19d397fb54b87165c7871e039be69dec7ea3",
+    "cavern.z5.js": "74bca9105acc2a28c148ec9660277eadeed7bc437bbbae1d89ca52b2ba85106b",
+    "change.z5.js": "48bf4bccecbfdb4ae939bed5f8266a2272cda23cfdc6f062f4249030850a5842",
+    "cheater.z5.js": "792486ababc10fea5e03cfa4274650aa782515f2b2ffcf6f569b4f393d6cb986",
+    "cheeseshop.z5.js": "a6e135e1d3a2d4203b3bcf87ff3d94be48b94f0e4f46a4a9a29001c4eace937e",
+    "chico.z5.js": "ee6d52507d34ee87dc8d374a2b09dc3d300ca980ea0d822a6fdb490af26de2d5",
+    "ChildsPlay.zblorb.js": "4e590414054ad44732ef499b85560f14e8b80e24bb8d630de3bbce60b1126f2f",
+    "chix.z5.js": "2a45e363db3b72061e1ea08b7a6bc7d4a531845ab594b6fbc086a87f20aba7f9",
+    "cia.z5.js": "1bd723b4a9a5c408402f170f4b72ab0a92e3cee9c3a5d45e3efee3217f991baf",
+    "claw.z5.js": "fac06742d967584d68485260b64f5ca400519daead2c6e2010cd8efd0c3835c6",
+    "ConanKillEverything.z5.js": "bd01b4b8bdfed70f8b03ae8e66de6a8bc5940763473ba063de3b278bf99de10a",
+    "CosmoServe.gblorb.js": "d054d565ff637d27c5ce62ea630a3aaa970574d86cf0029be49dce4a0fe52650",
+    "CounterfeitMonkey.gblorb.js": "d54da18f91270c71fd5371fcce4235dc0e4be16a9517ebac8571a0aff5cd7b16",
+    "Cove.z5.js": "07a208277357fbfa33a3252c9af2fddf10f3792164a5191956d9f6c0b75ba967",
+    "CragneManor.gblorb.js": "4faad3125135ceae4d13fe8350205ba2963287358406f94af1a64eaab772d477",
+    "csbb.z8.js": "e448918f1527d3d95ed151353317670972896d0545391a8e02ca5149025c4433",
+    "CtDoom.z5.js": "404257c2b6dab5c3c10d8a3ad4c70a0738378c34015f09946804099256234dc6",
+    "curses.z5.js": "83fb7d536a579b24e8507acdf0d27a5071cbca5673a6c1d896e199119d160879",
+    "curves.z8.js": "52fd30b6df62ef0211d40815a8992d0b42cdcd66224d8a5b6364231503642c80",
+    "Cutthroats.z3.js": "c999acd85d6590f4772622e959c7729adc8341ea974c77a7e98074b4b73c7618",
+    "cycles.z5.js": "bc6ed995b894b523f24f652ef054a6aed6a3360523e48c4ea260b505e0e5c160",
+    "Cyclops.z5.js": "12f8550347a29208f4bc7c064c8b427c6cdada6a8babb9a55acf965725b9056b",
+    "Damnatio-Memoriae.zblorb.js": "331e1a54d82ca04e2bb9af976c09471b51127e60644e6df0223874d240c82052",
+    "DDIV.z5.js": "f378e6d2f826c4eda16882211ee681742bfa912f2285723f63c0a10aa7e0b458",
+    "Deadline.z3.js": "fe914f9591af48be051f8921229d95cd337ff4b2aa381cde7b54d45f9679646c",
+    "deadreck.z5.js": "e8ee90dfcaa0e4530e3bd9898f81442b50704a253c550f2ec53716171819e1d6",
+    "death.z5.js": "d28586614ade2be4a9e981ad7844011ee294bfeed3cbdd046c1b158d26619353",
+    "Debate.z5.js": "30a7940e5ebd136ae996a370a9c72fbadce91752cf71d4ef43762250ca7ecc42",
+    "deephome.z5.js": "482235cb53d33631e3c6335226691f1625b41f51170c49f78afc433974aa10b0",
+    "degen.z5.js": "cc33e99ef43702b0bbc08b2112f9e62730abfc02431017f63eb6a87311403d6f",
+    "dejavu.z3.js": "c5116a30f57cf5a04afec2d3b9f5dcca0ac3d43a0a37b4dad6790e7da3e28536",
+    "Delusns.z5.js": "b3dc8e5357faabf7283440d79202b3aaa8bbc1929934ef05f4c41e0abf80758e",
+    "detective.z5.js": "69319ae8e6616c6b13e6c29f49149d76cdad4bde83224da452b104c9c68ee7bf",
+    "devdoit.z5.js": "5e694d1dff378db0854541f54cf64ed93b147731c970b28aa5a7f841e8b0fec0",
+    "devours.z5.js": "c67bac88751e84184e65ca8fa0038585844838d7d7b852b95c6d6fb2ec6be608",
+    "dewdrops.z5.js": "9d7d0fc7218cdf58eb4ab2290bd61d5379cd4b7af1a16132ec76304e084ad55c",
+    "djinni.z5.js": "2a48502f8429ab23414108dfa6bb94538e886a91ef741187488cb6b45f82e639",
+    "dogslife.z5.js": "e84be924bb8abd5e6b1765254732986e8dc3d05273ba29b9d6b071538c6535b1",
+    "doll.z5.js": "8b69ed0827249c987a2d68f670953032aba9de30f35c30fbb7aad6d2e67e3a19",
+    "dreamhold.z8.js": "ba81fcca27d8878229bf65b5fdcdc86130c9d59412e26f318df7e259b2982824",
+    "DreamTooReal.zblorb.js": "210c0cf55bd63b2f0a0ac932d328e358cc8b159809af46fc715ade7a8e90d98d",
+    "dumont.z5.js": "2cf1811732c18beb64d3f8da001201291f1e36be4651c9c1ce6634f72392a16b",
+    "edifice.z5.js": "3c9dab6393835871d3dce2d66083c92307de5a5eceaa3ed63a0a9367dfca161c",
+    "Enchanter.z3.js": "7a7b513220908478861ee3722d604b86849a13669be923a47b5c8eafcb626e4d",
+    "Enemies.z8.js": "0dba3c4638bd5c960cebc110993a5163e723bed414e66035189718287149ed09",
+    "enter.z5.js": "4a0216a239455762bb1beb07146cfec49620fcb084c56117e8da4b6c11345107",
+    "eric_dm.z5.js": "4d8a7a7b28e5e3361664da962290d6928d22412926fc49bdbc1a0c4391e4a8a0",
+    "escape.zblorb.js": "d1f44f8c241eb49c886bc0b877f2e9f38e4eb0bb0cceab1f03c14bb1fde9860c",
+    "eto.z5.js": "c924c699fd8f7f0d7cbcba84b50087a49ac5f82195f3ca9977f5d4530cd36992",
+    "f209.z5.js": "d56f0ee7536098c02494fbf97382ea61fb5892553492067927788cf602469e3b",
+    "fable.z5.js": "43da898252c29622c0f1a6170d2d3816a83b828c16e530d4bffdf155b463b800",
+    "Facility.z8.js": "4c7a73e67013aaab6280375e2b222dfa5e093661f0cb4f69bcff4b536095d7b0",
+    "faculty.zblorb.js": "099c0372237548626be43f308dd32a317bb6ef2ae622f77fe6eef4d6ed889604",
+    "farm.z5.js": "b92c940ef322154fa635159370e6d371bfd384bd1e3a2be069061244ef98c915",
+    "FFF.z5.js": "c574e25b24aaee9de6a0518ec52c63655bc1d8ecd6cffd00d429a9472610fdcc",
+    "Figaro.zblorb.js": "457c564dea91baf59b221c82390f45ea38d6c771bfd9216c5654fd85820e2a53",
+    "FineTune.z8.js": "50c891167cc39b876774bd1232fc7646255ea76051168f4202498f08cd592726",
+    "Fork.z5.js": "bb177996fc37edf34e9be37665a26eda1ef44422c612814d17af755755361bb3",
+    "forms.z5.js": "ece0f2a7b857f704e0bebb1d03ca63cca0be8ac366fd6520c83f94d4879dd9fb",
+    "fracture.z5.js": "642137df9b5d64deba1d8b19c7211ce626f62246485ce76fbcbd20c1a0fd4ffc",
+    "frozen.z5.js": "c37c8fbe2854ffa7eaa65c7906a9afe9ca38847242ccc6c381770b403f69882b",
+    "Galatea.zblorb.js": "c07bbce5f62cd2e317a43da3f99e797ea5d0800054b0ce997d1c082601457066",
+    "gamlet.z5.js": "0ec651e257decbd6d1a3aba844561cc0ee94de352e332bb214f366554ce33f7a",
+    "gardening.zblorb.js": "51d5d99fab32bb3616190f3794d810d85e43861732a9b5f2adcd6e881ca65b86",
+    "geb.z5.js": "004e42a9728ed7b4534e83a6f94056150986327ca6ae355d3af42858f92bd205",
+    "ghost.z8.js": "8ef3d9435587ad5ea0f5e1dac30e04a16a478ec81ed272c6ddea34985fd79881",
+    "Glass.zblorb.js": "7a14cb1a61c672d494316119a48c4bf352f3ab1f6dbe607077fee1ee855fe03e",
+    "godot.z5.js": "c70feb5f4ad9d8713d54ca7c9e292f65ff789e210a0efae3c80bf428d18a4b11",
+    "gostak.z5.js": "05467c6965649dc37f42d5ee7975dd1363bab1a8caf85d5951b639079a563f49",
+    "gourmet.zblorb.js": "67dd7f4d7db6bd4ac52ef1d1f112051f446331e457275fd1917debad9202b7b5",
+    "GreatXavio.z5.js": "c359ea1411e68e5c0c8f6154bf67c335f14b50ed30b2228dfec3095aec327dd3",
+    "Grooverland.gblorb.js": "d12acd5b7443bd11969f717fbf3e9a41b3834715f4434d671bb1c4da03c9c52f",
+    "guess.z5.js": "e99ddf17384a5a0487778543e57cc6c475069e1db3210ffd50ebac93aaa0348a",
+    "Gumshoe.z5.js": "b59c4f8c97eea9e9969aaf5a9cf59604616e51fae2c32a128bc98c20869c34f6",
+    "gussdeath.z3.js": "9dc86896ae0e279e059605ad5eadec47618b05352ad7b2a5abff589e414a0e19",
+    "heist.z8.js": "f4b789e793786515409a88a0468998a5b8fa4e0895399821c73d09b9fba1db48",
+    "Heliopause.zblorb.js": "7f047acd6b057ee408dd27143e008868a00f32ed31d498c97f001e87e5cc15b4",
+    "Help.z8.js": "60d1ca6a55f47368e6a2d515c00f8c79a846192304259c52c057f0e22f0061d6",
+    "Heroine.z8.js": "cae42c90d644272aa99c20f6d11453d84b19337f9bbef0bed747a91b22023150",
+    "Hitchhik.z5.js": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+    "HollywoodHijinx.z3.js": "1067babf4f185c6c9579ce714412886d83de8410bf4a5a7212b236d96153f495",
+    "housekey1.z5.js": "9fc41ce6feb7b3874ac462bd9510d19e877e1ea5eeb5b773671549d5b62e160e",
+    "HouseOfDreamOfMoon.z8.js": "c81f7a893a8646fe3737707c62365232c6364769c7a4eff8e6923660a698a7f0",
+    "HugeCave.z8.js": "47fef20fe3853533ff087ee67027c29658edd5a4eaf752019a0ad9b48b74918f",
+    "huntdark.z5.js": "4b8d11285a2e00eac134b91aa0008f44ab2ef236a858a8ae773d8b6c23ee1359",
+    "I-0.z5.js": "3172a2db72a8f3c6d7c8682bad81a7009e8886319da9f61b4fec5b636b908403",
+    "identity.z5.js": "d22488438e4a44e2e1b237878a102af8e73644ab3180d3851806cb3db99af603",
+    "Inevita.z5.js": "c650b9368b76f47254f6eba3c520b2307b2a37b073e4ec976a27553d0ca0d644",
+    "Infidel.z3.js": "1cdda43a7bb09aceaf0b856a019a09f1bc0e430c0ee3a304f8482f7d9669b35f",
+    "Informat.z5.js": "3b809e324e1685f328bcf63d71a64e11d7145015bec810909c73f4ce2c872728",
+    "inhumane.z5.js": "940cd617f89cb8119f4fd6700756cc91a42f4a5255bb3c20d4c48452cf764646",
+    "insight.z5.js": "1a34118d1560ecb45240a6af4fdc99e9b38cc175b9c45e2193bdc7d3c09084b1",
+    "jet.z8.js": "4dd2dde3e4dfdff3c065bcf05fda9f462db443fe0909acff5e0d06b5d25478da",
+    "Jigsaw.z8.js": "80e069cb1b3d4136de5a31422096078fcdcffe981a8d75b9599e65b568710042",
+    "karn.z5.js": "9161a65e60ee84d684a89196595e82f3a94d521fb5f581da381327748caf54e3",
+    "kirby.z5.js": "b771240b143a78d1fb2b3fcadcece1b35e74180065c4371a9c8a7cf3a86373f3",
+    "KoA.z5.js": "7c4acdc065b7ec0d7732655af4d6d8db7483bd53c3f9313668b736743ae07c15",
+    "kooku.z5.js": "9ab7ac8d82c510261963ed58cb8c723acc5ce5771fd34c0036f5f0ba39cfa546",
+    "lambs.z5.js": "246565f15e3a3b80958079a5c09cb5c66f1e19b5406bf8ae262dbd80779e0b42",
+    "lambs2.z5.js": "47344e7adcdff1e6fd09da475687ca7911d2847f90bea9c53221187e90dea972",
+    "largemac.z5.js": "2e28401b8d5ebbea29f32c63d2a2403cb7b20334132442e646b04d6aae37c911",
+    "LASH.z8.js": "8da2b7e0ec873672cf03d4cff7279a97bc9e6255a0fe99b666ef246133414975",
+    "LDoDoom.z5.js": "91172b28e30dcacae8c235499ae7216b09b8db18e6445a724de347889468dc31",
+    "LeatherGoddessesofPhobos.z3.js": "5a0bd659782f91639c54ab1034390af315eba596fc9c7eab0163a03556c14a8c",
+    "library.z5.js": "b95647a1bd118dfa5f27374fd10d5673bb0b27b4578f1a0cea2819e6740aabb2",
+    "limp.z5.js": "cf9f8f0fb2d9f013ec3ea46073e4d1591b7180dd2a308e90b4233b1e9804d496",
+    "lists.z5.js": "808b0092182b1e334b555a372cccebc1cc1279b714bb99c1e83543cc548db403",
+    "LLR3.z8.js": "4efb8530f80dc302b58f47e0db27659a2a5e63f870aef304c32b6d068ffb296c",
+    "loose.z5.js": "dbd82bba0a7f4d2fc279722150b7f5b20662c99ff745fedbc11e8b00e3212b76",
+    "lost.z5.js": "2c06f8bf9e68109a0146415b60c4a723a32741a2a1c5d2b3cc5fac4f2c4c6e15",
+    "LostPig.z8.js": "9f0bb7dbc06adf972d20725b83adb3a1c57b55f6b9f1aa84bbe7c190b056c1c6",
+    "ludicorp.z5.js": "3333ccc46d2446197a7a8616e897449f570eec9569344f13e402318a168aff4f",
+    "magic-toyshop.z5.js": "09245d7e4823562518b41ca8a6ee08122b3c8ec775e4e2316735c75b612292cd",
+    "MakeItGood.zblorb.js": "23598d7d7e681ee22b9c867eb5ffba10d118da9bcfa9c0d38215609e6011adf9",
+    "mary.z5.js": "6436a198dc7e07275e180a4443c3fdd2270c37dc0a4d81554b5e423d1584cb58",
+    "Mask.z5.js": "aa48c49569d675b06e6d9f4405e1c37a1fff26d86d56f89652bb4084b7b91cae",
+    "medusa.z5.js": "5055a3bb1f26a89a7eed9142bc58b6612b6132cca2af6a12ea146853ac8f2cd4",
+    "Mercy.z5.js": "e9459642771bf7fd168d7591dc73409b710fcf14ae6db063e679d3ac884fc231",
+    "metamorp.z5.js": "580c89dcb95371815b9f184eec5fd9cb76dbd30c9dd501ab2c6303f98ea4a435",
+    "mhpquest.z5.js": "b2aa7c8ebc69988071aa12839cd9b540628fd74a1a0caa49c63cc1132f1ec635",
+    "mimesis.z5.js": "bfbcfabfa3177c67bb2b6c97f723561194713edccdee05f4ed27777df8ee3e8e",
+    "mindelec.z5.js": "26732e97d7ffa2b061cff2514b86f06e4caf8fc6d29446ba56698fbbd4a9ad37",
+    "minster.z5.js": "37d5efea77a528a39c03540d7083bd324ea06158bfdf51e8d7df55120165e3a7",
+    "Mobius.zblorb.js": "70455fa142e8642b2db6c2311c433e0f19aea07173b37c18bb334d1cc210e0e3",
+    "moonglow.z3.js": "4fc1d56779dd0163ce70eabfc1382759465da9d3dbe4f6f6d8f79331726cb448",
+    "Moonmist.z3.js": "f7d3ac2310279c49de7b16902d3b9045a2025bdcd11379a353083bc59330a3f2",
+    "Mulldoon.z8.js": "1439e2008a80b7d64ea5e0e371f2646826a4547b93145afb201d4e0ce30f033d",
+    "Mullmurd.z5.js": "a57fff0c5cd849d5934f97b39cb8436fba8afbda145ffb738bbe5316997a9304",
+    "muse.z5.js": "6efbbdc00ac746aa0935f8176997aa644e8a4fe6e22ac24b53a42972767a2347",
+    "musician.z8.js": "c888e44264482962d9eae3dae163c84e39b03b148da7a24aa6538478748a1102",
+    "newday.z5.js": "457b41ce5fdf385d6535bd4d5147f9687724c60b206bf9690e339d78cdc31411",
+    "night.z5.js": "b011fe8b95952d42c7d9a91288f76286b54401219883ba8edbff79c48ff3a6f9",
+    "NightBeforeChristmas.zblorb.js": "63ad6fe2caa5454be2d83524c0632df9f2c1aded0ba6011c06b5e14aeab08232",
+    "ninepts.z5.js": "c62e9a365a97446fff0ef8d153f63e0ce1f73b562a193422e94f5b0daeeb1e58",
+    "njag2.z5.js": "49e778fb9c372b7017d6d0204f97cac8104460523f01c72668511e0514276233",
+    "noroom.z5.js": "8595734a7426d9ba06cdfa9a0bd8a57cc79c28ccdd9aebb61e80fbc2a3ed18f9",
+    "oad.z5.js": "bfc0b5fac00757870e3d8723793852ba26bf045f99f0cd835f117c2bb4f3a54d",
+    "omniquest.z5.js": "13e9c8b670c2b39183a95da63dadfda7bff4216e13eab4820e0f0ca3afb0e15f",
+    "orevore.z8.js": "ec87899e1ab09635039eb4beae223bc6bb892c11a02fc5e1975a5858519b11b6",
+    "orion.z5.js": "ae2f8bd7164c979e2347e830acc79885e469c871b11ac859b2086b7b2736c448",
+    "pad.z5.js": "e12ed600b095d433a11d149b9fb46019c4d13ca0da3d0c8f3cc9f3e57d882128",
+    "paperchase.z5.js": "0dd2c00593b4e1d5fc3557901f0ffe309c50026f03689a87b96ac4af574dd158",
+    "parallel.z5.js": "5e56b230cbb2382694d8072d76ea7bd4f37ece63aa0395e6b7719bab7c345b19",
+    "PataNoir.gblorb.js": "039e5e89369f92b42672326a3648aeaf6c50128e33682bfec8a58aefa8e48197",
+    "Peacock.z5.js": "a7b6a9c6aca1c5041e5d88bd34053370a7dd7f4b2f2001c5396aaf138846816c",
+    "pentari.z5.js": "e6f2c523f82550d1fdd1119b2773f7f07d7eae2cf600cf53d0cb8593be5525f5",
+    "permagic.z5.js": "36a9683562f82c1ab3a6fff8eb195ad3b7ebd7b1bfa0b07bec752a5a757ac4e6",
+    "PerrysWorld.zblorb.js": "5d30775e396e5f7e20f2cd79cb1508d6995165fabfedb7d477e55d9f6dbf7aed",
+    "phlegm.z5.js": "3349ff4ddbe2e6b6177831869f9cf2faa21ce9933082aff7eb18cf59cd74d3ea",
+    "Photograph.zblorb.js": "3f443f41075db972af8f11c5f6cf5c6fc0c7253adb439ef9c24ffc06039a45d2",
+    "photopia.z5.js": "70b1b4b9bc23e00f85518b98539d723ec4c34df276d3241d4c804fccbaa50aef",
+    "piece_v3.z5.js": "3e0c3f87e5ae5ace59ec620291d4b42d5d97f14e650f60d287093bcbcede6779",
+    "Planetfall.z3.js": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064",
+    "PlunderedHearts.z3.js": "dd8dc2268adbc9981971ac885b21b0d9dec6db6f06efb368f86b28ec201b1c64",
+    "praser5.z5.js": "89cfdd6dc49e9c70e68c9106bfd3844d9ea26b9abb028f81d5bf6c4de46e6f95",
+    "Primrose.zblorb.js": "e0f303976ca348e5a8e0afd7d72c753b98a1b70eee35eeaa224944edbc188733",
+    "punkpnts.z5.js": "29f9b94021b974ea0ce2fb5be013414edb61c379b74c4836c1c9b20575e0380a",
+    "PUTPBAA.z5.js": "26d98d0524f8f241cc2b71929a6011d2f6955bd32ef8a81236c68da4b8458e56",
+    "Ralph.z5.js": "2e0892a054ca053fb7fe999b7b6e0d7d42cdbafc467577b2dedaa656245ddb79",
+    "rameses.zblorb.js": "e8300f69e1b8522d1593cb26a546b6cec05174ade52294e0240694a9f713d77c",
+    "RBD.z8.js": "9104db6c3d6699ba15aec7463bfeaa69fc239938a84d610c8f58001cd9616c24",
+    "Relief.z5.js": "3d99daf541c119b9c791692ef6da45edf250307b824be6726dbc56f7b52617b7",
+    "reser.z5.js": "9416f12f9d8b120ed912dd8a21d2c56e4563fc8169fa99ebd243faadb36fd4b1",
+    "reverb.z5.js": "9f23938a1887a890e7bc6bc8d3985788e7429efbec3e20eb30cbf8a256e24db4",
+    "ribbons.z5.js": "328a184731504ab1399f572a89d82762877582be39b2ed6563710ea8b30f0b04",
+    "risorg.z8.js": "a33865a0ad09406b37ccd15bf9c327a2989a09292aeb12b4b08049fe7503b141",
+    "RobinAndOrchid.gblorb.js": "343cc1054a60e4726b970bce8d34c7317da69e6e6ed18545b842d81fe049f542",
+    "RoTA.zblorb.js": "a1ffaaf2e15ec71168889bd6d0991569f4558b88b821531259b5685ade213553",
+    "RoversDayOut.gblorb.js": "06fda8c8afcc03412867954c3ab0640c6174d9208f228503d55b5a5c3e1e66e6",
+    "RtDoom.z5.js": "8cbdc1fe821084f929b7e194183c3c5413bd9aae25fe14614a52d3bdb3cdee23",
+    "samhain.z5.js": "6ffc6604b29d76070baa4b69fe06a678c744db118d31d3bd0823d6a66e2e6fd3",
+    "saveprinceton.z8.js": "d8138a22adcdfbdbf5f72803a7a2a6fe82749318b4883384e8da81beacad5d1d",
+    "Savoir-Faire.zblorb.js": "901eb1a7bc0b596befebf79a0406388d22e1ff82430f74c6d4d77bf6202ff8c1",
+    "School.z5.js": "febee3cb4f2cc0f0463aba84c63a0f4cf6c2b827f4371610681f25cb01abad7a",
+    "schooldays.z5.js": "f72079d0fc9fe5028c27e4220dfad21c62693c9d830042232b42833f5edfbe87",
+    "ScrollThief.gblorb.js": "86ee006c5ec4e702588ce0e3eba4deafc2abccdfe10544f0030729050fcd4b34",
+    "Seastalker.z3.js": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+    "selection.z5.js": "d98bda1cd1d64e6d2f604dd327d3c392b1b09b5b22a738295133cd0728288a90",
+    "sgate.z5.js": "785daadcda50a3b0e71c49954634e04e95ece9c3dd66ec7d0b56daaf7b2f3a57",
+    "shade.z5.js": "323b87d309a6fe198c3f7d0a8329c8cf4e370deeb1ff70cf26358fccf4ed3334",
+    "ShadowOfMemories.zblorb.js": "e2fae68e5e8a20561d6848d5307206b89d948d413b11d4f5053015c2cdb1e044",
+    "ShadowSoldiers.zblorb.js": "84aa9c2d7db260cb39402887c13fa702a94187b346126b1e1f9d21a950eb3ea4",
+    "Shapes.z5.js": "26b0f727e8b9cfb57fa42ec4ef918fc35aefe0eb81caafb0ada76ec9b9abf5f9",
+    "sherbet.z5.js": "726725d5e5e70b66931afc150aa99de572d6e22d246936d6de88af733a1607f6",
+    "Sherlock.z5.js": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+    "Slackerx.z5.js": "9d59cd5de41496c6debad4050aa5dcfc685056ea197e3da3c2417a1b54ffeef3",
+    "SoFar.z8.js": "0db4e1a9fba0822ec7fc97a0f65b67effc5bcd12abe66563c529c45397f3ff5a",
+    "solitary.z5.js": "9edc3bcfb33453b2762457e9e302bf54cf4d750fd86f8bb9488386e48790e8dd",
+    "Somewhere.z5.js": "3c281c5a9e2a8eafd2d6cd31fc913f4eb709f738aab5bced267c0f6183ae3068",
+    "Sorcerer.z3.js": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8",
+    "spacest2.z5.js": "74f38b94476f6050a09a9bddfd71523c3101d8c4a9f9c05a2dcc75debb1ce856",
+    "SpAdventure.z5.js": "f81809787d29a53eb629d40b0bb86e7f07819fe84f57cb6c84e50cb75a72ab4a",
+    "Spellbreaker.z3.js": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+    "spirit.z5.js": "857f34dadc54c528d6959f4528c97960fbf1eed77c903cb8f6d5a5e5b42e93f0",
+    "sporkery1.z5.js": "06da263dc661f60dc343e8dab7ead4bd1a6739982c0ca800043462443d8c1f4b",
+    "spot.z5.js": "dd8a47bfd9809de6390369a2d66a239206f1f3ab1466b0672d35c841c13160db",
+    "spring.z8.js": "35a1ba94fa5ce215c20fae374700c5b501b7b519cea5e0da259f2606ffd4a7e8",
+    "Starcross.z3.js": "f89cb5521cfe2851da075cbecd3f4fb5b855e75a266c748171be7f3da834ce5a",
+    "Stationfall.z3.js": "2121546d5874ad023d162af7d78f8820920583894294f9e827c654da19784a1d",
+    "stiffmst.z5.js": "3b1df0ae480c68a34b5f76ca801387589164ed0e4321c0cd0a824da09156f49e",
+    "Sushi.zblorb.js": "5a900ec47e0725a0a587d55025879da76586fc72eea8edabe93a2d8bee4049bb",
+    "Suspect.z3.js": "075074c8de60801f83d0f422ee6ae512877cf12e4d6a4034f7e5b6c862f5b9b8",
+    "Suspended.z3.js": "252462be2eb7efb428e905041eedfdb60cb69f1154e79e85d6adc2d934553d36",
+    "sutwin.z5.js": "1978baa372b08e3d370d2e56a636ab59c57c1888b9f17f8624e68d306be5d25e",
+    "suvehnux.z5.js": "15ebb27a47c99e2c011dae6e7936715a418be15104144daf8a2bf1e95738866c",
+    "Swineback.z5.js": "a8751b34ecb179d8eb8af49c61e428f444d979fce4d2631810823662cbafd9b3",
+    "sycamora.z5.js": "6b08e75bf2e642c979c6cc945b58461f3754d11aaa239e9fecc8b3bdca656fe7",
+    "Tangle.z5.js": "93bb78889165cf64c115b849c971939b7d53dc16ee6365fc289be7d8129d8bd2",
+    "tatctae.z8.js": "468098dbb20db118cafab8c8abc21bc7b026126c1c9edebe8bb06e3e21a6c532",
+    "TCOTY.zblorb.js": "b7024af2c1d7fc01d873fffaf8f26ec361acce06535e5ffeca0294df8fa2fcb5",
+    "teacher.z5.js": "e0f7dd30b5a441814bca28e8cba818b5bc544f3e5bea1a1f2c824c654094b5ee",
+    "tell.z5.js": "97b750991f39c9b47f8f172bebdb69533a151e00354cf23f58a2922d4211929d",
+    "temple.z5.js": "c78904b3ec37d03d7d949559849e9ac53fd1378458577e548580e8f6303e69be",
+    "terror_tabby.z5.js": "dd2f33a2740fc9700bbca5e00ac0c1254cff1230da58af711d0642ee06dce424",
+    "tess.z5.js": "888487d92465138a84d78d81b7526d8138e3dbb1eff66504683de086d63a9b82",
+    "theatre.z5.js": "6f2c9714ad9004db894443043f9730a105503fb5491f8d3da99408817af60052",
+    "thegreat.z5.js": "b8065437364b53819846c17ef4f9f5da8fe420d0eaf3c0626f9d7a7ea16b2915",
+    "TheLurkingHorror.z3.js": "5ccb6abc72c122479ec9b099fbf3b084f9c06b3a8b64ed09d398db3f7425c5c4",
+    "TheWarblersNest.zblorb.js": "9b4cddde46ddca0f0fe7b8a66b64732c22e158481adae9fcb27061739d6ba529",
+    "TheWitness.z3.js": "cb84cdddd8f57c448f6820a52b9545f0508926eb9d33800ac13e620a60bf13b7",
+    "thorn.z5.js": "90c316394583031ebcf19c6836cd85098687408c618b4950199c9186b2106794",
+    "tirehoax.zblorb.js": "3f570f54a9c73f68a803f7404d1850057d9fc34a1315459d7552165fb96694fa",
+    "tk1.z5.js": "e6fdfbc69ec518fa14af643915684a28de3eabe12548f0b8cf34a7c933f2cce7",
+    "Tokyo2.z5.js": "4022d6b170a0d04a8bc9fff7088e4853f1d8d11f66079f6d4717a75376fa4733",
+    "TreasuresofaSlaversKingdom.z8.js": "2421ee4a11576f49c7995bd3386bff40eca50fbe71678f397a17538cf3c0bdd6",
+    "troll.z5.js": "4b8b4486f941a3a22e1262d626d544fabece483e7ac828edba629d038c49ce28",
+    "tryst205.z5.js": "5510040d7d04e3ea99e9a63191a5fdf57aa3a661478f6a7774f9f68f78005e37",
+    "tube.z5.js": "6e05d52f31595222ac0b8659be25d61ba042f3f5e14e6f1d8788b1dcf68dd67b",
+    "uhoh-demo.z5.js": "32bfae9f82a8486149909d47eaa13f1a790fe175eaef40db4b37b93ad9d200a2",
+    "under.z5.js": "520334e1205d9dd680e64211d26b066d6f1ad39bfb338db9a2eefc24ecb5fa71",
+    "Vacation.z5.js": "b2286e73c96953dd051b55a94eed9028ea345ab86fb99b395ccfe7ded3dfaab6",
+    "vampire.z8.js": "1e657f5d38f12909bb65607357d1223998115bba8e0e60e6a7b907e01b4c49c9",
+    "vespers.z8.js": "34c2c21c4fb97943fc4b11f0523a0af07cc369cc5d870fd2217417611678c642",
+    "vgame.z8.js": "df518d60bb357b158c3b33912c40ff3101e7c3a1ca9ff944a770f342c5427c4d",
+    "vindaloo.z5.js": "87fa2d2f4e0fed7d18ef1fa7de718c987385917acaab979cb0ec7c5f0f3f18bc",
+    "vision.z5.js": "9b3cb92f7c419393c5258f994d05f653870465f099a68d90b6d21634976d583b",
+    "visitor.z5.js": "45f5845c26f19a20dd4dd90ff5dec98da3b8921d5dc09c8bde8dbf550880979b",
+    "wadewar3.z5.js": "0c2a3bbc00b369478dd6e2a377b28eb600997c377fae97661b93768fa9a8858d",
+    "Wallpaper.zblorb.js": "608f35d7cc87234c21eafc1d3f5fb41e5e53a277377d81d176cd3f5205b53c2b",
+    "warp.z5.js": "0aaf30f199ca5fb2ff620e09ea30d3ee2db62f4cca91187f4c2b756e0f8bb069",
+    "weather.z5.js": "97e65397a33b6cc0d7009bbc825ca75ae6de153763c3fe7c1e6cb3a4e70d85a0",
+    "wedding.z5.js": "4adbe77d2384357cf9dd3272015b269bbf77ab1907e2c6027aeb7c93cb346d16",
+    "weirdness.z5.js": "370e20774b8578947f222b050019596605954a830a053e98a1da07cd5c861817",
+    "whispers.z5.js": "1c06157341a1839627390c4686fa09fece8dc19288aff1947bb68c0051b76500",
+    "windhal1.z8.js": "382cffb4a1c89a997fa1cc1f92208b1f6ca7c0edb878915071de50322647dbde",
+    "WiR1.zblorb.js": "7c7aa432c7b811cd1c28651bc775437e4002ff3baa9161ae084f044d9bc66bd1",
+    "WiR2.zblorb.js": "45b2586da07cb5d0e6036b9e6ecea3bf82c7a0299cd3b73a415dcff755eb2aec",
+    "wireless.z5.js": "c88de3fe78a5a2b2e2d38b63cc72153d75d1f6ce65fcc7e08ffefc6dd97a362c",
+    "Wishbringer.z3.js": "797558c4172e74844e566339b652f61aeec9f6f7ef8d6101cdf06795cb5796bc",
+    "wossname.z5.js": "322e9d56cafceeb9d706962efc7839e5a8f7f3853b9677de4ec218274ad3cb4e",
+    "wump2ka.z5.js": "a2bc9b375147695bc901eca6a64e27ae33a10bc8628a481bb9504bb33b704250",
+    "yagwad.z5.js": "3bb3aa66c0cc3dae4b76f917fa54f6136eac9d13210373528d348cfb486d0822",
+    "zdungeon.z5.js": "babdc22afd85adc776cfd8aa630bcdc6c0c3a75d2773d30952c0ab0e985a48a3",
+    "zenon.z5.js": "b3824757ba53fb8aa559e8d44c16d3cb4681c6406fb1ad1e27d26d67ad679ba2",
+    "Zork1-TheGreatUndergroundEmpire.z3.js": "7da3731fbfde5d0548f4bc6cbaa46b80fbc374e1e97f8fe894a5924a41b7b2a8",
+    "Zork2-TheWizardofFrobozz.z3.js": "0ea4ccc316d219cc7af801dfc62964147631a2228f00e1493896d7b9aba43f95",
+    "Zork3-TheDungeonMaster.z3.js": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+    "ztuu.z5.js": "6ec3f5da3645a271fb0f7bfcd193e09118b829a5c424ccc1dbb3cd05284d3bae"
+  },
+  "createdAt": "2026-10-21T20:33:15.575Z",
+  "owner": "codex",
+  "scope": "One new full309x2 gate for reviewed bounded Z-text escape candidate; prior accepted gates not reused"
+}

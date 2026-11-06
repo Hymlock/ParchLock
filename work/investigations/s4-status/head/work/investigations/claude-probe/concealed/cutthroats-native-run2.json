@@ -1,0 +1,8025 @@
+{
+  "story": "Cutthroats.z3.js",
+  "config": "cutthroats-run2.config.json",
+  "tier": "Fresh unforced native commands and passive known-ID RAM reads; no VM/fact/RNG writes",
+  "assetSha256": "c999acd85d6590f4772622e959c7729adc8341ea974c77a7e98074b4b73c7618",
+  "readerSha256": "6092d570064e1263d550306ad9e0d5e16f932ea7968f80634da1267e261bd01a",
+  "factsSha256": "f5dea16d172b02720f7926373cdd9d3df4407da45bdd0920c924bd1c5d8649fb",
+  "bit": 30,
+  "ids": [
+    63,
+    62,
+    45,
+    26,
+    64
+  ],
+  "rows": [
+    {
+      "command": "get out of bunk",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 61,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 61,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get out of bunk",
+        "You are on your feet again.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get all",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 61,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">look",
+        "Crew's Quarters",
+        "You are below deck in the crew's quarters. Narrow, uncomfortable bunks line the bulkheads, and you note the similarity between this area and a sardine can. Sleeping here is necessary but uninviting. A ladder leads up and out to the fore deck.",
+        "There is a tube of putty here.",
+        "There is a portable electromagnet here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get putty",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get putty",
+        "You're carrying too many things already!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get electromagnet",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get electromagnet",
+        "You're carrying too many things already!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "i",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">i",
+        "You are carrying:",
+        "  A shark repellent canister",
+        "  A flashlight",
+        "  A portable drill",
+        "  A pair of flippers",
+        "  A diving mask",
+        "  An air tank",
+        "  A wet suit",
+        "  A room key",
+        "  A wrist watch (being worn)",
+        "You have $134 in your pocket.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 61,
+        "roomName": "Crew's Quarters",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 78,
+            "name": "under the bunk"
+          },
+          {
+            "id": 79,
+            "name": "bunk"
+          },
+          {
+            "id": 117,
+            "name": "portable electromagnet"
+          },
+          {
+            "id": 122,
+            "name": "tube of putty"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 60,
+        "roomName": "Galley",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 76,
+            "name": "stove"
+          },
+          {
+            "id": 105,
+            "name": "meal"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">s",
+        "Galley",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "eat stew",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 60,
+        "roomName": "Galley",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 76,
+            "name": "stove"
+          },
+          {
+            "id": 105,
+            "name": "meal"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 60,
+        "roomName": "Galley",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 76,
+            "name": "stove"
+          },
+          {
+            "id": 105,
+            "name": "meal"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">eat stew",
+        "Not bad! It really hit the spot.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "drink water",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 60,
+        "roomName": "Galley",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 76,
+            "name": "stove"
+          },
+          {
+            "id": 105,
+            "name": "meal"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 60,
+        "roomName": "Galley",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 76,
+            "name": "stove"
+          },
+          {
+            "id": 105,
+            "name": "meal"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">drink water",
+        "You feel much refreshed.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 60,
+        "roomName": "Galley",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 76,
+            "name": "stove"
+          },
+          {
+            "id": 105,
+            "name": "meal"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 59,
+        "roomName": "Lounge",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 74,
+            "name": "chair"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">s",
+        "Lounge",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "u",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 59,
+        "roomName": "Lounge",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 74,
+            "name": "chair"
+          },
+          {
+            "id": 173,
+            "name": "ladder bottom"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">u",
+        "Aft Deck",
+        "The Weasel tosses a line over the side and says, \"Tie the line to the treasure when you've got it, then pull on it and we'll pull the treasure up.\"",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "drop all",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 181,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 6,
+            "name": "wrist watch"
+          },
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">drop all",
+        "shark repellent canister: Dropped.",
+        "flashlight: Dropped.",
+        "portable drill: Dropped.",
+        "pair of flippers: Dropped.",
+        "diving mask: Dropped.",
+        "air tank: Dropped.",
+        "wet suit: Dropped.",
+        "room key: Dropped.",
+        "wrist watch: Dropped.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get watch",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 181,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 6,
+            "name": "wrist watch"
+          },
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get watch",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "wear watch",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">wear watch",
+        "You are now wearing the wrist watch.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get wet suit",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 139,
+            "name": "wet suit"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get wet suit",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "wear wet suit",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">wear wet suit",
+        "You are now wearing the wet suit.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get air tank",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 136,
+            "name": "air tank"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get air tank",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "wear air tank",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">wear air tank",
+        "You are now wearing the air tank.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get flippers",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 138,
+            "name": "pair of flippers"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get flippers",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "wear flippers",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">wear flippers",
+        "You are now wearing the pair of flippers.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get mask",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 137,
+            "name": "diving mask"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get mask",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "wear mask",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">wear mask",
+        "You are now wearing the diving mask.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get putty",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get putty",
+        "You can't see any putty here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get flashlight",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 116,
+            "name": "flashlight"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get flashlight",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get canister",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 115,
+            "name": "shark repellent canister"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get canister",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get drill",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 67,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 64,
+            "name": "portable drill"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get drill",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get electromagnet",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">get electromagnet",
+        "You can't see any electromagnet here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "i",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">i",
+        "You are carrying:",
+        "  A portable drill",
+        "  A shark repellent canister",
+        "  A flashlight",
+        "  A diving mask (being worn)",
+        "  A pair of flippers (being worn)",
+        "  An air tank (being worn)",
+        "  A wet suit (being worn)",
+        "  A wrist watch (being worn)",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "examine drill",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">examine drill",
+        "This waterproof wonder features a permanent bit, a panel which is closed, and a switch which is in the \"off\" position.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "examine first hole",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">examine first hole",
+        "You can't see any first hole here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "examine second hole",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "reply": [
+        ">examine second hole",
+        "You can't see any second hole here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "dive in ocean",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 67,
+        "roomName": "Aft Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 9,
+            "name": "the Weasel"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          },
+          {
+            "id": 143,
+            "name": "room key"
+          },
+          {
+            "id": 172,
+            "name": "railing"
+          },
+          {
+            "id": 174,
+            "name": "ladder top"
+          },
+          {
+            "id": 176,
+            "name": "ocean"
+          },
+          {
+            "id": 201,
+            "name": "Night Wind"
+          },
+          {
+            "id": 213,
+            "name": "deck"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "reply": [
+        ">dive in ocean",
+        "Underwater",
+        "You are in the sea, completely surrounded by water.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open shark repellent",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 55,
+            "name": "shark"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "reply": [
+        ">open shark repellent",
+        "Opened.",
+        "A shark swims toward you!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "d",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 55,
+            "name": "shark"
+          },
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "reply": [
+        ">d",
+        "You descend another 50 feet...",
+        " ",
+        "Underwater",
+        "You are in the sea, completely surrounded by water.",
+        "The shark continues toward you, then stops. It turns and swims away.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "turn on flashlight",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "reply": [
+        ">turn on flashlight",
+        "The flashlight is now on.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "d",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 56,
+        "roomName": "Underwater",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": true
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 90,
+            "name": "orange line"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 53,
+        "roomName": "Top Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">d",
+        "You flutter down to a shipwreck...",
+        " ",
+        "Top Deck",
+        "You are at the bow of a steel ship that has been here for quite a while. The deck continues aft, and there is a passage leading down at your feet.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "d",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 53,
+        "roomName": "Top Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 49,
+        "roomName": "Middle Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">d",
+        "Middle Deck",
+        "This cabin seems to have been sleeping quarters. It must have been used by the crew, as it is spartanly furnished. The only ways out of this room are up and down.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "d",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 49,
+        "roomName": "Middle Deck",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 32,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">d",
+        "Below Decks",
+        "This cabin is the third-class passengers' quarters. There couldn't have been many frills here since the remains are spartan. The cabin can be exited aft and up.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 32,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 27,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">s",
+        "Below Decks",
+        "This was once the supplies locker, with exits forward and up, and a door with a sign on it in the aft bulkhead.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open door",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 27,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 27,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">open door",
+        "The door is now open.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 27,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        ">s",
+        "Below Decks",
+        "This had to have been a mine locker. There is a door forward and a passage above your head.",
+        "A number of spherical mines with spikes sticking out of them litter the room. These mines must have once been used to blockade shipping lanes. Most of them are tethered together on the deck, but one is floating up near the hole in the ceiling.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "put magnet on mine",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        ">put magnet on mine",
+        "You can't see any magnet here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "turn on magnet",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        ">turn on magnet",
+        "You can't see any magnet here.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "drop magnet",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        ">drop magnet",
+        "You don't have that.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "u",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        ">u",
+        "As you make your way up, you bump the floating mine. A second later...",
+        " ",
+        "BOOOOOOOOOOMMMMMMMMMM!",
+        " ",
+        "   ****  You have died  **** ",
+        " ",
+        "Too bad.",
+        " ",
+        " ",
+        "Your score is 130 out of a possible 250.",
+        "This score gives you the rank of a decent diver.",
+        " ",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "remove tank",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >remove tank",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >s",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >s",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "examine first hole",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >examine first hole",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "turn drill on",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >turn drill on",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "drill safe with drill",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >drill safe with drill",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "examine first hole",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >examine first hole",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "turn drill off",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >turn drill off",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "grab case",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >grab case",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >n",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >n",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "wear air tank",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >wear air tank",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "d",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >d",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >n",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "u",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >u",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "examine second hole",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >examine second hole",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "turn drill on",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >turn drill on",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "drill case with drill",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >drill case with drill",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    },
+    {
+      "command": "examine second hole",
+      "before": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "after": {
+        "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+        "room": 22,
+        "roomName": "Below Decks",
+        "player": 184,
+        "objects": {
+          "26": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "45": {
+            "name": "door",
+            "parent": 222,
+            "invisible": false
+          },
+          "62": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "63": {
+            "name": "",
+            "parent": 222,
+            "invisible": true
+          },
+          "64": {
+            "name": "portable drill",
+            "parent": 184,
+            "invisible": false
+          }
+        },
+        "scope": [
+          {
+            "id": 19,
+            "name": "bunch of mines"
+          },
+          {
+            "id": 20,
+            "name": "loose mine"
+          }
+        ]
+      },
+      "reply": [
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): >examine second hole",
+        "Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT): > "
+      ]
+    }
+  ],
+  "nativeRestore": {
+    "name": "codex-cutthroats-wreck",
+    "after": {
+      "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+      "room": 61,
+      "roomName": "Crew's Quarters",
+      "player": 184,
+      "objects": {
+        "26": {
+          "name": "door",
+          "parent": 222,
+          "invisible": true
+        },
+        "45": {
+          "name": "door",
+          "parent": 222,
+          "invisible": true
+        },
+        "62": {
+          "name": "",
+          "parent": 222,
+          "invisible": true
+        },
+        "63": {
+          "name": "",
+          "parent": 222,
+          "invisible": true
+        },
+        "64": {
+          "name": "portable drill",
+          "parent": 61,
+          "invisible": false
+        }
+      },
+      "scope": [
+        {
+          "id": 64,
+          "name": "portable drill"
+        },
+        {
+          "id": 78,
+          "name": "under the bunk"
+        },
+        {
+          "id": 79,
+          "name": "bunk"
+        },
+        {
+          "id": 115,
+          "name": "shark repellent canister"
+        },
+        {
+          "id": 116,
+          "name": "flashlight"
+        },
+        {
+          "id": 117,
+          "name": "portable electromagnet"
+        },
+        {
+          "id": 122,
+          "name": "tube of putty"
+        },
+        {
+          "id": 136,
+          "name": "air tank"
+        },
+        {
+          "id": 137,
+          "name": "diving mask"
+        },
+        {
+          "id": 138,
+          "name": "pair of flippers"
+        },
+        {
+          "id": 139,
+          "name": "wet suit"
+        },
+        {
+          "id": 143,
+          "name": "room key"
+        },
+        {
+          "id": 173,
+          "name": "ladder bottom"
+        },
+        {
+          "id": 201,
+          "name": "Night Wind"
+        },
+        {
+          "id": 213,
+          "name": "deck"
+        }
+      ]
+    },
+    "method": "Ordinary native RESTORE of a codex native save (copied profile)"
+  },
+  "initial": {
+    "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+    "room": 61,
+    "roomName": "Crew's Quarters",
+    "player": 184,
+    "objects": {
+      "26": {
+        "name": "door",
+        "parent": 222,
+        "invisible": true
+      },
+      "45": {
+        "name": "door",
+        "parent": 222,
+        "invisible": true
+      },
+      "62": {
+        "name": "",
+        "parent": 222,
+        "invisible": true
+      },
+      "63": {
+        "name": "",
+        "parent": 222,
+        "invisible": true
+      },
+      "64": {
+        "name": "portable drill",
+        "parent": 61,
+        "invisible": false
+      }
+    },
+    "scope": [
+      {
+        "id": 64,
+        "name": "portable drill"
+      },
+      {
+        "id": 78,
+        "name": "under the bunk"
+      },
+      {
+        "id": 79,
+        "name": "bunk"
+      },
+      {
+        "id": 115,
+        "name": "shark repellent canister"
+      },
+      {
+        "id": 116,
+        "name": "flashlight"
+      },
+      {
+        "id": 117,
+        "name": "portable electromagnet"
+      },
+      {
+        "id": 122,
+        "name": "tube of putty"
+      },
+      {
+        "id": 136,
+        "name": "air tank"
+      },
+      {
+        "id": 137,
+        "name": "diving mask"
+      },
+      {
+        "id": 138,
+        "name": "pair of flippers"
+      },
+      {
+        "id": 139,
+        "name": "wet suit"
+      },
+      {
+        "id": 143,
+        "name": "room key"
+      },
+      {
+        "id": 173,
+        "name": "ladder bottom"
+      },
+      {
+        "id": 201,
+        "name": "Night Wind"
+      },
+      {
+        "id": 213,
+        "name": "deck"
+      }
+    ]
+  },
+  "sourceStable": true,
+  "status": "Captured; review route and native replies before qualification"
+}

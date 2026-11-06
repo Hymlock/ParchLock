@@ -1,0 +1,92 @@
+{
+ "title": "Infidel.z3.js",
+ "sha256": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+ "bit": 14,
+ "sourceFlagsVEHBIT": "\"VEHBIT\":{\"bit\":14,\"positives\":5,\"negatives\":180,\"tp\":5,\"fp\":0,\"fn\":0,\"exact\":true,\"examples\":[\"108:mast hole\",\"104:wooden beam\",\"51:army cot\"]}",
+ "bitMatchesSourceFlags": true,
+ "objectCount": 249,
+ "initialCarriers": [
+  {
+   "id": 51,
+   "name": "army cot",
+   "parent": 71,
+   "parentName": "Tent"
+  },
+  {
+   "id": 104,
+   "name": "wooden beam",
+   "parent": 114,
+   "parentName": "Center Barge"
+  },
+  {
+   "id": 108,
+   "name": "mast hole",
+   "parent": 114,
+   "parentName": "Center Barge"
+  },
+  {
+   "id": 199,
+   "name": "altar",
+   "parent": 206,
+   "parentName": "Ra"
+  },
+  {
+   "id": 211,
+   "name": "barge",
+   "parent": 248,
+   "parentName": ""
+  }
+ ],
+ "status": "INCOMPLETE",
+ "distinctPositiveCarriers": [
+  51
+ ],
+ "positives": [
+  {
+   "carrier": 51,
+   "name": "army cot",
+   "enterCmd": "get in cot",
+   "parentBefore": 71,
+   "parentBeforeName": "Your Tent",
+   "parentAfter": 51,
+   "enterReply": "At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. /   / You hear a plane flying high overhead, outside the tent. /   / >get in cot / You are now in the army cot. /   / It sounds as if the plane is circling. /   / > ",
+   "exitCmd": "get out of cot",
+   "exitParentAfter": 71,
+   "exitReply": "You are now in the army cot. /   / It sounds as if the plane is circling. /   / >get out of cot / You are on your feet again. /   / It sounds as if the plane is circling. /   / > ",
+   "log": "inf.log.json",
+   "step": 4
+  }
+ ],
+ "gameMovedIntoCarrier": [],
+ "negatives": [
+  {
+   "cmd": "sit on cot",
+   "parentBefore": 71,
+   "parentAfter": 71,
+   "parentName": "Your Tent",
+   "reply": "You are on your feet again. /   / It sounds as if the plane is circling. /   / >sit on cot / This is no time for sitting down on the job, especially after what you've been through to get here! /   / It sounds as if the plane is flying off. /   / > ",
+   "log": "inf.log.json",
+   "step": 6
+  },
+  {
+   "cmd": "enter tent",
+   "parentBefore": 71,
+   "parentAfter": 71,
+   "parentName": "Your Tent",
+   "reply": "You are already standing, I think. /   / You can barely hear the plane. /   / >enter tent / What are those canvas walls around you? Just where do you think you are? Maybe I should send for Craige, eh? /   / The sound of something heavy landing comes from nearby. /   / > ",
+   "log": "inf.log.json",
+   "step": 8
+  },
+  {
+   "cmd": "enter pickaxe",
+   "parentBefore": 69,
+   "parentAfter": 69,
+   "parentName": "Supply Tent",
+   "reply": "Stuck in the sand, handle down, is a small pick axe. / Half buried in the sand, in the corner of the tent, is a shovel. /   / >get pickaxe / Taken. /   / >enter pickaxe / That would involve quite a contortion! /   / > ",
+   "log": "inf.log.json",
+   "step": 13
+  }
+ ],
+ "notes": "army cot (51) confirmed (start in cot; GET OUT OF COT / GET IN COT). SIT ON COT is refused ('no time for sitting down') -> Sit is a wrong offer on the cot; GET IN is right. 'enter tent' refused while in the tent; 'enter pickaxe' refused. wooden beam (104), mast hole (108), altar (199), barge (211) are far into the game (walkthrough steps 100-230) -> INCOMPLETE. mast hole and altar look like non-enterable carriers by name; unverified.",
+ "method": "headless Chromium play.html, Input.Inject ordinary commands, ~1.3s wait; parent via ZRamReader.objectLinks(ZRamProvider.getMem(), WorldModel.lastPayload.playerId). reply = last 10 BufferLines after the command (may include preceding turn text)."
+}

@@ -1,0 +1,115 @@
+{
+  "scope": "Fresh ordinary native input-request lifecycle observations, passive reads only. No VM/fact/RNG writes, no hooks, no role implementation.",
+  "helperSha": "ebeecd216ec4bad35ae25159e004a53d1ef7dc2215490a250df646e2cbc72466",
+  "files": {
+    "lib/zvm.js": "12bf89d7f524abf72f223c89c98d68abf3df88d93b77a64838442b4eefb92e2f",
+    "lib/main.js": "9257aa57bfb2ddc9587df7f3a736719889f84111af206ef76607b2fdde9ad554",
+    "js/TurnRecorder.js": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8",
+    "js/ZRamReader.js": "0b8f43ec1d87fc5a660d628404707795b411a72b376e3ef2d20e890e78de5743",
+    "js/Input.js": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681",
+    "js/ZvmCapture.js": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d",
+    "js/ZRamProvider.js": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109",
+    "js/UndoRestoreSync.js": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed",
+    "games/Suspended.z3.js": "252462be2eb7efb428e905041eedfdb60cb69f1154e79e85d6adc2d934553d36"
+  },
+  "rows": [
+    {
+      "label": "boot ordinary parser input",
+      "contextGlobals": {
+        "G98": 0,
+        "G108": 0
+      },
+      "vmPC": 26723,
+      "vmStop": 1,
+      "currentWindow": 0,
+      "windowId": 102,
+      "lineRequest": true,
+      "charRequest": false,
+      "inputGeneration": 1,
+      "linebufMatchesReadBuffer": true,
+      "read": {
+        "bufaddr": 8840,
+        "parseaddr": 8600,
+        "storer": 0
+      },
+      "samePreviousVM": null,
+      "samePreviousWindow": null,
+      "samePreviousReadData": null,
+      "samePreviousLinebuf": null,
+      "memViewStable": false,
+      "memBufferStable": true,
+      "memoryMatchesVM": true,
+      "submissionId": 0,
+      "pageEpoch": "mvpjeifuxukvntkzi29",
+      "restoreGeneration": 0,
+      "activeTurn": null,
+      "reply": " Iris                                                                                                                       Score: 0  Turns: 0 \nSUSPENDED: INTERLOGIC Science Fiction\nCopyright (c) 1983 by Infocom, Inc. All rights reserved.\nSUSPENDED and INTERLOGIC are trademarks of Infocom, Inc.\nRelease 8 / Serial number 840521\n \nFC ALERT! Planetside systems are deteriorating. FC imbalance detected. Emergency reviving systems completed. You are now in control of the complex.\n \nSENSA INTERRUPT: Seismic aftershock detected ten meters north of Beta FC. Tremor intensity 9.7. Projected damage: connecting cables in Primary and Secondary Channels.\n \nFC INTERRUPT: All Robots, report locations.\n \nIRIS: In the Weather Monitors.\nWALDO: In the Gamma Repair.\nSENSA: In the Central Chamber.\nAUDA: In the Entry Area.\nPOET: In the Central Chamber.\nWHIZ: In the Advisory Peripheral.\n \n> "
+    },
+    {
+      "label": "after look",
+      "contextGlobals": {
+        "G98": 0,
+        "G108": 0
+      },
+      "vmPC": 26723,
+      "vmStop": 1,
+      "currentWindow": 0,
+      "windowId": 102,
+      "lineRequest": true,
+      "charRequest": false,
+      "inputGeneration": 2,
+      "linebufMatchesReadBuffer": true,
+      "read": {
+        "bufaddr": 8840,
+        "parseaddr": 8600,
+        "storer": 0
+      },
+      "samePreviousVM": true,
+      "samePreviousWindow": true,
+      "samePreviousReadData": false,
+      "samePreviousLinebuf": false,
+      "memViewStable": false,
+      "memBufferStable": true,
+      "memoryMatchesVM": true,
+      "submissionId": 1,
+      "pageEpoch": "mvpjeifuxukvntkzi29",
+      "restoreGeneration": 0,
+      "activeTurn": null,
+      "reply": " Iris                                                                                                                       Score: 0  Turns: 1 \nSUSPENDED: INTERLOGIC Science Fiction\nCopyright (c) 1983 by Infocom, Inc. All rights reserved.\nSUSPENDED and INTERLOGIC are trademarks of Infocom, Inc.\nRelease 8 / Serial number 840521\n \nFC ALERT! Planetside systems are deteriorating. FC imbalance detected. Emergency reviving systems completed. You are now in control of the complex.\n \nSENSA INTERRUPT: Seismic aftershock detected ten meters north of Beta FC. Tremor intensity 9.7. Projected damage: connecting cables in Primary and Secondary Channels.\n \nFC INTERRUPT: All Robots, report locations.\n \nIRIS: In the Weather Monitors.\nWALDO: In the Gamma Repair.\nSENSA: In the Central Chamber.\nAUDA: In the Entry Area.\nPOET: In the Central Chamber.\nWHIZ: In the Advisory Peripheral.\n \n>look\nInternal map reference -- Weather Monitors\nI'm doing the best I can, but without visual circuits, that's next to nothing.\n \n> "
+    },
+    {
+      "label": "after examine",
+      "contextGlobals": {
+        "G98": 0,
+        "G108": 1
+      },
+      "vmPC": 26723,
+      "vmStop": 1,
+      "currentWindow": 0,
+      "windowId": 102,
+      "lineRequest": true,
+      "charRequest": false,
+      "inputGeneration": 3,
+      "linebufMatchesReadBuffer": true,
+      "read": {
+        "bufaddr": 8840,
+        "parseaddr": 8600,
+        "storer": 0
+      },
+      "samePreviousVM": true,
+      "samePreviousWindow": true,
+      "samePreviousReadData": false,
+      "samePreviousLinebuf": false,
+      "memViewStable": false,
+      "memBufferStable": true,
+      "memoryMatchesVM": true,
+      "submissionId": 2,
+      "pageEpoch": "mvpjeifuxukvntkzi29",
+      "restoreGeneration": 0,
+      "activeTurn": null,
+      "reply": " Iris                                                                 \nSUSPENDED: INTERLOGIC Science Fiction\nCopyright (c) 1983 by Infocom, Inc. All rights reserved.\nSUSPENDED and INTERLOGIC are trademarks of Infocom, Inc.\nRelease 8 / Serial number 840521\n \nFC ALERT! Planetside systems are deteriorating. FC imbalance detected. Emergency reviving systems completed. You are now in control of the complex.\n \nSENSA INTERRUPT: Seismic aftershock detected ten meters north of Beta FC. Tremor intensity 9.7. Projected damage: connecting cables in Primary and Secondary Channels.\n \nFC INTERRUPT: All Robots, report locations.\n \nIRIS: In the Weather Monitors.\nWALDO: In the Gamma Repair.\nSENSA: In the Central Chamber.\nAUDA: In the Entry Area.\nPOET: In the Central Chamber.\nWHIZ: In the Advisory Peripheral.\n \n>look\nInternal map reference -- Weather Monitors\nI'm doing the best I can, but without visual circuits, that's next to nothing.\n \n>examine\nFC: What do you want to examine?\n \n> "
+    }
+  ],
+  "status": "CAPTURED ordinary LOOK and incomplete EXAMINE parser read; numeric context globals passive only",
+  "sourceStable": true
+}

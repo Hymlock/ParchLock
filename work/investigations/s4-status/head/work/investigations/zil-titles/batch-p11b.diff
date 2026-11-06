@@ -1,0 +1,184 @@
+﻿diff --git a/harness/zil-room-garment.js b/harness/zil-room-garment.js
+new file mode 100644
+index 0000000..9076f23
+--- /dev/null
++++ b/harness/zil-room-garment.js
+@@ -0,0 +1,92 @@
++// P11b R3: garment-domain rooms (Moonmist reuses the clothing/wearable bit on
++// rooms under equipmentState root 37). Real story bytes via play.html.
++// Usage: node harness/zil-room-garment.js
++const { chromium } = require('playwright'), { pathToFileURL } = require('url'), path = require('path');
++let pass = 0, fail = 0;
++function check(ok, label) { if (ok) { pass++; console.log('PASS:', label); } else { fail++; console.log('FAIL:', label); } }
++
++async function boot(browser, game) {
++  const page = await browser.newPage();
++  await page.addInitScript(() => { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const k of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(k, '1'); });
++  await page.goto(pathToFileURL(path.resolve('play.html')).href + '?story=games/' + game);
++  await page.evaluate(() => { const s = document.querySelector('.parchlock-splash__start'); if (s) s.click(); });
++  await page.waitForTimeout(2400);
++  await page.evaluate(() => { try { if (Message.IsOpen) Message.Hide(); } catch (e) {} });
++  for (let i = 0; i < 12 && !await page.locator('.Input.LineInput').count(); i++) { await page.keyboard.press('Space'); await page.waitForTimeout(200); }
++  return page;
++}
++
++// Old (HEAD) behaviour == new code with the P11b exemption disabled.
++const sweep = () => {
++  const mem = ZRamProvider.getMem(), h = ZRamReader.header(mem), n = ZRamReader.objectCount(mem, h);
++  const fact = ZRamReader.executableLayoutFacts(mem), domain = fact && AttributeSchema.garmentWornDomainFact(mem, fact);
++  const now = [], old = [], helperTrue = [];
++  for (let id = 1; id <= n; id++) { now.push(ZRamReader.isPlausibleMapRoom(mem, id)); if (ZRamReader._p11bGarmentDomainRoom(mem, id)) helperTrue.push(id); }
++  const keep = ZRamReader._p11bGarmentDomainRoom;
++  ZRamReader._p11bGarmentDomainRoom = () => false;
++  try { for (let id = 1; id <= n; id++) old.push(ZRamReader.isPlausibleMapRoom(mem, id)); } finally { ZRamReader._p11bGarmentDomainRoom = keep; }
++  const flips = [];
++  now.forEach((v, i) => { if (v !== old[i]) flips.push({ id: i + 1, name: ZRamReader.shortName(mem, i + 1), now: v, old: old[i] }); });
++  return { n, domain, flips, helperTrue, inform: !!ZRamReader.isInformCompiled(mem) };
++};
++
++(async () => {
++  const browser = await chromium.launch();
++  try {
++    const page = await boot(browser, 'Moonmist.z3.js');
++    const s = await page.evaluate(sweep);
++    console.log('Moonmist domain', JSON.stringify(s.domain), 'flips', s.flips.length, JSON.stringify(s.flips.map(f => f.id + ':' + f.name)));
++    check(s.domain && s.domain.rootId === 37, 'Moonmist garment domain root 37');
++    check(s.flips.every(f => f.now && !f.old), 'Moonmist: any flips are only rejected->accepted (' + s.flips.length + ' flips)');
++    const r = await page.evaluate((flipIds) => {
++      const mem = ZRamProvider.getMem(), h = ZRamReader.header(mem), dom = AttributeSchema.garmentWornDomainFact(mem, ZRamReader.executableLayoutFacts(mem));
++      const dir = {}; GrammarProvider.d214DirectionProperties(mem).forEach(e => { dir[e.prop] = true; });
++      const out = {};
++      out.flipsValid = flipIds.every(id => { const a = ZRamReader.attrsFromObject(mem, id) || {}, lk = ZRamReader.objectLinks(mem, id);
++        return !a.worn && lk.parent === dom.rootId && ZRamReader.listProps(mem, id).some(p => dir[p.num]); });
++      const room = flipIds.find(id => { const a = ZRamReader.attrsFromObject(mem, id) || {}; return a.wearable || a.clothing; });
++      out.rootName = ZRamReader.shortName(mem, dom.rootId); out.exempt = flipIds.length; out.wearRooms = flipIds.filter(id => { const a = ZRamReader.attrsFromObject(mem, id) || {}; return a.wearable || a.clothing; }).map(id => id + ':' + ZRamReader.shortName(mem, id) + ':' + ZRamReader.isPlausibleMapRoom(mem, id));
++      const lp0 = ZRamReader.objectLinks; try { ZRamReader.objectLinks = (m, id) => { const l = lp0(m, id); return id === dom.rootId ? Object.assign({}, l, { parent: 0 }) : l; }; } finally {}
++      // real garment not under the root
++      const garments = [];
++      for (let id = 2; id <= dom.count; id++) { const a = ZRamReader.attrsFromObject(mem, id) || {}; if ((a.clothing || a.wearable) && ZRamReader.objectLinks(mem, id).parent !== dom.rootId) garments.push(id); }
++      out.garments = garments.map(id => id + ':' + ZRamReader.shortName(mem, id));
++      out.garmentsRejected = garments.length > 0 && garments.every(id => !ZRamReader._p11bGarmentDomainRoom(mem, id) && !ZRamReader.isPlausibleMapRoom(mem, id));
++      out.rootRejectedByHelper = !ZRamReader._p11bGarmentDomainRoom(mem, dom.rootId);
++      const lp = ZRamReader.listProps, af = ZRamReader.attrsFromObject;
++      try { ZRamReader.listProps = (m, id) => lp(m, id).filter(p => !dir[p.num]); out.noExits = !ZRamReader.isPlausibleMapRoom(mem, room); } finally { ZRamReader.listProps = lp; }
++      try { ZRamReader.listProps = (m, id) => lp(m, id).map(p => dir[p.num] ? Object.assign({}, p, { sz: 7 }) : p); out.badSize = !ZRamReader.isPlausibleMapRoom(mem, room); } finally { ZRamReader.listProps = lp; }
++      try { ZRamReader.listProps = (m, id) => lp(m, id).map(p => dir[p.num] ? Object.assign({}, p, { dataAddr: (mem.byteLength || mem.length) - 1, sz: 5 }) : p); out.oob = !ZRamReader.isPlausibleMapRoom(mem, room); } finally { ZRamReader.listProps = lp; }
++      try { ZRamReader.attrsFromObject = (m, id) => { const a = Object.assign({}, af(m, id)); if (id === room) a.worn = true; return a; }; out.worn = !ZRamReader.isPlausibleMapRoom(mem, room); } finally { ZRamReader.attrsFromObject = af; }
++      out.room = room; out.helperOk = ZRamReader._p11bGarmentDomainRoom(mem, room);
++      ZRamReader.objectLinks = lp0;
++      return out;
++    }, s.helperTrue.filter(id => true));
++    console.log('Moonmist root', r.rootName, 'exempt children', r.exempt, 'WEARBIT rooms (id:name:isPlausibleMapRoom)', JSON.stringify(r.wearRooms));
++    console.log('Moonmist garments outside root', JSON.stringify(r.garments));
++    check(!!r.room && r.helperOk && r.flipsValid, 'WEARBIT rooms under root 37 with exits pass the garment exemption');
++    check(r.garmentsRejected, 'real garments not under root rejected');
++    check(r.rootRejectedByHelper, 'root itself not exempted');
++    check(r.noExits, 'room-shaped, zero valid exit props rejected');
++    check(r.badSize, 'invalid direction prop size rejected');
++    check(r.oob, 'out-of-memory direction prop rejected');
++    check(r.worn, 'worn set rejected');
++    await page.close();
++
++    for (const g of ['Zork1-TheGreatUndergroundEmpire.z3.js', 'Deadline.z3.js', 'Enchanter.z3.js', 'Planetfall.z3.js', 'Sorcerer.z3.js', 'TheWitness.z3.js', 'anchor.z8.js']) {
++      const p = await boot(browser, g);
++      const t = await p.evaluate(sweep);
++      check(!t.domain && t.helperTrue.length === 0, g + ': no garment domain, exemption never fires');
++      check(t.flips.length === 0, g + ': isPlausibleMapRoom identical to HEAD for all ' + t.n + ' objects' + (t.inform ? ' (Inform)' : ''));
++      if (g.startsWith('Zork1')) {
++        const w = await p.evaluate(() => { const mem = ZRamProvider.getMem(), n = ZRamReader.objectCount(mem, ZRamReader.header(mem)), af = ZRamReader.attrsFromObject;
++          const rooms = []; for (let id = 2; id <= n; id++) if (ZRamReader.isPlausibleMapRoom(mem, id)) rooms.push(id);
++          try { ZRamReader.attrsFromObject = (m, id) => Object.assign({}, af(m, id), { wearable: true }); return rooms.length > 0 && rooms.every(id => !ZRamReader.isPlausibleMapRoom(mem, id)); } finally { ZRamReader.attrsFromObject = af; } });
++        check(w, 'Zork1 (no domain): every room marked wearable is still rejected');
++      }
++      await p.close();
++    }
++  } finally { await browser.close(); }
++  console.log(`\n${pass} PASS, ${fail} FAIL`);
++  process.exit(fail ? 1 : 0);
++})();
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index f64b4ec..431cff3 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -1695,7 +1695,8 @@ var ZRamReader = {
+             if (/^(class|object|compass|compassdirection|direction|kind|nothing|thedark)$/i.test(nm)) {
+                 return false;
+             }
+-            if (attrs.animate || attrs.clothing || attrs.worn || attrs.wearable) return false;
++            if (attrs.animate || attrs.worn) return false;
++            if ((attrs.clothing || attrs.wearable) && !ZRamReader._p11bGarmentDomainRoom(mem, id)) return false;
+             if (!ZRamReader.isLocationObject(mem, id, 0)) return false;
+             var obj = ZRamReader.objectLinks(mem, id);
+             if (obj && obj.parent > 0) {
+@@ -1730,6 +1731,61 @@ var ZRamReader = {
+         } catch (e) { return false; }
+     },
+ 
++    // P11b R3: in a measured garment-worn domain (Moonmist equipmentState
++    // root), the WEARBIT/clothing bit is reused on rooms. A clothing/wearable
++    // (never worn) object is still a room when it is a direct child of the
++    // domain room root and carries >= 1 D214 direction property of a valid
++    // exit shape. Must not call isPlausibleMapRoom or d214RoomTarget.
++    _p11bGarmentDomainRoom: (mem, id) => {
++        try {
++            if (typeof AttributeSchema === "undefined" || !AttributeSchema.garmentWornDomainFact ||
++                typeof GrammarProvider === "undefined" || !GrammarProvider.d214DirectionProperties) return false;
++            var fact = ZRamReader.executableLayoutFacts(mem);
++            var domain = fact && AttributeSchema.garmentWornDomainFact(mem, fact);
++            if (!domain) return false;
++            if (!(id >= 2 && id <= domain.count) || id === domain.rootId) return false;
++            var lk = ZRamReader.objectLinks(mem, id);
++            if (!lk || lk.parent !== domain.rootId) return false;
++            var mapping = GrammarProvider.d214DirectionProperties(mem) || [];
++            if (!mapping.length) return false;
++            var dirProps = {};
++            mapping.forEach(function (e) { dirProps[e.prop] = true; });
++            var h = ZRamReader.header(mem), v3 = h.version <= 3, lo = v3 ? 1 : 2, hi = v3 ? 5 : 6;
++            var memLen = mem.byteLength || mem.length || 0;
++            return (ZRamReader.listProps(mem, id) || []).some(function (p) {
++                return p && dirProps[p.num] && p.sz >= lo && p.sz <= hi &&
++                    p.dataAddr >= 0 && p.dataAddr + p.sz <= memLen;
++            });
++        } catch (eP11b) { return false; }
++    },
++
++    // P11b R3: in a measured garment-worn domain (Moonmist equipmentState
++    // root), the clothing/wearable bit is reused on rooms. A clothing/wearable
++    // (never worn) object is still a room when it is a direct child of the
++    // domain room root and carries >= 1 D214 direction property of a valid
++    // exit shape. Must not call isPlausibleMapRoom or d214RoomTarget.
++    _p11bGarmentDomainRoom: (mem, id) => {
++        try {
++            if (typeof AttributeSchema === "undefined" || !AttributeSchema.garmentWornDomainFact ||
++                typeof GrammarProvider === "undefined" || !GrammarProvider.d214DirectionProperties) return false;
++            var fact = ZRamReader.executableLayoutFacts(mem);
++            var domain = fact && AttributeSchema.garmentWornDomainFact(mem, fact);
++            if (!domain) return false;
++            if (!(id >= 2 && id <= domain.count) || id === domain.rootId) return false;
++            var lk = ZRamReader.objectLinks(mem, id);
++            if (!lk || lk.parent !== domain.rootId) return false;
++            var mapping = GrammarProvider.d214DirectionProperties(mem) || [];
++            if (!mapping.length) return false;
++            var dirProps = {};
++            mapping.forEach(function (e) { dirProps[e.prop] = true; });
++            var h = ZRamReader.header(mem), v3 = h.version <= 3, lo = v3 ? 1 : 2, hi = v3 ? 5 : 6;
++            var memLen = mem.byteLength || mem.length || 0;
++            return (ZRamReader.listProps(mem, id) || []).some(function (p) {
++                return p && dirProps[p.num] && p.sz >= lo && p.sz <= hi &&
++                    p.dataAddr >= 0 && p.dataAddr + p.sz <= memLen;
++            });
++        } catch (eP11b) { return false; }
++    },
+     isPlausibleMapRoom: (mem, id, _depth) => {
+         if (!(id >= 2)) return false;
+         try {
+@@ -1779,7 +1835,8 @@ var ZRamReader = {
+             // Actors and worn/carried clothing are never the current room
+             // (Anchorhead: "Michael" animate NPC; "Michael's pants" wearable).
+             if (attrs.animate) return false;
+-            if (attrs.clothing || attrs.worn || attrs.wearable) return false;
++            if (attrs.worn) return false;
++            if ((attrs.clothing || attrs.wearable) && !ZRamReader._p11bGarmentDomainRoom(mem, id)) return false;
+             // Inventory-ish takeables without light are almost never rooms;
+             // real rooms commonly carry the light bit (or are dark rooms with
+             // light clear but still parent===0 containers of the player).

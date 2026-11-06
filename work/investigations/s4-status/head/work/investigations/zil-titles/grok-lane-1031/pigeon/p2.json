@@ -1,0 +1,606 @@
+{
+  "game": "Sherlock.z5.js",
+  "route": "sherlock",
+  "n": 3,
+  "seed": 0,
+  "wornBit": 39,
+  "pattern": "pigeon",
+  "extra": [
+    "look",
+    "take pigeon",
+    "i",
+    "throw pigeon at sofa",
+    "look",
+    "take pigeon",
+    "i"
+  ],
+  "log": [
+    {
+      "step": "after-route",
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "143:Sherman",
+              "16:Sherman's Shop",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "step": "seedmove",
+      "res": {
+        "moved": 290,
+        "into": 93
+      },
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "look",
+      "reply": ">look\nHolmes's Study\n \nThe study is in its usual disarray.\n \nYour friend is slouched on the sofa, lost in a black mood of despair. He is pale and emaciated, and his sharp eyes burn with fever. He is staring at a phial that he holds in one hand. His free hand rests near a hypodermic syringe in a neat morocco case at his side. You realize that he is fighting a depression brought on by what he calls \"the dull routine of existence.\"\n \nThe bedroom door to the west is closed. The only other exit is the door to the south.\n \nYou see a pigeon, a violin and a newspaper. You see a morocco case on the sofa. Holmes is here. You see a pipe, a persian slipper, a knife, some mail and a pistol on the mantelpiece.\n \n> \nSaturday  5:04:00 a.m.y  5:03:00 a.m.                                 \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHolmes's study\nE\nSW\nS\nSE\nDOWN\nentry hall\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hallvestibuleHolmes's study\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          290,
+          [
+            {
+              "verb": "examine",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "examine pigeon",
+              "confidence": 0.85
+            },
+            {
+              "verb": "talk to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "talk to pigeon",
+              "confidence": 0.85
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "take pigeon",
+      "reply": ">take pigeon\nYou take the pigeon.\n \n[Your score just went up by 1 point. The total is now 1 out of 100.]\n \n> \nSaturday  5:05:00 a.m. a.m.03:00 a.m.                                 \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHolmes's study\nE\nSW\nS\nSE\nDOWN\nentry hall\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hallvestibuleHolmes's study\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "232:you",
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          290,
+          [
+            {
+              "verb": "examine",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "examine pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "talk to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "talk to pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "drop pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "give pigeon to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "put pigeon in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a pigeon.\n  a black bag.\n \n> \nSaturday  5:05:00 a.m. a.m.03:00 a.m.                                 \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHolmes's study\nE\nSW\nS\nSE\nDOWN\nentry hall\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hallvestibuleHolmes's study\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "232:you",
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          290,
+          [
+            {
+              "verb": "examine",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "examine pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "talk to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "talk to pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "drop pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "give pigeon to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "put pigeon in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "throw pigeon at sofa",
+      "reply": ">throw pigeon at sofa\nThe pigeon flies about in a panic for a few moments and then flies right back into your hands.\n \n> \nSaturday  5:06:00 a.m. a.m.03:00 a.m.                                 \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHolmes's study\nE\nSW\nS\nSE\nDOWN\nentry hall\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hallvestibuleHolmes's study\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "232:you",
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          290,
+          [
+            {
+              "verb": "examine",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "examine pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "talk to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "talk to pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "drop pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "give pigeon to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "put pigeon in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "look",
+      "reply": ">look\nHolmes's Study\n \nThe study is in its usual disarray.\n \nThe detective is slouched on the sofa, lost in a black mood of despair. He is pale and emaciated, and his sharp eyes burn with fever. He is staring at a phial that he holds in one hand. His free hand rests near a hypodermic syringe in a neat morocco case at his side. You realize that he is fighting a depression brought on by what he calls \"the dull routine of existence.\"\n \nThe bedroom door to the west is closed. The only other exit is the door to the south.\n \nYou see a violin and a newspaper. You see a morocco case on the sofa. Holmes is here. You see a pipe, a persian slipper, a knife, some mail and a pistol on the mantelpiece.\n \n> \nSaturday  5:07:00 a.m. a.m.03:00 a.m.                                 \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHolmes's study\nE\nSW\nS\nSE\nDOWN\nentry hall\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hallvestibuleHolmes's study\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "232:you",
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          290,
+          [
+            {
+              "verb": "examine",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "examine pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "talk to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "talk to pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "drop pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "give pigeon to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "put pigeon in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "take pigeon",
+      "reply": ">take pigeon\nYou are already holding the pigeon.\n \n> \nSaturday  5:08:00 a.m. a.m.03:00 a.m.                                 \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHolmes's study\nE\nSW\nS\nSE\nDOWN\nentry hall\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hallvestibuleHolmes's study\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "232:you",
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          290,
+          [
+            {
+              "verb": "examine",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "examine pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "talk to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "talk to pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "drop pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "give pigeon to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "put pigeon in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a pigeon.\n  a black bag.\n \n> \nSaturday  5:08:00 a.m. a.m.03:00 a.m.                                 \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nHolmes's study\nE\nSW\nS\nSE\nDOWN\nentry hall\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hallvestibuleHolmes's study\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "0:",
+        "objs": [
+          {
+            "id": 195,
+            "name": "pigeons",
+            "chain": [
+              "112:Trafalgar Square",
+              "152:rooms"
+            ],
+            "worn": false
+          },
+          {
+            "id": 251,
+            "name": "dead pigeon",
+            "chain": [],
+            "worn": true
+          },
+          {
+            "id": 290,
+            "name": "pigeon",
+            "chain": [
+              "232:you",
+              "93:Holmes's study",
+              "152:rooms"
+            ],
+            "worn": true
+          }
+        ]
+      },
+      "radial": [
+        [
+          290,
+          [
+            {
+              "verb": "examine",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "examine pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "talk to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "talk to pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "drop pigeon",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "give pigeon to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "pigeon",
+              "objectId": 290,
+              "command": "put pigeon in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    }
+  ],
+  "ts": "2026-10-31T17:15:51.947Z"
+}

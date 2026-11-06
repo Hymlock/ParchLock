@@ -1,0 +1,169 @@
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... >
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... >
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... Ensign First Class Blather swaggers in. He studies your work with half-closed eyes. "You call this polishing, Ensign Seventh Class?" he
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... >
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... >
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... >
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... Blather, adding fifty more demerits for good measure, moves off in search of more young ensigns to terrorize. >
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... A massive explosion rocks the ship. Echoes from the explosion resound deafeningly down the halls. The door to port slides open. >
+"WAIT" waituntil 235 -> 235 Deck Nine | Time passes... More distant explosions! A narrow emergency bulkhead at the base of the gangway and a wider one along the corridor to starboard both cr
+"W"  235 -> 216 Escape Pod | Escape Pod This is one of the Feinstein's primary escape pods, for use in extreme emergencies. A mass of safety webbing, large enough to hold several 
+"GET IN WEB"  216 -> 215 safety web | You are now safely cushioned within the web. You feel the pod begin to slide down its ejection tube as explosions shake the mother ship. >
+"WAIT"  215 -> 215 safety web | Time passes... Through the viewport of the pod you see the Feinstein dwindle as you head away. Bursts of light dot its hull. Suddenly, a huge explosio
+"WAIT"  215 -> 215 safety web | Time passes... The auxiliary rockets fire briefly, and a nearby planet swings into view through the port. It appears to be almost entirely ocean, with
+"WAIT"  215 -> 215 safety web | Time passes... The main thrusters fire a long, gentle burst. A monotonic voice issues from the control panel. "Approaching planet...human-habitable." 
+"WAIT"  215 -> 215 safety web | Time passes... >
+"WAIT"  215 -> 215 safety web | Time passes... >
+"WAIT"  215 -> 215 safety web | Time passes... >
+"WAIT"  215 -> 215 safety web | Time passes... The pod is buffeted as it enters the planet's atmosphere. >
+"WAIT"  215 -> 215 safety web | Time passes... You feel the temperature begin to rise, and the pod's climate control system roars as it labors to compensate. >
+"WAIT"  215 -> 215 safety web | Time passes... The viewport suddenly becomes transparent again, giving you a view of endless ocean below. The lights on the control panel flash madly 
+"WAIT"  215 -> 215 safety web | Time passes... The pod is now approaching the closer of a pair of islands. It appears to be surrounded by sheer cliffs rising from the water, and is t
+"WAIT"  215 -> 215 safety web | Time passes... The pod lands with a thud. Through the viewport you can see a rocky cleft and some water below. The pod rocks gently back and forth as 
+"WAIT"  215 -> 215 safety web | Time passes... >
+"WAIT"  215 -> 215 safety web | Time passes... >
+"GET OUT OF WEB"  215 -> 216 Escape Pod | As you stand, the pod shifts slightly and you feel it falling. A moment later, the fall stops with a shock, and you see water rising past the viewport
+"GET KIT"  216 -> 216 Escape Pod | Taken. >
+"OPEN DOOR"  216 -> 216 Escape Pod | The bulkhead opens and cold ocean water rushes in! The pod is now completely submerged, and you feel it smash against underwater rocks. Bubbles stream
+"OUT"  216 -> 195 Underwater | Underwater You are momentarily disoriented as you enter the turbulent waters. Currents buffet you against the sharp rocks of an underwater cliff. A di
+"U"  195 -> 194 Crag | Crag You have reached a cleft in the cliff wall where the island rises from the water. The edge of the cleft displays recently exposed rock where it c
+"U"  194 -> 193 Balcony | Balcony This is an octagonal room, half carved into and half built out from the cliff wall. Through the shattered windows which ring the outer wall yo
+"U"  193 -> 192 Winding Stair | Winding Stair The middle of a long, steep stairway carved into the face of a cliff. >
+"U"  192 -> 191 Courtyard | Courtyard You are in the courtyard of an ancient stone edifice, vaguely reminiscent of the castles you saw during your leave on Ramos Two. It has deca
+"N"  191 -> 189 Plain Hall | Plain Hall This is a featureless hall leading north and south. Although the hallway is old and dusty, the construction is of a much more modern style 
+"NE"  189 -> 183 Rec Corridor | Rec Corridor This is a wide, east-west hallway. Portals lead north and south, and another corridor branches southwest. >
+"E"  183 -> 174 Mess Corridor | Mess Corridor This is a wide, east-west hallway with a large portal to the south. A small door to the north is closed and hooked with a simple steel p
+"E"  174 -> 168 Dorm Corridor | Dorm Corridor This is a wide, east-west hallway with openings to the north and south. To the east, the corridor stretches off into the distance. That 
+"E"  168 -> 161 Corridor Junction | You walk down the long, featureless hallway for a long time. Finally, you see an intersection ahead... Corridor Junction A north-south corridor inters
+"S"  161 -> 142 Mech Corridor North | Mech Corridor North Entrances to rooms lie to the east and west from this north-south hall. >
+"S"  142 -> 141 Mech Corridor | Mech Corridor Entrances to rooms lie to the east and west from this north-south hall. >
+"S"  141 -> 140 Mech Corridor South | Mech Corridor South The corridor ends here with doorways to the southwest, south, and southeast. >
+"SW"  140 -> 126 Tool Room | Tool Room This is apparently a storage room for tools. Exits lead northeast and east. Sitting on the floor below the lowest shelf is a large glass fla
+"GET BAR"  126 -> 126 Tool Room | Taken. >
+"NE"  126 -> 140 Mech Corridor South | Mech Corridor South >
+"N"  140 -> 141 Mech Corridor | Mech Corridor >
+"N"  141 -> 142 Mech Corridor North | Mech Corridor North >
+"N"  142 -> 161 Corridor Junction | Corridor Junction >
+"N"  161 -> 160 Admin Corridor South | Admin Corridor South This section of hallway seems to have suffered some minor structural damage. The walls are cracked, and a jagged crevice crosses 
+"HOLD BAR OVER CREVICE"  160 -> 160 Admin Corridor South | With a spray of dust and a loud clank, a piece of metal leaps from the crevice and affixes itself to the magnet. It is a steel key! With a tug, you re
+"DROP BAR"  160 -> 160 Admin Corridor South | Dropped. >
+"S"  160 -> 161 Corridor Junction | Corridor Junction >
+"W"  161 -> 168 Dorm Corridor | You walk down the long, featureless hallway for a long time. Finally, you see some doorways ahead... Dorm Corridor >
+"W"  168 -> 174 Mess Corridor | Mess Corridor >
+"UNLOCK PADLOCK WITH KEY"  174 -> 174 Mess Corridor | The padlock springs open. >
+"REMOVE PADLOCK"  174 -> 174 Mess Corridor | Taken. >
+"DROP IT AND KIT"  174 -> 174 Mess Corridor | padlock: Dropped. survival kit: Dropped. >
+"OPEN DOOR"  174 -> 174 Mess Corridor | Opened. >
+"N"  174 -> 171 Storage West | Storage West This is a small room obviously intended as a storage area. On a small shelf is a large, unopened tin can. It has a plain white label whic
+"DROP KEY AND BRUSH"  171 -> 171 Storage West | key: Dropped. Patrol-issue self-contained multi-purpose scrub brush: Dropped. >
+"GET LADDER"  171 -> 171 Storage West | Taken. >
+"S"  171 -> 174 Mess Corridor | Mess Corridor There is a survival kit here. There is a padlock here. >
+"E"  174 -> 168 Dorm Corridor | Dorm Corridor >
+"E"  168 -> 161 Corridor Junction | You walk down the long, featureless hallway for a long time. Finally, you see an intersection ahead... Corridor Junction A growl from your stomach war
+"N"  161 -> 160 Admin Corridor South | Admin Corridor South There is a curved metal bar here. >
+"N"  160 -> 157 Admin Corridor | Admin Corridor The hallway, in fact the entire building, has been rent apart here, presumably by seismic upheaval. You can see the sky through the sev
+"DROP LADDER"  157 -> 157 Admin Corridor | Dropped. >
+"EXTEND LADDER"  157 -> 157 Admin Corridor | The ladder extends to a length of around eight meters. >
+"PUT LADDER ACROSS RIFT"  157 -> 157 Admin Corridor | The ladder swings out across the rift and comes to rest on the far edge, spanning the precipice. >
+"N"  157 -> 155 Admin Corridor North | You slowly make your way across the swaying ladder. You can see sharp, pointy rocks at the bottom of the rift, far below... Admin Corridor North The c
+"W"  155 -> 150 Small Office | Small Office You have entered a small office of some sort. A small desk faces the main doorway which lies to the east. Another exit leads west. >
+"OPEN DESK"  150 -> 150 Small Office | Opening the small desk reveals a kitchen access card, and a upper elevator access card. >
+"GET KITCHEN CARD AND UPPER CARD"  150 -> 150 Small Office | kitchen access card: Taken. upper elevator access card: Taken. >
+"W"  150 -> 143 Large Office | Large Office This is a large, plush office. The far wall is one large picture window, scratched but unbroken, offering a view of this installation and
+"OPEN DESK"  143 -> 143 Large Office | Opening the large desk reveals a shuttle access card. >
+"GET SHUTTLE CARD"  143 -> 143 Large Office | Taken. >
+"E"  143 -> 150 Small Office | Small Office >
+"E"  150 -> 155 Admin Corridor North | Admin Corridor North >
+"S"  155 -> 157 Admin Corridor | You slowly make your way across the swaying ladder. You can see sharp, pointy rocks at the bottom of the rift, far below... Admin Corridor >
+"S"  157 -> 160 Admin Corridor South | Admin Corridor South There is a curved metal bar here. >
+"S"  160 -> 161 Corridor Junction | Corridor Junction >
+"W"  161 -> 168 Dorm Corridor | You walk down the long, featureless hallway for a long time. Finally, you see some doorways ahead... Dorm Corridor You're now really ravenous and your
+"W"  168 -> 174 Mess Corridor | Mess Corridor There is a survival kit here. There is a padlock here. >
+"GET KIT"  174 -> 174 Mess Corridor | Taken. >
+"OPEN IT"  174 -> 174 Mess Corridor | Opening the survival kit reveals a blob of red goo, a blob of green goo, and a blob of brown goo. >
+"EAT RED GOO"  174 -> 174 Mess Corridor | Mmmm...that tasted just like scrumptious cherry pie. >
+"DROP KIT"  174 -> 174 Mess Corridor | Dropped. >
+"S"  174 -> 167 Mess Hall | Mess Hall This is a large hall lined with tables and benches. An opening to the north leads back to the corridor. A door to the south is closed. Next 
+"GET CANTEEN"  167 -> 167 Mess Hall | Taken. >
+"SLIDE KITCHEN CARD THROUGH SLOT"  167 -> 167 Mess Hall | The kitchen door quietly slides open. >
+"S"  167 -> 165 Kitchen | Kitchen This is the food production and dispensary area for the dining hall to the north. Of particular interest is a machine near the door. You shoul
+"EXAMINE MACHINE"  165 -> 165 Kitchen | This wall-mounted unit contains an octagonal niche beneath a spout. Above the spout is a button. The machine is labelled "Hii Prooteen Likwid Dispensu
+"OPEN CANTEEN"  165 -> 165 Kitchen | Opened. >
+"PUT IT IN NICHE"  165 -> 165 Kitchen | The canteen fits snugly into the octagonal niche, its mouth resting just below the spout of the machine. >
+"PRESS BUTTON"  165 -> 165 Kitchen | The canteen fills almost to the brim with a brown liquid. >
+"GET CANTEEN"  165 -> 165 Kitchen | Taken. >
+"CLOSE IT"  165 -> 165 Kitchen | Closed. >
+"N"  165 -> 167 Mess Hall | Mess Hall The kitchen door slides quietly closed. >
+"DROP KITCHEN CARD"  167 -> 167 Mess Hall | Dropped. >
+"N"  167 -> 174 Mess Corridor | Mess Corridor There is a survival kit here. The survival kit contains: A blob of green goo A blob of brown goo There is a padlock here. >
+"E"  174 -> 168 Dorm Corridor | Dorm Corridor >
+"E"  168 -> 161 Corridor Junction | You walk down the long, featureless hallway for a long time. Finally, you see an intersection ahead... Corridor Junction >
+"E"  161 -> 108 Elevator Lobby | Elevator Lobby This is a wide, brightly lit lobby. A blue metal door to the north is closed and a larger red metal door to the south is also closed. B
+"PRESS BLUE BUTTON"  108 -> 108 Elevator Lobby | You hear a faint whirring noise from behind the blue door. >
+"WAIT"  108 -> 108 Elevator Lobby | Time passes... The door at the north end of the room slides open. >
+"WAIT"  108 -> 108 Elevator Lobby | Time passes... >
+"N"  108 -> 105 Upper Elevator | Upper Elevator You have entered a tiny room with a sliding door to the south which is open. A control panel contains an Up button, a Down button, and 
+"SLIDE UPPER CARD THROUGH SLOT"  105 -> 105 Upper Elevator | A recorded voice chimes "Elevator enabled." >
+"PRESS UP BUTTON"  105 -> 105 Upper Elevator | The elevator door slides shut. After a moment, you feel a sensation of vertical movement. >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... Some innocuous Hawaiian music oozes from the elevator's intercom. >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... The elevator door slides open. >
+"S"  105 -> 100 Tower Core | Tower Core This is a small, circular room. A sliding door leads north, and a spiral staircase heads upwards. Other exits lie to the northeast and sout
+"NE"  100 -> 96 Comm Room | Comm Room This is a small room with no windows. The sole exit is southwest. Two wide consoles fill either end of the room; thick cables lead up into t
+"SW"  96 -> 100 Tower Core | Tower Core >
+"N"  100 -> 105 Upper Elevator | Upper Elevator >
+"PRESS DOWN BUTTON"  105 -> 105 Upper Elevator | The elevator door slides shut. After a moment, you feel a sensation of vertical movement. >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... The elevator door slides open. >
+"S"  105 -> 108 Elevator Lobby | Elevator Lobby >
+"W"  108 -> 161 Corridor Junction | Corridor Junction >
+"S"  161 -> 142 Mech Corridor North | Mech Corridor North >
+"S"  142 -> 141 Mech Corridor | Mech Corridor >
+"S"  141 -> 140 Mech Corridor South | Mech Corridor South >
+"SW"  140 -> 126 Tool Room | Tool Room Sitting on the floor below the lowest shelf is a large glass flask. A small device, labelled "Akmee Portabul Laazur", is resting on one of t
+"GET FLASK"  126 -> 126 Tool Room | Taken. >
+"E"  126 -> 122 Machine Shop | Machine Shop This room is probably some sort of machine shop filled with a variety of unusual machines. Doorways lead north, east, and west. Standing 
+"PUT FLASK UNDER SPOUT"  122 -> 122 Machine Shop | The glass flask is now sitting under the spout. >
+"PRESS GRAY BUTTON"  122 -> 122 Machine Shop | The flask fills with some gray chemical fluid. The fluid gradually turns milky white. >
+"GET FLASK"  122 -> 122 Machine Shop | Taken. >
+"E"  122 -> 111 Robot Shop | Robot Shop This room, with exits west and northwest, is filled with robot-like devices of every conceivable description, all in various states of disa
+"OPEN FLOYD"  111 -> 111 Robot Shop | In one of the robot's compartments you find and take a magnetic-striped card embossed "Loowur Elavaatur Akses Kard." >
+"TURN ON FLOYD"  111 -> 111 Robot Shop | Nothing happens. >
+"NW"  111 -> 140 Mech Corridor South | Mech Corridor South >
+"N"  140 -> 141 Mech Corridor | Mech Corridor The robot you were fiddling with in the Robot Shop bounds into the room. "Hi!" he says, with a wide and friendly smile. "You turn Floyd 
+"N"  141 -> 142 Mech Corridor North | Mech Corridor North >
+"N"  142 -> 161 Corridor Junction | Corridor Junction Floyd bounds into the room. "Floyd here now!" he cries. >
+"E"  161 -> 108 Elevator Lobby | Elevator Lobby >
+"N"  108 -> 105 Upper Elevator | Upper Elevator Floyd bounces into the elevator. "Hey, wait for Floyd!" he yells, smiling broadly. >
+"SLIDE UPPER CARD THROUGH SLOT"  105 -> 105 Upper Elevator | A recorded voice chimes "Elevator enabled." Floyd absent-mindedly oils one of his joints. >
+"PRESS UP BUTTON"  105 -> 105 Upper Elevator | The elevator door slides shut. After a moment, you feel a sensation of vertical movement. >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... Some innocuous Hawaiian music oozes from the elevator's intercom. The elevator door slides open. >
+"S"  105 -> 100 Tower Core | Tower Core >
+"NE"  100 -> 96 Comm Room | Comm Room A yellow colored light is flashing on the enunciator panel. >
+"POUR FLUID IN HOLE"  96 -> 96 Comm Room | An alarm sounds briefly, and a sign flashes "Kuulint Sistum Imbalins Kritikul -- Shuteeng Down Awl Sistumz." A moment later, the lights in the room di
+"SW"  96 -> 100 Tower Core | Tower Core >
+"N"  100 -> 105 Upper Elevator | Upper Elevator There is a multiple purpose robot here. >
+"PRESS DOWN BUTTON"  105 -> 105 Upper Elevator | The elevator door slides shut. After a moment, you feel a sensation of vertical movement. >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... >
+"WAIT"  105 -> 105 Upper Elevator | Time passes... The elevator door slides open. >
+"S"  105 -> 108 Elevator Lobby | Elevator Lobby Floyd follows you. >
+"W"  108 -> 161 Corridor Junction | Corridor Junction Floyd follows you. >
+"W"  161 -> 168 Dorm Corridor | You walk down the long, featureless hallway for a long time. Finally, you see some doorways ahead... Dorm Corridor Floyd follows you. A growl from you
+"S"  168 -> 178 Dorm C | Dorm C This is a very long room lined with multi-tiered bunks. Flimsy partitions between the tiers may have provided a modicum of privacy. These spart
+"LOOK"  178 -> 178 Dorm C | Dorm C This is a very long room lined with multi-tiered bunks. Flimsy partitions between the tiers may have provided a modicum of privacy. These spart
+"ENTER BED"  178 -> 196 bed | Ahhh...the bed is soft and comfortable. You should be asleep in short order. >
+"EXIT"  196 -> 196 bed | You'll have to stand up, first. >
+"GET OUT OF BED"  196 -> 196 bed | How could you suggest such a thing when you're so tired and this bed is so comfy? You slowly sink into a deep and restful sleep. ...Strangely, you wak
+"GET IN BED"  196 -> 196 bed | You are already in it! Floyd chants the death scene from "Carmen". >
+"GET OUT OF BED"  196 -> 178 Dorm C | You're on your own feet again. Floyd chants the death scene from "Carmen". >
+"BOARD BED"  178 -> 196 bed | You are now in bed. >
+"GET OUT OF BED"  196 -> 178 Dorm C | You're on your own feet again. >
+"SIT IN BED"  178 -> 196 bed | You are now in bed. >
+"STAND UP"  196 -> 178 Dorm C | You're on your own feet again. Floyd lowers his voice and tells you the latest rumors about Dr. Fizpick. >
+"SIT ON BED"  178 -> 196 bed | You are now in bed. Floyd reminisces about his friend Lazarus, a medical robot. >
+"STAND UP"  196 -> 178 Dorm C | You're on your own feet again. Floyd says "Floyd going exploring. See you later." He glides out of the room. >
+"CLIMB IN BED"  178 -> 196 bed | You are now in bed. Floyd bounds into the room. "Floyd here now!" he cries. >
+"LEAVE BED"  196 -> 178 Dorm C | You're on your own feet again. >
+"LOOK"  178 -> 178 Dorm C | Dorm C This is a very long room lined with multi-tiered bunks. Flimsy partitions between the tiers may have provided a modicum of privacy. These spart
+"LIE DOWN"  178 -> 196 bed | (on the bed) You are now in bed. Floyd says "Floyd going exploring. See you later." He glides out of the room. >
+"STAND UP"  196 -> 178 Dorm C | Floyd bounds into the room. "Floyd here now!" he cries. You collapse from extreme thirst and hunger. **** You have died **** Your score would be 28 (o

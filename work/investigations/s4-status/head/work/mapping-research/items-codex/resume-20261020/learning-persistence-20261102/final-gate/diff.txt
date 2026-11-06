@@ -1,0 +1,13 @@
+Delusns.z5.js marks
+  base: ["Self","east","west"]
+  cand: ["east","west"]
+Help.z8.js marks
+  base: []
+  cand: ["Snark","large piece of equipment","trophy"]
+Mulldoon.z8.js marks
+  base: []
+  cand: ["piece of blue coral"]
+heist.z8.js marks
+  base: ["north","south","uncle's final resting place","group of mourners"]
+  cand: ["frame","north","south","uncle's final resting place","group of mourners"]
+GATE: 309 games, 4 differences (each must be an intended, reviewed change)

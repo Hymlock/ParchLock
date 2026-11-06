@@ -1,0 +1,19 @@
+Jigsaw.z8.js marks
+  base: ["party","attractive stranger","west","northeast","east"]
+  cand: ["west","northeast","Crowds","east"]
+Mulldoon.z8.js marks
+  base: []
+  cand: ["piece of blue coral"]
+Sherlock.z5.js exits
+  base: []
+  cand: ["in>null","west>null"]
+Sherlock.z5.js marks
+  base: ["coat"]
+  cand: ["coat","west"]
+gamlet.z5.js marks
+  base: ["balcony","balustrade","wall","night","stars","distant artillery","breeze","naked","Light","eyes"]
+  cand: ["eyes"]
+suvehnux.z5.js marks
+  base: ["sliver of light","under","door","darkness","shelf","walls","brass cage","scroll"]
+  cand: ["vault","golden key","black","dark","sliver of light","door","shelf","walls","brass cage","scroll"]
+GATE: 309 games, 6 differences (each must be an intended, reviewed change)

@@ -1,0 +1,1 @@
+suspect bmw @68 open bmw trunk #134 TRUE "The BMW's trunk is securely locked.\n \n> "

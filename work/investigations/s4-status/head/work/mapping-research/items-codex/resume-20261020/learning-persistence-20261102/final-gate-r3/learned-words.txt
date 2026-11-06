@@ -1,0 +1,31 @@
+PASS: published and provisional enumeration
+PASS: label edit preserves evidence and published form
+PASS: ignore affects learned contribution only
+PASS: undo restores last valid override
+PASS: replacement suppresses original and starts unconfirmed
+PASS: recorder witness has no calibration write
+PASS: duplicate submission cannot promote
+PASS: refusal and ambiguity cannot promote
+PASS: second real accepted witness promotes current revision
+PASS: new revision never inherits old confirmations
+PASS: stale restore generation rejects witness
+PASS: missing dictionary and ambiguous object cannot save
+PASS: blank draft cannot replace valid record
+PASS: manual addition is a reviewable suggestion
+PASS: multiword manual candidate uses full verified form
+PASS: stale menu command cannot survive a revision change
+PASS: prepare admits manual non-RPG form through same analyzer
+PASS: stat-probe and ambiguous submission never enter analyzer
+PASS: inspect decisions remain evidence, reversible projection
+PASS: names labels never modify command references
+PASS: status label projection never writes values or evidence
+PASS: storage failure leaves the last valid record and undo intact
+PASS: unverified reference cannot confirm a manual form
+PASS: story change isolates overrides and undo
+PASS: malformed/version mismatch fails closed
+PASS: persistence writes only override namespace
+PASS: provisional inspect candidates are visible with original replies
+PASS: Ignore blocks inspect candidate promotion but preserves new observations
+PASS: Undo permits existing distinct candidate evidence to promote normally
+PASS: candidate Ignore handles promotion while editor row was focused
+30 checks passed

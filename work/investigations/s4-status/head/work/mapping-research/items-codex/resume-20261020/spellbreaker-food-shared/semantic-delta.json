@@ -1,0 +1,14 @@
+{
+  "delta": [
+    {
+      "path": "2d097ac9e4081b68658d0331345176946253cb349ed66eeff88533826cae29d0.attributeObjects",
+      "after": {
+        "edible": [
+          43,
+          123
+        ]
+      }
+    }
+  ],
+  "sourceSha256": "ef060f2b5e9c96d0ba1cc33462fbb005d792d7368f3b1ab90320f3a621e82634"
+}

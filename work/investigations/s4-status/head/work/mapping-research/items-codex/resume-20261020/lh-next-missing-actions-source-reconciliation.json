@@ -1,0 +1,208 @@
+{
+  "tier": "Source+current-code reconciliation of sweep candidates only; no new native run, mapping, or product defect closure",
+  "source": {
+    "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/lurkinghorror/historicalsource-lurkinghorror-51d8060/hacker.zil",
+    "sha256": "276cec37b50dc19bb258051a4f2d82c6f6c63949b134c20bcda0455bbe898b30",
+    "adjacentRevision": "51d8060, not exact recompilation"
+  },
+  "packageOpen": {
+    "id": 18,
+    "sourceObject": "SNACK",
+    "lines": [
+      {
+        "line": 592,
+        "text": "<OBJECT SNACK"
+      },
+      {
+        "line": 593,
+        "text": "\t(IN KITCHEN-COUNTER)"
+      },
+      {
+        "line": 594,
+        "text": "\t(DESC \"package of Funny Bones\")"
+      },
+      {
+        "line": 595,
+        "text": "\t(SYNONYM PACKAGE FOOD BONES WRAPPER)"
+      },
+      {
+        "line": 596,
+        "text": "\t(ADJECTIVE FUNNY SNACK JUNK)"
+      },
+      {
+        "line": 597,
+        "text": "\t(FLAGS TAKEBIT FOODBIT READBIT OPENABLE)"
+      },
+      {
+        "line": 598,
+        "text": "\t(HEAT 0)"
+      },
+      {
+        "line": 599,
+        "text": "\t(TEXT \"\\\"Funny Bones\\\"\")"
+      },
+      {
+        "line": 600,
+        "text": "\t(ACTION SNACK-F)>"
+      },
+      {
+        "line": 601,
+        "text": ""
+      },
+      {
+        "line": 602,
+        "text": "<ROUTINE SNACK-F ()"
+      },
+      {
+        "line": 603,
+        "text": "\t <COND (<VERB? EXAMINE>"
+      },
+      {
+        "line": 604,
+        "text": "\t\t<TELL"
+      },
+      {
+        "line": 605,
+        "text": "\"This is a\">"
+      },
+      {
+        "line": 606,
+        "text": "\t\t<COND (<FSET? ,SNACK ,RMUNGBIT>"
+      },
+      {
+        "line": 607,
+        "text": "\t\t       <TELL \"n empty\">)"
+      },
+      {
+        "line": 608,
+        "text": "\t\t      (<FSET? ,SNACK ,OPENBIT>"
+      },
+      {
+        "line": 609,
+        "text": "\t\t       <TELL \"n open\">"
+      },
+      {
+        "line": 610,
+        "text": "\t\t       <COND (<GETP ,SNACK ,P?HEAT>"
+      },
+      {
+        "line": 611,
+        "text": "\t\t\t      <TELL \", \" <HEAT ,SNACK>>)>)>"
+      },
+      {
+        "line": 612,
+        "text": "\t\t<TELL"
+      },
+      {
+        "line": 613,
+        "text": "\" \" 'SNACK \", a snack food made with peanut butter"
+      },
+      {
+        "line": 614,
+        "text": "and chocolate cake.\" CR>)"
+      },
+      {
+        "line": 615,
+        "text": "\t       (<VERB? OPEN>"
+      },
+      {
+        "line": 616,
+        "text": "\t\t<COND (<NOT <FSET? ,SNACK ,OPENBIT>>"
+      },
+      {
+        "line": 617,
+        "text": "\t\t       <FSET ,SNACK ,OPENBIT>"
+      },
+      {
+        "line": 618,
+        "text": "\t\t       <TELL"
+      },
+      {
+        "line": 619,
+        "text": "\"You open the package, revealing yummy junk food inside.\" CR>)>)"
+      },
+      {
+        "line": 620,
+        "text": "\t       (<VERB? EAT>"
+      },
+      {
+        "line": 621,
+        "text": "\t\t<COND (<FSET? ,SNACK ,RMUNGBIT>"
+      },
+      {
+        "line": 622,
+        "text": "\t\t       <TELL"
+      },
+      {
+        "line": 623,
+        "text": "\"You already did. \" S \"There's nothing \" \"left but the wrapper.\" CR>"
+      },
+      {
+        "line": 624,
+        "text": "\t\t       <RTRUE>)"
+      },
+      {
+        "line": 625,
+        "text": "\t\t      (ELSE"
+      },
+      {
+        "line": 626,
+        "text": "\t\t       <TELL"
+      },
+      {
+        "line": 627,
+        "text": "\"You \">"
+      },
+      {
+        "line": 628,
+        "text": "\t\t       <COND (<NOT <FSET? ,SNACK ,OPENBIT>>"
+      },
+      {
+        "line": 629,
+        "text": "\t\t\t      <FSET ,SNACK ,OPENBIT>"
+      },
+      {
+        "line": 630,
+        "text": "\t\t\t      <TELL \"tear open the package and \">)>"
+      },
+      {
+        "line": 631,
+        "text": "\t\t       <COND (<G? <GETP ,SNACK ,P?HEAT> 12>"
+      },
+      {
+        "line": 632,
+        "text": "\t\t\t      <TELL"
+      },
+      {
+        "line": 633,
+        "text": "\"discover that they are too hot to eat.\" CR>)"
+      },
+      {
+        "line": 634,
+        "text": "\t\t\t     (ELSE"
+      },
+      {
+        "line": 635,
+        "text": "\t\t\t      <FSET ,SNACK ,RMUNGBIT>"
+      },
+      {
+        "line": 636,
+        "text": "\t\t\t      <TELL"
+      },
+      {
+        "line": 637,
+        "text": "\"devour the delicious food-like substance.\" CR>)>)>)>>"
+      },
+      {
+        "line": 638,
+        "text": ""
+      }
+    ],
+    "finding": "Flags TAKEBIT FOODBIT READBIT OPENABLE, no CONTBIT. SNACK-F OPEN sets OPENBIT; package is food owner with wrapper state, not child-container. Do not force container=true to obtain Open or equate Open capability with containment. Source supports handler-specific candidate; independent native+exact bit proof still required."
+  },
+  "dropPriorGuards": {
+    "nested": "ActionSynth.objectCommands early return for inventory+containerName: D78 uses label Take out of container but submits plain take; guards real Inform parser phrasing, do not undo command wording.",
+    "worn": "ActionSynth inventory isWorn branch limits non-container garment to inspect/remove; worn-container keeps open/close/search/empty. Native Drop triage may mean implicit remove/drop permitted; no reason to falsify worn or takeable facts.",
+    "impact": "A useful Drop offer needs native command evidence and proper player ancestry; do not infer from takeable or first-parent equality. Preserve inventory root and containment identity."
+  }
+}

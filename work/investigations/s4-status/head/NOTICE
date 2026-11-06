@@ -1,0 +1,16 @@
+# NOTICE
+
+ParchLock is a modified interactive-fiction application.
+
+Modification notice (GNU GPL v3 section 5(a)): Hymlock Groves adapted and
+modified the Parchmap application for the ParchLock release dated 2026-09-20,
+with further modifications through Build 64 (2026-10-09). Based on Parchmap by
+Roy Lazarovich.
+
+ParchLock project modifications are distributed under GNU GPL version 3; see
+`LICENSE`. Third-party components retain their own terms; see
+`THIRD_PARTY_NOTICES.md`. Corresponding source is supplied as
+`ParchLock-source.zip`.
+
+No story module is licensed by this notice. Users are responsible for modules
+they add to or redistribute with their copy.

@@ -1,0 +1,2612 @@
+[
+ {
+  "cmd": "get out of cot",
+  "tag": null,
+  "parentBefore": 51,
+  "parentBeforeName": "army cot",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "You push yourself up and manage to get out of the cot. Your legs are a little wobbly, though, and your head swims.\n \nYou hear a plane flying high overhead, outside the tent.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 72,
+  "parentAfterName": "Outside Your Tent",
+  "playerId": 223,
+  "reply": "Outside Your Tent\nYou are on an east/west path on the north side of the encampment. To the south you can see a firepit and to the north is the entrance to your tent. Everything is oddly quiet, unsettling, creating a feeling of floating anxiety. The stillness seems to enhance the eerie quality of the desert, the feeling of being truly alone. There's a small hole in the sand, a remnant of your excavation attempts.\n \nYou crane your neck and see a plane, high overhead, circling the encampment.\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 72,
+  "parentBeforeName": "Outside Your Tent",
+  "parentAfter": 68,
+  "parentAfterName": "Outside Supply Tent",
+  "playerId": 223,
+  "reply": "Outside Supply Tent\nYou're on a north/south path on the west edge of the encampment. Directly to the west is the supply tent, its flaps open, still in the hot, quiet air. To the east you can see the central firepit, a reminder of your being alone. A row of thickets, impossible to make any progress through even with a machete, grows along the western edge of the camp directly to the north and south of the tent. There's a small hole in the sand, a remnant of your excavation attempts.\n \nYou crane your neck and see a plane, high overhead, circling the encampment.\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 68,
+  "parentBeforeName": "Outside Supply Tent",
+  "parentAfter": 69,
+  "parentAfterName": "Supply Tent",
+  "playerId": 223,
+  "reply": "Supply Tent\nYou are in a tent, very much like your own -- a tent which had originally contained the supplies for your expedition. You notice, however, that most of the items which were here just yesterday have vanished with your workers. The tent looks as if it's been cleaned out and, as your stomach growls, the empty tent ironically reminds you of a turkey carcass picked clean after a huge Thanksgiving meal. Through the open tent flaps to the east you can see the firepit. If only one of the workers had remained behind, you would make him pay.\nStuck in the sand, handle down, is a small pick axe.\nHalf buried in the sand, in the corner of the tent, is a shovel.\n \nIt sounds as if the plane is c"
+ },
+ {
+  "cmd": "get pickaxe",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Supply Tent",
+  "parentAfter": 69,
+  "parentAfterName": "Supply Tent",
+  "playerId": 223,
+  "reply": "Taken.\n \nIt sounds as if the plane is circling.\n \n>"
+ },
+ {
+  "cmd": "get shovel",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Supply Tent",
+  "parentAfter": 69,
+  "parentAfterName": "Supply Tent",
+  "playerId": 223,
+  "reply": "Taken.\n \nIt sounds as if the plane is flying off.\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Supply Tent",
+  "parentAfter": 68,
+  "parentAfterName": "Outside Supply Tent",
+  "playerId": 223,
+  "reply": "Outside Supply Tent\n \nA small speck descending from the plane overhead gets larger until you see a crate, dangling from a parachute.\n \n>"
+ },
+ {
+  "cmd": "se",
+  "tag": null,
+  "parentBefore": 68,
+  "parentBeforeName": "Outside Supply Tent",
+  "parentAfter": 64,
+  "parentAfterName": "Outside Work Tent",
+  "playerId": 223,
+  "reply": "Outside Work Tent\nYou are on an east/west path, directly to the north of the work tent. To the north you can see the firepit and, beyond that, your tent. The work tent borders an endless vista of fine, burning sand stretching out to the south. There's a small hole in the sand, a remnant of your excavation attempts.\n \nAt last, your luck seems to be changing. A large crate lands right before you, its parachute flapping in the breeze. The parachute breaks away from the crate and drifts off in the wind.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 64,
+  "parentBeforeName": "Outside Work Tent",
+  "parentAfter": 62,
+  "parentAfterName": "Work Tent",
+  "playerId": 223,
+  "reply": "Work Tent\nYou are in a tent which used to house the workers and their personal effects. Looking around, taking in the stripped and bare surroundings, you feel surprised that they even left the canvas walls. You quickly realize that they took what they needed -- taking everything would have been more trouble than it was worth. From the looks of things they cleared out quickly but quietly.\nTacked up to the inside of one of the tent flaps is a note.\nSitting in the sand, bulging a little, is a beaten-up knapsack.\n \n>"
+ },
+ {
+  "cmd": "read note",
+  "tag": null,
+  "parentBefore": 62,
+  "parentBeforeName": "Work Tent",
+  "parentAfter": 62,
+  "parentAfterName": "Work Tent",
+  "playerId": 223,
+  "reply": "The note reads:\n \nFi aman Allah! \nHereafter you shall pursue your fool dream of the hidden pyramid and its riches alone. May the jackals feed well on your bones. We have left you what you need to get back, though we hope you do not. We put several things you treasure above life itself inside your trunk, locked with your precious padlock, but we could not bear to part with the key. Especially after what you said of our rites. We hope the drug we placed in your drink did you harm. If not, we are at least satisfied you slept especially soundly while we cleaned out the camp.\n \nFarewell\n \n>"
+ },
+ {
+  "cmd": "get knapsack",
+  "tag": null,
+  "parentBefore": 62,
+  "parentBeforeName": "Work Tent",
+  "parentAfter": 62,
+  "parentAfterName": "Work Tent",
+  "playerId": 223,
+  "reply": "(wearing it)\nYou swing the knapsack over your shoulders and it settles on your back as its cover flap closes.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 62,
+  "parentBeforeName": "Work Tent",
+  "parentAfter": 64,
+  "parentAfterName": "Outside Work Tent",
+  "playerId": 223,
+  "reply": "Outside Work Tent\nLying in the sand is a wooden packing crate.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 64,
+  "parentBeforeName": "Outside Work Tent",
+  "parentAfter": 78,
+  "parentAfterName": "Fire Pit",
+  "playerId": 223,
+  "reply": "Fire Pit\nYou are in the center of the encampment, standing before a charred pit, a hole dug in the sand surrounded by blackened rocks. The night breezes have already started the reclamation work of the desert, covering most of the pit's bottom. You can see your tent to the north, the work tent to the south, and the supply tent to the west. Far off to the east, through the heat waves rising off the shifting sands, you can see gentle, rolling dunes. There's a small hole in the sand, a remnant of your excavation attempts.\nHalf covered with sand is a bright piece of foil which catches your eye.\nSitting by a rock is what looks like a matchbook.\n \n>"
+ },
+ {
+  "cmd": "get matchbook",
+  "tag": null,
+  "parentBefore": 78,
+  "parentBeforeName": "Fire Pit",
+  "parentAfter": 78,
+  "parentAfterName": "Fire Pit",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 78,
+  "parentBeforeName": "Fire Pit",
+  "parentAfter": 72,
+  "parentAfterName": "Outside Your Tent",
+  "playerId": 223,
+  "reply": "Outside Your Tent\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 72,
+  "parentBeforeName": "Outside Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "Your Tent\nThere is an army cot here.\nAt the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock.\n \n>"
+ },
+ {
+  "cmd": "smash padlock with pickaxe",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "The padlock breaks open.\n \n>"
+ },
+ {
+  "cmd": "remove padlock",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "drop padlock",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "open trunk",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "Opened. Opening the trunk reveals an inspection sticker, a piece of dried beef, and an ancient map.\n \n>"
+ },
+ {
+  "cmd": "get beef",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "get map",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "Taken. It feels fairly heavy, though, as though it were folded around something solid.\n \n>"
+ },
+ {
+  "cmd": "eat beef",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "That really hit the spot. It did make you a little thirstier, though.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 72,
+  "parentAfterName": "Outside Your Tent",
+  "playerId": 223,
+  "reply": "Outside Your Tent\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 72,
+  "parentBeforeName": "Outside Your Tent",
+  "parentAfter": 73,
+  "parentAfterName": "Near the Nile",
+  "playerId": 223,
+  "reply": "Near the Nile\nYou are on an east/west path on the north side of the encampment. A path to the south starts here, and you can see the riverbank clearly to the west. A warm, light breeze reaches your face, drying your sweat into a thin mask of salt. You glance to the north and are greeted by a disheartening sight: an endless stretch of searing desert. There's an enlarged hole in the sand, a remnant of your excavation attempts.\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 73,
+  "parentBeforeName": "Near the Nile",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "River Bank\nYou are on the bank of the river Nile. The shoreline is sandy and cool, and reeds wave in a light but warm breeze. Directly to the north and the south thickets make strolling along the bank impossible. You're hot, and the cool rippling water to the west looks inviting, but you're not alone in that thought -- crocodiles bask on the west bank, eyeing you hungrily, just waiting for you to enter their watery domain. Things were never like this when Craige was around.\n \n>"
+ },
+ {
+  "cmd": "drink water",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "You kneel down and drink deeply from the Nile and feel refreshed.\n \n>"
+ },
+ {
+  "cmd": "drop knapsack",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "You take the knapsack off and place it down. As it settles, the cover flaps open.\n \n>"
+ },
+ {
+  "cmd": "get canteen",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "open canteen",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "Opened.\n \n>"
+ },
+ {
+  "cmd": "fill canteen",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "Okay, you have filled the canteen.\n \n>"
+ },
+ {
+  "cmd": "close canteen",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "Closed.\n \n>"
+ },
+ {
+  "cmd": "put canteen in knapsack",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "get knapsack",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 82,
+  "parentAfterName": "River Bank",
+  "playerId": 223,
+  "reply": "(wearing it)\nYou swing the knapsack over your shoulders and it settles on your back as its cover flap closes.\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 82,
+  "parentBeforeName": "River Bank",
+  "parentAfter": 73,
+  "parentAfterName": "Near the Nile",
+  "playerId": 223,
+  "reply": "Near the Nile\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 73,
+  "parentBeforeName": "Near the Nile",
+  "parentAfter": 72,
+  "parentAfterName": "Outside Your Tent",
+  "playerId": 223,
+  "reply": "Outside Your Tent\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 72,
+  "parentBeforeName": "Outside Your Tent",
+  "parentAfter": 70,
+  "parentAfterName": "Northern Path",
+  "playerId": 223,
+  "reply": "Northern Path\nYou are on an east/west path on the northern side of the encampment. To the east you can see the sites of previous excavations your workers had begun before they deserted you. Low, gentle sand dunes roll out of sight to the north, but your camp's eastern border has a path, heading off to the south, which starts here. There's a small hole in the sand, a remnant of your excavation attempts.\n \n>"
+ },
+ {
+  "cmd": "se",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Northern Path",
+  "parentAfter": 58,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "Desert\nYou are in the desert, still within sight of the encampment, just a tiny oasis to the west. The tents, shimmering behind the heat waves rising from the sand, seem to be calling you back, beckoning, offering safety and refuge. There's a small hole in the sand, a remnant of your excavation attempts.\n \n>"
+ },
+ {
+  "cmd": "se",
+  "tag": null,
+  "parentBefore": 58,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "Desert\nYou are in the desert, out of sight of the encampment. You are thankful there's no wind, even though a cooling breeze would be welcomed, since the fine sand particles would sting your face and hands. All around is the desert, a sweeping expanse of disheartening sand. There's a small hole in the sand, a remnant of your excavation attempts.\n \n>"
+ },
+ {
+  "cmd": "dig in sand",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "(with the shovel)\nYou've enlarged the hole a little, taking out two shovelsfull for every one that collapses back in from the walls.\n \n>"
+ },
+ {
+  "cmd": "dig in sand",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "(with the shovel)\nYou've made the hole quite sizable, though it's not very deep. The deeper you dig, the more the walls collapse and so you widen the base of the hole.\n \n>"
+ },
+ {
+  "cmd": "dig in sand",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "(with the shovel)\nYou're knee-deep in the hole, digging away, taking out more and more sand. You silently curse those workers for having deserted you.\n \n>"
+ },
+ {
+  "cmd": "dig in sand",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "(with the shovel)\nYou've dug yourself into a deep hole. You're actually several feet below the surrounding sand. The walls look very unstable.\n \n>"
+ },
+ {
+  "cmd": "dig in sand",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "(with the shovel)\nYou've uncovered what could only be the top of a pyramid. After clearing it away with your hands, you notice a square opening in the top of it.\n \n>"
+ },
+ {
+  "cmd": "open map",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "Unfolding the ancient map reveals a stone cube.\n \n>"
+ },
+ {
+  "cmd": "insert cube in opening",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 54,
+  "parentAfterName": "Desert",
+  "playerId": 223,
+  "reply": "The ancient stones beneath your feet shake and tremble as they move the sands. You leap out of the way and manage to avoid being sucked down into the vortex. Through the sands, an entrance down into the pyramid is revealed. The entire experience sends a jolt of adrenaline through your body as your lips form a sneer. You've found it. And without any help from those idiots.\n \n>"
+ },
+ {
+  "cmd": "d",
+  "tag": null,
+  "parentBefore": 54,
+  "parentBeforeName": "Desert",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Chamber of Ra\nYou are standing in the Chamber of Ra, a tribute to the Sun God. Even though the only natural light enters through the opening above, the room is brilliantly lit as though the walls themselves generated light. The room slopes inward and the walls meet at an open point, over your head. The heat of the desert filters down through the opening and, as the air slowly circulates, the deep, long-dead musty odors from the depths of the pyramid assault your senses. Four staircases descend from here: a steep one to the north, a winding one to the south, a wide one to the east, and a narrow one to the west. In the center of the room is a large red sandstone altar mounted solidly in the fl"
+ },
+ {
+  "cmd": "drop map",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "open jar",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Opening the jar reveals a small amount of liquid.\n \n>"
+ },
+ {
+  "cmd": "get torch",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "dip torch in liquid",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "The tip of the torch has been covered with the liquid.\n \n>"
+ },
+ {
+  "cmd": "close jar",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Closed.\n \n>"
+ },
+ {
+  "cmd": "drop knapsack",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "You take the knapsack off and place it down. As it settles, the cover flaps open.\n \n>"
+ },
+ {
+  "cmd": "put jar in knapsack",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "open matchbook",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Opening the matchbook reveals a few matches.\n \n>"
+ },
+ {
+  "cmd": "get match",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "close matchbook",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Closed.\n \n>"
+ },
+ {
+  "cmd": "strike match",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "You have now lit a match.\n \n>"
+ },
+ {
+  "cmd": "light torch",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "The bronze torch is now lit.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 123,
+  "parentAfterName": "South Landing",
+  "playerId": 223,
+  "reply": "(down the winding staircase)\nSouth Landing\nYou are on a landing in the middle of a set of stairs. The staircase goes down to the south and up to the north. The walls here are undistinguished, formed by the stones of which the pyramid was built.\nYour match went out. And it burned your fingers, too! You drop it. The match falls into a crack in the stone floor.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "South Landing",
+  "parentAfter": 122,
+  "parentAfterName": "Narrow Hallway",
+  "playerId": 223,
+  "reply": "Narrow Hallway\nYou are at the entrance of a narrow hallway which goes to the northeast. A staircase goes up to the north.\n \n>"
+ },
+ {
+  "cmd": "ne",
+  "tag": null,
+  "parentBefore": 122,
+  "parentBeforeName": "Narrow Hallway",
+  "parentAfter": 121,
+  "parentAfterName": "Narrow Hallway",
+  "playerId": 223,
+  "reply": "Narrow Hallway\nYou are at a bend in the Narrow Hallway. The hallway continues to the northwest and to the southwest. Inscribed on the wall are some hieroglyphs.\n \n>"
+ },
+ {
+  "cmd": "nw",
+  "tag": null,
+  "parentBefore": 121,
+  "parentBeforeName": "Narrow Hallway",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\nYou are in the southern section of a huge room which holds the royal barge. Before you, to the north, is a plank which provides entrance to the barge. There is room to move around the barge to the east and west, while a doorway to the southeast leads into a darkened corridor.\n \n>"
+ },
+ {
+  "cmd": "get in barge",
+  "tag": "probe:barge",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Center of Barge\nYou are standing on the deck of an ancient wooden barge. Before you, cut into the deck, is a hole. To the south is a plank which leads down off the barge. You can see two cabins on the deck, one to the west and the other to the east.\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "enter barge",
+  "tag": "probe:barge",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Just where do you think you are?\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "climb on barge",
+  "tag": "probe:barge",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>"
+ },
+ {
+  "cmd": "get off barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\nYou're in the southwest corner of the Barge Chamber. You can still see the barge entrance to the east, while there's enough room to continue to the north, around the barge.\n \n>"
+ },
+ {
+  "cmd": "get in barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "enter barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "climb on barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "get off barge",
+  "tag": "probe:barge",
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\nYou're in the northwest corner of the Barge Chamber. You can see by your light that there's room enough to continue around the back of the barge by going to the east, while you can bypass the bow of the boat by going south.\n \n>"
+ },
+ {
+  "cmd": "get in barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "enter barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "climb on barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "get off barge",
+  "tag": "probe:barge",
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\nYou're at the start of a hallway which goes off to the north. To the south, directly behind you, is the back side of the barge. There's enough room to get around it to the east and west.\n \n>"
+ },
+ {
+  "cmd": "get in barge",
+  "tag": "probe:barge",
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 211,
+  "parentAfterName": "barge",
+  "playerId": 223,
+  "reply": "You are now in the barge.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 211,
+  "parentBeforeName": "barge",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You are on your feet again.\n \n>"
+ },
+ {
+  "cmd": "enter barge",
+  "tag": "probe:barge",
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 211,
+  "parentAfterName": "barge",
+  "playerId": 223,
+  "reply": "You are now in the barge.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:barge",
+  "parentBefore": 211,
+  "parentBeforeName": "barge",
+  "parentAfter": 211,
+  "parentAfterName": "barge",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on barge",
+  "tag": "probe:barge",
+  "parentBefore": 211,
+  "parentBeforeName": "barge",
+  "parentAfter": 211,
+  "parentAfterName": "barge",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:barge",
+  "parentBefore": 211,
+  "parentBeforeName": "barge",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You are on your feet again.\n \n>"
+ },
+ {
+  "cmd": "board barge",
+  "tag": "probe:barge",
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 211,
+  "parentAfterName": "barge",
+  "playerId": 223,
+  "reply": "You are now in the barge.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 211,
+  "parentBeforeName": "barge",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You are on your feet again.\n \n>"
+ },
+ {
+  "cmd": "climb on barge",
+  "tag": "probe:barge",
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "get off barge",
+  "tag": "probe:barge",
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not in that!\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 20,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\nYou are at the top of a steep, descending passage that plunges down to the north. Although the angle is steep, it looks as if you should have firm enough footing to travel safely. From the angle, it appears as though the passage is actually leaving the pyramid, cutting down through the sand high overhead to an adjoining building.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 20,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 19,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\nYou are about midway down a steep, descending, north/south passageway which seems to lead out of the pyramid to the north. The walls of stone are polished and as smooth as glass, glistening in your light, lighting the passage far to the north and the south.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 19,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 18,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\nYou are at the north end of a descending passageway. You can see the smoothly polished passageway rising up and out of sight to the south, heading back into the pyramid. A large doorway cut into the stone walls lies to the north and, through it, you can see an immense chamber.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "Temple Chamber\nYou are in a huge chamber, immense in its size and scope, especially since it is far underground. Your light seems to climb and fall from the high walls, making their top boundaries undefined as they melt into inky darkness, flickering into the unknown reaches high overhead. There is a huge doorway carved out of the south wall, the arch at its top barely discernible in your light. To the north is a similar doorway, slightly scaled down, with pillars on either side of it, their shadows playing strange tricks on the wall behind them. You can just barely make out the paintings on the walls, pictures of the ancient Queen, her servants, and the priests in attendance.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 16,
+  "parentAfterName": "Inner Chamber",
+  "playerId": 223,
+  "reply": "Inner Chamber\nYou are in the temple's inner chamber. The ceiling here is lower, low enough for your light to reach it. There are openings in the east and west walls, and a large, arched doorway to the south. The walls are covered with paintings, most of which depict the Queen in different stages of preparation for her trip on the royal barge. One in particular, larger than any of the others, shows the Queen and all of her attendants aboard the barge, floating through the air on their way to the netherworld. There are some detailed hieroglyphs on one of the walls.\nLying before you in tortured repose are the bony remains of a former adventurer, someone who tried looting the pyramid long, long "
+ },
+ {
+  "cmd": "get in barge",
+  "tag": "probe:barge",
+  "parentBefore": 16,
+  "parentBeforeName": "Inner Chamber",
+  "parentAfter": 16,
+  "parentAfterName": "Inner Chamber",
+  "playerId": 223,
+  "reply": "You can't see any barge here!\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 16,
+  "parentBeforeName": "Inner Chamber",
+  "parentAfter": 16,
+  "parentAfterName": "Inner Chamber",
+  "playerId": 223,
+  "reply": "You can't see any of barge here!\n \n>"
+ },
+ {
+  "cmd": "enter barge",
+  "tag": "probe:barge",
+  "parentBefore": 16,
+  "parentBeforeName": "Inner Chamber",
+  "parentAfter": 16,
+  "parentAfterName": "Inner Chamber",
+  "playerId": 223,
+  "reply": "You can't see any barge here!\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:barge",
+  "parentBefore": 16,
+  "parentBeforeName": "Inner Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "Temple Chamber\n \n>"
+ },
+ {
+  "cmd": "sit on barge",
+  "tag": "probe:barge",
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't see any barge here!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:barge",
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board barge",
+  "tag": "probe:barge",
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't see any barge here!\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't see any of barge here!\n \n>"
+ },
+ {
+  "cmd": "climb on barge",
+  "tag": "probe:barge",
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't see any barge here!\n \n>"
+ },
+ {
+  "cmd": "get off barge",
+  "tag": "probe:barge",
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't see any barge here!\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 18,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\n \n>"
+ },
+ {
+  "cmd": "get golden chalice",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 18,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "You can't see any golden chalice here!\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "Temple Chamber\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 18,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\n \n>"
+ },
+ {
+  "cmd": "get silver chalice",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 18,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "You can't see any silver chalice here!\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "Temple Chamber\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 17,
+  "parentAfterName": "Temple Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 17,
+  "parentBeforeName": "Temple Chamber",
+  "parentAfter": 18,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 19,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 19,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 20,
+  "parentAfterName": "Steep Passageway",
+  "playerId": 223,
+  "reply": "Steep Passageway\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 20,
+  "parentBeforeName": "Steep Passageway",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 115,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 115,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 116,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 116,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>"
+ },
+ {
+  "cmd": "get in beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Get real. You don't have fly feet.\n \n>"
+ },
+ {
+  "cmd": "get out of beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You're not in that!\n \n>"
+ },
+ {
+  "cmd": "enter beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Get real. You don't have fly feet.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Get real. You don't have fly feet.\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Get real. You don't have fly feet.\n \n>"
+ },
+ {
+  "cmd": "get out of beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You're not in that!\n \n>"
+ },
+ {
+  "cmd": "climb on beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Get real. You don't have fly feet.\n \n>"
+ },
+ {
+  "cmd": "get off beam",
+  "tag": "probe:beam",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You're not in that!\n \n>"
+ },
+ {
+  "cmd": "get in barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Just where do you think you are?\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "enter barge",
+  "tag": "probe:barge",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Just where do you think you are?\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "climb on barge",
+  "tag": "probe:barge",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 114,
+  "parentAfterName": "Center of Barge",
+  "playerId": 223,
+  "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>"
+ },
+ {
+  "cmd": "get off barge",
+  "tag": "probe:barge",
+  "parentBefore": 114,
+  "parentBeforeName": "Center of Barge",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "get scroll",
+  "tag": null,
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 117,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any scroll here!\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 117,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\nYou are in the southeast corner of the Barge Chamber. There's enough room to bypass the stern of the barge and continue to the north. To the west you can see the entrance to the barge.\n \n>"
+ },
+ {
+  "cmd": "get in barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "enter barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "There's no way to do that from here.\n \n>"
+ },
+ {
+  "cmd": "get out of barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "climb on barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Bizarre!\n \n>"
+ },
+ {
+  "cmd": "get off barge",
+  "tag": "probe:barge",
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You're not on the barge!\n \n>"
+ },
+ {
+  "cmd": "d",
+  "tag": null,
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "examine slot",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any slot here!\n \n>"
+ },
+ {
+  "cmd": "put torch in golden chalice",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any golden chalice here!\n \n>"
+ },
+ {
+  "cmd": "remove shim",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any shim here!\n \n>"
+ },
+ {
+  "cmd": "drop all",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "bronze torch: Dropped.\nmatchbook: Dropped.\nshovel: Dropped.\npick axe: Dropped.\n \n>"
+ },
+ {
+  "cmd": "raise beam",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "get in beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "get out of beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any of beam here!\n \n>"
+ },
+ {
+  "cmd": "enter beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "sit on beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "board beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "get out of beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any of beam here!\n \n>"
+ },
+ {
+  "cmd": "climb on beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "get off beam",
+  "tag": "probe:beam",
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "get all",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "pick axe: Taken.\nshovel: Taken.\nmatchbook: Taken.\nbronze torch: Taken.\n \n>"
+ },
+ {
+  "cmd": "drop shovel",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "drop shim",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any shim here!\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\n \n>"
+ },
+ {
+  "cmd": "u",
+  "tag": null,
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 119,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 119,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "Barge Chamber\nThere is a shovel here.\n \n>"
+ },
+ {
+  "cmd": "get beam",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't see any beam here!\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 120,
+  "parentAfterName": "Barge Chamber",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "se",
+  "tag": null,
+  "parentBefore": 120,
+  "parentBeforeName": "Barge Chamber",
+  "parentAfter": 121,
+  "parentAfterName": "Narrow Hallway",
+  "playerId": 223,
+  "reply": "Narrow Hallway\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 121,
+  "parentBeforeName": "Narrow Hallway",
+  "parentAfter": 122,
+  "parentAfterName": "Narrow Hallway",
+  "playerId": 223,
+  "reply": "Narrow Hallway\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 122,
+  "parentBeforeName": "Narrow Hallway",
+  "parentAfter": 123,
+  "parentAfterName": "South Landing",
+  "playerId": 223,
+  "reply": "South Landing\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "South Landing",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Chamber of Ra\nThere is a knapsack here.\nThe knapsack contains:\n  A pink jar\n  A canteen\n  A rope\nThere is an ancient map here.\n \n>"
+ },
+ {
+  "cmd": "put golden chalice in knapsack",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "You can't see any golden chalice here!\n \n>"
+ },
+ {
+  "cmd": "put silver chalice in knapsack",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "You can't see any silver chalice here!\n \n>"
+ },
+ {
+  "cmd": "get rope",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "get torch",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "You already have it.\n \n>"
+ },
+ {
+  "cmd": "tie rope to altar",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "The rope has been tied to the stone altar.\n \n>"
+ },
+ {
+  "cmd": "throw rope north",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "The rope descends into the steep staircase.\n \n>"
+ },
+ {
+  "cmd": "get knapsack",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 206,
+  "parentAfterName": "Chamber of Ra",
+  "playerId": 223,
+  "reply": "(wearing it)\nYou swing the knapsack over your shoulders and it settles on your back as its cover flap closes.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 206,
+  "parentBeforeName": "Chamber of Ra",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "(down the rope)\nCircular Room\nYou are in a strange, round room which sits in the center of four hallways. These hallways lead off to the northeast, southeast, southwest and northwest like the spokes of a wheel. Above your head is a long tunnel which stretches up and out of sight.\nDescending from above is the end of a long rope.\nAs you peer down the dimly-lit hallways, you see that the doors in all four hallways are balanced halfway open.\nA large golden cluster sits on the floor.\nSitting in the middle of the floor is a large statue, about two feet shorter than you. It reminds you a little of Miss Ellingsworth.\n \n>"
+ },
+ {
+  "cmd": "push statue",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "The statue teeters, swaying and rocking back and forth, then falls over, its top-heavy structure striking the floor with a dull, loud thud. As you look over the damage, you see the head has separated from the statue.\n \n>"
+ },
+ {
+  "cmd": "get head",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "roll statue sw",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "As you enter the corridor, a huge stone door begins to slide down from the ceiling closing off any further progress. The closer you come to the door, the further down the door descends until, eventually, it is close to the floor. When you turn around, you can barely see beyond the Circular Room where an identical door has risen off the floor an equal amount.\n \nSouthwest Hallway\nYou are midway down the Southwest Hallway. The walls of this narrow passage are unadorned and smooth. The hallway continues to the southwest and the northeast.\nThe pushed statue rests on the floor.\n \n>"
+ },
+ {
+  "cmd": "drop knapsack",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "You take the knapsack off and place it down. As it settles, the cover flaps open.\n \n>"
+ },
+ {
+  "cmd": "ne",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you notice that the door to the southwest is closed, while the one in the opposite hallway is all the way open. The other two are halfway open.\n \nCircular Room\nA large golden cluster sits on the floor.\n \n>"
+ },
+ {
+  "cmd": "ne",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "Northeast Hallway\nYou are standing midway down the long Northeast Hallway. The high walls are undecorated, but bear the marks of the stonecarver's tool. The hallway continues to the northeast and the southwest.\nThe path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the opposite corridor.\n \n>"
+ },
+ {
+  "cmd": "ne",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 139,
+  "parentAfterName": "Room of Selkis",
+  "playerId": 223,
+  "reply": "Room of Selkis\nYou are standing in a small room, that of the protective goddess Selkis. There are red, blue and green patterns on the walls formed from small glazed tiles that have been carefully arranged in order of shade. The darkest tiles border the floor, and become lightest near the ceiling. On one wall, inscribed in a beaten gold panel, is the symbol of Selkis, under which you can see some hieroglyphic text. An opening through the southwest wall leads out of this room.\nA beautiful ruby cluster, sparkling like fire, sits on the floor.\n \n>"
+ },
+ {
+  "cmd": "get ruby cluster",
+  "tag": null,
+  "parentBefore": 139,
+  "parentBeforeName": "Room of Selkis",
+  "parentAfter": 139,
+  "parentAfterName": "Room of Selkis",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "read hieroglyphs",
+  "tag": null,
+  "parentBefore": 139,
+  "parentBeforeName": "Room of Selkis",
+  "parentAfter": 139,
+  "parentAfterName": "Room of Selkis",
+  "playerId": 223,
+  "reply": "(@@)\n \n           .\n))  /  #  /  ::\n \n<-*  (@@)  =!=  /  *\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 139,
+  "parentBeforeName": "Room of Selkis",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "Northeast Hallway\nThe path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the opposite corridor.\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you notice that the door to the southwest is closed, while the one in the opposite hallway is all the way open. The other two are halfway open.\n \nCircular Room\nA large golden cluster sits on the floor.\n \n>"
+ },
+ {
+  "cmd": "get golden cluster",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "Southwest Hallway\nThere is a knapsack here.\nThe knapsack contains:\n  A pink jar\n  A canteen\nThere is a large statue here.\n \n>"
+ },
+ {
+  "cmd": "put golden cluster in knapsack",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "put ruby cluster in knapsack",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "get all",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "knapsack: (wearing it)\nYou swing the knapsack over your shoulders and it settles on your back as its cover flap closes.\nlarge statue: It's far too heavy.\n \n>"
+ },
+ {
+  "cmd": "roll statue ne",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you see that the doors in all four hallways are balanced halfway open.\n \nCircular Room\nThe pushed statue rests on the floor.\n \n>"
+ },
+ {
+  "cmd": "roll statue ne",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "As you enter the corridor, a huge stone door begins to slide down from the ceiling closing off any further progress. The closer you come to the door, the further down the door descends until, eventually, it is close to the floor. When you turn around, you can barely see beyond the Circular Room where an identical door has risen off the floor an equal amount.\n \nNortheast Hallway\nThe pushed statue rests on the floor.\n \n>"
+ },
+ {
+  "cmd": "drop all",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "knapsack: You take the knapsack off and place it down. As it settles, the cover flaps open.\nbroken head: Dropped.\nbronze torch: Dropped.\nmatchbook: Dropped.\npick axe: Dropped.\n \n>"
+ },
+ {
+  "cmd": "get torch",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you notice that the door to the northeast is closed, while the one in the opposite hallway is all the way open. The other two are halfway open.\n \nCircular Room\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "Southwest Hallway\nThe path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the opposite corridor.\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 137,
+  "parentAfterName": "Room of Isis",
+  "playerId": 223,
+  "reply": "Room of Isis\nThis is the room of the protective goddess Isis. You stand in amazement in the center of the room as thousands of tiny lights twinkle around you. With great surprise you realize that the light from your torch is being reflected by the mirror-like surfaces of innumerable quartzite chips. These are set artfully into red clay panels in the walls, and are surrounded by shiny red jasper fragments. On the southwest wall, under the winged symbol of Isis, some hieroglyphic text is inscribed in a gold panel. To the northeast is an arched opening, and, looking through it, you can barely make out a hallway.\nLying on the ground is a brilliant, glowing emerald cluster.\n \n>"
+ },
+ {
+  "cmd": "get emerald cluster",
+  "tag": null,
+  "parentBefore": 137,
+  "parentBeforeName": "Room of Isis",
+  "parentAfter": 137,
+  "parentAfterName": "Room of Isis",
+  "playerId": 223,
+  "reply": "Taken.\nYour torch is beginning to sputter.\n \n>"
+ },
+ {
+  "cmd": "read hieroglyphs",
+  "tag": null,
+  "parentBefore": 137,
+  "parentBeforeName": "Room of Isis",
+  "parentAfter": 137,
+  "parentAfterName": "Room of Isis",
+  "playerId": 223,
+  "reply": "(@@@)\n \n           /\n))  /  #  .   ::\n \n<-*  (@@@)  =!=  /  *\n \n>"
+ },
+ {
+  "cmd": "ne",
+  "tag": null,
+  "parentBefore": 137,
+  "parentBeforeName": "Room of Isis",
+  "parentAfter": 127,
+  "parentAfterName": "Southwest Hallway",
+  "playerId": 223,
+  "reply": "Southwest Hallway\nThe path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the opposite corridor.\n \n>"
+ },
+ {
+  "cmd": "ne",
+  "tag": null,
+  "parentBefore": 127,
+  "parentBeforeName": "Southwest Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you notice that the door to the northeast is closed, while the one in the opposite hallway is all the way open. The other two are halfway open.\n \nCircular Room\n \n>"
+ },
+ {
+  "cmd": "ne",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "Northeast Hallway\nThere is a pick axe here.\nThere is a matchbook here.\nThere is a broken head here.\nThere is a knapsack here.\nThe knapsack contains:\n  A ruby cluster\n  A golden cluster\n  A pink jar\n  A canteen\nThere is a large statue here.\n \n>"
+ },
+ {
+  "cmd": "put emerald cluster in knapsack",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "get all",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 129,
+  "parentAfterName": "Northeast Hallway",
+  "playerId": 223,
+  "reply": "pick axe: Taken.\nmatchbook: Taken.\nbroken head: Taken.\nknapsack: (wearing it)\nYou swing the knapsack over your shoulders and it settles on your back as its cover flap closes.\nlarge statue: It's far too heavy.\n \n>"
+ },
+ {
+  "cmd": "roll statue sw",
+  "tag": null,
+  "parentBefore": 129,
+  "parentBeforeName": "Northeast Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you see that the doors in all four hallways are balanced halfway open.\n \nCircular Room\nThe pushed statue rests on the floor.\n \n>"
+ },
+ {
+  "cmd": "roll statue nw",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 131,
+  "parentAfterName": "Northwest Hallway",
+  "playerId": 223,
+  "reply": "As you enter the corridor, a huge stone door begins to slide down from the ceiling closing off any further progress. The closer you come to the door, the further down the door descends until, eventually, it is close to the floor. When you turn around, you can barely see beyond the Circular Room where an identical door has risen off the floor an equal amount.\n \nNorthwest Hallway\nYou are standing in the middle of the Northwest Hallway. The walls here are smooth and undecorated, carved out of granite. The hallway continues to the northwest and to the southeast.\nThe pushed statue rests on the floor.\n \n>"
+ },
+ {
+  "cmd": "drop all",
+  "tag": null,
+  "parentBefore": 131,
+  "parentBeforeName": "Northwest Hallway",
+  "parentAfter": 131,
+  "parentAfterName": "Northwest Hallway",
+  "playerId": 223,
+  "reply": "knapsack: You take the knapsack off and place it down. As it settles, the cover flaps open.\nbroken head: Dropped.\nmatchbook: Dropped.\npick axe: Dropped.\nbronze torch: Dropped.\n \n>"
+ },
+ {
+  "cmd": "get torch",
+  "tag": null,
+  "parentBefore": 131,
+  "parentBeforeName": "Northwest Hallway",
+  "parentAfter": 131,
+  "parentAfterName": "Northwest Hallway",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "se",
+  "tag": null,
+  "parentBefore": 131,
+  "parentBeforeName": "Northwest Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you notice that the door to the northwest is closed, while the one in the opposite hallway is all the way open. The other two are halfway open.\n \nCircular Room\n \n>"
+ },
+ {
+  "cmd": "se",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 125,
+  "parentAfterName": "Southeast Hallway",
+  "playerId": 223,
+  "reply": "Southeast Hallway\nYou are midway down the Southeast Hallway. This corridor is undecorated and the walls are polished to a smooth lustre. The hallway continues to the southeast and the northwest.\nThe path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the opposite corridor.\nYour torch is getting very, very dim.\n \n>"
+ },
+ {
+  "cmd": "se",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Southeast Hallway",
+  "parentAfter": 135,
+  "parentAfterName": "Room of Neith",
+  "playerId": 223,
+  "reply": "Room of Neith\nYou are standing in the room of the protective goddess Neith. This room seems dark and mysterious with its decorations of inky-blue lapis lazuli and jet-black obsidian. Gold scrollwork defines an area on one of the walls, in the center of which is the symbol of Neith. Below this you can see some hieroglyphs etched into a beaten gold panel. There is a door in the northwest wall leading out of the room.\nAn opal cluster, glistening with the light of a thousand fires, lies on the floor.\n \n>"
+ },
+ {
+  "cmd": "get opal cluster",
+  "tag": null,
+  "parentBefore": 135,
+  "parentBeforeName": "Room of Neith",
+  "parentAfter": 135,
+  "parentAfterName": "Room of Neith",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "read hieroglyphs",
+  "tag": null,
+  "parentBefore": 135,
+  "parentBeforeName": "Room of Neith",
+  "parentAfter": 135,
+  "parentAfterName": "Room of Neith",
+  "playerId": 223,
+  "reply": "(@)\n \n          \\\n))  /  #   .  ::\n \n<-*  (@)  =!=  /  *\n \n>"
+ },
+ {
+  "cmd": "nw",
+  "tag": null,
+  "parentBefore": 135,
+  "parentBeforeName": "Room of Neith",
+  "parentAfter": 125,
+  "parentAfterName": "Southeast Hallway",
+  "playerId": 223,
+  "reply": "Southeast Hallway\nThe path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the opposite corridor.\n \n>"
+ },
+ {
+  "cmd": "nw",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Southeast Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you notice that the door to the northwest is closed, while the one in the opposite hallway is all the way open. The other two are halfway open.\n \nCircular Room\n \n>"
+ },
+ {
+  "cmd": "nw",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 131,
+  "parentAfterName": "Northwest Hallway",
+  "playerId": 223,
+  "reply": "Northwest Hallway\nThere is a pick axe here.\nThere is a matchbook here.\nThere is a broken head here.\nThere is a knapsack here.\nThe knapsack contains:\n  An emerald cluster\n  A ruby cluster\n  A golden cluster\n  A pink jar\n  A canteen\nThere is a large statue here.\n \n>"
+ },
+ {
+  "cmd": "put opal cluster in knapsack",
+  "tag": null,
+  "parentBefore": 131,
+  "parentBeforeName": "Northwest Hallway",
+  "parentAfter": 131,
+  "parentAfterName": "Northwest Hallway",
+  "playerId": 223,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "get all",
+  "tag": null,
+  "parentBefore": 131,
+  "parentBeforeName": "Northwest Hallway",
+  "parentAfter": 131,
+  "parentAfterName": "Northwest Hallway",
+  "playerId": 223,
+  "reply": "pick axe: Taken.\nmatchbook: Taken.\nbroken head: Taken.\nknapsack: (wearing it)\nYou swing the knapsack over your shoulders and it settles on your back as its cover flap closes.\nlarge statue: It's far too heavy.\n \n>"
+ },
+ {
+  "cmd": "roll statue se",
+  "tag": null,
+  "parentBefore": 131,
+  "parentBeforeName": "Northwest Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you see that the doors in all four hallways are balanced halfway open.\n \nCircular Room\nThe pushed statue rests on the floor.\n \n>"
+ },
+ {
+  "cmd": "roll statue se",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 125,
+  "parentAfterName": "Southeast Hallway",
+  "playerId": 223,
+  "reply": "As you enter the corridor, a huge stone door begins to slide down from the ceiling closing off any further progress. The closer you come to the door, the further down the door descends until, eventually, it is close to the floor. When you turn around, you can barely see beyond the Circular Room where an identical door has risen off the floor an equal amount.\n \nSoutheast Hallway\nThe pushed statue rests on the floor.\n \n>"
+ },
+ {
+  "cmd": "drop all",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Southeast Hallway",
+  "parentAfter": 125,
+  "parentAfterName": "Southeast Hallway",
+  "playerId": 223,
+  "reply": "knapsack: You take the knapsack off and place it down. As it settles, the cover flaps open.\nbroken head: Dropped.\nmatchbook: Dropped.\npick axe: Dropped.\nbronze torch: Dropped.\n \n>"
+ },
+ {
+  "cmd": "get torch",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Southeast Hallway",
+  "parentAfter": 125,
+  "parentAfterName": "Southeast Hallway",
+  "playerId": 223,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "nw",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Southeast Hallway",
+  "parentAfter": 141,
+  "parentAfterName": "Circular Room",
+  "playerId": 223,
+  "reply": "As you peer down the dimly-lit hallways, you notice that the door to the southeast is closed, while the one in the opposite hallway is all the way open. The other two are halfway open.\n \nCircular Room\nWith a final blaze of glory, your torch goes out.\nIt is now pitch black.\n \n>"
+ },
+ {
+  "cmd": "nw",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Circular Room",
+  "parentAfter": 131,
+  "parentAfterName": "Northwest Hallway",
+  "playerId": 223,
+  "reply": "Oh, no! An army of eleventy-seven rats, starved for affection (and food), leapt upon your body in a show of rodentine appreciation and devoured you!\n \n   ****  You have died  **** \n \nThe great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in getting this far, to get farther requires a wisdom, tempered by experience.\n \nYour score is 170 out of a possible 400, in 233 moves.\nThis score gives you the rank of a poor professor.\nDo you wish to start the game again? (Y is affirmative): >"
+ }
+]

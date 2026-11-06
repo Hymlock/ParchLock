@@ -1,0 +1,47 @@
+{
+  "tier": "constructed pending removal failure with fresh hydration/write",
+  "sourceSha": "c8b087f15d8c72b565956b879d5ec8f428280c33f0bebfae2ba8d22dffeb355b",
+  "freshRead": null,
+  "after": "fresh-after-tombstone",
+  "indexValid": false,
+  "index": {
+    "v": 1,
+    "revision": 0,
+    "entries": {
+      "T_a": {
+        "key": "T_a",
+        "kind": "test",
+        "owners": [
+          {
+            "path": "oldstory",
+            "digest": "dA",
+            "inputs": {
+              "id": "a"
+            }
+          },
+          {
+            "digest": "dA",
+            "path": "newstory",
+            "inputs": {
+              "id": "a"
+            }
+          }
+        ],
+        "storeRevision": 2
+      }
+    },
+    "tombstones": {},
+    "pending": {
+      "revision": 1,
+      "records": [
+        {
+          "key": "T_a",
+          "kind": "test",
+          "inputs": {
+            "id": "a"
+          }
+        }
+      ]
+    }
+  }
+}

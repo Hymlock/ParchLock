@@ -1,0 +1,3 @@
+{"game":"905.z5.js","exits":["east>39","south>40"],"marks":["dirty laundry","clothing","dresser","south","door","east","endtable","telephone","wallet","keys"],"inv1":["30:soiled clothing","31:gold watch"],"inv2":["30:soiled clothing","31:gold watch"],"rooms":[]}
+{"game":"Alabaster.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Zork3-TheDungeonMaster.z3.js","exits":["north>null","south>63","up>null"],"marks":["Stair","south"],"inv1":[],"inv2":[],"rooms":["152:Damp Passage","62:Barren Area","63:Junction","64:Endless Stair","78:Creepy Crawl"]}

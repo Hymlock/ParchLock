@@ -1,0 +1,232 @@
+{
+ "Zork3-TheDungeonMaster.z3.js": {
+  "rooms": {
+   "status": "proven",
+   "reason": "LOOK heading \"Endless Stair\" = RAM room 64 = payload roomName"
+  },
+  "playerRoot": {
+   "status": "proven",
+   "reason": "player 202: spawned strange key, Frobozz Magic Grue Repellent listed by native i; broken timber (not held) absent"
+  },
+  "underlineVsDict": {
+   "status": "proven",
+   "reason": "inventory underlines strange key[dict key], Frobozz Magic Grue Repellent[dict repell]"
+  },
+  "nested": {
+   "status": "proven",
+   "reason": "strange key inside open chest: listed natively and underlined"
+  },
+  "actors": {
+   "status": "unknown",
+   "reason": "GAP: app animate bit null != source ACTORBIT 21 (needs native proof + attributeMap animate)"
+  },
+  "status": {
+   "status": "proven",
+   "reason": "SCORE reply \"Your potential is 0 of a possible 7, in 3 moves.   >\" agrees with StatTracker score=0,turns=3"
+  },
+  "descriptors": {
+   "status": "unknown",
+   "reason": "no two source-takeable objects share a head noun with different names"
+  },
+  "identical": {
+   "status": "proven",
+   "reason": "\"lamp\" x2: one group mark covers exactly both ids; examine lamp -> game disambiguation"
+  },
+  "onoff": {
+   "status": "unknown",
+   "reason": "no source light object turned on natively (0 candidates)"
+  },
+  "wornItems": {
+   "status": "unknown",
+   "reason": "no wearable put on natively (0 candidates)"
+  },
+  "consumed": {
+   "status": "proven",
+   "reason": "piece of waybread eaten natively (parent 0), not listed or underlined after"
+  }
+ },
+ "Infidel.z3.js": {
+  "rooms": {
+   "status": "proven",
+   "reason": "LOOK heading \"Your Tent\" = RAM room 71 = payload roomName"
+  },
+  "playerRoot": {
+   "status": "proven",
+   "reason": "player 223: spawned inspection sticker, farewell note listed by native i; rope (not held) absent"
+  },
+  "underlineVsDict": {
+   "status": "proven",
+   "reason": "inventory underlines inspection sticker[dict sticke], farewell note[dict note]"
+  },
+  "nested": {
+   "status": "unknown",
+   "reason": "skeleton>inspection sticker listed false underlined false reply \"On the bony digits of one hand is a jeweled ring.   You hear\""
+  },
+  "actors": {
+   "status": "unknown",
+   "reason": "GAP: app animate bit null != source ACTORBIT 17 (needs native proof + attributeMap animate)"
+  },
+  "status": {
+   "status": "proven",
+   "reason": "SCORE reply \"Your score is 0 out of a possible 400, in 3 moves. This score gives yo\" agrees with StatTracker score=0"
+  },
+  "descriptors": {
+   "status": "unknown",
+   "reason": "no two source-takeable objects share a head noun with different names"
+  },
+  "identical": {
+   "status": "unknown",
+   "reason": "\"matchbook\" x2: printed 2, underlined 1"
+  },
+  "onoff": {
+   "status": "unknown",
+   "reason": "no source light object turned on natively (0 candidates)"
+  },
+  "wornItems": {
+   "status": "unknown",
+   "reason": "no exact WEARBIT in source (title has no wearables or source differs)"
+  },
+  "consumed": {
+   "status": "proven",
+   "reason": "piece of dried beef eaten natively (parent 0), not listed or underlined after"
+  }
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "rooms": {
+   "status": "unknown",
+   "reason": "LOOK \"The place: Upper Sandusky, Ohio. The tim\" vs RAM \"Joe's Bar\" vs payload \"Joe's Bar\""
+  },
+  "playerRoot": {
+   "status": "proven",
+   "reason": "player 200: spawned secret map, clothes pin listed by native i; matchbook (not held) absent"
+  },
+  "underlineVsDict": {
+   "status": "proven",
+   "reason": "inventory underlines secret map[dict map], clothes pin[dict pin]"
+  },
+  "nested": {
+   "status": "unknown",
+   "reason": "royal barge>secret map listed true underlined false reply \"You can see a secret map.    You trace the urge to the regio\""
+  },
+  "actors": {
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 31"
+  },
+  "status": {
+   "status": "unknown",
+   "reason": "SCORE reply numbers [] vs StatTracker [{\"k\":\"score\",\"v\":0,\"max\":null},{\"k\":\"turns\",\"v\":3,\"max\":null}]"
+  },
+  "descriptors": {
+   "status": "unknown",
+   "reason": "no two source-takeable objects share a head noun with different names"
+  },
+  "identical": {
+   "status": "unknown",
+   "reason": "\"coin\" x2: printed 2, underlined 1"
+  },
+  "onoff": {
+   "status": "unknown",
+   "reason": "no source light object turned on natively (2 candidates)"
+  },
+  "wornItems": {
+   "status": "unknown",
+   "reason": "not underlined in i; "
+  },
+  "consumed": {
+   "status": "unknown",
+   "reason": "no exact FOODBIT in source"
+  }
+ },
+ "Spellbreaker.z3.js": {
+  "rooms": {
+   "status": "proven",
+   "reason": "LOOK heading \"Council Chamber\" = RAM room 76 = payload roomName"
+  },
+  "playerRoot": {
+   "status": "proven",
+   "reason": "player 52: spawned compass rose, pair of pruning shears listed by native i; pile of junk (not held) absent"
+  },
+  "underlineVsDict": {
+   "status": "proven",
+   "reason": "inventory underlines compass rose[dict rose], pair of pruning shears[dict shears]"
+  },
+  "nested": {
+   "status": "unknown",
+   "reason": "gold box>compass rose listed true underlined false reply \"The gold box contains a compass rose, and a cube.   A tall, \""
+  },
+  "actors": {
+   "status": "unknown",
+   "reason": "no exact ACTORBIT/PERSONBIT in source"
+  },
+  "status": {
+   "status": "proven",
+   "reason": "SCORE reply \"Your score is 0 of a possible 600, in 3 moves. This puts you in the cl\" agrees with StatTracker score=0,turns=3"
+  },
+  "descriptors": {
+   "status": "unknown",
+   "reason": "no two source-takeable objects share a head noun with different names"
+  },
+  "identical": {
+   "status": "unknown",
+   "reason": "\"cube\" x2: printed 2, underlined 1"
+  },
+  "onoff": {
+   "status": "unknown",
+   "reason": "no source light object turned on natively (0 candidates)"
+  },
+  "wornItems": {
+   "status": "unknown",
+   "reason": "no exact WEARBIT in source (title has no wearables or source differs)"
+  },
+  "consumed": {
+   "status": "unknown",
+   "reason": "no exact FOODBIT in source"
+  }
+ },
+ "Wishbringer.z3.js": {
+  "rooms": {
+   "status": "proven",
+   "reason": "LOOK heading \"Hilltop\" = RAM room 95 = payload roomName"
+  },
+  "playerRoot": {
+   "status": "proven",
+   "reason": "player 219: spawned violet note, silver whistle listed by native i; dead branch (not held) absent"
+  },
+  "underlineVsDict": {
+   "status": "proven",
+   "reason": "inventory underlines violet note[dict note], silver whistle[dict whistl]"
+  },
+  "nested": {
+   "status": "unknown",
+   "reason": "bottle>violet note listed false underlined false reply \"There's a bit of grue milk in the bottle.   Somebody inside \""
+  },
+  "actors": {
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 18"
+  },
+  "status": {
+   "status": "unknown",
+   "reason": "SCORE reply numbers [0,100,3] vs StatTracker [{\"k\":\"time\",\"v\":\"3:03 PM\",\"max\":null},{\"k\":\"turns\",\"v\":3,\"max\":null}]"
+  },
+  "descriptors": {
+   "status": "unknown",
+   "reason": "no two source-takeable objects share a head noun with different names"
+  },
+  "identical": {
+   "status": "proven",
+   "reason": "\"mysterious envelope\" x2: one group mark covers exactly both ids; examine envelope -> game disambiguation"
+  },
+  "onoff": {
+   "status": "unknown",
+   "reason": "no source light object turned on natively (0 candidates)"
+  },
+  "wornItems": {
+   "status": "proven",
+   "reason": "wizard's hat worn natively, underlined in i; app worn bit null"
+  },
+  "consumed": {
+   "status": "unknown",
+   "reason": "no exact FOODBIT in source"
+  }
+ }
+}

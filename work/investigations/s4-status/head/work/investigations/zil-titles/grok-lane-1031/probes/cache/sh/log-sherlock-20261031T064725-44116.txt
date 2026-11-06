@@ -1,0 +1,5 @@
+sherlock sh-opened @4 OPEN MOROCCO CASE #304 TRUE "Holmes is faster than you are. He moves the morocco case beyond your reach and a"
+sherlock sh-opened @4 OPEN KNIFE #151 TRUE "It is already open.\n \n> "
+sherlock sh-opened @4 OPEN BLACK BAG #172 FALSE "You open the black bag.\nInside you see a brown bottle and a blue bottle.\n \n> "
+sherlock sh-opened @4 CLOSE STUDY DOOR #70 TRUE "You close the study door.\n \n> "
+sherlock sh-opened @19 OPEN MATCHBOOK #236 NOTEST "You cannot see any matchbook here.\n \n> "

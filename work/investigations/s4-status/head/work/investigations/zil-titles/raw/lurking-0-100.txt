@@ -1,0 +1,10 @@
+STEP 55 "WEAR GLOVES" -> crowbar: Taken. / >WEAR GLOVES / You put on the gloves. They're a little big, but not really such a bad fit at all. / >
+   changed: 203:pair of electrician's gloves +3 -
+STEP 57 "LIGHT FLASHLIGHT" -> Temporary Lab / This is a laboratory of some sort. It takes up most of the building on this level, all the interior walls having been knocked down. (One reason these temporary buildings are still here
+   changed: 132:flashlight +15 - ; 140:Temporary Lab +6 -
+STEP 60 "TURN OFF FLASHLIGHT" -> Temporary Basement / >TURN OFF FLASHLIGHT / The flashlight clicks off. / >
+   changed: 132:flashlight + -15
+STEP 98 "GET BOOTS" -> There is a pair of rubber boots here. / >GET BOOTS / Taken. / >
+   changed: 104:pair of rubber boots +6 -
+STEP 99 "WEAR THEM" -> Taken. / >WEAR THEM / Snug, but okay. / >
+   changed: 104:pair of rubber boots +3 -

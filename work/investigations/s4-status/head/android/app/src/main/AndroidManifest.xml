@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- D215: the real activity. It carries no launcher filter and is never
+             enabled or disabled, so every intent and the rotating home-screen
+             shortcut can always reach it. -->
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
+            android:name=".ParchLockActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true" />
+
+        <!-- D215: the launcher entry keeps its original public name, so home-screen
+             icons placed by earlier versions still resolve ("preserve your
+             launchers"). Enabled by default. -->
+        <activity-alias
+            android:name=".MainActivity"
+            android:targetActivity=".ParchLockActivity"
+            android:label="@string/title_activity_main"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity android:name=".IconConsentActivity" android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver android:name=".LauncherRecoveryReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".RotatingIconWidget" android:exported="false" android:label="ParchLock">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/rotating_icon_widget_info" />
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+    </application>
+
+    <!-- Permissions -->
+
+    <!-- D93 (R2/G15): native voice-input in the APK
+         (@capacitor-community/speech-recognition, which also carries this
+         same permission in its own library manifest; declared here too
+         for clarity, since Gradle's manifest merger folds duplicates cleanly). -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+</manifest>

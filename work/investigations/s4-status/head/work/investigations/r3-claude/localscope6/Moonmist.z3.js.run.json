@@ -1,0 +1,357 @@
+{
+  "story": "Moonmist.z3.js",
+  "sha256": "f7d3ac2310279c49de7b16902d3b9045a2025bdcd11379a353083bc59330a3f2",
+  "property": 7,
+  "width": 1,
+  "holder": 44,
+  "litBit": 10,
+  "at": "2026-10-24T06:07:36.167Z",
+  "log": [
+    {
+      "dump": {
+        "roomId": 9,
+        "roomName": "driveway",
+        "lit": true,
+        "prop": {
+          "num": 7,
+          "sz": 5,
+          "dataAddr": 3307
+        },
+        "localGlobals": [
+          {
+            "id": 52,
+            "name": "front gate",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 84,
+            "name": "full moon",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 230,
+            "name": "ocean",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 15,
+            "name": "window",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 45,
+            "name": "chair",
+            "parent": 44,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "horn",
+          "your luggage",
+          "sports car",
+          "dragon's eye",
+          "dragon"
+        ]
+      }
+    },
+    {
+      "cmd": "examine ocean",
+      "roomIdAfter": 9,
+      "reply": [
+        "You look over the ocean for a minute and find nothing suspicious -- for now.",
+        "What next?",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine front gate",
+      "roomIdAfter": 9,
+      "reply": [
+        "In the moonlit gloom, you can make out an ornament on the gate. It's a winged, two-legged dragon called a wyvern, which crests the Tresyllian family's coat of arms.",
+        "The dragon appears in profile. The moonlight glints on its lone visible eye.",
+        "What next?",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine fireplace",
+      "roomIdAfter": 9,
+      "reply": [
+        "(You can't see any fireplace right here!)",
+        "[You won't see \"What next?\" any more.]",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine oil painting",
+      "roomIdAfter": 9,
+      "reply": [
+        "(You can't see any oil painting right here!)",
+        ">"
+      ]
+    },
+    {
+      "cmd": "get out of car",
+      "roomIdAfter": 9,
+      "reply": [
+        "You are on your own feet again.",
+        "(You are now in the driveway.)",
+        "You are by the front gate of Tresyllian Castle. You can hear the ocean beating urgently against the rocks far below.",
+        "In the moonlit gloom, you can make out an ornament on the gate. It's a winged, two-legged dragon called a wyvern, which crests the Tresyllian family's coat of arms.",
+        "The dragon appears in profile. The moonlight glints on its lone visible eye.",
+        "Your new little sports car is parked here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "honk horn",
+      "roomIdAfter": 9,
+      "reply": [
+        "The dragon's eye glows red. A voice comes from a hidden speaker. It says:",
+        "\"Please announce yourself. State your title -- such as Lord or Lady, Sir or Dame, Mr. or Ms. -- and your first and last name.\"",
+        ">"
+      ]
+    },
+    {
+      "cmd": "Ms. Jane Smith",
+      "roomIdAfter": 9,
+      "reply": [
+        "\"Did you say your name is Ms. Jane Smith?\"",
+        ">"
+      ]
+    },
+    {
+      "cmd": "yes",
+      "roomIdAfter": 9,
+      "reply": [
+        "\"And what is your favorite color, Ms. Smith?\"",
+        ">"
+      ]
+    },
+    {
+      "cmd": "red",
+      "roomIdAfter": 9,
+      "reply": [
+        "\"Did you say your favorite color is red?\"",
+        ">"
+      ]
+    },
+    {
+      "cmd": "yes",
+      "roomIdAfter": 9,
+      "reply": [
+        "\"Jolly good! The spare bedroom is decorated in red! Please enter.\"",
+        "The red eye turns green, and the front gate creaks open.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 13,
+      "reply": [
+        "The front gate closes and locks behind you.",
+        "(You are now in the courtyard.)",
+        "As flood lights blaze on, you look around. It looks even lovelier than it sounds in the tourist brochure.",
+        "The dark stone turrets rise toward the misty sky.",
+        "Someone comes running out of the wing to greet you. She's a beautiful red-haired young woman of average height. You recognize her as your friend, Tamara Lynd.",
+        "\"Jane!\" she cries with outflung arms. \"You sweet thing, to answer my letter in person this way! And all the people I wrote about are here tonight for Lionel's memorial birthday dinner!\"",
+        "After a warm hug, she asks anxiously, \"You did read my letter, and not just give it a hasty glance?\"",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 13,
+        "roomName": "courtyard",
+        "lit": true,
+        "prop": {
+          "num": 7,
+          "sz": 7,
+          "dataAddr": 3492
+        },
+        "localGlobals": [
+          {
+            "id": 52,
+            "name": "front gate",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 84,
+            "name": "full moon",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 120,
+            "name": "front door",
+            "parent": 37,
+            "parentIsHolder": false
+          },
+          {
+            "id": 136,
+            "name": "old great hall",
+            "parent": 37,
+            "parentIsHolder": false
+          },
+          {
+            "id": 230,
+            "name": "ocean",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 15,
+            "name": "window",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 45,
+            "name": "chair",
+            "parent": 44,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "Tamara"
+        ]
+      }
+    },
+    {
+      "cmd": "examine fireplace",
+      "roomIdAfter": 13,
+      "reply": [
+        "(You can't see any fireplace right here!)",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine oil painting",
+      "roomIdAfter": 13,
+      "reply": [
+        "(You can't see any oil painting right here!)",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine ocean",
+      "roomIdAfter": 13,
+      "reply": [
+        "You look over the ocean for a minute and find nothing suspicious -- for now.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine front gate",
+      "roomIdAfter": 13,
+      "reply": [
+        "The front gate is closed and locked.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 132,
+      "reply": [
+        "Tamara guides you into the foyer.",
+        "As you enter the foyer, you're overwhelmed by the English past. Those barbarous times when Jack's ancestors had to shut themselves up in a fortified castle have softened into gracious country living. Yet Tamara is clearly anxious.",
+        "(You are in the foyer.)",
+        "\"Here comes Jack now!\" exclaims Tamara, as he comes striding toward you. He's a tall, handsome, dark-browed young man in dinner jacket and black tie.",
+        "\"My fiance, Lord Jack Tresyllian,\" Tamara introduces him. \"Jack, this is my friend from the States, Ms. Jane Smith.\"",
+        "\"So you're that famous young sleuth whom the Yanks call Ms. Sherlock!\" says Lord Jack. \"Tammy's told me about the mysteries you've solved -- but she never let on you looked so smashing! Welcome to Cornwall, Jane luv!\"",
+        "Before you know it, he sweeps you into his arms and kisses you warmly! Let's hope Tamara doesn't mind -- but for the moment all you can see are Lord Jack's dazzling sapphire-blue eyes.",
+        "\"We can talk more later, Jane,\" says Tamara, taking your arm, \"but let's go in now, so you can meet the other guests.\"",
+        "\"Yes, do come in. Bolitho will see to the car and bring your luggage,\" says Lord Jack as an elderly butler appears.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 132,
+        "roomName": "foyer",
+        "lit": true,
+        "prop": {
+          "num": 7,
+          "sz": 6,
+          "dataAddr": 7239
+        },
+        "localGlobals": [
+          {
+            "id": 120,
+            "name": "front door",
+            "parent": 37,
+            "parentIsHolder": false
+          },
+          {
+            "id": 132,
+            "name": "foyer",
+            "parent": 37,
+            "parentIsHolder": false
+          },
+          {
+            "id": 45,
+            "name": "chair",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 133,
+            "name": "table",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 15,
+            "name": "window",
+            "parent": 44,
+            "parentIsHolder": true
+          },
+          {
+            "id": 28,
+            "name": "oil painting",
+            "parent": 44,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "cane",
+          "Bolitho",
+          "Lord Jack",
+          "umbrella stand",
+          "coat of paint",
+          "Tamara",
+          "coat rack"
+        ]
+      }
+    },
+    {
+      "cmd": "examine oil painting",
+      "roomIdAfter": 132,
+      "reply": [
+        "[This is described in the tourist brochure.]",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine ocean",
+      "roomIdAfter": 132,
+      "reply": [
+        "(You can't see any ocean right here!)",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine front gate",
+      "roomIdAfter": 132,
+      "reply": [
+        "(You can't see any front gate right here!)",
+        ">"
+      ]
+    }
+  ]
+}

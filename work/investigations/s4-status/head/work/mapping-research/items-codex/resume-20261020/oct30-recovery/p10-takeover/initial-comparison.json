@@ -1,0 +1,101 @@
+{
+  "scope": "One immutable paired309 P10 gate; differences require evidence classification",
+  "differences": [
+    {
+      "game": "Mulldoon.z8.js",
+      "fields": {
+        "marks": {
+          "base": [
+            "piece of blue coral"
+          ],
+          "candidate": []
+        }
+      }
+    },
+    {
+      "game": "gamlet.z5.js",
+      "fields": {
+        "marks": {
+          "base": [
+            "eyes"
+          ],
+          "candidate": [
+            "balcony",
+            "balustrade",
+            "wall",
+            "night",
+            "stars",
+            "distant artillery",
+            "breeze",
+            "naked",
+            "Light",
+            "eyes"
+          ]
+        }
+      }
+    },
+    {
+      "game": "medusa.z5.js",
+      "fields": {
+        "marks": {
+          "base": [
+            "vampire",
+            "elevator",
+            "red",
+            "toga",
+            "snakes",
+            "floor indicator",
+            "buttons"
+          ],
+          "candidate": [
+            "toga",
+            "snakes",
+            "elevator",
+            "floor indicator",
+            "buttons",
+            "red",
+            "mirror",
+            "vampire"
+          ]
+        }
+      }
+    }
+  ],
+  "errors": [
+    {
+      "game": "BeingSteve.zblorb.js",
+      "baseError": "no-prompt",
+      "candidateError": "no-prompt"
+    },
+    {
+      "game": "BlueLacuna.gblorb.js",
+      "baseError": "no-prompt",
+      "candidateError": "no-prompt"
+    },
+    {
+      "game": "Borderzo.z5.js",
+      "baseError": "no-prompt",
+      "candidateError": "no-prompt"
+    },
+    {
+      "game": "bookvol.z5.js",
+      "baseError": "no-prompt",
+      "candidateError": "no-prompt"
+    },
+    {
+      "game": "chico.z5.js",
+      "baseError": "no-prompt",
+      "candidateError": "no-prompt"
+    },
+    {
+      "game": "stiffmst.z5.js",
+      "baseError": "no-prompt",
+      "candidateError": "no-prompt"
+    },
+    {
+      "game": "vgame.z8.js",
+      "baseError": "no-prompt",
+      "candidateError": "no-prompt"
+    }
+  ]
+}

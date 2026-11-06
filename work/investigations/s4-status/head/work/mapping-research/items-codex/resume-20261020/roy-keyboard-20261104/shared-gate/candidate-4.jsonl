@@ -1,0 +1,15 @@
+{"game":"Adventureland.z5.js","exits":["east>35","north>32","south>32","west>32"],"marks":["North","South","East","West","trees"],"inv1":[],"inv2":[],"rooms":["32:Forest","35:Meadow"]}
+{"game":"BeingSteve.zblorb.js","error":"no-prompt"}
+{"game":"ConanKillEverything.z5.js","exits":[],"marks":["evil wizard","pointed hat","oaken table","walls","torch","door","growling wildcat"],"inv1":["38:loincloth","37:very large sword"],"inv2":["38:loincloth","37:very large sword"],"rooms":["25:Dungeon"]}
+{"game":"DDIV.z5.js","exits":[],"marks":["control","unknown worlds","big chair","explosives","torture table"],"inv1":["458:screwdriver","459:microchip","460:feather","457:remote control unit"],"inv2":["458:screwdriver","459:microchip","460:feather","457:remote control unit"],"rooms":["453:Control Centre"]}
+{"game":"FFF.z5.js","exits":[],"marks":["river","dock","delivery van","rowboat","fox","duck","sack of grain"],"inv1":["54:jumpsuit","44:invoice"],"inv2":["42:sack of grain","41:duck","40:fox","54:jumpsuit","44:invoice"],"rooms":["35:South Shore"]}
+{"game":"Grooverland.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"HugeCave.z8.js","exits":["east>127","in>127","north>180","south>176","west>122"],"marks":[],"inv1":["503:Knapsack"],"inv2":["503:Knapsack"],"rooms":[]}
+{"game":"LDoDoom.z5.js","exits":["southeast>344"],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Moonmist.z3.js","exits":["in>13","south>13"],"marks":["full moon","sports car","front gate","ocean","dragon","eye"],"inv1":["78:tweed outfit"],"inv2":["59:your luggage","78:tweed outfit"],"rooms":["13:courtyard","9:driveway"]}
+{"game":"Photograph.zblorb.js","exits":[],"marks":["clutter","irrelevance","armchair","frame","periphery","living room","wood stove","window"],"inv1":["67:picture-frame"],"inv2":["67:picture-frame"],"rooms":["50:Living Room"]}
+{"game":"RobinAndOrchid.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"ShadowSoldiers.zblorb.js","exits":["east>49"],"marks":["old man","East","falcon"],"inv1":[],"inv2":["52:apple","50:sharp branch"],"rooms":["45:Clearing","49:Forest"]}
+{"game":"Spellbreaker.z3.js","exits":["out>45","south>45"],"marks":["south","Sneffle","spell","magic"],"inv1":["149:magic burin","170:knife","144:spell book"],"inv2":["149:magic burin","170:knife","144:spell book"],"rooms":["45:Guild Hall","76:Council Chamber"]}
+{"game":"Tangle.z5.js","exits":["east>92","in>92","out>94","south>94"],"marks":["walls","south","plain metal door","east"],"inv1":[],"inv2":[],"rooms":["91:End of Alley","94:Mouth of Alley"]}
+{"game":"WiR1.zblorb.js","exits":[],"marks":["shoes","fedora","trampled newspaper","girl","trash can","wallet","lipstick","hairbrush","key","letter","dog"],"inv1":["61:jacket","62:shirt","63:undershirt","64:pair of slacks","65:pair of undershorts","66:pair of socks","67:pair of shoes"],"inv2":["61:jacket","62:shirt","63:undershirt","64:pair of slacks","65:pair of undershorts","66:pair of socks","67:pair of shoes"],"rooms":["58:Central Park Underpass"]}

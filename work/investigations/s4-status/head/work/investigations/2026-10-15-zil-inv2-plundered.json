@@ -1,0 +1,959 @@
+{
+ "PlunderedHearts.z3.js": {
+  "ts": "2026-10-16T02:51:58.923Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You have a coffer, a jewelled brooch, a rag, a missive, your reticule (hanging from your wrist) and a cotton frock. It seems that your reticule contains smelling salts and a banknote. You are wearing a shirt, breeches, your kid slippers and a linen chemise.\n   \"I gotta let Lafond know 'e's comin'.\" Crulley stands on deck above, talking to himself, his voice floating down through a grate in the ceiling. \"First, I do in the mates aboard-ship, with this and t'other mischief,\" he grunts, and you hear a snapping noise, like a taut rope being cut. \"Now to warn the boss and collect me pay. Off I go, ",
+    "items": [
+     {
+      "text": "\"I gotta let Lafond know 'e's comin'.\" Crulley stands on deck above, talking to himself, his voice floating down through a grate in the ceiling. \"First, I do in the mates aboard-ship, with this and t'other mischief,\" he grunts, and you hear a snapping noise, like a taut rope being cut. \"Now to warn the boss and collect me pay. Off I go, har.\" He dives into the sea.",
+      "indent": 3,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 69,
+      "name": "coffer",
+      "parent": 192
+     },
+     {
+      "id": 175,
+      "name": "invitation",
+      "parent": 69
+     },
+     {
+      "id": 108,
+      "name": "jewelled brooch",
+      "parent": 192
+     },
+     {
+      "id": 130,
+      "name": "shirt",
+      "parent": 192
+     },
+     {
+      "id": 194,
+      "name": "breeches",
+      "parent": 192
+     },
+     {
+      "id": 202,
+      "name": "rag",
+      "parent": 192
+     },
+     {
+      "id": 206,
+      "name": "missive",
+      "parent": 192
+     },
+     {
+      "id": 223,
+      "name": "your reticule",
+      "parent": 192
+     },
+     {
+      "id": 11,
+      "name": "smelling salts",
+      "parent": 223
+     },
+     {
+      "id": 186,
+      "name": "banknote",
+      "parent": 223
+     },
+     {
+      "id": 13,
+      "name": "your kid slippers",
+      "parent": 192
+     },
+     {
+      "id": 17,
+      "name": "linen chemise",
+      "parent": 192
+     },
+     {
+      "id": 84,
+      "name": "cotton frock",
+      "parent": 192
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You have a dagger and your reticule (hanging from your wrist). It seems that your reticule contains a cotton frock, a missive, a jewelled brooch, a leather bottle, an invitation, smelling salts and a banknote. You are wearing a shirt, breeches, your kid slippers and a linen chemise.\n \n> ",
+    "items": [
+     {
+      "text": "a dagger",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "your reticule (hanging from your wrist)",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 42,
+      "name": "dagger",
+      "parent": 192
+     },
+     {
+      "id": 223,
+      "name": "your reticule",
+      "parent": 192
+     },
+     {
+      "id": 84,
+      "name": "cotton frock",
+      "parent": 223
+     },
+     {
+      "id": 206,
+      "name": "missive",
+      "parent": 223
+     },
+     {
+      "id": 108,
+      "name": "jewelled brooch",
+      "parent": 223
+     },
+     {
+      "id": 121,
+      "name": "leather bottle",
+      "parent": 223
+     },
+     {
+      "id": 102,
+      "name": "laudanum",
+      "parent": 121
+     },
+     {
+      "id": 175,
+      "name": "invitation",
+      "parent": 223
+     },
+     {
+      "id": 11,
+      "name": "smelling salts",
+      "parent": 223
+     },
+     {
+      "id": 186,
+      "name": "banknote",
+      "parent": 223
+     },
+     {
+      "id": 130,
+      "name": "shirt",
+      "parent": 192
+     },
+     {
+      "id": 194,
+      "name": "breeches",
+      "parent": 192
+     },
+     {
+      "id": 13,
+      "name": "your kid slippers",
+      "parent": 192
+     },
+     {
+      "id": 17,
+      "name": "linen chemise",
+      "parent": 192
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You have your reticule (hanging from your wrist), a garter, a slab of pork, a shirt and breeches. It seems that your reticule contains a cotton frock, a missive, a jewelled brooch, a leather bottle, smelling salts and a banknote. You are wearing a beautiful ball gown, your kid slippers and a linen chemise.\n \n> ",
+    "items": [
+     {
+      "text": "your reticule (hanging from your wrist)",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a garter",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a slab of pork",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a shirt",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "breeches",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 200,
+      "name": "beautiful ball gown",
+      "parent": 192
+     },
+     {
+      "id": 223,
+      "name": "your reticule",
+      "parent": 192
+     },
+     {
+      "id": 84,
+      "name": "cotton frock",
+      "parent": 223
+     },
+     {
+      "id": 206,
+      "name": "missive",
+      "parent": 223
+     },
+     {
+      "id": 108,
+      "name": "jewelled brooch",
+      "parent": 223
+     },
+     {
+      "id": 121,
+      "name": "leather bottle",
+      "parent": 223
+     },
+     {
+      "id": 102,
+      "name": "laudanum",
+      "parent": 121
+     },
+     {
+      "id": 11,
+      "name": "smelling salts",
+      "parent": 223
+     },
+     {
+      "id": 186,
+      "name": "banknote",
+      "parent": 223
+     },
+     {
+      "id": 88,
+      "name": "garter",
+      "parent": 192
+     },
+     {
+      "id": 100,
+      "name": "slab of pork",
+      "parent": 192
+     },
+     {
+      "id": 130,
+      "name": "shirt",
+      "parent": 192
+     },
+     {
+      "id": 194,
+      "name": "breeches",
+      "parent": 192
+     },
+     {
+      "id": 13,
+      "name": "your kid slippers",
+      "parent": 192
+     },
+     {
+      "id": 17,
+      "name": "linen chemise",
+      "parent": 192
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You have a leather bottle, a powder horn, a large key, your reticule (hanging from your wrist), a garter, a shirt and breeches. It seems that your reticule contains a cotton frock, a missive, a jewelled brooch, smelling salts and a banknote. You are wearing a beautiful ball gown, your kid slippers and a linen chemise.\n \n> ",
+    "items": [
+     {
+      "text": "a leather bottle",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a powder horn",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a large key",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "your reticule (hanging from your wrist)",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a garter",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a shirt",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "breeches",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 121,
+      "name": "leather bottle",
+      "parent": 192
+     },
+     {
+      "id": 102,
+      "name": "Laudanum drops",
+      "parent": 121
+     },
+     {
+      "id": 14,
+      "name": "powder horn",
+      "parent": 192
+     },
+     {
+      "id": 144,
+      "name": "gunpowder",
+      "parent": 14
+     },
+     {
+      "id": 115,
+      "name": "large key",
+      "parent": 192
+     },
+     {
+      "id": 200,
+      "name": "beautiful ball gown",
+      "parent": 192
+     },
+     {
+      "id": 223,
+      "name": "your reticule",
+      "parent": 192
+     },
+     {
+      "id": 84,
+      "name": "cotton frock",
+      "parent": 223
+     },
+     {
+      "id": 206,
+      "name": "missive",
+      "parent": 223
+     },
+     {
+      "id": 108,
+      "name": "jewelled brooch",
+      "parent": 223
+     },
+     {
+      "id": 11,
+      "name": "smelling salts",
+      "parent": 223
+     },
+     {
+      "id": 186,
+      "name": "banknote",
+      "parent": 223
+     },
+     {
+      "id": 88,
+      "name": "garter",
+      "parent": 192
+     },
+     {
+      "id": 130,
+      "name": "shirt",
+      "parent": 192
+     },
+     {
+      "id": 194,
+      "name": "breeches",
+      "parent": 192
+     },
+     {
+      "id": 13,
+      "name": "your kid slippers",
+      "parent": 192
+     },
+     {
+      "id": 17,
+      "name": "linen chemise",
+      "parent": 192
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You have a silver tray, a powder horn, a large key, a garter, a shirt, breeches and your reticule (hanging from your wrist). It seems that your reticule contains a cotton frock, a missive, a jewelled brooch, smelling salts and a banknote. You are wearing a beautiful ball gown, your kid slippers and a linen chemise.\n \n> ",
+    "items": [
+     {
+      "text": "a silver tray",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a powder horn",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a large key",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a garter",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a shirt",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "breeches",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "your reticule (hanging from your wrist)",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 198,
+      "name": "silver tray",
+      "parent": 192
+     },
+     {
+      "id": 4,
+      "name": "well",
+      "parent": 198
+     },
+     {
+      "id": 14,
+      "name": "powder horn",
+      "parent": 192
+     },
+     {
+      "id": 144,
+      "name": "gunpowder",
+      "parent": 14
+     },
+     {
+      "id": 115,
+      "name": "large key",
+      "parent": 192
+     },
+     {
+      "id": 88,
+      "name": "garter",
+      "parent": 192
+     },
+     {
+      "id": 130,
+      "name": "shirt",
+      "parent": 192
+     },
+     {
+      "id": 194,
+      "name": "breeches",
+      "parent": 192
+     },
+     {
+      "id": 223,
+      "name": "your reticule",
+      "parent": 192
+     },
+     {
+      "id": 84,
+      "name": "cotton frock",
+      "parent": 223
+     },
+     {
+      "id": 206,
+      "name": "missive",
+      "parent": 223
+     },
+     {
+      "id": 108,
+      "name": "jewelled brooch",
+      "parent": 223
+     },
+     {
+      "id": 11,
+      "name": "smelling salts",
+      "parent": 223
+     },
+     {
+      "id": 186,
+      "name": "banknote",
+      "parent": 223
+     },
+     {
+      "id": 200,
+      "name": "beautiful ball gown",
+      "parent": 192
+     },
+     {
+      "id": 13,
+      "name": "your kid slippers",
+      "parent": 192
+     },
+     {
+      "id": 17,
+      "name": "linen chemise",
+      "parent": 192
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 21,
+   "descriptorShortened": [],
+   "missing": [],
+   "extra": [
+    "30:coffer",
+    "30:invitation",
+    "30:jewelled brooch",
+    "30:shirt",
+    "30:breeches",
+    "30:rag",
+    "30:missive",
+    "30:reticule",
+    "30:smelling salts",
+    "30:banknote",
+    "30:kid slippers",
+    "30:linen chemise",
+    "30:cotton frock",
+    "60:cotton frock",
+    "60:missive",
+    "60:jewelled brooch",
+    "60:leather bottle",
+    "60:laudanum",
+    "60:invitation",
+    "60:smelling salts",
+    "60:banknote",
+    "60:shirt",
+    "60:breeches",
+    "60:kid slippers",
+    "60:linen chemise",
+    "90:beautiful ball gown",
+    "90:cotton frock",
+    "90:missive",
+    "90:jewelled brooch",
+    "90:leather bottle",
+    "90:laudanum",
+    "90:smelling salts",
+    "90:banknote",
+    "90:kid slippers",
+    "90:linen chemise",
+    "120:laudanum drops",
+    "120:gunpowder",
+    "120:beautiful ball gown",
+    "120:cotton frock",
+    "120:missive",
+    "120:jewelled brooch",
+    "120:smelling salts",
+    "120:banknote",
+    "120:kid slippers",
+    "120:linen chemise",
+    "180:well",
+    "180:gunpowder",
+    "180:cotton frock",
+    "180:missive",
+    "180:jewelled brooch",
+    "180:smelling salts",
+    "180:banknote",
+    "180:beautiful ball gown",
+    "180:kid slippers",
+    "180:linen chemise"
+   ],
+   "unmarked": []
+  }
+ },
+ "TheLurkingHorror.z3.js": {
+  "ts": "2026-10-16T02:54:00.451Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You are carrying a master key, a two liter bottle of Classic Coke and an assignment.\n \n> ",
+    "items": [
+     {
+      "text": "a master key",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a two liter bottle of Classic Coke",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "an assignment",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 95,
+      "name": "master key",
+      "parent": 56
+     },
+     {
+      "id": 61,
+      "name": "two liter bottle of Classic Coke",
+      "parent": 56
+     },
+     {
+      "id": 97,
+      "name": "assignment",
+      "parent": 56
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are carrying a metal flask, a crowbar, a flashlight (providing light), a master key, a two liter bottle of Classic Coke and an assignment. You are wearing a pair of electrician's gloves.\n \n> ",
+    "items": [
+     {
+      "text": "a metal flask",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a crowbar",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a flashlight (providing light)",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a master key",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a two liter bottle of Classic Coke",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "an assignment",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 53,
+      "name": "metal flask",
+      "parent": 56
+     },
+     {
+      "id": 203,
+      "name": "pair of electrician's gloves",
+      "parent": 56
+     },
+     {
+      "id": 156,
+      "name": "crowbar",
+      "parent": 56
+     },
+     {
+      "id": 132,
+      "name": "flashlight",
+      "parent": 56
+     },
+     {
+      "id": 95,
+      "name": "master key",
+      "parent": 56
+     },
+     {
+      "id": 61,
+      "name": "two liter bottle of Classic Coke",
+      "parent": 56
+     },
+     {
+      "id": 97,
+      "name": "assignment",
+      "parent": 56
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You are carrying a fire axe, a piece of paper, a plastic container, a metal flask, a crowbar, a flashlight, a master key, a two liter bottle of Classic Coke and an assignment. You are wearing a pair of electrician's gloves.\n \nThe maintenance man, growling foul-sounding imprecations, descends from the floor waxer and heads towards you.\n \n> ",
+    "items": [
+     {
+      "text": "The maintenance man, growling foul-sounding imprecations, descends from the floor waxer and heads towards you.",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 41,
+      "name": "fire axe",
+      "parent": 56
+     },
+     {
+      "id": 167,
+      "name": "piece of paper",
+      "parent": 56
+     },
+     {
+      "id": 8,
+      "name": "plastic container",
+      "parent": 56
+     },
+     {
+      "id": 53,
+      "name": "metal flask",
+      "parent": 56
+     },
+     {
+      "id": 203,
+      "name": "pair of electrician's gloves",
+      "parent": 56
+     },
+     {
+      "id": 156,
+      "name": "crowbar",
+      "parent": 56
+     },
+     {
+      "id": 132,
+      "name": "flashlight",
+      "parent": 56
+     },
+     {
+      "id": 95,
+      "name": "master key",
+      "parent": 56
+     },
+     {
+      "id": 61,
+      "name": "two liter bottle of Classic Coke",
+      "parent": 56
+     },
+     {
+      "id": 97,
+      "name": "assignment",
+      "parent": 56
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You are carrying a fire axe, a piece of paper, a metal flask, a crowbar, a flashlight, a master key and a two liter bottle of Classic Coke. You are wearing a pair of rubber boots and a pair of electrician's gloves.\n \n> ",
+    "items": [
+     {
+      "text": "a fire axe",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a piece of paper",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a metal flask",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a crowbar",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a flashlight",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a master key",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a two liter bottle of Classic Coke",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 104,
+      "name": "pair of rubber boots",
+      "parent": 56
+     },
+     {
+      "id": 41,
+      "name": "fire axe",
+      "parent": 56
+     },
+     {
+      "id": 167,
+      "name": "piece of paper",
+      "parent": 56
+     },
+     {
+      "id": 53,
+      "name": "metal flask",
+      "parent": 56
+     },
+     {
+      "id": 203,
+      "name": "pair of electrician's gloves",
+      "parent": 56
+     },
+     {
+      "id": 156,
+      "name": "crowbar",
+      "parent": 56
+     },
+     {
+      "id": 132,
+      "name": "flashlight",
+      "parent": 56
+     },
+     {
+      "id": 95,
+      "name": "master key",
+      "parent": 56
+     },
+     {
+      "id": 61,
+      "name": "two liter bottle of Classic Coke",
+      "parent": 56
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "(Type RESTART, RESTORE, or QUIT):\n> ",
+    "items": [
+     {
+      "text": "(Type RESTART, RESTORE, or QUIT):",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 104,
+      "name": "pair of rubber boots",
+      "parent": 56
+     },
+     {
+      "id": 41,
+      "name": "fire axe",
+      "parent": 56
+     },
+     {
+      "id": 167,
+      "name": "piece of paper",
+      "parent": 56
+     },
+     {
+      "id": 53,
+      "name": "metal flask",
+      "parent": 56
+     },
+     {
+      "id": 203,
+      "name": "pair of electrician's gloves",
+      "parent": 56
+     },
+     {
+      "id": 156,
+      "name": "crowbar",
+      "parent": 56
+     },
+     {
+      "id": 132,
+      "name": "flashlight",
+      "parent": 56
+     },
+     {
+      "id": 95,
+      "name": "master key",
+      "parent": 56
+     },
+     {
+      "id": 61,
+      "name": "two liter bottle of Classic Coke",
+      "parent": 56
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 13,
+   "descriptorShortened": [
+    "30:two liter bottle of classic coke <- liter bottle of classic coke",
+    "60:two liter bottle of classic coke <- liter bottle of classic coke",
+    "120:two liter bottle of classic coke <- liter bottle of classic coke"
+   ],
+   "missing": [],
+   "extra": [
+    "60:pair of electrician's gloves",
+    "90:fire axe",
+    "90:piece of paper",
+    "90:plastic container",
+    "90:metal flask",
+    "90:pair of electrician's gloves",
+    "90:crowbar",
+    "90:flashlight",
+    "90:master key",
+    "90:liter bottle of classic coke",
+    "90:assignment",
+    "120:pair of rubber boots",
+    "120:pair of electrician's gloves",
+    "180:pair of rubber boots",
+    "180:fire axe",
+    "180:piece of paper",
+    "180:metal flask",
+    "180:pair of electrician's gloves",
+    "180:crowbar",
+    "180:flashlight",
+    "180:master key",
+    "180:liter bottle of classic coke"
+   ],
+   "unmarked": []
+  }
+ }
+}

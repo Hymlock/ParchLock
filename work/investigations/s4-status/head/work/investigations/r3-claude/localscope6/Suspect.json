@@ -1,0 +1,1401 @@
+{
+ "story": "Suspect.z3.js",
+ "executableDigest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb",
+ "proposalDigest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb",
+ "digestMatch": true,
+ "fileSha256": "075074c8de60801f83d0f422ee6ae512877cf12e4d6a4034f7e5b6c862f5b9b8",
+ "localScope": {
+  "property": 10,
+  "width": 1,
+  "holder": 248,
+  "roomLitAttribute": 11,
+  "invisible": 10,
+  "searchBit": 14,
+  "surfaceBit": 15,
+  "openBit": 13,
+  "transBit": 7
+ },
+ "proposalLocalScope": {
+  "property": 14,
+  "width": 1,
+  "holder": 255,
+  "roomLitAttribute": 11,
+  "invisible": 10,
+  "searchBit": 14,
+  "surfaceBit": 15,
+  "openBit": 13,
+  "transBit": 7
+ },
+ "sourceFlags": {
+  "INVISIBLE": {
+   "bit": 10,
+   "positives": 7,
+   "negatives": 213,
+   "tp": 7,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 11,
+   "positives": 1,
+   "negatives": 219,
+   "tp": 1,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  }
+ },
+ "summary": {
+  "property": 10,
+  "width": 1,
+  "holder": 248,
+  "invisible": 10,
+  "R1": "Ballroom, Near Bar (118)",
+  "R1obj": "window / food",
+  "R2": "Ballroom, Near French Door (123)",
+  "R2obj": "window / french door",
+  "negatives": "Near Bar 118: \"examine telephone\" (236), \"examine french door\" (122, listed by 113/123) => \"You can't see the ... here.\"; Near Fireplace 120 (lists food only): \"examine window\" (243) => \"You can't see any window here.\" while \"examine food\" succeeds; reciprocal french door positive at 123",
+  "extra": "Census/proposal property 14 holder 255 is the ROOMS list; GLOBAL is property 10, holder 248. Game starts at 118 (the \"@\" dumps lag one turn; roomIdAfter on each command is authoritative). Rooms do NOT carry bit 11 (ONBIT per source flags): Suspect has no dark rooms, lit gate unexercised; reported as observed. No INVISIBLE holder children.",
+  "dark": "none (no room has bit 11)",
+  "status": "CONFIRMED"
+ },
+ "holderChildren": [
+  {
+   "id": 251,
+   "name": "front door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "244d",
+    "252d"
+   ]
+  },
+  {
+   "id": 239,
+   "name": "stair",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "142d",
+    "203d",
+    "213d",
+    "244d"
+   ]
+  },
+  {
+   "id": 249,
+   "name": "plant",
+   "invisible": false,
+   "attrs": [
+    6,
+    19
+   ],
+   "listedBy": [
+    "106d",
+    "111d",
+    "252d"
+   ]
+  },
+  {
+   "id": 243,
+   "name": "window",
+   "invisible": false,
+   "attrs": [
+    6,
+    19
+   ],
+   "listedBy": [
+    "112d",
+    "113d",
+    "118d",
+    "123d",
+    "126d",
+    "140d",
+    "142d",
+    "144d",
+    "149d",
+    "151d",
+    "156d",
+    "167d",
+    "169d",
+    "186d",
+    "192d",
+    "195d",
+    "200d",
+    "213d",
+    "227d",
+    "232d",
+    "237d",
+    "244d"
+   ]
+  },
+  {
+   "id": 242,
+   "name": "curtains",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "144d",
+    "149d",
+    "151d",
+    "156d",
+    "167d",
+    "186d",
+    "192d",
+    "227d",
+    "232d",
+    "237d",
+    "244d"
+   ]
+  },
+  {
+   "id": 231,
+   "name": "sofa",
+   "invisible": false,
+   "attrs": [
+    13,
+    18,
+    20,
+    22,
+    28
+   ],
+   "listedBy": [
+    "167d",
+    "192d",
+    "232d"
+   ]
+  },
+  {
+   "id": 250,
+   "name": "chair",
+   "invisible": false,
+   "attrs": [
+    13,
+    18,
+    20,
+    22,
+    28
+   ],
+   "listedBy": [
+    "149d",
+    "167d",
+    "192d",
+    "232d",
+    "252d"
+   ]
+  },
+  {
+   "id": 143,
+   "name": "food",
+   "invisible": false,
+   "attrs": [
+    18,
+    19,
+    22,
+    25
+   ],
+   "listedBy": [
+    "118d",
+    "120d",
+    "121d",
+    "123d",
+    "125d",
+    "126d",
+    "127d",
+    "128d",
+    "144d"
+   ]
+  },
+  {
+   "id": 159,
+   "name": "toilet",
+   "invisible": false,
+   "attrs": [
+    13,
+    15,
+    19,
+    20,
+    28
+   ],
+   "listedBy": [
+    "157d",
+    "163d"
+   ]
+  },
+  {
+   "id": 160,
+   "name": "shower",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "163d"
+   ]
+  },
+  {
+   "id": 161,
+   "name": "sink",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "144d",
+    "157d",
+    "163d"
+   ]
+  },
+  {
+   "id": 236,
+   "name": "telephone",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "144d",
+    "156d",
+    "167d",
+    "186d",
+    "192d",
+    "232d",
+    "237d"
+   ]
+  },
+  {
+   "id": 162,
+   "name": "water",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "144d",
+    "157d",
+    "163d"
+   ]
+  },
+  {
+   "id": 108,
+   "name": "barn door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "103d",
+    "109d"
+   ]
+  },
+  {
+   "id": 201,
+   "name": "sliding glass door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "106d",
+    "202d"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "french door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "113d",
+    "123d"
+   ]
+  },
+  {
+   "id": 193,
+   "name": "east hall door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "112d",
+    "195d"
+   ]
+  },
+  {
+   "id": 194,
+   "name": "sun room door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "151d",
+    "195d"
+   ]
+  },
+  {
+   "id": 168,
+   "name": "walkway door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "139d",
+    "169d"
+   ]
+  },
+  {
+   "id": 138,
+   "name": "garage door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "109d",
+    "139d"
+   ]
+  },
+  {
+   "id": 223,
+   "name": "linen closet door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "158d",
+    "224d"
+   ]
+  },
+  {
+   "id": 222,
+   "name": "west bath door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "163d",
+    "224d"
+   ]
+  },
+  {
+   "id": 226,
+   "name": "west hall door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "110d",
+    "227d"
+   ]
+  },
+  {
+   "id": 212,
+   "name": "north hallway door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "169d",
+    "213d"
+   ]
+  },
+  {
+   "id": 141,
+   "name": "back door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "140d",
+    "142d"
+   ]
+  },
+  {
+   "id": 198,
+   "name": "north library door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "156d",
+    "199d"
+   ]
+  },
+  {
+   "id": 230,
+   "name": "oriental rug",
+   "invisible": false,
+   "attrs": [
+    8,
+    19
+   ],
+   "listedBy": [
+    "167d",
+    "232d"
+   ]
+  },
+  {
+   "id": 220,
+   "name": "south office door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "186d",
+    "221d"
+   ]
+  },
+  {
+   "id": 185,
+   "name": "north office door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "169d",
+    "186d"
+   ]
+  },
+  {
+   "id": 191,
+   "name": "west office door",
+   "invisible": false,
+   "attrs": [
+    17,
+    19,
+    27
+   ],
+   "listedBy": [
+    "186d",
+    "192d"
+   ]
+  },
+  {
+   "id": 225,
+   "name": "media room door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "192d",
+    "227d"
+   ]
+  },
+  {
+   "id": 196,
+   "name": "east bath door",
+   "invisible": false,
+   "attrs": [
+    27
+   ],
+   "listedBy": [
+    "157d",
+    "197d"
+   ]
+  },
+  {
+   "id": 206,
+   "name": "east closet door",
+   "invisible": false,
+   "attrs": [
+    13,
+    19,
+    27
+   ],
+   "listedBy": [
+    "205d",
+    "207d"
+   ]
+  },
+  {
+   "id": 216,
+   "name": "west closet door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "215d",
+    "217d"
+   ]
+  },
+  {
+   "id": 228,
+   "name": "sitting room door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "227d"
+   ]
+  },
+  {
+   "id": 235,
+   "name": "morning room door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "221d",
+    "237d"
+   ]
+  },
+  {
+   "id": 240,
+   "name": "west entry hall door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "237d",
+    "244d"
+   ]
+  },
+  {
+   "id": 241,
+   "name": "east entry hall door",
+   "invisible": false,
+   "attrs": [
+    19,
+    27
+   ],
+   "listedBy": [
+    "156d",
+    "244d"
+   ]
+  },
+  {
+   "id": 238,
+   "name": "velvet ribbon",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "203d",
+    "213d",
+    "244d"
+   ]
+  }
+ ],
+ "roomsListingProperty": [
+  {
+   "id": 103,
+   "name": "Barn",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "108:barn door"
+   ]
+  },
+  {
+   "id": 106,
+   "name": "Garden",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "201:sliding glass door",
+    "249:plant"
+   ]
+  },
+  {
+   "id": 109,
+   "name": "West of Garage",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "138:garage door",
+    "108:barn door"
+   ]
+  },
+  {
+   "id": 110,
+   "name": "West of House",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "226:west hall door"
+   ]
+  },
+  {
+   "id": 111,
+   "name": "Pond",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "249:plant"
+   ]
+  },
+  {
+   "id": 112,
+   "name": "Outside House",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "243:window",
+    "193:east hall door"
+   ]
+  },
+  {
+   "id": 113,
+   "name": "Patio",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "243:window",
+    "122:french door"
+   ]
+  },
+  {
+   "id": 118,
+   "name": "Near Bar",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "243:window",
+    "143:food"
+   ]
+  },
+  {
+   "id": 120,
+   "name": "Near Fireplace",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "143:food"
+   ]
+  },
+  {
+   "id": 121,
+   "name": "South Entrance",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "143:food"
+   ]
+  },
+  {
+   "id": 123,
+   "name": "Near French Door",
+   "parent": 255,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "243:window",
+    "122:french door",
+    "143:food"
+   ]
+  },
+  {
+   "id": 125,
+   "name": "Center Entrance",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "143:food"
+   ]
+  },
+  {
+   "id": 126,
+   "name": "Near Kitchen",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "243:window",
+    "143:food"
+   ]
+  },
+  {
+   "id": 127,
+   "name": "Near Band",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "143:food"
+   ]
+  },
+  {
+   "id": 128,
+   "name": "North Entrance",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "143:food"
+   ]
+  },
+  {
+   "id": 139,
+   "name": "Garage",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "168:walkway door",
+    "138:garage door"
+   ]
+  },
+  {
+   "id": 140,
+   "name": "Back Porch",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "243:window",
+    "141:back door"
+   ]
+  },
+  {
+   "id": 142,
+   "name": "Back Entry",
+   "parent": 255,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "243:window",
+    "239:stair",
+    "141:back door"
+   ]
+  },
+  {
+   "id": 144,
+   "name": "Kitchen",
+   "parent": 255,
+   "lit": false,
+   "sz": 6,
+   "lg": [
+    "162:water",
+    "243:window",
+    "242:curtains",
+    "161:sink",
+    "236:telephone",
+    "143:food"
+   ]
+  },
+  {
+   "id": 149,
+   "name": "Dining Room",
+   "parent": 255,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "243:window",
+    "242:curtains",
+    "250:chair"
+   ]
+  },
+  {
+   "id": 151,
+   "name": "Sun Room",
+   "parent": 255,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "243:window",
+    "242:curtains",
+    "194:sun room door"
+   ]
+  },
+  {
+   "id": 156,
+   "name": "Library",
+   "parent": 255,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "243:window",
+    "242:curtains",
+    "241:east entry hall door",
+    "236:telephone",
+    "198:north library door"
+   ]
+  },
+  {
+   "id": 157,
+   "name": "East Bath",
+   "parent": 255,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "162:water",
+    "161:sink",
+    "159:toilet",
+    "196:east bath door"
+   ]
+  },
+  {
+   "id": 158,
+   "name": "Linen Closet",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "223:linen closet door"
+   ]
+  },
+  {
+   "id": 163,
+   "name": "West Bath",
+   "parent": 255,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "162:water",
+    "161:sink",
+    "160:shower",
+    "159:toilet",
+    "222:west bath door"
+   ]
+  },
+  {
+   "id": 167,
+   "name": "Living Room",
+   "parent": 255,
+   "lit": false,
+   "sz": 6,
+   "lg": [
+    "243:window",
+    "242:curtains",
+    "236:telephone",
+    "231:sofa",
+    "250:chair",
+    "230:oriental rug"
+   ]
+  },
+  {
+   "id": 169,
+   "name": "Covered Walkway",
+   "parent": 255,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "185:north office door",
+    "212:north hallway door",
+    "243:window",
+    "168:walkway door"
+   ]
+  },
+  {
+   "id": 186,
+   "name": "Office",
+   "parent": 255,
+   "lit": false,
+   "sz": 6,
+   "lg": [
+    "191:west office door",
+    "185:north office door",
+    "220:south office door",
+    "236:telephone",
+    "243:window",
+    "242:curtains"
+   ]
+  },
+  {
+   "id": 192,
+   "name": "Media Room",
+   "parent": 255,
+   "lit": false,
+   "sz": 7,
+   "lg": [
+    "191:west office door",
+    "243:window",
+    "242:curtains",
+    "236:telephone",
+    "225:media room door",
+    "231:sofa",
+    "250:chair"
+   ]
+  },
+  {
+   "id": 195,
+   "name": "East Hall End",
+   "parent": 255,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "243:window",
+    "194:sun room door",
+    "193:east hall door"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "East Hall at Bath",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "196:east bath door"
+   ]
+  },
+  {
+   "id": 199,
+   "name": "East Hall",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "198:north library door"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "Hall at Dining Room",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "243:window"
+   ]
+  },
+  {
+   "id": 202,
+   "name": "Long Hall North",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "201:sliding glass door"
+   ]
+  },
+  {
+   "id": 203,
+   "name": "Hall Near Ballroom",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "239:stair",
+    "238:velvet ribbon"
+   ]
+  },
+  {
+   "id": 205,
+   "name": "East Coat Closet",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "206:east closet door"
+   ]
+  },
+  {
+   "id": 207,
+   "name": "Long Hall South",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "206:east closet door"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "North Hall",
+   "parent": 255,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "212:north hallway door",
+    "243:window",
+    "239:stair",
+    "238:velvet ribbon"
+   ]
+  },
+  {
+   "id": 215,
+   "name": "West Coat Closet",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "216:west closet door"
+   ]
+  },
+  {
+   "id": 217,
+   "name": "Hall Near Coat Closet",
+   "parent": 255,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "216:west closet door"
+   ]
+  },
+  {
+   "id": 221,
+   "name": "Hall at Office",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "220:south office door",
+    "235:morning room door"
+   ]
+  },
+  {
+   "id": 224,
+   "name": "Hall Near Bath",
+   "parent": 255,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "223:linen closet door",
+    "222:west bath door"
+   ]
+  },
+  {
+   "id": 227,
+   "name": "West End of Hallway",
+   "parent": 255,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "226:west hall door",
+    "225:media room door",
+    "243:window",
+    "242:curtains",
+    "228:sitting room door"
+   ]
+  },
+  {
+   "id": 232,
+   "name": "Sitting Room",
+   "parent": 255,
+   "lit": false,
+   "sz": 6,
+   "lg": [
+    "243:window",
+    "242:curtains",
+    "236:telephone",
+    "250:chair",
+    "231:sofa",
+    "230:oriental rug"
+   ]
+  },
+  {
+   "id": 237,
+   "name": "Morning Room",
+   "parent": 255,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "243:window",
+    "242:curtains",
+    "236:telephone",
+    "235:morning room door",
+    "240:west entry hall door"
+   ]
+  },
+  {
+   "id": 244,
+   "name": "Entry Hall",
+   "parent": 255,
+   "lit": false,
+   "sz": 7,
+   "lg": [
+    "243:window",
+    "242:curtains",
+    "241:east entry hall door",
+    "240:west entry hall door",
+    "251:front door",
+    "239:stair",
+    "238:velvet ribbon"
+   ]
+  },
+  {
+   "id": 252,
+   "name": "Front Porch",
+   "parent": 255,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "251:front door",
+    "250:chair",
+    "249:plant"
+   ]
+  }
+ ],
+ "commands": 12,
+ "log": [
+  {
+   "cmd": "look",
+   "roomIdAfter": 118,
+   "reply": [
+    "Ballroom, Near Bar",
+    "This is the south end of the ballroom, at the bar.",
+    "Elsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"",
+    "On the periphery of the room small groups can be seen, discussing everything from politics to local scandals.",
+    "The bartender is busy behind the bar, his only concession to the party a small domino mask.",
+    "Samuel Ostmann, enjoying himself hugely as a vampire, is here.",
+    "The sheik, seeing your reluctance to join them, shrugs his shoulders and rejoins the conversation, a proprietary hand on the fairy's shoulder.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 118,
+    "roomName": "Near Bar",
+    "lit": false,
+    "prop": {
+     "num": 10,
+     "sz": 2,
+     "dataAddr": 5736
+    },
+    "localGlobals": [
+     {
+      "id": 243,
+      "name": "window",
+      "parent": 248,
+      "parentIsHolder": true
+     },
+     {
+      "id": 143,
+      "name": "food",
+      "parent": 248,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "Johnson",
+     "Ostmann",
+     "bar"
+    ]
+   }
+  },
+  {
+   "cmd": "examine window",
+   "roomIdAfter": 118,
+   "reply": [
+    "There's nothing special about the window.",
+    "Off near the fireplace, the sheik and the fairy queen are conversing with a small group. The fairy is emphasizing some point when suddenly, she manages to spill her drink on her gown. Her reaction is audible even where you are standing, and she stalks off.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine food",
+   "roomIdAfter": 118,
+   "reply": [
+    "There's nothing special about the food.",
+    "The fairy queen is now near the south entrance.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine telephone",
+   "roomIdAfter": 118,
+   "reply": [
+    "You can't see the telephone here.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine french door",
+   "roomIdAfter": 118,
+   "reply": [
+    "You can't see the french door here.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "w",
+   "roomIdAfter": 118,
+   "reply": [
+    "Ballroom, Near Fireplace",
+    "This is the south end of the ballroom. A huge fieldstone fireplace dominates the south wall. The bar is to the east.",
+    "Elsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes, such as a woman disguised as a peanut butter sandwich. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"",
+    "On the periphery of the room small groups can be seen, discussing everything from politics to local scandals. The fairy queen is near the south entrance. Johnson and Ostmann are at the bar.",
+    "There's a broken glass here.",
+    "Michael, costumed as a sheik, is here.",
+    "The fairy queen leaves the ballroom.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 118,
+    "roomName": "Near Bar",
+    "lit": false,
+    "prop": {
+     "num": 10,
+     "sz": 2,
+     "dataAddr": 5736
+    },
+    "localGlobals": [
+     {
+      "id": 243,
+      "name": "window",
+      "parent": 248,
+      "parentIsHolder": true
+     },
+     {
+      "id": 143,
+      "name": "food",
+      "parent": 248,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "Johnson",
+     "Ostmann",
+     "bar"
+    ]
+   }
+  },
+  {
+   "cmd": "examine window",
+   "roomIdAfter": 120,
+   "reply": [
+    "You can't see any window here.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine food",
+   "roomIdAfter": 120,
+   "reply": [
+    "There's nothing special about the food.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "e",
+   "roomIdAfter": 120,
+   "reply": [
+    "Ballroom, Near Bar",
+    "The bartender is busy behind the bar, his only concession to the party a small domino mask.",
+    "Samuel Ostmann, enjoying himself hugely as a vampire, is here.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "n",
+   "roomIdAfter": 118,
+   "reply": [
+    "Ballroom, Near French Door",
+    "This is near the middle of the ballroom, at a French door leading out to the patio.",
+    "Elsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes, such as a Pac-man. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"",
+    "On the periphery of the room small groups can be seen, discussing everything from politics to local scandals. Michael is near the fireplace. Johnson and Ostmann are at the bar.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 118,
+    "roomName": "Near Bar",
+    "lit": false,
+    "prop": {
+     "num": 10,
+     "sz": 2,
+     "dataAddr": 5736
+    },
+    "localGlobals": [
+     {
+      "id": 243,
+      "name": "window",
+      "parent": 248,
+      "parentIsHolder": true
+     },
+     {
+      "id": 143,
+      "name": "food",
+      "parent": 248,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "Johnson",
+     "Ostmann",
+     "bar"
+    ]
+   }
+  },
+  {
+   "cmd": "examine window",
+   "roomIdAfter": 123,
+   "reply": [
+    "There's nothing special about the window.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine french door",
+   "roomIdAfter": 123,
+   "reply": [
+    "There's nothing special about the french door.",
+    "After a short pause, the band begins to play \"My Way.\"",
+    ">"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1651 @@
+[
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nPost Office\nThis is the lobby of the Festeron Post Office. The walls are lined with small, private mailboxes and wanted posters. A service counter runs along the entire length of the room.\n \nYour boss, Mr. Crisp, is behind the service counter reading other people's postcards.\n \nMr. Crisp hides the postcards away as you enter. \"Where have you been?\" he barks angrily. \"Daydreaming again, eh? I've been looking everywhere for you!\"\n \n(Your score just went up by 1 point! Your total score is 1 out of 100.)\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \nMr. Crisp reaches under the service counter and pulls out a mysterious envelope. \"We just got this Special Delivery,\" he snarls, tossing it onto the service counter. \"I want you to drop it off right away. That means NOW!\"\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "GET ENVELOPE",
+  "root": 219,
+  "reply": ">GET ENVELOPE\nTaken.\n \n(Your score just went up by 5 points! Your total score is 6 out of 100.)\n \nMr. Crisp drums his fingers on the service counter impatiently. \"Get moving, chowderbrain! The Magick Shoppe closes at five o'clock!\"\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "look on counter",
+  "root": 219,
+  "reply": ">look on counter\nYou can see nothing special on the service counter.\n \nMr. Crisp yells, \"Deliver that envelope!\"\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "put envelope on counter",
+  "root": 219,
+  "reply": ">put envelope on counter\nDone.\n \nMr. Crisp points to the mysterious envelope on the service counter impatiently. \"Take the envelope and scram! The Magick Shoppe closes at five o'clock!\"\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "get envelope",
+  "root": 219,
+  "reply": ">get envelope\nTaken.\n \nMr. Crisp screams, \"Quit stalling!\"\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nAs you leave the Post Office, somebody slams and locks the door behind you.\n \nHilltop\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nOutside Cemetery\nYou're standing next to an open iron gate that leads west into the Festeron Cemetery. A road runs east to the top of Post Office Hill.\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nThe cemetery is a fearful place. Are you sure you want to go in there?\n \n(Please type YES or NO.) > ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "YES",
+  "root": 219,
+  "reply": "(Please type YES or NO.) >YES\n \nYou have been warned.\n \nCreepy Corner\nYou're in a creepy corner of the Festeron Cemetery, surrounded by silent tombstones. An iron gate opens to the east, and a narrow lane wanders north.\n \nWhat next?\n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nSpooky Copse\nA copse of willow trees makes this part of the cemetery look really spooky. Narrow lanes wander south and west.\n \nThere's an open grave nearby, freshly dug, with a tombstone erected next to it.\n \nAn old gravedigger is resting under a willow tree.\n \nThe gravedigger nods a greeting as you approach.\n \n(You won't see the \"What next?\" prompt any more.)\n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nTwilight Glen\nThe trees here are so thick, it's almost too dark to see! You can make out an open iron gate to the north, and a narrow lane between the tombstones winds off to the east.\n \nThere must have been a burial here recently. Somebody left their umbrella leaning up against a tombstone.\n \nThe gravedigger follows behind you. \"What's your hurry?\" he complains.\n \nThrowing a shovel over his shoulder, the gravedigger ambles through the iron gate and locks it. \"Keep out of the cemetery after Dark,\" he tells you with a sly wink.\n \nYou can hear him chuckling as he disappears to the north.\n \n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nSpooky Copse\n \n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "D",
+  "root": 219,
+  "reply": ">D\nOpen Grave\nYou're at the bottom of an open grave, surrounded by six-foot walls of dirt.\n \nThere's an old bone here.\n \n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "GET BONE",
+  "root": 219,
+  "reply": ">GET BONE\nTaken.\n \n(Your score just went up by 1 point! Your total score is 7 out of 100.)\n \n> ",
+  "player": 219,
+  "held": [
+   "117:old bone [17,21,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "117:old bone",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "U",
+  "root": 219,
+  "reply": ">U\nWith great difficulty, you manage to climb out of the open grave.\n \nSpooky Copse\n \n> ",
+  "player": 219,
+  "held": [
+   "117:old bone [17,21,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "117:old bone",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nCreepy Corner\n \n> ",
+  "player": 219,
+  "held": [
+   "117:old bone [17,21,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "117:old bone",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nWhew! That cemetery sure is spooky.\n \nOutside Cemetery\n \n> ",
+  "player": 219,
+  "held": [
+   "117:old bone [17,21,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "117:old bone",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nHilltop\n \n> ",
+  "player": 219,
+  "held": [
+   "117:old bone [17,21,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "117:old bone",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nOutside Cottage\nYou're outside the cottage of Miss Voss, the town librarian. The road turns north toward the village, and bends upward to the summit of Post Office Hill.\n \nAs you approach the cottage you are greeted by the tiniest poodle you've ever seen in your entire life. It charges across the street, yapping angrily and showing its sharp little teeth.\n \nYou can smell the poodle's hot breath as it yaps.\n \n> ",
+  "player": 219,
+  "held": [
+   "117:old bone [17,21,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "117:old bone",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "GIVE BONE TO POODLE",
+  "root": 219,
+  "reply": ">GIVE BONE TO POODLE\nThe poodle tests the old bone with its tongue, lies down and begins to gnaw on it, keeping a red eye on you.\n \n(Your score just went up by 3 points! Your total score is 10 out of 100.)\n \n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nThe poodle yaps a threat as you back away.\n \nRotary South\nThis is the south side of the Festeron Rotary. A road branches south, towards Post Office Hill.\n \nThe Festeron Public Library, famous for its museum of local historic artifacts, stands proudly on the nearby corner.\n \nMiss Voss, the town librarian, is locking the library door as you approach. \"Just the person I was looking for!\" she exclaims, smiling brightly.\n \n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \nMiss Voss retrieves a violet slip of paper from the depths of her purse. \"Be a sweetie and give this note to your dear boss, Mr. Crisp,\" she coos, holding the note out to you. \"I'd be ever so much obliged.\"\n \n> ",
+  "player": 219,
+  "held": [
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "GET NOTE",
+  "root": 219,
+  "reply": ">GET NOTE\nTaken.\n \n(Your score just went up by 3 points! Your total score is 13 out of 100.)\n \nMiss Voss hurries away down the street. \"Thanks! Toody-loo!\"\n \n> ",
+  "player": 219,
+  "held": [
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nPark\nYou're standing in a circular park, surrounded by the Festeron Rotary. Walks converge from four directions on a shallow marble fountain, filled with sparkling water.\n \nA statue stands in the middle of the fountain.\n \n> ",
+  "player": 219,
+  "held": [
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "LOOK IN FOUNTAIN",
+  "root": 219,
+  "reply": ">LOOK IN FOUNTAIN\nYou can see a gold coin and a goldfish in the fountain.\n \n> ",
+  "player": 219,
+  "held": [
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "GET COIN",
+  "root": 219,
+  "reply": ">GET COIN\nTaken.\n \n(Your score just went up by 1 point! Your total score is 14 out of 100.)\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nRotary North\nThis is the northern side of the Festeron Rotary. A road leads north, towards the river.\n \nOn the corner stands a quaint village church. Its little white steeple is straight out of a country postcard. The church door stands invitingly open.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nSouth of Bridge\nThis is the south side of a covered bridge that spans the Festeron River. Paths lead off to the east and west, and a road leads south to the village.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nBridge\nYou're on a covered bridge that spans the Festeron River. A sign hangs on an arch overhead.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nNorth of Bridge\nThis is the north side of the Festeron Bridge. Sheer cliff walls rise abruptly to the north and west. A path wanders east along the shore of the river.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nCliff Bottom\nYou're at the bottom of a cliff that rises up from the north bank of the river. A steep trail winds upward.\n \nA gnarled tree trunk stands nearby, a lone branch its only adornment.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "U",
+  "root": 219,
+  "reply": ">U\n(The trail you're climbing is narrow and twisty. It's a good idea to draw a map as you go up.)\n \nSteep Trail\nA steep, rocky trail winds west and downward.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nSteep Trail\nA steep, rocky trail winds north and east.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nSteep Trail\nA steep, rocky trail winds south and upward.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "U",
+  "root": 219,
+  "reply": ">U\nSteep Trail\nA steep, rocky trail winds east and downward.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nSteep Trail\nA steep, rocky trail winds south and west.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nSteep Trail\nA steep, rocky trail winds north and upward.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "U",
+  "root": 219,
+  "reply": ">U\n(Your score just went up by 1 point! Your total score is 15 out of 100.)\n \nCliff Edge\nYou're standing high on a rocky cliff, at the top of a steep trail leading downward. Looking southwest, you can see the shadow of Post Office Hill creeping across the village as the sun sinks into a bank of clouds.\n \nThe peaceful scenery is disturbed by a tiny figure emerging from the distant Post Office. It stares in your direction for a few moments, checks its wrist and shakes a threatening little fist at you.\n \nA little old-fashioned store stands nearby. Its brightly painted shutters and thatched roof remind you of something out of a fairy tale. A curiously painted sign over the front door reads, \"Ye Olde Magick Shoppe.\"\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "OPEN DOOR",
+  "root": 219,
+  "reply": ">OPEN DOOR\nA concealed bell tinkles merrily.\n \nOkay, the Magick Shoppe door is now open.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "IN",
+  "root": 219,
+  "reply": ">IN\nMagick Shoppe\nYou're in the front showroom of the Magick Shoppe.\n \nEvery inch of wall space is crowded with magic tricks, puzzles and mystical paraphernalia. A glass case offers a selection of obscene jokes and naughty birthday cards.\n \nIn the corner stands an ancient grandfather clock, its dial ornamented with a grinning crescent moon and other celestial symbols.\n \nThe front door of the Magick Shoppe is wide open. At the west end of the room, you can see another exit concealed by a curtain.\n \nA sudden gust of wind slams the Magick Shoppe door closed. A concealed bell tinkles merrily.\n \n\"Just a moment!\" cries a voice behind the curtain.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \nThe noisy tick of the grandfather clock is making you uneasy.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \nThe curtain opens so quickly it makes you jump.\n \nThe woman standing before you is older than your oldest aunt. Her thin, pale face and bony hands make her look fragile, like a fading signature in an antique book. But her eyes remember everything they have ever seen.\n \nYou appraise one another for a long moment before she breaks the ice. \"Welcome in, welcome!\" she chortles. \"Don't get many visitors this late in the day.\"\n \nThe room seems oddly quiet all of a sudden.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "GIVE ENVELOPE TO WOMAN",
+  "root": 219,
+  "reply": ">GIVE ENVELOPE TO WOMAN\n(Your score just went up by 5 points! Your total score is 20 out of 100.)\n \nThe old woman turns pale as she takes the mysterious envelope from you. \"It's been a long, long time since I last saw this handwriting,\" she murmurs, turning it over in her hands. \"Hoped I never would again.\"\n \nShe starts to open the mysterious envelope, thinks better of it and hands it back to you. \"Will you open it up and read it to me?\" she pleads. \"I'll never find my glasses in this mess.\"\n \n(You are again holding the mysterious envelope.)\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "43:mysterious envelope [4,6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note",
+   "43:mysterious envelope"
+  ]
+ },
+ {
+  "cmd": "OPEN ENVELOPE",
+  "root": 219,
+  "reply": ">OPEN ENVELOPE\n(You should now open the mysterious envelope in your Wishbringer package.)\n \nOpening the mysterious envelope reveals a letter.\n \n\"Go ahead, dear. Don't be bashful. Read the letter to me, please. I'm waiting.\"\n \n> ",
+  "player": 219,
+  "held": [
+   "248:letter [6,17]",
+   "93:mysterious envelope [4,6,17,25,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "248:letter",
+   "93:mysterious envelope",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "READ LETTER TO WOMAN",
+  "root": 219,
+  "reply": ">READ LETTER TO WOMAN\n(Your score just went up by 1 point! Your total score is 21 out of 100.)\n \nThe old woman is motionless as you read. Glancing up, you see tears of anger forming; but she turns away as your eyes meet.\n \n\"Kidnapped,\" she whispers after a long silence. She paces aimlessly around the room, deep in thought.\n \n\"Many seek to gain the Stone of Dreams,\" she mutters, mostly to herself. \"Yet few can imagine the price. For years I have fought to conceal it from the Evil One and others like her. My youth, my home and family, all were forfeited for its protection. And now,\" her voice breaking with emotion, \"now it claims my only companion.\"\n \nImpulsively, the woman snatches away the letter and envelope and crumples them in her trembling hands. \"No one is strong enough to guard Wishbringer alone.\"\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \nThe old woman makes an effort to compose herself.\n \n\"Thank you for coming all this way for me,\" she says, reaching up to a shelf full of cheap gags. \"I know I'm not supposed to tip you, but take this little trinket anyway.\"\n \nThe woman holds out a small metal can for you to take.\n \n> ",
+  "player": 219,
+  "held": [
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET CAN",
+  "root": 219,
+  "reply": ">GET CAN\nTaken.\n \n(Your score just went up by 3 points! Your total score is 24 out of 100.)\n \n\"It's getting Dark outside,\" the old woman remarks, and you can almost hear the capital D. \"Maybe you should be getting back to town.\"\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \nThe old woman hobbles over to the Magick Shoppe door and opens it. A concealed bell tinkles merrily.\n \n\"Keep a sharp eye out for my cat, won't you?\" She speaks the words slowly and distinctly. \"Bring her to me if you find her. She's black as night from head to tail, except for one little white spot... right HERE.\"\n \nThe old woman touches the middle of your forehead with her finger. The light outside dims suddenly, like a cloud passing over the sun.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nYour body seems unwilling to respond.\n \nThe old woman takes away her finger. Your forehead is tingling.\n \n\"The Stone of Dreams can help you in your search. I cannot reveal the place where I have hidden it, for the Evil One would see your thoughts and take the treasure for herself. You must discover it alone, and rely on legends to instruct you in its mysteries.\"\n \nAs she speaks, the old woman gently leads you through the door of the Magick Shoppe. She pauses before closing the door.\n \n\"Return the cat to me, and Wishbringer shall be yours.\n \n\"Her name is Chaos.\"\n \nA concealed bell tinkles merrily.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nCliff Edge\nYou're standing high on a rocky cliff, at the top of a steep trail leading downward.\n \nThe surrounding landscape has disappeared under a thick blanket of evening fog. All the familiar buildings and landmarks are completely hidden; only the summit of Post Office Hill is high enough to pierce the cloud, rising like a lonely island in a sea of mist...\n \n... an island with a tower on it.\n \nThere's a TOWER where the Post Office used to be! The massive outline is hard to make out against the twilight sky. But the longer you stare, the clearer and more frightening it becomes.\n \nThe Magick Shoppe stands nearby.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "D",
+  "root": 219,
+  "reply": ">D\nAs you descend the trail you are immediately engulfed in...\n \nFog\nYou're lost in a thick cloud of fog.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nFog\nYou're lost in a thick cloud of fog.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nFog\nYou're lost in a thick cloud of fog.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "D",
+  "root": 219,
+  "reply": ">D\nFog\nYou're lost in a thick cloud of fog.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nFog\nYou're lost in a thick cloud of fog.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nFog\nYou're lost in a thick cloud of fog.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "D",
+  "root": 219,
+  "reply": ">D\nA sudden gust of wind dissolves the fog and clears your vision.\n \nCliff Bottom\nYou're at the bottom of a cliff that rises up from the north bank of the river.\n \nA gnarled tree trunk stands nearby, a lone branch its only adornment. A vulture perched on top is watching every move you make.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "BREAK BRANCH",
+  "root": 219,
+  "reply": ">BREAK BRANCH\nCrack! The dead branch snaps off the gnarled tree trunk and falls to the ground with a thud. Visibly annoyed, the vulture spreads its wings and soars away over the river.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET IT",
+  "root": 219,
+  "reply": ">GET IT\nTaken.\n \n> ",
+  "player": 219,
+  "held": [
+   "60:dead branch [1,17,28]",
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "60:dead branch",
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nNorth of Bridge\nThis is the north side of the Witchville Bridge. Sheer cliff walls rise abruptly to the north and west. A path wanders east along the shore of the river.\n \nA rickety toll gate has been thrown up across the entrance to the covered bridge. A handpainted sign is nailed to the middle of the closed gate.\n \nStanding near the toll gate is an ugly, gnomelike creature. A less original story would probably refer to it as a troll.\n \n> ",
+  "player": 219,
+  "held": [
+   "60:dead branch [1,17,28]",
+   "229:metal can [4,6,17,28]",
+   " 181:false bottom [16,26]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "60:dead branch",
+   "229:metal can",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "OPEN CAN",
+  "root": 219,
+  "reply": ">OPEN CAN\nYow! When you open the can a real, live rattlesnake leaps out! It squirms about angrily for a few moments, turns to hiss at you and slithers out of sight.\n \nThe metal can clatters to the ground.\n \nA scream of terror echoes off the cliffs as the troll runs away across the covered bridge.\n \n(Your score just went up by 3 points! Your total score is 27 out of 100.)\n \n> ",
+  "player": 219,
+  "held": [
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET CAN",
+  "root": 219,
+  "reply": ">GET CAN\nTaken.\n \n> ",
+  "player": 219,
+  "held": [
+   "229:metal can [4,6,17,25,28]",
+   " 181:false bottom [16,26]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "229:metal can",
+   "181:false bottom",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "SQUEEZE IT",
+  "root": 219,
+  "reply": ">SQUEEZE IT\nThe false bottom is wedged tightly into the metal can. You might be able to loosen it by squeezing harder... harder!...\n \nPop! A small stone drops out of the squashed can and lands at your feet.\n \n> ",
+  "player": 219,
+  "held": [
+   "48:squashed can [4,6,17,25,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "48:squashed can",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "DROP CAN",
+  "root": 219,
+  "reply": ">DROP CAN\nDropped.\n \nThe vulture is watching you from high overhead.\n \n> ",
+  "player": 219,
+  "held": [
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET WISHBRINGER",
+  "root": 219,
+  "reply": ">GET WISHBRINGER\nTaken.\n \n(Your score just went up by 5 points! Your total score is 32 out of 100.)\n \nAs your fingers close around the small stone it begins to glow with an eerie violet-white radiance.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "OPEN GATE",
+  "root": 219,
+  "reply": ">OPEN GATE\nOkay, the toll gate is now open.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nBridge\nYou're on a covered bridge that spans the Witchville River. A sign hangs on an arch overhead.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nSouth of Bridge\nThis is the south side of a covered bridge that spans the Witchville River. Paths lead off to the east and west, and a road leads south to the village.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nRiver Outlet\nThis is where the lake empties into the Witchville River. A road leads south along the edge of the lake, and bends east to follow the river bank. A narrow trail leads upward to the top of Lookout Hill.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nLake Edge\nYou're on the sandy shore of the lake. A road heads east towards the village, and another runs north along the edge of the lake. Looking south, you can see a closed iron gate leading into the Witchville Cemetery.\n \nMisty Island, its outline shrouded in fog, is visible far across the water.\n \nYou can see a narrow pit near the edge of the lake. Animal tracks are visible in the sand next to the pit.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "LOOK IN PIT",
+  "root": 219,
+  "reply": ">LOOK IN PIT\nThe pit is more than five feet deep. You can see a platypus in it.\n \nA rusty \"click!\" draws your eyes to the iron gate. You watch as it slowly creaks open, all by itself!\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "60:dead branch [1,17,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "60:dead branch",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "PUT BRANCH IN PIT",
+  "root": 219,
+  "reply": ">PUT BRANCH IN PIT\nOkay, the dead branch is now standing up inside the pit.\n \nThe platypus grabs onto the bottom of the dead branch with its forepaws.\n \nYou can hear the tramp of marching boots to the east.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET BRANCH",
+  "root": 219,
+  "reply": ">GET BRANCH\nTaken.\n \n(Your score just went up by 5 points! Your total score is 37 out of 100.)\n \nThe platypus hangs on to the dead branch as you pull it out of the pit. It lets go when the branch clears the edge and waddles joyfully around on the sand.\n \nThe little creature draws an \"X\" in the sand with its tail. Then it gives you an oddly dignified nod of thanks, waddles to the edge of the lake and disappears into the dark water.\n \n> ",
+  "player": 219,
+  "held": [
+   "60:dead branch [1,17,28]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "60:dead branch",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "DROP BRANCH",
+  "root": 219,
+  "reply": ">DROP BRANCH\nDropped.\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "DIG IN SAND",
+  "root": 219,
+  "reply": ">DIG IN SAND\nYou discovered a silver whistle in the sand under the \"X\"!\n \n> ",
+  "player": 219,
+  "held": [
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET WHISTLE",
+  "root": 219,
+  "reply": ">GET WHISTLE\nTaken.\n \n(Your score just went up by 3 points! Your total score is 40 out of 100.)\n \n> ",
+  "player": 219,
+  "held": [
+   "58:silver whistle [17,28]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "58:silver whistle",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "BLOW IT",
+  "root": 219,
+  "reply": ">BLOW IT\nA clear, sweet note stills the night with its beauty.\n \nThe silver whistle's music echoes over the lake, rippling the water with gentle Magick. A sudden gust of wind blows through your hair. You can see the soft outline of Misty Island drawing closer as you streak across the waves...\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nMisty Island\nYou're standing on a fog-shrouded beach. Sheer cliff walls rise to the north and south, and the dark waters of the lake stretch eastward.\n \nTo the west stands a magnificent castle, its parapets rising high into the mist. Golden light streams invitingly through the open entrance. You can hear friendly voices and music inside.\n \n> ",
+  "player": 219,
+  "held": [
+   "58:silver whistle [17,28]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "58:silver whistle",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nThrone Room\nYou're standing in a long, high-ceilinged chamber. Hundreds of platypuses are milling about with teacups in their paws, their faces illuminated by a roaring fireplace.\n \nAt the far end of the chamber stands a mighty throne. It's occupied by a snow-white platypus with a gold crown on its head and a jeweled scepter in its paw. On the floor near the throne is another crowned platypus... the same one you rescued from the pit.\n \nThe crowd falls silent as you enter.\n \n\"Welcome, brave Adventurer,\" says the white platypus, rising from its throne to greet you. \"I am Anatinus, King of Misty Island. My court thanks you most humbly for rescuing the life of my daughter, Princess Tasmania. Great would our sorrow have been if not for your cunning.\"\n \nThe crowd applauds politely, and Princess Tasmania blushes.\n \n> ",
+  "player": 219,
+  "held": [
+   "58:silver whistle [17,28]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "58:silver whistle",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \n\"My messengers have told me of your quest,\" continues King Anatinus. \"Allow me to repay your kindness with words of advice.\"\n \nThe old platypus motions you to his side. \"The Tower of the Evil One is formidable,\" he begins in a low, serious voice. \"You will never get inside unaided. Legends speak of a Magick Word that can open the gates of the Tower. But what Word it is, none can say.\"\n \nThe king reaches beneath his throne and takes out a small wizard's hat. \"Take this,\" he says, holding it out to you.\n \n> ",
+  "player": 219,
+  "held": [
+   "58:silver whistle [17,28]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "58:silver whistle",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET HAT",
+  "root": 219,
+  "reply": ">GET HAT\nTaken.\n \n(Your score just went up by 1 point! Your total score is 41 out of 100.)\n \n\"Take it to the sea,\" King Anatinus whispers as you turn the hat in your hands. \"There you will find a creature learned in the lore of Magick. Heed him well! In his wisdom lies your only hope.\"\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "58:silver whistle [17,28]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "58:silver whistle",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "WAIT",
+  "root": 219,
+  "reply": ">WAIT\nTime passes.\n \nA fanfare of trumpets breaks the silence, and the crowd falls to its knees.\n \n\"Good luck to you, brave Adventurer!\" cries King Anatinus, bowing deeply. \"Now blow into the silver whistle one more time, and deliver us from the horror of the Evil One.\"\n \nThe platypuses look at you expectantly.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "58:silver whistle [17,28]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "58:silver whistle",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "BLOW WHISTLE",
+  "root": 219,
+  "reply": ">BLOW WHISTLE\nA clear, sweet note stills the night with its beauty.\n \nA sudden gust of wind rises out of nowhere, and Misty Island falls away beneath your feet. You feel the silver whistle slip from your hand as you streak across the lake...\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nLake Edge\nYou're on the sandy shore of the lake. A road heads east towards the village, and another runs north along the edge of the lake. Looking south, you can see an open iron gate leading into the Witchville Cemetery.\n \nMisty Island, its outline shrouded in fog, is visible far across the water.\n \nYou can see a narrow pit near the edge of the lake. \n \nA dead branch is lying on the ground.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "S",
+  "root": 219,
+  "reply": ">S\nThe cemetery is a creepy place, especially at night. Are you sure you want to go in there?\n \n(Please type YES or NO.) > ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "YES",
+  "root": 219,
+  "reply": "(Please type YES or NO.) >YES\n \nYou have been warned.\n \nTwilight Glen\nThe trees here are so thick, it's almost too dark to see! You can make out an open iron gate to the north, and a narrow lane between the tombstones winds off to the east.\n \nThere must have been a burial here recently. Somebody left their umbrella leaning up against a tombstone.\n \nAs you glance around you notice luminous ribbons of mist darting among the tombstones. The air is filled with sinister voices.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nSpooky Copse\nA copse of willow trees makes this part of the cemetery look really spooky. Narrow lanes wander south and west.\n \nThere's an open grave nearby, freshly dug, with a tombstone erected next to it.\n \nThe luminous mists suddenly condense into a cloud of eldritch vapors! Circling like sharks, they stroke your face with ghostly fingers and whisper dreadful secrets into your ears.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "D",
+  "root": 219,
+  "reply": ">D\nThe eldritch vapors wail with dismay as you escape their misty clutches.\n \nOpen Grave\nYou're at the bottom of an open grave, surrounded by six-foot walls of dirt. Luminous ribbons of mist are swarming overhead, and a dark hole is visible in the north wall.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nUnderground\nYou're in a damp underground chamber. Long, dirty tunnels wander away to the north and east, and there's a dark hole in the south wall.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nUnderground\nYou're in a smelly underground chamber. Cold tunnels wander away to the north and west.\n \nA dark, narrow hole is visible overhead.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "look on bunk",
+  "root": 219,
+  "reply": ">look on bunk\nThe bunk looks flimsy. You could probably move it if you tried.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "PUSH BUNK",
+  "root": 219,
+  "reply": ">PUSH BUNK\nOkay, you moved the bunk away from the hole.\n \nFaint light streams in from overhead.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "DROP ALL",
+  "root": 219,
+  "reply": ">DROP ALL\nThe wizard's hat: Dropped.\nThe small stone: Dropped.\nThe gold coin: Dropped.\nThe violet note: Dropped.\n \nThe small stone stops glowing.\n \n> ",
+  "player": 219,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "U",
+  "root": 219,
+  "reply": ">U\nWith great effort, you manage to squeeze yourself into the hole.\n \nJail Cell\nYou're locked inside a damp, uncomfortable jail cell. Its thick steel door and stone walls offer little hope for escape.\n \nThe only furnishing is a hard bunk in the middle of the floor with a thick blanket on it.\n \nThere's a dark, narrow hole in the floor.\n \n> ",
+  "player": 219,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "GET BLANKET",
+  "root": 219,
+  "reply": ">GET BLANKET\nTaken.\n \n(Your score just went up by 3 points! Your total score is 44 out of 100.)\n \n> ",
+  "player": 219,
+  "held": [
+   "175:thick blanket [4,17,22,23,25,27,28]"
+  ],
+  "appInv": [
+   "175:thick blanket"
+  ]
+ },
+ {
+  "cmd": "D",
+  "root": 219,
+  "reply": ">D\nWith great effort, you manage to squeeze yourself into the hole.\n \nUnderground\n \nYou can see a violet note, a gold coin, a small stone and a wizard's hat here.\n \n> ",
+  "player": 219,
+  "held": [
+   "175:thick blanket [4,17,22,23,25,27,28]"
+  ],
+  "appInv": [
+   "175:thick blanket"
+  ]
+ },
+ {
+  "cmd": "GET ALL",
+  "root": 219,
+  "reply": ">GET ALL\nThe violet note: Taken.\nThe gold coin: Taken.\nThe small stone: Taken.\nThe wizard's hat: Taken.\n \nThe small stone begins to glow again.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "175:thick blanket [4,17,22,23,25,27,28]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note",
+   "175:thick blanket"
+  ]
+ },
+ {
+  "cmd": "N",
+  "root": 219,
+  "reply": ">N\nUnderground\nYou're in a dark underground chamber. Long tunnels wander away to the south, east and west.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "175:thick blanket [4,17,22,23,25,27,28]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note",
+   "175:thick blanket"
+  ]
+ },
+ {
+  "cmd": "E",
+  "root": 219,
+  "reply": ">E\nGrue's Nest\nYou have stumbled into the nesting place of a family of grues. Congratulations. Few indeed are the adventurers who have entered a grue's nest and lived as long as you have.\n \nEverything is littered with rusty swords of elvish workmanship, piles of bones and other debris. A closed refrigerator stands in one corner of the nest, and something... a small, dangerous-looking little beast... is curled up in the other corner.\n \nThe only exit is to the west. Hope you survive long enough to use it.\n \nSnoring fitfully, the little beast turns away from the light of the small stone and faces the wall.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]",
+   "175:thick blanket [4,17,22,23,25,27,28]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note",
+   "175:thick blanket"
+  ]
+ },
+ {
+  "cmd": "PUT BLANKET ON GRUE",
+  "root": 219,
+  "reply": ">PUT BLANKET ON GRUE\nOkay, the little beast is now covered with the thick blanket.\n \nThe creature stirs restlessly for an anxious moment. Then it settles into the comfortable darkness of the thick blanket, sighs gently and lies still.\n \n(Your score just went up by 3 points! Your total score is 47 out of 100.)\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "OPEN FRIDGE",
+  "root": 219,
+  "reply": ">OPEN FRIDGE\nA light inside the refrigerator goes out as you open it.\n \nOpening the refrigerator reveals a bottle and an earthworm.\n \n> ",
+  "player": 219,
+  "held": [
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "GET WORM",
+  "root": 219,
+  "reply": ">GET WORM\nTaken.\n \n(Your score just went up by 3 points! Your total score is 50 out of 100.)\n \nThe earthworm squirms with annoyance at your touch.\n \n> ",
+  "player": 219,
+  "held": [
+   "123:earthworm [17,21,28]",
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "123:earthworm",
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nUnderground\n \n> ",
+  "player": 219,
+  "held": [
+   "123:earthworm [17,21,28]",
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "123:earthworm",
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "W",
+  "root": 219,
+  "reply": ">W\nUnderground\nYou're in a dirty underground chamber. Cold, smelly tunnels wander away to the south and east.\n \nThe surrounding walls are almost obscured by the roots of a mighty tree. Overhead you can see the underside of a large stump. It appears to be hinged.\n \n> ",
+  "player": 219,
+  "held": [
+   "123:earthworm [17,21,28]",
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "123:earthworm",
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "OPEN STUMP",
+  "root": 219,
+  "reply": ">OPEN STUMP\nLifting the hinged top of the stump reveals a round hole leading upward into moonlight.\n \n> ",
+  "player": 219,
+  "held": [
+   "123:earthworm [17,21,28]",
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "123:earthworm",
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ },
+ {
+  "cmd": "U",
+  "root": 219,
+  "reply": ">U\nLookout Hill\nYou're standing at the summit of a high, barren hill. Looking east, you can see Witchville Village nestled among the trees. A narrow trail winds down the north side of the hill, towards the river.\n \nCrowning the hill is the stump of what must have been a very large and majestic oak tree. An opening in the stump leads down into darkness.\n \nA horseshoe is lying in the grass near the stump.\n \n> ",
+  "player": 219,
+  "held": [
+   "123:earthworm [17,21,28]",
+   "150:wizard's hat [6,17,22,28,30]",
+   "158:small stone [17,20,28]",
+   "250:gold coin [17,28]",
+   "14:violet note [6,17,28,30]"
+  ],
+  "appInv": [
+   "123:earthworm",
+   "150:wizard's hat",
+   "158:small stone",
+   "250:gold coin",
+   "14:violet note"
+  ]
+ }
+]

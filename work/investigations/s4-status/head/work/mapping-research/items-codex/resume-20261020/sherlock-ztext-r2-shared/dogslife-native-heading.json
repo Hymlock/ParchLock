@@ -1,0 +1,105 @@
+{
+  "scope": "Untouched native command path, no RAM/fact injection",
+  "samples": [
+    {
+      "command": "look",
+      "reply": " \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n> ",
+      "room": 37,
+      "rooms": [
+        {
+          "id": "37",
+          "name": "Driveway in front of your house"
+        },
+        {
+          "id": "46",
+          "name": "Freeblewhizz Road"
+        }
+      ],
+      "screen": "Press a key to continue\n \n \n \n \n \n \n \n \n \n \n \nIt's a Dog's Life\nAn Interactive Heeling\nCopyright (c) 1998 by Mr. WiggleButt.\n \n \n \n \nNew players should type \"HELP\"\n \n \nRelease 1 / Serial number 981015 / Inform v6.15 Library 6/7\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n>look\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n> "
+    },
+    {
+      "command": "north",
+      "reply": " \nFreeblewhizz Road\nThis is Freeblewhiz Road, which happens to be the main road in this tiny burgh. The road continues to the north and you can see your driveway back to the south. You have just passed milemarker 001\n \n> ",
+      "room": 46,
+      "rooms": [
+        {
+          "id": "37",
+          "name": "Driveway in front of your house"
+        },
+        {
+          "id": "46",
+          "name": "Freeblewhizz Road"
+        },
+        {
+          "id": "47",
+          "name": "Junction Freeblewhizz & Whizbang"
+        }
+      ],
+      "screen": "Press a key to continue\n \n \n \n \n \n \n \n \n \n \n \nIt's a Dog's Life\nAn Interactive Heeling\nCopyright (c) 1998 by Mr. WiggleButt.\n \n \n \n \nNew players should type \"HELP\"\n \n \nRelease 1 / Serial number 981015 / Inform v6.15 Library 6/7\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n>look\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n>north\n \nFreeblewhizz Road\nThis is Freeblewhiz Road, which happens to be the main road in this tiny burgh. The road continues to the north and you can see your driveway back to the south. You have just passed milemarker 001\n \n> "
+    },
+    {
+      "command": "north",
+      "reply": " \nJunction Freeblewhizz & Whizbang\nYou just passed milemarker 002 on Freeblewhizz Road. This just happens to be the junction of Freeblewhizz & Whizbang. \n \nA small white sign almost hidden by some bushes\n \n> ",
+      "room": 47,
+      "rooms": [
+        {
+          "id": "37",
+          "name": "Driveway in front of your house"
+        },
+        {
+          "id": "46",
+          "name": "Freeblewhizz Road"
+        },
+        {
+          "id": "47",
+          "name": "Junction Freeblewhizz & Whizbang"
+        },
+        {
+          "id": "49",
+          "name": "Freeblewhizz Road"
+        },
+        {
+          "id": "50",
+          "name": "Whizbang Road"
+        },
+        {
+          "id": "59",
+          "name": "Whizbang Road"
+        }
+      ],
+      "screen": "Press a key to continue\n \n \n \n \n \n \n \n \n \n \n \nIt's a Dog's Life\nAn Interactive Heeling\nCopyright (c) 1998 by Mr. WiggleButt.\n \n \n \n \nNew players should type \"HELP\"\n \n \nRelease 1 / Serial number 981015 / Inform v6.15 Library 6/7\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n>look\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n>north\n \nFreeblewhizz Road\nThis is Freeblewhiz Road, which happens to be the main road in this tiny burgh. The road continues to the north and you can see your driveway back to the south. You have just passed milemarker 001\n \n>north\n \nJunction Freeblewhizz & Whizbang\nYou just passed milemarker 002 on Freeblewhizz Road. This just happens to be the junction of Freeblewhizz & Whizbang. \n \nA small white sign almost hidden by some bushes\n \n> "
+    },
+    {
+      "command": "look",
+      "reply": " \nJunction Freeblewhizz & Whizbang\nYou just passed milemarker 002 on Freeblewhizz Road. This just happens to be the junction of Freeblewhizz & Whizbang. \n \nA small white sign almost hidden by some bushes\n \n> ",
+      "room": 47,
+      "rooms": [
+        {
+          "id": "37",
+          "name": "Driveway in front of your house"
+        },
+        {
+          "id": "46",
+          "name": "Freeblewhizz Road"
+        },
+        {
+          "id": "47",
+          "name": "Junction Freeblewhizz & Whizbang"
+        },
+        {
+          "id": "49",
+          "name": "Freeblewhizz Road"
+        },
+        {
+          "id": "50",
+          "name": "Whizbang Road"
+        },
+        {
+          "id": "59",
+          "name": "Whizbang Road"
+        }
+      ],
+      "screen": "Press a key to continue\n \n \n \n \n \n \n \n \n \n \n \nIt's a Dog's Life\nAn Interactive Heeling\nCopyright (c) 1998 by Mr. WiggleButt.\n \n \n \n \nNew players should type \"HELP\"\n \n \nRelease 1 / Serial number 981015 / Inform v6.15 Library 6/7\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n>look\n \nDriveway in front of your house\nA long asphalt strip, leading north to Freeblewhizz Road. On the curb near the end of the drive is your mailbox.\n \nYou can see a \"Lectro Car\" here.\n \n>north\n \nFreeblewhizz Road\nThis is Freeblewhiz Road, which happens to be the main road in this tiny burgh. The road continues to the north and you can see your driveway back to the south. You have just passed milemarker 001\n \n>north\n \nJunction Freeblewhizz & Whizbang\nYou just passed milemarker 002 on Freeblewhizz Road. This just happens to be the junction of Freeblewhizz & Whizbang. \n \nA small white sign almost hidden by some bushes\n \n>look\n \nJunction Freeblewhizz & Whizbang\nYou just passed milemarker 002 on Freeblewhizz Road. This just happens to be the junction of Freeblewhizz & Whizbang. \n \nA small white sign almost hidden by some bushes\n \n> "
+    }
+  ]
+}

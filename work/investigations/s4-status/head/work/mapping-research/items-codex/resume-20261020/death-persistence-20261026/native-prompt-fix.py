@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('harness/death-persistence/native.cjs');s=p.read_text();s=s.replace("await cmd('restart');await cmd('yes');", "await ready();const restartInput=p.locator('.Input.LineInput');await restartInput.fill('restart');await restartInput.press('Enter');await p.waitForFunction(()=>/Do you wish to restart/.test(document.body.innerText));await p.locator('.Input.LineInput').fill('y');await p.locator('.Input.LineInput').press('Enter');await p.waitForTimeout(800);");p.write_text(s)

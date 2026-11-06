@@ -1,0 +1,47 @@
+{
+ "Zork3-TheDungeonMaster.z3.js": {
+  "CB": 10,
+  "OB": 12,
+  "probes": [],
+  "alreadyOpen": [
+   {
+    "room": 63,
+    "id": 196,
+    "name": "great rock",
+    "word": "stone",
+    "ops": [],
+    "ok": false,
+    "reply": "it's too dark to see. > "
+   }
+  ],
+  "moves": 5,
+  "err": "died on south"
+ },
+ "Sorcerer.z3.js": {
+  "CB": 27,
+  "OB": 15,
+  "probes": [],
+  "alreadyOpen": [],
+  "moves": 25,
+  "lost": 1,
+  "rooms": 2
+ },
+ "Spellbreaker.z3.js": {
+  "CB": 27,
+  "OB": 21,
+  "probes": [],
+  "alreadyOpen": [],
+  "moves": 40,
+  "lost": 2,
+  "rooms": 3
+ },
+ "Wishbringer.z3.js": {
+  "CB": 4,
+  "OB": 25,
+  "probes": [],
+  "alreadyOpen": [],
+  "moves": 42,
+  "lost": 3,
+  "rooms": 4
+ }
+}

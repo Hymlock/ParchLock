@@ -1,0 +1,463 @@
+{
+ "e3sb @199:look#0": {
+  "tag": "e3sb",
+  "id": 107,
+  "name": "massive cabinet",
+  "step": 199,
+  "cmd": "look",
+  "expect": 1,
+  "bit": 11,
+  "plan": "plan-sb.json",
+  "planSha": "02513c02464e91ebacd78af292d5517b40079b090f2beed2fdad4f7b24d7f3ef",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "NOTEST",
+  "before": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 246,
+  "here": 246,
+  "opsOnId": [
+   [
+    107,
+    12,
+    0,
+    54920
+   ],
+   [
+    107,
+    19,
+    1,
+    54920
+   ],
+   [
+    107,
+    13,
+    0,
+    54920
+   ],
+   [
+    107,
+    12,
+    0,
+    56015
+   ],
+   [
+    107,
+    15,
+    0,
+    56015
+   ],
+   [
+    107,
+    21,
+    0,
+    56015
+   ],
+   [
+    107,
+    12,
+    0,
+    32517
+   ],
+   [
+    107,
+    8,
+    0,
+    32578
+   ],
+   [
+    107,
+    21,
+    0,
+    31749
+   ],
+   [
+    107,
+    15,
+    0,
+    31749
+   ]
+  ],
+  "nOps": 143,
+  "printedObjs": [
+   246
+  ],
+  "text": "Dungeon Cell\nThis was once a very luxurious cell, obviously for the imprisonment of a highborn or powerful person. Its rich hangings are now rotten rags; its furniture is smashed to kindling, except for one massive oak cabinet. The cell door has been blown away by an explosion, or perhaps a \"rezrov\" spell.\n \n> ",
+  "ts": "2026-10-30T11:09:11.420Z"
+ },
+ "e3sb @199:open massive cabinet#1": {
+  "tag": "e3sb",
+  "id": 107,
+  "name": "massive cabinet",
+  "step": 199,
+  "cmd": "open massive cabinet",
+  "expect": 1,
+  "bit": 11,
+  "plan": "plan-sb.json",
+  "planSha": "02513c02464e91ebacd78af292d5517b40079b090f2beed2fdad4f7b24d7f3ef",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "TRUE",
+  "before": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 246,
+  "here": 246,
+  "opsOnId": [
+   [
+    107,
+    12,
+    0,
+    32517
+   ],
+   [
+    107,
+    21,
+    0,
+    31749
+   ],
+   [
+    107,
+    15,
+    0,
+    31749
+   ],
+   [
+    107,
+    31,
+    0,
+    50146
+   ],
+   [
+    107,
+    11,
+    1,
+    94565
+   ],
+   [
+    107,
+    12,
+    0,
+    32517
+   ],
+   [
+    107,
+    8,
+    0,
+    32578
+   ],
+   [
+    107,
+    21,
+    0,
+    31749
+   ],
+   [
+    107,
+    15,
+    0,
+    31749
+   ]
+  ],
+  "nOps": 217,
+  "printedObjs": [],
+  "text": "The cabinet is locked.\n \n> ",
+  "ts": "2026-10-30T11:09:12.003Z"
+ },
+ "e3sb @200:open cabinet#2": {
+  "tag": "e3sb",
+  "id": 107,
+  "name": "massive cabinet",
+  "step": 200,
+  "cmd": "open cabinet",
+  "expect": 0,
+  "bit": 11,
+  "plan": "plan-sb.json",
+  "planSha": "02513c02464e91ebacd78af292d5517b40079b090f2beed2fdad4f7b24d7f3ef",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "FALSE",
+  "before": [
+   6,
+   19,
+   21,
+   27,
+   29
+  ],
+  "after": [
+   6,
+   19,
+   21,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 246,
+  "here": 246,
+  "opsOnId": [
+   [
+    107,
+    12,
+    0,
+    32517
+   ],
+   [
+    107,
+    21,
+    1,
+    31749
+   ],
+   [
+    107,
+    3,
+    0,
+    31764
+   ],
+   [
+    107,
+    4,
+    0,
+    31764
+   ],
+   [
+    107,
+    21,
+    1,
+    55872
+   ],
+   [
+    107,
+    12,
+    0,
+    55829
+   ],
+   [
+    107,
+    31,
+    0,
+    50146
+   ],
+   [
+    107,
+    11,
+    0,
+    94542
+   ],
+   [
+    107,
+    27,
+    1,
+    50173
+   ],
+   [
+    107,
+    16,
+    0,
+    50181
+   ],
+   [
+    107,
+    3,
+    0,
+    50181
+   ],
+   [
+    107,
+    21,
+    1,
+    50216
+   ],
+   [
+    107,
+    12,
+    0,
+    32517
+   ],
+   [
+    107,
+    8,
+    0,
+    32578
+   ],
+   [
+    107,
+    21,
+    1,
+    31749
+   ],
+   [
+    107,
+    3,
+    0,
+    31764
+   ],
+   [
+    107,
+    4,
+    0,
+    31764
+   ]
+  ],
+  "nOps": 230,
+  "printedObjs": [],
+  "text": "It's already open.\n \n> ",
+  "ts": "2026-10-30T11:09:13.137Z"
+ },
+ "e3sb @372:open cabinet#3": {
+  "tag": "e3sb",
+  "id": 67,
+  "name": "massive cabinet",
+  "step": 372,
+  "cmd": "open cabinet",
+  "expect": 1,
+  "bit": 11,
+  "plan": "plan-sb.json",
+  "planSha": "02513c02464e91ebacd78af292d5517b40079b090f2beed2fdad4f7b24d7f3ef",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "NOTEST",
+  "before": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 38,
+  "here": 89,
+  "opsOnId": [],
+  "nOps": 37,
+  "printedObjs": [],
+  "text": "You can't see any cabinet here.\n \n> ",
+  "ts": "2026-10-30T11:10:50.525Z"
+ },
+ "e3sb @374:close cabinet#4": {
+  "tag": "e3sb",
+  "id": 67,
+  "name": "massive cabinet",
+  "step": 374,
+  "cmd": "close cabinet",
+  "expect": 0,
+  "bit": 11,
+  "plan": "plan-sb.json",
+  "planSha": "02513c02464e91ebacd78af292d5517b40079b090f2beed2fdad4f7b24d7f3ef",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "NOTEST",
+  "before": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 38,
+  "here": 89,
+  "opsOnId": [],
+  "nOps": 37,
+  "printedObjs": [],
+  "text": "You can't see any cabinet here.\n \n> ",
+  "ts": "2026-10-30T11:10:52.222Z"
+ },
+ "e3sb @374:open cabinet#5": {
+  "tag": "e3sb",
+  "id": 67,
+  "name": "massive cabinet",
+  "step": 374,
+  "cmd": "open cabinet",
+  "expect": 0,
+  "bit": 11,
+  "plan": "plan-sb.json",
+  "planSha": "02513c02464e91ebacd78af292d5517b40079b090f2beed2fdad4f7b24d7f3ef",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "NOTEST",
+  "before": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 38,
+  "here": 89,
+  "opsOnId": [],
+  "nOps": 37,
+  "printedObjs": [],
+  "text": "You can't see any cabinet here.\n \n> ",
+  "ts": "2026-10-30T11:10:52.788Z"
+ },
+ "e3sb @383:open cabinet#6": {
+  "tag": "e3sb",
+  "id": 67,
+  "name": "massive cabinet",
+  "step": 383,
+  "cmd": "open cabinet",
+  "expect": 1,
+  "bit": 11,
+  "plan": "plan-sb.json",
+  "planSha": "02513c02464e91ebacd78af292d5517b40079b090f2beed2fdad4f7b24d7f3ef",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "NOTEST",
+  "before": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 38,
+  "here": 89,
+  "opsOnId": [],
+  "nOps": 37,
+  "printedObjs": [],
+  "text": "You can't see any cabinet here.\n \n> ",
+  "ts": "2026-10-30T11:10:58.432Z"
+ }
+}

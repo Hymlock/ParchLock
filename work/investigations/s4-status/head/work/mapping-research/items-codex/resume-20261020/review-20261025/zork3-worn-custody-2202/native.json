@@ -1,0 +1,2441 @@
+{
+  "tier": "Fresh unforced ordinary keyboard commands; passive reader; no RNG substitution, VM mutation, opcode hooks or prototype facts",
+  "root": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\concealed-next7-takeover-r2\\cand",
+  "helperSha": "ddc18cfb07fb51ec50b8ec8e673aa4ae07a21b6f5e43d6934c4d76ec9a8db676",
+  "pre": {
+    "play.html": "a0b6dd039e5697402783ec14a78dfc59c725484967d6ceca1dad07e5aa69106a",
+    "js/Actionable.js": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f",
+    "js/ActionSynth.js": "66ecd0b1349b8caeacb04c0781fb7e5235bfa1c1f333ecbdc0d5d2fa6b1c370c",
+    "js/AttrCalibrator.js": "99b14a67194c2b2435b10a5b2ede48f012073acd4adf7fcef08150615f0167a3",
+    "js/AttributeSchema.js": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72",
+    "js/Autocomplete.js": "e4b293af38fcd68448b3ad3dd8f65de78e721906bdd2dfe8ad14cd0ec2400c83",
+    "js/BufferRevision.js": "e2bd1c438b0c38c4f92670895768b611a8f1c5d4ed6eafa18f369a445a8945ce",
+    "js/BufferTapProvider.js": "c3e453ebcc2484b20ae1b7038cf0b5d3c339bce467ab05100b22af556091fd33",
+    "js/CharKeys.js": "783f9c960e8a8c9e03d5f6ca22ebd9b8e1cbf9cbc8c007165b60fdf1f8e851d5",
+    "js/Consts.js": "0d48930fa361e450d52ce022abf690dee633cb2a9112a15e0adc9eba94a59194",
+    "js/DarkScope.js": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9",
+    "js/DirectionalRadial.js": "58e250cd9dd4ef6f01eea48c18b39b227bd1db8867dd0a5aa185d023d7c5e0ac",
+    "js/Directions.js": "a3df946e0235cabe92a5cc3d7cc1564433bd7027c43832e285221453d717df90",
+    "js/EmglkenHost.js": "30aef40616ea18f0260453b60659d79c8d5e179b6a9ce54d259b9942e9287f86",
+    "js/EmglkenProvider.js": "30d5e51b046472f0a15716566dd51ce052f452d6ac26364389a532d5dbc1ff4e",
+    "js/EquipmentUI.js": "1845b0c3ce79386f9fe55ddbca232dd7ba54777e49375bb47d62908ac43b07b7",
+    "js/ExitCalibrator.js": "ac60b3399cd0cc699f24ab48ba7db4653d7e79b1cc1012aed56b4f09879b7627",
+    "js/GameList.js": "6f68e444731e948228f1463934b9eccabd569fa6db79e083c5b9774fad6b42b6",
+    "js/GlkTapProvider.js": "0e4fb31a4b8194159589504600ae2421d65acda0b0489f9dbdd3f911536dc273",
+    "js/Global.js": "19cd7e731ba98f09607156ada04cb7f64be1708253294c6245d74fd07534932d",
+    "js/GrammarProvider.js": "c50a9f04738c5090229ba75f70c1149d465cfee7ef1fc1634a055400116ccdd8",
+    "js/GraphicsDock.js": "c0c183eb6a4eb779ce7b0ba4e7ec14dafc1c8ac2532e222cb1919c0203b59f9c",
+    "js/HostEmglkenBridge.js": "63e6b8f4bf9cf9153d81426e44e0a5627aa665e111c891cb94a2005b9d29cf07",
+    "js/IconRotation.js": "5a6084e898fd57852174d261db64cbb0fd03ac7c58d11874bdb836795d6e3a0a",
+    "js/Input.js": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681",
+    "js/LearnedWords.js": "2e179163acca934ac27d57a5520e4f8bd7a2f2f0d9302fb056c8696234278afe",
+    "js/LiveHeapProvider.js": "bf170f4c45fa5c434a049c7b01af0a464560d32b3564d73d8a41d8a5c08aa59d",
+    "js/MainMenu.js": "6881269dc8e15a4dee3a69fcf2fe0a31ebba8048e4d5887a7f5a4e3b33c83541",
+    "js/Map.js": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed",
+    "js/MapBeautify.js": "17772927f8068c31c6ddd1b37f31fbe63f7df939125be2e55b765985966c4514",
+    "js/MapIdentity.js": "b0a4ce13b85b32d84d4c065a30a1f0e3e30f9fb458a26f6ab79d8d14a7e36e6b",
+    "js/MapTopology.js": "4b629f4adfba86631ba5849320f13e405616f3f0053694850f3a0b34aca62ea7",
+    "js/Message.js": "a718a237abebbab24dfd689d20b7f1246c574f92f9f0daadddabe3be12e9e799",
+    "js/MobileLayout.js": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8",
+    "js/ModuleLibrary.js": "917c3b9425d29b76086fb74524a84ea93f4ab38dfc4540e89d0d52e550d6855b",
+    "js/ModuleStatFacts.js": "60262729d81c8d951355b36ab416484b760e1a9224c88592fadaeaab2615e94b",
+    "js/ModuleStatFactsClaude.js": "ce7c22433537a200b257e37f0aca581e0288fbbc595c753cbeee47933ee2db69",
+    "js/Navigator.js": "cdb9963dd0d5646daa015d09a005c16e24bc8948117b85686fb1ebfa6521b6e7",
+    "js/ParchLock.js": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010",
+    "js/ProductInfo.js": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff",
+    "js/PronunciationCatalog.js": "74a470e7bbb87f829b0f13c957dbdc422a869210ae782dca150120b16f0730ad",
+    "js/Qol.js": "1c01f82971996837182fa2bdf20019a0182c1fefff2b3131e944295facf96d7c",
+    "js/ReadAloud.js": "e514d732e60005d1ac848e2de056210058554c33ce8dacea27bde13909ee291a",
+    "js/RemGlkTapProvider.js": "8c03ad6f868dd7dfffdfb8392d8d92062139b371204fe193ffa1a7210a497000",
+    "js/SaveState.js": "b41adcc1170addfca0f04ebd92551eef71dc0b430bc9599a349df314c74556a1",
+    "js/SemanticActions.js": "d87799ab6ab0f36ea58bcafde9334457ff9dfc2fa7ea1a1fc1c02908d13a5ed3",
+    "js/StatTracker.js": "c339a1930d24e7d281ea5b26e3da138f4079247153d53c25ebdc60f72311c069",
+    "js/StatusGridDecoder.js": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75",
+    "js/TextGate.js": "d62d3e49aa1b818700a13486e4d1c4d9ec97e0b8e96a2767c71d9c5ec291cd56",
+    "js/Transcript.js": "a3fc5c0f192890d232e3a7d2b8bd00486d2e5b15e6ef9631dc88ad2cae1ddd50",
+    "js/TranslatorUI.js": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd",
+    "js/TurnRecorder.js": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8",
+    "js/Tutorial.js": "fd71d986b4825aec3155a90146fe75c5ec8c4561157fa9d747ae223f9b07df70",
+    "js/UndoRestoreSync.js": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed",
+    "js/VmProbeLoader.js": "9d64ccd89783f73138095914a4c30b4664262de7e1a78eeb2d6d2faceb1c7c7c",
+    "js/WorkspaceUI.js": "44e53e381de130860fd6b3df78355fa044850b4a87eb36a39c8081356b646672",
+    "js/WorldMap.js": "ee15830399cc06dfd18891688aef4b4e97f08cce3d231b1e4e1419fa3748843f",
+    "js/WorldMapLayout.js": "208197d5d383e67b60d4ac538c8716dfc7ef5f3d52a91f6962cdf24057820fec",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0",
+    "js/ZRamProvider.js": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109",
+    "js/ZRamReader.js": "0b8f43ec1d87fc5a660d628404707795b411a72b376e3ef2d20e890e78de5743",
+    "js/ZvmCapture.js": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d",
+    "lib/ie.js": "cf9de5d701907a27cf429625f186e9c0e081a2eba324065c4895762e5556e45e",
+    "lib/jquery.min.js": "9a2723c21fb1b7dff0e2aa5dc6be24a9670220a17ae21f70fdbc602d1f8acd38",
+    "lib/jquery.slimscroll.min.js": "2221317b9e2d487bde03da54ba3b092cedaa5bee1418618823e8d71740f2fb3c",
+    "lib/main.js": "9257aa57bfb2ddc9587df7f3a736719889f84111af206ef76607b2fdde9ad554",
+    "lib/pm_vm_probe.js": "956fc67c5be0377df19c4f3eb029d9a31703d11654e6d03fa4da147d5c6173c8",
+    "lib/quixe.js": "033fd286580d51306a8f358f01cf7637e213812e391984bbc6cbf272fa08b1c4",
+    "lib/resourcemap.js": "f0eadad5aadb4187530c41c248b4fe88a3ca16bef72bd09f43d8108df9d5e5ce",
+    "lib/zvm.js": "12bf89d7f524abf72f223c89c98d68abf3df88d93b77a64838442b4eefb92e2f",
+    "games/Zork3-TheDungeonMaster.z3.js": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d"
+  },
+  "rows": [
+    {
+      "command": "GET LAMP",
+      "before": {
+        "room": 64,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 64,
+            "bit4": false
+          }
+        },
+        "text": " Endless Stair                                                                                                              Score: 0  Turns: 0 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n> "
+      },
+      "after": {
+        "room": 64,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 64,
+            "bit4": false
+          }
+        },
+        "text": " Endless Stair                                                        \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n> "
+      }
+    },
+    {
+      "command": "S",
+      "before": {
+        "room": 64,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 64,
+            "bit4": false
+          }
+        },
+        "text": " Endless Stair                                                        \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n> "
+      },
+      "after": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": " Junction                                          Score: 0  Turns: 2 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n> "
+      }
+    },
+    {
+      "command": "LIGHT LAMP",
+      "before": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": " Junction                                          Score: 0  Turns: 2 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n> "
+      },
+      "after": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": " Junction                                          Score: 0  Turns: 3 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n> "
+      }
+    },
+    {
+      "command": "W",
+      "before": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": " Junction                                          Score: 0  Turns: 3 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n> "
+      },
+      "after": {
+        "room": 62,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 62,
+            "bit4": false
+          }
+        },
+        "text": " Barren Area                                       Score: 0  Turns: 4 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n> "
+      }
+    },
+    {
+      "command": "W",
+      "before": {
+        "room": 62,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 62,
+            "bit4": false
+          }
+        },
+        "text": " Barren Area                                       Score: 0  Turns: 4 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n> "
+      },
+      "after": {
+        "room": 58,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 58,
+            "bit4": false
+          }
+        },
+        "text": "u as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n> "
+      }
+    },
+    {
+      "command": "GET BREAD",
+      "before": {
+        "room": 58,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 58,
+            "bit4": false
+          }
+        },
+        "text": "u as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n> "
+      },
+      "after": {
+        "room": 58,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 58,
+            "bit4": false
+          }
+        },
+        "text": "echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n> "
+      }
+    },
+    {
+      "command": "E",
+      "before": {
+        "room": 58,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 58,
+            "bit4": false
+          }
+        },
+        "text": "echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n> "
+      },
+      "after": {
+        "room": 62,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 62,
+            "bit4": false
+          }
+        },
+        "text": "void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n> "
+      }
+    },
+    {
+      "command": "E",
+      "before": {
+        "room": 62,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 62,
+            "bit4": false
+          }
+        },
+        "text": "void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n> "
+      },
+      "after": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": "d.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n> "
+      }
+    },
+    {
+      "command": "E",
+      "before": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": "d.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>GET LAMP\nTaken.\n \n>S\nIt is pitch black. You are likely to be eaten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n> "
+      },
+      "after": {
+        "room": 152,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 152,
+            "bit4": false
+          }
+        },
+        "text": "ten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n> "
+      }
+    },
+    {
+      "command": "NE",
+      "before": {
+        "room": 152,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 152,
+            "bit4": false
+          }
+        },
+        "text": "ten by a grue.\n \n>LIGHT LAMP\nThe lamp is now on.\n \nJunction\nYou are at the junction of a north-south passage and an east-west passage. To the north, you can make out the bottom of a stairway. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n> "
+      },
+      "after": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "way. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n> "
+      }
+    },
+    {
+      "command": "SE",
+      "before": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "way. The ways to the east and south are relatively cramped, but a wider trail leads to the west.\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n> "
+      },
+      "after": {
+        "room": 153,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 153,
+            "bit4": false
+          }
+        },
+        "text": "Standing before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n> "
+      }
+    },
+    {
+      "command": "W",
+      "before": {
+        "room": 153,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 153,
+            "bit4": false
+          }
+        },
+        "text": "Standing before you is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n> "
+      },
+      "after": {
+        "room": 152,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 152,
+            "bit4": false
+          }
+        },
+        "text": "u is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n> "
+      }
+    },
+    {
+      "command": "NE",
+      "before": {
+        "room": 152,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 152,
+            "bit4": false
+          }
+        },
+        "text": "u is a great rock. Imbedded within it is an Elvish sword.\n \n>W\nBarren Area\nYou are west of the junction, where the rock-bound passage widens out into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n> "
+      },
+      "after": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n> "
+      }
+    },
+    {
+      "command": "WAKE UP OLD MAN",
+      "before": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "into a large, flat area. Although the land here is barren, you can see vegetation to the west. South of here is a mighty wall of stone, ancient and crumbling.  To the southwest the wall has decayed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n> "
+      },
+      "after": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "ed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n> "
+      }
+    },
+    {
+      "command": "GIVE BREAD TO OLD MAN",
+      "before": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "ed enough to form an opening, through which seeps a thin mist. A trail dips sharply into rocky terrain to the northwest.\n \n>W\nCliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above you is a gaping hole in the earth's surface through which pours bright sunshine! A few seedlings from the world above, nurtured by the sunlight and occasional rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n> "
+      },
+      "after": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "nal rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n> "
+      }
+    },
+    {
+      "command": "SW",
+      "before": {
+        "room": 154,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 154,
+            "bit4": false
+          }
+        },
+        "text": "nal rains, have grown into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n> "
+      },
+      "after": {
+        "room": 152,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 152,
+            "bit4": false
+          }
+        },
+        "text": "wn into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n> "
+      }
+    },
+    {
+      "command": "W",
+      "before": {
+        "room": 152,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 152,
+            "bit4": false
+          }
+        },
+        "text": "wn into giant trees, making this a virtual oasis in the desert of the Underground Empire. To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n> "
+      },
+      "after": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": "To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n> "
+      }
+    },
+    {
+      "command": "S",
+      "before": {
+        "room": 63,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 63,
+            "bit4": false
+          }
+        },
+        "text": "To the west is a sheer precipice, dropping nearly fifty feet to jagged rocks below. The way south is barred by a forbidding stone wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n> "
+      },
+      "after": {
+        "room": 78,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 78,
+            "bit4": false
+          }
+        },
+        "text": "one wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n> "
+      }
+    },
+    {
+      "command": "S",
+      "before": {
+        "room": 78,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 78,
+            "bit4": false
+          }
+        },
+        "text": "one wall, crumbling from age. There is a jagged opening in the wall to the southwest, through which leaks a fine mist. The land to the east looks lifeless and barren.\nA rope is tied to one of the large trees here and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n> "
+      },
+      "after": {
+        "room": 53,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 53,
+            "bit4": false
+          }
+        },
+        "text": "and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n> "
+      }
+    },
+    {
+      "command": "S",
+      "before": {
+        "room": 53,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 53,
+            "bit4": false
+          }
+        },
+        "text": "and is dangling over the side of the cliff, reaching down to the shelf below.\nIt seems as if somebody has been here recently, as there is some fresh bread lying beneath one of the other trees.\n \n>GET BREAD\nTaken.\n \n>E\nBarren Area\n \n>E\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n> "
+      },
+      "after": {
+        "room": 52,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 52,
+            "bit4": false
+          }
+        },
+        "text": "tion\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n> "
+      }
+    },
+    {
+      "command": "TURN OFF LAMP",
+      "before": {
+        "room": 52,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 52,
+            "bit4": false
+          }
+        },
+        "text": "tion\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n> "
+      },
+      "after": {
+        "room": 52,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 52,
+            "bit4": false
+          }
+        },
+        "text": "ck. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n> "
+      }
+    },
+    {
+      "command": "DROP LAMP",
+      "before": {
+        "room": 52,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 52,
+            "bit4": false
+          }
+        },
+        "text": "ck. Imbedded within it is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n> "
+      },
+      "after": {
+        "room": 52,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 52,
+            "bit4": false
+          }
+        },
+        "text": " is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n> "
+      }
+    },
+    {
+      "command": "JUMP LAKE",
+      "before": {
+        "room": 52,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 52,
+            "bit4": false
+          }
+        },
+        "text": " is an Elvish sword.\n \n>E\nDamp Passage\nThis is a particularly damp spot even by dungeon standards. You can see a crossroads to the west, and two nearly identical passages lead east and northeast. A stone channel, wide and deep, steeply descends into the room from the south. It is covered with moss and lichen, and is far too slippery to climb. The channel crosses the room, but the opening where it once continued north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n> "
+      },
+      "after": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": " north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n> "
+      }
+    },
+    {
+      "command": "D",
+      "before": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": " north is now blocked by rubble.\n \n>NE\nEngravings Room\nYou are in a room with passages heading southwest and southeast. The north wall is ornately carved, filled with strange runes and writing in an unfamiliar language.\n \n>SE\nDead End\nYou have come to the end of two adjoining passages to the west and the northwest.\n \n>W\nDamp Passage\n \n>NE\nEngravings Room\nAn old and wizened man is huddled, asleep, in the corner. He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n> "
+      },
+      "after": {
+        "room": 46,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 46,
+            "bit4": false
+          }
+        },
+        "text": " He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n> "
+      }
+    },
+    {
+      "command": "GET AMULET",
+      "before": {
+        "room": 46,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 46,
+            "bit4": false
+          }
+        },
+        "text": " He is snoring loudly. From his appearance, he is weak and frail.\n \n>WAKE UP OLD MAN\nThe old man is roused to consciousness. He peers at you through eyes which appear much younger and stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n> "
+      },
+      "after": {
+        "room": 46,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 46,
+            "bit4": false
+          }
+        },
+        "text": "d stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n> "
+      }
+    },
+    {
+      "command": "GET AMULET",
+      "before": {
+        "room": 46,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 0,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 46,
+            "bit4": false
+          }
+        },
+        "text": "d stronger than his frail body and waits, as if expecting something to happen.\n \n>GIVE BREAD TO OLD MAN\nHe looks up at you and takes the waybread from you. Slowly, he eats the bread and pauses when he is finished. He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n> "
+      },
+      "after": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 202,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": "He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n> "
+      }
+    },
+    {
+      "command": "inventory",
+      "before": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 202,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": "He starts to speak: \"Perhaps what you seek is through there!\" He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n> "
+      },
+      "after": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 202,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": "He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n> "
+      }
+    },
+    {
+      "command": "drop amulet",
+      "before": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 202,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": "He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n> "
+      },
+      "after": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 48,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": " old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n>drop amulet\nDropped.\nA giant roc, previously hidden among the rocks, is heading right toward you, its mouth gaping wide!\n \n> "
+      }
+    },
+    {
+      "command": "inventory",
+      "before": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 48,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": " old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n>drop amulet\nDropped.\nA giant roc, previously hidden among the rocks, is heading right toward you, its mouth gaping wide!\n \n> "
+      },
+      "after": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 48,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": "ne!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n>drop amulet\nDropped.\nA giant roc, previously hidden among the rocks, is heading right toward you, its mouth gaping wide!\n \n>inventory\nYou are empty handed.\n \n> "
+      }
+    },
+    {
+      "command": "take amulet",
+      "before": {
+        "room": 48,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 48,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 48,
+            "bit4": false
+          }
+        },
+        "text": "ne!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n>drop amulet\nDropped.\nA giant roc, previously hidden among the rocks, is heading right toward you, its mouth gaping wide!\n \n>inventory\nYou are empty handed.\n \n> "
+      },
+      "after": {
+        "room": 64,
+        "objects": {
+          "7": {
+            "name": "strange key",
+            "parent": 12,
+            "bit4": false
+          },
+          "39": {
+            "name": "golden amulet",
+            "parent": 152,
+            "bit4": true
+          },
+          "65": {
+            "name": "cloak",
+            "parent": 67,
+            "bit4": true
+          },
+          "66": {
+            "name": "hood",
+            "parent": 67,
+            "bit4": true
+          },
+          "82": {
+            "name": "golden ring",
+            "parent": 84,
+            "bit4": true
+          },
+          "202": {
+            "name": "cretin",
+            "parent": 64,
+            "bit4": false
+          }
+        },
+        "text": "north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n>drop amulet\nDropped.\nA giant roc, previously hidden among the rocks, is heading right toward you, its mouth gaping wide!\n \n>inventory\nYou are empty handed.\n \n>take amulet\nYou are now wearing the golden amulet.\nThe roc snatches you in its jaws and has you for lunch.\n \n   ****  You have died  **** \n \nYou find yourself deep within the earth in a barren prison cell. Outside the iron-barred window, you can see a great, fiery pit. Flames leap up and very nearly sear your flesh. After a while, footfalls can be heard in the distance, then closer and closer.... The door swings open, and in walks an old man.\n \nHe is dressed simply in a hood and cloak, wearing a few simple jewels, carrying something under one arm, and leaning on a wooden staff. A single key, as if to a massive prison cell, hangs from his belt.\n \nHe raises the staff toward you and you hear him speak, as if in a dream: \"I await you, though your journey be long and full of peril. Go then, and let me not wait long!\" You feel some great power well up inside you and you fall to the floor. The next moment, you are awakening, as if from a deep slumber.\n \nEndless Stair\nThere is a lamp here.\n \n> "
+      }
+    }
+  ],
+  "preContrast": {
+    "room": 48,
+    "objects": {
+      "7": {
+        "name": "strange key",
+        "parent": 12,
+        "bit4": false
+      },
+      "39": {
+        "name": "golden amulet",
+        "parent": 202,
+        "bit4": true
+      },
+      "65": {
+        "name": "cloak",
+        "parent": 67,
+        "bit4": true
+      },
+      "66": {
+        "name": "hood",
+        "parent": 67,
+        "bit4": true
+      },
+      "82": {
+        "name": "golden ring",
+        "parent": 84,
+        "bit4": true
+      },
+      "202": {
+        "name": "cretin",
+        "parent": 48,
+        "bit4": false
+      }
+    },
+    "text": "He points at the carved wall to the north, where you now notice the bare outline of a secret door. When you turn back to the old man, you notice that he has gone!\n \n>SW\nDamp Passage\n \n>W\nJunction\nStanding before you is a great rock. Imbedded within it is an Elvish sword.\n \n>S\nCreepy Crawl\nYou are in a dark and quite creepy crawlway with passages leaving to the north, east, south, and southwest.\n \n>S\nFoggy Room\nYou are in a dank passage filled with a wispy fog. A spooky passageway leads north and a wider path heads off to the south. To the west, the path leaves the rock and enters an eerie, shadowy land.\n \n>S\nLake Shore\nYou are in a wide cavern on the north shore of a small lake. Some polished stone steps lead to the southeast and a sheer rock face prevents any movement around the lake to the southwest. The cavern is dimly lit from above.\n \n>TURN OFF LAMP\nThe lamp is now off.\n \n>DROP LAMP\nDropped.\n \n>JUMP LAKE\nYou are nearly paralyzed by the icy waters as you swim into the center of the lake.\n \nOn the Lake\nYou are floating on the surface of the lake. The water is ice cold and your ability to survive here for long is very questionable. A swim north puts you at your starting point. Conditions to the east are poor where the lake turns into swamp. The west and south shores are suitable for walking, however.\n \n>D\nUnderwater\nYou are below the surface of the lake. It turns out that the lake is quite shallow and the bottom is only a few feet below you. Considering the frigid temperature of the water, you should probably not plan an extended stay.  The lake bottom is sandy and a few hearty plants and algae live there.\nOut of the corner of your eye, a small, shiny object appears in the sand. A moment later, it is gone!\n \n>GET AMULET\nThe shiny object slips from your grasp and back onto the floor of the lake, where it is covered in sand.\nSomething sparkling in the sand catches your eye for a moment.\n \n>GET AMULET\nYou reach the shiny object. It is a simple golden amulet!\nThe icy waters are taking their toll. You will not be able to hold out much longer.\nYou run out of air and return to the surface.\nOn the Lake\n \n>inventory\nYou are carrying:\n  A golden amulet (being worn)\n \n> "
+  },
+  "error": "Error: retake failed\n    at C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\zork3-worn-custody-2202.cjs:2:2033",
+  "post": {
+    "play.html": "a0b6dd039e5697402783ec14a78dfc59c725484967d6ceca1dad07e5aa69106a",
+    "js/Actionable.js": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f",
+    "js/ActionSynth.js": "66ecd0b1349b8caeacb04c0781fb7e5235bfa1c1f333ecbdc0d5d2fa6b1c370c",
+    "js/AttrCalibrator.js": "99b14a67194c2b2435b10a5b2ede48f012073acd4adf7fcef08150615f0167a3",
+    "js/AttributeSchema.js": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72",
+    "js/Autocomplete.js": "e4b293af38fcd68448b3ad3dd8f65de78e721906bdd2dfe8ad14cd0ec2400c83",
+    "js/BufferRevision.js": "e2bd1c438b0c38c4f92670895768b611a8f1c5d4ed6eafa18f369a445a8945ce",
+    "js/BufferTapProvider.js": "c3e453ebcc2484b20ae1b7038cf0b5d3c339bce467ab05100b22af556091fd33",
+    "js/CharKeys.js": "783f9c960e8a8c9e03d5f6ca22ebd9b8e1cbf9cbc8c007165b60fdf1f8e851d5",
+    "js/Consts.js": "0d48930fa361e450d52ce022abf690dee633cb2a9112a15e0adc9eba94a59194",
+    "js/DarkScope.js": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9",
+    "js/DirectionalRadial.js": "58e250cd9dd4ef6f01eea48c18b39b227bd1db8867dd0a5aa185d023d7c5e0ac",
+    "js/Directions.js": "a3df946e0235cabe92a5cc3d7cc1564433bd7027c43832e285221453d717df90",
+    "js/EmglkenHost.js": "30aef40616ea18f0260453b60659d79c8d5e179b6a9ce54d259b9942e9287f86",
+    "js/EmglkenProvider.js": "30d5e51b046472f0a15716566dd51ce052f452d6ac26364389a532d5dbc1ff4e",
+    "js/EquipmentUI.js": "1845b0c3ce79386f9fe55ddbca232dd7ba54777e49375bb47d62908ac43b07b7",
+    "js/ExitCalibrator.js": "ac60b3399cd0cc699f24ab48ba7db4653d7e79b1cc1012aed56b4f09879b7627",
+    "js/GameList.js": "6f68e444731e948228f1463934b9eccabd569fa6db79e083c5b9774fad6b42b6",
+    "js/GlkTapProvider.js": "0e4fb31a4b8194159589504600ae2421d65acda0b0489f9dbdd3f911536dc273",
+    "js/Global.js": "19cd7e731ba98f09607156ada04cb7f64be1708253294c6245d74fd07534932d",
+    "js/GrammarProvider.js": "c50a9f04738c5090229ba75f70c1149d465cfee7ef1fc1634a055400116ccdd8",
+    "js/GraphicsDock.js": "c0c183eb6a4eb779ce7b0ba4e7ec14dafc1c8ac2532e222cb1919c0203b59f9c",
+    "js/HostEmglkenBridge.js": "63e6b8f4bf9cf9153d81426e44e0a5627aa665e111c891cb94a2005b9d29cf07",
+    "js/IconRotation.js": "5a6084e898fd57852174d261db64cbb0fd03ac7c58d11874bdb836795d6e3a0a",
+    "js/Input.js": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681",
+    "js/LearnedWords.js": "2e179163acca934ac27d57a5520e4f8bd7a2f2f0d9302fb056c8696234278afe",
+    "js/LiveHeapProvider.js": "bf170f4c45fa5c434a049c7b01af0a464560d32b3564d73d8a41d8a5c08aa59d",
+    "js/MainMenu.js": "6881269dc8e15a4dee3a69fcf2fe0a31ebba8048e4d5887a7f5a4e3b33c83541",
+    "js/Map.js": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed",
+    "js/MapBeautify.js": "17772927f8068c31c6ddd1b37f31fbe63f7df939125be2e55b765985966c4514",
+    "js/MapIdentity.js": "b0a4ce13b85b32d84d4c065a30a1f0e3e30f9fb458a26f6ab79d8d14a7e36e6b",
+    "js/MapTopology.js": "4b629f4adfba86631ba5849320f13e405616f3f0053694850f3a0b34aca62ea7",
+    "js/Message.js": "a718a237abebbab24dfd689d20b7f1246c574f92f9f0daadddabe3be12e9e799",
+    "js/MobileLayout.js": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8",
+    "js/ModuleLibrary.js": "917c3b9425d29b76086fb74524a84ea93f4ab38dfc4540e89d0d52e550d6855b",
+    "js/ModuleStatFacts.js": "60262729d81c8d951355b36ab416484b760e1a9224c88592fadaeaab2615e94b",
+    "js/ModuleStatFactsClaude.js": "ce7c22433537a200b257e37f0aca581e0288fbbc595c753cbeee47933ee2db69",
+    "js/Navigator.js": "cdb9963dd0d5646daa015d09a005c16e24bc8948117b85686fb1ebfa6521b6e7",
+    "js/ParchLock.js": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010",
+    "js/ProductInfo.js": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff",
+    "js/PronunciationCatalog.js": "74a470e7bbb87f829b0f13c957dbdc422a869210ae782dca150120b16f0730ad",
+    "js/Qol.js": "1c01f82971996837182fa2bdf20019a0182c1fefff2b3131e944295facf96d7c",
+    "js/ReadAloud.js": "e514d732e60005d1ac848e2de056210058554c33ce8dacea27bde13909ee291a",
+    "js/RemGlkTapProvider.js": "8c03ad6f868dd7dfffdfb8392d8d92062139b371204fe193ffa1a7210a497000",
+    "js/SaveState.js": "b41adcc1170addfca0f04ebd92551eef71dc0b430bc9599a349df314c74556a1",
+    "js/SemanticActions.js": "d87799ab6ab0f36ea58bcafde9334457ff9dfc2fa7ea1a1fc1c02908d13a5ed3",
+    "js/StatTracker.js": "c339a1930d24e7d281ea5b26e3da138f4079247153d53c25ebdc60f72311c069",
+    "js/StatusGridDecoder.js": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75",
+    "js/TextGate.js": "d62d3e49aa1b818700a13486e4d1c4d9ec97e0b8e96a2767c71d9c5ec291cd56",
+    "js/Transcript.js": "a3fc5c0f192890d232e3a7d2b8bd00486d2e5b15e6ef9631dc88ad2cae1ddd50",
+    "js/TranslatorUI.js": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd",
+    "js/TurnRecorder.js": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8",
+    "js/Tutorial.js": "fd71d986b4825aec3155a90146fe75c5ec8c4561157fa9d747ae223f9b07df70",
+    "js/UndoRestoreSync.js": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed",
+    "js/VmProbeLoader.js": "9d64ccd89783f73138095914a4c30b4664262de7e1a78eeb2d6d2faceb1c7c7c",
+    "js/WorkspaceUI.js": "44e53e381de130860fd6b3df78355fa044850b4a87eb36a39c8081356b646672",
+    "js/WorldMap.js": "ee15830399cc06dfd18891688aef4b4e97f08cce3d231b1e4e1419fa3748843f",
+    "js/WorldMapLayout.js": "208197d5d383e67b60d4ac538c8716dfc7ef5f3d52a91f6962cdf24057820fec",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0",
+    "js/ZRamProvider.js": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109",
+    "js/ZRamReader.js": "0b8f43ec1d87fc5a660d628404707795b411a72b376e3ef2d20e890e78de5743",
+    "js/ZvmCapture.js": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d",
+    "lib/ie.js": "cf9de5d701907a27cf429625f186e9c0e081a2eba324065c4895762e5556e45e",
+    "lib/jquery.min.js": "9a2723c21fb1b7dff0e2aa5dc6be24a9670220a17ae21f70fdbc602d1f8acd38",
+    "lib/jquery.slimscroll.min.js": "2221317b9e2d487bde03da54ba3b092cedaa5bee1418618823e8d71740f2fb3c",
+    "lib/main.js": "9257aa57bfb2ddc9587df7f3a736719889f84111af206ef76607b2fdde9ad554",
+    "lib/pm_vm_probe.js": "956fc67c5be0377df19c4f3eb029d9a31703d11654e6d03fa4da147d5c6173c8",
+    "lib/quixe.js": "033fd286580d51306a8f358f01cf7637e213812e391984bbc6cbf272fa08b1c4",
+    "lib/resourcemap.js": "f0eadad5aadb4187530c41c248b4fe88a3ca16bef72bd09f43d8108df9d5e5ce",
+    "lib/zvm.js": "12bf89d7f524abf72f223c89c98d68abf3df88d93b77a64838442b4eefb92e2f",
+    "games/Zork3-TheDungeonMaster.z3.js": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d"
+  },
+  "sourceStable": true
+}

@@ -1,0 +1,82 @@
+{
+  "tier": "Post-exposure current candidate audit: native route + actual official menu actions; no VM/object/fact writes/RNG override; NOT a blind investigation",
+  "before": {
+    "js/Actionable.js": "c4692093c5aae236ad0b0a16102e7ab147e4da4c536b4a6b80bdd8194d84d4b9",
+    "js/ActionSynth.js": "6f4f07a20abf51c698704b3f530085f689db04909004f83c2818bebcaac094da",
+    "js/ZRamReader.js": "867dc117efcc3d037f1201c5f9c8ff9578b8908a14a756cca41e4db2efc8383e",
+    "js/ModuleStatFactsClaude.js": "ccc6104297cf4419cad5130215a80aeb49243a77f9d55c7afd00dc76c6117684",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  },
+  "menus": [
+    {
+      "id": 95,
+      "kind": "inventory",
+      "initial": [
+        "Examine",
+        "Drop",
+        "Give to...",
+        "Put in...",
+        "Unlock with...",
+        "More"
+      ],
+      "chosen": "padlock",
+      "command": "unlock padlock with key"
+    },
+    {
+      "id": 135,
+      "kind": "object",
+      "initial": [
+        "Examine",
+        "Take",
+        "Open",
+        "Close",
+        "Unlock with...",
+        "More"
+      ],
+      "chosen": "master key",
+      "command": "unlock padlock with key"
+    }
+  ],
+  "scope": {
+    "room": 9,
+    "items": [
+      {
+        "id": 119,
+        "parentId": 59,
+        "rawParent": 59,
+        "scopeRoomId": 9
+      },
+      {
+        "id": 135,
+        "parentId": 119,
+        "rawParent": 119,
+        "scopeRoomId": 9
+      }
+    ]
+  },
+  "submission": {
+    "messageOpen": false,
+    "dialog": false,
+    "echo": true
+  },
+  "result": {
+    "padlockLocked": false,
+    "hatchLocked": false,
+    "reply": [
+      "The padlock has been spray painted many times by graffiti artists. It's currently fluorescent purple. In spite of the many coats of paint, the lock manages to be rusty and, in fact, almost slimy-looking. The padlock is locked to the hatch.",
+      " ",
+      ">unlock padlock with key",
+      "The lock, though rusty and unwilling, opens, releasing the hatch.",
+      " ",
+      "> "
+    ]
+  },
+  "after": {
+    "js/Actionable.js": "c4692093c5aae236ad0b0a16102e7ab147e4da4c536b4a6b80bdd8194d84d4b9",
+    "js/ActionSynth.js": "6f4f07a20abf51c698704b3f530085f689db04909004f83c2818bebcaac094da",
+    "js/ZRamReader.js": "867dc117efcc3d037f1201c5f9c8ff9578b8908a14a756cca41e4db2efc8383e",
+    "js/ModuleStatFactsClaude.js": "ccc6104297cf4419cad5130215a80aeb49243a77f9d55c7afd00dc76c6117684",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  },
+  "status": "PASS both launcher orientations + native target submit; lifecycle/whole gate not claimed"
+}

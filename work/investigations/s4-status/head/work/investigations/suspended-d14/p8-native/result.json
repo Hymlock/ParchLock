@@ -1,0 +1,179 @@
+{
+  "tier": "Fresh boot, ordinary radial tap + typed addressed commands, original RAM (no forced state)",
+  "site": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-claude-d8",
+  "hashes": {
+    "play.html": "01edc370f6800ade77c62272eb5b4c7824abe261e189e7dd2318db6868803e03",
+    "js/ActionSynth.js": "b3ba7b2462df39e958fa154c06cd5aae0602aeee01d408c3845a012af49d4431",
+    "js/Actionable.js": "a521c2a8e31ff6b44816f280646f88a9782c56ef0c6400c702ce2a141db73f43",
+    "js/ModuleStatFactsClaude.js": "ed02712b0636547729f95547b5befc2be47ef9f26da081bae95b4b7257804cfd",
+    "games/Suspended.z3.js": "252462be2eb7efb428e905041eedfdb60cb69f1154e79e85d6adc2d934553d36"
+  },
+  "rows": [
+    {
+      "via": "radial tap Waldo: Examine",
+      "before": {
+        "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+        "linked": 158,
+        "waldo": 154,
+        "iris": 157,
+        "cabinet": 154,
+        "domain": [
+          158,
+          155,
+          152,
+          149,
+          146,
+          144
+        ]
+      },
+      "after": {
+        "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+        "linked": 155,
+        "waldo": 154,
+        "iris": 157,
+        "cabinet": 154,
+        "domain": [
+          158,
+          155,
+          152,
+          149,
+          146,
+          144
+        ]
+      },
+      "reply": ">waldo, examine cabinet\nFC: Cryolink established to Waldo.\nWALDO: The hollow object is closed.\n \n> "
+    },
+    {
+      "via": "typed",
+      "command": "waldo, look on blt",
+      "before": {
+        "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+        "linked": 155,
+        "waldo": 154,
+        "iris": 157,
+        "cabinet": 154,
+        "domain": [
+          158,
+          155,
+          152,
+          149,
+          146,
+          144
+        ]
+      },
+      "after": {
+        "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+        "linked": 155,
+        "waldo": 154,
+        "iris": 157,
+        "cabinet": 154,
+        "domain": [
+          158,
+          155,
+          152,
+          149,
+          146,
+          144
+        ]
+      },
+      "reply": ">waldo, look on blt\nFC: Cryolink already established to Waldo.\nThere is nothing on the walkway.\n \n> "
+    },
+    {
+      "via": "typed",
+      "command": "iris, examine cabinet",
+      "before": {
+        "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+        "linked": 155,
+        "waldo": 154,
+        "iris": 157,
+        "cabinet": 154,
+        "domain": [
+          158,
+          155,
+          152,
+          149,
+          146,
+          144
+        ]
+      },
+      "after": {
+        "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+        "linked": 158,
+        "waldo": 154,
+        "iris": 157,
+        "cabinet": 154,
+        "domain": [
+          158,
+          155,
+          152,
+          149,
+          146,
+          144
+        ]
+      },
+      "reply": ">iris, examine cabinet\nFC: Cryolink established to Iris.\nIRIS: Visual scanners cannot see any cabinet here.\n \n> "
+    }
+  ],
+  "boot": {
+    "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+    "linked": 158,
+    "waldo": 154,
+    "iris": 157,
+    "cabinet": 154,
+    "domain": [
+      158,
+      155,
+      152,
+      149,
+      146,
+      144
+    ]
+  },
+  "resolved": [
+    {
+      "command": "examine cabinet",
+      "label": null,
+      "addressed": false
+    },
+    {
+      "command": "search cabinet",
+      "label": null,
+      "addressed": false
+    },
+    {
+      "command": "empty cabinet",
+      "label": null,
+      "addressed": false
+    },
+    {
+      "command": "waldo, examine cabinet",
+      "label": "Waldo: Examine",
+      "addressed": true
+    },
+    {
+      "command": "waldo, search cabinet",
+      "label": "Waldo: Search",
+      "addressed": true
+    },
+    {
+      "command": "waldo, empty cabinet",
+      "label": "Waldo: Empty",
+      "addressed": true
+    }
+  ],
+  "poolHasCabinet": true,
+  "radialLabels": [
+    "Examine",
+    "Search",
+    "Empty",
+    "Waldo: Examine",
+    "Waldo: Search",
+    "Waldo: Empty",
+    "More"
+  ],
+  "promptReply": ">waldo, examine\nFC: Cryolink established to Waldo.\nFC: What do you want to examine?\n \n> ",
+  "promptBlocked": true,
+  "promptAddressed": 0,
+  "status": "CAPTURED",
+  "sourceStable": true
+}

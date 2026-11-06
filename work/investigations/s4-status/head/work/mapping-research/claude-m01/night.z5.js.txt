@@ -1,0 +1,13 @@
+START {"id":16,"name":"Computer Site","player":15,"payload":16,"reply":"[ Type HELP for instructions ] / >"} {"version":5,"banner":"Inform v1502 Library 5/12","propertyTable":"none","props":[{"prop":18,"sz":2,"val":11646,"target":""},{"prop":16,"sz":2,"val":36,"target":"Hall Outside Computer Site"},{"prop":9,"sz":2,"val":36,"target":"Hall Outside Computer Site"}],"lookahead":[["east",9,"Hall Outside Computer Site"],["down",16,"Hall Outside Computer Site"]]}
+north      (no move) | payload 16 | reply: >north / You can't go that way. / >
+south      (no move) | payload 16 | reply: >south / You can't go that way. / >
+east       (no move) | payload 16 | reply: >east / You can't go that way. / >
+west       (no move) | payload 16 | reply: >west / You can't go that way. / >
+up         (no move) | payload 16 | reply: >up / You can't go that way. / >
+down       (no move) | payload 16 | reply: >down / You can't go that way. / >
+northeast  -> 36 Hall Outside Computer Site | payload 36 | reply: To one side, a water fountain hums quietly. / >
+  undo OK
+northwest  (no move) | payload 16 | reply: >northwest / You can't go that way. / >
+southeast  (no move) | payload 16 | reply: >southeast / You can't go that way. / >
+southwest  (no move) | payload 16 | reply: >southwest / You can't go that way. / >
+BANNER Serial number 961118 / Inform v1502 Library 5/12 | Serial number 961118 / Inform v1502 Library 5/12 | Library serial number 951024

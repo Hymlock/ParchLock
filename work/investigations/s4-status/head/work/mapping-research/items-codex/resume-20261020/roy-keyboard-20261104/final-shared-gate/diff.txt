@@ -1,0 +1,37 @@
+Delusns.z5.js marks
+  base: ["Self","east","west"]
+  cand: ["east","west"]
+Help.z8.js marks
+  base: []
+  cand: ["Snark","large piece of equipment","trophy"]
+Jigsaw.z8.js marks
+  base: ["west","northeast","Crowds","east"]
+  cand: ["party","attractive stranger","west","northeast","east"]
+Sherlock.z5.js marks
+  base: ["coat","west"]
+  cand: ["west"]
+cabal.z5.js marks
+  base: ["families","your coffee","vagrant","your PalmPilot"]
+  cand: ["table","families","your coffee","vagrant","your PalmPilot"]
+heist.z8.js marks
+  base: ["frame","north","south","uncle's final resting place","group of mourners"]
+  cand: ["north","south","uncle's final resting place","group of mourners"]
+jet.z8.js marks
+  base: ["wing"]
+  cand: ["dragon's"]
+largemac.z5.js marks
+  base: ["bad egg","Alvin","machine","lino floor","mural","storage locker","wall","picture"]
+  cand: ["machine","lino floor","mural","storage locker","wall","picture"]
+medusa.z5.js marks
+  base: ["toga","snakes","elevator","floor indicator","buttons","red","mirror","vampire"]
+  cand: ["vampire","elevator","red","toga","snakes","floor indicator","buttons"]
+permagic.z5.js marks
+  base: ["report","east","papers"]
+  cand: ["of junk","report","east"]
+suvehnux.z5.js marks
+  base: ["sliver of light","under","door","darkness","shelf","walls","brass cage","scroll"]
+  cand: ["vault","golden key","black","dark","sliver of light","door","shelf","walls","brass cage","scroll"]
+terror_tabby.z5.js marks
+  base: ["drawers","floor","mattress","south","east","bathroom","tabby cat"]
+  cand: ["mattress","south","east","bathroom","tabby cat"]
+GATE: 309 games, 12 differences (each must be an intended, reviewed change)

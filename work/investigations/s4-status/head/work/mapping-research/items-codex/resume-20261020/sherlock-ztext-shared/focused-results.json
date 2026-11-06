@@ -1,0 +1,70 @@
+{
+  "results": [
+    {
+      "name": "base-command-disambiguation",
+      "exit": 1
+    },
+    {
+      "name": "base-d34-dictionary-verbs",
+      "exit": 1
+    },
+    {
+      "name": "candidate-command-disambiguation",
+      "exit": 1
+    },
+    {
+      "name": "candidate-d34-dictionary-verbs",
+      "exit": 1
+    },
+    {
+      "name": "base-m12",
+      "exit": 0
+    },
+    {
+      "name": "candidate-m12",
+      "exit": 1
+    },
+    {
+      "name": "zil-ztext-escape",
+      "exit": 0
+    }
+  ],
+  "paired": {
+    "command-disambiguation": {
+      "base": [
+        "FAIL: and it is SELF-VERIFYING -- a property counts as vocabulary only if every 2-byte slot lands on a real dictionary entry, so no property number is assumed (D61)"
+      ],
+      "candidate": [
+        "FAIL: and it is SELF-VERIFYING -- a property counts as vocabulary only if every 2-byte slot lands on a real dictionary entry, so no property number is assumed (D61)"
+      ],
+      "same": true
+    },
+    "d34-dictionary-verbs": {
+      "base": [
+        "FAIL: Infocom collect() is empty, not a fake look/inventory pair",
+        "FAIL: empty collect() does not advertise fake confidence",
+        "FAIL: Hitchhik Infocom v5 collect() is empty despite entryLen 9",
+        "FAILURES 51 passed, 3 failed"
+      ],
+      "candidate": [
+        "FAIL: Infocom collect() is empty, not a fake look/inventory pair",
+        "FAIL: empty collect() does not advertise fake confidence",
+        "FAIL: Hitchhik Infocom v5 collect() is empty despite entryLen 9",
+        "FAILURES 51 passed, 3 failed"
+      ],
+      "same": true
+    },
+    "m12": {
+      "base": [],
+      "candidate": [
+        "FAIL: WiR2: map holds 64 \"Grim Hallway\" ([[\"64\",\"Tuesday, July 13, 1954\"]])",
+        "FAIL: WiR2: no map room named with the status date",
+        "FAIL: WiR2: room 76 decodes to \"Office on Floor Fifty-One\" ()",
+        "FAIL: Warbler: direct-form names ([\"\",\"\",\"\"])",
+        "FAIL: Warbler: map room 51 \"Among the reeds\" ([])"
+      ],
+      "same": false
+    }
+  },
+  "limits": "Existing paired failures are not green passes; original harness source unchanged except explicit immutable play.html location for m12."
+}

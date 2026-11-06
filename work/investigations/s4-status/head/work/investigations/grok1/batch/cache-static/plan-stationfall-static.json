@@ -1,0 +1,73 @@
+{
+ "key": "stationfall",
+ "game": "Stationfall.z3.js",
+ "bit": 23,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 1,
+   "name": "chronometer",
+   "step": 0,
+   "expect": 1,
+   "bit": 23,
+   "cmd": "take chronometer"
+  },
+  {
+   "id": 81,
+   "name": "ID card",
+   "step": 0,
+   "expect": 1,
+   "bit": 23,
+   "cmd": "take id card"
+  },
+  {
+   "id": 26,
+   "name": "Floyd",
+   "step": 2,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take floyd"
+  },
+  {
+   "id": 120,
+   "name": "Rex",
+   "step": 2,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take rex"
+  },
+  {
+   "id": 135,
+   "name": "Helen",
+   "step": 2,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take helen"
+  },
+  {
+   "id": 46,
+   "name": "SB radio",
+   "step": 8,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take sb radio"
+  },
+  {
+   "id": 50,
+   "name": "pilot seat",
+   "step": 8,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take pilot seat"
+  },
+  {
+   "id": 90,
+   "name": "copilot seat",
+   "step": 8,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take copilot seat"
+  }
+ ]
+}

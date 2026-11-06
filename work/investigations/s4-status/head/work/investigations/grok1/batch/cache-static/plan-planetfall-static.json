@@ -1,0 +1,73 @@
+{
+ "key": "planetfall",
+ "game": "Planetfall.z3.js",
+ "bit": 25,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 224,
+   "name": "Patrol uniform",
+   "step": 0,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "take patrol uniform"
+  },
+  {
+   "id": 225,
+   "name": "ID card",
+   "step": 0,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "take id card"
+  },
+  {
+   "id": 215,
+   "name": "safety web",
+   "step": 2,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "take safety web"
+  },
+  {
+   "id": 210,
+   "name": "blob of green goo",
+   "step": 14,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "take blob of green goo"
+  },
+  {
+   "id": 211,
+   "name": "blob of brown goo",
+   "step": 14,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "take blob of brown goo"
+  },
+  {
+   "id": 212,
+   "name": "blob of red goo",
+   "step": 14,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "take blob of red goo"
+  },
+  {
+   "id": 8,
+   "name": "laser setting dial",
+   "step": 33,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "take laser setting dial"
+  },
+  {
+   "id": 159,
+   "name": "crevice",
+   "step": 39,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "take crevice"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+  "tier": "Post-exposure current candidate audit: native route + actual official menu actions; no VM/object/fact writes/RNG override; NOT a blind investigation",
+  "before": {
+    "js/Actionable.js": "cc105148ae20e175f8ffc9cc4d048a360bc28b1297b4d5ff4c7b5424d3a7bef2",
+    "js/ActionSynth.js": "ad2ad820d204191443abea035f0598e4ccb3a5b03089060e355c0cdb5676be36",
+    "js/ZRamReader.js": "afd16074cf8f2f82cb2a09c5a0bf527bacfb7d337e1c419512282e3a6bb59997",
+    "js/ModuleStatFactsClaude.js": "90087f3c471babfca881603f78a06a9736bad08159527574d65d458e85c05ac8",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  },
+  "menus": [],
+  "scope": {
+    "room": 9,
+    "items": [
+      {
+        "id": 119,
+        "parentId": 59,
+        "rawParent": 59,
+        "scopeRoomId": 9
+      },
+      {
+        "id": 135,
+        "parentId": 119,
+        "rawParent": 119,
+        "scopeRoomId": 9
+      }
+    ]
+  },
+  "status": "FAIL",
+  "error": "page.evaluate: Error: No unlock launcher\n    at eval (eval at evaluate (:311:30), <anonymous>:1:458)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at choose (C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\d234-native-direction-audit.cjs:1:1885)\n    at C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\d234-native-direction-audit.cjs:1:2718",
+  "after": {
+    "js/Actionable.js": "cc105148ae20e175f8ffc9cc4d048a360bc28b1297b4d5ff4c7b5424d3a7bef2",
+    "js/ActionSynth.js": "ad2ad820d204191443abea035f0598e4ccb3a5b03089060e355c0cdb5676be36",
+    "js/ZRamReader.js": "afd16074cf8f2f82cb2a09c5a0bf527bacfb7d337e1c419512282e3a6bb59997",
+    "js/ModuleStatFactsClaude.js": "90087f3c471babfca881603f78a06a9736bad08159527574d65d458e85c05ac8",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  }
+}

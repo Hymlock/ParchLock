@@ -1,0 +1,386 @@
+{
+  "story": "Spellbreaker.z3.js",
+  "sha256": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "property": 4,
+  "width": 1,
+  "holder": 54,
+  "litBit": 8,
+  "at": "2026-10-24T05:33:22.147Z",
+  "log": [
+    {
+      "cmd": "z",
+      "roomIdAfter": 76,
+      "reply": [
+        "Time passes...",
+        "Sneffle of the Guild of Bakers is addressing the gathering. \"Do you know what this is doing to our business? Do you know how difficult it is to make those yummy butter pastries by hand? When a simple 'gloth' spell would fold the dough 83 times it was possible to make a profit, but now 'gloth' hardly works, and when it does, it usually folds the dough too often and the butter melts, or it doesn't come out the right size, or...\" He stops, apparently overwhelmed by the prospect of a world where the pastries have to be hand-made. \"Can't you do anything about this? You're supposed to know all about magic!\"",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 76,
+      "reply": [
+        "Time passes...",
+        "Hoobly of the Guild of Brewers stands, gesturing at the floury baker. \"You don't know what trouble is! Lately, what comes out of the vats, like as not, is cherry flavored or worse. The last vat, I swear it, tasted as if grues had been bathing in it. It takes magic to turn weird vegetables and water into good Borphee beer. Well, without magic, there isn't going to be any beer!\" This statement has a profound effect on portions of the crowd. You can hear rumblings from the back concerning Enchanters. The word \"traitors\" rises out of nowhere. Your fellow Enchanters are looking at one another nervously.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 76,
+      "reply": [
+        "Time passes...",
+        "A tall, gruff fellow begins to speak. This is Gzornenplatz of the Guild of Huntsmen. \"I'm a simple man, and I don't know much about magic. But I do know that the wild beasts are kept out of the towns and villages not just by the huntsmen, but by spells as well. Just yesterday, one of my men was attacked and badly wounded by a troop of rat-ants. They'd slipped the bounds set down by a 'fripple' spell somehow. Are we going to let the sorcerers loose rat-ants on us, and worse?\" He sits, glaring significantly at the now-angry clump of mages around you.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 76,
+      "reply": [
+        "Time passes...",
+        "As the huntsman's accusations are being absorbed and discussed, Ardis of the Guild of Poets takes the floor. He begins to talk about magic rhyming and spelling aids, and their lack.",
+        "In the midst of his splendid peroration, just as he was sketching out an insulting mythological allusion in iambic hexameter, the poet turns even greener than usual. His chin elongates and his skin begins to look sort of slimy. In the blink of an eye there stands at the podium, not the orator, but rather a large orange newt. \"Breek! Co-ax! Co-ax!\" it protests.",
+        "As you look around the room in shock, you discover that Ardis is not alone. Each and every guildmaster in the room has been turned into a frog, salamander, or other amphibian! All but one, that is: yourself!",
+        "No! There is one other survivor. At the rear of the room, a shadowy figure in a dark cloak slips quietly out the door.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 45,
+      "reply": [
+        "Guild Hall",
+        "This is the entrance to the Guild Hall in Borphee. To the north is the Council Chamber, and to the south is an exit leading outside. Little is left of the sumptuous buffet lunch. Only a loaf of bread and some smoked fish remains.",
+        "A shadowy figure in a dark cloak is running out the door.",
+        "The shadowy figure, its cloak billowing, charges south into Belwit Square.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "take bread",
+      "roomIdAfter": 45,
+      "reply": [
+        "Taken.",
+        "Out in the square, there is a crashing noise like an explosion, and then a wisp of orange smoke drifts in through the door.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 18,
+      "reply": [
+        "Belwit Square",
+        "This is Belwit Square. Its many historic and picturesque buildings are obscured by a cloud of orange smoke.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "learn lesoch",
+      "roomIdAfter": 18,
+      "reply": [
+        "Using your best study habits, you learn the lesoch spell.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "cast lesoch",
+      "roomIdAfter": 18,
+      "reply": [
+        "The casting feels wrong, and sure enough, your fingers grow numb.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        "The orange smoke dissipates almost as suddenly as it arrived. Left behind on the cobblestones is a small featureless white cube.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        ">"
+      ]
+    },
+    {
+      "cmd": "z",
+      "roomIdAfter": 18,
+      "reply": [
+        "Time passes...",
+        ">"
+      ]
+    },
+    {
+      "cmd": "take cube",
+      "roomIdAfter": 18,
+      "reply": [
+        "Taken.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "write 1 on cube",
+      "roomIdAfter": 18,
+      "reply": [
+        "The word \"1\" is now written on the cube.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "learn blorple",
+      "roomIdAfter": 18,
+      "reply": [
+        "Using your best study habits, you learn the blorple spell.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "blorple 1",
+      "roomIdAfter": 156,
+      "reply": [
+        "Abruptly, your surroundings shift.",
+        "It is pitch black.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 156,
+        "roomName": "Packed Earth",
+        "lit": false,
+        "prop": {
+          "num": 4,
+          "sz": 1,
+          "dataAddr": 6576
+        },
+        "localGlobals": [
+          {
+            "id": 117,
+            "name": "hole",
+            "parent": 54,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine hole",
+      "roomIdAfter": 156,
+      "reply": [
+        "It's too dark to see!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "frotz burin",
+      "roomIdAfter": 156,
+      "reply": [
+        "There is an almost blinding flash of light as the magic burin begins to glow! It slowly fades to a less painful level, but the magic burin is now a serviceable light source.",
+        "Packed Earth",
+        "This is a small room crudely constructed of packed earth, mud, and sod. Crudely framed openings of wood tied with leather thongs lead off in each of the four cardinal directions, and a muddy hole leads down.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine hole",
+      "roomIdAfter": 156,
+      "reply": [
+        "You see nothing special about the hole.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine cliff",
+      "roomIdAfter": 156,
+      "reply": [
+        "You can't see any cliff here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 29,
+      "reply": [
+        "As you leave, the \"1\" cube reappears in your hand.",
+        "Cliff Middle",
+        "A narrow ledge, barely wide enough to stand on, interrupts the cliff here.",
+        "There is a dirty scroll here.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 29,
+        "roomName": "Cliff Middle",
+        "lit": true,
+        "prop": {
+          "num": 4,
+          "sz": 2,
+          "dataAddr": 3607
+        },
+        "localGlobals": [
+          {
+            "id": 23,
+            "name": "rock",
+            "parent": 54,
+            "parentIsHolder": true
+          },
+          {
+            "id": 96,
+            "name": "cliff",
+            "parent": 54,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "dirty scroll"
+        ]
+      }
+    },
+    {
+      "cmd": "examine cliff",
+      "roomIdAfter": 29,
+      "reply": [
+        "The rocks look very precariously balanced.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine rock",
+      "roomIdAfter": 29,
+      "reply": [
+        "The rocks look very precariously balanced.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine stone hut",
+      "roomIdAfter": 29,
+      "reply": [
+        "You can't see any stone hut here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine hole",
+      "roomIdAfter": 29,
+      "reply": [
+        "You can't see any hole here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "u",
+      "roomIdAfter": 109,
+      "reply": [
+        "Cliff Top",
+        "This is the upper end of a narrow, winding path up a sheer cliff. From here you can see that any further extension of the path was destroyed by a rock slide at some relatively recent time. There are many rocks precariously balanced above you. It looks like the slightest disturbance could bring them down on you. Frustratingly, you can see the remains of a small building just beyond the dangerous area, but there is no way to get there from here.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 109,
+        "roomName": "Cliff Top",
+        "lit": true,
+        "prop": {
+          "num": 4,
+          "sz": 3,
+          "dataAddr": 5469
+        },
+        "localGlobals": [
+          {
+            "id": 23,
+            "name": "rock",
+            "parent": 54,
+            "parentIsHolder": true
+          },
+          {
+            "id": 96,
+            "name": "cliff",
+            "parent": 54,
+            "parentIsHolder": true
+          },
+          {
+            "id": 226,
+            "name": "stone hut",
+            "parent": 54,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine cliff",
+      "roomIdAfter": 109,
+      "reply": [
+        "The rocks look very precariously balanced.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine stone hut",
+      "roomIdAfter": 109,
+      "reply": [
+        "The hut is barely visible.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine water",
+      "roomIdAfter": 109,
+      "reply": [
+        "You can't see any water here.",
+        ">"
+      ]
+    }
+  ]
+}

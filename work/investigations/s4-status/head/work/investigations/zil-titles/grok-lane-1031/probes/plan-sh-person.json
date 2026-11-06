@@ -1,0 +1,38 @@
+{
+ "tag": "sh-person",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 47,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native",
+ "tests": [
+  {
+   "cmd": "LOOK IN HOLMES",
+   "step": 4,
+   "name": "look in holmes",
+   "id": 293,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN GUARD",
+   "step": 26,
+   "name": "look in guard",
+   "id": 155,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN DOG",
+   "step": 26,
+   "name": "look in dog",
+   "id": 147,
+   "expect": 0
+  },
+  {
+   "cmd": "LOOK IN VIOLIN",
+   "step": 4,
+   "name": "look in violin",
+   "id": 207,
+   "expect": 0
+  }
+ ]
+}

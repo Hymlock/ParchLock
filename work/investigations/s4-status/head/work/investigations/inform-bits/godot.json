@@ -1,0 +1,189 @@
+{
+ "title": "godot.z5",
+ "sha256": "1acdf2cc0519c9c96afdfa27d0107820a513de509050f1f23ed1710f30d6ef97",
+ "objects": 43,
+ "layout": "L",
+ "verdict": "SHIFTED (low block -1)",
+ "confidence": "high",
+ "evidence": "anchors compass=concealed 2, walls=scenery 17, yourself 0,2,16,23 (animate,concealed,proper,transparent), rooms light 9; doors carry 4+15(+10,11); containers 3+15 or 3+14; hats/clothes 1; food 5; supporters 20. Bits 1..8 are PROFILE-1 (no `absent` at 1, an extra attr at 8); 9..23 equal PROFILE.",
+ "proposedAttributeMap": {
+  "door": 4,
+  "open": 14,
+  "isOpen": 14,
+  "openable": 15,
+  "container": 3,
+  "supporter": 20,
+  "light": 9,
+  "edible": 5,
+  "clothing": 1,
+  "wearable": 1,
+  "worn": 26,
+  "lockable": 10,
+  "locked": 11,
+  "concealed": 2,
+  "animate": 0,
+  "scenery": 17,
+  "static": 19,
+  "enterable": 6,
+  "transparent": 23
+ },
+ "bitEvidence": {
+  "door": "doors",
+  "openable": "doors+containers",
+  "open": "open containers (bag/jar/basket/tray)",
+  "container": "containers",
+  "supporter": "tables/desks",
+  "light": "rooms (lit)",
+  "edible": "food (carrot,sweet,cake,pizza)",
+  "clothing": "hats/clothes",
+  "lockable": "locked doors",
+  "locked": "locked doors",
+  "worn": "NOT observed statically; inferred from library order (PROFILE 26 / layout shift)",
+  "enterable": "beds (theatre/windhal) else inferred"
+ },
+ "profileWrongFor": [
+  "clothing",
+  "concealed",
+  "container",
+  "door",
+  "edible"
+ ],
+ "exemplars": [
+  {
+   "n": 1,
+   "name": "compass",
+   "parent": 0,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 2,
+   "name": "north wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 3,
+   "name": "south wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 4,
+   "name": "east wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 5,
+   "name": "west wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 6,
+   "name": "northeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 7,
+   "name": "southeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 8,
+   "name": "northwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 9,
+   "name": "southwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 15,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 17,
+   "name": "small brown box",
+   "parent": 16,
+   "bits": [
+    3,
+    15
+   ]
+  },
+  {
+   "n": 19,
+   "name": "dead herring",
+   "parent": 16,
+   "bits": []
+  },
+  {
+   "n": 22,
+   "name": "wooden chest",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 25,
+   "name": "bathroom door",
+   "parent": 24,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 37,
+   "name": "staircase",
+   "parent": 0,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 41,
+   "name": "shed door",
+   "parent": 40,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19
+   ]
+  }
+ ]
+}

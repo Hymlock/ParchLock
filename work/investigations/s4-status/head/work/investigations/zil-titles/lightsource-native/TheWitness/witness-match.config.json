@@ -1,0 +1,55 @@
+{
+ "story": "TheWitness.z3.js",
+ "key": "witness",
+ "seed": 0,
+ "route": [],
+ "until": null,
+ "tests": [
+  {
+   "cmd": "i"
+  },
+  {
+   "cmd": "look",
+   "id": 159
+  },
+  {
+   "cmd": "examine match book",
+   "id": 53
+  },
+  {
+   "cmd": "light match",
+   "id": 53,
+   "role": "pos"
+  },
+  {
+   "cmd": "strike match",
+   "id": 53,
+   "role": "pos"
+  },
+  {
+   "cmd": "light match book",
+   "id": 53,
+   "role": "pos"
+  },
+  {
+   "cmd": "turn on match book",
+   "id": 53,
+   "role": "pos"
+  },
+  {
+   "cmd": "light brass lantern",
+   "id": 48,
+   "role": "pos"
+  },
+  {
+   "cmd": "light notebook",
+   "name": "notebook",
+   "role": "neg"
+  },
+  {
+   "cmd": "turn on notebook",
+   "name": "notebook",
+   "role": "neg"
+  }
+ ]
+}

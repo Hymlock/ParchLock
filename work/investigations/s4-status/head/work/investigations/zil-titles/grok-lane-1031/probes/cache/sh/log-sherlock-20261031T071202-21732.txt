@@ -1,0 +1,5 @@
+sherlock sh-transp @44 EXAMINE TORCH THROUGH POOL #179 TRUE "You do not see anything unusual through the wax pool.\n \n> "
+sherlock sh-transp @44 GET AX #259 NOTEST "You take the axe off of the statue of Charles I.\n \n> "
+sherlock sh-transp @44 MELT AX WITH TORCH #259 NOTEST "The axe melts into a pool of wax on the floor.\n \nThe pipe has gone out.\n \n> "
+sherlock sh-transp @44 EXAMINE TORCH THROUGH MELTED AX #259 TRUE "You do not see anything interesting through the melted axe.\n \n> "
+sherlock sh-transp @44 EXAMINE POOL THROUGH PIPE #218 FALSE "You can't look through the pipe.\n \n> "

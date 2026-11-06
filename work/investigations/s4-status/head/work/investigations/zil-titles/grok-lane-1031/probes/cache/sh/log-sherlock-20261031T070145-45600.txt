@@ -1,0 +1,3 @@
+sherlock sh-transp @44 LOOK IN PHIAL #128 NOTEST "You cannot see any phial here.\n \n> "
+sherlock sh-transp @44 EXAMINE TORCH THROUGH POOL #179 TRUE "You do not see anything unusual through the wax pool.\n \n> "
+sherlock sh-transp @44 EXAMINE POOL THROUGH PIPE #218 FALSE "You can't look through the pipe.\n \n> "

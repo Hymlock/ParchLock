@@ -1,0 +1,2 @@
+sherlock sh-alive @109 LOOK IN PIGEON #290 TRUE "You're a general practitioner, not a veterinarian.\n \n> "
+sherlock sh-person @109 LOOK IN PIGEON #290 FALSE "You're a general practitioner, not a veterinarian.\n \n> "

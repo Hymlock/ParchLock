@@ -1,0 +1,42 @@
+[
+ {
+  "cmd": "waldo, look",
+  "root": 155,
+  "reply": ">waldo, look\nFC: Cryolink established to Waldo.\nWALDO: Internal map reference -- Gamma Repair\nI have reached the south end of this area. The walkway ends here.\nThe walkway is not in motion.\nA large object sits before me. Sonar indicates it is hollow, but not empty.\n \n> ",
+  "player": 155,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "look in object",
+  "root": 155,
+  "reply": ">look in object\nThe hollow object is closed.\n \n> ",
+  "player": 155,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "open object",
+  "root": 155,
+  "reply": ">open object\nI don't detect any easy way to do that.\n \n> ",
+  "player": 155,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "look in object",
+  "root": 155,
+  "reply": ">look in object\nThe hollow object is closed.\n \n> ",
+  "player": 155,
+  "held": [],
+  "appInv": []
+ },
+ {
+  "cmd": "i",
+  "root": 155,
+  "reply": ">i\nMy extensions grasp nothing.\n \n> ",
+  "player": 155,
+  "held": [],
+  "appInv": []
+ }
+]

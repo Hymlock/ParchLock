@@ -1,0 +1,14 @@
+{
+  "build": 75,
+  "versionCode": 48,
+  "cache": 173,
+  "packagedAssetsVerified": 501,
+  "correspondingSourceFilesVerified": 365,
+  "apk": "C:\\Users\\hymlo\\Documents\\Codex\\2026-10-20\\well-i-can-t-find-the\\outputs\\ParchLock-build75\\ParchLock-build75.apk",
+  "apkSha256": "525f19f437259f562ec4824acd277772faf7901b7fa8065c3d6319557daee10b",
+  "sourceSha256": "bff7a2bda20db8f6a2161b9ae189b4d16744822d03749212e8fe44ebbbffaa78",
+  "lintErrors": 0,
+  "lintWarnings": 73,
+  "frozenRuntimeFiles": 531,
+  "status": "asset/source parity PASS; signature/version/lint independently checked in adjacent logs"
+}

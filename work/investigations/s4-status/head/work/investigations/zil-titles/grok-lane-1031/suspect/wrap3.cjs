@@ -1,0 +1,1 @@
+const fs=require('fs'),path=require('path');const [cf,G,R,N,P,B,O]=process.argv.slice(2);process.argv=[process.argv[0],'probe',G,R,N,P,B,O,fs.readFileSync(cf,'utf8')];require(path.resolve(__dirname,'probe-radial2.cjs'));

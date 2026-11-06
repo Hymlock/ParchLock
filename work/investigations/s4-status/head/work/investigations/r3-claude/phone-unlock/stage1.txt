@@ -1,0 +1,16 @@
+> STAND
+  >STAND / You already are standing. / >
+> S
+  Second Floor / This is the second floor of the Computer Center. An elevator and call buttons are on the south side of the hallway. A large, noisy room is to the north. Stairs also lead up and down, for the energetic. To 
+> W
+  Sitting on the kitchen counter is a package of Funny Bones. / >
+> OPEN FRIDGE
+  >OPEN FRIDGE / Opening the refrigerator reveals a two liter bottle of Classic Coke and a cardboard carton. / >
+> GET COKE AND CARTON
+  two liter bottle of Classic Coke: Taken. / cardboard carton: Taken. / >
+> OPEN CARTON
+  >OPEN CARTON / Opening the cardboard carton reveals Chinese food. / >
+   90:Chinese food {on:false,worn:false,edible:true} tags[] -> examine chinese food | take chinese food | eat chinese food
+> i
+  >i / You are carrying a cardboard carton, a two liter bottle of Classic Coke and an assignment. The cardboard carton contains Chinese food. / >
+   90:Chinese food {on:false,worn:false,edible:true} tags[] -> examine chinese food | take chinese food | eat chinese food

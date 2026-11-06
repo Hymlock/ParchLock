@@ -1,0 +1,39 @@
+{
+ "story": "gostak.z5.js",
+ "pg": null,
+ "trace": [
+  {
+   "input": "(start)",
+   "dig": "fa704c43a7df79bceb3ecbddfa99b864758c6c714d09642eeb3220eb3131a5c5",
+   "factPG": null,
+   "inv": [],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 80,
+    "roomSource": "existing-resolver"
+   },
+   "status": "Delcot Glauds: 5 Camlings: 1",
+   "tail": "cot of tondam, where gitches frike and duscats glake. Across from a tophthed curple, a gomway deaves to kiloff and kirf, gombing a samilen to its hoff. Crenned in the loff lutt are five glauds. > ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "i",
+   "dig": "fa704c43a7df79bceb3ecbddfa99b864758c6c714d09642eeb3220eb3131a5c5",
+   "factPG": null,
+   "inv": [],
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 80,
+    "roomSource": "existing-resolver"
+   },
+   "status": "Delcot Glauds: 5 Camlings: 1",
+   "tail": "nd duscats glake. Across from a tophthed curple, a gomway deaves to kiloff and kirf, gombing a samilen to its hoff. Crenned in the loff lutt are five glauds. >i That's not a dape I recognise. > ",
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+

@@ -1,0 +1,88 @@
+﻿{
+ "story": "yagwad.z5.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "tail": " WARNING: Your screen may not be wide enough to display some menu items correctly. It is recommended that you enlarge your screen size, if possible, before continuing. [Press any key] ",
+   "status": "",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "tail": "de enough to display some menu items correctly. It is recommended that you enlarge your screen size, if possible, before continuing. [Press any key] WARNING: This game contains mild off-scene violence and some adult innuendo. Do you wish to continue? > ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "yes",
+   "tail": "enlarge your screen size, if possible, before continuing. [Press any key] WARNING: This game contains mild off-scene violence and some adult innuendo. Do you wish to continue? >yes WARNING: This game contains dragons. Do you still wish to continue? > ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "yes",
+   "tail": "loot stands a stalagmite encrusted with saltpetre. The woman is chained near the cliff edge, her hair tangled and clothes ripped to the merest rags. She looks up as you approach. Her chest heaves - \"You've come!\" she breathes. [New players type ABOUT] > ",
+   "status": "Treasure Cave Score: 10 Moves: 1",
+   "line": true,
+   "char": false,
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  },
+  {
+   "input": "#key",
+   "tail": "loot stands a stalagmite encrusted with saltpetre. The woman is chained near the cliff edge, her hair tangled and clothes ripped to the merest rags. She looks up as you approach. Her chest heaves - \"You've come!\" she breathes. [New players type ABOUT] > ",
+   "status": "Treasure Cave Score: 10 Moves: 1",
+   "line": true,
+   "char": false,
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  },
+  {
+   "input": "look",
+   "tail": "ave. The light from several flickering torches sparkles and dances as it reflects back from the tonnes of gold coins and precious stones piled carelessly about. Amidst the loot stands a stalagmite encrusted with saltpetre. The woman is chained nearby. > ",
+   "status": "Treasure Cave Score: 10 Moves: 2",
+   "line": true,
+   "char": false,
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  },
+  {
+   "input": "n",
+   "tail": "e encrusted with saltpetre. The woman is chained nearby. >n \"Don't leave me here!\" cries the woman, and the passion in her voice makes you stay. There is a far-off swish in the blackness that crowds the cliff edge. Out of the dark swoops the dragon. > ",
+   "status": "Treasure Cave Score: 10 Moves: 3",
+   "line": true,
+   "char": false,
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  },
+  {
+   "input": "s",
+   "tail": "rowds the cliff edge. Out of the dark swoops the dragon. >s \"Don't leave me here!\" cries the woman, and the passion in her voice makes you stay. The dragon approaches through the void, leathery wings creaking, eyes narrowed to a pair of burning slits. > ",
+   "status": "Treasure Cave Score: 10 Moves: 4",
+   "line": true,
+   "char": false,
+   "rooms": [
+    "29:Treasure Cave"
+   ],
+   "cur": "29"
+  }
+ ]
+}
+

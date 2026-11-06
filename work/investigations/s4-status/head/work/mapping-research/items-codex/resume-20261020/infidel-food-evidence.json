@@ -1,0 +1,299 @@
+{
+  "scope": "Research qualification of missing edible7, not production integration or title closure",
+  "assetSha256": "1cdda43a7bb09aceaf0b856a019a09f1bc0e430c0ee3a304f8482f7d9669b35f",
+  "storySha256": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+  "version": 3,
+  "release": 22,
+  "serial": "830916",
+  "domain": {
+    "first": 770,
+    "firstProperty": 3011,
+    "count": 249,
+    "bit": 7,
+    "owners": [
+      {
+        "id": 34,
+        "name": "piece of dried beef",
+        "parent": 0
+      }
+    ]
+  },
+  "source": {
+    "cache": "C:\\Users\\hymlo\\AppData\\Local\\Temp\\hs-src\\infidel\\historicalsource-infidel-dca8235",
+    "revisionPrefix": "dca8235",
+    "exactBuildUnproven": true,
+    "files": [
+      {
+        "file": "a1.zil",
+        "sha256": "b05c4d53a29d91753491d8d1b4f5e54a88276008eb160608fd3744338f73846f"
+      },
+      {
+        "file": "ante.zil",
+        "sha256": "35b7f6437c7029cd4653ef41fd62932567092a1800101bdc5b78d97a8587d2fe"
+      },
+      {
+        "file": "barge.zil",
+        "sha256": "9dd6786f82d405a631696b18b9dce02d204a8fa4051b2df2d6e270e5edaa32a4"
+      },
+      {
+        "file": "camp.zil",
+        "sha256": "756444c808e74b2e229312eeb42e4139bd80bd27aa0bf04bd717f1d94e031d32"
+      },
+      {
+        "file": "clock.zil",
+        "sha256": "a3a3f66a37d940926e798ce791922f37724139c0c60a2985074eb2e035f42892"
+      },
+      {
+        "file": "crufty.zil",
+        "sha256": "9bb0db501707856f3c1d66f85eef07ce9d4531e6f40c11cb8b4daa17ef5956e5"
+      },
+      {
+        "file": "cube.zil",
+        "sha256": "da219f3c17d04dd92a3c7e3d325b18e5dbc76023ee4f7364c93c39af2539f166"
+      },
+      {
+        "file": "diamond.zil",
+        "sha256": "aeccf0ba93724097072589f879d8d56006b4b3d6099202aa41337319fd61b5d9"
+      },
+      {
+        "file": "globals.zil",
+        "sha256": "2438890bce2d7c850e4b055164f0c15aee3c2827ece273ddb4d6d33239189d06"
+      },
+      {
+        "file": "infidel.zil",
+        "sha256": "b05c4d53a29d91753491d8d1b4f5e54a88276008eb160608fd3744338f73846f"
+      },
+      {
+        "file": "interrupts.zil",
+        "sha256": "92c905712e384f9a81c85f9192cb77acda55a0727f76b84965c3c4d4217d94d3"
+      },
+      {
+        "file": "macros.zil",
+        "sha256": "bf53ae7563738eb47f7c47011873d630e80cd9b85135e59e06e2dd161078b027"
+      },
+      {
+        "file": "main.zil",
+        "sha256": "20a7160ac36ec69de3d2e45333c7978df6aebe50d7e80a47d1daaa393f7e388d"
+      },
+      {
+        "file": "parser.zil",
+        "sha256": "fde41ee1d3461f5ff397c1d5e8705854609a0647345597da77351ca16dc62161"
+      },
+      {
+        "file": "ra.zil",
+        "sha256": "1d0af9635e000687eb41eefe0f6c71af416d9ceeb791d3d487463e4b1fe38a66"
+      },
+      {
+        "file": "syntax.zil",
+        "sha256": "351e25d8a885de4359fb80e4020b253dd8d4507f1f237b099f5b6ec518c9a5a5"
+      },
+      {
+        "file": "temple.zil",
+        "sha256": "93726f207eb64ab3f099a79d8ef1b14ff5c122de729a53fc1a588763164f8bb6"
+      },
+      {
+        "file": "verbs.zil",
+        "sha256": "9c65672546a9972fc8515aa2a30ec237dc4dae108872cdf95ebb3f370c19b82a"
+      },
+      {
+        "file": "zload.zil",
+        "sha256": "d54f5f36dc272b4565fc23803db90ecae78132948ba56f0be523e810e901c1dc"
+      },
+      {
+        "file": "zmain.zil",
+        "sha256": "ffb0f8647181e38f7cddb9b295a27980a8f267baa79f5a6a4015c091956ff0e4"
+      }
+    ],
+    "hits": [
+      {
+        "file": "camp.zil",
+        "line": 1394,
+        "text": "\t(FLAGS FOODBIT TAKEBIT TOUCHBIT TRYTAKEBIT)"
+      },
+      {
+        "file": "syntax.zil",
+        "line": 182,
+        "text": "\tOBJECT (FIND FOODBIT) (HELD CARRIED ON-GROUND IN-ROOM MANY)"
+      },
+      {
+        "file": "verbs.zil",
+        "line": 1214,
+        "text": "\t\t     <FSET? ,PRSO ,FOODBIT>>"
+      },
+      {
+        "file": "verbs.zil",
+        "line": 1221,
+        "text": "\t\t     <FSET? ,PRSO ,FOODBIT>>"
+      },
+      {
+        "file": "verbs.zil",
+        "line": 1229,
+        "text": "\t <COND (<AND <SET EAT? <FSET? ,PRSO ,FOODBIT>> <IN? ,PRSO ,WINNER>>"
+      }
+    ],
+    "adjacentImage": {
+      "file": "infidel.zip",
+      "format": "raw Z3 story, not ZIP",
+      "bytes": 93556,
+      "sha256": "739570dd8c998a7e9bc9fd4e016139e2c5679e47d6feab2daeb1bca0bc0c23b7",
+      "release": 22,
+      "serial": "830916",
+      "declaredPayloadEqualCurrent": true,
+      "sourceRecompilationNotProven": true
+    }
+  },
+  "captureSha256": "e42c7564a46b595fce6fd5ece7dd934db9656278aa1b9ed0afc2f772006b813a",
+  "routeSha256": "f411450f1ebb36643a596b97d0e99caa06f876428548859bf7290f84a3f2575c",
+  "native": [
+    {
+      "key": "Infidel.z3.js @22:examine beef",
+      "reply": "I see nothing special about the piece of dried beef.\n \n> ",
+      "food": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "parent": 223,
+        "bits": [
+          7,
+          15,
+          27,
+          29
+        ]
+      },
+      "tests": [],
+      "menu": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "worn": false,
+        "on": false,
+        "switchable": false,
+        "light": false,
+        "tags": [],
+        "wearable": false,
+        "commands": [
+          "examine beef",
+          "take beef",
+          "drop beef",
+          "give beef to ",
+          "put beef in "
+        ]
+      }
+    },
+    {
+      "key": "Infidel.z3.js @22:eat shovel",
+      "reply": "I don't think that the shovel would agree with you.\n \n> ",
+      "food": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "parent": 223,
+        "bits": [
+          7,
+          15,
+          27,
+          29
+        ]
+      },
+      "tests": [
+        [
+          33,
+          7,
+          0
+        ]
+      ],
+      "menu": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "worn": false,
+        "on": false,
+        "switchable": false,
+        "light": false,
+        "tags": [],
+        "wearable": false,
+        "commands": [
+          "examine beef",
+          "take beef",
+          "drop beef",
+          "give beef to ",
+          "put beef in "
+        ]
+      }
+    },
+    {
+      "key": "Infidel.z3.js @22:drink beef",
+      "reply": "How can you drink that?\n \n> ",
+      "food": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "parent": 223,
+        "bits": [
+          7,
+          15,
+          27,
+          29
+        ]
+      },
+      "tests": [
+        [
+          34,
+          7,
+          1
+        ]
+      ],
+      "menu": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "worn": false,
+        "on": false,
+        "switchable": false,
+        "light": false,
+        "tags": [],
+        "wearable": false,
+        "commands": [
+          "examine beef",
+          "take beef",
+          "drop beef",
+          "give beef to ",
+          "put beef in "
+        ]
+      }
+    },
+    {
+      "key": "Infidel.z3.js @22:eat beef",
+      "reply": "That really hit the spot. It did make you a little thirstier, though.\n \n> ",
+      "food": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "parent": 0,
+        "bits": [
+          7,
+          15,
+          27,
+          29
+        ]
+      },
+      "tests": [
+        [
+          34,
+          7,
+          1
+        ]
+      ]
+    },
+    {
+      "key": "Infidel.z3.js @22:inventory",
+      "reply": "You are carrying:\n  An ancient map\n  A matchbook\n  A knapsack (being worn)\n  A shovel\n  A pick axe\n \n> ",
+      "food": {
+        "id": 34,
+        "name": "piece of dried beef",
+        "parent": 0,
+        "bits": [
+          7,
+          15,
+          27,
+          29
+        ]
+      },
+      "tests": []
+    }
+  ],
+  "limits": "Current native consumer lacks edible metadata; proposed data-only field needs independent design acceptance, candidate consumer and separate gates after current shared candidate. FOODBIT is not consumed state."
+}

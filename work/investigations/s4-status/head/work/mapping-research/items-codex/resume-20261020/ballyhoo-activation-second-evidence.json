@@ -1,0 +1,363 @@
+{
+  "method": "Native original bhj route194, seed0 existing observer; no forced RAM/fact injection. Earlier radio route186 positive reused, not rerun.",
+  "executableSha256": "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588",
+  "declaredPayloadLength": 128556,
+  "routePrefixLength": 194,
+  "routePrefixSha256": "ff6e607c444ec9081831fb554a2b9e8832612e573f673afd0ef11e0f567186c1",
+  "routeFileSha256": "7c87b7d09a8611c82d4ac19d291baaa18897206c67ecb7aa377aaaf0d2052286",
+  "captures": {
+    "ballyhoo-activation-second-native.json": {
+      "sha256": "162438b53253d14c8fb6a0f6b6d2e60b4d0bffa1ec0003966e43058cb06f28e8",
+      "rows": [
+        {
+          "key": "Ballyhoo.z3.js @194:i",
+          "timestamp": "2026-10-22T01:17:48.423Z",
+          "reply": "You have a pair of headphones, a transistor radio and $12.81 to your name.\n \nDrifting out from the radio is a jumble of static.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 211,
+            "bits": [
+              15,
+              18,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @194:examine headphones",
+          "timestamp": "2026-10-22T01:17:49.021Z",
+          "reply": "It's a nice pair of headphones with a built-in cassette player which contains a tape, which is now not spinning. The controls allow you to either play, record, advance, rewind or eject the tape. A counter on the player reads [372].\n \nDrifting out from the radio is a jumble of static.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 211,
+            "bits": [
+              15,
+              18,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @194:turn on headphones",
+          "timestamp": "2026-10-22T01:17:49.616Z",
+          "reply": "You adjust the controls and you hear from the headphones the blare of a Jimi Hendrix guitar solo.\nThe counter reads [434].\n \nDrifting out from the radio is a jumble of static.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 211,
+            "bits": [
+              15,
+              18,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @194:turn off headphones",
+          "timestamp": "2026-10-22T01:17:50.211Z",
+          "reply": "The tape stops spinning.\n \nDrifting out from the radio is a jumble of static.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 211,
+            "bits": [
+              15,
+              18,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @194:turn on bucket",
+          "timestamp": "2026-10-22T01:17:50.806Z",
+          "reply": "[You can't see any bucket here.]\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 211,
+            "bits": [
+              15,
+              18,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @194:turn off bucket",
+          "timestamp": "2026-10-22T01:17:51.401Z",
+          "reply": "[You can't see any bucket here.]\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 211,
+            "bits": [
+              15,
+              18,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        }
+      ]
+    },
+    "ballyhoo-activation-nondevice-native.json": {
+      "sha256": "6a4f6934b5682d08cc8f8fe7cd8b54e0d264f6c1b989f083f162c540e2d70154",
+      "rows": [
+        {
+          "key": "Ballyhoo.z3.js @0:i",
+          "timestamp": "2026-10-22T01:16:33.057Z",
+          "reply": "You have $12.81 to your name.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 192,
+            "bits": [
+              15,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @0:turn on ticket",
+          "timestamp": "2026-10-22T01:16:33.666Z",
+          "reply": "[You can't see any ticket here.]\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 192,
+            "bits": [
+              15,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @0:turn off ticket",
+          "timestamp": "2026-10-22T01:16:34.263Z",
+          "reply": "[You can't see any ticket here.]\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 192,
+            "bits": [
+              15,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        }
+      ]
+    },
+    "ballyhoo-activation-nondevice-visible-native.json": {
+      "sha256": "8d1dabf478dfe59a5456ffee122b5997b874e302e0167dc90d5672548e8460e3",
+      "rows": [
+        {
+          "key": "Ballyhoo.z3.js @0:look",
+          "timestamp": "2026-10-22T01:17:08.263Z",
+          "reply": "In the Wings\nThe big top can be entered to the north and exited to the south. To the northeast, the grandstand begins its precipitous rise.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 192,
+            "bits": [
+              15,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @0:turn on me",
+          "timestamp": "2026-10-22T01:17:08.877Z",
+          "reply": "You can't turn that on.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 192,
+            "bits": [
+              15,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        },
+        {
+          "key": "Ballyhoo.z3.js @0:turn off me",
+          "timestamp": "2026-10-22T01:17:09.479Z",
+          "reply": "You can't turn that off.\n \n> ",
+          "headphones": {
+            "id": 36,
+            "name": "pair of headphones",
+            "parent": 192,
+            "bits": [
+              15,
+              21,
+              22,
+              23,
+              26
+            ]
+          },
+          "control": {
+            "id": 29,
+            "name": "yourself",
+            "parent": 76,
+            "bits": [
+              1,
+              18,
+              31
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "qualification": "Second native activation owner headphones36 is held under player211; TURN ON starts playback and TURN OFF stops tape. No raw24 transition or state mapping inferred. Yourself29 actual parser target refuses both TURN forms at fresh boot. Ticket and route194 bucket controls only fail visibility and do not qualify nondevice semantic refusal.",
+  "source": "Cached historicalsource-ballyhoo-9f779e8 way.zil1594..1670 HEADPHONES-F: ON delegatesPLAY, OFF clearsKNOB-SET and disablesI-RUN. Separate state mechanism, not ONBIT24.",
+  "scope": "Capability/form research only; does not certify every activation owner, state mapping, sourceexactbuild or title completion.",
+  "declaredPayloadSha256": "05e6558febc163cb6e6ea6fb0d2af3a9238fe8cb1360a9245c3e81ff01da0b44",
+  "executableLength": 153600,
+  "assetSha256": "a3cd79ae5bd483027ee43c1235cca6514115daadc6056d8c4aa4c3488fd6a6fb",
+  "identityQualification": "Canonical registry executable digest hashes all decoded story bytes; header-declared payload digest is separately qualified.",
+  "requiredStateDomain": "Headphones36 raw on24 remains false while playing. Radio-owned on24 state must not label headphones inactive after capability is enabled. Activation state requires separately authenticated per-object state applicability/domain; absence means unknown/no badge, not false/inactive."
+}

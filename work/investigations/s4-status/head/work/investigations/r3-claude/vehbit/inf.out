@@ -1,0 +1,14 @@
+null undefined -> undefined undefined | ugh to find the pyramid and to survive, and that the plane's carrying the long-overdue box. INFIDEL Copyright 1983 by Infocom, Inc. All righ
+"look" 51 -> 51 army cot |  / >look / Your Tent / (You are in the army cot.) / You are in your tent. Golden rays of the sun filter through the open tent flaps on the s
+"get out of cot" 51 -> 71 Your Tent | At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. / / You hear a plane flying high overhead,
+"look" 71 -> 71 Your Tent |  / >look / Your Tent / You are in your tent. Golden rays of the sun filter through the open tent flaps on the southern wall, but no breeze m
+"get in cot" 71 -> 51 army cot | At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. / / You hear a plane flying high overhead,
+"get out of cot" 51 -> 71 Your Tent | You are now in the army cot. / / It sounds as if the plane is circling. / / >get out of cot / You are on your feet again. / / It sounds as i
+"sit on cot" 71 -> 71 Your Tent | You are on your feet again. / / It sounds as if the plane is circling. / / >sit on cot / This is no time for sitting down on the job, especi
+"stand up" 71 -> 71 Your Tent | This is no time for sitting down on the job, especially after what you've been through to get here! / / It sounds as if the plane is flying 
+"enter tent" 71 -> 71 Your Tent | You are already standing, I think. / / You can barely hear the plane. / / >enter tent / What are those canvas walls around you? Just where d
+"s" 71 -> 72 Outside Your Tent | >enter tent / What are those canvas walls around you? Just where do you think you are? Maybe I should send for Craige, eh? / / The sound of 
+"sw" 72 -> 68 Outside Supply Tent |  / >s / Outside Your Tent / You are on an east/west path on the north side of the encampment. To the south you can see a firepit and to the 
+"w" 68 -> 69 Supply Tent | Outside Supply Tent / You're on a north/south path on the west edge of the encampment. Directly to the west is the supply tent, its flaps op
+"get pickaxe" 69 -> 69 Supply Tent | >w / Supply Tent / You are in a tent, very much like your own -- a tent which had originally contained the supplies for your expedition. You
+"enter pickaxe" 69 -> 69 Supply Tent | Stuck in the sand, handle down, is a small pick axe. / Half buried in the sand, in the corner of the tent, is a shovel. / / >get pickaxe / T

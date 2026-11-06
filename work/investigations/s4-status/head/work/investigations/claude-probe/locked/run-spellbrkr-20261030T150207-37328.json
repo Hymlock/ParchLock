@@ -1,0 +1,259 @@
+{
+ "e3sbfix @372:open cabinet#0": {
+  "tag": "e3sbfix",
+  "id": 67,
+  "name": "massive cabinet",
+  "step": 372,
+  "cmd": "open cabinet",
+  "expect": 1,
+  "bit": 11,
+  "plan": "plan-sb-fixed.json",
+  "planSha": "4fc8e2956327b987c599f45b22c3fe83121686bc096ac3deaca7ace710b13205",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "TRUE",
+  "before": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 38,
+  "here": 38,
+  "opsOnId": [
+   [
+    67,
+    12,
+    0,
+    32517
+   ],
+   [
+    67,
+    21,
+    0,
+    31749
+   ],
+   [
+    67,
+    15,
+    0,
+    31749
+   ],
+   [
+    67,
+    31,
+    0,
+    50146
+   ],
+   [
+    67,
+    11,
+    1,
+    94542
+   ]
+  ],
+  "nOps": 118,
+  "printedObjs": [],
+  "text": "The cabinet is locked.\n \n> ",
+  "ts": "2026-10-30T15:05:55.871Z"
+ },
+ "e3sbfix @373:open cabinet#1": {
+  "tag": "e3sbfix",
+  "id": 67,
+  "name": "massive cabinet",
+  "step": 373,
+  "cmd": "open cabinet",
+  "expect": 0,
+  "bit": 11,
+  "plan": "plan-sb-fixed.json",
+  "planSha": "4fc8e2956327b987c599f45b22c3fe83121686bc096ac3deaca7ace710b13205",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "FALSE",
+  "before": [
+   19,
+   27,
+   29
+  ],
+  "after": [
+   19,
+   21,
+   22,
+   27,
+   29
+  ],
+  "set": [
+   21,
+   22
+  ],
+  "cleared": [],
+  "parent": 38,
+  "here": 38,
+  "opsOnId": [
+   [
+    67,
+    12,
+    0,
+    32517
+   ],
+   [
+    67,
+    21,
+    0,
+    31749
+   ],
+   [
+    67,
+    15,
+    0,
+    31749
+   ],
+   [
+    67,
+    12,
+    0,
+    55829
+   ],
+   [
+    67,
+    31,
+    0,
+    50146
+   ],
+   [
+    67,
+    11,
+    0,
+    94542
+   ],
+   [
+    67,
+    27,
+    1,
+    50173
+   ],
+   [
+    67,
+    16,
+    0,
+    50181
+   ],
+   [
+    67,
+    3,
+    0,
+    50181
+   ],
+   [
+    67,
+    21,
+    0,
+    50216
+   ],
+   [
+    67,
+    15,
+    0,
+    50233
+   ],
+   [
+    67,
+    9,
+    0,
+    23055
+   ],
+   [
+    67,
+    5,
+    0,
+    23244
+   ]
+  ],
+  "nOps": 130,
+  "printedObjs": [
+   67,
+   20
+  ],
+  "text": "Opening the massive cabinet reveals a vellum scroll.\n \n> ",
+  "ts": "2026-10-30T15:05:57.112Z"
+ },
+ "e3sbfix @383:open cabinet#2": {
+  "tag": "e3sbfix",
+  "id": 67,
+  "name": "massive cabinet",
+  "step": 383,
+  "cmd": "open cabinet",
+  "expect": 1,
+  "bit": 11,
+  "plan": "plan-sb-fixed.json",
+  "planSha": "4fc8e2956327b987c599f45b22c3fe83121686bc096ac3deaca7ace710b13205",
+  "gameSha": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "verdict": "TRUE",
+  "before": [
+   11,
+   19,
+   22,
+   27,
+   29
+  ],
+  "after": [
+   11,
+   19,
+   22,
+   27,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 38,
+  "here": 38,
+  "opsOnId": [
+   [
+    67,
+    12,
+    0,
+    32517
+   ],
+   [
+    67,
+    21,
+    0,
+    31749
+   ],
+   [
+    67,
+    15,
+    0,
+    31749
+   ],
+   [
+    67,
+    12,
+    0,
+    55829
+   ],
+   [
+    67,
+    31,
+    0,
+    50146
+   ],
+   [
+    67,
+    11,
+    1,
+    94542
+   ]
+  ],
+  "nOps": 73,
+  "printedObjs": [],
+  "text": "The cabinet is locked.\n \n> ",
+  "ts": "2026-10-30T15:06:03.830Z"
+ }
+}
