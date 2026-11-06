@@ -612,7 +612,7 @@ var DirectionalRadial = {
             e.preventDefault();
             var hovered = DirectionalRadial._hovered;
             DirectionalRadial.collapse();
-            if (hovered && typeof Actionable !== "undefined") Actionable.Submit(hovered.command);
+            if (hovered && typeof Actionable !== "undefined") Actionable.SubmitTapMove(hovered.command);
         } else if (DirectionalRadial.CanOpen()) {
             // A genuine short tap -- released before the long-press timer
             // fired, and never moved past MoveCancelPx (a moved-away press
@@ -1004,7 +1004,7 @@ var DirectionalRadial = {
                     var hovered = DirectionalRadial._hovered;
                     DirectionalRadial.collapse();
                     DirectionalRadial._keyboardOpen = false;
-                    if (hovered && typeof Actionable !== "undefined") Actionable.Submit(hovered.command);
+                    if (hovered && typeof Actionable !== "undefined") Actionable.SubmitTapMove(hovered.command);
                     return;
                 }
                 return;

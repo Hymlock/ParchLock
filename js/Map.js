@@ -224,7 +224,7 @@ var ParchLockMap = {
         exits.forEach(e => {
 
             var ex = $("<div>").addClass("exit").addClass("dir-" + e).appendTo(d);
-            var travel = () => Actionable.Submit(Actionable.commandForExitLabel(ex.data("exit-label") || e));
+            var travel = () => Actionable.SubmitTapMove(Actionable.commandForExitLabel(ex.data("exit-label") || e));
             $("<span>").addClass("dir-name").text(e).appendTo(ex).click(travel);
             $("<div>").addClass("icon room-notes").click(function() {
                 

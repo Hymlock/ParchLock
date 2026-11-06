@@ -13,7 +13,8 @@ var Navigator = {
         Navigator.StepQueue = (dirs || []).slice();
         Navigator.Interrupted = false;
         Navigator.InterruptReason = "";
-        Navigator.Running = true;
+        Navigator.Running = true; Navigator._seatedTried = false;
+        try { if (typeof Actionable !== "undefined" && Actionable.cancelTapMove) Actionable.cancelTapMove(); } catch (eTap) {}
         // D159 (operator-reported): during fast travel the narration "gets
         // stuck on your original location". Every room the route passes
         // THROUGH prints a description, each is queued for speech, and speech
@@ -131,6 +132,24 @@ var Navigator = {
         } catch (e) {}
         if (!current || !$(".Input.LineInput:visible").length || Message.IsOpen || $("#dialog").length) {
             Navigator.ClearQueue("The game is not ready for a route command."); return;
+        }
+        // M6: a route started while seated in a non-vehicle carrier gets the
+        // game's own get-out form first (once). Awaiting keeps the same room,
+        // so a refused get-out simply lets the step run and fail as before.
+        if (!Navigator._seatedTried && typeof Actionable !== "undefined" && Actionable.seatedExitForm) {
+            Navigator._seatedTried = true;
+            var seated = Actionable.seatedExitForm();
+            var seatedOk = false;
+            if (seated) {
+                // Same guard as a route step: an untagged accepted submit would clear the route queue.
+                try { Navigator.Submitting = true; seatedOk = Actionable.Submit(seated.command, 'system-navigation') !== false; }
+                catch (eSeat) { seatedOk = false; } finally { Navigator.Submitting = false; }
+            }
+            if (seatedOk) {
+                Navigator.Awaiting = { target: current.Id, at: Date.now(), fromId: current.Id, fromRoomId: null, dir: null };
+                Navigator.Timer = setTimeout(Navigator.Pump, 100);
+                return;
+            }
         }
         var dir = Navigator.StepQueue.shift();
         // D159: this was the LAST step, so stop swallowing text -- the

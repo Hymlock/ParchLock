@@ -1117,7 +1117,7 @@ var Actionable = {
             var noun = this.dataset.noun;
             var kind = this.dataset.kind || "object";
             var oid = this.dataset.objectId || null;
-            if (kind === "direction") Actionable.Submit(Actionable.resolveExitCommand(noun));
+            if (kind === "direction") Actionable.SubmitTapMove(Actionable.resolveExitCommand(noun));
             else Actionable.activatePrimary(noun, kind, oid, e.clientX, e.clientY);
         }).on("contextmenu.pmAct", ".pl-act:not(.is-stale)", function (e) {
             e.preventDefault();
@@ -1375,6 +1375,107 @@ var Actionable = {
             try { Input.Focus(); } catch (e2) {}
         }
         return accepted;
+    },
+    // M6 (IMPL-r1): the game's own get-out form when the measured player
+    // parent is an object inside the current room (HHG bed) rather than the
+    // room itself, and that object is not a decoded vehicle. Both ZIL V-WALK
+    // carriers (BED-F) and the Inform library refuse a move from there.
+    // Returns null whenever anything is unknown (fail safe: plain move).
+    seatedExitForm: () => {
+        try {
+            var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            if (!mem || typeof ZRamReader === "undefined") return null;
+            var pl = ZRamReader.resolvePlayer(mem);
+            var pid = pl && pl.id;
+            if (!pid) return null;
+            var links = ZRamReader.objectLinks(mem, pid);
+            var parent = links && links.parent;
+            var room = ZRamReader.enclosingRoom(mem, pid);
+            if (!parent || !room || String(parent) === String(room)) return null;
+            // The parent must sit directly in the room (one level); deeper chains are unknown territory.
+            var pLinks = ZRamReader.objectLinks(mem, parent);
+            if (!pLinks || String(pLinks.parent) !== String(room)) return null;
+            var attrs = ZRamReader.attrsFromObject(mem, parent);
+            if (!attrs || attrs.vehicle) return null;
+            if (ZRamReader.isInformCompiled && ZRamReader.isInformCompiled(mem)) {
+                // Inform: the grammar's own exit verb, nothing invented.
+                if (ActionSynth.literalAvailable("exit")) return { command: "exit", parent: parent, room: room };
+                if (ActionSynth.literalAvailable("get out")) return { command: "get out", parent: parent, room: room };
+                return null;
+            }
+            // ZIL: D236's form, "get out of <noun>", noun from the object's own dictionary words.
+            if (!ActionSynth.literalAvailable("get out")) return null; // same gate as D236
+            var words = String(ZRamReader.shortName(mem, parent) || "").toLowerCase().trim().split(/\s+/).filter(Boolean);
+            if (!words.length) return null;
+            var noun = words.every(function (w) { return !!ZRamReader.hasDictionaryWord(mem, w); }) ? words.join(" ")
+                : (ZRamReader.hasDictionaryWord(mem, words[words.length - 1]) ? words[words.length - 1] : null);
+            if (!noun) return null;
+            return { command: "get out of " + noun, parent: parent, room: room };
+        } catch (e) { return null; }
+    },
+    // M6: a tapped compass move (map exit chip, directional radial, direction
+    // link, Ctrl+Shift+arrow). While seated in a non-vehicle carrier, sends the
+    // get-out form first, then the move once the game has put the player in
+    // the room. Typed commands never come through here.
+    // - One pending tap at a time: a tap during the wait replaces the move,
+    //   never a second get-out. Any other accepted command (typed, radial,
+    //   route), Navigator.EnqueueRoute or a room change cancels it.
+    // - Refused (still in the object after 1.5s) or the 8s cap: the move is
+    //   sent anyway, the game decides (Zork I boat steers by direction). The
+    //   refused parent is remembered: later taps while still in it get no prefix.
+    _tapPending: null,
+    _tapRefusedParent: null,
+    _tapSubmitting: false,
+    _tapSubmit: (command, source) => {
+        Actionable._tapSubmitting = true;
+        try { return Actionable.Submit(command, source); } finally { Actionable._tapSubmitting = false; }
+    },
+    cancelTapMove: () => {
+        var p = Actionable._tapPending;
+        if (p) { clearTimeout(p.timer); Actionable._tapPending = null; }
+    },
+    SubmitTapMove: (command, source) => {
+        if (!Actionable._tapHooked && typeof TurnRecorder !== "undefined" && TurnRecorder.subscribeAcceptedSubmit) {
+            Actionable._tapHooked = true;
+            TurnRecorder.subscribeAcceptedSubmit("m6-tap-move", function () {
+                if (!Actionable._tapSubmitting) Actionable.cancelTapMove();
+            });
+        }
+        if (Actionable._tapPending) { Actionable._tapPending.command = command; Actionable._tapPending.source = source; return true; }
+        var form = Actionable.seatedExitForm();
+        var refused = Actionable._tapRefusedParent;
+        if (refused != null && (!form || String(form.parent) !== String(refused))) Actionable._tapRefusedParent = refused = null;
+        if (!form || refused != null) return Actionable._tapSubmit(command, source);
+        if (Actionable._tapSubmit(form.command, source) === false) return false;
+        var originRoom = null;
+        try { var mem0 = ZRamProvider.getMem(), pl0 = ZRamReader.resolvePlayer(mem0); originRoom = pl0 && pl0.id ? ZRamReader.enclosingRoom(mem0, pl0.id) : null; } catch (eO) { originRoom = null; }
+        var pending = { form: form, command: command, source: source, started: Date.now(), timer: null, originRoom: originRoom || form.room };
+        Actionable._tapPending = pending;
+        var finish = function (refusedNow) {
+            if (Actionable._tapPending !== pending) return;
+            Actionable._tapPending = null;
+            if (refusedNow) Actionable._tapRefusedParent = form.parent;
+            Actionable._tapSubmit(pending.command, pending.source);
+        };
+        var poll = function () {
+            if (Actionable._tapPending !== pending) return;
+            var age = Date.now() - pending.started;
+            try {
+                var ready = $(".Input.LineInput:visible").length && !Message.IsOpen && !$("#dialog").length;
+                if (ready && age >= 300) {
+                    var mem = ZRamProvider.getMem();
+                    var pl = ZRamReader.resolvePlayer(mem);
+                    var links = pl && pl.id && ZRamReader.objectLinks(mem, pl.id);
+                    var room = pl && pl.id && ZRamReader.enclosingRoom(mem, pl.id);
+                    if (room && String(room) !== String(pending.originRoom)) { Actionable.cancelTapMove(); return; } // room changed
+                    if (links && String(links.parent) === String(form.room)) { finish(false); return; }
+                    if (links && String(links.parent) === String(form.parent) && age >= 1500) { finish(true); return; }
+                }
+            } catch (e) { /* retry until the cap */ }
+            if (age < 8000) pending.timer = setTimeout(poll, 100); else finish(false);
+        };
+        pending.timer = setTimeout(poll, 100);
+        return true;
     },
     Stale: () => $(".pl-act:not(.is-stale)").addClass("is-stale").removeAttr("tabindex role"),
     IsInstruction: line => /^\s*\(?\s*(?:type|press|for help|for more information|release\s+\d|serial number)\b/i.test(line.textContent),
@@ -2886,7 +2987,7 @@ var Actionable = {
         };
         if (kind === "direction") {
             var dirCommand = Actionable.resolveExitCommand(noun);
-            slices.push({ Label: "Go " + noun, Command: dirCommand, Score: scoreFor(dirCommand, 50), Usage: usageFor(dirCommand), Action: function () { Actionable.Submit(dirCommand); } });
+            slices.push({ Label: "Go " + noun, Command: dirCommand, Score: scoreFor(dirCommand, 50), Usage: usageFor(dirCommand), Action: function () { Actionable.SubmitTapMove(dirCommand); } });
         } else if (objectId || sharedCommands) {
             var cmds = sharedCommands || Actionable.resolveObjectCommands(objectId, kind);
             if (!sharedCommands && typeof ActionSynth !== "undefined" && ActionSynth.normalizeQualifiedRemovalCandidate) cmds = cmds.map(function (c) { return ActionSynth.normalizeQualifiedRemovalCandidate(c, object || { id: c.objectId }); }).filter(Boolean);

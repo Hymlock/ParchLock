@@ -57,7 +57,7 @@ var MapBeautify = {
             btn.className = "pl-exit-noncardinal";
             btn.textContent = dir + (dest ? (" -> " + dest.Name) : "");
             btn.title = "Go: " + dir;
-            btn.onclick = function () { if (typeof Actionable !== "undefined") Actionable.Submit(Actionable.commandForExitLabel(dir)); };
+            btn.onclick = function () { if (typeof Actionable !== "undefined") Actionable.SubmitTapMove(Actionable.commandForExitLabel(dir)); };
             wrap.appendChild(btn);
             n++;
         });

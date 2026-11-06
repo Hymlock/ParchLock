@@ -159,6 +159,8 @@ var Input = {
             || $("body").is(".pl-mobile.map-open")) return;
         // Holding a key must not queue multiple moves across prompt replacement.
         if (e.repeat) return;
+        // M6: a compass shortcut is a tap move (seated get-out prefix), not typed text.
+        if (typeof Actionable !== "undefined" && Actionable.SubmitTapMove) { Input.Clear(); Actionable.SubmitTapMove(e.key === "ArrowUp" ? "n" : "s", "user-navigation"); return; }
         Input.Clear();
         Input.Inject(e.key === "ArrowUp" ? "n" : "s", true, "user-navigation");
     },
