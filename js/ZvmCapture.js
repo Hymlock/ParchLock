@@ -191,21 +191,28 @@ var ZvmCapture = {
     },
 
     // S1 probe action boundary.
-    // spec = { routine: packed address, action: number, afterProps: [n...], objMax: n }.
+    // spec = { routine: packed address, action: number, afterProps: [n...], objMax: n,
+    //          dispatcherGlobal: fn(packed) -> global number or null (stage 1b) }.
     PB_TEXT_CAP: 20000,
     PB_STACK_CAP: 4096,
+    PB_NEST_CAP: 2,
     _pb: null,
     armProbeBoundary: function (spec) {
         ZvmCapture._pb = (spec && ZvmCapture._origCall) ? {
             routine: spec.routine, action: spec.action,
             afterProps: (spec.afterProps || []).slice(), objMax: spec.objMax || 0,
-            text: "", stack: [], entry: -1, after: -1, ret: -1, entryDepth: -1, bad: null
+            dispatcherGlobal: typeof spec.dispatcherGlobal === "function" ? spec.dispatcherGlobal : null,
+            text: "", stack: [], entry: -1, after: -1, ret: -1, entryDepth: -1, bad: null,
+            outer: [], nested: false
         } : null;
         return !!ZvmCapture._pb;
     },
     takeProbeBoundary: function () {
         var pb = ZvmCapture._pb;
         ZvmCapture._pb = null;
+        // Stage 1b: a nested (re-dispatched) action routine returned, but the
+        // outer call it rebased from never did before ownership ended.
+        if (pb && !pb.bad && pb.outer && pb.outer.length) pb.bad = "outer-unreturned";
         return pb;
     },
     // A probe that ends without endProbeOwnership must not keep recording:
@@ -223,17 +230,43 @@ var ZvmCapture = {
         // A @throw unwinds frames without ret: drop calls that no longer exist.
         var n = vm.frames.length;
         while (pb.stack.length && pb.stack[pb.stack.length - 1].depth + 1 > n) pb.stack.pop();
-        if (pb.entry >= 0 && pb.ret < 0 && n < pb.entryDepth + 1) pb.bad = "unwound";
+        if (pb.entry >= 0 && (pb.ret < 0 || pb.outer.length) && n < pb.entryDepth + 1) pb.bad = "unwound";
+    },
+    // Is the frame that calls the action routine its dispatcher? Stage 1: the
+    // frame's first argument is the action number. Stage 1b: the frame was
+    // called with no argument, its routine is the library's ActionPrimitive
+    // (shape A/B, decoded by StatTracker and cached per packed address) and
+    // the `action` global it reads (header globals + 2k) holds the action now.
+    // Returns null when it is, else the fault name.
+    _pbDispatcherFault: function (pb, vm, parent) {
+        if (parent.arg0 === pb.action) return null;
+        if (parent.nargs !== 0 || !pb.dispatcherGlobal) return "routine-without-dispatcher";
+        var k = null;
+        try { k = pb.dispatcherGlobal(parent.routine); } catch (eD) { k = null; }
+        if (k == null || !(k >= 0 && k < 240)) return "routine-without-dispatcher";
+        var m = vm.m;
+        if (m.getUint16(m.getUint16(0x0C) + 2 * k) !== pb.action) return "dispatcher-action-mismatch";
+        return null;
     },
     _pbCall: function (pb, vm, t, args) {
         ZvmCapture._pbPrune(pb, vm);
         var depth = vm.frames.length;
         if (t === pb.routine) {
             var parent = pb.stack.length ? pb.stack[pb.stack.length - 1] : null;
-            var direct = parent && parent.depth + 1 === depth && parent.arg0 === pb.action;
-            if (pb.entry < 0 && direct) { pb.entry = pb.text.length; pb.entryDepth = depth; }
-            else if (pb.entry < 0) pb.bad = pb.bad || "routine-without-dispatcher";
-            else if (pb.ret < 0) pb.bad = pb.bad || "reentered";
+            var fault = (parent && parent.depth + 1 === depth) ? ZvmCapture._pbDispatcherFault(pb, vm, parent) : "routine-without-dispatcher";
+            if (pb.entry < 0) {
+                if (!fault) { pb.entry = pb.text.length; pb.entryDepth = depth; }
+                else pb.bad = pb.bad || fault;
+            } else if (pb.ret < 0) {
+                // Stage 1b nested re-dispatch (InvTallSub/InvWideSub: the
+                // action routine re-runs itself through the dispatcher). Only
+                // when the outer printed nothing and no after phase was seen
+                // on the way in; the inner call then owns entry/after/ret.
+                if (fault || pb.outer.length + 1 >= ZvmCapture.PB_NEST_CAP) pb.bad = pb.bad || "reentered";
+                else if (pb.text.length !== pb.entry) pb.bad = "nested-pre-text";
+                else if (pb.after >= 0) pb.bad = "nested-pre-after";
+                else { pb.outer.push({ entry: pb.entry, entryDepth: pb.entryDepth }); pb.entry = pb.text.length; pb.entryDepth = depth; pb.after = -1; pb.nested = true; }
+            } else if (pb.outer.length) pb.bad = pb.bad || "reentered";
         }
         // After phase: inside the action routine, the first call made with
         // (object, after|react_after). It starts at the entry of the action
@@ -245,13 +278,21 @@ var ZvmCapture = {
             for (var k = 0; k < pb.stack.length; k++) { if (pb.stack[k].depth === pb.entryDepth + 1) { outer = pb.stack[k]; break; } }
             pb.after = outer ? outer.o : pb.text.length;
         }
-        pb.stack.push({ depth: depth, arg0: args && args.length ? args[0] : null, o: pb.text.length });
+        pb.stack.push({ depth: depth, routine: t, nargs: args ? args.length : 0, arg0: args && args.length ? args[0] : null, o: pb.text.length });
         if (pb.stack.length > ZvmCapture.PB_STACK_CAP) { pb.bad = "stack-overflow"; pb.stack = []; pb.text = ""; }
     },
     _pbRet: function (pb, vm) {
         ZvmCapture._pbPrune(pb, vm);
         var n = vm.frames.length;
-        if (pb.entry >= 0 && pb.ret < 0 && n === pb.entryDepth + 1) pb.ret = pb.text.length;
+        if (pb.entry >= 0 && pb.ret < 0 && n === pb.entryDepth + 1) {
+            pb.ret = pb.text.length;
+            // Inner (nested) return: the outer frame is the one now awaited.
+            if (pb.outer.length) pb.entryDepth = pb.outer[pb.outer.length - 1].entryDepth;
+        } else if (pb.ret >= 0 && pb.outer.length && n === pb.entryDepth + 1) {
+            // Outer return: it must not have printed after delegating.
+            pb.outer.pop();
+            if (pb.text.length !== pb.ret) pb.bad = "outer-printed";
+        }
         if (pb.stack.length && pb.stack[pb.stack.length - 1].depth + 1 === n) pb.stack.pop();
     },
 

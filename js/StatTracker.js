@@ -4457,13 +4457,45 @@ var StatTracker = {
                 if (bare.length === 1 && !bare[0].reverse) {
                     var act = bare[0].action;
                     if (act < L.actionCount && L.afterProps.length === 2 && L.objMax > 0) {
-                        spec = { routine: ZRamReader.u16(mem, L.actionBase + 2 * act), action: act, afterProps: L.afterProps, objMax: L.objMax };
+                        if (!c.disp) {
+                            var disp = c.disp = {};
+                            c.dispatcherGlobal = function (pk) {
+                                if (!Object.prototype.hasOwnProperty.call(disp, pk)) disp[pk] = StatTracker.i6DispatcherGlobal(mem, pk, L.actionBase);
+                                return disp[pk];
+                            };
+                        }
+                        spec = { routine: ZRamReader.u16(mem, L.actionBase + 2 * act), action: act, afterProps: L.afterProps, objMax: L.objMax,
+                            actionBase: L.actionBase, dispatcherGlobal: c.dispatcherGlobal };
                     }
                 }
             }
         } catch (eV) { spec = null; }
         c.verbs[w] = spec;
         return spec;
+    },
+    // S1 stage 1b: a no-argument action dispatcher is the library's
+    // ActionPrimitive, `indirect(#actions_table-->action)`. The routine at
+    // packed address pk must have 0 locals and exactly one of these bodies:
+    //   A  loadw #actionBase Gk -> sp; call_1n sp; rtrue
+    //   B  call_vs #V #actionBase Gk -> sp; call_1n sp; rtrue   (V: the
+    //      strict-mode RT__ChLDW bounds-check veneer, not checked)
+    // with the constant equal to the decoded actions table base. Returns the
+    // global number k (the `action` global), or null. Any other shape, or a
+    // decode exception, is not a dispatcher, so nothing is armed.
+    i6DispatcherGlobal: function (mem, pk, actionBase) {
+        try {
+            var h = ZRamReader.header(mem);
+            if (!h || (h.version !== 5 && h.version !== 8) || !(pk > 0)) return null;
+            var a = pk * (h.version === 8 ? 8 : 4), length = mem.byteLength || mem.length || 0;
+            if (a + 12 > length) return null;
+            var u8 = function (o) { return ZRamReader.u8(mem, a + o); };
+            if (u8(0) !== 0) return null;
+            if (u8(1) === 0xCF && u8(2) === 0x2F && ZRamReader.u16(mem, a + 3) === actionBase && u8(5) >= 16
+                && u8(6) === 0 && u8(7) === 0xAF && u8(8) === 0 && u8(9) === 0xB0) return u8(5) - 16;
+            if (u8(1) === 0xE0 && u8(2) === 0x0B && ZRamReader.u16(mem, a + 5) === actionBase && u8(7) >= 16
+                && u8(8) === 0 && u8(9) === 0xAF && u8(10) === 0 && u8(11) === 0xB0) return u8(7) - 16;
+            return null;
+        } catch (e) { return null; }
     },
     decodeI6ActionLayout: function (mem) {
         try {

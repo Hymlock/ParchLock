@@ -9,8 +9,19 @@
 //     action dispatcher before InvSub is entered stays visible.
 //   E anchor, constructed after phase (stock InvSub ends with AfterRoutines):
 //     react_after output printed INSIDE the action routine stays visible.
-//   D MakeItGood (I6 library whose dispatcher passes no argument): no cut is
-//     armed, so today's paragraph rule is unchanged (fail-visible).
+// Stage 1b (stage1b/PROPOSAL.md + Amendment R2): a no-argument dispatcher
+// (the library's ActionPrimitive, shape A/B, action global == the action):
+//   F MakeItGood (shape A), first Equipment open: armed, both inventory
+//     paragraphs hidden, nothing released.
+//   G Advent (shape B), first INVENTORY (InvSub -> InvTallSub -> nested
+//     InvSub) and a later one: both armed, entry = the inner InvSub, the whole
+//     list hidden.
+//   H Advent, constructed react_after print inside the stock InvSub's
+//     AfterRoutines: shown as an event, the list stays hidden.
+//   I MakeItGood, constructed: the dispatcher's action global holds another
+//     value at the call, so nothing is armed (dispatcher-action-mismatch).
+//   J Advent, constructed: the outer InvSub prints after delegating to the
+//     nested one, so outer-printed and the paragraph rule.
 const path = require('path'); const { pathToFileURL } = require('url');
 const { chromium } = require(process.cwd() + '/node_modules/playwright');
 let pass = 0, fail = 0;
@@ -30,7 +41,7 @@ async function boot(b, game) {
         StatTracker.releaseProbeEvents = function () {
             const pb = StatTracker._probeBoundary, verb = (StatTracker._spanOrigin || {}).verb;
             const r = orig.apply(this, arguments);
-            window.__cuts.push({ verb, entry: pb && pb.entry, after: pb && pb.after, ret: pb && pb.ret, bad: pb && pb.bad, armed: !!pb, cut: StatTracker._lastProbeCut });
+            window.__cuts.push({ verb, entry: pb && pb.entry, after: pb && pb.after, ret: pb && pb.ret, bad: pb && pb.bad, armed: !!pb, nested: !!(pb && pb.nested), cut: StatTracker._lastProbeCut });
             return r;
         };
     });
@@ -120,13 +131,86 @@ const invCut = r => r.cuts.find(c => /^(?:i|inv|inventory)$/i.test(c.verb || '')
         ok(parrot && parrot.shown && parrot.ev === '1', 'E anchor: react_after output inside the action routine is visible ' + JSON.stringify(parrot));
         ok(pk && !pk.shown, 'E anchor: pockets line (before the after phase) hidden');
         await p.close();
-        // D
+        // F: MakeItGood, natively armed by the no-argument dispatcher rule.
         p = await boot(b, 'MakeItGood.zblorb.js');
         r = await openEquipment(p);
         c = invCut(r);
-        const shoes = find(r, /wide-brimmed hat/);
-        ok(c && c.cut === null && c.bad === 'routine-without-dispatcher', 'D MakeItGood: no cut, paragraph rule kept ' + JSON.stringify(c));
-        ok(shoes && shoes.shown && shoes.ev === '1', 'D MakeItGood: behaviour unchanged (second paragraph released as before)');
+        let tp = find(r, /trenchcoat pockets/i), wb = find(r, /wide-brimmed hat/i);
+        ok(c && c.armed && !c.bad && c.entry >= 0 && c.ret > c.entry && Array.isArray(c.cut), 'F MakeItGood: armed by the no-argument dispatcher ' + JSON.stringify(c));
+        ok(tp && !tp.shown && wb && !wb.shown, 'F MakeItGood: both inventory paragraphs hidden ' + JSON.stringify([tp, wb]));
+        ok(!r.lines.some(l => l.shown && l.ev === '1'), 'F MakeItGood: nothing released ' + JSON.stringify(r.lines.filter(l => l.shown)));
+        await p.close();
+        // G: Advent, nested first INVENTORY and a later one.
+        const advent = async () => { const q = await boot(b, 'Advent.z5.js'); await type(q, 'in'); await type(q, 'take all'); return q; };
+        const advItems = /brass lantern|set of keys|tasty food|small bottle/i;
+        p = await advent();
+        r = await openEquipment(p);
+        c = invCut(r);
+        ok(c && c.armed && !c.bad && c.nested && c.ret > c.entry && Array.isArray(c.cut), 'G Advent first: nested InvSub armed ' + JSON.stringify(c));
+        ok(r.lines.some(l => advItems.test(l.t)) && !r.lines.some(l => l.shown && advItems.test(l.t)), 'G Advent first: whole list hidden ' + JSON.stringify(r.lines.filter(l => l.shown)));
+        const nFirst = r.cuts.length;
+        // Advent has no carry stats, so the first probe marks the carry probe useless; re-enable it to drive a second INVENTORY.
+        await type(p, 'drop keys'); await p.evaluate(() => { StatTracker._carryProbeUseless = false; });
+        r = await openEquipment(p);
+        c = invCut({ cuts: r.cuts.slice(nFirst) });
+        ok(c && c.armed && !c.bad && !c.nested && c.ret > c.entry && Array.isArray(c.cut), 'G Advent later: armed, not nested ' + JSON.stringify(c));
+        ok(r.lines.some(l => advItems.test(l.t)) && !r.lines.some(l => l.shown && advItems.test(l.t)), 'G Advent later: whole list hidden');
+        await p.close();
+        // H: Advent, constructed react_after print inside stock AfterRoutines.
+        p = await advent();
+        await p.evaluate(() => {
+            const P = Object.getPrototypeOf(window.__PARCHLOCK_ZVM__), oc = P.call; let done = false;
+            P.call = function (t, i, e, s) {
+                const pb = ZvmCapture._pb;
+                if (!done && pb && !pb.bad && pb.entry >= 0 && pb.ret < 0 && s && s.length >= 2 && s[1] === pb.afterProps[1] && s[0] >= 1 && s[0] <= pb.objMax) {
+                    done = true; this._print('The constructed parrot squawks after your inventory.\n');
+                }
+                return oc.apply(this, arguments);
+            };
+        });
+        r = await openEquipment(p);
+        const parrotH = find(r, /constructed parrot/); c = invCut(r);
+        ok(c && !c.bad && c.after > c.entry && c.after <= c.ret && Array.isArray(c.cut) && c.cut.includes('event'), 'H Advent: native after phase inside InvSub ' + JSON.stringify(c));
+        ok(parrotH && parrotH.shown && parrotH.ev === '1', 'H Advent: react_after output is visible ' + JSON.stringify(parrotH));
+        ok(!r.lines.some(l => l.shown && advItems.test(l.t)), 'H Advent: list before the after phase hidden');
+        await p.close();
+        // I: MakeItGood, the action global holds another value at the call.
+        p = await boot(b, 'MakeItGood.zblorb.js');
+        await p.evaluate(() => {
+            const P = Object.getPrototypeOf(window.__PARCHLOCK_ZVM__), oc = P.call; let done = false;
+            P.call = function (t, i, e, s) {
+                const pb = ZvmCapture._pb;
+                if (!done && pb && pb.entry < 0 && t === pb.routine && pb.stack.length) {
+                    const k = pb.dispatcherGlobal(pb.stack[pb.stack.length - 1].routine);
+                    if (k != null) {
+                        done = true;
+                        const m = this.m, a = m.getUint16(0x0C) + 2 * k, v = m.getUint16(a);
+                        m.setUint16(a, (v + 1) & 0xffff);
+                        try { return oc.apply(this, arguments); } finally { m.setUint16(a, v); }
+                    }
+                }
+                return oc.apply(this, arguments);
+            };
+        });
+        r = await openEquipment(p);
+        c = invCut(r);
+        ok(c && c.cut === null && c.bad === 'dispatcher-action-mismatch', 'I MakeItGood: mismatched action global stays unarmed ' + JSON.stringify(c));
+        await p.close();
+        // J: Advent, the outer InvSub prints after the nested one returned.
+        p = await advent();
+        await p.evaluate(() => {
+            const P = Object.getPrototypeOf(window.__PARCHLOCK_ZVM__), or = P.ret; let done = false;
+            P.ret = function () {
+                const pb = ZvmCapture._pb;
+                if (!done && pb && !pb.bad && pb.ret >= 0 && pb.outer.length && this.frames.length === pb.entryDepth + 1) {
+                    done = true; this._print('A constructed outer coda.\n');
+                }
+                return or.apply(this, arguments);
+            };
+        });
+        r = await openEquipment(p);
+        c = invCut(r);
+        ok(c && c.nested && c.cut === null && c.bad === 'outer-printed', 'J Advent: outer print after delegation gives outer-printed, paragraph rule ' + JSON.stringify(c));
         await p.close();
     } catch (e) { fail++; console.log('FAIL exception ' + e.message); }
     await b.close();
