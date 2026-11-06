@@ -89,3 +89,12 @@ one-level redo.
 - **Fast travel in progress** (Navigator StepQueue): cancel the queue before rewinding.
 - Fixture per D32: a known-depth Inform game (for example Zork-like z5), rewind 3 rooms, assert N UNDOs,
   that the highlight is on the target, and that operator-regressions.js shows 0 FAIL.
+
+## R2 (claude, main seat): answers REVIEW.md (REVISE)
+**Scope: ZVM games only** (the Z-machine engine the app wraps in ZvmCapture). Quixe and the emglken wasm interpreters get no Rewind (blocking 1); v3 ZIL is already excluded.
+- **Depth source (blocking 2):** read the ZVM instance's own undo stack length (`undo.length`) at entry time and at rewind time; no separate counter. Each map visit records `undoDepthAtEntry = undo.length` (plus roomId). Steps N = current undo.length - undoDepthAtEntry. Offer Rewind only when 1 <= N <= undo.length; the 1 MB eviction is already reflected because the length shrinks. A typed UNDO or a restore lowers the length naturally.
+- **Mechanism (blocking 3+4):** no typed UNDO commands. Call the VM's own `restore_undo` path N times directly (the same path ZvmCapture.js:114 already wraps, so UndoRestoreSync fires), then submit one LOOK as an ordinary system command. No hidden multi-command span, so S1 and TurnRecorder are untouched. If any restore fails, stop, resync, and report "Rewound k of N turns".
+- **Undo rewind (blocking 5):** dropped. The confirmation dialog states the turn count and that progress is lost.
+- **Map:** truncate the visit log at the depth actually reached; the visited set and discoveries stay physical (D267, D263); verify the arrived room equals the target and report a mismatch (wump2ka).
+- **Long-press:** when Rewind is not offered, long-press opens Notes in one step, exactly as today (D112). When it is offered, show a two-item menu (Notes / Rewind to here). Update harness/d112-notes-panel.js for the menu path.
+- **Fixture:** a ZVM Inform game; walk 3 rooms; rewind to room 1; assert restore_undo was called N times, the payload room equals room 1, and the map highlight is on room 1. Plus operator-regressions and the three-type gate.
