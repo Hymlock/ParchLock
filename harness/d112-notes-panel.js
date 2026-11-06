@@ -21,6 +21,7 @@ function makeEl() {
         text: function (v) { if (v === undefined) return state._text; state._text = v; return api; },
         html: function (v) { if (v === undefined) return state._text; state._text = v; return api; },
         empty: function () { state.children = []; state._text = ""; return api; },
+        remove: function () { return api; },
         hide: function () { state.hidden = true; return api; },
         show: function () { state.hidden = false; return api; },
         attr: function (k, v) {
@@ -234,6 +235,31 @@ var bindFnSrc = (function () {
 })();
 assert(bindFnSrc.indexOf("#rooms-list #container") !== -1, "BindNotesGestures binds the add-note hold/right-click gesture to #rooms-list #container");
 assert(bindFnSrc.indexOf("#rooms-shell") === -1 && bindFnSrc.indexOf("#map #rooms") === -1, "BindNotesGestures never wires any touch/contextmenu handler to the map canvas (operator decision: no new gesture there at all)");
+
+// --- M11: the hold gesture goes through RoomHoldAction; with no Rewind offered
+//     (no ZVM / not armed by a native UNDO / current room) it opens Notes in
+//     ONE step exactly as before; otherwise a two-item Notes / Rewind menu ---
+assert(bindFnSrc.indexOf("RoomHoldAction") !== -1 && bindFnSrc.indexOf("PromptAddNote") === -1, "both hold paths (contextmenu + touch) route through RoomHoldAction");
+reset();
+delete global.__PARCHLOCK_ZVM__;
+ParchLockMap.RoomHoldAction("Cellar");
+assert(global.Message.calls.length === 1 && global.Message.calls[0].title === "Add note to Cellar", "no ZVM: hold opens the Notes editor directly (one step)");
+var fakeVm = { undo: [{}, {}, {}], __pmUndoSeen: false };
+function armLog(roomName) { ParchLockMap._rewindVm = fakeVm; ParchLockMap.RewindLog = [{ room: ParchLockMap.GetRoom(roomName), undoDepthAtEntry: 1, top: fakeVm.undo[0], next: null }]; }
+reset(); global.__PARCHLOCK_ZVM__ = fakeVm; armLog("Cellar");
+ParchLockMap.RoomHoldAction("Cellar");
+assert(global.Message.calls.length === 1 && global.Message.calls[0].title === "Add note to Cellar", "ZVM not yet armed by a native UNDO: hold opens Notes directly");
+reset(); fakeVm.__pmUndoSeen = true; armLog("Cellar");
+ParchLockMap.RoomHoldAction("Cellar");
+assert(global.Message.calls.length === 1 && global.Message.calls[0].title === "Cellar" && /room-hold-notes/.test(global.Message.calls[0].body) && /Rewind to here/.test(global.Message.calls[0].body), "armed ZVM, visited non-current room: hold shows the two-item Notes / Rewind to here menu");
+assert(ParchLockMap.RewindOffer("Cellar").steps === 2, "N = undo.length - index of the room's own snapshot (3 - 1 = 2)");
+reset(); armLog("Kitchen");
+ParchLockMap.RoomHoldAction("Kitchen");
+assert(global.Message.calls.length === 1 && global.Message.calls[0].title === "Add note to Kitchen", "current room never offers Rewind: hold opens Notes directly");
+reset(); armLog("Hallway");
+ParchLockMap.RoomHoldAction("Cellar");
+assert(global.Message.calls.length === 1 && global.Message.calls[0].title === "Add note to Cellar", "a room with no recorded visit never offers Rewind");
+delete global.__PARCHLOCK_ZVM__;
 
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

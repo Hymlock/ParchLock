@@ -99,7 +99,7 @@ var ParchLockMap = {
             if ($(e.target).closest(".icon").length) return;
             e.preventDefault();
             e.stopPropagation();
-            ParchLockMap.PromptAddNote($(this).data("room"));
+            ParchLockMap.RoomHoldAction($(this).data("room"));
         });
 
         // Real touchstart/touchmove/touchend timing, same contract already
@@ -122,7 +122,7 @@ var ParchLockMap = {
                 if (ParchLockMap._notesTouch !== state) return;
                 state.fired = true;
                 Actionable.fireHoldSelection(state);
-                ParchLockMap.PromptAddNote($(el).data("room"));
+                ParchLockMap.RoomHoldAction($(el).data("room"));
             }, Actionable.LongPressMs);
         }).on("touchmove.pmNotes", "> div", function (e) {
             var state = ParchLockMap._notesTouch;
@@ -260,6 +260,205 @@ var ParchLockMap = {
         // World map: the player has actually stood here (the only place this
         // is set; look-ahead and ensureRoom never call SetCurrentRoom).
         room.WorldVisited = true;
+        ParchLockMap.RecordRewindVisit(room);
+    },
+
+    // M11 (DESIGN.md R2/R3): click-to-rewind, ZVM only. Each physical visit
+    // records undoDepthAtEntry = vm.undo.length. The entry also keeps the VM's
+    // own undo-entry objects (top of stack at entry, and the next snapshot,
+    // which is the one taken while standing in this room) so the depth
+    // survives the 1 MB oldest-first eviction in lib/zvm.js save_undo, and an
+    // entry whose snapshot is gone (typed UNDO, restore, eviction) is
+    // truncated rather than offered. Glulx (Quixe/emglken) and bocfel never
+    // set __PARCHLOCK_ZVM__, so they never offer Rewind.
+    RewindLog: [],
+    _rewindVm: null,
+    RewindBusy: false,
+
+    RewindVm: () => {
+        try {
+            var vm = typeof window !== "undefined" ? window.__PARCHLOCK_ZVM__ : null;
+            return vm && Array.isArray(vm.undo) ? vm : null;
+        } catch (e) { return null; }
+    },
+
+    // Index in vm.undo of the snapshot taken while standing in the entry's
+    // room, or -1 when it does not (or no longer) exist.
+    RewindTargetIndex: (vm, entry) => {
+        if (entry.next) return vm.undo.indexOf(entry.next);
+        var i;
+        if (entry.top) { i = vm.undo.indexOf(entry.top); if (i < 0) return -1; i++; }
+        else i = 0;
+        if (i < vm.undo.length) { entry.next = vm.undo[i]; return i; }
+        return -1;
+    },
+
+    // Truncates the visit log to the entries whose snapshots still exist.
+    // The newest entry (current room) has no snapshot of its own yet; it is
+    // kept while its top-of-stack is still there.
+    PruneRewindLog: (vm) => {
+        var log = ParchLockMap.RewindLog;
+        var last = log[log.length - 1];
+        ParchLockMap.RewindLog = log.filter(e => {
+            if (ParchLockMap.RewindTargetIndex(vm, e) >= 0) return true;
+            return e === last && !e.next && (!e.top || vm.undo.indexOf(e.top) >= 0);
+        });
+        if (ParchLockMap.RewindLog.length > 300) ParchLockMap.RewindLog = ParchLockMap.RewindLog.slice(-300);
+    },
+
+    // (c) Called by ZvmCapture right after each successful save_undo: the
+    // newest visit without a snapshot whose top-of-stack is the entry just
+    // below the new one gets that new snapshot as its own, so a depth-0
+    // entry is bound before any eviction can shift index 0.
+    OnSaveUndo: (vm) => {
+        try {
+            if (ParchLockMap._rewindVm !== vm) return;
+            var log = ParchLockMap.RewindLog, len = vm.undo.length;
+            var last = log[log.length - 1];
+            if (!last || last.next || !len) return;
+            var below = len >= 2 ? vm.undo[len - 2] : null;
+            if (last.top === below) last.next = vm.undo[len - 1];
+        } catch (e) {}
+    },
+
+    RecordRewindVisit: (room) => {
+        try {
+            var vm = ParchLockMap.RewindVm();
+            if (!vm) { ParchLockMap.RewindLog = []; return; }
+            if (ParchLockMap._rewindVm !== vm) { ParchLockMap._rewindVm = vm; ParchLockMap.RewindLog = []; }
+            ParchLockMap.PruneRewindLog(vm);
+            var log = ParchLockMap.RewindLog;
+            var last = log[log.length - 1];
+            if (last && last.room === room) return;
+            var depth = vm.undo.length;
+            log.push({ room: room, roomId: room.HasRealId ? String(room.ObjectId) : null, undoDepthAtEntry: depth, top: depth ? vm.undo[depth - 1] : null, next: null });
+        } catch (e) {}
+    },
+
+    // {room, steps} when "Rewind to here" may be offered, else null:
+    // ZVM, a native UNDO seen to succeed this session, a visited room that is
+    // not the current room, and 1 <= N <= vm.undo.length.
+    RewindOffer: (roomKey) => {
+        try {
+            var vm = ParchLockMap.RewindVm();
+            if (!vm || !vm.__pmUndoSeen || ParchLockMap._rewindVm !== vm || ParchLockMap.RewindBusy) return null;
+            var room = ParchLockMap.GetRoom(roomKey);
+            if (!room || room === ParchLockMap.GetCurrentRoom()) return null;
+            var log = ParchLockMap.RewindLog;
+            for (var k = log.length - 1; k >= 0; k--) {
+                if (log[k].room !== room) continue;
+                var idx = ParchLockMap.RewindTargetIndex(vm, log[k]);
+                if (idx < 0) return null;
+                var steps = vm.undo.length - idx;
+                return steps >= 1 && steps <= vm.undo.length ? { room: room, steps: steps } : null;
+            }
+        } catch (e) {}
+        return null;
+    },
+
+    // D112 long-press/right-click on a Known Rooms row: Notes in one step
+    // when Rewind is not offered (exactly as before), else a two-item menu.
+    RoomHoldAction: (roomKey) => {
+        var offer = ParchLockMap.RewindOffer(roomKey);
+        if (!offer) { ParchLockMap.PromptAddNote(roomKey); return; }
+        var draft = "";
+        try { draft = $(".Input.LineInput").val() || ""; } catch (e) {}
+        Message.Show(ParchLockQol.EscapeHtml(offer.room.Name), "<div class='qol-window-actions'><button id='room-hold-notes'>Notes</button><button id='room-hold-rewind'>Rewind to here</button></div>", false);
+        $("#room-hold-notes").off("click").on("click", () => { Message.Hide(); ParchLockMap.PromptAddNote(offer.room); });
+        $("#room-hold-rewind").off("click").on("click", () => { Message.Hide(); ParchLockMap.ConfirmRewind(offer.room, draft); });
+    },
+
+    ConfirmRewind: (roomKey, draft) => {
+        var offer = ParchLockMap.RewindOffer(roomKey);
+        if (!offer) return;
+        var restoreDraft = () => { try { if (draft && !$(".Input.LineInput").val()) $(".Input.LineInput").val(draft); } catch (e) {} };
+        var n = offer.steps;
+        Message.Show("Rewind", "<p>" + ParchLockQol.EscapeHtml("Rewind " + n + " turn" + (n === 1 ? "" : "s") + " to " + offer.room.Name + "? Progress since then is lost.") + "</p><div class='qol-window-actions'><button id='rewind-confirm'>Rewind</button><button id='rewind-cancel'>Cancel</button></div>", true);
+        $("#rewind-cancel").off("click").on("click", () => { Message.Hide(); restoreDraft(); });
+        $("#rewind-confirm").off("click").on("click", () => { Message.Hide(); ParchLockMap.Rewind(offer.room, draft); });
+    },
+
+    // R3: drop the N-1 newest snapshots with the same undo_len accounting as
+    // lib/zvm.js restore_undo, then ONE ordinary "undo" through the normal
+    // input path, so the game's own @restore_undo runs in a real opcode
+    // context (ZvmCapture + UndoRestoreSync fire once). Then verify.
+    // IB1: the same preconditions Actionable.Submit / Input.Inject apply
+    // (Actionable.js Submit, Input.js Inject), checked BEFORE anything is
+    // discarded: a waiting, visible line input (no char/[MORE] prompt), no
+    // Message or #dialog open, and the VM undo stack unchanged since the
+    // offer was computed.
+    RewindCanSubmit: (vm, start) => {
+        try {
+            if (!$(".Input.LineInput").length || !$(".Input.LineInput:visible").length) return "the game is not waiting for a command";
+            if ($(".Input.CharInput").length) return "the game is waiting for a key press";
+            if (Message.IsOpen || $("#dialog").length) return "a dialog is open";
+            if (vm.undo.length !== start) return "the game moved on";
+        } catch (e) { return "the input is unavailable"; }
+        return "";
+    },
+
+    // R3: drop the N-1 newest snapshots with the same undo_len accounting as
+    // lib/zvm.js restore_undo, then ONE ordinary "undo" through the normal
+    // input path, so the game's own @restore_undo runs in a real opcode
+    // context (ZvmCapture + UndoRestoreSync fire once). Then verify by
+    // identity: the game's restore must have consumed exactly the target
+    // snapshot (vm.__pmLastRestored), so a command typed during the window
+    // cannot make a good rewind look failed.
+    Rewind: (roomKey, draft) => {
+        var restoreDraft = () => {
+            try { if (draft && !$(".Input.LineInput").val()) $(".Input.LineInput").val(draft); } catch (e) {}
+        };
+        var offer = ParchLockMap.RewindOffer(roomKey);
+        if (!offer) { restoreDraft(); return false; }
+        var vm = ParchLockMap.RewindVm();
+        var target = offer.room, n = offer.steps;
+        var fail = (msg) => {
+            ParchLockMap.RewindBusy = false;
+            ParchLockMap.LastRewind = { ok: false, message: msg };
+            try { Message.Show("Rewind failed", ParchLockQol.EscapeHtml(msg), false); } catch (e) {}
+        };
+        var start = vm.undo.length;
+        var why = ParchLockMap.RewindCanSubmit(vm, start);
+        if (why) { fail("Rewind failed; " + why + ". Nothing was discarded."); restoreDraft(); return false; }
+        try { if (typeof Navigator !== "undefined" && Navigator.ClearQueue) Navigator.ClearQueue(); } catch (eNav) {}
+        var targetEntry = vm.undo[start - n];
+        for (var k = 0; k < n - 1; k++) {
+            var e = vm.undo.pop();
+            vm.undo_len -= e.ram.byteLength + e.stack.byteLength;
+        }
+        var lost = n - 1 ? " " + (n - 1) + " undo step" + (n === 2 ? " was" : "s were") + " discarded." : "";
+        ParchLockMap.RewindBusy = true;
+        vm.__pmLastRestored = null;
+        var accepted = false;
+        try { accepted = Actionable.Submit("undo", "system-rewind") !== false; } catch (eSub) {}
+        if (!accepted) { fail("Rewind failed; the undo command was not accepted." + lost); ParchLockMap.PruneRewindLog(vm); restoreDraft(); return false; }
+        var t0 = Date.now(), roomSeen = false;
+        var check = () => {
+            var restored = vm.__pmLastRestored === targetEntry;
+            var p = typeof WorldModel !== "undefined" ? WorldModel.lastPayload : null;
+            var payloadOk = target.HasRealId ? !!(p && String(p.roomId) === String(target.ObjectId)) : true;
+            if (restored && payloadOk && ParchLockMap.GetCurrentRoom() === target) roomSeen = true;
+            // Restored and the room was seen (or the player has already
+            // played on past it, a newer snapshot on top of the target's).
+            if (restored && (roomSeen || vm.undo.length > start - n)) {
+                ParchLockMap.RewindBusy = false;
+                ParchLockMap.LastRewind = { ok: true, steps: n, room: target.Name, roomVerified: roomSeen };
+                ParchLockMap.PruneRewindLog(vm);
+                ParchLockMap.RefreshMapPanels();
+                restoreDraft();
+                return;
+            }
+            if (Date.now() - t0 > 5000) {
+                ParchLockMap.PruneRewindLog(vm);
+                if (!restored) fail("Rewind failed; the game did not undo." + lost);
+                else fail("Rewound " + n + " turn" + (n === 1 ? "" : "s") + ", but the game is not in " + target.Name + ".");
+                restoreDraft();
+                return;
+            }
+            setTimeout(check, 150);
+        };
+        setTimeout(check, 150);
+        return true;
     },
 
     GotoRoom: (e, roomName) => {

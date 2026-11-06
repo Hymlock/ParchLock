@@ -111,12 +111,33 @@ var ZvmCapture = {
                 return result;
             };
         });
+        // M11 (c): tell the map which snapshot a save_undo just created, so a
+        // visit's own snapshot is bound at once (lib/zvm.js save_undo returns 1).
+        if (!ZvmCapture._origSaveUndo && typeof Proto.save_undo === "function") {
+            ZvmCapture._origSaveUndo = Proto.save_undo;
+            Proto.save_undo = function () {
+                var r = ZvmCapture._origSaveUndo.apply(this, arguments);
+                try { if (r && typeof ParchLockMap !== "undefined" && ParchLockMap.OnSaveUndo) ParchLockMap.OnSaveUndo(this); } catch (eSU) {}
+                return r;
+            };
+        }
         ["restore_undo", "restore_file", "restart"].forEach(function (name) {
             var original = Proto[name];
             if (typeof original !== "function") return;
             Proto[name] = function () {
                 try { if (typeof Transcript !== "undefined" && this.options) Transcript.hookDialog(this.options.Dialog); } catch (eDlg) {}
+                // M11: a native UNDO "seen to succeed" in this game = the game ran its
+                // own @restore_undo and the VM undo stack got shorter. Per VM instance,
+                // so per game per session; it arms Map "Rewind to here".
+                var preUndoLen = (name === "restore_undo" && this.undo) ? this.undo.length : -1;
+                var preUndoTop = preUndoLen > 0 ? this.undo[preUndoLen - 1] : null;
                 var result = original.apply(this, arguments);
+                try {
+                    if (preUndoLen >= 0 && result && this.undo.length < preUndoLen) {
+                        this.__pmUndoSeen = true;
+                        this.__pmLastRestored = preUndoTop; // the exact snapshot the game consumed (Map rewind verify)
+                    }
+                } catch (eSeen) {}
                 try {
                     if (typeof Transcript !== "undefined" && Transcript.onVmEvent) {
                         Transcript.onVmEvent(name, !!result || name === "restart", name === "restore_file" && arguments[1] === 1);
