@@ -41,12 +41,14 @@ const check = (ok, msg) => { if (ok) { pass++; console.log('PASS: ' + msg); } el
         try { ParchLockMap.Redraw ? ParchLockMap.Redraw() : null; } catch (e2) {}
         return { distinct: !!(a && c && a !== c && g.keyOf.get(a) !== g.keyOf.get(c)), la: ca && ca.level, lc: cc && cc.level,
                  edge: e ? { dir: e.dir, layoutDir: e.layoutDir } : null, lc219: MapTopology.levelChangeDir(a, c),
-                 l1: rooms.filter(x => MapTopology.roomDepth(x) === 1).length, l2: rooms.filter(x => MapTopology.roomDepth(x) === 2).length };
+                 l1: rooms.filter(x => MapTopology.roomDepth(x) === 1).length, l2: rooms.filter(x => MapTopology.roomDepth(x) === 2).length,
+                 labels: (() => { WorldMap._graph = g; WorldMap._cells = out.cells; return [ca && WorldMap.depthLabel(ca.level), cc && WorldMap.depthLabel(cc.level)]; })() };
     });
     console.log(JSON.stringify(r));
     check(r.distinct && r.l1 >= 2 && r.l2 >= 1, 'level-1 and level-2 rooms are distinct records (no merge): l1=' + r.l1 + ' l2=' + r.l2);
     check(r.edge && r.edge.layoutDir === 'down', 'trapdoor edge 219->233 placed as a down step (dir "' + (r.edge && r.edge.dir) + '")');
     check(r.la != null && r.lc === r.la - 1, 'Wet room 233 on World level ' + r.lc + ', one below Cold room 219 (' + r.la + ')');
+    check(r.labels[0] === "Depth 1" && r.labels[1] === "Depth 2", "World map level buttons read Depth 1 / Depth 2: " + r.labels);
     check(r.lc219 === 'down', 'local map: levelChangeDir(219,233) = down (down slot)');
     // Local map from 219's record: the 233 neighbour box sits in the down slot.
     const slot = await p.evaluate(() => { const a = ParchLockMap.Rooms.find(x => x && String(x.ObjectId) === '219'); if (!a) return null; const dir = Object.keys(a.Exits || {}).find(k => String(ParchLockMap.Rooms[a.Exits[k]] && ParchLockMap.Rooms[a.Exits[k]].ObjectId) === '233'); return dir || null; });

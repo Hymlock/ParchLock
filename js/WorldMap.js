@@ -536,10 +536,24 @@ var WorldMap = {
             var b = document.createElement("button");
             b.type = "button";
             b.className = "world-level" + (lv === WorldMap._level ? " active" : "");
-            b.textContent = "Level " + (levels.length - i);
+            b.textContent = WorldMap.depthLabel(lv) || "Level " + (levels.length - i);
             b.addEventListener("click", function (e) { e.preventDefault(); WorldMap._level = lv; WorldMap._paintSig = null; WorldMap.paint(); WorldMap.CentreOnCurrent(); });
             holder.appendChild(b);
         });
+    },
+
+    // A game with a measured dungeon depth (LLR3 regionDepth) names each level
+    // by that depth, so the deepest level is not "Level 1".
+    depthLabel: function (level) {
+        var g = WorldMap._graph, cells = WorldMap._cells;
+        if (!g || !cells || typeof MapTopology === "undefined" || !MapTopology.roomDepth) return null;
+        for (var i = 0; i < g.rooms.length; i++) {
+            var c = cells.get(g.keyOf.get(g.rooms[i]));
+            if (!c || c.level !== level) continue;
+            var d = MapTopology.roomDepth(g.rooms[i]);
+            if (d) return "Depth " + d;
+        }
+        return null;
     },
 
     select: function (key) {

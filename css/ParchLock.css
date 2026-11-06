@@ -4469,8 +4469,9 @@ body.pl-mobile #pl-input-mic.pl-mic-unavailable::after {
 	text-transform: uppercase;
 	opacity: .72;
 	/* A game's own label can be long ("QUEST RATE"); let it wrap rather than
-	   truncate, since a truncated stat name is unreadable. */
-	overflow-wrap: anywhere;
+	   truncate, since a truncated stat name is unreadable. break-word keeps
+	   whole words ("PLAYTHROUGH") together unless one alone overflows. */
+	overflow-wrap: break-word;
 }
 .pl-stat-value { font-size: 17px; font-variant-numeric: tabular-nums; line-height: 1.15; }
 .pl-stat-rank { font-size: 11px; opacity: .78; overflow-wrap: anywhere; }
