@@ -44,6 +44,8 @@ fresh(); turn(["*** You have died ***", "", INFORM_MENU]);
 assert(S.model().deaths === 1, "Inform death banner plus end menu counts one death");
 fresh(); turn(["Oh, no! A lurking grue devoured you!", "    ****  You have died  ****", "", "Now, let's take a look here... Well, you probably deserve another chance."]);
 assert(S.model().deaths === 1, "Zork I resurrection: a complete death phrase inside a banner counts without an end menu");
+fresh(); turn(["... doing 1d8+1 of damage: 1d8+1: 6+1=7 points - a fatal blow!", "*** You have been killed in combat ***", "In that game you scored 0 out of a possible 0, in 54 turns.", "Would you like to RESTART, RESTORE a saved game or QUIT?"]);
+assert(S.model().deaths === 1, "LLR3: 'You have been killed in combat' banner plus end menu counts one death");
 fresh(); turn(["*** You have won ***", "", INFORM_MENU]);
 assert(S.model().wins === 1 && S.model().deaths === 0, "a win is a win, not a death");
 fresh(); S._lastSubmission = { submissionId: ++sub, pageEpoch: "fixture", command: "jump", source: "typed" };

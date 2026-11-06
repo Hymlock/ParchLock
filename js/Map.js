@@ -742,7 +742,9 @@ var ParchLockMap = {
             // hyphenated exit-N system props stay hidden; numbered travel ("1"/"2"/"exit 1") does not.
             if (typeof MapTopology !== "undefined" && MapTopology.isSystemPropExitKey
                 && MapTopology.isSystemPropExitKey(dir)) continue;
-            var renderSlot = assignSlot(dir);
+            // Measured depth change (LLR3 regionDepth fact): draw in the down/up slot.
+            var levelDir = typeof MapTopology !== "undefined" && MapTopology.levelChangeDir ? MapTopology.levelChangeDir(room, destRoom) : null;
+            var renderSlot = levelDir && !claimedSlots[levelDir] ? (claimedSlots[levelDir] = true, levelDir) : assignSlot(dir);
             if (!renderSlot) continue;
             ParchLockMap.DrawRoom(renderSlot, destRoom, dir);
             $("#map .room.dir-" + renderSlot).toggleClass("tentative-exit", isAmbiguous);

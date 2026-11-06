@@ -927,7 +927,12 @@ var ModuleStatFactsClaude = {
     // DIAGNOSE only restates grid STR, so it is never asked automatically.
     "4bf1f6eafc25528efe1c0070576f716e269663478f2c7deac324d135e9ecc7ef": {
         "rejectedForms": ["diagnose"],
-        "evidence": "2026-10-05 live DIAGNOSE: You can check your STR at any time from the status line, the bar at the top of the window. It's currently 14. Grid LVL/STR; SCORE EXP 0/50."
+        "evidence": "2026-10-05 live DIAGNOSE: You can check your STR at any time from the status line, the bar at the top of the window. It's currently 14. Grid LVL/STR; SCORE EXP 0/50.",
+        // Depth (operator 2026-11-06, work/investigations/llr3-depth/PROPOSAL.md): each room's property 7 is its
+        // map_region (class-21 object; no property-name table in this build). Measured: level-1 rooms 215-223 -> 214,
+        // level 2 225-233 -> 224, 234 (235-246), 247 (248+), 272 (273-275). Trapdoor 219 -> 233 crosses 214 -> 224.
+        // Depth = 1 + rank of the region among distinct prop-7 values; a region change is a map level change.
+        "regionDepth": { "regionProperty": 7 }
     },
     // RoTA: same W&W library replies as LLR3.
     "b8d00f6135e9f2eff3b45324bc100ac85606b5b3c30fa3c818f3b358f1bc9cb6": {

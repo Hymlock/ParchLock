@@ -1,4 +1,46 @@
 var MapTopology = {
+    // LLR3 dungeon depth (operator 2026-11-06): a digest-bound regionDepth fact names the
+    // property holding each room's map region; depth = 1 + the region's rank among the
+    // distinct region values rooms carry (game's own data, no prose). Null when no fact.
+    _regionDepthCache: null,
+    regionDepthTable: function () {
+        try {
+            if (typeof ModuleLibrary === "undefined" || typeof StatTracker === "undefined" || typeof ZRamProvider === "undefined") return null;
+            var id = ModuleLibrary.currentExecutableIdentity();
+            var fact = id && StatTracker.probeFactsForIdentity(id);
+            var rd = fact && fact.regionDepth;
+            if (!rd || !(rd.regionProperty > 0)) return null;
+            var c = MapTopology._regionDepthCache;
+            if (c && c.digest === id.digest) return c;
+            var mem = ZRamProvider.getMem();
+            if (!mem) return null;
+            var byRoom = {}, values = {};
+            for (var o = 1; o < 2000; o++) {
+                if (!ZRamReader.objectLinks(mem, o)) break;
+                var v = ZRamReader.readProp(mem, o, rd.regionProperty);
+                if (v) { byRoom[o] = v; values[v] = true; }
+            }
+            var ranks = {};
+            Object.keys(values).map(Number).sort(function (a, b) { return a - b; })
+                .forEach(function (v, i) { ranks[v] = i + 1; });
+            c = { digest: id.digest, byRoom: byRoom, ranks: ranks };
+            if (Object.keys(byRoom).length) MapTopology._regionDepthCache = c;
+            return c;
+        } catch (e) { return null; }
+    },
+    roomDepth: function (room) {
+        if (!room || !room.HasRealId || room.ObjectId == null) return null;
+        var t = MapTopology.regionDepthTable();
+        if (!t) return null;
+        var region = t.byRoom[Number(room.ObjectId)];
+        return region ? t.ranks[region] : null;
+    },
+    // "down"/"up" when the two rooms sit at different measured depths, else null.
+    levelChangeDir: function (from, to) {
+        var a = MapTopology.roomDepth(from), b = MapTopology.roomDepth(to);
+        if (a == null || b == null || a === b) return null;
+        return b > a ? "down" : "up";
+    },
     prevRoomId: null,
     prevRoomName: "",
     lastCommand: "",

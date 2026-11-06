@@ -1345,7 +1345,8 @@ var StatTracker = {
     // a save is restored. Replayed transcript is never a submission at all.
     // Each phrase must END the sentence or banner ("You are dead." / "****
     // You have died ****"), so "you are dead tired" is not a death.
-    DEATH_PHRASE: /\b(?:you have died|you are dead|your body is never found|you have been killed(?: by [^.!?*\n]{1,60})?|better luck next life)\s*(?:[.!*]|$)/im,
+    // LLR3/W&W: "*** You have been killed in combat ***".
+    DEATH_PHRASE: /\b(?:you have died|you are dead|your body is never found|you have been killed\b[^.!?*\n]{0,60}|better luck next life)\s*(?:[.!*]|$)/im,
     WIN_PHRASE: /\b(?:you have won|you are victorious)\s*(?:[.!*]|$)/im,
     unquoted: (text) => String(text || "").replace(/"[^"\n]*"|“[^”\n]*”/g, " "),
     // Quoted dialogue (a quote holding a space) is removed before a line can be
@@ -2053,6 +2054,7 @@ var StatTracker = {
         });
         StatTracker.observeConditions(statusRaw, { source: "status-grid", locator: "status-grid", authoritative: true });
         StatTracker.seedInterpreterStatus(model, facts, globals);
+        StatTracker.seedRegionDepth(model, mem);
         StatTracker.promoteTurnCounter(model);
         StatTracker.promoteGlobals(model);
         StatTracker.promotePlayerProperties(model);
@@ -2209,6 +2211,23 @@ var StatTracker = {
     // when candidate absolute sequences differ; old turn pins rederive on load.
     V3_MAX_STEP: 8,
     _v3: null,
+    // LLR3 depth (regionDepth fact): the player's room's map region rank, read from RAM.
+    seedRegionDepth: function (model, mem) {
+        try {
+            if (!mem || typeof MapTopology === "undefined" || !MapTopology.regionDepthTable) return;
+            var t = MapTopology.regionDepthTable();
+            if (!t) return;
+            var pl = ZRamReader.resolvePlayer(mem), x = pl && pl.id, guard = 0, depth = null;
+            while (x && guard++ < 8 && depth == null) {
+                var region = t.byRoom[x];
+                if (region) depth = t.ranks[region];
+                x = ZRamReader.objectLinks(mem, x).parent;
+            }
+            if (depth == null) return;
+            StatTracker.setSeeded(model, "depth", "Depth", depth, "counter", "region-depth");
+        } catch (e) {}
+    },
+
     seedInterpreterStatus: function (model, facts, globals) {
         if (!facts || !facts.interpreterStatus) return;
         if (!globals || globals.length < 3) return;

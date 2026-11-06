@@ -64,7 +64,7 @@ var WorldMapLayout = {
         });
         edges.forEach(function (edge) {
             if (!edge || !byKey.has(edge.from) || !byKey.has(edge.to)) return;
-            var vector = WorldMapLayout.vector(edge.dir, options).delta;
+            var vector = WorldMapLayout.vector(edge.layoutDir || edge.dir, options).delta;
             neighbors.get(edge.from).push({ key: edge.to, delta: vector, label: String(edge.dir || "") });
             // Incoming adjacency is used for placement only. The result
             // still contains exactly the caller's original directed edges.
@@ -118,7 +118,7 @@ var WorldMapLayout = {
         });
         var edgeKinds = edges.map(function (edge) {
             if (!edge || !cells.has(edge.from) || !cells.has(edge.to)) return "hidden";
-            var a = cells.get(edge.from), b = cells.get(edge.to), vector = WorldMapLayout.vector(edge.dir, options);
+            var a = cells.get(edge.from), b = cells.get(edge.to), vector = WorldMapLayout.vector(edge.layoutDir || edge.dir, options);
             if (vector.kind === "labelled") return "labelled";
             return b.x - a.x === vector.delta[0] && b.y - a.y === vector.delta[1] && b.level - a.level === vector.delta[2]
                 ? vector.kind : "bent";

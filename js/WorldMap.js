@@ -119,8 +119,12 @@ var WorldMap = {
                 var target = all[r.Exits[dir]];
                 if (!target || !keyOf.has(target)) return;
                 var meta = r.ExitMeta && r.ExitMeta[dir];
-                edges.push({ from: keyOf.get(r), to: keyOf.get(target), dir: dir, evidence: WorldMap.evidence(r, dir),
-                    command: (meta && meta.command) || dir, locked: WorldMap.isLockedMeta(meta) });
+                var edge = { from: keyOf.get(r), to: keyOf.get(target), dir: dir, evidence: WorldMap.evidence(r, dir),
+                    command: (meta && meta.command) || dir, locked: WorldMap.isLockedMeta(meta) };
+                // Measured depth change (LLR3 regionDepth fact): place as a level step; dir/command stay the game's.
+                var lc = typeof MapTopology !== "undefined" && MapTopology.levelChangeDir ? MapTopology.levelChangeDir(r, target) : null;
+                if (lc) edge.layoutDir = lc;
+                edges.push(edge);
             });
             // Decoder geography is a read-only hint graph, never the route
             // Exits[] graph. Bind by real ObjectId rather than array index.
@@ -250,7 +254,7 @@ var WorldMap = {
         edgeKinds = g.edges.map(function (e) {
             var a = cells.get(e.from), b = cells.get(e.to);
             if (!a || !b) return "hidden";
-            var v = WorldMapLayout.vector(e.dir);
+            var v = WorldMapLayout.vector(e.layoutDir || e.dir);
             if (v.kind === "labelled") return "labelled";
             return b.x - a.x === v.delta[0] && b.y - a.y === v.delta[1] && b.level - a.level === v.delta[2]
                 ? v.kind : "bent";
