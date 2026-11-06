@@ -1,5 +1,11 @@
 # ParchLock Release Notes
 
+## Build 78 - 2026-11-06
+
+- Status: the hidden inventory check no longer leaks text into older Inform 7 games (A Little Like Rogue, Accuse, Child's Play, Figaro, Wallpaper, gardening).
+- A Little Like Rogue: a new Depth stat shows the dungeon level, and each level is its own floor on the local map and World map; trapdoors are drawn as going down.
+- Deaths: "You have been killed in combat" (and any "You have been killed ...") now counts as a death. Android versionCode 53; shell cache 177.
+
 ## Build 77 - 2026-11-06
 
 - Map: a door you have not walked through yet shows where it probably leads ("-> Entryway?"). It is a hint only; the map still links rooms after you walk.
