@@ -1,0 +1,22 @@
+Delusns.z5.js marks
+  base: ["east","west"]
+  cand: ["Self","east","west"]
+School.z5.js marks
+  base: ["admission letter","trees","campus","administration building","east","path","gate"]
+  cand: ["trees","campus","administration building","east","path","gate"]
+cabal.z5.js marks
+  base: ["families","your coffee","vagrant","your PalmPilot"]
+  cand: ["table","families","your coffee","vagrant","your PalmPilot"]
+heist.z8.js marks
+  base: ["north","south","uncle's final resting place","group of mourners"]
+  cand: ["frame","north","south","uncle's final resting place","group of mourners"]
+huntdark.z5.js marks
+  base: ["tight crawl","limestone","low passage","side chamber","silent bulk"]
+  cand: ["crossbow","stone","tight crawl","low passage","side chamber","silent bulk"]
+medusa.z5.js marks
+  base: ["vampire","elevator","red","toga","snakes","floor indicator","buttons"]
+  cand: ["toga","snakes","elevator","floor indicator","buttons","red","mirror","vampire"]
+vespers.z8.js marks
+  base: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
+  cand: ["room","west","desk","bed","blanket"]
+GATE: 309 games, 7 differences (each must be an intended, reviewed change)
