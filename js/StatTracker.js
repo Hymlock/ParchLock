@@ -4507,7 +4507,8 @@ var StatTracker = {
             // Without them the after phase is unprovable, so nothing is armed.
             var pn = ZRamReader.informPropertyNames && ZRamReader.informPropertyNames(mem);
             var names = pn && pn.names;
-            if (!names || names.ik1_count != null || names.ik1_link != null) return null;
+            // S1-1c: older I7 builds lack ik1_* but carry i7_kind / i7_map_region; their rulebook code mimics the after-phase call.
+            if (!names || names.ik1_count != null || names.ik1_link != null || names.i7_kind != null || names.i7_map_region != null) return null;
             if (!(names.after > 0) || !(names.react_after > 0) || names.after === names.react_after) return null;
             var objMax = ZRamReader.objectCount ? ZRamReader.objectCount(mem, h) : 0;
             if (!(objMax > 0)) return null;
