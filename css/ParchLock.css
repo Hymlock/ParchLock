@@ -2906,6 +2906,20 @@ body.app-dialog-open #pl-dirpad-ring {
 }
 body.light #pl-dirpad-handle::before { background: rgba(0, 0, 0, 0.16); }
 #pl-dirpad-handle:focus-visible { outline: 2px solid var(--pl-accent, #74d4b3); outline-offset: 2px; border-radius: 50%; }
+/* B7 a11y: keyboard focus ring for chrome (mouse users keep :focus-visible only) */
+button:focus-visible,
+[role="button"]:focus-visible,
+summary:focus-visible,
+#tools-toggle:focus-visible,
+#game-menu:focus-visible,
+#pl-world-tab:focus-visible,
+#pl-equip-tab:focus-visible,
+#map-toolbar button:focus-visible,
+#pl-input-submit:focus-visible,
+#pl-input-mic:focus-visible {
+	outline: 2px solid var(--pl-accent, #74d4b3);
+	outline-offset: 2px;
+}
 #pl-dirpad-handle.pl-press-pending::before { animation: none; opacity: 0.9; }
 #pl-dirpad-handle[hidden] { display: none; }
 
@@ -3476,16 +3490,17 @@ body.pl-mobile #pl-map-tab {
 	z-index: 23;               /* above the map sheet (20) so it can also close it; below the exit rail (24) */
 	border: 0 !important;
 	border-radius: 9px 0 0 9px;
-	background: rgba(255, 255, 255, 0.07) !important;   /* barely visible, translucent */
-	color: rgba(255, 255, 255, 0.42) !important;
+	/* B7 a11y: idle mobile tab AA-ish icon contrast (was 0.42 white on 0.07 white) */
+	background: rgba(0, 0, 0, 0.45) !important;
+	color: rgba(255, 255, 255, 0.82) !important;
 	-webkit-tap-highlight-color: transparent;
 	touch-action: manipulation;
 	-webkit-user-select: none;
 	user-select: none;
 }
 body.light.pl-mobile #pl-map-tab {
-	background: rgba(0, 0, 0, 0.07) !important;
-	color: rgba(0, 0, 0, 0.45) !important;
+	background: rgba(0, 0, 0, 0.12) !important;
+	color: rgba(0, 0, 0, 0.75) !important;
 }
 body.pl-mobile #pl-map-tab svg { width: 12px; height: 12px; display: block; pointer-events: none; }
 /* Lit while pressed and while the map is open. */
@@ -3508,25 +3523,27 @@ body:not(.pl-mobile) #pl-map-tab {
 	z-index: 23;
 	border: 0 !important;
 	border-radius: 9px 0 0 9px;
-	background: rgba(255, 255, 255, 0.07) !important;
-	color: rgba(255, 255, 255, 0.42) !important;
+	/* B7 a11y: idle tab ≥ AA icon contrast on dark shell */
+	background: rgba(0, 0, 0, 0.45) !important;
+	color: rgba(255, 255, 255, 0.82) !important;
 	cursor: pointer;
 }
 body.light:not(.pl-mobile) #pl-map-tab {
-	background: rgba(0, 0, 0, 0.07) !important;
-	color: rgba(0, 0, 0, 0.45) !important;
+	background: rgba(0, 0, 0, 0.12) !important;
+	color: rgba(0, 0, 0, 0.75) !important;
 }
 body:not(.pl-mobile) #pl-map-tab svg { width: 13px; height: 13px; display: block; pointer-events: none; }
 body:not(.pl-mobile) #pl-map-tab:hover,
 body:not(.pl-mobile) #pl-map-tab:focus-visible,
 body:not(.pl-mobile).map-open #pl-map-tab {
-	background: rgba(116, 212, 179, 0.28) !important;
-	color: #74d4b3 !important;
+	/* B7 a11y: solid mint fill + dark glyph (was mint-on-mint ~1:1) */
+	background: rgba(116, 212, 179, 0.92) !important;
+	color: #0b1210 !important;
 }
 body.pl-mobile #pl-map-tab:active,
 body.pl-mobile.map-open #pl-map-tab {
-	background: rgba(116, 212, 179, 0.28) !important;
-	color: var(--pl-accent, #74d4b3) !important;
+	background: rgba(116, 212, 179, 0.92) !important;
+	color: #0b1210 !important;
 }
 
 /* The right-hand exit rail is tappable travel. Where a long exit name reaches the Map tab, the label wins:

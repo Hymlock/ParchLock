@@ -611,7 +611,7 @@ var ParchLockMap = {
             var node = e.target.closest && e.target.closest(".room.browsed-controls");
             var fromTouch = e.pointerType === "touch" || !!(e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents);
             if (!node || !fromTouch) return;
-            var icon = e.target.closest(".back-to-room, .go-to-room");
+            var icon = e.target.closest(".back-to-room, .go-to-room, .icon-go-to-room");
             if (!touch || touch.node !== node || !touch.ended || touch.invalid || active.size) {
                 if (icon) { e.preventDefault(); e.stopImmediatePropagation(); }
                 return;
@@ -620,7 +620,7 @@ var ParchLockMap = {
             node.classList.add("controls-revealed");
             if (icon && !wasRevealed) { e.preventDefault(); e.stopImmediatePropagation(); }
         }, true);
-        $(root).on("keydown.plBrowseControls", ".back-to-room, .go-to-room", function (e) {
+        $(root).on("keydown.plBrowseControls", ".back-to-room, .go-to-room, .icon-go-to-room", function (e) {
             if (e.key !== "Enter" && e.key !== " ") return;
             e.preventDefault();
             e.stopPropagation();
@@ -1321,7 +1321,12 @@ var ParchLockMap = {
 
             var d = $("<div>").appendTo("#map #rooms-list #container").data("room", room).attr("title", "Go to " + room.Name).click(ParchLockMap.GotoRoom);
             $("<div>").addClass("icon icon-eye").attr("title", "Center map on " + room.Name).data("room", room).click(ParchLockMap.ShowRoom).appendTo(d);
-            $("<div>").addClass("icon icon-go-to-room").attr("title", "Go to " + room.Name).data("room", room).click(ParchLockMap.GotoRoom).appendTo(d);
+            $("<div>").addClass("icon icon-go-to-room").attr({
+                title: "Go to " + room.Name,
+                "aria-label": "Go to " + room.Name,
+                role: "button",
+                tabindex: 0
+            }).data("room", room).click(ParchLockMap.GotoRoom).appendTo(d);
 
             if (!ParchLockMap.IsCurrentRoom(room)) {
 
