@@ -1,0 +1,180 @@
+/* Tutorial (D124) -- live tour chrome, drawn OVER the real app.
+ *
+ * Replaces the D120 stylesheet, which dressed a separate fake page
+ * (tutorial.html) with imitation library/map/play screens. Nothing here
+ * renders app content: it is a scrim, a spotlight cut-out and a card that sit
+ * on top of the genuine UI while js/Tutorial.js walks through it.
+ *
+ * The app underneath is deliberately inert while body.pl-tutorial is set --
+ * the tour is information only, so a highlighted control is explained but
+ * cannot be operated, and the player cannot wander off-script mid-tour.
+ */
+
+#pl-tut-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 11000;          /* above every app tier, below nothing */
+	pointer-events: none;    /* children opt back in */
+}
+
+/* D130 (operator): the background was washed out to the point of being
+ * unreadable. Two separate dimmers were stacking -- this full-screen scrim
+ * AND the spotlight's own 9999px shadow, both at 0.72, compounding to roughly
+ * 0.92 over every pixel outside the highlight. The spotlight's shadow already
+ * darkens everything it is not framing, so whenever a spotlight is up the
+ * scrim must contribute nothing at all. The remaining single layer is also
+ * lightened: the player has to be able to READ the screen the tour is
+ * describing, which is the whole point of a live tour. */
+#pl-tut-scrim {
+	position: absolute;
+	inset: 0;
+	background: rgba(4, 10, 9, 0.45);
+	pointer-events: auto;    /* swallows taps meant for the app */
+}
+
+/* Spotlight showing -> the scrim stops painting and only the shadow dims. */
+#pl-tut-overlay.pl-tut-has-spot #pl-tut-scrim { background: transparent; }
+
+/* The spotlight is a hole in the scrim: no backdrop of its own, just a huge
+ * outward shadow that darkens everything except the framed element. That
+ * keeps the real control fully visible and correctly coloured instead of
+ * tinting it. */
+#pl-tut-spot {
+	position: absolute;
+	display: none;
+	border-radius: 10px;
+	border: 2px solid var(--pl-accent, #74d4b3);
+	box-shadow: 0 0 0 9999px rgba(4, 10, 9, 0.45);
+	pointer-events: none;
+	transition: top 0.18s ease, left 0.18s ease, width 0.18s ease, height 0.18s ease;
+}
+
+#pl-tut-card {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: min(92vw, 460px);
+	box-sizing: border-box;
+	padding: 18px 20px 14px;
+	background: var(--pl-surface, #121514);
+	color: var(--pl-text, #dfe);
+	border: 1px solid var(--pl-accent, #2a9);
+	border-radius: 14px;
+	box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+	pointer-events: auto;
+	font-family: 'Roboto Mono', monospace;
+}
+
+#pl-tut-card.pl-tut-centred {
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#pl-tut-progress {
+	margin: 0 0 6px;
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	opacity: 0.6;
+}
+
+#pl-tut-title {
+	margin: 0 0 10px;
+	font-size: 20px;
+	line-height: 1.25;
+	color: var(--pl-accent, #74d4b3);
+}
+
+#pl-tut-body {
+	margin: 0 0 16px;
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+#pl-tut-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.pl-tut-spacer { flex: 1 1 auto; }
+
+#pl-tut-actions button {
+	font: inherit;
+	font-size: 14px;
+	min-height: 44px;
+	padding: 8px 18px;
+	border-radius: 9px;
+	border: 1px solid var(--pl-border, #2a6);
+	background: var(--pl-bg, #0c1412);
+	color: inherit;
+	cursor: pointer;
+}
+
+#pl-tut-actions #pl-tut-next {
+	background: var(--pl-accent, #2a9);
+	border-color: var(--pl-accent, #2a9);
+	color: #062;
+	font-weight: bold;
+}
+
+#pl-tut-actions button:disabled { opacity: 0.4; cursor: default; }
+
+#pl-tut-skip {
+	font-size: 13px !important;
+	opacity: 0.75;
+	padding: 8px 12px !important;
+}
+
+/* The whole point of "no interactivity": the live app keeps rendering and
+ * keeps being pointed at, but cannot be driven, so the tour cannot be
+ * derailed halfway through. The overlay re-enables itself above. */
+body.pl-tutorial #windowport,
+body.pl-tutorial #parchment,
+body.pl-tutorial #exits,
+body.pl-tutorial #map,
+body.pl-tutorial #equipment,
+body.pl-tutorial #pl-map-tab,
+body.pl-tutorial #pl-equip-tab,
+body.pl-tutorial #pl-input-submit,
+body.pl-tutorial #pl-input-mic,
+body.pl-tutorial #pl-dirpad-handle,
+body.pl-tutorial #pl-dirpad-ring,
+body.pl-tutorial #control-panel,
+body.pl-tutorial #game-menu,
+body.pl-tutorial #tools-toggle {
+	pointer-events: none !important;
+}
+
+/* D130: the library screen's own controls, for the phase that runs there. */
+body.pl-tutorial #games-list,
+body.pl-tutorial #toolbar,
+body.pl-tutorial #filter-options,
+body.pl-tutorial #filter,
+body.pl-tutorial #modules,
+body.pl-tutorial #about,
+body.pl-tutorial #toggle-theme,
+body.pl-tutorial #show-all {
+	pointer-events: none !important;
+}
+
+/* No on-screen keyboard mid-tour: the player is not meant to type, and the
+ * IME would resize the shell under every spotlight measurement. */
+body.pl-tutorial .Input.LineInput,
+body.pl-tutorial .Input.CharInput {
+	pointer-events: none !important;
+}
+
+body.light #pl-tut-card { background: #fdfdfb; color: #1E1E1E; }
+body.light #pl-tut-spot { box-shadow: 0 0 0 9999px rgba(20, 24, 22, 0.32); }
+body.light #pl-tut-scrim { background: rgba(20, 24, 22, 0.32); }
+
+@media (prefers-reduced-motion: reduce) {
+	#pl-tut-spot { transition: none; }
+}
+
+/* Options > "Replay tutorial" row. Carried over from the D120 stylesheet
+ * because js/WorkspaceUI.js still renders this control. */
+.pl-tutorial-setting { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 0; }
+.pl-tutorial-setting button { min-height: 44px; }
+#pl-tutorial-status { font-size: 13px; line-height: 1.4; opacity: 0.8; }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>ParchLock - Tutorial</title>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no,viewport-fit=cover">
+
+		<!-- D124: this isolated route is retired.
+		     The tutorial used to be a separate page that rebuilt imitation
+		     versions of the library, play screen and map and asked the player
+		     to perform tasks against those fakes. It is replaced by the live
+		     tour in js/Tutorial.js, which draws its cards over the REAL
+		     running app on play.html.
+
+		     The file is kept as a redirect rather than deleted so that an old
+		     bookmark, the service-worker precache entry and make-dist.bat's
+		     distribution allow-list all still resolve instead of 404ing. -->
+		<script>
+			try { location.replace("index.html"); } catch (e) { window.location = "index.html"; }
+		</script>
+
+	</head>
+
+	<body>
+		<p>The tutorial now runs inside the game itself. <a href="index.html">Continue to ParchLock</a>.</p>
+	</body>
+
+</html>

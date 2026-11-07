@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>ParchLock - Interactive Fiction</title>
+
+		<meta charset="utf-8">
+		<meta name="parchlock-root" content=".">
+		<meta name="description" content="ParchLock is a free program that allows you to play interactive fiction stories, also known as text adventure games, and offers some quality of life improvements such as automatic mapping, note taking, quick navigation, and auto complete.">
+		<meta name="keywords" content="interactive, fiction, parchmap, parchment, zork, play, free, map, automap, navigation, autocomplete, notes, easy">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+		<script>
+			(function () {
+				try {
+					if (sessionStorage.getItem("PL_ParchLockSplashSeen") !== "1" && String(window.name || "").indexOf("__PARCHLOCK_SPLASH_SEEN__") === -1) {
+						document.documentElement.classList.add("parchlock-splash-pending");
+					}
+				} catch (e) {
+					document.documentElement.classList.add("parchlock-splash-pending");
+				}
+			})();
+		</script>
+
+        <meta property="og:description" content="ParchLock is a free program that allows you to play interactive fiction stories, also known as text adventure games, and offers some quality of life improvements such as automatic mapping, note taking, quick navigation, and auto complete.">
+        <meta property="og:title" content="ParchLock - interactive fiction">
+        <meta property="og:type" content="website">
+
+		<link rel="stylesheet" href="css/parchment.css">
+		<link rel="stylesheet" href="css/ParchLock.css">
+		<link rel="stylesheet" href="css/CharCell.css">
+		<link rel="stylesheet" href="css/Tutorial.css">
+		<link rel="stylesheet" href="css/LearnedWords.css">
+		<link rel="stylesheet" href="img/ParchLockSplash.css">
+		
+        <link rel="manifest" href="manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="ParchLock" />
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png" />
+		
+		<script src="js/ProductInfo.js"></script>
+		<script src="js/Global.js"></script>
+		<script src="js/PronunciationCatalog.js"></script>
+		<script src="js/ReadAloud.js"></script>
+		<script src="js/Consts.js"></script>
+
+		<script src="lib/jquery.min.js"></script>
+		<script src="js/ModuleLibrary.js"></script>
+		<script src="js/LearningStores.js"></script>
+		<script src="js/Transcript.js"></script>
+		<script src="js/SaveState.js"></script>
+		<script src="js/ZvmCapture.js"></script>
+		<script src="lib/main.js"></script>
+		<script src="lib/ie.js" nomodule></script>
+    	<script src="lib/resourcemap.js"></script> 
+
+		<script src="js/Input.js"></script>
+		<script src="js/CharKeys.js"></script>
+		<script src="js/GameList.js"></script>
+		<script src="js/Map.js"></script>
+		<script src="js/Directions.js"></script>
+		<script src="js/Message.js"></script>
+		<script src="js/IconRotation.js"></script>
+		<script src="js/Navigator.js"></script>
+		<script src="js/WorldMapLayout.js"></script>
+		<script src="js/WorldMap.js"></script>
+		<script src="js/Autocomplete.js"></script>
+		<script src="js/Qol.js"></script>
+		<script src="js/BufferRevision.js"></script>
+		<script src="js/Actionable.js"></script>
+		<script src="js/WorkspaceUI.js"></script>
+		<script src="js/TextGate.js"></script>
+		<script src="js/ActionSynth.js"></script>
+		<script src="js/SemanticActions.js"></script>
+		<script>
+			// D88 Stage 6 manual test convenience, matching this project's own
+			// existing ?story= URLSearchParams pattern (js/ParchLock.js,
+			// js/VmProbeLoader.js): ?semanticCutover=1 flips the cutover flag on
+			// for this load; ?semanticCutover=0 explicitly turns it back off.
+			// The flag itself still defaults OFF and persists via localStorage
+			// (SemanticActions.CutoverFlag) exactly as without this convenience.
+			try {
+				var __semCutoverParam = new URLSearchParams(window.location.search).get("semanticCutover");
+				if (__semCutoverParam === "1") SemanticActions.CutoverFlag.enable();
+				else if (__semCutoverParam === "0") SemanticActions.CutoverFlag.disable();
+			} catch (e) {}
+		</script>
+		<script src="js/MapIdentity.js"></script>
+		<script src="js/GlkTapProvider.js"></script>
+		<script src="js/RemGlkTapProvider.js"></script>
+		<script src="js/VmProbeLoader.js"></script>
+		<script src="js/DarkScope.js"></script>
+		<script src="js/GraphicsDock.js"></script>
+		<script src="js/ExitCalibrator.js"></script>
+		<script src="js/MapTopology.js"></script>
+		<script src="js/UndoRestoreSync.js"></script>
+		<script src="js/MapBeautify.js"></script>
+		<script src="js/ModuleStatFacts.js"></script>
+		<script src="js/ModuleStatFactsClaude.js"></script>
+		<script src="js/StatTracker.js"></script>
+		<script src="js/StatusGridDecoder.js"></script>
+		<script src="js/EquipmentUI.js"></script>
+		<script src="js/Tutorial.js"></script>
+		<script src="js/LiveHeapProvider.js"></script>
+		<script src="js/BufferTapProvider.js"></script>
+		<script src="js/AttributeSchema.js"></script>
+		<script src="js/ZRamReader.js"></script>
+		<script src="js/TurnRecorder.js"></script>
+		<script>SemanticActions.registerWithTurnRecorder();</script>
+		<script src="js/AttrCalibrator.js"></script>
+		<script src="js/LearnedWords.js"></script>
+		<script src="js/ZRamProvider.js"></script>
+		<script src="js/GrammarProvider.js"></script>
+		<script src="js/WorldModel.js"></script>
+		<script src="js/TranslatorUI.js"></script>
+		<script src="js/ParchLock.js"></script>
+		<script src="js/MobileLayout.js"></script>
+		<script src="js/DirectionalRadial.js"></script>
+		<script>
+			// PWA offline/installable shell. Service workers only register in a
+			// "secure context" (https:, or the literal host "localhost") -- this
+			// is a browser platform rule, not something any code here can work
+			// around. Opening this page via file:// or a plain http:// LAN IP
+			// (e.g. from another device) will NOT register a service worker and
+			// offline caching will not apply there; manifest.json's install/
+			// fullscreen-landscape behavior (via MobileLayout.js) still works
+			// regardless, since that does not depend on the service worker.
+			if ("serviceWorker" in navigator && window.isSecureContext) {
+				window.addEventListener("load", function () {
+					navigator.serviceWorker.register("service-worker.js").catch(function () {});
+				});
+			}
+		</script>
+
+	</head>
+
+	<body>
+
+		<div id="parchlock-splash" data-scene="map" role="dialog" aria-modal="true" aria-labelledby="parchlock-splash-title">
+			<img class="parchlock-splash__picture" src="img/parchlock-splash-living-map.png" alt="An elaborate hand-drawn fantasy map on an explorer's table">
+			<div class="parchlock-splash__shade" aria-hidden="true"></div>
+			<div class="parchlock-splash__motion" aria-hidden="true">
+				<span class="pl-route pl-route--one"></span>
+				<span class="pl-route pl-route--two"></span>
+				<span class="pl-route pl-route--three"></span>
+				<span class="pl-dust pl-dust--one"></span>
+				<span class="pl-dust pl-dust--two"></span>
+				<span class="pl-dust pl-dust--three"></span>
+				<span class="pl-dust pl-dust--four"></span>
+				<span class="pl-page pl-page--one"></span>
+				<span class="pl-page pl-page--two"></span>
+				<span class="pl-page pl-page--three"></span>
+				<span class="pl-leaf pl-leaf--one"></span>
+				<span class="pl-leaf pl-leaf--two"></span>
+				<span class="pl-leaf pl-leaf--three"></span>
+			</div>
+			<div class="parchlock-splash__content">
+				<p class="parchlock-splash__eyebrow">Every story has a way in</p>
+				<h1 class="parchlock-splash__title" id="parchlock-splash-title">ParchLock!</h1>
+				<div class="parchlock-splash__rule" aria-hidden="true"></div>
+				<p class="parchlock-splash__credits">Adapted by <strong>Hymlock Groves</strong><br>Based on Parchmap by Roy Lazarovich</p>
+				<button class="parchlock-splash__start" type="button">Start the Adventure!</button>
+			</div>
+		</div>
+		<script src="img/ParchLockSplash.js"></script>
+
+		<div id="pl-rotate-hint" hidden aria-hidden="true">
+			Rotate your phone to <strong>landscape</strong> to play. The keyboard needs horizontal room.
+		</div>
+		
+		<!-- http://iplayif.com/lib/ -->
+		<!-- http://parchment.toolness.com/if-archive/games/zcode/ -->
+		<!-- https://ifarchive.org/indexes/if-archiveXgamesXzcode.html -->
+		<!-- https://iplayif.com/tools/zcode2js.html -->
+		<!-- &vm=zvm -->
+
+		<div id="windowport">
+            <noscript>
+                <p>You'll need to turn on Javascript in your web browser to play this game.</p>
+            </noscript>
+        </div>
+
+        <div id="loadingpane">
+			<div>
+				Loading...
+			</div>
+        </div>
+
+        <div id="errorpane" style="display:none;"><div id="errorcontent">...</div></div> 
+
+		<div id="exits"></div>
+
+		<div id="parchment"></div>
+
+		<!-- D93 (R1/R2/G10): host-owned overlay buttons beside Glk's own
+		     .Input.LineInput, not children of it -- GlkOte re-renders that
+		     node on every prompt (see js/Input.js's pl-input-mic/submit
+		     wiring), so these are fixed-position siblings with a CSS gutter
+		     reserved in the input's own width instead of being reparented
+		     into Glk-owned markup every turn. -->
+		<button id="pl-input-submit" type="button" title="Submit command" aria-label="Submit command">&#10148;</button>
+		<button id="pl-input-mic" type="button" title="Speak a command" aria-label="Speak a command" hidden>&#127908;</button>
+
+		<div id="current-room-notes" class="icon"></div>
+
+		<div id="autocomplete"></div>
+
+		<div id="message" class="crt">
+
+			<h2></h2>
+
+			<div></div>
+
+			<span id="close" title="Close message" aria-label="Close" role="button">&#x2715;</span>
+
+			<footer>Type any letter to close this message.</footer>
+
+		</div>
+
+		<div id="map" data-simplebar>
+
+			<h1></h1>
+			<h2></h2>
+			<h3></h3>
+
+			<!-- D112: map controls (center/zoom/reset/maps) are collapsible,
+			     same native details/summary pattern as #items-tab below.
+			     Default open/closed state is set per-layout in js/Map.js
+			     Build() (open on desktop, collapsed on mobile-compact),
+			     since CSS alone can't see the runtime layout class in time
+			     for the initial render. -->
+			<details id="map-controls-tab">
+				<summary>Map controls</summary>
+				<div id="map-toolbar">
+					<button id="center-current-room" title="Center map on current room" aria-label="Center map on current room">Center</button>
+					<button id="zoom-out" title="Zoom map out" aria-label="Zoom map out">-</button>
+					<button id="zoom-reset" title="Reset map view" aria-label="Reset map view">100%</button>
+					<button id="zoom-in" title="Zoom map in" aria-label="Zoom map in">+</button>
+					<button id="export-map" title="Save, load or download maps" aria-label="Save, load or download maps">Maps</button>
+					<button id="reset-map" title="Clear the current map" aria-label="Clear the current map">Reset Map</button>
+				</div>
+			</details>
+
+			<div id="map-stats"></div>
+
+			<div id="rooms-shell">
+				<div id="rooms"></div>
+			</div>
+
+			<details id="items-tab">
+				<summary>Items <span id="items-count">0</span></summary>
+				<div class="items-actions"><button id="refresh-inventory" title="Request inventory from the game">Refresh</button></div>
+				<div id="inventory-items" class="qol-command-list"></div>
+				<details class="inventory-text"><summary>Last response</summary><pre id="inventory-response">No inventory response recorded.</pre></details>
+			</details>
+
+			<div id="rooms-list" data-simplebar>
+
+				<!-- D112: search box moved here from #map-toolbar -- it narrows
+				     Known Rooms below AND the Notes section (js/Map.js
+				     Build()'s shared "input" binding). -->
+				<input id="room-filter" type="search" placeholder="Search rooms and notes" title="Filter known rooms and notes">
+
+				<strong>Known rooms</strong>
+
+				<div id="container"></div>
+
+			</div>
+
+			<!-- D112: permanent Notes section. .notes-heading wraps the
+			     <details> and the optional add-note button as SIBLINGS
+			     (button is not nested inside <summary>, avoiding nested-
+			     interactive-control activation ambiguity) so the button's
+			     visibility never depends on the details' open/closed state.
+			     The <summary> itself is always rendered/visible regardless
+			     of note count, collapse state, or the button preference --
+			     none of those ever hide this section. -->
+			<div class="notes-heading">
+				<details id="notes-tab">
+					<summary>Notes</summary>
+					<div id="notes-container"></div>
+				</details>
+				<button id="notes-add-button" type="button" title="Add a note" aria-label="Add a note" hidden>+ Note</button>
+			</div>
+
+			<footer></footer>
+
+		</div>
+
+		<button id="tools-toggle" title="Toggle tools" aria-label="Toggle tools">Tools</button>
+		<button id="game-menu" title="Game menu" aria-label="Game menu">Menu</button>
+		<!-- World map tab (operator 2026-10-07): globe, ABOVE the Map tab; shown only while
+		     the map, equipment or world view is open (css/ParchLock.css). -->
+		<button id="pl-world-tab" type="button" title="World map" aria-label="World map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg></button>
+		<button id="pl-map-tab" type="button" title="Map" aria-label="Map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></button>
+		<!-- D122: equipment tab. Sits directly beneath #pl-map-tab and is only
+		     reachable while a sheet is open (see the body.map-open /
+		     body.equip-open rules in css/ParchLock.css). Backpack glyph. -->
+		<button id="pl-equip-tab" type="button" title="Equipment" aria-label="Equipment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M6 8V6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"/><rect x="4" y="8" width="16" height="13" rx="3"/><path d="M9 12h6"/></svg></button>
+
+		<!-- D122: equipment sheet. Peer of #map, driven by body.equip-open. -->
+		<div id="equipment" data-simplebar>
+
+			<!-- D149: character tracker. Populated only with stats the loaded
+			     module actually tracks; stays display:none while there are none. -->
+			<div id="pl-stats">
+				<h2 id="pl-stats-title">Status</h2>
+				<div id="pl-stats-rows"></div>
+				<button id="pl-stats-identify" type="button" class="pl-secondary"
+				        title="Ask the story for its score and condition (costs a turn)">Identify stats</button>
+			</div>
+
+			<h1>Equipment</h1>
+
+
+
+			<!-- D168 (operator): the options row cost the list six lines of
+			     height on every screen before a single item was visible.
+			     Collapsed by default on mobile AND desktop, using the same
+			     details/summary disclosure as #map-controls-tab so there is
+			     one collapse idiom in the app rather than two. No `open`
+			     attribute: closed is the default state on every open.
+			     EquipmentUI keeps the summary honest about filters that are
+			     active while hidden. -->
+			<details id="equipment-options">
+				<summary><span id="equipment-options-label">Options</span></summary>
+			<div id="equipment-controls">
+				<label class="equip-ctl equip-sort" for="equipment-sort">Sort
+					<select id="equipment-sort">
+						<option value="alpha">Alphabetical (A-Z)</option>
+						<option value="za">Alphabetical (Z-A)</option>
+						<option value="recent">Most recent</option>
+						<option value="oldest">Least recent</option>
+						<option value="container">Containers first</option>
+						<option value="worn">Worn first</option>
+					</select>
+				</label>
+				<label class="equip-ctl equip-check"><input type="checkbox" id="equipment-container-view" checked> Container view</label>
+				<input type="search" id="equipment-filter" placeholder="Search items" title="Search equipment by name" aria-label="Search equipment">
+				<div class="equip-cats" role="group" aria-label="Show item categories">
+					<span class="equip-cats-title">Show</span>
+					<label class="equip-check"><input type="checkbox" id="equipment-cat-worn" checked> Worn</label>
+					<label class="equip-check"><input type="checkbox" id="equipment-cat-carried" checked> Carried</label>
+					<label class="equip-check"><input type="checkbox" id="equipment-cat-containers" checked> Containers</label>
+					<!-- D149: shown only in a module that can actually cast. -->
+					<label class="equip-check" id="equipment-cat-spells-label" hidden><input type="checkbox" id="equipment-cat-spells" checked> Spells</label>
+				</div>
+				<button id="equipment-refresh" type="button" title="Request inventory from the game">Refresh</button>
+			</div>
+			</details>
+
+			<!-- D150: the count belongs to the item list, not the title. In the
+			     title it sat above the stats strip and read as though it were
+			     counting those instead (operator-reported). -->
+			<p id="equipment-listhead"><span id="equipment-count">0</span> <span id="equipment-count-label">items</span></p>
+			<div id="equipment-list"></div>
+			<p class="equip-hint">Drag an item onto an open container to put it in, or onto Yourself to take it out. Right-click or long-press for actions.</p>
+		</div>
+
+		<section id="start-screen" hidden>
+			<h1 data-product-name>ParchLock!</h1>
+			<p>No story is loaded.</p>
+			<button id="start-modules" class="pl-secondary" type="button">Manage modules</button>
+			<a href="index.html">Choose a story</a>
+		</section>
+
+		<div id="control-panel">
+
+			<button class="inject" data-inject="save" title="Save the game state">
+				Save
+			</button>
+
+			<button class="inject" data-inject="restore" title="Restore a previously saved state">
+				Restore
+			</button>
+
+			<button title="Manage browser saves and portable save packages" id="save-manager">
+				Save Manager
+			</button>
+
+			<button title="Import\Export saved game and map data" id="import-export">
+				Import\Export
+			</button>
+
+			<button id="toggle-show-info" class="toggle-button on hide-first" title="Toggle whether the help screen comes up when starting a new game">
+				<div class="button-state"></div>
+				Show help at start
+			</button>
+
+			<button id="show-commands" title="Open quick commands">
+				Commands
+			</button>
+
+			<button id="show-history" title="Show recent commands">
+				History
+			</button>
+
+			<button id="show-transcript" title="Copy or download the visible transcript">
+				Transcript
+			</button>
+
+			<button id="show-display" title="Adjust font size and line spacing">
+				Display <span id="display-summary"></span>
+			</button>
+
+		</div>
+
+		<div id="radial-menu" aria-hidden="true"></div>
+
+	</body>
+
+</html>

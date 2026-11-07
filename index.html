@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        
+        <title>ParchLock - Interactive Fiction</title>
+
+        <meta charset="utf-8">
+        <meta name="description" content="Play interactive fiction with explored-world maps, contextual actions, equipment, notes, read aloud and local story management.">
+        <meta name="keywords" content="interactive, fiction, parchmap, parchment, zork, play, free, map, automap, navigation, autocomplete, notes, easy">
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+		<script>
+			(function () {
+				try {
+					if (sessionStorage.getItem("PL_ParchLockSplashSeen") !== "1" && String(window.name || "").indexOf("__PARCHLOCK_SPLASH_SEEN__") === -1) {
+						document.documentElement.classList.add("parchlock-splash-pending");
+					}
+				} catch (e) {
+					document.documentElement.classList.add("parchlock-splash-pending");
+				}
+			})();
+		</script>
+
+        <meta property="og:description" content="Play interactive fiction with explored-world maps, contextual actions, equipment, notes, read aloud and local story management.">
+        <meta property="og:title" content="ParchLock - interactive fiction">
+        <meta property="og:type" content="website">
+
+        <link rel="stylesheet" href="css/parchment.css">
+		<link rel="stylesheet" href="css/ParchLock.css">
+		<link rel="stylesheet" href="css/Tutorial.css">
+		<link rel="stylesheet" href="img/ParchLockSplash.css">
+
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png" />
+
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/jquery.slimscroll.min.js"></script>
+        <script src="js/ProductInfo.js"></script>
+        <script src="js/ModuleLibrary.js"></script>
+        <script src="js/SaveState.js"></script>
+        <script src="js/Global.js"></script>
+        <script src="js/Consts.js"></script>
+        <script src="js/Input.js"></script>
+        <script src="js/Message.js"></script>
+        <script src="js/IconRotation.js"></script>
+        <script src="js/GameList.js"></script>
+        <script src="js/MainMenu.js"></script>
+        <!-- D166: the library tour was silent. Tutorial.speak() returns
+             immediately when ReadAloud is undefined, and this page never
+             loaded it, so the whole module-screen half of the tour was
+             skipped by the narration. Its auto-read path collects from
+             "#windowport .BufferWindow", which does not exist here, so it
+             narrates the tour cards without ever reading the story list. -->
+        <script src="js/PronunciationCatalog.js"></script>
+        <script src="js/ReadAloud.js"></script>
+        <script src="js/Tutorial.js"></script>
+
+    </head>
+
+    <body class="main-menu map-open">
+
+		<div id="parchlock-splash" data-scene="map" role="dialog" aria-modal="true" aria-labelledby="parchlock-splash-title">
+			<img class="parchlock-splash__picture" src="img/parchlock-splash-living-map.png" alt="An elaborate hand-drawn fantasy map on an explorer's table">
+			<div class="parchlock-splash__shade" aria-hidden="true"></div>
+			<div class="parchlock-splash__motion" aria-hidden="true">
+				<span class="pl-route pl-route--one"></span>
+				<span class="pl-route pl-route--two"></span>
+				<span class="pl-route pl-route--three"></span>
+				<span class="pl-dust pl-dust--one"></span>
+				<span class="pl-dust pl-dust--two"></span>
+				<span class="pl-dust pl-dust--three"></span>
+				<span class="pl-dust pl-dust--four"></span>
+				<span class="pl-page pl-page--one"></span>
+				<span class="pl-page pl-page--two"></span>
+				<span class="pl-page pl-page--three"></span>
+				<span class="pl-leaf pl-leaf--one"></span>
+				<span class="pl-leaf pl-leaf--two"></span>
+				<span class="pl-leaf pl-leaf--three"></span>
+			</div>
+			<div class="parchlock-splash__content">
+				<p class="parchlock-splash__eyebrow">Every story has a way in</p>
+				<h1 class="parchlock-splash__title" id="parchlock-splash-title">ParchLock!</h1>
+				<div class="parchlock-splash__rule" aria-hidden="true"></div>
+				<p class="parchlock-splash__credits">Adapted by <strong>Hymlock Groves</strong><br>Based on Parchmap by Roy Lazarovich</p>
+				<button class="parchlock-splash__start" type="button">Start the Adventure!</button>
+			</div>
+		</div>
+		<script src="img/ParchLockSplash.js"></script>
+        
+        <!-- http://iplayif.com/lib/ -->
+        <!-- http://parchment.toolness.com/if-archive/games/zcode/ -->
+        <!-- https://ifarchive.org/indexes/if-archiveXgamesXzcode.html -->
+        <!-- https://iplayif.com/tools/zcode2js.html -->
+        <!-- &vm=zvm -->
+
+        <header class="library-masthead"><div><p class="library-eyebrow">Interactive fiction, thoughtfully equipped</p><h1 data-product-name>ParchLock!</h1><p>Text adventures, with a map beside you.</p></div><span class="library-local">Your stories. On this device.</span></header>
+        <div id="windowport" class="oldschool" data-simplebar>
+
+            <div class="status TextGrid">
+
+                <div id="toolbar">
+                    <div id="filter-options">
+                        <button type="button" class="icon icon-fav-on" data-filter="fav" title="Show only starred" aria-label="Show only starred" aria-pressed="false"><span>Starred</span></button>
+                        <button type="button" class="icon icon-done-off" data-filter="done-off" title="Show only unfinished" aria-label="Show only unfinished" aria-pressed="false"><span>Unfinished</span></button>
+                        <button type="button" class="icon icon-done-on" data-filter="done-on" title="Show only finished" aria-label="Show only finished" aria-pressed="false"><span>Finished</span></button>
+                    </div>
+                    <button type="button" id="modules" class="icon icon-import" title="Manage modules" aria-label="Manage modules"><span>Modules</span></button>
+                    <button type="button" id="about" class="icon icon-about" title="About ParchLock" aria-label="About ParchLock"><span>About</span></button>
+                    <button type="button" id="toggle-theme" class="icon icon-theme" title="Change theme" aria-label="Light theme" aria-pressed="false"><span>Theme</span></button>
+                </div>
+                
+                <tt class="zvm-fg-2" id="listing-stories">
+                    Select a story
+                </tt>
+
+                <div>
+                    <input type="search" id="filter" placeholder="Search title or author" aria-label="Search stories by title or author">
+                </div>
+
+            </div>
+
+            <div class="library-columns"><span>Your library</span><span>Done</span></div>
+
+            <div id="games-list">
+
+            </div>
+
+            <button type="button" id="show-all" data-filter="all">Show all stories</button>
+
+        </div>
+
+        <section id="map" class="library-guide" aria-labelledby="library-guide-title">
+            <p class="library-eyebrow">More room for the adventure</p>
+            <h2 id="library-guide-title">Follow the story.<br>Keep your bearings.</h2>
+            <p class="library-lead">Choose a story from your library, or open Modules to add a compatible file. ParchLock brings useful tools alongside the Parchment interpreter, so you can focus on what happens next.</p>
+            <div class="library-features">
+                <article><span class="feature-number">01</span><h3>See where you've been</h3><p>Local and World maps keep explored rooms in view. Discovered exit hints stay separate from routes you have travelled.</p></article>
+                <article><span class="feature-number">02</span><h3>Keep your gear close</h3><p>Equipment, contextual action menus and status use information from the game where supported. Available actions and statistics vary by story.</p></article>
+                <article><span class="feature-number">03</span><h3>Leave yourself a clue</h3><p>Add room notes, search known places and navigate along a known route. Word suggestions help with typing.</p></article>
+                <article><span class="feature-number">04</span><h3>Make it comfortable</h3><p>Adjust text and display settings, switch themes or listen with read aloud. Touch and desktop controls share the same adventure.</p></article>
+                <article><span class="feature-number">05</span><h3>Take your progress with you</h3><p>Use Tools for game saves, map packages and transcripts. Export files to your device and import them when you need them.</p></article>
+                <article><span class="feature-number">06</span><h3>Build your own library</h3><p>Manage compatible modules stored on this device. Imported stories remain local; you choose what to install and play.</p></article>
+            </div>
+            <aside class="library-compatibility"><h3>A note on story support</h3><p>Z-machine stories support the enhanced maps, items and action menus. Glulx stories are currently play-only. Game rules still apply: some inventory or status requests can use a turn.</p></aside>
+            <details class="library-command-guide"><summary>Prefer typing? Useful commands</summary><dl>
+                <dt><code>/note locked door, find a key;</code></dt><dd>Add a note to the current room.</dd>
+                <dt><code>/notes</code></dt><dd>Show notes for the current room.</dd>
+                <dt><code>/goto kitchen;</code></dt><dd>Prepare a route to a known room.</dd>
+                <dt><code>/see kitchen;</code></dt><dd>Browse a known room on the map.</dd>
+                <dt><code>/clear notes</code></dt><dd>Remove notes from the current room.</dd>
+                <dt><code>/clear map</code></dt><dd>Erase the map and start again from your current room.</dd>
+            </dl></details>
+            <footer><p data-product-credit></p><span class="library-build"></span></footer>
+        </section>
+
+        <div id="message" class="crt">
+
+			<h2></h2>
+
+			<div></div>
+
+			<span id="close" title="Close message" aria-label="Close" role="button">&#x2715;</span>
+
+		</div>
+
+    </body>
+
+</html>

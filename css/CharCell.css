@@ -1,0 +1,115 @@
+/* CharCell.css (D94) -- one truthful character cell for the mobile shell.
+ *
+ * Problem this fixes (measured, not assumed): GlkOte sizes the game's screen
+ * by injecting a hidden test pane, measuring one character, and dividing. That
+ * pane is appended to #parchment (GlkOte's "gameport"), but every ParchLock
+ * font rule is scoped to #windowport, where the real windows live. So the pane
+ * only saw the bare vendor CSS (grid 14px / buffer 15px) while the real screen
+ * rendered the grid at 10px and prose at 20px. On a 412px phone the game was
+ * told "44 columns" (8.4px cells) though the rendered grid really held ~62
+ * (6px cells): it hard-wrapped its quote at column 44 mid-word, and it centred
+ * the title with padding sized for a width the prose column could not hold, so
+ * "ANCHORHEAD" broke as "ANCHORH / EAD".
+ *
+ * Fix, in two parts, both scoped to the mobile shell only (desktop is
+ * untouched -- its cells are already consistent and columns are plentiful):
+ *   1. ONE cell for grid and buffer. Games treat the grid's width as the
+ *      screen width and pad centred/boxed text to it, so the prose column must
+ *      hold at least as many characters as the grid reports.
+ *   2. The exact same rules on the measuring pane (#parchment) as on the real
+ *      windows (#windowport), so the columns reported to the game are true.
+ *
+ * The cell is as large as the user's Display setting allows, but never so large
+ * that fewer than --pl-cell-cols columns fit (default 50: classic boxed quotes
+ * and status lines need ~49). Loaded after ParchLock.css; !important is used
+ * deliberately to win over that file's older per-window font rules.
+ */
+
+body.pl-mobile {
+	/* Minimum columns the screen must hold. Raise for more fidelity to games
+	 * that draw wide boxes, lower for larger text. */
+	--pl-cell-cols: 50;
+	/* Every supported monospace face advances 0.6em (Roboto Mono, Source Code
+	 * Pro, Courier, Android's system monospace). GlkOte measures the real cell
+	 * anyway, so a small error here can only cost a column, never truth. */
+	--pl-cell-adv: 0.6;
+	/* D203: derive from the same shell width that owns #windowport and the
+	 * hidden #parchment measurement pane. This must never drift back into a
+	 * parallel 100vw formula. */
+	--pl-cell-fit: calc((var(--pl-mobile-shell-width) - var(--pl-mobile-cell-padding) - var(--pl-mobile-cell-padding)) / (var(--pl-cell-cols) * var(--pl-cell-adv)));
+	--pl-cell-font: max(9px, min(var(--pl-play-font-size, 20px), var(--pl-cell-fit)));
+}
+
+/* Real windows and the measuring pane get identical cell rules. */
+body.pl-mobile :is(#windowport, #parchment) :is(.GridWindow, .BufferWindow) {
+	font-family: "Roboto Mono", "Source Code Pro", Monaco, Courier, monospace !important;
+	font-size: var(--pl-cell-font) !important;
+	line-height: var(--pl-play-line-height, 1.4) !important;
+	letter-spacing: 0 !important;
+	word-spacing: 0 !important;
+	padding-left: var(--pl-mobile-cell-padding) !important;
+	padding-right: var(--pl-mobile-cell-padding) !important;
+}
+
+/* Grid rows must paint edge to edge. An inline span's background only covers
+ * the font's content area, not the full line-height, so at a 1.4 line-height
+ * every grid row left a visible seam (dark bands across boxed quotes and
+ * status bars). ParchLock.css already makes reverse spans inline-block; do the
+ * same for every span in a grid row, and leave non-reverse text on the window
+ * background instead of a second, slightly different dark fill. Width is
+ * unchanged, so the measured cell is unaffected. */
+body.pl-mobile :is(#windowport, #parchment) .GridWindow .GridLine > span {
+	display: inline-block;
+	vertical-align: top;
+	line-height: inherit;
+}
+body.pl-mobile #windowport .GridWindow .GridLine > span:not(.reverse) {
+	background-color: transparent !important;
+}
+/* Fractional line heights (e.g. 12.5px x 1.4 = 17.5px) put row boundaries on
+ * half pixels, leaving hairline seams inside a reverse box. Paint each
+ * reverse span 1px further down (padding is painted by the background) and
+ * cancel it with an equal negative margin so layout does not move: rows now
+ * overlap instead of leaving a gap. Colour-agnostic (light and dark themes). */
+body.pl-mobile #windowport .GridWindow .GridLine > span.reverse {
+	padding-bottom: 1px;
+	margin-bottom: -1px;
+}
+
+/* The measured element is span.Style_normal; make every body style follow the
+ * cell (headers keep their game-chosen emphasis and are not used for metrics). */
+body.pl-mobile :is(#windowport, #parchment) :is(.GridWindow, .BufferWindow)
+	:is(.Style_normal, .Style_emphasized, .Style_preformatted, .Style_subheader, .Style_alert, .Style_note, .Style_blockquote, .Style_input, .Style_user1, .Style_user2) {
+	font-family: inherit !important;
+	font-size: var(--pl-cell-font) !important;
+	letter-spacing: 0 !important;
+}
+
+/* Display > Text size enlarges reflowable story prose without changing the
+ * fixed-width cell used for status grids, boxed quotations, headings, and
+ * preformatted output. Enlarging that shared cell after a game has formatted
+ * a grid can wrap or clip its already-emitted rows. Normal buffer lines are
+ * ordinary flowing text, so they can respond immediately and safely. */
+body.pl-mobile #windowport .BufferWindow .BufferLine.Style_normal {
+	font-size: max(9px, var(--pl-reading-scale, 100%)) !important;
+	line-height: var(--pl-play-line-height, 1.4) !important;
+}
+/* Glk gives a line and its child span the same style. Keep that span relative
+ * to the scaled line instead of letting the fixed-cell rule win again. */
+body.pl-mobile #windowport .BufferWindow .BufferLine.Style_normal * {
+	font-size: 1em !important;
+}
+
+/* D137 (found while walking the tutorial as a player, NOT YET FIXED):
+ * Anchorhead's status line renders as "Outside the Real Estatday onee" on a
+ * phone -- the room name and the right-hand field ("day one") written over
+ * each other.
+ *
+ * Recorded here because the cause is NOT cosmetic and a CSS clip does not
+ * touch it: the mangling is in the grid's own cell contents, so the VM itself
+ * overwrote them. The game right-aligns its second field at a column derived
+ * from the width GlkOte reported, and --pl-cell-cols pins that to 50 columns;
+ * when a game's status line needs more, the two fields collide inside the grid
+ * before any styling applies. Fixing it means reconciling the reported column
+ * count with the real cell size (the D94 fit logic), not styling the result --
+ * attempted a clip here first and measured that it changed nothing. */

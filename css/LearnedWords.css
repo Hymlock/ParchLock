@@ -1,0 +1,50 @@
+#message.lw-dialog.show { height:calc(var(--pl-layout-height,100vh) - var(--pl-kb-inset,0px) - 24px); max-height:calc(var(--pl-layout-height,100vh) - var(--pl-kb-inset,0px) - 24px); top:12px; overflow:hidden !important; resize:none; }
+#message.lw-dialog > div { display:flex; min-height:0; overflow:hidden; }
+#learned-words { --lw-line: #7c968a70; max-width: 900px; width:100%; min-height:0; display:flex; flex-direction:column; position: relative; }
+#learned-words .lw-toolbar { display:flex; flex-wrap:wrap; gap:8px; flex:none; background:var(--pl-surface, Canvas); z-index:2; padding:8px 0; font-size:13px; }
+#learned-words .lw-current-header, #learned-words .lw-bottom-headers { flex:none; }
+#learned-words .lw-center { flex:1 1 auto; min-height:0; overflow:auto; overscroll-behavior:contain; padding:0 4px; }
+#learned-words .lw-section-header { display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; text-align:left; font:inherit; font-size:14px; border:1px solid var(--pl-border,#7c968a); background:linear-gradient(180deg, #ffffff12, #00000010), var(--pl-surface-2,Canvas); color:inherit; border-radius:7px; margin:4px 0; box-shadow:inset 0 1px 0 #ffffff24, 0 2px 3px #00000038; }
+#learned-words .lw-section-header::after { content:'\203A'; flex:none; font-size:20px; line-height:1; transform:rotate(0deg); }
+#learned-words .lw-section-header[aria-expanded=true] { border:2px solid var(--pl-accent,#47987a); padding:7px 13px; font-weight:600; box-shadow:inset 0 1px 0 #ffffff24, 0 2px 4px #00000038; }
+#learned-words .lw-section-header[aria-expanded=true]::after { transform:rotate(90deg); }
+#learned-words .lw-section-header:focus-visible { outline:3px solid var(--pl-accent,#47987a); outline-offset:2px; }
+#learned-words .lw-section-header[aria-disabled=true] { opacity:.65; }
+#learned-words .lw-panel[hidden] { display:none; }
+#learned-words button { min-height:44px; padding:8px 14px; cursor:pointer; }
+#learned-words p { line-height:1.5; }
+#learned-words .lw-feedback { min-height:1.5em; }
+#learned-words .lw-entry { border-top:1px solid var(--lw-line); padding:14px 0; }
+#learned-words summary { cursor:pointer; min-height:44px; }
+#learned-words .lw-entry > summary { display:flex; justify-content:space-between; gap:24px; align-items:center; }
+#learned-words .lw-summary { display:grid; gap:8px; min-width:0; overflow-wrap:anywhere; }
+#learned-words .lw-summary span:first-child { font-weight:600; }
+#learned-words .lw-meta { text-align:right; font-size:.85em; max-width:35%; }
+#learned-words .lw-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:18px 0; }
+#learned-words label:not(.lw-ignore) { display:grid; gap:6px; }
+#learned-words input:not([type=checkbox]), #learned-words select { box-sizing:border-box; width:100%; min-width:0; min-height:44px; font:inherit; padding:9px; border:1px solid var(--lw-line); border-radius:6px; color:inherit; background:transparent; }
+#learned-words input[readonly] { opacity:.75; }
+#learned-words .lw-ignore { display:flex; align-items:center; gap:10px; min-height:44px; }
+#learned-words .lw-advanced { margin:12px 0; padding:12px; border:1px solid var(--lw-line); border-radius:8px; }
+#learned-words pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:.8em; max-height:180px; overflow:auto; }
+#learned-words .lw-error { color:#b44936; }
+#learned-words .lw-tour { position:fixed; display:flex; flex-direction:column; box-sizing:border-box; border:2px solid var(--pl-accent,#47987a); border-radius:12px; padding:12px; background:var(--pl-surface,Canvas); color:var(--pl-text,CanvasText); z-index:120; font-size:14px; box-shadow:var(--pl-shadow); }
+#learned-words .lw-tour > p:first-child { margin:0; font-size:12px; flex:none; }
+#learned-words .lw-tour h3 { margin:6px 0; font-size:16px; flex:none; }
+#learned-words .lw-tour-body { overflow:auto; min-height:0; margin:6px 0; }
+#learned-words .lw-tour-controls { display:flex; gap:4px; flex:none; }
+#learned-words .lw-tour[hidden] { display:none; }
+#learned-words .lw-target { outline:3px solid var(--pl-accent,#47987a); outline-offset:2px; }
+#learned-words .lw-tour button { margin:4px; }
+@media(min-width:600px) and (max-height:500px) { #learned-words .lw-current-header, #learned-words .lw-bottom-headers { display:flex; gap:4px; } #learned-words .lw-section-header { flex:1; min-width:0; } }
+@media(max-width:540px) { #learned-words .lw-fields { grid-template-columns:1fr; } #learned-words .lw-entry > summary { gap:12px; } #learned-words .lw-meta { font-size:.75em; } }
+
+#learned-words .lw-icons .lw-button-text { display:none; }
+#learned-words .lw-icons button { min-width:44px; }
+#learned-words .lw-icon { font-size:20px; line-height:1; }
+#learned-words .lw-toolbar:not(.lw-icons) .lw-icon { display:none; }
+#learned-words .lw-diagnostic { font-size:.9em; }
+
+#learned-words .lw-meta { overflow-wrap:anywhere; }
+
+#learned-words [hidden] { display:none !important; }
