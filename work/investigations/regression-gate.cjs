@@ -52,9 +52,10 @@ const out = fs.createWriteStream(process.env.OUT || 'gate.jsonl');
                 // B8: underlines are applied after the reply paints; read until two reads agree and
                 // compare as a sorted set, so a half-applied or reordered pass is not a diff.
                 const readMarks = () => p.evaluate(() => [...document.querySelectorAll('.pl-act')].slice(-25).map(e => e.textContent.trim()).sort());
-                let marks = await readMarks();
-                for (let i = 0; i < 15; i++) { await p.waitForTimeout(200); const m2 = await readMarks(); if (JSON.stringify(m2) === JSON.stringify(marks)) break; marks = m2; }
+                let marks = await readMarks(), stable = false;
+                for (let i = 0; i < 15 && !stable; i++) { await p.waitForTimeout(200); const m2 = await readMarks(); stable = JSON.stringify(m2) === JSON.stringify(marks); marks = m2; }
                 Object.assign(row, await p.evaluate(() => ({ exits: ((WorldModel.lastPayload || {}).exits || []).map(e => e.label + '>' + e.targetRoomId).sort() })), { marks });
+                if (!stable) row.marksUnstable = true;   // grok review of c97d82f4: never silently use an unsettled read
                 const ex = await p.evaluate(() => ((WorldModel.lastPayload || {}).exits || []).map(e => e.command || e.label).filter(Boolean).slice(0, 2));
                 for (const e of ex) { await cmd(e); await cmd('look'); }
                 await cmd('i'); row.inv1 = await inv(); await cmd('take all'); await cmd('i'); row.inv2 = await inv();
