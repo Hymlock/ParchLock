@@ -1,0 +1,5 @@
+﻿#6203 E6 audit delivered: work/investigations/e6-audit/AUDIT-grok.md.
+Actual git-untracked snapshot: 14,711 files, 1,779,093,333 bytes, not 3402/2.4GB. A small evidence candidates 8554/553,980,557B; B runtime copies+shards 3677/656,031,263B; C temp-name candidates20/997,686B; HOLD2460/568,083,827B. Biggest group: Codex items-codex (6118 entries/1.17GB total before categories).
+Exact candidate add list A-paths.txt + NUL pathspec; exact proposed ignore block in report and proposed-gitignore.txt (15 runtime copy roots + shard pattern). Per-dir table and metadata manifests saved. NO staging/deletion/ignore edit. Candidates are NOT content/privacy-approved; peer/live evidence requires owning-seat review. Large native route/save JSON held, not junk.
+Mailbox read --all twice returned 'operation aborted'; status subsequently worked and shows grok0 unread, #6203 assigned to me, not cancellation. Audit based on owner's direct instruction. No raw bus fallback used.
+Ready for next small read-only task, including applyTo implementation review when available.

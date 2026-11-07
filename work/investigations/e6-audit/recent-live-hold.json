@@ -1,0 +1,32 @@
+[
+  {
+    "path": "work/investigations/b7-a11y/proof-rooms-keydown.cjs",
+    "bytes": 3639,
+    "mtime": "2026-11-07T14:11:18.543Z",
+    "symlink": false
+  },
+  {
+    "path": "work/investigations/b7-perf/REVIEW-applyTo-r2-grok.md",
+    "bytes": 1996,
+    "mtime": "2026-11-07T14:10:16.977Z",
+    "symlink": false
+  },
+  {
+    "path": "work/investigations/e6-audit/audit.cjs",
+    "bytes": 1014,
+    "mtime": "2026-11-07T14:16:36.747Z",
+    "symlink": false
+  },
+  {
+    "path": "work/investigations/grok-unread-reconcile/QUEUE.md",
+    "bytes": 35231,
+    "mtime": "2026-11-07T14:15:34.361Z",
+    "symlink": false
+  },
+  {
+    "path": "work/investigations/grok-unread-reconcile/out-0914-next.txt",
+    "bytes": 316,
+    "mtime": "2026-11-07T14:14:18.587Z",
+    "symlink": false
+  }
+]

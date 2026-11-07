@@ -93,3 +93,23 @@ Thumbs.db
 harness/_*.js
 harness/_*.json
 harness/_*.txt
+
+# E6 (grok audit work/investigations/e6-audit/AUDIT-grok.md, claude apply 11-07): copied runtime
+# trees from gate runs and gate stream shards are reproducible; their reports stay tracked.
+/work/mapping-research/items-codex/resume-20261020/review-20261025/z3p178/base/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/z3p178/cand/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/b1-r4-site-0112/
+/work/mapping-research/items-codex/resume-20261020/oct30-recovery/lgop-final-gate/base/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/absent-r1-candidate/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/b1-r4-player-site-0200/
+/work/mapping-research/items-codex/resume-20261020/oct30-recovery/lgop-final-gate/candidate/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/b1-r4-baseline-site-0116/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/consumer-combined-r1-1204/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/infidel-state-r2-candidate/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/infidel-state-r3-candidate/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/b1-suspect-candidate-site-0040/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/concealed-next7-takeover-r2/base/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/concealed-next7-takeover-r2/cand/
+/work/mapping-research/items-codex/resume-20261020/review-20261025/sorcerer-illumination-r1-candidate/
+# Reproducible gate stream shards (retain merged summary/results)
+/work/**/*.jsonl.s[0-9]*
