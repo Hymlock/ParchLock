@@ -22,6 +22,9 @@ Project and dependency licenses remain with their respective authors. See
 `THIRD_PARTY_NOTICES.md`, `NOTICE`, and the license files in the
 corresponding source archive.
 
-Release rights for the generated artwork have not been reviewed and must be
-confirmed before a public release. No ownership of Parchmap, Parchment,
+Artwork provenance (confirmed by Hymlock Groves, 2026-11-07): the splash and
+storybook artwork, like the rest of ParchLock's own additions, was created by
+Hymlock Groves with AI assistance and his own design decisions. No outside
+artwork or assets were used, apart from the original Parchmap and Parchment
+projects credited above. No ownership of Parchmap, Parchment,
 interpreters, or user-supplied or included story modules is claimed.

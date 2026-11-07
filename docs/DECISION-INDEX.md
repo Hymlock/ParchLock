@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 165 decisions across
-10017 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 167 decisions across
+10025 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,8 +27,10 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D283 | Two releases: private invite-only (everything) and public (cleared titles only, no bundled Glulx) |  |  |  |
+| D282 | Snapshot reuse between VM runs (B7 phone stall) |  |  |  |
 | D281 | Edifice player body swap: playerGlobal 18 (Q1) |  |  |  |
-| D280 | Inform flag mapping covers every non-ZIL title; layouts from library anchors (I7) |  |  | line 3063 |
+| D280 | Inform flag mapping covers every non-ZIL title; layouts from library anchors (I7) |  |  | line 3065 |
 | D279 | Put on surfaces; ZIL instrumentals need their grammar form (I5) |  |  |  |
 | D278 | Map room boxes take the room menu; local map shows decoded exits (M11, M12) |  |  |  |
 | D277 | Long stat names span two Equipment columns |  |  |  |
@@ -158,7 +160,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 | D149 | addendum: the v3 path, relevance-gated filters, and the tour |  |  | §60 |
 | D148 | Held containers whose bits do not decode | harness/d31-nested-inventory.js | Enchanter | §59 |
 | D147 | The instrumental verb has to exist in the game |  | Zork 1 Planetfall Enchanter | §59 |
-| D146 | One mark per object, dictionary-verified instrumental verbs, and the spell path | tools/highlight-scope-regression.js | Anchorhead | §59 line 2823 |
+| D146 | One mark per object, dictionary-verified instrumental verbs, and the spell path | tools/highlight-scope-regression.js | Anchorhead | §59 line 2825 |
 | D142 | Object vocabulary, text decoding, and verb trust across compilers |  | Zork1 Planetfall |  |
 | D141 | Adjective+noun command disambiguation |  |  |  |
 | D138 | Mapping and auto-travel across the catalog |  | Anchorhead |  |
@@ -186,11 +188,11 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 | D112 | map panel: search placement, collapsible controls, unified notation |  |  | §46 |
 | D111 | automatic arrow pad for native grid menus |  |  | §45 §52 |
 | D110 | deterministic adaptive radial usage |  |  | §44 |
-| D109 | shared pronunciation correction |  | Anchorhead | line 2003 |
+| D109 | shared pronunciation correction |  | Anchorhead | line 2005 |
 | D108 | complete-turn deterministic narration |  |  | §43 |
 | D107 | parser-owned command nouns |  |  | §42 |
 | D106 | visible state after native file restore |  |  | §41 |
-| D93 | mobile follow-up (operator live APK, grok) |  |  | §30 line 1527 |
+| D93 | mobile follow-up (operator live APK, grok) |  |  | §30 line 1529 |
 | D88 | invariants |  |  | §28 |
 
 ## Architecture chapters (ARCHITECTURE_UML.md)
@@ -247,89 +249,89 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | line 1271 | 1271 | Evidence and persistence boundary |  |
 | line 1289 | 1289 | Mobile and out-of-sample gate |  |
 | §29 | 1305 | 29. RAM-reading recovery: scope/attribute/exit walk (D89) | D89 |
-| §30 | 1379 | 30. Mobile: portrait-primary shell, PWA shell, and native Android conversion (D93, supersedes D92's landscape framing) | D92 D93 |
-| line 1527 | 1527 | Post-D93 operator follow-ups: input, dialogs, mic (partly superseded) | D93 |
-| §31 | 1537 | 31. VM restore hooks and the truthful character cell (D94) | D94 |
-| §32 | 1593 | 32. Voice input state machine (D95) | D95 |
-| §33 | 1626 | 33. Bottom Menu handle and right-edge Map tab (D96) | D96 |
-| §34 | 1661 | 34. ParchLock release and documentation architecture (D99 -- implementation in progress) | D99 |
-| §35 | 1722 | 35. Module library (D98 -- implemented) | D98 |
-| §36 | 1784 | 36. Display text scaling and menu de-duplication (D101) | D101 |
-| §37 | 1812 | 37. Mobile menu reachability (D102) | D102 |
-| §38 | 1835 | 38. First-install mobile gesture tutorial (D103) | D103 |
-| §39 | 1864 | 39. Read-aloud pipeline (D104, supersedes the D100 delta design) | D100 D104 |
-| §40 | 1894 | 40. Mobile input contract: keyboard intent, character prompts and the arrow pad (D105) | D105 |
-| §41 | 1919 | 41. Post-restore visible-state contract (D106) | D106 |
-| §42 | 1949 | 42. Parser-owned command descriptor pipeline (D107) | D107 |
-| §43 | 1988 | 43. Complete-turn narrator pipeline (D108) | D108 |
-| line 2003 | 2003 | D109 pronunciation hints | D109 |
-| §44 | 2012 | 44. Adaptive radial ordering (D110) | D110 |
-| §45 | 2052 | 45. Automatic native-menu arrow pad (D111) | D111 |
-| §46 | 2078 | 46. Map panel: search, collapsible controls, unified notation (D112) | D112 |
-| §47 | 2107 | 47. App-wide navigation guard (D113) | D113 |
-| §48 | 2132 | 48. Real file export on Android (D114) | D114 |
-| §49 | 2155 | 49. Hardware back button never exits silently (D115) | D115 |
-| §50 | 2170 | 50. Top compass strip clears the real occupied top region (D116) | D116 |
-| §51 | 2186 | 51. Programmable directional radial overlay (D117) | D117 |
-| §52 | 2231 | 52. Merging D111's arrow pad into the DirectionalRadial widget (D118) | D111 D118 |
-| §53 | 2283 | 53. D117/D118 audit fixes (bus #786) + merged-settings gap + desktop arrow overlay (D119) | D117 D118 D119 |
-| §54 | 2332 | 54. Non-live adaptive tutorial + phone-landscape portrait prompt (D120) | D120 |
-| §55 | 2459 | 55. Top reflow band, and real file export on Android (D121) | D121 |
-| line 2465 | 2465 | 55.1 `ParchLockQol.DownloadText` handed native a `Blob` |  |
-| line 2487 | 2487 | 55.2 The top chrome is a reflow band, not an overlay |  |
-| §56 | 2558 | 56. Equipment sheet (D122) | D122 |
-| §57 | 2636 | 57. Live tutorial restored (D124) | D124 |
-| §58 | 2690 | 58. Save to device via the Storage Access Framework (D129) | D129 |
-| §59 | 2734 | 59. Commanding non-standard items: spells, instruments, and held containers (D146-D148) | D146 D147 D148 |
-| line 2741 | 2741 | The dictionary as the single arbiter |  |
-| line 2767 | 2767 | Instrumental verbs |  |
-| line 2788 | 2788 | Qualifiers from the printed name |  |
-| line 2799 | 2799 | Descending into a held container whose bits do not decode |  |
-| line 2823 | 2823 | Marks versus commands (D146) | D146 |
-| §60 | 2838 | 60. Character tracker (D149) | D149 |
-| line 2845 | 2845 | Source precedence |  |
-| line 2858 | 2858 | Why globals are a candidate and not a source |  |
-| line 2868 | 2868 | The v3 seeding path |  |
-| line 2886 | 2886 | Deaths |  |
-| line 2896 | 2896 | Audio |  |
-| line 2905 | 2905 | Relevance gating, generalised |  |
-| line 2914 | 2914 | Custom status windows |  |
-| §61 | 2926 | 61. Compiled attribute declarations and audit corrections (D186) | D186 |
-| §62 | 2978 | 62. Attribute audit coverage and remaining decoder gaps |  |
-| §63 | 3021 | 63. Inform Z3 declaration layout (D200) | D200 |
-| line 3063 | 3063 | 63.1 No-name-table Inform layouts, all non-ZIL titles (D280, I7) | D280 |
-| §64 | 3066 | 64. D198 ZIL/Infocom composition architecture | D198 |
-| §65 | 3292 | 65. Unnamed early-Inform identity composition (D201) | D201 |
-| §66 | 3473 | 66. Original Map Controls (D202) | D202 |
-| §67 | 3490 | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | D203 |
-| §68 | 3560 | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | D204 |
-| §69 | 3686 | 69. Yourself hold radial for inventory/RPG verbs (D205) | D205 |
-| §70 | 3757 | 70. Learned words display and shared-copy repairs (2026-10-04) |  |
-| line 3794 | 3794 | Observed item descriptor precedence - regression correction (2026-10-04) |  |
-| §71 | 3803 | 71. Status probes, time games and the score alias (D207-D209) | D207 D208 D209 |
-| §72 | 3839 | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | D210 D211 D212 |
-| §73 | 3897 | 73. In-room steps and combat actions (D213) | D213 |
-| §74 | 3925 | 74. Underline lifetime, reply observation and Yourself breadth (D214) | D214 |
-| §75 | 3975 | 75. Save-tied state, authored endings and the rotating icon (D215) | D215 |
-| §76 | 4046 | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | D216 |
-| §77 | 4069 | 77. Library-compass lane for exit labels (D217) | D217 |
-| §78 | 4089 | 78. Inform 7 bookkeeping properties are not exits (D218) | D218 |
-| §79 | 4099 | 79. DarkScope: one heuristic darkness verdict per tick (D221) | D221 |
-| §80 | 4121 | 80. Inform 7 Map_Storage look-ahead lane (D223) | D223 |
-| §81 | 4140 | 81. Measured location fact and dark-admitted naming (D224) | D224 |
-| line 4159 | 4159 | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) |  |
-| line 4187 | 4187 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
-| line 4193 | 4193 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
-| §82 | 4198 | 82. Mark coverage and inventory label admission (D225) | D225 |
-| §83 | 4210 | 83. Inventory holder authority and recovery (D226) | D226 |
-| §84 | 4230 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
-| §85 | 4283 | 85. Authored state-gated food actions (D228) | D228 |
-| §86 | 4300 | 86. Measured container state and authored container forms (D229) | D229 |
-| §87 | 4311 | 87. More-page suggestion admission (D230) | D230 |
-| §88 | 4319 | 88. Authored unlock tool domain (D231) | D231 |
-| line 4327 | 4327 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
-| §89 | 4340 | 89. Save-linked cumulative playthrough history (D243) | D243 |
-| §90 | 4351 | 90. Display-only lock observations (D254; landed f82f243) | D254 |
-| §91 | 4365 | 91. Module learning and item preference retention (D263) | D263 |
-| §92 | 4394 | 92. Desktop movement key ownership (D264) | D264 |
-| §93 | 4399 | 93. Qualified owner-local Remove and compact FIND metadata (D265/D266) | D265 D266 |
+| §30 | 1381 | 30. Mobile: portrait-primary shell, PWA shell, and native Android conversion (D93, supersedes D92's landscape framing) | D92 D93 |
+| line 1529 | 1529 | Post-D93 operator follow-ups: input, dialogs, mic (partly superseded) | D93 |
+| §31 | 1539 | 31. VM restore hooks and the truthful character cell (D94) | D94 |
+| §32 | 1595 | 32. Voice input state machine (D95) | D95 |
+| §33 | 1628 | 33. Bottom Menu handle and right-edge Map tab (D96) | D96 |
+| §34 | 1663 | 34. ParchLock release and documentation architecture (D99 -- implementation in progress) | D99 |
+| §35 | 1724 | 35. Module library (D98 -- implemented) | D98 |
+| §36 | 1786 | 36. Display text scaling and menu de-duplication (D101) | D101 |
+| §37 | 1814 | 37. Mobile menu reachability (D102) | D102 |
+| §38 | 1837 | 38. First-install mobile gesture tutorial (D103) | D103 |
+| §39 | 1866 | 39. Read-aloud pipeline (D104, supersedes the D100 delta design) | D100 D104 |
+| §40 | 1896 | 40. Mobile input contract: keyboard intent, character prompts and the arrow pad (D105) | D105 |
+| §41 | 1921 | 41. Post-restore visible-state contract (D106) | D106 |
+| §42 | 1951 | 42. Parser-owned command descriptor pipeline (D107) | D107 |
+| §43 | 1990 | 43. Complete-turn narrator pipeline (D108) | D108 |
+| line 2005 | 2005 | D109 pronunciation hints | D109 |
+| §44 | 2014 | 44. Adaptive radial ordering (D110) | D110 |
+| §45 | 2054 | 45. Automatic native-menu arrow pad (D111) | D111 |
+| §46 | 2080 | 46. Map panel: search, collapsible controls, unified notation (D112) | D112 |
+| §47 | 2109 | 47. App-wide navigation guard (D113) | D113 |
+| §48 | 2134 | 48. Real file export on Android (D114) | D114 |
+| §49 | 2157 | 49. Hardware back button never exits silently (D115) | D115 |
+| §50 | 2172 | 50. Top compass strip clears the real occupied top region (D116) | D116 |
+| §51 | 2188 | 51. Programmable directional radial overlay (D117) | D117 |
+| §52 | 2233 | 52. Merging D111's arrow pad into the DirectionalRadial widget (D118) | D111 D118 |
+| §53 | 2285 | 53. D117/D118 audit fixes (bus #786) + merged-settings gap + desktop arrow overlay (D119) | D117 D118 D119 |
+| §54 | 2334 | 54. Non-live adaptive tutorial + phone-landscape portrait prompt (D120) | D120 |
+| §55 | 2461 | 55. Top reflow band, and real file export on Android (D121) | D121 |
+| line 2467 | 2467 | 55.1 `ParchLockQol.DownloadText` handed native a `Blob` |  |
+| line 2489 | 2489 | 55.2 The top chrome is a reflow band, not an overlay |  |
+| §56 | 2560 | 56. Equipment sheet (D122) | D122 |
+| §57 | 2638 | 57. Live tutorial restored (D124) | D124 |
+| §58 | 2692 | 58. Save to device via the Storage Access Framework (D129) | D129 |
+| §59 | 2736 | 59. Commanding non-standard items: spells, instruments, and held containers (D146-D148) | D146 D147 D148 |
+| line 2743 | 2743 | The dictionary as the single arbiter |  |
+| line 2769 | 2769 | Instrumental verbs |  |
+| line 2790 | 2790 | Qualifiers from the printed name |  |
+| line 2801 | 2801 | Descending into a held container whose bits do not decode |  |
+| line 2825 | 2825 | Marks versus commands (D146) | D146 |
+| §60 | 2840 | 60. Character tracker (D149) | D149 |
+| line 2847 | 2847 | Source precedence |  |
+| line 2860 | 2860 | Why globals are a candidate and not a source |  |
+| line 2870 | 2870 | The v3 seeding path |  |
+| line 2888 | 2888 | Deaths |  |
+| line 2898 | 2898 | Audio |  |
+| line 2907 | 2907 | Relevance gating, generalised |  |
+| line 2916 | 2916 | Custom status windows |  |
+| §61 | 2928 | 61. Compiled attribute declarations and audit corrections (D186) | D186 |
+| §62 | 2980 | 62. Attribute audit coverage and remaining decoder gaps |  |
+| §63 | 3023 | 63. Inform Z3 declaration layout (D200) | D200 |
+| line 3065 | 3065 | 63.1 No-name-table Inform layouts, all non-ZIL titles (D280, I7) | D280 |
+| §64 | 3068 | 64. D198 ZIL/Infocom composition architecture | D198 |
+| §65 | 3294 | 65. Unnamed early-Inform identity composition (D201) | D201 |
+| §66 | 3475 | 66. Original Map Controls (D202) | D202 |
+| §67 | 3492 | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | D203 |
+| §68 | 3562 | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | D204 |
+| §69 | 3688 | 69. Yourself hold radial for inventory/RPG verbs (D205) | D205 |
+| §70 | 3759 | 70. Learned words display and shared-copy repairs (2026-10-04) |  |
+| line 3796 | 3796 | Observed item descriptor precedence - regression correction (2026-10-04) |  |
+| §71 | 3805 | 71. Status probes, time games and the score alias (D207-D209) | D207 D208 D209 |
+| §72 | 3841 | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | D210 D211 D212 |
+| §73 | 3899 | 73. In-room steps and combat actions (D213) | D213 |
+| §74 | 3927 | 74. Underline lifetime, reply observation and Yourself breadth (D214) | D214 |
+| §75 | 3977 | 75. Save-tied state, authored endings and the rotating icon (D215) | D215 |
+| §76 | 4048 | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | D216 |
+| §77 | 4071 | 77. Library-compass lane for exit labels (D217) | D217 |
+| §78 | 4091 | 78. Inform 7 bookkeeping properties are not exits (D218) | D218 |
+| §79 | 4101 | 79. DarkScope: one heuristic darkness verdict per tick (D221) | D221 |
+| §80 | 4123 | 80. Inform 7 Map_Storage look-ahead lane (D223) | D223 |
+| §81 | 4142 | 81. Measured location fact and dark-admitted naming (D224) | D224 |
+| line 4161 | 4161 | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) |  |
+| line 4189 | 4189 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
+| line 4195 | 4195 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
+| §82 | 4200 | 82. Mark coverage and inventory label admission (D225) | D225 |
+| §83 | 4212 | 83. Inventory holder authority and recovery (D226) | D226 |
+| §84 | 4232 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
+| §85 | 4285 | 85. Authored state-gated food actions (D228) | D228 |
+| §86 | 4302 | 86. Measured container state and authored container forms (D229) | D229 |
+| §87 | 4313 | 87. More-page suggestion admission (D230) | D230 |
+| §88 | 4321 | 88. Authored unlock tool domain (D231) | D231 |
+| line 4329 | 4329 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
+| §89 | 4342 | 89. Save-linked cumulative playthrough history (D243) | D243 |
+| §90 | 4353 | 90. Display-only lock observations (D254; landed f82f243) | D254 |
+| §91 | 4367 | 91. Module learning and item preference retention (D263) | D263 |
+| §92 | 4396 | 92. Desktop movement key ownership (D264) | D264 |
+| §93 | 4401 | 93. Qualified owner-local Remove and compact FIND metadata (D265/D266) | D265 D266 |

@@ -1336,6 +1336,8 @@ flowchart TD
   SNAPCALL -->|no| HINT[status-text hint ladder - last resort only]
 ```
 
+**Snapshot reuse (D282, B7):** `ZRamReader.snapshot` returns a copy of its last result while every input it reads is unchanged: RAM buffer, `ZvmCapture.vmRuns` (moved on entry and exit of every `start`/`resume`), `UndoRestoreSync.generation`, story digest, the learning tables (`AttrCalibrator.table`, `ExitCalibrator._table`: post-VM learning changes `bitFor` with RAM unchanged), the status-grid room number (`printedRoomNumber`, D171) and the map-admitted real room ids. Nothing is stored while `ZvmCapture.inRun > 0`, or when the key changed during the walk. `ZRamProvider.collect` still recomputes its non-RAM parts every call. Harness: `harness/b7-snapshot-memo.js`.
+
 **The invariant this section exists to name:** `ZRamProvider.collect()`'s text-hint
 ladder (`resolveStatusRoom` -> `findLikelyLocation` with a hint -> `matchRoomFromText`
 -> `findRoomsByName`) is a fallback for when structural resolution finds NOTHING, never

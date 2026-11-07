@@ -2,6 +2,10 @@
 var ZvmCapture = {
     patchTries: 0,
     patched: false,
+    // B7 (COMPARE-and-PROPOSAL r2): every game RAM change happens inside start/resume. vmRuns
+    // moves on entry and exit; inRun > 0 while the VM executes. ZRamReader.snapshot's memo keys on both.
+    vmRuns: 0,
+    inRun: 0,
 
     armConstructorHook: () => {
         if (typeof window === "undefined" || window.ZVM) return false;
@@ -46,7 +50,10 @@ var ZvmCapture = {
             ZvmCapture._origStart = Proto.start;
             Proto.start = function () {
                 try { window.__PARCHLOCK_ZVM__ = this; } catch (e) {}
-                var r = ZvmCapture._origStart.apply(this, arguments);
+                ZvmCapture.vmRuns++; ZvmCapture.inRun++;
+                try {
+                    var r = ZvmCapture._origStart.apply(this, arguments);
+                } finally { ZvmCapture.inRun--; ZvmCapture.vmRuns++; }
                 try { window.__PARCHLOCK_ZVM__ = this; } catch (e) {}
                 return r;
             };
@@ -55,7 +62,9 @@ var ZvmCapture = {
             ZvmCapture._origResume = Proto.resume;
             Proto.resume = function () {
                 try { window.__PARCHLOCK_ZVM__ = this; } catch (e) {}
-                return ZvmCapture._origResume.apply(this, arguments);
+                ZvmCapture.vmRuns++; ZvmCapture.inRun++;
+                try { return ZvmCapture._origResume.apply(this, arguments); }
+                finally { ZvmCapture.inRun--; ZvmCapture.vmRuns++; }
             };
         }
         // D73/AttrCalibrator Phase B: `lib/zvm.js` JIT-compiles Z-machine

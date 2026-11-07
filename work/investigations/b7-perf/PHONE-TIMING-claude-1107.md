@@ -10,3 +10,6 @@ Conclusion: the cost is redundant world-model ticks (28 per command), each re-wa
 Direction for proposal: collapse ticks that see no VM progress. Needs a VM-progress barrier (the r3 REJECT point: probes and /goto run the VM
 between ticks) - e.g. a counter bumped on every VM resume/step return in ZvmCapture/ZRamProvider, plus UndoRestoreSync.generation; tick returns
 lastPayload when both are unchanged. Tick call sites: Actionable 2291/2298, EquipmentUI 1159, ParchLock 49/160/462, TranslatorUI 302, UndoRestoreSync 62/86.
+
+## Phone re-measure (claude, 2026-11-07, dev APK of the candidate, full uninstall + install)
+Zork I, same CDP scripts: per-command long tasks 911/836/947/923/888 ms (Build 83) -> 0/83/87/225/136 ms; one LOOK snapshot total 1073 ms (31 calls) -> 73 ms (40 calls); one tick 16 ms -> 2-3 ms. Note: adb install -r kept the cached old JS (snapshotMemoKey missing); a full uninstall was required (operator: sometimes a power cycle too).

@@ -1,0 +1,115 @@
+Adventureland.z5.js exits
+  base: ["east>35","north>32","south>32","west>32"]
+  cand: ["east>35","north>32","south>32","up>33","west>32"]
+Adventureland.z5.js marks
+  base: ["East","North","South","West","trees"]
+  cand: ["East","North","South","Up","West","trees"]
+Aug4.z8.js marks
+  base: ["gnarled root","pit"]
+  cand: ["gnarled root","guards","matching green tights","pit"]
+BibleRetold.z5.js marks
+  base: ["Dock","clover","crowd","east","heavy stone tablet","lake","light","meadow","northwest","sweeping hedgerows","valley","waters","wild flowers"]
+  cand: ["Dock","clover","east","five thousand","heavy stone tablet","lake","meadow","northwest","sweeping hedgerows","valley","waters","wild flowers"]
+Cyclops.z5.js marks
+  base: ["beautiful ram","big rock","cavern","dust","fence","fire","flocks","friends","goats","lambkin","mat of bands","monster","shelves","with"]
+  cand: ["Cyclops","beautiful ram","big rock","cavern","dust","fence","fire","flocks","friends","goats","lambkin","mat of bands","shelves","with"]
+Damnatio-Memoriae.zblorb.js marks
+  base: ["Clemens","Phaenomena","low stool","old letter","study","vase","window"]
+  cand: ["Clemens","Phaenomena","low stool","old letter","panel","vase","window"]
+Delusns.z5.js marks
+  base: ["east","west"]
+  cand: ["Self","east","west"]
+I-0.z5.js marks
+  base: ["air conditioning","car","gas","ignition","light","purse","stereo"]
+  cand: ["air conditioning","car","gas","ignition","key","light","purse","stereo"]
+Inevita.z5.js marks
+  base: ["canopy","console","engine","pouch","sheets of rain","stick","straps","switch","vessel"]
+  cand: ["canopy","console","engine","rain","switch"]
+Jigsaw.z8.js marks
+  base: ["Crowds","east","northeast","west"]
+  cand: ["attractive stranger","east","northeast","party","west"]
+Swineback.z5.js marks
+  base: ["Kingdom of Lorayne","Swineback Ridge","long dusty path","narrow lane","north","of night","old"]
+  cand: ["Kingdom","Swineback Ridge","long dusty path","narrow lane","night","north","old"]
+acorncourt.z5.js marks
+  base: ["ball","crumbling stone","iron gate","oak tree","squirrels nest","tennis ball launching machine","tennis court","tin pail","window"]
+  cand: ["ball","crumbling stone","iron gate","net","oak tree","squirrels nest","tennis ball launching machine","tennis court","tin pail","window"]
+beneath.z5.js marks
+  base: ["STREGOICAVAR PVBLIC LIBRARY","dilapidated buildings","door","sign","street","the book"]
+  cand: ["STREGOICAVAR PVBLIC LIBRARY","book","dilapidated buildings","door","sign","street"]
+bse.z5.js exits
+  base: ["north>25","south>41"]
+  cand: ["north>25","northeast>35","south>41"]
+curses.z5.js exits
+  base: ["east>42","north>103","south>47"]
+  cand: ["down>36","east>42","north>103","south>47"]
+edifice.z5.js rooms
+  base: ["125:The Drawing Museum","33:At the Edifice"]
+  cand: ["33:At the Edifice"]
+gamlet.z5.js marks
+  base: ["eyes"]
+  cand: ["Light","balcony","balustrade","breeze","distant artillery","eyes","naked","night","stars","wall"]
+inhumane.z5.js rooms
+  base: ["18:In Your Tent"]
+  cand: ["18:In Your Tent","20:Center of Camp","21:Storage Tent","25:Roboff's Tent"]
+inhumane.z5.js exits
+  base: []
+  cand: ["south>20"]
+inhumane.z5.js marks
+  base: ["jeweled amulet"]
+  cand: ["jeweled amulet","south"]
+inhumane.z5.js inv2
+  base: ["19:jeweled amulet"]
+  cand: []
+jet.z8.js marks
+  base: ["dragon's"]
+  cand: ["wing"]
+karn.z5.js exits
+  base: ["east>44"]
+  cand: ["east>44","west>35"]
+karn.z5.js marks
+  base: ["TARDIS","east","main doors","scanner","six-side console"]
+  cand: ["TARDIS","east","main doors","scanner","six-side console","west"]
+lost.z5.js marks
+  base: ["T","photographs of important-looking people","the Magic Weaver"]
+  cand: ["Magic Weaver","T","photographs"]
+medusa.z5.js marks
+  base: ["buttons","elevator","floor indicator","mirror","red","snakes","toga","vampire"]
+  cand: ["Dracula","buttons","elevator","floor indicator","mirror","red","snakes","toga"]
+night.z5.js marks
+  base: ["Macs","PCs","computer","desk","internet router","laser","northeast","printer table"]
+  cand: ["Macs","PCs","computer","desk","game","internet router","laser","northeast","printer table"]
+ninepts.z5.js inv2
+  base: ["50:small fishbowl","18:tiny bottle"]
+  cand: ["50:small fishbowl","51:fish","18:tiny bottle"]
+permagic.z5.js marks
+  base: ["east","papers","report"]
+  cand: ["east","junk","report"]
+schooldays.z5.js marks
+  base: ["The door to the hallway","air freshener","bed","cheap window","double dresser","east","lamp","night-table","one","sheets","trapdoor","wall clock","west"]
+  cand: ["air freshener","bed","cheap window","corridor","dresser","east","lamp","night-table","one","sheets","trapdoor","wall clock","west"]
+shade.z5.js marks
+  base: ["apartment","bathroom nook","broad mirror","cardboard crate","closet","desk","desk lamp","dusty computer","front door","futon","kitchen nook","luggage","paper","potted","stereo","to-do list","travel book","window"]
+  cand: ["bathroom nook","broad mirror","cardboard crate","closet","desk","desk lamp","dusty computer","front door","futon","kitchen nook","luggage","paper","potted","room","stereo","to-do list","travel book","window"]
+spirit.z5.js marks
+  base: ["the Order"]
+  cand: ["Order"]
+spot.z5.js marks
+  base: ["the spot"]
+  cand: ["spot"]
+suvehnux.z5.js marks
+  base: ["brass cage","darkness","door","scroll","shelf","sliver of light","under","walls"]
+  cand: ["black","brass cage","darkness","door","golden key","scroll","shelf","sliver of light","vault","walls"]
+terror_tabby.z5.js marks
+  base: ["bathroom","drawers","east","floor","mattress","south","tabby cat"]
+  cand: ["bathroom","east","mattress","south","tabby cat"]
+tk1.z5.js inv2
+  base: ["22:glass tube","21:hole in the floor"]
+  cand: ["22:glass tube","23:piece of paper","21:hole in the floor"]
+weather.z5.js marks
+  base: ["cook-out","hillside","stream","wooden bridge"]
+  cand: ["hillside","players","stream","wooden bridge"]
+wireless.z5.js marks
+  base: ["God's Rude Wireless","Simon","bell","coffee table","door","memo","podium","sign","west"]
+  cand: ["Simon","bell","coffee table","copy of God's Rude Wireless","door","memo","podium","sign","west"]
+GATE: 298 games, 38 differences (each must be an intended, reviewed change)

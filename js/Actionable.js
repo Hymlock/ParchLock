@@ -1762,33 +1762,6 @@ var Actionable = {
                 var rowName = String(row.name || "").toLowerCase().replace(/\s+/g, " ").trim();
                 if (label && label !== row.name && row.labelProvenance !== "parser-vocabulary" && (" " + String(label).toLowerCase() + " ").indexOf(" " + rowName + " ") < 0
                     && Actionable.structuralNamePrinted(rowName, base, [text, Actionable.Scope.lastLookText, Actionable.Scope.lastInventoryText])) label = row.name;
-                // B8 permagic (narrowed #6291): only pin name to RAM shortName when the
-                // observed/current label is particle-led or mixes a particle with the head
-                // ("of paper"/"of junk"). Do not override deliberate observed-vocabulary
-                // labels catalog-wide. displayName still carries the printed phrase.
-                var ramName = "";
-                try {
-                    if (mem && typeof ZRamReader !== "undefined" && ZRamReader.shortName)
-                        ramName = String(ZRamReader.shortName(mem, o.id) || "").replace(/\s+/g, " ").trim();
-                } catch (eSn) {}
-                if (ramName && ramName.charAt(0) !== "(") {
-                    var particleLead = /^(a|an|the|of)\s+/i;
-                    var structural = ramName.replace(particleLead, "").trim() || ramName;
-                    var lab = String(label || row.name || "").replace(/\s+/g, " ").trim();
-                    var labL = lab.toLowerCase(), st = structural.toLowerCase();
-                    var words = labL.split(/\s+/).filter(Boolean);
-                    var pin = particleLead.test(lab) || particleLead.test(String(row.name || ""))
-                        || (words.length > 1 && words.indexOf(st) >= 0
-                            && words.some(function (w) { return /^(a|an|the|of)$/.test(w); }));
-                    if (pin && structural) {
-                        return Object.assign({}, row, {
-                            name: structural,
-                            structuralName: o.structuralName || o.name || structural,
-                            displayName: display || label || structural,
-                            labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : (row.labelProvenance || "parser-vocabulary")
-                        });
-                    }
-                }
                 return label === row.name ? Object.assign({},row,{displayName:display}) : Object.assign({}, row, { name: label, displayName:display, structuralName: o.name, labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : "observed-vocabulary" });
             });
         } catch (e) { return []; }
@@ -1871,9 +1844,8 @@ var Actionable = {
     namePhrases: (name) => {
         var raw = String(name || "").replace(/\s+/g, " ").trim();
         if (!raw) return [];
-        // Deterministic articles/particles only — not a prose stopword list.
-        // Leading "of/a/an/the" are not the object's head (B8: "of junk").
-        raw = raw.replace(/^(a|an|the|of)\s+/i, "").trim() || raw;
+        // Deterministic articles only — not a prose stopword list (plan: no
+        // text mining). Tokens come from the object's own short-name.
         var out = Actionable.isReferenceToken(raw) ? [] : [raw];
         raw.split(" ").forEach(function (t) {
             if (!t || t.length < 3 || Actionable.isGrammarParticle(t) || Actionable.isReferenceToken(t)) return;
@@ -2715,38 +2687,8 @@ var Actionable = {
             && replyLines.some(function (l) { return /\S/.test(l.textContent) && !/\?\s*$/.test(l.textContent.trim()); }));
         Actionable._fullNameSpans = { names: Actionable.multiWordNames(), bySource: new Map() };
         try { ordered.forEach(function (t) {
-            if (t.preferred && markedIds[String(t.objectId)]) {
-                if (String(t.phrase).indexOf(' ') >= 0
-                    && Actionable.replaceMarkedPhrase(activeLines, t, markedIds)) return;
-                // B8: replaceMarkedPhrase only wins when the stale mark sits inside the
-                // new phrase's span ("papers" is not inside "of junk"). Retire this
-                // object's marks and wrap the preferred phrase on its own span.
-                if (t.fromName && Actionable.phrasePrintedIn(activeLines, t.phrase)) {
-                    var staleMarks = (Actionable.LiveMarks || []).filter(function (m) {
-                        return m && m.isConnected && !m.classList.contains('is-stale')
-                            && m.dataset.kind !== 'direction'
-                            && Actionable.markCoverIds(m).indexOf(String(t.objectId)) >= 0
-                            && String(m.textContent || '').toLowerCase().trim() !== String(t.phrase).toLowerCase().trim();
-                    });
-                    if (staleMarks.length) {
-                        var wrappedPref = Actionable.wrapFirstExact(activeLines, t.phrase, t);
-                        if (wrappedPref) {
-                            Actionable.retireMarks(staleMarks, markedIds);
-                            try {
-                                JSON.parse(t.markCoverIds || t.markCandidateIds || '[]').forEach(function (id) {
-                                    markedIds[String(id)] = true;
-                                });
-                            } catch (eCov) {}
-                            markedIds[String(t.objectId)] = true;
-                            var prefKey = String(t.objectId);
-                            var prevPref = Actionable.VerifiedNouns[prefKey];
-                            if (!prevPref || t.phrase.length >= prevPref.length)
-                                Actionable.VerifiedNouns[prefKey] = t.phrase;
-                            return;
-                        }
-                    }
-                }
-            }
+            if (t.preferred && String(t.phrase).indexOf(' ') >= 0 && markedIds[String(t.objectId)]
+                && Actionable.replaceMarkedPhrase(activeLines, t, markedIds)) return;
             // A group cannot suppress an observed uniquely owned full label.
             // Its parser candidates stay intact; reconciliation will reserve
             // the unique label and leave other group owners represented.

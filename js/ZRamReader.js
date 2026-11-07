@@ -3180,7 +3180,40 @@ var ZRamReader = {
         } catch (e) { return null; }
     },
 
+    // B7 phone stall (COMPARE-and-PROPOSAL-claude-1107 r2; grok REJECT #6277 resolved, grok2 ACCEPT #6287):
+    // one command ran ~28 full snapshots (~33 ms each on the phone). Reuse the last result while nothing it
+    // reads has changed: same RAM buffer, no VM run since (ZvmCapture.vmRuns), same undo/restore generation,
+    // same story digest, same learning tables (fingerprint: post-VM TurnRecorder/AttrCalibrator/ExitCalibrator
+    // writes change bitFor without RAM), same status-grid room number (read by findLikelyLocation, D171).
+    // Never stored while the VM is mid-run. Every caller gets its own copy (callers mutate the result).
+    _snapshotMemo: null,
+    snapshotMemoKey: (mem) => {
+        try {
+            if (typeof ZvmCapture === "undefined" || !ZvmCapture.patched || ZvmCapture.inRun > 0) return null;
+            var learn = "", exitState = "";
+            if (typeof AttrCalibrator !== "undefined") learn = JSON.stringify(AttrCalibrator.table) + "|" + String(AttrCalibrator.hydratedForGame);
+            if (typeof ExitCalibrator !== "undefined") exitState = JSON.stringify(ExitCalibrator._table) + "|" + String(ExitCalibrator._key);
+            var digest = "";
+            try { digest = (typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest) ? String(ModuleLibrary.currentExecutableDigest() || "") : ""; } catch (eD) {}
+            // Blank-room eligibility (isRoomLike, ~line 1780) also reads the map's admitted real room ids.
+            var admitted = "";
+            if (typeof ParchLockMap !== "undefined" && ParchLockMap.Rooms) admitted = ParchLockMap.Rooms
+                .filter(function (r) { return r && r.HasRealId; }).map(function (r) { return String(r.ObjectId); }).join(",");
+            return [ZvmCapture.vmRuns, typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0, digest,
+                String(ZRamReader.printedRoomNumber()), learn, exitState, admitted].join("\u0001");
+        } catch (e) { return null; }
+    },
     snapshot: (mem) => {
+        var key = ZRamReader.snapshotMemoKey(mem), buf = mem && mem.buffer, memo = ZRamReader._snapshotMemo;
+        var copy = function (v) { return typeof structuredClone === "function" ? structuredClone(v) : JSON.parse(JSON.stringify(v)); };
+        if (key !== null && memo && memo.buf === buf && memo.key === key) return copy(memo.value);
+        var value = ZRamReader._snapshotUncached(mem);
+        // Recompute the key after the walk: hydration inside the walk may change the learning tables.
+        var after = key === null ? null : ZRamReader.snapshotMemoKey(mem);
+        ZRamReader._snapshotMemo = (after !== null && after === key && value) ? { buf: buf, key: key, value: copy(value) } : null;
+        return value;
+    },
+    _snapshotUncached: (mem) => {
         var h = ZRamReader.header(mem);
         if (!h) return { ok: false, error: "bad-header" };
         var dict = ZRamReader.parseDictionary(mem);
