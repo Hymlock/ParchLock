@@ -1,5 +1,9 @@
 # ParchLock Release Notes
 
+## Build 80 - 2026-11-07
+
+- Equipment status: a stat with a long name ("Deaths this playthrough") takes two columns, so its words are no longer split on phones. Android versionCode 55; shell cache 179.
+
 ## Build 79 - 2026-11-06
 
 - A Little Like Rogue: World map level buttons are named by dungeon depth (Depth 1, Depth 2, ...).
