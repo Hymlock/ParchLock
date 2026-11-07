@@ -43,11 +43,11 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
-| I1 | P2: decide per-title Inform attribute ledger cells in batches of about 10 | No audited record of which flags the app trusts in Inform titles | Batch 1 **accepted** (11-07); batch 2 in progress (grok) | Only the 17 no-names titles need decisions. Batch 1 (9 titles): 31 TRUST, 15 unproven + 6 no-carrier FAIL-CLOSED (inform-phase/I1-batch1-grok.md, I1-batch1-ACCEPT-claude.md). Batch 2: 8 titles | INFORM-PHASE-PLAN-draft P2 | L |
+| I1 | P2: decide per-title Inform attribute ledger cells in batches of about 10 | No audited record of which flags the app trusts in Inform titles | **Done** (11-07) | All 17 no-names titles decided (grok drafts, Claude ACCEPT): batch 1 31 TRUST / 21 fail-closed; batch 2 5 TRUST / 10 fail-closed (inform-phase/I1-batch{1,2}-*.md). Unproven cells reopen on a longer native route. Unblocks I5 | INFORM-PHASE-PLAN-draft P2 | L |
 | I2 | Ledger generator: show 0, not N, when a title lacks a name | Ledger misreports Heliopause, temple and Vacation cells | **Done** c3bdb974 | Generator MISSING map from the grok live census (7 cells now 0); a census-driven missingNames field would replace the hand list | GROK-REVIEW-p2-ledger-1450 | S |
 | I3 | Build the inform-layout harness (7 flags plus a bit-flip control) | Inform attribute maps can't be checked automatically | **Done** (11-05) | harness/inform-layout.js: 75 Inform Z titles x 7 flags (container/open/openable/supporter/animate/worn/light) vs declared names or exact facts; 2 bit-flip controls caught; static, <1s | INFORM-PHASE-PLAN-draft s5 | M |
 | I4 | bookvol and chico: start-up key prompt blocks checks | Radials in these 2 titles unverified | **Done** 237a3e97 | Gate start-up table (gate-startup.json): bookvol, Borderzo, chico, stiffmst, vgame, BlueLacuna now gated; BeingSteve stays no-prompt by design; controls byte-identical | HANDOFF #8; P3 | S |
-| I5 | P4: browser touch-verify on a sample | Would prove taps and radials work in Inform titles | Blocked | Waits for the I1 batches | INFORM-PHASE-PLAN-draft P4 | M |
+| I5 | P4: browser touch-verify on a sample | Would prove taps and radials work in Inform titles | Unblocked (11-07) | I1 done; next: touch-verify radials on TRUST cells in a sample of ~5 titles | INFORM-PHASE-PLAN-draft P4 | M |
 | I6 | Glulx: 5 titles parked (no map, zero items) | Glulx games run with no map or inventory | Blocked | Needs an object model and a Glulx RAM provider; operator ruled this last | PRODUCTION_PLAN D38 | L |
 
 ## Actions / radials

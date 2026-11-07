@@ -1,0 +1,18 @@
+﻿>look :: daptation. A few modern touches help tie it to the late twentieth century, such as the burglar alarm next to the elegant stone carving of a Shakespearian-looking man above the main entrance. Immediately in front of the house is a gravel drive which acts as a car park, and a small road leads off to t
+  OPS ["26:9=1","29:20=1","140:28=1","38:7=0","62:7=0","85:7=0","134:7=0","20:2=1","27:2=0","27:17=1","27:20=0","28:2=0","28:17=0","28:4=0","28:21=0","28:3=0","28:12=0","29:2=1","20:25=0","27:25=0","28:25=1","29:25=0","29:25=0","28:16=0","28:9=0","28:3=0","28:3=0","29:25=0","26:24=0","26:18=0","29:20=1","29:20=1","20:2=1","27:2=0","27:17=1","27:20=0","28:2=0","28:17=0","28:4=0","28:21=0","28:3=0","28:12=0","29:2=1","20:25=0","27:25=0","28:25=1","29:25=0","29:25=0","28:16=0","28:9=0","28:3=0","28:3=0","29:25=0","26:24=1","29:20=1","26:27=0","29:20=1","26:9=1"]
+>i ::  You are carrying nothing. > 
+  OPS ["29:20=1","26:27=0","29:20=1","26:9=1"]
+>open cupboard :: pen cupboard You can't see any such thing. > 
+  OPS ["29:20=1","26:24=1","29:20=1","26:24=1"]
+>close cupboard :: lose cupboard You can't see any such thing. > 
+  OPS ["29:20=1","26:24=1"]
+>look :: ook Outside the front entrance You stand to the south of D'Arcy manor, a building which looks like it's straight out of a low budget Bronte TV adaptation. A few modern touches help tie it to the late twentieth century, such as the burglar alarm next to the elegant stone carving of a Shakespearian-lo
+  OPS ["29:20=1","20:2=1","27:2=0","27:17=1","27:20=0","28:2=0","28:17=0","28:4=0","28:21=0","28:3=0","28:12=0","29:2=1","20:25=0","27:25=0","28:25=1","29:25=0","29:25=0","28:16=0","28:9=0","28:3=0","28:3=0","29:25=0","26:24=1","29:20=1","26:27=0","29:20=1","26:9=1"]
+>s ::  That way only leads out of the estate, and you've still got a lot of interfering to do yet. > 
+  OPS ["29:20=1","26:27=0","29:20=1","26:9=1"]
+>look :: ook Outside the front entrance You stand to the south of D'Arcy manor, a building which looks like it's straight out of a low budget Bronte TV adaptation. A few modern touches help tie it to the late twentieth century, such as the burglar alarm next to the elegant stone carving of a Shakespearian-lo
+  OPS ["29:20=1","20:2=1","27:2=0","27:17=1","27:20=0","28:2=0","28:17=0","28:4=0","28:21=0","28:3=0","28:12=0","29:2=1","20:25=0","27:25=0","28:25=1","29:25=0","29:25=0","28:16=0","28:9=0","28:3=0","28:3=0","29:25=0","26:24=1","29:20=1","26:27=0","29:20=1","26:9=1"]
+>open bag :: pen bag You can't see any such thing. > 
+  OPS ["29:20=1","26:24=1","29:20=1","26:24=1"]
+OPS ["29:20=1","26:24=1","29:20=1","26:24=1"]
+EQ []
