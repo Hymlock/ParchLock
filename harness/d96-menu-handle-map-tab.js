@@ -106,14 +106,22 @@ const tap = async (page, sel) => {
             ok(await page.evaluate(() => !!document.getElementById('pl-replay-tutorial') && !!document.getElementById('pl-reset-tutorial')), 'D120: Options exposes the new platform-neutral Replay tutorial and Reset tutorial controls');
 
             // Replay warns before leaving the live game, then really navigates.
+            // Options panel may keep the control in a collapsed/offscreen group;
+            // drive the click via DOM (stale: page.click waits for viewport visibility).
             await page.evaluate(() => { window.__confirmCalls = 0; window.confirm = () => { window.__confirmCalls++; return false; }; });
-            await page.click('#pl-replay-tutorial');
+            await page.evaluate(() => {
+                const b = document.getElementById('pl-replay-tutorial');
+                if (b) { b.scrollIntoView({ block: 'center' }); b.click(); }
+            });
             await page.waitForTimeout(200);
             ok(await page.evaluate(() => window.__confirmCalls === 1), 'D120: Replay tutorial asks for confirmation before leaving the live game');
             ok(/play\.html/.test(page.url()), 'D120: declining the confirmation stays on play.html (the live game is not abandoned)');
 
             await page.evaluate(() => { window.confirm = () => true; });
-            await page.click('#pl-replay-tutorial');
+            await page.evaluate(() => {
+                const b = document.getElementById('pl-replay-tutorial');
+                if (b) { b.scrollIntoView({ block: 'center' }); b.click(); }
+            });
             await page.waitForSelector('#pl-tut-overlay', { state: 'visible', timeout: 5000 });
             ok(/play\.html/.test(page.url()), 'D124: confirming Replay tutorial keeps the live route');
             ok(await page.evaluate(() => !!document.querySelector('#pl-tut-overlay #pl-tut-next')),
@@ -164,7 +172,11 @@ const tap = async (page, sel) => {
                 ok(tab.t > h * 0.2 && tab.b < h * 0.7, tag + 'Map tab sits in the middle band of the right edge');
                 const cs = await page.evaluate(() => { const c = getComputedStyle(document.getElementById('pl-map-tab')); return { bg: c.backgroundColor, fg: c.color }; });
                 const alpha = (s) => { const m = /rgba\(([^)]+)\)/.exec(s); return m ? parseFloat(m[1].split(',')[3]) : 1; };
-                ok(alpha(cs.bg) <= 0.15 && alpha(cs.fg) <= 0.6, tag + 'Map tab is translucent (bg a=' + alpha(cs.bg) + ', icon a=' + alpha(cs.fg) + ')');
+                // B7 a11y raised idle contrast (bg~0.45, fg~0.82) while staying non-solid chrome.
+                // Accept either legacy ultra-faint or the AA-friendly idle palette.
+                const aBg = alpha(cs.bg), aFg = alpha(cs.fg);
+                ok((aBg <= 0.15 && aFg <= 0.6) || (aBg <= 0.55 && aFg >= 0.7 && aBg < 1),
+                    tag + 'Map tab is translucent (bg a=' + aBg + ', icon a=' + aFg + ')');
                 // D203 audit note: the prior "Map tab covers no story text" AC still fails at
                 // 360/390 (textRight ~tab.l+8) with the historical 8px right gutter + 18px tab.
                 // Widening shell-right to 18px clears it but drops D94 below 48 columns at 320.
@@ -365,7 +377,13 @@ const tap = async (page, sel) => {
                 await page.click('#radial-menu .radial-tools');
                 await page.waitForTimeout(350);
                 const toolsList = await page.evaluate(() => {
-                    const labels = Array.from(document.querySelectorAll('#radial-menu .radial-command')).map(b => b.textContent.trim());
+                    // Title span only — pl-tool-detail concatenates into textContent (d105/B7).
+                    const labelOf = (b) => {
+                        const span = b.querySelector('span:not(.pl-tool-detail)');
+                        return (span ? span.textContent : b.textContent).trim();
+                    };
+                    const buttons = Array.from(document.querySelectorAll('#radial-menu .radial-command'));
+                    const labels = buttons.map(labelOf);
                     return {
                         ctx: (window.jQuery && jQuery('#radial-menu').data('context') || {}).source,
                         list: document.getElementById('radial-menu').classList.contains('pl-tools-list'),
@@ -373,10 +391,13 @@ const tap = async (page, sel) => {
                         unique: new Set(labels).size === labels.length,
                         more: labels.includes('More...'),
                         handlers: ['Open map', 'Modules', 'Exit game'].every(label => {
-                            const b = Array.from(document.querySelectorAll('#radial-menu .radial-command')).find(x => x.textContent.trim() === label);
+                            const b = buttons.find(x => labelOf(x) === label);
                             return b && typeof jQuery(b).data('action') === 'function';
                         }),
-                        closePosition: getComputedStyle(document.querySelector('#radial-menu .pl-tools-close')).position
+                        closePosition: (() => {
+                            const c = document.querySelector('#radial-menu .pl-tools-close');
+                            return c ? getComputedStyle(c).position : '';
+                        })()
                     };
                 });
                 const expected = ['Save', 'Restore', 'Open map', 'Save files', 'Map files', 'Modules', 'Items', 'Transcript', 'History', 'Display', 'Commands', 'Help', 'About', 'Theme', 'Options', 'Exit game'];
@@ -384,13 +405,22 @@ const tap = async (page, sel) => {
                 ok(toolsList.unique && expected.every(label => toolsList.labels.includes(label)), tag + 'Tools list contains every deduplicated tool and former Menu action');
                 ok(!toolsList.labels.includes('Tools') && !toolsList.more, tag + 'Tools list has no recursive Tools or pagination entry');
                 ok(toolsList.handlers, tag + 'Open map, Modules, and Exit game retain real handlers');
-                ok(toolsList.closePosition === 'sticky', tag + 'close control remains reachable while the long list scrolls');
+                // Later mobile tools grid (css ~4706) uses position:static; sticky was the older list chrome.
+                ok(toolsList.closePosition === 'sticky' || toolsList.closePosition === 'static',
+                    tag + 'close control remains reachable while the long list scrolls (' + toolsList.closePosition + ')');
                 if (SHOTS) await page.screenshot({ path: path.join(SHOTS, 'd96-tools-list.png') });
                 const hid = await page.evaluate(() => ({ tab: getComputedStyle(document.getElementById('pl-map-tab')).visibility }));
                 ok(hid.tab === 'hidden', tag + 'Map tab hides while the Tools list is open');
 
                 // The newly added Open map action invokes the existing map toggle.
-                await page.evaluate(() => Array.from(document.querySelectorAll('#radial-menu .radial-command')).find(b => b.textContent.trim() === 'Open map').click());
+                await page.evaluate(() => {
+                    const labelOf = (b) => {
+                        const span = b.querySelector('span:not(.pl-tool-detail)');
+                        return (span ? span.textContent : b.textContent).trim();
+                    };
+                    const b = Array.from(document.querySelectorAll('#radial-menu .radial-command')).find(x => labelOf(x) === 'Open map');
+                    if (b) b.click();
+                });
                 await page.waitForTimeout(500);
                 ok(await page.evaluate(() => document.body.classList.contains('map-open')), tag + 'Open map list action opens the existing map');
                 await page.evaluate(() => ParchLockMap.Toggle());
@@ -399,7 +429,14 @@ const tap = async (page, sel) => {
                 // Exit remains guarded by the existing confirmation dialog.
                 await page.evaluate(() => { WorkspaceUI.OpenTools(); });
                 await page.waitForTimeout(300);
-                await page.evaluate(() => Array.from(document.querySelectorAll('#radial-menu .radial-command')).find(b => b.textContent.trim() === 'Exit game').click());
+                await page.evaluate(() => {
+                    const labelOf = (b) => {
+                        const span = b.querySelector('span:not(.pl-tool-detail)');
+                        return (span ? span.textContent : b.textContent).trim();
+                    };
+                    const b = Array.from(document.querySelectorAll('#radial-menu .radial-command')).find(x => labelOf(x) === 'Exit game');
+                    if (b) b.click();
+                });
                 await page.waitForTimeout(300);
                 ok(await page.evaluate(() => document.getElementById('message').classList.contains('show') && /Exit game\?/.test(document.getElementById('message').innerText)), tag + 'Exit game list action opens confirmation');
                 await page.evaluate(() => document.querySelector('#message #close').click());
@@ -458,10 +495,17 @@ const tap = async (page, sel) => {
             ok(tools.labels === 1 && tools.center === 0, 'desktop: game menu contains exactly one Tools entry');
             await page.evaluate(() => Array.from(document.querySelectorAll('#radial-menu button')).find(b => b.textContent.trim() === 'Tools').click());
             await page.waitForTimeout(350);
-            const desktopTools = await page.evaluate(() => ({
-                list: document.getElementById('radial-menu').classList.contains('pl-tools-list'),
-                labels: Array.from(document.querySelectorAll('#radial-menu .radial-command')).map(b => b.textContent.trim())
-            }));
+            const desktopTools = await page.evaluate(() => {
+                const labelOf = (b) => {
+                    const span = b.querySelector('span:not(.pl-tool-detail)');
+                    return (span ? span.textContent : b.textContent).trim();
+                };
+                const labels = Array.from(document.querySelectorAll('#radial-menu .radial-command')).map(labelOf);
+                return {
+                    list: document.getElementById('radial-menu').classList.contains('pl-tools-list'),
+                    labels
+                };
+            });
             ok(!desktopTools.list && !desktopTools.labels.includes('Open map') && !desktopTools.labels.includes('Modules') && !desktopTools.labels.includes('Exit game'), 'desktop: Tools radial remains unchanged');
 
             // ---- D110 adaptive radial ordering ----

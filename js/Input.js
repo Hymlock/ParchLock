@@ -1066,14 +1066,15 @@ var Input = {
             switch(e.key) {
 
                 case "Tab":
-
+                    // B7 a11y: autocomplete Tab only when the command line (or its
+                    // key-proxy) owns focus. Chrome buttons/tabs need native Tab.
+                    if (!$(e.target).closest(".Input.LineInput, .Input.CharInput, #pl-key-proxy, .LineInput, .CharInput").length) {
+                        break;
+                    }
                     e.preventDefault();
-
                     if (Input.Value().length > 0) {
-
                         Autocomplete.ToggleSuggestions(Input.Value());
                     }
-
                     break;
                 
                 case "`": 
