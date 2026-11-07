@@ -7,7 +7,8 @@
   1. In the dev repo, set the four signing variables, then run:  build-android-public.bat release
   2. powershell -ExecutionPolicy Bypass -File C:\Users\hymlo\Downloads\ParchLock-public-git\publish-public.ps1 -Version 1.0.0 [-Notes "..."] [-Prerelease] [-DryRun]
 
-  The signed APK is attached to the GitHub Release only (never stored in the repository files).
+  The signed APK always ships WITH the program: it is kept in the repository files, inside the complete
+  package zip, and attached to the GitHub Release (with the source zip).
 #>
 param(
   [Parameter(Mandatory=$true)][string]$Version,
@@ -32,8 +33,19 @@ $DevCommit = (git -C $DevRepo rev-parse --short HEAD).Trim()
 $null = & $Gh release view $Tag --repo $Repo 2>&1
 if ($LASTEXITCODE -eq 0) { throw "Release $Tag already exists. Pick another -Version." }
 
+# Complete package: desktop program + signed APK + source zip (standard forward-slash zip paths via tar).
+$Bundle = Join-Path (Split-Path $Dist -Parent) "ParchLock-complete-$Version.zip"
+if (-not $DryRun) {
+  Remove-Item $Bundle -ErrorAction SilentlyContinue
+  Push-Location $Dist
+  $names = Get-ChildItem -Name | Where-Object { $_ -notlike "*-dev.apk" }
+  & (Join-Path $env:SystemRoot 'System32\tar.exe') -a -c -f $Bundle @names
+  Pop-Location
+  if (-not (Test-Path $Bundle)) { throw "Complete package was not created" }
+}
+
 Write-Host "Syncing $Dist -> $Work"
-robocopy $Dist $Work /MIR /XD .git /XF *.apk *.aab .gitignore publish-public.ps1 /NFL /NDL /NJH /NP /R:1 /W:1 | Out-Null
+robocopy $Dist $Work /MIR /XD .git /XF *-dev.apk *.aab .gitignore publish-public.ps1 /NFL /NDL /NJH /NP /R:1 /W:1 | Out-Null
 if ($LASTEXITCODE -ge 8) { throw "Sync failed" }
 
 # Keep the public-build note at the top of GAMES_INCLUDED.md (the dev repo's copy lists all cleared titles).
@@ -59,10 +71,10 @@ $body = @"
 ParchLock $Version - free, non-commercial. Built with build-android-public.bat from dev commit $DevCommit.
 Based on Parchmap by Roy Lazarovich; ParchLock modifications under GPL-3.0.
 ParchLock-source.zip is the corresponding source for this build.
-Android: download ParchLock-public.apk. If an update looks unchanged, uninstall the old version first.
+Android: download ParchLock-public.apk. Everything together: ParchLock-complete-$Version.zip (desktop program, APK and source). If an update looks unchanged, uninstall the old version first.
 $Notes
 "@
-$a = @('release','create',$Tag,$Apk,$Zip,'--repo',$Repo,'--title',"ParchLock $Version",'--notes',$body,'--verify-tag')
+$a = @('release','create',$Tag,$Bundle,$Apk,$Zip,'--repo',$Repo,'--title',"ParchLock $Version",'--notes',$body,'--verify-tag')
 if ($Prerelease) { $a += '--prerelease' }
 & $Gh @a
 if ($LASTEXITCODE -ne 0) { throw "Release creation failed" }
