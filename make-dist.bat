@@ -77,8 +77,27 @@ if errorlevel 8 goto :fail
 
 rem D97: story behavior deliberately remains unchanged. Rights review and
 rem removal before release are the operator's manual responsibility.
-if exist "%SRC%\games" robocopy "%SRC%\games" "%RUNTIME_STAGE%\games" *.* %ROBO% >nul
-if errorlevel 8 goto :fail
+rem D283: PARCHLOCK_GAMES_LIST (public build) copies only the listed stories and replaces the
+rem staged js\GameList.js (copied above) with the matching subset. Per-game facts are not
+rem filtered, so later imports are still recognised. Unset = every story, exactly as before.
+if defined PARCHLOCK_GAMES_LIST (
+  if not exist "%PARCHLOCK_GAMES_LIST%" (
+    echo ERROR: PARCHLOCK_GAMES_LIST not found: %PARCHLOCK_GAMES_LIST%
+    goto :fail
+  )
+  echo Public story list: %PARCHLOCK_GAMES_LIST%
+  for /f "usebackq eol=# delims=" %%G in ("%PARCHLOCK_GAMES_LIST%") do (
+    if not exist "%SRC%\games\%%G" (
+      echo ERROR: listed story missing: games\%%G
+      goto :fail
+    )
+    copy /y "%SRC%\games\%%G" "%RUNTIME_STAGE%\games\" >nul || goto :fail
+  )
+  node "%SRC%\tools\public-games.js" gamelist "%PARCHLOCK_GAMES_LIST%" "%RUNTIME_STAGE%\js\GameList.js" || goto :fail
+) else (
+  if exist "%SRC%\games" robocopy "%SRC%\games" "%RUNTIME_STAGE%\games" *.* %ROBO% >nul
+  if errorlevel 8 goto :fail
+)
 if exist "%SRC%\user\_user-files-go-here.txt" copy /y "%SRC%\user\_user-files-go-here.txt" "%RUNTIME_STAGE%\user\" >nul
 
 echo Building PC launcher...

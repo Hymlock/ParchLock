@@ -17,7 +17,10 @@ if "%SRC:~-1%"=="\" set "SRC=%SRC:~0,-1%"
 cd /d "%SRC%" || exit /b 1
 if not defined JAVA_HOME set "JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-21.0.12.101-hotspot"
 set "CAP_WWW=%SRC%\capacitor-www"
+rem D283: build-android-public.bat sets PARCHLOCK_PC_DIST / PARCHLOCK_APK_SUFFIX so the public build
+rem never overwrites the full one. Unset = the original folder and APK names.
 set "PC_DIST=C:\Users\hymlo\Downloads\ParchLock-dist"
+if defined PARCHLOCK_PC_DIST set "PC_DIST=%PARCHLOCK_PC_DIST%"
 set "APK_WEB=%SRC%\android\app\src\main\assets\public"
 
 if /I "%MODE%"=="release" (
@@ -79,11 +82,11 @@ echo [4/4] Building Android APK...
 if /I "%MODE%"=="release" (
   call "%SRC%\android\gradlew.bat" -p "%SRC%\android" clean assembleRelease --console=plain || exit /b 1
   set "APK_SRC=%SRC%\android\app\build\outputs\apk\release\app-release.apk"
-  set "APK_OUT=%PC_DIST%\ParchLock.apk"
+  set "APK_OUT=%PC_DIST%\ParchLock%PARCHLOCK_APK_SUFFIX%.apk"
 ) else (
   call "%SRC%\android\gradlew.bat" -p "%SRC%\android" assembleDebug --console=plain || exit /b 1
   set "APK_SRC=%SRC%\android\app\build\outputs\apk\debug\app-debug.apk"
-  set "APK_OUT=%PC_DIST%\ParchLock-dev.apk"
+  set "APK_OUT=%PC_DIST%\ParchLock%PARCHLOCK_APK_SUFFIX%-dev.apk"
 )
 if not exist "%APK_SRC%" (
   echo ERROR: Gradle did not produce %APK_SRC%.
