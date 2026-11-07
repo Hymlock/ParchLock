@@ -94,10 +94,16 @@ if not exist "%APK_SRC%" (
 )
 copy /y "%APK_SRC%" "%APK_OUT%" >nul || exit /b 1
 
+set "SDK_ROOT=%ANDROID_HOME%"
+if not defined SDK_ROOT if exist "%SRC%\android\local.properties" for /f "tokens=1,* delims==" %%K in ('findstr /b "sdk.dir=" "%SRC%\android\local.properties"') do set "SDK_ROOT=%%L"
+if defined SDK_ROOT set "SDK_ROOT=!SDK_ROOT:\:=:!"
+if defined SDK_ROOT set "SDK_ROOT=!SDK_ROOT:/=\!"
 if /I "%MODE%"=="release" (
   set "APKSIGNER="
   for /f "delims=" %%A in ('where apksigner.bat 2^>nul') do if not defined APKSIGNER set "APKSIGNER=%%A"
-  if not defined APKSIGNER if defined ANDROID_HOME for /f "delims=" %%A in ('dir /b /s "%ANDROID_HOME%\build-tools\*\apksigner.bat" 2^>nul ^| sort /r') do if not defined APKSIGNER set "APKSIGNER=%%A"
+  rem Android SDK: ANDROID_HOME, else sdk.dir from android\local.properties. dir /s cannot take a
+  rem wildcard in the middle of a path, so walk build-tools\* with for /d (highest version wins).
+  if not defined APKSIGNER if defined SDK_ROOT for /d %%D in ("!SDK_ROOT!\build-tools\*") do if exist "%%D\apksigner.bat" set "APKSIGNER=%%D\apksigner.bat"
   if not defined APKSIGNER (
     echo ERROR: apksigner.bat was not found; release verification is mandatory.
     exit /b 1
