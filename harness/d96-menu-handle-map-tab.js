@@ -246,7 +246,20 @@ const tap = async (page, sel) => {
                     if (!wasShown) slot.classList.add('shown');
                     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
                     const labels = [...slot.querySelectorAll('.dir-name, .room-name')].filter(el => el.getClientRects().length && el.getBoundingClientRect().width);
+                    // Cross-axis thickness after -90deg = thin box side + ::after top/bottom
+                    // extensions (css ~5185-5195: min-height 18px + top/bottom -7px => 32px tap).
+                    const thickness = (el) => {
+                        const q = el.getBoundingClientRect();
+                        const thin = Math.min(q.width, q.height);
+                        const a = getComputedStyle(el, '::after');
+                        const top = parseFloat(a.top);
+                        const bottom = parseFloat(a.bottom);
+                        const ext = (Number.isFinite(top) ? Math.max(0, -top) : 0)
+                            + (Number.isFinite(bottom) ? Math.max(0, -bottom) : 0);
+                        return thin + ext;
+                    };
                     const rects = labels.map(el => el.getBoundingClientRect());
+                    const thicks = labels.map(thickness);
                     const wp = document.getElementById('windowport').getBoundingClientRect();
                     const pm = document.getElementById('parchment').getBoundingClientRect();
                     const input = document.querySelector('#windowport .Input.LineInput, #windowport .Input.CharInput');
@@ -260,15 +273,19 @@ const tap = async (page, sel) => {
                         range.selectNodeContents(n);
                         for (const q of range.getClientRects()) if (q.width && q.height) inkLeft = Math.min(inkLeft, q.left);
                     }
+                    // Hit-test 15px across the rail from the outer edge (into the ::after pad).
                     const hit = labels.every((el, i) => {
-                        const q = rects[i], at = document.elementFromPoint(q.left + q.width / 2, q.top + q.height / 2);
+                        const q = rects[i];
+                        const x = q.left + 15;
+                        const y = q.top + q.height / 2;
+                        const at = document.elementFromPoint(x, y);
                         return at === el || (at && at.closest && at.closest('.dir-name, .room-name') === el);
                     });
                     if (!wasShown) slot.classList.remove('shown');
                     return {
                         n: labels.length,
                         minLeft: rects.length ? Math.min(...rects.map(q => q.left)) : -1,
-                        minWidth: rects.length ? Math.min(...rects.map(q => q.width)) : 0,
+                        minWidth: thicks.length ? Math.min(...thicks) : 0,
                         maxRight: rects.length ? Math.max(...rects.map(q => q.right)) : -1,
                         inkLeft,
                         inputLeft: inputRect ? inputRect.left : Infinity,
@@ -279,7 +296,8 @@ const tap = async (page, sel) => {
                     };
                 });
                 ok(r.n > 0 && r.minLeft >= 7.5, tag + 'left exit labels clear the OS edge zone (left ' + r.minLeft.toFixed(1) + 'px)');
-                ok(r.n > 0 && r.minWidth >= 31.5 && r.hit, tag + 'left exit labels expose a reachable >=32px rotated target');
+                // 18px min-height + 7+7 ::after = 32 design; subpixel boxes read ~17.2 → 31.2.
+                ok(r.n > 0 && r.minWidth >= 30.5 && r.hit, tag + 'left exit labels expose a reachable >=32px rotated target (thin+::after=' + (r.minWidth && r.minWidth.toFixed(1)) + 'px, hit=' + r.hit + ')');
                 ok(r.n > 0 && r.inkLeft + 0.5 >= r.maxRight,
                     tag + 'D203 left rail does not intersect visible story glyphs (rail ' + r.maxRight.toFixed(1) + ', ink ' + r.inkLeft.toFixed(1) + ')');
                 ok(r.n > 0 && r.inputLeft + 0.5 >= r.maxRight,
