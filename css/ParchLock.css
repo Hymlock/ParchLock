@@ -4424,9 +4424,11 @@ body.equip-dragging-active .equip-dragging {
  * -- which is why this only ever showed on PC. */
 #pl-input-mic.pl-mic-unavailable,
 body.pl-mobile #pl-input-mic.pl-mic-unavailable {
-	opacity: 0.55;
+	/* B7 a11y item 7: stay recognisably disabled but keep >=3:1 vs bar (was 0.55 opacity). */
+	opacity: 1;
 	border-color: var(--pl-border) !important;
-	color: var(--pl-muted, #8a9a94);
+	color: var(--pl-muted, #9ba7a1);
+	background: rgba(27, 33, 31, 0.92) !important;
 	box-shadow: none;
 	cursor: help;
 }
