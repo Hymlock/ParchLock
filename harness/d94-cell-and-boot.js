@@ -104,6 +104,7 @@ async function open(browser, w, h, mobile) {
                     realGrid: real('#windowport .GridWindow .GridLine'),
                     realBuf: rb,
                     cols: gl ? Array.from(gl.children).reduce((a, c) => a + c.textContent.length, 0) : 0,
+                    gridPx: gl ? parseFloat(getComputedStyle(gl).fontSize) : 0,
                     bufCap: buf && rb ? Math.floor((buf.clientWidth - 20) / rb) : 0,
                     wrapped: grid ? Array.from(grid.querySelectorAll('.GridLine')).filter(l => l.getBoundingClientRect().height > lineH * 1.5).length : -1,
                     quote: grid ? /emotion of mankind/.test(grid.innerText.replace(/\s+/g, ' ')) : false,
@@ -115,7 +116,9 @@ async function open(browser, w, h, mobile) {
             const tag = w + 'x' + h;
             ok(r.m && Math.abs(r.m.grid - r.realGrid) < 0.05, tag + ': measured grid cell == rendered (' + (r.m && r.m.grid.toFixed(2)) + ' vs ' + (r.realGrid && r.realGrid.toFixed(2)) + ')');
             ok(r.m && Math.abs(r.m.buf - r.realBuf) < 0.05, tag + ': measured prose cell == rendered');
-            ok(r.cols >= 48, tag + ': game is told >= 48 columns (' + r.cols + ')');
+            // At 320 px the 9 px legibility floor (CharCell.css --pl-cell-font) wins over the 50-column fit once the
+            // Build 68 fixed borders are taken out, so fewer columns there is by design.
+            ok(r.cols >= 48 || (r.gridPx <= 9.05 && r.cols >= 44), tag + ': game is told >= 48 columns, or the 9px floor holds (' + r.cols + ' cols, ' + r.gridPx + 'px)');
             ok(r.bufCap >= r.cols - 1, tag + ': prose column holds the reported columns (' + r.bufCap + ' >= ' + r.cols + ')');
             ok(r.wrapped === 0, tag + ': no grid line wraps');
             ok(r.quote && r.title, tag + ': Anchorhead quote and title intact');
