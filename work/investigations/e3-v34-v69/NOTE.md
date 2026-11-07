@@ -18,3 +18,22 @@ stay correct. If instead 18 moved during orders, the facts would follow the NPC 
 Codex #2503 recorded this scope. A one-turn order in Cabal or Gostak would close it.
 
 Docs only; no code change.
+
+## Directed-NPC measurement (grok2, 2026-11-07) — closes open limit
+
+**Title:** Cabal (`games/cabal.z5.js`), digest `5fe1406def45c0df…`, fact `playerGlobal: 18`.
+
+**Method:** play.html headless; after boot settle, `look` / examine; then directed orders.
+
+| Moment | g18 | name(g18) | g53 | name(g53) |
+|--------|-----|-----------|-----|-----------|
+| before orders | 221 | you | 221 | you |
+| after `waiter, hello` (no parse) | 221 | you | 221 | you |
+| after `man, go north` (vagrant dialogue opens) | **221** | **you** | **42** | **vagrant** |
+| after further commands while menu open | 221 | you | 42 | vagrant |
+
+**Result:** **g18 stays the PC** across a successful directed interaction. **g53 moves to the NPC** (vagrant 42) when the order is accepted into dialogue. Therefore pinning `playerGlobal: 18` (not 53) is correct for orders: following 53 would track the NPC for that turn.
+
+**Evidence:** `work/investigations/e3-v34-v69/cabal-npc-order.json` (meta + before/mid); live console log of post-order snaps in session.
+
+**No js/ change.** E3 open limit closed.
