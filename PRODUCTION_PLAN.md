@@ -9982,3 +9982,27 @@ Supersedes the M9 "still open" note in D262.
 ## D273 Player globals for remaining empty-map titles (M4, M5); score reply (S6)
 
 **Status:** LANDED 056021d3. playerGlobal facts: guess 20 (player 37 in Verb Guessing Booth) and yagwad 21 (player 30 Me in Treasure Cave), following D216/D220. Make It Good's SCORE reply is recognised as no-score; every unavailable status ending records a reason and hover text.
+
+## D274 Older Inform 7 builds keep the paragraph probe rule (S1-1c)
+
+**Status:** LANDED 9adedd1d. Story builds whose names carry i7_kind or i7_map_region (no ik1_*) never arm the D270 after-phase reply boundary; their rulebook code imitates the after-phase call, so after=0 leaked the probe reply (Accuse, ChildsPlay, Figaro, Wallpaper, gardening, LLR3). The 8 inlined-dispatch I6 titles stay on the paragraph rule and do not leak (11-07 repro). Phone-verified Build 78.
+
+## D275 Dungeon depth from the room's map region (LLR3, M15)
+
+**Status:** LANDED 7e504267, 836f7214. Per-game fact regionDepth {regionProperty:7}: each A Little Like Rogue level is one I7 map region; depth = rank of the room's region object. Depth stat in Status; cross-region moves place the destination one World level down (up when reversed) and use the down/up slot on the local map; World level buttons read "Depth N". Rooms are not reused across depths. Harness llr3-depth.js (no walk, RAM-based). Phone-verified Builds 79/80.
+
+## D276 Any "You have been killed ..." ending is a death (S10)
+
+**Status:** LANDED 7e504267. DEATH_PHRASE accepts "you have been killed" with any ending up to the sentence/banner end (LLR3 "*** You have been killed in combat ***"); D215 framing (terminal menu or banner, quotes stripped, probes excluded) unchanged. death-terminal 41/0; phone-verified.
+
+## D277 Long stat names span two Equipment columns
+
+**Status:** LANDED bca1597d. Equipment's stat grid has equal columns, so a label longer than 14 characters ("Deaths this playthrough") gets two columns instead of splitting a word on phones ("PLAYTHROUG/H"). Phone-verified Build 80.
+
+## D278 Map room boxes take the room menu; local map shows decoded exits (M11, M12)
+
+**Status:** LANDED 4e215a90 (review ACCEPT grok2), 606dce5f (operator 11-07 "show them faded", review ACCEPT grok2). Long-press/right-click on a local-map room box opens RoomHoldAction (Notes, Rewind to here), same timing contract as the Known Rooms row. The local map also fills free compass slots with ExitMeta hintOnly destinations already admitted as rooms, in the D51 tentative look (dashed, "?"); plain compass words win over diagonals/in for the same room; nothing is written to Exits or routed. Supersedes the D66 walked-only display for these boxes; D66 still governs the data model.
+
+## D279 Put on surfaces; ZIL instrumentals need their grammar form (I5)
+
+**Status:** LANDED aebef2c3 (review ACCEPT grok), 484ec830. The held item's "Put in..." picker sends "put X on Y" when Y is supporter and not container and the game knows "on" (Inform refuses "in" for surfaces: School Days "That can't contain things."; Zork I tables stay "in"). With a validated D198 grammar, an instrumental row (Use with / Cast at / Unlock with) needs the verb's two-object form with that preposition: Zork I loses "Cast at..." (CAST = one-object EXORCISE). I1 per-title Inform flag decisions accepted for all 17 no-names titles (I1-batch1/2).

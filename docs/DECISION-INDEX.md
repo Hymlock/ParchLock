@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 157 decisions across
-9985 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 163 decisions across
+10009 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,12 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D279 | Put on surfaces; ZIL instrumentals need their grammar form (I5) |  |  |  |
+| D278 | Map room boxes take the room menu; local map shows decoded exits (M11, M12) |  |  |  |
+| D277 | Long stat names span two Equipment columns |  |  |  |
+| D276 | Any "You have been killed ..." ending is a death (S10) |  |  |  |
+| D275 | Dungeon depth from the room's map region (LLR3, M15) |  |  |  |
+| D274 | Older Inform 7 builds keep the paragraph probe rule (S1-1c) |  |  |  |
 | D273 | Player globals for remaining empty-map titles (M4, M5); score reply (S6) |  |  |  |
 | D272 | Status clock and optional hidden game status line (S4) |  |  |  |
 | D271 | Real rooms with compiled "(...)" names (M13, M14) |  |  |  |
