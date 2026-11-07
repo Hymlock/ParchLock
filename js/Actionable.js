@@ -188,7 +188,11 @@ var Actionable = {
         Actionable.distinctObjects(pool.concat(obj || [])).forEach(function (o) {
             if (!o || o.id == null || owners[String(o.id)]) return;
             owners[String(o.id)] = true;
-            var words = (o.aliases || []).concat(String(o.name || "").toLowerCase().split(/[^a-z0-9'-]+/)).map(Actionable.vocabularyKey);
+            var nameWords = String(o.name || "").toLowerCase().split(/[^a-z0-9'-]+/);
+            // I5 (grok picker gap): "night-table" also answers to "table" (School Days: EXAMINE TABLE works),
+            // so hyphenated name words add their parts; additive, it can only add collisions.
+            nameWords = nameWords.concat(nameWords.filter(function (w) { return w.indexOf("-") > 0; }).join("-").split("-"));
+            var words = (o.aliases || []).concat(nameWords).map(Actionable.vocabularyKey);
             if (tokens.length && tokens.every(function (t) { return words.indexOf(Actionable.vocabularyKey(t)) >= 0; })) candidates.push(o.id);
         });
         var mem = null;
