@@ -28,7 +28,9 @@ const ok = (c, m) => { if (c) { pass++; console.log("PASS:", m); } else { fail++
         "/quit still routes to ExitGame (not OfferStoryEnded)");
     ok(!/Inject\(["']quit/i.test(pl) && !/Submit\(["']quit/i.test(pl),
         "no story-command quit interceptor in ParchLock");
-    ok(/BUILD\s*=\s*50/.test(fs.readFileSync("js/Consts.js", "utf8")), "BUILD bumped to 50");
+    ok(/BUILD\s*=\s*\d+/.test(fs.readFileSync("js/Consts.js", "utf8")) &&
+        Number((fs.readFileSync("js/Consts.js", "utf8").match(/BUILD\s*=\s*(\d+)/) || [])[1]) >= 50,
+        "BUILD is at least 50 (story-ended gate)");
 
     // ---- live: simulate Glk input teardown after play ----
     const browser = await chromium.launch({ headless: true });

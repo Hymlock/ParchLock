@@ -21,7 +21,11 @@ const skipEnv = [
   "matrix-playhtml.js", // needs live static server :8765
   "r4-local-section-frame.js", // random Wumpus walk; flaky multi-minute / often 300s TIMEOUT
   "save-labels-live.js", // external Downloads path fixture not in repo
-  "stats-sweep.js" // full catalog research sweep, not a unit gate
+  "stats-sweep.js", // full catalog research sweep, not a unit gate
+  "status-claude-batch-live.js", // needs argv FILE.js from SPECS
+  "status-probe-matrix.js", // full headless-status matrix research sweep
+  "status-probe-headless.js", // research/probe matrix sibling
+  "underline-lifetime.js" // external Downloads save fixture not in repo
 ];
 const longTimeout = {
   "portrait-prompt.js": 600000,
