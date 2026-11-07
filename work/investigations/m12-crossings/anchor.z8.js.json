@@ -1,0 +1,940 @@
+{
+  "story": "anchor.z8.js",
+  "moves": 25,
+  "attempts": 41,
+  "log": [
+    {
+      "from": 105,
+      "name": "Outside the Real Estate Office",
+      "command": "southeast",
+      "to": 107,
+      "changed": true,
+      "reply": " of rotting cardboard boxes and overstuffed garbage cans. Ugly, half-crumbling brick walls to either side totter oppressively over you. The alley ends here at a tall, wooden fence.\n \nHigh up on the wall of the northern building there is a narrow, transom-style window.\n \n> \n Alley                                                         day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 5 exits / 0 notes\nIN\nUP\nNW\nOutside the Real Estate Office\nN\nNE\nW\nNarrow Street\nAlley\nE\nSW\nS\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow Street\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 107,
+      "name": "Alley",
+      "command": "northwest",
+      "to": 105,
+      "changed": true,
+      "reply": " office, which lies to the east, and winds its way back toward the center of town to the west. A narrow, garbage-choked alley opens to the southeast.\n \nIn the distance, you can hear the lonesome keening of a train whistle drifting on the wind.\n \n> \n Outside the Real Estate Office                                day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 5 exits / 0 notes\nIN\nUP\nNW\nOutside the Real Estate Office\nN\nNE\nW\nNarrow Street\nOutside the Real Estate Office\nE\nSW\nS\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow Street\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 105,
+      "name": "Outside the Real Estate Office",
+      "command": "east",
+      "to": 105,
+      "changed": false,
+      "reply": "f town to the west. A narrow, garbage-choked alley opens to the southeast.\n \nIn the distance, you can hear the lonesome keening of a train whistle drifting on the wind.\n \n>east\n(opening the real estate office door first)\nIt seems to be locked.\n \n> \n Outside the Real Estate Office                                day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 5 exits / 0 notes\nIN\nUP\nNW\nOutside the Real Estate Office\nN\nNE\nW\nNarrow Street\nOutside the Real Estate Office\nE\nSW\nS\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow Street\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 105,
+      "name": "Outside the Real Estate Office",
+      "command": "west",
+      "to": 118,
+      "changed": true,
+      "reply": "across Whateley Bridge toward the center of town, and a twisting lane leads up a hill to the northwest. A short flight of steps to the north leads down to the local watering hole.\n \n> \n Narrow Street                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n7 rooms / 12 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nLocal Pub\nNE\nW\nJunction\nNarrow Street\nE\nOutside the Real Estate Office\nSW\nS\nWhateley Bridge\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunction\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 118,
+      "name": "Narrow Street",
+      "command": "northwest",
+      "to": 166,
+      "changed": true,
+      "reply": " is so steep that steps have been cut into it, worn down over the years and slick with moss. Your progress is blocked at the top of the street by a blank brick wall.\n \n> \n Twisting Lane                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n7 rooms / 12 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nLocal Pub\nNE\nW\nJunction\nTwisting Lane\nE\nOutside the Real Estate Office\nSW\nNarrow Street\nS\nWhateley Bridge\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunction\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 166,
+      "name": "Twisting Lane",
+      "command": "southwest",
+      "to": 118,
+      "changed": true,
+      "reply": "y Bridge toward the center of town, and a twisting lane leads up a hill to the northwest. A short flight of steps to the north leads down to the local watering hole.\n \n> \n Narrow Street                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n7 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nLocal Pub\nNE\nW\nJunction\nNarrow Street\nE\nOutside the Real Estate Office\nSW\nNarrow Street\nS\nWhateley Bridge\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunction\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 118,
+      "name": "Narrow Street",
+      "command": "north",
+      "to": 119,
+      "changed": true,
+      "reply": "s solitude, soaking up the general miasma of dreary fatalism.\n \nThe lantern sitting on the table nearest you sputters fitfully, throwing distorted shadows across the wall.\n \n> \n Local Pub                                                     day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n7 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nLocal Pub\nNE\nW\nJunction\nLocal Pub\nE\nOutside the Real Estate Office\nSW\nNarrow Street\nS\nNarrow Street\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunction\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 119,
+      "name": "Local Pub",
+      "command": "south",
+      "to": 119,
+      "changed": false,
+      "reply": " nearest you sputters fitfully, throwing distorted shadows across the wall.\n \n>south\nAs you make your way to the door, your foot strikes something under one of the tables.\n \n> \n Local Pub                                                     day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n7 rooms / 13 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nLocal Pub\nNE\nW\nJunction\nLocal Pub\nE\nOutside the Real Estate Office\nSW\nNarrow Street\nS\nNarrow Street\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunction\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 119,
+      "name": "Local Pub",
+      "command": "south",
+      "to": 118,
+      "changed": true,
+      "reply": "y Bridge toward the center of town, and a twisting lane leads up a hill to the northwest. A short flight of steps to the north leads down to the local watering hole.\n \n> \n Narrow Street                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n7 rooms / 14 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nLocal Pub\nNE\nW\nJunction\nNarrow Street\nE\nOutside the Real Estate Office\nSW\nNarrow Street\nS\nWhateley Bridge\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunction\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 118,
+      "name": "Narrow Street",
+      "command": "south",
+      "to": 169,
+      "changed": true,
+      "reply": "ide into the water. It looks just wide enough for two cars to pass each other between the flanking stone parapets, but you wouldn't volunteer to try it.\n \n> \n Whateley Bridge                                               day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n8 rooms / 16 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nNarrow Street\nNE\nW\nJunction\nWhateley Bridge\nE\nOutside the Real Estate Office\nSW\nNarrow Street\nS\nTown Square\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown Square\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 169,
+      "name": "Whateley Bridge",
+      "command": "south",
+      "to": 172,
+      "changed": true,
+      "reply": "s and weeds, stands a strange, stone obelisk. It seems to be a monument of some sort, although you can see no plaque or marker anywhere near it.\n \n> \n Town Square                                                   day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n11 rooms / 20 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nWhateley Bridge\nNE\nW\nDark Corner\nTown Square\nE\nRiverwalk\nSW\nSide Alley\nS\nTown Square\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide Alley\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 172,
+      "name": "Town Square",
+      "command": "east",
+      "to": 188,
+      "changed": true,
+      "reply": "reet bends south here, turning into a misty avenue between the trees. The town square lies west, a vacant lot lies east.\n \n> \n Riverwalk                                                     day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 25 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nWhateley Bridge\nNE\nW\nTown Square\nRiverwalk\nE\nVacant Lot\nSW\nSide Alley\nS\nChilly Avenue\nSE\nAlley\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant Lot\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 188,
+      "name": "Riverwalk",
+      "command": "north",
+      "to": 191,
+      "changed": true,
+      "reply": "etal door, blotchy with rust, is set into the south bank of the river, underneath the bridge.\n \n> \n Under the Bridge                                              day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n14 rooms / 29 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nWhateley Bridge\nNE\nW\nTown Square\nUnder the Bridge\nE\nVacant Lot\nSW\nSide Alley\nS\nChilly Avenue\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the Bridge\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 191,
+      "name": "Under the Bridge",
+      "command": "south",
+      "to": 191,
+      "changed": false,
+      "reply": ", underneath the bridge.\n \n>south\n(opening the small metal door first)\nIt seems to be locked.\n \n> \n Under the Bridge                                              day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n14 rooms / 29 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nWhateley Bridge\nNE\nW\nTown Square\nUnder the Bridge\nE\nVacant Lot\nSW\nSide Alley\nS\nChilly Avenue\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the Bridge\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 191,
+      "name": "Under the Bridge",
+      "command": "in",
+      "to": 191,
+      "changed": false,
+      "reply": "rst)\nIt seems to be locked.\n \n>in\n(opening the small metal door first)\nIt seems to be locked.\n \n> \n Under the Bridge                                              day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n14 rooms / 29 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nWhateley Bridge\nNE\nW\nTown Square\nUnder the Bridge\nE\nVacant Lot\nSW\nSide Alley\nS\nChilly Avenue\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the Bridge\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 191,
+      "name": "Under the Bridge",
+      "command": "southeast",
+      "to": 188,
+      "changed": true,
+      "reply": ", turning into a misty avenue between the trees. The town square lies west, a vacant lot lies east.\n \n> \n Riverwalk                                                     day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n14 rooms / 28 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nUnder the Bridge\nNE\nW\nTown Square\nRiverwalk\nE\nVacant Lot\nSW\nSide Alley\nS\nChilly Avenue\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the Bridge\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 188,
+      "name": "Riverwalk",
+      "command": "south",
+      "to": 208,
+      "changed": true,
+      "reply": "hangs thickly in the air, seeping through your clothes and making you shiver.\n \n> \n Chilly Avenue                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 31 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nRiverwalk\nNE\nW\nTown Square\nChilly Avenue\nE\nVacant Lot\nSW\nScenic View\nS\nDeserted Lane\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic View\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 208,
+      "name": "Chilly Avenue",
+      "command": "south",
+      "to": 212,
+      "changed": true,
+      "reply": "n. A paved walk also leads east through the trees.\n \n> \n Deserted Lane                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n18 rooms / 34 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nTown Square\nDeserted Lane\nE\nChurchyard\nSW\nScenic View\nS\nDown the Road\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyard\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 212,
+      "name": "Deserted Lane",
+      "command": "south",
+      "to": 214,
+      "changed": true,
+      "reply": " you hear the deranged cry of a lone whippoorwill.\n \n> \n Down the Road                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n18 rooms / 35 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nDeserted Lane\nNE\nW\nTown Square\nDown the Road\nE\nChurchyard\nSW\nScenic View\nS\nDown the Road\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyard\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 214,
+      "name": "Down the Road",
+      "command": "north",
+      "to": 212,
+      "changed": true,
+      "reply": "n. A paved walk also leads east through the trees.\n \n> \n Deserted Lane                                                 day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n18 rooms / 35 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nTown Square\nDeserted Lane\nE\nChurchyard\nSW\nScenic View\nS\nDown the Road\nSE\nRiverwalk\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyard\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 212,
+      "name": "Deserted Lane",
+      "command": "east",
+      "to": 236,
+      "changed": true,
+      "reply": "e church to the southeast.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 37 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nScenic View\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "southeast",
+      "to": 240,
+      "changed": true,
+      "reply": "front of the church.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "down",
+      "to": 240,
+      "changed": false,
+      "reply": " seems to be locked.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "in",
+      "to": 240,
+      "changed": false,
+      "reply": " seems to be locked.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "southwest",
+      "to": 236,
+      "changed": true,
+      "reply": "he church to the southeast.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "east",
+      "to": 236,
+      "changed": false,
+      "reply": "you days to pry them loose.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "east",
+      "to": 236,
+      "changed": false,
+      "reply": "you days to pry them loose.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "southeast",
+      "to": 240,
+      "changed": true,
+      "reply": "front of the church.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "down",
+      "to": 240,
+      "changed": false,
+      "reply": " seems to be locked.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "in",
+      "to": 240,
+      "changed": false,
+      "reply": " seems to be locked.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "southwest",
+      "to": 236,
+      "changed": true,
+      "reply": "he church to the southeast.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "east",
+      "to": 236,
+      "changed": false,
+      "reply": "ray of rain into your face.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "southeast",
+      "to": 240,
+      "changed": true,
+      "reply": "essly to themselves.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "down",
+      "to": 240,
+      "changed": false,
+      "reply": "rain into your face.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "in",
+      "to": 240,
+      "changed": false,
+      "reply": " seems to be locked.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "southwest",
+      "to": 236,
+      "changed": true,
+      "reply": "he church to the southeast.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "east",
+      "to": 236,
+      "changed": false,
+      "reply": "r restlessly to themselves.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 236,
+      "name": "Churchyard",
+      "command": "southeast",
+      "to": 240,
+      "changed": true,
+      "reply": "front of the church.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "down",
+      "to": 240,
+      "changed": false,
+      "reply": " seems to be locked.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "in",
+      "to": 240,
+      "changed": false,
+      "reply": " seems to be locked.\n \n> \n Behind the Church                                             day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nBehind the Church\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 240,
+      "name": "Behind the Church",
+      "command": "southwest",
+      "to": 236,
+      "changed": true,
+      "reply": "he church to the southeast.\n \n> \n Churchyard                                                    day one                    \n➤\n🎤\nAnchorhead\nAn Interactive Tale of Lovecraftian Horror\nBy Michael S. Gentry\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 40 exits / 0 notes\nIN\nUP\nNW\nTwisting Lane\nN\nChilly Avenue\nNE\nW\nDeserted Lane\nChurchyard\nE\nChurchyard\nSW\nChurchyard\nS\nDown the Road\nSE\nBehind the Church\nDOWN\nOUT\nKNOWN ROOMS\nOutside the Real Estate OfficeAlleyNarrow StreetTwisting LaneLocal PubWhateley BridgeJunctionTown SquareRiverwalkDark CornerSide AlleyChilly AvenueVacant LotUnder the BridgeDeserted LaneScenic ViewDown the RoadChurchyardBehind the Church\nNotes\nParchLock! build 82\nMenu"
+    }
+  ],
+  "geo": {
+    "nodes": [
+      {
+        "key": "o:105",
+        "name": "Outside the Real Estate Office",
+        "x": 614,
+        "y": 172.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:107",
+        "name": "Alley",
+        "x": 746,
+        "y": 256.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:118",
+        "name": "Narrow Street↓",
+        "x": 482,
+        "y": 172.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:166",
+        "name": "Twisting Lane",
+        "x": 350,
+        "y": 88.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:169",
+        "name": "Whateley Bridge",
+        "x": 482,
+        "y": 256.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:127",
+        "name": "Junction",
+        "x": 350,
+        "y": 172.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:172",
+        "name": "Town Square",
+        "x": 482,
+        "y": 340.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:188",
+        "name": "Riverwalk",
+        "x": 614,
+        "y": 340.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:204",
+        "name": "Dark Corner",
+        "x": 350,
+        "y": 340.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:187",
+        "name": "Side Alley",
+        "x": 350,
+        "y": 424.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:208",
+        "name": "Chilly Avenue",
+        "x": 614,
+        "y": 424.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:195",
+        "name": "Vacant Lot",
+        "x": 746,
+        "y": 340.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:191",
+        "name": "Under the Bridge",
+        "x": 614,
+        "y": 256.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:212",
+        "name": "Deserted Lane",
+        "x": 614,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:230",
+        "name": "Scenic View",
+        "x": 482,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:214",
+        "name": "Down the Road",
+        "x": 614,
+        "y": 592.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:236",
+        "name": "Churchyard",
+        "x": 746,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:240",
+        "name": "Behind the Church",
+        "x": 878,
+        "y": 592.5,
+        "w": 108,
+        "h": 44
+      }
+    ],
+    "lines": [
+      {
+        "index": 0,
+        "from": "o:105",
+        "to": "o:107",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            130
+          ],
+          [
+            433.1428571428571,
+            188
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "from": "o:105",
+        "to": "o:118",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            130
+          ],
+          [
+            268,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "from": "o:118",
+        "to": "o:105",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            284,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "from": "o:118",
+        "to": "o:166",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            118.85714285714286,
+            72
+          ]
+        ]
+      },
+      {
+        "index": 4,
+        "from": "o:118",
+        "to": "o:169",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            210,
+            188
+          ]
+        ]
+      },
+      {
+        "index": 5,
+        "from": "o:118",
+        "to": "o:166",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            78,
+            130
+          ],
+          [
+            78,
+            72
+          ]
+        ]
+      },
+      {
+        "index": 6,
+        "from": "o:118",
+        "to": "o:127",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            136,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 7,
+        "from": "o:166",
+        "to": "o:118",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            78,
+            46
+          ],
+          [
+            210,
+            46
+          ],
+          [
+            210,
+            104
+          ]
+        ]
+      },
+      {
+        "index": 8,
+        "from": "o:169",
+        "to": "o:118",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            210,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 9,
+        "from": "o:169",
+        "to": "o:172",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            210,
+            272
+          ]
+        ]
+      },
+      {
+        "index": 10,
+        "from": "o:172",
+        "to": "o:188",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            298
+          ],
+          [
+            284,
+            298
+          ]
+        ]
+      },
+      {
+        "index": 11,
+        "from": "o:172",
+        "to": "o:169",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            298
+          ],
+          [
+            210,
+            240
+          ]
+        ]
+      },
+      {
+        "index": 12,
+        "from": "o:172",
+        "to": "o:187",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            298
+          ],
+          [
+            118.85714285714286,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 13,
+        "from": "o:172",
+        "to": "o:204",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            298
+          ],
+          [
+            136,
+            298
+          ]
+        ]
+      },
+      {
+        "index": 14,
+        "from": "o:188",
+        "to": "o:195",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            416,
+            298
+          ]
+        ]
+      },
+      {
+        "index": 15,
+        "from": "o:188",
+        "to": "o:191",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            342,
+            240
+          ]
+        ]
+      },
+      {
+        "index": 16,
+        "from": "o:188",
+        "to": "o:208",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            342,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 17,
+        "from": "o:188",
+        "to": "o:172",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            268,
+            298
+          ]
+        ]
+      },
+      {
+        "index": 18,
+        "from": "o:208",
+        "to": "o:188",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            382
+          ],
+          [
+            342,
+            324
+          ]
+        ]
+      },
+      {
+        "index": 19,
+        "from": "o:208",
+        "to": "o:212",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            382
+          ],
+          [
+            342,
+            440
+          ]
+        ]
+      },
+      {
+        "index": 20,
+        "from": "o:208",
+        "to": "o:230",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            382
+          ],
+          [
+            250.85714285714286,
+            440
+          ]
+        ]
+      },
+      {
+        "index": 21,
+        "from": "o:191",
+        "to": "o:188",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            342,
+            214
+          ],
+          [
+            342,
+            214
+          ],
+          [
+            342,
+            272
+          ]
+        ]
+      },
+      {
+        "index": 22,
+        "from": "o:212",
+        "to": "o:236",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            466
+          ],
+          [
+            416,
+            466
+          ]
+        ]
+      },
+      {
+        "index": 23,
+        "from": "o:212",
+        "to": "o:208",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            466
+          ],
+          [
+            342,
+            408
+          ]
+        ]
+      },
+      {
+        "index": 24,
+        "from": "o:212",
+        "to": "o:214",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            466
+          ],
+          [
+            342,
+            524
+          ]
+        ]
+      },
+      {
+        "index": 25,
+        "from": "o:236",
+        "to": "o:240",
+        "cls": "world-edge",
+        "pts": [
+          [
+            474,
+            466
+          ],
+          [
+            565.1428571428571,
+            524
+          ]
+        ]
+      },
+      {
+        "index": 26,
+        "from": "o:240",
+        "to": "o:236",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            606,
+            550
+          ],
+          [
+            474,
+            550
+          ],
+          [
+            474,
+            492
+          ]
+        ]
+      }
+    ],
+    "crossings": [],
+    "overlaps": [],
+    "level": 0,
+    "graph": {
+      "nodeCount": 19,
+      "edgeCount": 32
+    }
+  }
+}

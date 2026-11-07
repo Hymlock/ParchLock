@@ -1,0 +1,436 @@
+{
+  "story": "curses.z5.js",
+  "moves": 25,
+  "attempts": 25,
+  "log": [
+    {
+      "from": 35,
+      "name": "Attic",
+      "command": "north",
+      "to": 103,
+      "changed": true,
+      "reply": "ass demijohn (which is closed) (in which are a nasty-looking red battery and a tourist map) here.\n \nAs you disturb the still air, the attic key, which was balanced on top of the demijohn, slips onto the floor and disappears into a crack in the floorboards. Your spirits sink as it does, rattling down some distance. How on earth are you going to get it back?\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n6 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nOld Winery\nNE\nW\nAunt Jemima's Lair\nOld Winery\nE\nStorage Room\nSW\nS\nAttic\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's Lair\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 103,
+      "name": "Old Winery",
+      "command": "east",
+      "to": 116,
+      "changed": true,
+      "reply": "it does, rattling down some distance. How on earth are you going to get it back?\n \n>east\n \nStorage Room\nA disused storage room off the winery. In one wall is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.\n \nInside the dark shaft is the old dumbwaiter.\n \nA steel wrench gathers dust in the corner.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n6 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nOld Winery\nNE\nW\nOld Winery\nStorage Room\nE\nStorage Room\nSW\nS\nAttic\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's Lair\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 116,
+      "name": "Storage Room",
+      "command": "west",
+      "to": 103,
+      "changed": true,
+      "reply": "ll is an opening onto an ominous dark shaft, and beside it is a big Victorian-steam-engine style wheel with a handle on.\n \nInside the dark shaft is the old dumbwaiter.\n \nA steel wrench gathers dust in the corner.\n \n>west\n \nOld Winery\n \nYou can see a labelled glass demijohn (which is closed) (in which are a nasty-looking red battery and a tourist map) here.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n6 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nOld Winery\nNE\nW\nAunt Jemima's Lair\nOld Winery\nE\nStorage Room\nSW\nS\nAttic\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's Lair\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 103,
+      "name": "Old Winery",
+      "command": "west",
+      "to": 107,
+      "changed": true,
+      "reply": "ered.\n \nAn open doorway leads back southwest onto the upstairs landing, and you can hear the chaotic noise of suitcases being manhandled about - good thing nobody's seen you. A narrow staircase leads up and to the east into the attic.\n \nJemima herself seems to be in the potting room to the west.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 12 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nOld Winery\nNE\nW\nPotting Room\nAunt Jemima's Lair\nE\nStorage Room\nSW\nHouse\nS\nAiring Cupboard\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 107,
+      "name": "Aunt Jemima's Lair",
+      "command": "south",
+      "to": 109,
+      "changed": true,
+      "reply": "uth\n \nAiring Cupboard\nA space about six feet square. The old drying racks now contain odd ceramic sculptures almost but not quite unrecognisable as coffee mugs. One corner is filled with an enormous pile of tie-dyed sheets, from Aunt Jemima's infamous Sixties Revival period of last October.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 13 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nAunt Jemima's Lair\nNE\nW\nPotting Room\nAiring Cupboard\nE\nStorage Room\nSW\nHouse\nS\nAiring Cupboard\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 109,
+      "name": "Airing Cupboard",
+      "command": "north",
+      "to": 107,
+      "changed": true,
+      "reply": "ut six feet square. The old drying racks now contain odd ceramic sculptures almost but not quite unrecognisable as coffee mugs. One corner is filled with an enormous pile of tie-dyed sheets, from Aunt Jemima's infamous Sixties Revival period of last October.\n \n>north\n \nAunt Jemima's Lair\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 13 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nAunt Jemima's Lair\nNE\nW\nPotting Room\nAunt Jemima's Lair\nE\nStorage Room\nSW\nHouse\nS\nAiring Cupboard\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 107,
+      "name": "Aunt Jemima's Lair",
+      "command": "west",
+      "to": 112,
+      "changed": true,
+      "reply": "rs, seeds, ornamental trowels and other miscellaneous garden implements.\n \nA pair of yellow rubber gloves hangs from a hook on one wall.\n \nAunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 14 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nAunt Jemima's Lair\nNE\nW\nPotting Room\nPotting Room\nE\nAunt Jemima's Lair\nSW\nHouse\nS\nAiring Cupboard\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 112,
+      "name": "Potting Room",
+      "command": "east",
+      "to": 107,
+      "changed": true,
+      "reply": "ther miscellaneous garden implements.\n \nA pair of yellow rubber gloves hangs from a hook on one wall.\n \nAunt Jemima, who has for years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.\n \n>east\n \nAunt Jemima's Lair\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 14 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nAunt Jemima's Lair\nNE\nW\nPotting Room\nAunt Jemima's Lair\nE\nAunt Jemima's Lair\nSW\nHouse\nS\nAiring Cupboard\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 107,
+      "name": "Aunt Jemima's Lair",
+      "command": "up",
+      "to": 103,
+      "changed": true,
+      "reply": "or years collected varieties of daisy, is engaged in her regular annual pastime of deciding which species make the best chains.\n \n>east\n \nAunt Jemima's Lair\n \n>up\n \nOld Winery\n \nYou can see a labelled glass demijohn (which is closed) (in which are a nasty-looking red battery and a tourist map) here.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 14 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nAunt Jemima's Lair\nNE\nW\nAunt Jemima's Lair\nOld Winery\nE\nStorage Room\nSW\nHouse\nS\nAttic\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 103,
+      "name": "Old Winery",
+      "command": "south",
+      "to": 35,
+      "changed": true,
+      "reply": "hich species make the best chains.\n \n>east\n \nAunt Jemima's Lair\n \n>up\n \nOld Winery\n \nYou can see a labelled glass demijohn (which is closed) (in which are a nasty-looking red battery and a tourist map) here.\n \n>south\n \nAttic\n \nA hinged trapdoor in the floor stands open, and light streams in from below.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 14 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nOld Winery\nNE\nW\nAunt Jemima's Lair\nAttic\nE\nServant's Room\nSW\nHouse\nS\nOld Furniture\nSE\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 35,
+      "name": "Attic",
+      "command": "south",
+      "to": 47,
+      "changed": true,
+      "reply": "ture\nScruffy old furniture is piled up here: armchairs with springs coming out, umbrella stands, a badly scratched cupboard, a table with one leg missing... You try to remember why you keep all this rubbish, and fail. Anyway the attic continues to the southeast.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n10 rooms / 16 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nN\nAttic\nNE\nW\nAunt Jemima's Lair\nOld Furniture\nE\nServant's Room\nSW\nHouse\nS\nOld Furniture\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East Wing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 47,
+      "name": "Old Furniture",
+      "command": "southeast",
+      "to": 57,
+      "changed": true,
+      "reply": " to east, and there is also a tight doorway leading west. A short flight of wooden steps leads down and to the south.\n \nAustin, your incorrigible ginger cat, lounges around here.\n \nAustin looks ineffable again.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 21 exits / 0 notes\nIN\nUP\nOld Winery\nNW\nOld Furniture\nN\nAttic\nNE\nW\nDark Room\nOver the East Wing\nE\nEast Annexe\nSW\nHouse\nS\nDisused Observatory\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark Room\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 57,
+      "name": "Over the East Wing",
+      "command": "south",
+      "to": 64,
+      "changed": true,
+      "reply": "he continuation of the stairs down and to the south.\n \nMounted on the old telescope stand is what looks like a solid glass ball.\n \nAustin tiptoes in from the east landing.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 25 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nAttic\nNE\nW\nLibrary Storage\nDisused Observatory\nE\nEast Annexe\nSW\nHouse\nS\nSouvenirs Room\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary Storage\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 64,
+      "name": "Disused Observatory",
+      "command": "south",
+      "to": 71,
+      "changed": true,
+      "reply": "t of searching it all again. A slide projector is aimed at the whitewashed south wall, one of the outside walls of the house. The only way to go is back up to the observatory.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 26 exits / 0 notes\nIN\nUP\nDisused Observatory\nNW\nOld Furniture\nN\nAttic\nNE\nW\nLibrary Storage\nSouvenirs Room\nE\nEast Annexe\nSW\nHouse\nS\nSouvenirs Room\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary Storage\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 71,
+      "name": "Souvenirs Room",
+      "command": "up",
+      "to": 64,
+      "changed": true,
+      "reply": "ur incorrigible ginger cat, lounges around here.\n \nMounted on the old telescope stand is what looks like a solid glass ball.\n \nAustin rolls over on his back and stretches.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 26 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nAttic\nNE\nW\nLibrary Storage\nDisused Observatory\nE\nEast Annexe\nSW\nHouse\nS\nSouvenirs Room\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary Storage\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 64,
+      "name": "Disused Observatory",
+      "command": "west",
+      "to": 67,
+      "changed": true,
+      "reply": "a book of poetry are the only books left, and they're propping up a water pipe near a rather loose joint - it really is time you called a plumber to sort this one out.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 27 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nAttic\nNE\nW\nLibrary Storage\nLibrary Storage\nE\nDisused Observatory\nSW\nHouse\nS\nSouvenirs Room\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary Storage\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 67,
+      "name": "Library Storage",
+      "command": "east",
+      "to": 64,
+      "changed": true,
+      "reply": "east\n \nDisused Observatory\n \nAustin, your incorrigible ginger cat, lounges around here.\n \nMounted on the old telescope stand is what looks like a solid glass ball.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 27 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nAttic\nNE\nW\nLibrary Storage\nDisused Observatory\nE\nDisused Observatory\nSW\nHouse\nS\nSouvenirs Room\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary Storage\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 64,
+      "name": "Disused Observatory",
+      "command": "up",
+      "to": 57,
+      "changed": true,
+      "reply": "servatory\n \nAustin, your incorrigible ginger cat, lounges around here.\n \nMounted on the old telescope stand is what looks like a solid glass ball.\n \n>up\n \nOver the East Wing\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 27 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nAttic\nNE\nW\nDark Room\nOver the East Wing\nE\nEast Annexe\nSW\nHouse\nS\nDisused Observatory\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary Storage\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 57,
+      "name": "Over the East Wing",
+      "command": "east",
+      "to": 74,
+      "changed": true,
+      "reply": " you really must mend before winter) lets a little natural light in, but the attics to the west and south are dark.\n \nIn the north wall is an intriguing closed cupboard door.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 29 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nAttic\nNE\nW\nOver the East Wing\nEast Annexe\nE\nEast Annexe\nSW\nHouse\nS\nDead End\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary StorageDead End\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 74,
+      "name": "East Annexe",
+      "command": "south",
+      "to": 78,
+      "changed": true,
+      "reply": "\nGreat Scott!  That old canvas rucksack must be the very one your famous ancestor, the African explorer Ebenezer Meldrew, brought back from the Zambezi Expedition of 1882!\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 30 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nEast Annexe\nNE\nW\nOver the East Wing\nDead End\nE\nEast Annexe\nSW\nHouse\nS\nDead End\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary StorageDead End\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 78,
+      "name": "Dead End",
+      "command": "north",
+      "to": 74,
+      "changed": true,
+      "reply": "e African explorer Ebenezer Meldrew, brought back from the Zambezi Expedition of 1882!\n \n>north\n \nEast Annexe\n \nIn the north wall is an intriguing closed cupboard door.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 30 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nEast Annexe\nNE\nW\nOver the East Wing\nEast Annexe\nE\nEast Annexe\nSW\nHouse\nS\nDead End\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary StorageDead End\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 74,
+      "name": "East Annexe",
+      "command": "west",
+      "to": 57,
+      "changed": true,
+      "reply": "rought back from the Zambezi Expedition of 1882!\n \n>north\n \nEast Annexe\n \nIn the north wall is an intriguing closed cupboard door.\n \n>west\n \nOver the East Wing\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 30 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nEast Annexe\nNE\nW\nDark Room\nOver the East Wing\nE\nEast Annexe\nSW\nHouse\nS\nDisused Observatory\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary StorageDead End\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 57,
+      "name": "Over the East Wing",
+      "command": "west",
+      "to": 59,
+      "changed": true,
+      "reply": " man.\n \nYou bump your head on the cord hanging from the ceiling, for the umpteenth time.\n \nA rather more modern photographer's flash lies on a shelf to one side.\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 31 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nEast Annexe\nNE\nW\nDark Room\nDark Room\nE\nOver the East Wing\nSW\nHouse\nS\nDisused Observatory\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary StorageDead End\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 59,
+      "name": "Dark Room",
+      "command": "east",
+      "to": 57,
+      "changed": true,
+      "reply": "he cord hanging from the ceiling, for the umpteenth time.\n \nA rather more modern photographer's flash lies on a shelf to one side.\n \n>east\n \nOver the East Wing\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 31 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nEast Annexe\nNE\nW\nDark Room\nOver the East Wing\nE\nEast Annexe\nSW\nHouse\nS\nDisused Observatory\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary StorageDead End\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 57,
+      "name": "Over the East Wing",
+      "command": "northwest",
+      "to": 47,
+      "changed": true,
+      "reply": "om the ceiling, for the umpteenth time.\n \nA rather more modern photographer's flash lies on a shelf to one side.\n \n>east\n \nOver the East Wing\n \n>northwest\n \nOld Furniture\n \n> \n➤\n🎤\nCurses\nAn Interactive Diversion\nBy Graham Nelson\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 31 exits / 0 notes\nIN\nUP\nOver the East Wing\nNW\nOld Furniture\nN\nAttic\nNE\nW\nDark Room\nOld Furniture\nE\nEast Annexe\nSW\nHouse\nS\nDisused Observatory\nSE\nOver the East Wing\nDOWN\nOUT\nKNOWN ROOMS\nAtticOld WineryOld FurnitureServant's RoomStorage RoomAunt Jemima's LairHouseAiring CupboardPotting RoomOver the East WingDisused ObservatoryEast AnnexeDark RoomSouvenirs RoomLibrary StorageDead End\nNotes\nParchLock! build 82\nMenu"
+    }
+  ],
+  "geo": {
+    "nodes": [
+      {
+        "key": "o:35",
+        "name": "Attic",
+        "x": 746,
+        "y": 424.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:103",
+        "name": "Old Winery↓",
+        "x": 746,
+        "y": 340.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:47",
+        "name": "Old Furniture",
+        "x": 746,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:42",
+        "name": "Servant's Room",
+        "x": 878,
+        "y": 424.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:116",
+        "name": "Storage Room",
+        "x": 878,
+        "y": 340.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:57",
+        "name": "Over the East Wing↓",
+        "x": 878,
+        "y": 592.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:74",
+        "name": "East Annexe",
+        "x": 1010,
+        "y": 592.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:59",
+        "name": "Dark Room",
+        "x": 746,
+        "y": 592.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:78",
+        "name": "Dead End",
+        "x": 1010,
+        "y": 676.5,
+        "w": 108,
+        "h": 44
+      }
+    ],
+    "lines": [
+      {
+        "index": 0,
+        "from": "o:35",
+        "to": "o:42",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            78,
+            130
+          ],
+          [
+            152,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "from": "o:35",
+        "to": "o:103",
+        "cls": "world-edge",
+        "pts": [
+          [
+            78,
+            130
+          ],
+          [
+            78,
+            72
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "from": "o:35",
+        "to": "o:47",
+        "cls": "world-edge",
+        "pts": [
+          [
+            78,
+            130
+          ],
+          [
+            78,
+            188
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "from": "o:103",
+        "to": "o:116",
+        "cls": "world-edge",
+        "pts": [
+          [
+            78,
+            46
+          ],
+          [
+            152,
+            46
+          ]
+        ]
+      },
+      {
+        "index": 4,
+        "from": "o:47",
+        "to": "o:35",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            78,
+            214
+          ],
+          [
+            78,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 5,
+        "from": "o:47",
+        "to": "o:57",
+        "cls": "world-edge",
+        "pts": [
+          [
+            78,
+            214
+          ],
+          [
+            169.14285714285714,
+            272
+          ]
+        ]
+      },
+      {
+        "index": 6,
+        "from": "o:57",
+        "to": "o:74",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            298
+          ],
+          [
+            284,
+            298
+          ]
+        ]
+      },
+      {
+        "index": 7,
+        "from": "o:57",
+        "to": "o:59",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            298
+          ],
+          [
+            136,
+            298
+          ]
+        ]
+      },
+      {
+        "index": 8,
+        "from": "o:74",
+        "to": "o:78",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            342,
+            356
+          ]
+        ]
+      }
+    ],
+    "crossings": [],
+    "overlaps": [],
+    "level": 0,
+    "graph": {
+      "nodeCount": 16,
+      "edgeCount": 31
+    }
+  }
+}

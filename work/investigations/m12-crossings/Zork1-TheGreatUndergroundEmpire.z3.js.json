@@ -1,0 +1,1129 @@
+{
+  "story": "Zork1-TheGreatUndergroundEmpire.z3.js",
+  "moves": 25,
+  "attempts": 43,
+  "log": [
+    {
+      "from": 180,
+      "name": "West of House",
+      "command": "in",
+      "to": 180,
+      "changed": false,
+      "reply": "registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>in\nYou can't go that way.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n5 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNorth of House\nNE\nW\nForest\nWest of House\nE\nSW\nStone Barrow\nS\nSouth of House\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 180,
+      "name": "West of House",
+      "command": "southwest",
+      "to": 180,
+      "changed": false,
+      "reply": ".\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>in\nYou can't go that way.\n \n>southwest\nYou can't go that way.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n5 rooms / 8 exits / 0 notes\nIN\nUP\nNW\nN\nNorth of House\nNE\nW\nForest\nWest of House\nE\nSW\nStone Barrow\nS\nSouth of House\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 180,
+      "name": "West of House",
+      "command": "southeast",
+      "to": 80,
+      "changed": true,
+      "reply": "re.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>in\nYou can't go that way.\n \n>southwest\nYou can't go that way.\n \n>southeast\nSouth of House\nYou are facing the south side of a white house. There is no door here, and all the windows are boarded.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n7 rooms / 14 exits / 0 notes\nIN\nUP\nNW\nN\nNorth of House\nNE\nW\nWest of House\nSouth of House\nE\nBehind House\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 80,
+      "name": "South of House",
+      "command": "northeast",
+      "to": 79,
+      "changed": true,
+      "reply": " can't go that way.\n \n>southeast\nSouth of House\nYou are facing the south side of a white house. There is no door here, and all the windows are boarded.\n \n>northeast\nBehind House\nYou are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 21 exits / 0 notes\nIN\nUP\nNW\nN\nNorth of House\nNE\nW\nKitchen\nBehind House\nE\nClearing\nSW\nStone Barrow\nS\nSouth of House\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 79,
+      "name": "Behind House",
+      "command": "in",
+      "to": 79,
+      "changed": false,
+      "reply": "th of House\nYou are facing the south side of a white house. There is no door here, and all the windows are boarded.\n \n>northeast\nBehind House\nYou are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n \n>in\nThe kitchen window is closed.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n9 rooms / 21 exits / 0 notes\nIN\nUP\nNW\nN\nNorth of House\nNE\nW\nKitchen\nBehind House\nE\nClearing\nSW\nStone Barrow\nS\nSouth of House\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 79,
+      "name": "Behind House",
+      "command": "northwest",
+      "to": 81,
+      "changed": true,
+      "reply": "e east. In one corner of the house there is a small window which is slightly ajar.\n \n>in\nThe kitchen window is closed.\n \n>northwest\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n10 rooms / 27 exits / 0 notes\nIN\nUP\nNW\nN\nForest Path\nNE\nW\nWest of House\nNorth of House\nE\nBehind House\nSW\nStone Barrow\nS\nSouth of House\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest Path\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 81,
+      "name": "North of House",
+      "command": "south",
+      "to": 81,
+      "changed": false,
+      "reply": "re is a small window which is slightly ajar.\n \n>in\nThe kitchen window is closed.\n \n>northwest\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>south\nThe windows are all boarded.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n10 rooms / 27 exits / 0 notes\nIN\nUP\nNW\nN\nForest Path\nNE\nW\nWest of House\nNorth of House\nE\nBehind House\nSW\nStone Barrow\nS\nSouth of House\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest Path\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 81,
+      "name": "North of House",
+      "command": "north",
+      "to": 75,
+      "changed": true,
+      "reply": "e boarded up. To the north a narrow path winds through the trees.\n \n>south\nThe windows are all boarded.\n \n>north\nForest Path\nThis is a path winding through a dimly lit forest. The path heads north-south here. One particularly large tree with some low branches stands at the edge of the path.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 32 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nN\nClearing\nNE\nW\nForest\nForest Path\nE\nForest\nSW\nStone Barrow\nS\nNorth of House\nSE\nDOWN\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 75,
+      "name": "Forest Path",
+      "command": "up",
+      "to": 88,
+      "changed": true,
+      "reply": "rusted with precious jewels, apparently scavenged by a childless songbird. The egg is covered with fine gold inlay, and ornamented in lapis lazuli and mother-of-pearl. Unlike most eggs, this one is hinged and closed with a delicate looking clasp. The egg appears extremely fragile.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 34 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nN\nClearing\nNE\nW\nForest\nUp a Tree\nE\nForest\nSW\nStone Barrow\nS\nNorth of House\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 88,
+      "name": "Up a Tree",
+      "command": "up",
+      "to": 88,
+      "changed": false,
+      "reply": "ntly scavenged by a childless songbird. The egg is covered with fine gold inlay, and ornamented in lapis lazuli and mother-of-pearl. Unlike most eggs, this one is hinged and closed with a delicate looking clasp. The egg appears extremely fragile.\n \n>up\nYou cannot climb any higher.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 34 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nN\nClearing\nNE\nW\nForest\nUp a Tree\nE\nForest\nSW\nStone Barrow\nS\nNorth of House\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 88,
+      "name": "Up a Tree",
+      "command": "down",
+      "to": 75,
+      "changed": true,
+      "reply": "ildless songbird. The egg is covered with fine gold inlay, and ornamented in lapis lazuli and mother-of-pearl. Unlike most eggs, this one is hinged and closed with a delicate looking clasp. The egg appears extremely fragile.\n \n>up\nYou cannot climb any higher.\n \n>down\nForest Path\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 34 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nN\nClearing\nNE\nW\nForest\nForest Path\nE\nForest\nSW\nStone Barrow\nS\nNorth of House\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 75,
+      "name": "Forest Path",
+      "command": "west",
+      "to": 78,
+      "changed": true,
+      "reply": "er-of-pearl. Unlike most eggs, this one is hinged and closed with a delicate looking clasp. The egg appears extremely fragile.\n \n>up\nYou cannot climb any higher.\n \n>down\nForest Path\n \n>west\nForest\nThis is a forest, with trees in all directions. To the east, there appears to be sunlight.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 39 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nN\nClearing\nNE\nW\nForest\nForest\nE\nForest Path\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 78,
+      "name": "Forest",
+      "command": "up",
+      "to": 78,
+      "changed": false,
+      "reply": "nd closed with a delicate looking clasp. The egg appears extremely fragile.\n \n>up\nYou cannot climb any higher.\n \n>down\nForest Path\n \n>west\nForest\nThis is a forest, with trees in all directions. To the east, there appears to be sunlight.\n \n>up\nThere is no tree here suitable for climbing.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 39 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nN\nClearing\nNE\nW\nForest\nForest\nE\nForest Path\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 78,
+      "name": "Forest",
+      "command": "south",
+      "to": 76,
+      "changed": true,
+      "reply": "nnot climb any higher.\n \n>down\nForest Path\n \n>west\nForest\nThis is a forest, with trees in all directions. To the east, there appears to be sunlight.\n \n>up\nThere is no tree here suitable for climbing.\n \n>south\nForest\nThis is a dimly lit forest, with large trees all around.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 45 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nClearing\nNE\nW\nForest\nForest\nE\nForest Path\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 76,
+      "name": "Forest",
+      "command": "up",
+      "to": 76,
+      "changed": false,
+      "reply": "Forest\nThis is a forest, with trees in all directions. To the east, there appears to be sunlight.\n \n>up\nThere is no tree here suitable for climbing.\n \n>south\nForest\nThis is a dimly lit forest, with large trees all around.\n \n>up\nThere is no tree here suitable for climbing.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 45 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nClearing\nNE\nW\nForest\nForest\nE\nForest Path\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 76,
+      "name": "Forest",
+      "command": "south",
+      "to": 76,
+      "changed": false,
+      "reply": "irections. To the east, there appears to be sunlight.\n \n>up\nThere is no tree here suitable for climbing.\n \n>south\nForest\nThis is a dimly lit forest, with large trees all around.\n \n>up\nThere is no tree here suitable for climbing.\n \n>south\nStorm-tossed trees block your way.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 45 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nClearing\nNE\nW\nForest\nForest\nE\nForest Path\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 76,
+      "name": "Forest",
+      "command": "east",
+      "to": 76,
+      "changed": false,
+      "reply": "up\nThere is no tree here suitable for climbing.\n \n>south\nForest\nThis is a dimly lit forest, with large trees all around.\n \n>up\nThere is no tree here suitable for climbing.\n \n>south\nStorm-tossed trees block your way.\n \n>east\nThe rank undergrowth prevents eastward movement.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n13 rooms / 45 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nClearing\nNE\nW\nForest\nForest\nE\nForest Path\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearing\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 76,
+      "name": "Forest",
+      "command": "north",
+      "to": 74,
+      "changed": true,
+      "reply": "There is no tree here suitable for climbing.\n \n>south\nStorm-tossed trees block your way.\n \n>east\nThe rank undergrowth prevents eastward movement.\n \n>north\nClearing\nYou are in a small clearing in a well marked forest path that extends to the east and west.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n14 rooms / 50 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nBehind House\nClearing\nE\nCanyon View\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon View\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 74,
+      "name": "Clearing",
+      "command": "north",
+      "to": 77,
+      "changed": true,
+      "reply": "eastward movement.\n \n>north\nClearing\nYou are in a small clearing in a well marked forest path that extends to the east and west.\n \n>north\nForest\nThis is a dimly lit forest, with large trees all around.\nYou hear in the distance the chirping of a song bird.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 55 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nForest Path\nForest\nE\nForest\nSW\nStone Barrow\nS\nClearing\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 77,
+      "name": "Forest",
+      "command": "up",
+      "to": 77,
+      "changed": false,
+      "reply": "mall clearing in a well marked forest path that extends to the east and west.\n \n>north\nForest\nThis is a dimly lit forest, with large trees all around.\nYou hear in the distance the chirping of a song bird.\n \n>up\nThere is no tree here suitable for climbing.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 55 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nForest Path\nForest\nE\nForest\nSW\nStone Barrow\nS\nClearing\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 77,
+      "name": "Forest",
+      "command": "east",
+      "to": 239,
+      "changed": true,
+      "reply": "nd west.\n \n>north\nForest\nThis is a dimly lit forest, with large trees all around.\nYou hear in the distance the chirping of a song bird.\n \n>up\nThere is no tree here suitable for climbing.\n \n>east\nForest\nThe forest thins out, revealing impassable mountains.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 60 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nForest Path\nForest\nE\nForest\nSW\nStone Barrow\nS\nClearing\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 239,
+      "name": "Forest",
+      "command": "up",
+      "to": 239,
+      "changed": false,
+      "reply": "imly lit forest, with large trees all around.\nYou hear in the distance the chirping of a song bird.\n \n>up\nThere is no tree here suitable for climbing.\n \n>east\nForest\nThe forest thins out, revealing impassable mountains.\n \n>up\nThe mountains are impassable.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 60 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nForest Path\nForest\nE\nForest\nSW\nStone Barrow\nS\nClearing\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 239,
+      "name": "Forest",
+      "command": "east",
+      "to": 239,
+      "changed": false,
+      "reply": "around.\nYou hear in the distance the chirping of a song bird.\n \n>up\nThere is no tree here suitable for climbing.\n \n>east\nForest\nThe forest thins out, revealing impassable mountains.\n \n>up\nThe mountains are impassable.\n \n>east\nThe mountains are impassable.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 60 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nForest Path\nForest\nE\nForest\nSW\nStone Barrow\nS\nClearing\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 239,
+      "name": "Forest",
+      "command": "north",
+      "to": 77,
+      "changed": true,
+      "reply": " in the distance the chirping of a song bird.\n \n>up\nThere is no tree here suitable for climbing.\n \n>east\nForest\nThe forest thins out, revealing impassable mountains.\n \n>up\nThe mountains are impassable.\n \n>east\nThe mountains are impassable.\n \n>north\nForest\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 60 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nForest Path\nForest\nE\nForest\nSW\nStone Barrow\nS\nClearing\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 77,
+      "name": "Forest",
+      "command": "north",
+      "to": 77,
+      "changed": false,
+      "reply": "re is no tree here suitable for climbing.\n \n>east\nForest\nThe forest thins out, revealing impassable mountains.\n \n>up\nThe mountains are impassable.\n \n>east\nThe mountains are impassable.\n \n>north\nForest\n \n>north\nThe forest becomes impenetrable to the north.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 60 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nForest Path\nForest\nE\nForest\nSW\nStone Barrow\nS\nClearing\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 77,
+      "name": "Forest",
+      "command": "south",
+      "to": 74,
+      "changed": true,
+      "reply": "ble for climbing.\n \n>east\nForest\nThe forest thins out, revealing impassable mountains.\n \n>up\nThe mountains are impassable.\n \n>east\nThe mountains are impassable.\n \n>north\nForest\n \n>north\nThe forest becomes impenetrable to the north.\n \n>south\nClearing\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 60 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nBehind House\nClearing\nE\nCanyon View\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 74,
+      "name": "Clearing",
+      "command": "up",
+      "to": 74,
+      "changed": false,
+      "reply": "ut, revealing impassable mountains.\n \n>up\nThe mountains are impassable.\n \n>east\nThe mountains are impassable.\n \n>north\nForest\n \n>north\nThe forest becomes impenetrable to the north.\n \n>south\nClearing\n \n>up\nThere is no tree here suitable for climbing.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n15 rooms / 60 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nSouth of House\nN\nForest\nNE\nW\nBehind House\nClearing\nE\nCanyon View\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForest\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 74,
+      "name": "Clearing",
+      "command": "east",
+      "to": 25,
+      "changed": true,
+      "reply": "n, complete with rainbow. The mighty Frigid River flows out from a great dark cavern. To the west and south can be seen an immense forest, stretching for miles around. A path leads northwest. It is possible to climb down into the canyon from here.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n16 rooms / 65 exits / 0 notes\nIN\nUP\nUp a Tree\nNW\nClearing\nN\nForest\nNE\nW\nForest\nCanyon View\nE\nRocky Ledge\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nForest Path\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky Ledge\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 25,
+      "name": "Canyon View",
+      "command": "east",
+      "to": 26,
+      "changed": true,
+      "reply": "all of the river canyon. You can see from here that the main flow from Aragain Falls twists along a passage which it is impossible for you to enter. Below you is the canyon bottom. Above you is more cliff, which appears climbable.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n17 rooms / 67 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nForest\nNE\nW\nForest\nRocky Ledge\nE\nRocky Ledge\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon Bottom\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 26,
+      "name": "Rocky Ledge",
+      "command": "down",
+      "to": 27,
+      "changed": true,
+      "reply": "ears climbable.\n \n>down\nCanyon Bottom\nYou are beneath the walls of the river canyon which may be climbable here. The lesser part of the runoff of Aragain Falls flows by below. To the north is a narrow path.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n18 rooms / 69 exits / 0 notes\nIN\nUP\nRocky Ledge\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nCanyon Bottom\nE\nRocky Ledge\nSW\nStone Barrow\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 27,
+      "name": "Canyon Bottom",
+      "command": "north",
+      "to": 136,
+      "changed": true,
+      "reply": "the presence of the White Cliffs. The river canyon opens here and sunlight shines in from above. A rainbow crosses over the falls to the east and a narrow path continues to the southwest.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nRocky Ledge\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nEnd of Rainbow\nE\nOn the Rainbow\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 136,
+      "name": "End of Rainbow",
+      "command": "up",
+      "to": 136,
+      "changed": false,
+      "reply": "ffs. The river canyon opens here and sunlight shines in from above. A rainbow crosses over the falls to the east and a narrow path continues to the southwest.\n \n>up\nYou can't go that way.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nRocky Ledge\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nEnd of Rainbow\nE\nOn the Rainbow\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 136,
+      "name": "End of Rainbow",
+      "command": "northeast",
+      "to": 136,
+      "changed": false,
+      "reply": " sunlight shines in from above. A rainbow crosses over the falls to the east and a narrow path continues to the southwest.\n \n>up\nYou can't go that way.\n \n>northeast\nYou can't go that way.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nRocky Ledge\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nEnd of Rainbow\nE\nOn the Rainbow\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 136,
+      "name": "End of Rainbow",
+      "command": "east",
+      "to": 136,
+      "changed": false,
+      "reply": " A rainbow crosses over the falls to the east and a narrow path continues to the southwest.\n \n>up\nYou can't go that way.\n \n>northeast\nYou can't go that way.\n \n>east\nYou can't go that way.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nRocky Ledge\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nEnd of Rainbow\nE\nOn the Rainbow\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 136,
+      "name": "End of Rainbow",
+      "command": "southwest",
+      "to": 27,
+      "changed": true,
+      "reply": "e falls to the east and a narrow path continues to the southwest.\n \n>up\nYou can't go that way.\n \n>northeast\nYou can't go that way.\n \n>east\nYou can't go that way.\n \n>southwest\nCanyon Bottom\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nRocky Ledge\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nCanyon Bottom\nE\nOn the Rainbow\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 27,
+      "name": "Canyon Bottom",
+      "command": "up",
+      "to": 26,
+      "changed": true,
+      "reply": "ast and a narrow path continues to the southwest.\n \n>up\nYou can't go that way.\n \n>northeast\nYou can't go that way.\n \n>east\nYou can't go that way.\n \n>southwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nRocky Ledge\nE\nOn the Rainbow\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 26,
+      "name": "Rocky Ledge",
+      "command": "up",
+      "to": 25,
+      "changed": true,
+      "reply": "w path continues to the southwest.\n \n>up\nYou can't go that way.\n \n>northeast\nYou can't go that way.\n \n>east\nYou can't go that way.\n \n>southwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nCanyon View\nE\nRocky Ledge\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 25,
+      "name": "Canyon View",
+      "command": "south",
+      "to": 25,
+      "changed": false,
+      "reply": " can't go that way.\n \n>northeast\nYou can't go that way.\n \n>east\nYou can't go that way.\n \n>southwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n>south\nStorm-tossed trees block your way.\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nCanyon View\nE\nRocky Ledge\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 25,
+      "name": "Canyon View",
+      "command": "down",
+      "to": 26,
+      "changed": true,
+      "reply": " \n>northeast\nYou can't go that way.\n \n>east\nYou can't go that way.\n \n>southwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n>south\nStorm-tossed trees block your way.\n \n>down\nRocky Ledge\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 72 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nRocky Ledge\nE\nRocky Ledge\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 26,
+      "name": "Rocky Ledge",
+      "command": "down",
+      "to": 27,
+      "changed": true,
+      "reply": "o that way.\n \n>east\nYou can't go that way.\n \n>southwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n>south\nStorm-tossed trees block your way.\n \n>down\nRocky Ledge\n \n>down\nCanyon Bottom\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 72 exits / 0 notes\nIN\nUP\nRocky Ledge\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nCanyon Bottom\nE\nRocky Ledge\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 27,
+      "name": "Canyon Bottom",
+      "command": "up",
+      "to": 26,
+      "changed": true,
+      "reply": "ast\nYou can't go that way.\n \n>southwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n>south\nStorm-tossed trees block your way.\n \n>down\nRocky Ledge\n \n>down\nCanyon Bottom\n \n>up\nRocky Ledge\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 72 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nRocky Ledge\nE\nRocky Ledge\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nCanyon Bottom\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 26,
+      "name": "Rocky Ledge",
+      "command": "up",
+      "to": 25,
+      "changed": true,
+      "reply": " that way.\n \n>southwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n>south\nStorm-tossed trees block your way.\n \n>down\nRocky Ledge\n \n>down\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nEnd of Rainbow\nNE\nW\nForest\nCanyon View\nE\nRocky Ledge\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nRocky Ledge\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 25,
+      "name": "Canyon View",
+      "command": "northwest",
+      "to": 74,
+      "changed": true,
+      "reply": "thwest\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n>south\nStorm-tossed trees block your way.\n \n>down\nRocky Ledge\n \n>down\nCanyon Bottom\n \n>up\nRocky Ledge\n \n>up\nCanyon View\n \n>northwest\nClearing\n \n> \n➤\n🎤\nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n19 rooms / 73 exits / 0 notes\nIN\nUP\nCanyon View\nNW\nClearing\nN\nForest\nNE\nW\nBehind House\nClearing\nE\nCanyon View\nSW\nCanyon Bottom\nS\nForest\nSE\nDOWN\nRocky Ledge\nOUT\nKNOWN ROOMS\nWest of HouseStone BarrowSouth of HouseNorth of HouseForestBehind HouseForestKitchenClearingForest PathUp a TreeForestClearingCanyon ViewForestRocky LedgeCanyon BottomEnd of RainbowOn the Rainbow\nNotes\nParchLock! build 82\nMenu"
+    }
+  ],
+  "geo": {
+    "nodes": [
+      {
+        "key": "o:180",
+        "name": "West of House",
+        "x": 482,
+        "y": 592.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:178",
+        "name": "Stone Barrow",
+        "x": 614,
+        "y": 760.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:80",
+        "name": "South of House",
+        "x": 614,
+        "y": 676.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:81",
+        "name": "North of House",
+        "x": 482,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:78",
+        "name": "Forest",
+        "x": 350,
+        "y": 592.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:79",
+        "name": "Behind House",
+        "x": 614,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:76",
+        "name": "Forest",
+        "x": 746,
+        "y": 760.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:203",
+        "name": "Kitchen",
+        "x": 746,
+        "y": 676.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:74",
+        "name": "Clearing",
+        "x": 746,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:75",
+        "name": "Forest Path↑",
+        "x": 482,
+        "y": 424.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:77",
+        "name": "Forest",
+        "x": 614,
+        "y": 424.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:143",
+        "name": "Clearing",
+        "x": 350,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:25",
+        "name": "Canyon View↓",
+        "x": 878,
+        "y": 760.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:239",
+        "name": "Forest",
+        "x": 746,
+        "y": 424.5,
+        "w": 108,
+        "h": 44
+      }
+    ],
+    "lines": [
+      {
+        "index": 0,
+        "from": "o:180",
+        "to": "o:80",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            301.1428571428571,
+            272
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "from": "o:180",
+        "to": "o:178",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            321.57142857142856,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "from": "o:180",
+        "to": "o:81",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            210,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "from": "o:180",
+        "to": "o:81",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            210,
+            214
+          ],
+          [
+            210,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 4,
+        "from": "o:180",
+        "to": "o:80",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            342,
+            214
+          ],
+          [
+            342,
+            272
+          ]
+        ]
+      },
+      {
+        "index": 5,
+        "from": "o:180",
+        "to": "o:178",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            342,
+            214
+          ],
+          [
+            342,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 6,
+        "from": "o:180",
+        "to": "o:78",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            214
+          ],
+          [
+            136,
+            214
+          ]
+        ]
+      },
+      {
+        "index": 7,
+        "from": "o:80",
+        "to": "o:79",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            342,
+            298
+          ],
+          [
+            342,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 8,
+        "from": "o:80",
+        "to": "o:79",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            342,
+            298
+          ],
+          [
+            342,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 9,
+        "from": "o:80",
+        "to": "o:180",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            250.85714285714286,
+            240
+          ]
+        ]
+      },
+      {
+        "index": 10,
+        "from": "o:80",
+        "to": "o:76",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            342,
+            298
+          ],
+          [
+            474,
+            298
+          ],
+          [
+            474,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 11,
+        "from": "o:81",
+        "to": "o:75",
+        "cls": "world-edge",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            210,
+            72
+          ]
+        ]
+      },
+      {
+        "index": 12,
+        "from": "o:81",
+        "to": "o:79",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            284,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 13,
+        "from": "o:81",
+        "to": "o:79",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            210,
+            130
+          ],
+          [
+            284,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 14,
+        "from": "o:78",
+        "to": "o:76",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            78,
+            214
+          ],
+          [
+            474,
+            214
+          ],
+          [
+            474,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 15,
+        "from": "o:78",
+        "to": "o:75",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            78,
+            214
+          ],
+          [
+            210,
+            214
+          ],
+          [
+            210,
+            72
+          ]
+        ]
+      },
+      {
+        "index": 16,
+        "from": "o:78",
+        "to": "o:143",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            78,
+            214
+          ],
+          [
+            78,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 17,
+        "from": "o:79",
+        "to": "o:81",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            342,
+            130
+          ],
+          [
+            268,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 18,
+        "from": "o:79",
+        "to": "o:74",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            130
+          ],
+          [
+            416,
+            130
+          ]
+        ]
+      },
+      {
+        "index": 19,
+        "from": "o:79",
+        "to": "o:203",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            342,
+            130
+          ],
+          [
+            453.57142857142856,
+            272
+          ]
+        ]
+      },
+      {
+        "index": 20,
+        "from": "o:79",
+        "to": "o:203",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            342,
+            130
+          ],
+          [
+            474,
+            130
+          ],
+          [
+            474,
+            272
+          ]
+        ]
+      },
+      {
+        "index": 21,
+        "from": "o:76",
+        "to": "o:74",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            474,
+            382
+          ],
+          [
+            474,
+            382
+          ],
+          [
+            474,
+            156
+          ]
+        ]
+      },
+      {
+        "index": 22,
+        "from": "o:76",
+        "to": "o:80",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            474,
+            382
+          ],
+          [
+            382.8571428571429,
+            324
+          ]
+        ]
+      },
+      {
+        "index": 23,
+        "from": "o:76",
+        "to": "o:78",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            474,
+            382
+          ],
+          [
+            78,
+            382
+          ],
+          [
+            78,
+            240
+          ]
+        ]
+      },
+      {
+        "index": 24,
+        "from": "o:74",
+        "to": "o:25",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            474,
+            130
+          ],
+          [
+            606,
+            130
+          ],
+          [
+            606,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 25,
+        "from": "o:74",
+        "to": "o:77",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            474,
+            130
+          ],
+          [
+            342,
+            130
+          ],
+          [
+            342,
+            72
+          ]
+        ]
+      },
+      {
+        "index": 26,
+        "from": "o:74",
+        "to": "o:76",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            474,
+            130
+          ],
+          [
+            474,
+            130
+          ],
+          [
+            474,
+            356
+          ]
+        ]
+      },
+      {
+        "index": 27,
+        "from": "o:75",
+        "to": "o:78",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            210,
+            46
+          ],
+          [
+            78,
+            46
+          ],
+          [
+            78,
+            188
+          ]
+        ]
+      },
+      {
+        "index": 28,
+        "from": "o:75",
+        "to": "o:77",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            46
+          ],
+          [
+            284,
+            46
+          ]
+        ]
+      },
+      {
+        "index": 29,
+        "from": "o:75",
+        "to": "o:143",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            210,
+            46
+          ],
+          [
+            78,
+            46
+          ],
+          [
+            78,
+            104
+          ]
+        ]
+      },
+      {
+        "index": 30,
+        "from": "o:75",
+        "to": "o:81",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            210,
+            46
+          ],
+          [
+            210,
+            104
+          ]
+        ]
+      },
+      {
+        "index": 31,
+        "from": "o:77",
+        "to": "o:239",
+        "cls": "world-edge",
+        "pts": [
+          [
+            342,
+            46
+          ],
+          [
+            416,
+            46
+          ]
+        ]
+      },
+      {
+        "index": 32,
+        "from": "o:25",
+        "to": "o:76",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            606,
+            382
+          ],
+          [
+            532,
+            382
+          ]
+        ]
+      },
+      {
+        "index": 33,
+        "from": "o:239",
+        "to": "o:77",
+        "cls": "world-edge bent",
+        "pts": [
+          [
+            474,
+            46
+          ],
+          [
+            400,
+            46
+          ]
+        ]
+      },
+      {
+        "index": 34,
+        "from": "o:239",
+        "to": "o:77",
+        "cls": "world-edge dotted bent",
+        "pts": [
+          [
+            474,
+            46
+          ],
+          [
+            400,
+            46
+          ]
+        ]
+      },
+      {
+        "index": 35,
+        "from": "o:239",
+        "to": "o:77",
+        "cls": "world-edge dotted",
+        "pts": [
+          [
+            474,
+            46
+          ],
+          [
+            400,
+            46
+          ]
+        ]
+      }
+    ],
+    "crossings": [
+      [
+        7,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        14,
+        19
+      ]
+    ],
+    "overlaps": [],
+    "level": 0,
+    "graph": {
+      "nodeCount": 19,
+      "edgeCount": 58
+    }
+  }
+}

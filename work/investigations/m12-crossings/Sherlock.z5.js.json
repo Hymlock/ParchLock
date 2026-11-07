@@ -1,0 +1,214 @@
+{
+  "story": "Sherlock.z5.js",
+  "moves": 0,
+  "attempts": 21,
+  "log": [
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "d you've come.\"\n \nYou step inside and Mrs Hudson closes the door behind you. The entry hall is just as you remember it - small, underheated, and lit by a feeble gas light. The door to the parlour is to the north, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "ide and Mrs Hudson closes the door behind you. The entry hall is just as you remember it - small, underheated, and lit by a feeble gas light. The door to the parlour is to the north, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": " door behind you. The entry hall is just as you remember it - small, underheated, and lit by a feeble gas light. The door to the parlour is to the north, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "ll is just as you remember it - small, underheated, and lit by a feeble gas light. The door to the parlour is to the north, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": " - small, underheated, and lit by a feeble gas light. The door to the parlour is to the north, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": " by a feeble gas light. The door to the parlour is to the north, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "oor to the parlour is to the north, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "orth, and a flight of well-worn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "rn stairs leads up to the first floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "t floor.\n \n>wait\nTime passes...\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "..\n \n>west\nYou cannot go that way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "way.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "out",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "from": 111,
+      "name": "entry hall",
+      "command": "east",
+      "to": 111,
+      "changed": false,
+      "reply": "pen.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n>out\nThe door is not open.\n \n>east\nThe door is not open.\n \n> \nSaturday  5:12:00 a.m.:02:00 a.m.                                                         \n➤\n🎤\nSherlock\nThe Riddle of the Crown Jewels\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n2 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nentry hall\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\n221-B Baker Streetentry hall\nNotes\nParchLock! build 82\nMenu"
+    },
+    {
+      "stop": "no unexhausted native exit",
+      "state": {
+        "room": 111,
+        "name": "entry hall",
+        "exits": [
+          {
+            "label": "out",
+            "command": "out",
+            "target": null
+          },
+          {
+            "label": "east",
+            "command": "east",
+            "target": null
+          }
+        ]
+      }
+    }
+  ],
+  "geo": {
+    "nodes": [
+      {
+        "key": "o:38",
+        "name": "221-B Baker Street",
+        "x": 218,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "key": "o:111",
+        "name": "entry hall",
+        "x": 746,
+        "y": 508.5,
+        "w": 108,
+        "h": 44
+      }
+    ],
+    "lines": [],
+    "crossings": [],
+    "overlaps": [],
+    "level": 0,
+    "graph": {
+      "nodeCount": 2,
+      "edgeCount": 0
+    }
+  }
+}
