@@ -15,3 +15,11 @@ Real cost: applyTo runs every flag for every object (~250 in Zork I) on every Wo
 command produces several ticks. Next step, if wanted: measure on the phone (adb + Chrome tracing),
 then cut work per tick (only objects in scope/changed, or one attribute decode per object per tick),
 and drop the _d198Clone deep copy per collect(). Structural; needs a proposal and review.
+
+## _d198Clone (second attempt, reverted)
+GrammarProvider.decodeD198 returns a full JSON deep copy on every call; ~20 callers (ActionSynth 352/418/457/797,
+Actionable 237/257/289/2866, AttributeSchema 115/237, ExitCalibrator 166/271, ZRamReader 194/2942/2966,
+GrammarProvider 12/54/collect) together cost ~35-40 ms per LOOK in Zork I. Giving only collect() a
+shared read-only view did not move the number. A real fix: return a deep-frozen cached decode and audit
+each caller for mutation (collect() 'shadow' path mutates activation; others appear read-only). Needs a
+proposal + review; not done.
