@@ -9,3 +9,5 @@ Batches (title list order from coverage.json):
 - B grok2:  karn mhpquest mindelec moonglow night ninepts paperchase phlegm piece_v3 praser5 Slackerx tatctae tk1 vindaloo weather
 - C codex:  release-80 partials: break-in Enemies godot Gumshoe heist library lists lost minster SoFar spirit sutwin wedding
 Each seat: draft ledger in inform-all/<seat>-batch.md, peer seat reviews, Claude ACCEPTs and lands the facts. Done = coverage.cjs reports 272 complete (or each remaining cell fail-closed with evidence) + inform-layout + operator-regressions 0 FAIL.
+
+Source list: this continues work/investigations/inform-census (10-24) group b (43 titles); 4 closed since, 39 open + 3 z3 (catseye, dejavu, moonglow) that census skipped.
