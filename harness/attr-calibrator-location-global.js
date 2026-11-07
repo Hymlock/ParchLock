@@ -53,6 +53,19 @@ function freshSandbox(objectTable) {
     "123456".split("").forEach(function (ch, i) { memBytes[0x12 + i] = ch.charCodeAt(0); });
     var fakeMem = { getUint8: (a) => memBytes[a] || 0, byteLength: memBytes.length };
     sandbox.ZvmCapture = { getMem: function () { return fakeMem; } };
+    var gameKey = "1-123456";
+    sandbox.LearningStores = {
+        register: function () {},
+        identity: function () { return { identityKey: gameKey, digest: "123456" }; },
+        readOwned: function (kind, id) {
+            var prefix = kind === "attrCalib" ? "PL_AttrCalib_" : (kind + "_");
+            return { status: "ready", value: store[prefix + (id && id.identityKey)] || null };
+        },
+        persist: function (kind, i, value) {
+            var prefix = kind === "attrCalib" ? "PL_AttrCalib_" : (kind + "_");
+            store[prefix + i.identityKey] = value;
+        }
+    };
     vm.runInContext(fs.readFileSync(path.join(root, "js", "AttributeSchema.js"), "utf8"), sandbox);
     vm.runInContext(fs.readFileSync(path.join(root, "js", "ZRamReader.js"), "utf8"), sandbox);
     vm.runInContext(fs.readFileSync(path.join(root, "js", "ActionSynth.js"), "utf8"), sandbox);

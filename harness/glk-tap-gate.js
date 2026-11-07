@@ -5,8 +5,14 @@ for (const rel of ["js/GlkTapProvider.js", "js/HostEmglkenBridge.js", "play-emgl
   if (!fs.existsSync(path.join(root, rel))) { console.error("missing", rel); process.exit(1); }
 }
 const play = fs.readFileSync(path.join(root, "play.html"), "utf8");
-if (!play.includes("GlkTapProvider.js") || !play.includes("HostEmglkenBridge.js")) {
-  console.error("play.html missing GlkTap / HostEmglkenBridge wiring");
+// HostEmglkenBridge lives on the emglken path (play-emglken / tapped host), not main play.html.
+if (!play.includes("GlkTapProvider.js") || !play.includes("RemGlkTapProvider.js")) {
+  console.error("play.html missing GlkTap / RemGlkTapProvider wiring");
+  process.exit(1);
+}
+const bridge = path.join(root, "js/HostEmglkenBridge.js");
+if (!fs.existsSync(bridge)) {
+  console.error("missing js/HostEmglkenBridge.js");
   process.exit(1);
 }
 const tapped = fs.readFileSync(path.join(root, "lib/parchment-modern/parchment-single-tapped.html"), "utf8");

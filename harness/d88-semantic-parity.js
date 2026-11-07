@@ -98,8 +98,9 @@ const payload2 = {
 WorldModel.lastPayload = payload2;
 const legacyKey = ActionSynth.commandsForPayloadObjectId(KEY, "inventory");
 const resolvedKey = SemanticActions.resolveForPayloadObjectId(KEY);
-assertEq(legacyFields(resolvedKey), legacyOf(legacyKey), "nested-in-container key resolves to the same single take-out-of form");
-assert(legacyKey.length === 1 && legacyKey[0].verb === "take out of bag", "sanity: fixture 2 still exercises the nested-container branch");
+assertEq(legacyFields(resolvedKey), legacyOf(legacyKey), "nested-in-container key resolves to the same take-out-of form");
+// Inventory items also get inspect; nested take-out-of must still be present (not sole command).
+assert(legacyKey.some(function (c) { return c.verb === "take out of bag"; }), "sanity: fixture 2 still exercises the nested-container branch");
 pass++; console.log("PASS: fixture 2 sanity check");
 
 // --- Fixture 3: inspect-disabled world (D85 substitute-verb / disabled-inspect path) ---

@@ -29,7 +29,9 @@ ok(cacheGeneration && Number(cacheGeneration[1]) >= 82,
     "D198 and later work retain a distinct service-worker cache generation");
 
 const dist = read("make-dist.bat");
-ok(/robocopy "%SRC%\\js" "%DEST%\\js" \*\.js/.test(dist),
+// B1/B2: js lands in RUNTIME_STAGE then MOVE to DEST (not direct DEST\\js).
+ok(/robocopy "%SRC%\\js" "%RUNTIME_STAGE%\\js" \*\.js/.test(dist) ||
+    /robocopy "%SRC%\\js" "%DEST%\\js" \*\.js/.test(dist),
     "the runtime allow-list includes every D198 JavaScript owner");
 ok(/for %%F in \(\s*index\.html play\.html tutorial\.html/.test(dist),
     "runtime distribution is built from an explicit root-file allow-list");

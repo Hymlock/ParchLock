@@ -18,6 +18,7 @@ const root = path.join(__dirname, "..");
 
 function freshSandbox() {
     const store = {};
+    const gameKey = "0-654321";
     const sandbox = {
         console, setTimeout, window: {},
         localStorage: {
@@ -35,6 +36,20 @@ function freshSandbox() {
     "654321".split("").forEach((ch, i) => { memBytes[0x12 + i] = ch.charCodeAt(0); });
     var fakeMem = { getUint8: (a) => memBytes[a] || 0, byteLength: memBytes.length };
     sandbox.ZvmCapture = { getMem: function () { return fakeMem; } };
+    // D13/P13b: AttrCalibrator identity goes through LearningStores.
+    sandbox.LearningStores = {
+        register: function () {},
+        identity: function () { return { identityKey: gameKey, digest: "654321" }; },
+        readOwned: function (kind, id) {
+            var prefix = kind === "attrCalib" ? "PL_AttrCalib_" : (kind + "_");
+            var k = prefix + (id && id.identityKey);
+            return { status: "ready", value: store[k] || null };
+        },
+        persist: function (kind, i, value) {
+            var prefix = kind === "attrCalib" ? "PL_AttrCalib_" : (kind + "_");
+            store[prefix + i.identityKey] = value;
+        }
+    };
     vm.runInContext(fs.readFileSync(path.join(root, "js", "AttributeSchema.js"), "utf8"), sandbox);
     vm.runInContext(fs.readFileSync(path.join(root, "js", "ZRamReader.js"), "utf8"), sandbox);
     vm.runInContext(fs.readFileSync(path.join(root, "js", "ActionSynth.js"), "utf8"), sandbox);

@@ -39,6 +39,7 @@ global.ZRamReader = {
     u8: (mem, addr) => mem.bytes[addr] || 0,
     u16: (mem, addr) => ((mem.bytes[addr] || 0) << 8) | (mem.bytes[addr + 1] || 0),
     gameIdentityKey: () => "TEST-1",
+    learningIdentityKey: () => "TEST-1",
     isPlausibleMapRoom: (mem, id) => plausible(Number(id)),
     shortName: (mem, id) => "Room" + id,
     attrsFromObject: () => ({}),

@@ -17,6 +17,7 @@ function makeEl() {
         show: function () { return api; },
         attr: function () { return api; },
         data: function () { return api; },
+        css: function () { return api; },
         remove: function () { return api; },
         prependTo: function () { return api; },
         outerWidth: function () { return 400; }

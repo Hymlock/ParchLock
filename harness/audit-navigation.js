@@ -10,6 +10,7 @@ function scenario(options = {}) {
         { Id: 1, Exits: { e: 2 } }, { Id: 2, Exits: {} }];
     const sandbox = {
         Date: { now: () => now }, setTimeout: () => 1, clearTimeout: () => {},
+        setInterval: () => 1, clearInterval: () => {},
         $: selector => ({ length: selector.includes('LineInput') ? 1 : 0 }),
         Message: { IsOpen: false, Show: () => {} },
         ParchLockMap: { Rooms: rooms, GetCurrentRoom: () => rooms[options.position || 0] },
