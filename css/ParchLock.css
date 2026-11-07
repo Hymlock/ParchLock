@@ -4933,6 +4933,7 @@ body.light #world-map .world-level.active { background: #0b7e63; color: #fff; }
 #equipment #pl-stats-rows { display: grid; grid-template-columns: repeat(auto-fit,minmax(90px,1fr)); grid-auto-flow: dense; align-items: stretch; }
 #equipment .pl-stat { min-width: 0; border-radius: 8px; }
 #equipment .pl-stat[data-value-type="text"], #equipment .pl-stat-hint { grid-column: 1/-1; }
+#equipment .pl-stat[data-long-label]:not([data-value-type="text"]) { grid-column: span 2; }
 body.light #equipment .equip-tags { color: #1e1e1e; }
 /* Reserve the shared fixed controls outside the sheet without moving either handle. */
 body.pl-mobile #equipment { --pl-float-reserve: var(--pl-input-protect-height); height: calc(var(--pl-layout-height) - 8px - var(--pl-safe-top) - var(--pl-kb-inset) - var(--pl-float-reserve)); padding-bottom: calc(28px + var(--pl-safe-bottom)); }

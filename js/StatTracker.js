@@ -3646,6 +3646,8 @@ var StatTracker = {
             var label = document.createElement("span");
             label.className = "pl-stat-label";
             label.textContent = typeof LearnedWords !== "undefined" ? LearnedWords.label("status", s.key, s.label || s.key) : s.label || s.key;
+            // A long name ("Deaths this playthrough") gets two grid columns so a word is never split (phone: "PLAYTHROUG/H").
+            if (label.textContent.length > 14) chip.setAttribute("data-long-label", "1");
             chip.appendChild(label);
 
             var val = document.createElement("span");
