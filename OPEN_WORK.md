@@ -91,14 +91,14 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
-| B1 | make-dist deletes the old dist before building | A failed build leaves no dist at all | Not started | make-dist.bat line 20 (rmdir first); build to temp, then swap | make-dist.bat | S |
-| B2 | Builds ship working-tree files, including uncommitted ones | An APK can contain files not in git | Not started | robocopy reads the live tree; add a clean-tree check or use git archive | make-dist.bat | M |
+| B1 | make-dist deletes the old dist before building | A failed build leaves no dist at all | **Partly done** (grok2 11-07: temp stage + swap; await peer+commit) | make-dist.bat B1; work/investigations/grok2/B1-B2-make-dist.md | make-dist.bat | S |
+| B2 | Builds ship working-tree files, including uncommitted ones | An APK can contain files not in git | **Partly done** (grok2 11-07: dirty guard js/css/play/index/sw/manifest/lib exit 2; MAKE_DIST_ALLOW_DIRTY=1; await peer+commit) | make-dist.bat B2 | make-dist.bat | M |
 | B3 | Bump versionCode | Each APK must upgrade the last | **Done** aee925aa (50 -> 51, 11-05) | APK vc51 built 11-05 05:53 ET from aee925aa, sha256 0B0F4EFD...0EE0 (prior 1d9a3130 / 378c0755) | android/app/build.gradle | S |
 | B4 | Write publish-release.ps1 | Scripted complete PC/APK/source publication | **Done** distribution repo bb93541 | Actual Hymlock/ParchLock publish-release.ps1 includes complete distribution ZIP plus APK/source. It lives in the distribution checkout, not this development tree | Release prep | M |
 | B5 | Public distro repo: clean history with only the 80 KEEP titles | Removed games remain in old commits | Blocked | List exists (GAMES_INCLUDED.md); re-clone needs the operator | docs/game-licensing-audit.md | M |
 | B6 | Release sign-off: keystore, art provenance, name clearance, legal, devices, pm_vm_probe rename | Release can't ship until done | Blocked | Operator decisions; lib/pm_vm_probe.* still present | OPEN_WORK Oct 22 (D99) | L |
 | B7 | Phase 9 hardening: performance, accessibility, fallbacks, full green harness | General robustness | Not started | Large | OPEN_WORK Oct 22 Phase 9 | L |
-| B8 | Fix two flaky or failing harnesses | Gate noise | Not started (rechecked 11-01) | learned-words-corrections has no fix commit. d201-unnamed-identity 68/1 ("taken LLR object 195") and d201-unresolved-actions ("real printed sword vocabulary") fail on HEAD before and after e643191b (swap test). Gate flaky marks: Sherlock coat, huntdark, vespers, Delusns, medusa, permagic. 11-05: m11-dark-scope HHG "Bedroom, in the bed ... state kept" FAILS on HEAD before d82276ba too (bed now proven?) - needs an owner decision. Gate driver uses fixed sleeps; cycles/marks diffs of the A1+Z3 gate were nondeterminism (d54a294d) | OPEN_WORK Oct 22; review-lane-1101 | S |
+| B8 | Fix two flaky or failing harnesses | Gate noise | **Mostly done** (11-07) | learned-words-corrections fixed (grok2: stale disclosure/learned index/Take mock, 56/0, test-only); d201-unnamed-identity 69/0 and d201-unresolved-actions 24/0 (S9); m11-dark-scope 17/0 (HHG bed proven since 5348c0f2). Remaining: gate flaky marks (Sherlock coat, huntdark, vespers, Delusns, medusa, permagic, Help, Mullmurd) from fixed sleeps in the gate driver | OPEN_WORK Oct 22; review-lane-1101 | S |
 
 ## Evidence debt
 
