@@ -98,7 +98,7 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 | B5 | Public distro repo: clean history with only the 80 KEEP titles | Removed games remain in old commits | Blocked | List exists (GAMES_INCLUDED.md); re-clone needs the operator | docs/game-licensing-audit.md | M |
 | B6 | Release sign-off: keystore, art provenance, name clearance, legal, devices, pm_vm_probe rename | Release can't ship until done | Blocked | Operator decisions; lib/pm_vm_probe.* still present | OPEN_WORK Oct 22 (D99) | L |
 | B7 | Phase 9 hardening: performance, accessibility, fallbacks, full green harness | General robustness | Not started | Large | OPEN_WORK Oct 22 Phase 9 | L |
-| B8 | Fix two flaky or failing harnesses | Gate noise | **Mostly done** (11-07) | learned-words-corrections fixed (grok2: stale disclosure/learned index/Take mock, 56/0, test-only); d201-unnamed-identity 69/0 and d201-unresolved-actions 24/0 (S9); m11-dark-scope 17/0 (HHG bed proven since 5348c0f2). Remaining: gate flaky marks (Sherlock coat, huntdark, vespers, Delusns, medusa, permagic, Help, Mullmurd) from fixed sleeps in the gate driver | OPEN_WORK Oct 22; review-lane-1101 | S |
+| B8 | Fix two flaky or failing harnesses | Gate noise | **Mostly done** (11-07) | learned-words-corrections fixed (grok2: stale disclosure/learned index/Take mock, 56/0, test-only); d201-unnamed-identity 69/0 and d201-unresolved-actions 24/0 (S9); m11-dark-scope 17/0 (HHG bed proven since 5348c0f2). Gate marks now settle and compare as a set (same-code rerun of 9 flaky titles: 1 diff). Remaining: vgame marks differ by earlier text; Sherlock coat, huntdark, permagic not rechecked | OPEN_WORK Oct 22; review-lane-1101 | S |
 
 ## Evidence debt
 
