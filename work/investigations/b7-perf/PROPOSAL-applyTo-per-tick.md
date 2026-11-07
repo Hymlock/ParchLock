@@ -28,3 +28,26 @@ Status: proposal only. Needs a second seat's adversarial review before any code 
   object, e.g. ZRamReader returns it into the payload). Invalidate on AttrCalibrator learn/hydrate.
 - Remaining review question: does anything write game memory inside a tick (status probes run as
   separate submissions, D270), or call applyTo for the same id with a different mem buffer?
+
+## Revision r2 (claude, 11-07 morning) answering grok REJECT #6180
+1. Key. entryKey = objectId + "|" + attrBytes signature (the raw obj.attrBytes the caller passed, joined) ;
+   cache container keyed by the effective memory view: WeakMap(buffer) -> Map("byteOffset:byteLength:" +
+   ZRamReader.gameIdentityKey(mem) + ":" + calibRevision) -> Map(entryKey -> result). The raw bytes are part
+   of the key, so a stale or synthetic snapshot can never reuse another snapshot's result (grok's
+   [0,0,0,0] vs [0,2,0,0] counterexample becomes two entries). mem missing -> resolve _getMem() first and
+   key on what it returns.
+2. Lifecycle. AttributeSchema.tickBegin()/tickEnd() with a depth counter; WorldModel.tick and
+   StatTracker.Tick wrap their bodies in try { tickBegin() } finally { tickEnd() }. The cache exists only
+   while depth > 0 and is dropped when depth returns to 0 (also on throw). Nested ticks share the outer
+   cache. Outside any tick (radials, Equipment, harness calls) applyTo is uncached, as today.
+3. Calibration. AttrCalibrator gains a revision counter bumped by every state mutation: hydrate when it
+   loads a different identity or table, record, recordExactForm, recordRememberedForm, reset/clear paths,
+   and any override write. applyTo calls AttrCalibrator.hydrate(mem) BEFORE the lookup (preserves the side
+   effect on hits) and reads the revision after it, so a first hydration inside a tick starts a new map.
+4. Copies. Store Object.assign({}, result) and on a hit Object.assign(attrs, copy) into the caller's fresh
+   {}; keys the helpers delete stay absent because the stored copy is taken after the helpers ran. Caller
+   attrs objects are never stored.
+Tests to add before landing (harness/b7-attr-tick-cache.js): two memory views / same id; two raw snapshots
+/ same id; calibrator record mid-tick invalidates; nested tick; throw inside tick leaves no cache;
+outside-tick call uncached; mutate a returned attrs then hit returns pristine values; container
+absent-key parity. Plus full 309x2 gate, attr-calibrator-*, equipment-ui, command harnesses, operator.
