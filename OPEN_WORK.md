@@ -108,7 +108,7 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 | R3 | GitHub Releases on the clean public repository (with B5) | Source + APK together; satisfies open-source licences | To do | Needs B5 clean repo; attach APK, PC package, ParchLock-source.zip, release notes | operator 11-07 (D284) | S |
 | R4 | Announce to the interactive-fiction community: intfiction.org forum post and an IFDB listing | The audience that plays these games finds it | To do | After R2; Claude drafts the post and listing text | operator 11-07 (D284) | S |
 | R5 | Private full build (D283 amended): all 309 games incl. Glulx, shared ONLY via the private Git repository by invitation; never on itch.io or any public host | Invitees get the full library | To do | Add a clear "private, invitation only, not for redistribution; commercial titles belong to their rights holders" notice to the private repository README; keep collaborator list to trusted invitees | operator 11-07 (D283) | S |
-| R6 | Direct USPTO trademark search for "ParchLock" (tmsearch.uspto.gov) | Removes the last doubt on the name | To do | Web search 11-07 found nothing; this is the database check web search cannot do | operator 11-07 | S |
+| R6 | Direct USPTO trademark search for "ParchLock" (tmsearch.uspto.gov) | Removes the last doubt on the name | **Closed** (operator 11-07): web search found no app/game/company/trademark named ParchLock; operator confident the name is free | Web search 11-07 found nothing; this is the database check web search cannot do | operator 11-07 | S |
 | R7 | F-Droid listing (later) | Open-source Android store | To do (after R2/R3) | Requires a reproducible from-source build under F-Droid rules | operator 11-07 (D284) | M |
 
 ## Evidence debt
