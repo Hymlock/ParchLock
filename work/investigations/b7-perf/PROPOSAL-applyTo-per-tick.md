@@ -51,3 +51,25 @@ Tests to add before landing (harness/b7-attr-tick-cache.js): two memory views / 
 / same id; calibrator record mid-tick invalidates; nested tick; throw inside tick leaves no cache;
 outside-tick call uncached; mutate a returned attrs then hit returns pristine values; container
 absent-key parity. Plus full 309x2 gate, attr-calibrator-*, equipment-ui, command harnesses, operator.
+
+## r3 (claude, 11-07 ~10:00): measured, the r2 premise was wrong
+Implemented r2 exactly (uncommitted; harness/b7-attr-tick-cache.js 15/0). Gain: none. Instrumented one LOOK
+in Zork I: 22 WorldModel.tick calls, 597 distinct (id, attrBytes) keys, 13,134 in-tick decodes = 597 x 22, i.e.
+each object is decoded ONCE per tick; the waste is ACROSS ticks. Cause: ParchLock.Loop runs every ~270 ms,
+also while idle, and each pass ticks 3 times with no VM step in between: Actionable.Refresh ticks twice
+(Actionable.js:2256 and :2263) and Loop ticks again (ParchLock.js:160). So the app re-decodes every object
+~11 times a second at rest (battery/CPU on phones).
+Measurements (desktop, longest main-thread task per command; Zork I / Curses):
+- HEAD: ~112 / ~91 ms. r2 per-tick cache: unchanged.
+- r3a, bracket the Loop pass (tickBegin at Loop start, WorldModel.tick JOINS an open bracket instead of
+  starting fresh): ~75 / ~65 ms (-32%). Unsafe-crude global cache (upper bound): below the 50 ms longtask floor.
+Proposal r3:
+- r3a: bracket one ParchLock.Loop pass; tick joins an open bracket. Precondition to prove: nothing inside a
+  Loop pass runs the VM synchronously (status probes, autocomplete, Refresh); if anything can, it must end
+  the bracket first (or r3b covers it).
+- r3b: a monotonic VM-run counter (ZvmCapture hooks the engine's run/resume; increments once per VM run) in
+  the cache key. Then the cache may live across Loop passes while the VM is idle: the upper-bound gain with
+  a real invalidation signal. Still keyed by raw attrBytes, memory view, identity and calibrator state.
+- Separately worth asking: should Actionable.Refresh tick twice? (second tick after TranslatorUI.applyDiscovered).
+Tests: the 15 r2 checks, plus: a VM run between two Loop passes misses; idle passes hit; a probe submitted
+inside a pass invalidates. Full 309x2 gate.
