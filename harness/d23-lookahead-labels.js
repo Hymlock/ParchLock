@@ -182,6 +182,16 @@ assert(ZRamReader.directionLabelForProp(7) === "north", "prop 7 labels north");
 assert(ZRamReader.directionLabelForProp(23) === "exit-23", "unmapped prop 23 is honest exit-23");
 
 const world = buildCompassWorld();
+// D13/P13b + D217: calibrateDiagonalFromTravel hydrates via ZRamProvider.getMem
+// and LearningStores identity. Without a stable mem+key, lookAheadExits re-hydrates
+// against a different token and clears diagonalCalibrated before the after-check.
+sandbox.ZRamProvider = { getMem: function () { return world.mem; } };
+sandbox.LearningStores = {
+    register: function () {},
+    identity: function () { return { identityKey: "d23-fixture", digest: "d23" }; },
+    readOwned: function () { return { status: "ready", value: null }; },
+    persist: function () {}
+};
 const exits = ZRamReader.lookAheadExits(world.mem, world.IDS.start);
 const byLabel = {};
 (exits || []).forEach(function (e) { byLabel[e.label] = e; });
@@ -262,10 +272,14 @@ sandbox.ParchLockMap = {
 MapTopology.prevRoomId = 99;
 MapTopology.prevRoomName = "";
 MapTopology.lastCommand = "";
+// Fixture rooms are synthetic; do not let live isPlausibleMapRoom drop them.
+var _plausible = ZRamReader.isPlausibleMapRoom;
+ZRamReader.isPlausibleMapRoom = function () { return true; };
 MapTopology.applyPayloadExits({
     roomId: 1,
     roomName: "foyer",
-    exits: exits
+    exits: exits,
+    probe: { roomSource: "player-containment", roomId: 1 }
 });
 const foyerBefore = sandbox.ParchLockMap.GetRoom("foyer");
 assert(foyerBefore && foyerBefore.Exits && foyerBefore.Exits.north != null, "payload look-ahead linked north pre-travel");
@@ -274,7 +288,7 @@ assert(foyerBefore && foyerBefore.ExitMeta && foyerBefore.ExitMeta["exit-23"], "
 MapTopology.prevRoomId = 1;
 MapTopology.prevRoomName = "foyer";
 MapTopology.noteCommand("1");
-MapTopology.applyStateDelta({ roomId: 14, roomName: "sidecave" });
+MapTopology.applyStateDelta({ roomId: 14, roomName: "sidecave", probe: { roomSource: "player-containment", roomId: 14 } });
 const foyerAfter = sandbox.ParchLockMap.GetRoom("foyer");
 assert(foyerAfter && foyerAfter.Exits && foyerAfter.Exits["1"] != null, "state-delta labels the numbered hop from typed command 1");
 assert(foyerAfter.ExitMeta["1"] && foyerAfter.ExitMeta["1"].source === "state-delta", "typed 1 is state-delta, not a compass guess");
@@ -427,18 +441,20 @@ sandbox.ParchLockMap.CurrentRoom = "";
 MapTopology.prevRoomId = 37;
 MapTopology.prevRoomName = "";
 MapTopology.lastCommand = "";
+sandbox.ZRamProvider = { getMem: function () { return i7.mem; } };
 MapTopology.applyPayloadExits({
     roomId: 38,
     roomName: "pit",
     exits: [
         { label: "exit-1", hinted: true },
         { label: "exit-2", hinted: true }
-    ]
+    ],
+    probe: { roomSource: "player-containment", roomId: 38 }
 });
 const pit = sandbox.ParchLockMap.GetRoom("pit");
 assert(pit && pit.ExitMeta && pit.ExitMeta["exit-1"] && pit.ExitMeta["exit-1"].hinted, "applyPayloadExits marks dest-less exit-1 as hinted");
 assert(pit && pit.ExitMeta && pit.ExitMeta["exit-2"] && pit.ExitMeta["exit-2"].hinted, "applyPayloadExits marks dest-less exit-2 as hinted");
-assert(!(pit.Exits && pit.Exits["exit-1"]), "hinted stub is not a traveled Exits edge");
+assert(!(pit && pit.Exits && pit.Exits["exit-1"]), "hinted stub is not a traveled Exits edge");
 assert(MapTopology.countRoomExits(pit) === 2, "countRoomExits includes dest-less hinted stubs in the exit total");
 assert(MapTopology.countRoomExits({ Exits: { north: 1 }, ExitMeta: { "exit-1": { hinted: true } } }) === 2, "countRoomExits unions traveled + hinted");
 assert(MapTopology.countRoomExits({ Exits: {}, ExitMeta: {} }) === 0, "empty room still counts 0 exits");
@@ -447,6 +463,7 @@ assert(!/shortName\(mem,\s*c\)/.test(lookSrc) && !/numberedExitLabel/.test(zrSrc
 assert(!/compassChildren/.test(zrSrc), "ZRamReader has no compassChildren name matcher");
 assert(typeof ZRamReader.numberedExitLabel !== "function", "numberedExitLabel is not exported");
 
+ZRamReader.isPlausibleMapRoom = _plausible;
 console.log("");
 console.log(pass + " PASS / " + fail + " FAIL");
 if (fail) process.exit(1);
