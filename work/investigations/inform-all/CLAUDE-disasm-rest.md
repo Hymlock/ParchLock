@@ -1,0 +1,2 @@
+# Claude: action-routine disassembly of the remaining v5 fail-closed titles (11-07)
+Tool: claude-disasm-rest.cjs (copy of grok-disasm-deep.cjs, own output). Depth-0 ops list only shared helper calls (identical across close/open/wear/insert), not each action routine own attribute tests, so it is NOT decisive for mindelec, mhpquest, paperchase; praser5/sutwin produced no rows. They stay fail-closed (safe: no wrong menus). Reopen only with a deeper per-routine disassembly.
