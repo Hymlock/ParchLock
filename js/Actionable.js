@@ -812,13 +812,24 @@ var Actionable = {
     // confirmed live -- "cast blorb at book" encloses the spell book in a
     // strong box -- which is the spell/inventory path the operator asked about.
     INSTRUMENTALS: [
-        { verb: "use", label: "Use with...", build: function (a, b) { return "use " + a + " with " + b; } },
-        { verb: "cast", label: "Cast at...", build: function (a, b) { return "cast " + a + " at " + b; } },
-        { verb: "unlock", label: "Unlock with...", build: function (a, b) { return "unlock " + b + " with " + a; } }
+        { verb: "use", prep: "with", label: "Use with...", build: function (a, b) { return "use " + a + " with " + b; } },
+        { verb: "cast", prep: "at", label: "Cast at...", build: function (a, b) { return "cast " + a + " at " + b; } },
+        { verb: "unlock", prep: "with", label: "Unlock with...", build: function (a, b) { return "unlock " + b + " with " + a; } }
     ],
+    // When the story's grammar is decoded (ZIL, D198), the verb must also have
+    // the two-object form with that preposition: Zork I knows CAST only as a
+    // one-object synonym of EXORCISE, so "cast A at B" can never parse there.
     availableInstrumentals: () => {
         try {
-            return Actionable.INSTRUMENTALS.filter(function (i) { return Actionable.isGameWord(i.verb); });
+            var templates = null;
+            try {
+                var mem = ZRamProvider.getMem(), d = mem && GrammarProvider.decodeD198(mem);
+                if (d && d.classification === "confirmed-zil-family" && d.evidence === "validated") templates = d.templates;
+            } catch (eg) {}
+            return Actionable.INSTRUMENTALS.filter(function (i) {
+                if (!Actionable.isGameWord(i.verb)) return false;
+                return !templates || templates.some(function (t) { return t.verb === i.verb && t.objectCount === 2 && t.prepositions.indexOf(i.prep) >= 0; });
+            });
         } catch (e) { return []; }
     },
 
