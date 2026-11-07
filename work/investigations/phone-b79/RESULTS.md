@@ -15,3 +15,14 @@ Build 78 (c40bb2db), then Build 79 (4eafa7ed) after two fixes found on the phone
 
 Not a bug: ParchLock Help opens at story start when there is no save (Prefs.ShowInfoOnStart, js/Message.js:18).
 Not checked on B79: the Deaths tile wrap (needs another death); depth 3+.
+
+## 2026-11-07 ~22:10 ET, Build 79, same device
+
+| Check | Result |
+|---|---|
+| Zork I mailbox radial offers Open; after OPEN ("reveals a leaflet") the radial offers Close; leaflet underlined | PASS |
+| A6: Options > Accessibility & controls: Configure directions..., Replay tutorial, Reset tutorial render in the sans UI font | PASS (A6 closed) |
+| Guess the Verb (M5): after NEW, map shows Verb Guessing Booth with The Midway (NE) and Behind the Booths (SE) | PASS |
+| Note (harmless, missing-over-wrong): Zork I mailbox radial also offers "Cast at..." | noted, not fixed |
+
+Still not phone-checked: Advent rewind from a map box, Book and Volume label (M14), Sherlock clock (S4), Deaths tile wrap (needs a death), seated move (M6).
