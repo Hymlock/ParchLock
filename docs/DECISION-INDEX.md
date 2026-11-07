@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 164 decisions across
-10013 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 165 decisions across
+10017 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D281 | Edifice player body swap: playerGlobal 18 (Q1) |  |  |  |
 | D280 | Inform flag mapping covers every non-ZIL title; layouts from library anchors (I7) |  |  | line 3063 |
 | D279 | Put on surfaces; ZIL instrumentals need their grammar form (I5) |  |  |  |
 | D278 | Map room boxes take the room menu; local map shows decoded exits (M11, M12) |  |  |  |

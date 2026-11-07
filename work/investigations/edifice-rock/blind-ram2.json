@@ -1,0 +1,20 @@
+{
+  "room": "Near the Arch",
+  "rockParent": 57,
+  "yourself": null,
+  "youChildren": [],
+  "walkInv": [],
+  "payloadInv": [],
+  "reply": [
+    "",
+    "A gentle breeze blows from the northeast, carrying a hint of pollen as it rustles through the grass, which bows in its wake.",
+    "",
+    ">inventory",
+    "You are carrying:",
+    "Useful Rock",
+    "",
+    "You feel a little thirsty.",
+    "",
+    ">"
+  ]
+}

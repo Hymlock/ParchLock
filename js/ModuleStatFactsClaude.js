@@ -515,6 +515,14 @@ var ModuleStatFactsClaude = {
             "dirs": "33:0,34:1,35:2,36:3,37:4,38:5,39:6,40:7,41:8,42:9,43:10,44:11",
             "skipDirs": [] }
     },
+    // Edifice (Q1, grok QA #6269; claude sealed + grok2 blind agree, grok2 ACCEPT #6289): the story swaps the PC body
+    // 27 "(PrimitivePlayer)" -> 57 "(HungryPlayer)" and moves the Useful Rock with it; the resolver kept the parentless
+    // "(self object)" 20, so Equipment emptied while native INVENTORY listed the rock. g18 holds the live body at boot (27),
+    // after take (27) and after the swap (57), always the rock's holder; g53 is 0 at boot so it is not the fact. g21 turns
+    // into a room and g40 keeps the stale 27, so only slot 18. Same family shape as Degeneracy below (D216/D273).
+    "2803fbef240e62dc6fb259109406c1a228aa41bd2c83ecc8a3f34575463d863f": {
+        "playerGlobal": 18
+    },
     // Degeneracy: the PC is 157 "(StandardPlayer)" (the "(self object)" 20 is
     // parentless and unused). Native INVENTORY at Reception/Wait/Dining lists
     // exactly 157's children (blade, holy symbol, Chain-Mail, sheath,
