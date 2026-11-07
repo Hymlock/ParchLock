@@ -1,0 +1,14 @@
+﻿>z ::  Time passes. An orange minibus, part of the late night student service, drives along the street without stopping. You catch sight of the large puddle by the kerb just in time to dodge out of the way of mini-cascade which follows the vehicle's speedy passage through it. Before you can shout any prof
+  OPS ["0:26=0","22:20=0","22:23=1","22:20=0","22:23=1","22:20=0","22:23=1","16:9=1","26:12=1","22:12=1","19:12=1"]
+>z :: ng into the lobby. > 
+  OPS ["0:26=0","22:20=0","22:23=1","22:20=0","22:23=1","22:20=0","22:23=1","16:9=1","26:12=1","22:12=1","19:12=1"]
+>z ::  Time passes. You become aware of the sound of an engine running, tracing its source to a black motorcycle at the north end of Princess Street. The leather-clad cyclist brings it steadily to a halt, almost directly opposite from where you're standing. Another patron makes their way into the cinema. 
+  OPS ["0:26=0","22:20=0","22:23=1","22:20=0","22:23=1","20:20=0","20:23=1","21:8=0","22:20=0","22:23=1","16:9=1","26:12=1","22:12=1","19:12=1"]
+>take rider :: ake rider I don't suppose the leather-clad rider would care for that. > 
+  OPS ["20:20=0","20:23=1","22:20=0","22:23=1","21:0=1","21:7=0","21:26=0","20:20=0","20:23=1","22:20=0","22:23=1","21:0=1","21:16=0","20:20=0","20:23=1","22:20=0","22:23=1","16:9=1","26:12=1","22:12=1","19:12=1"]
+>take motorcycle :: ake motorcycle That's fixed in place. > 
+  OPS ["20:20=0","20:23=1","22:20=0","22:23=1","20:0=0","20:26=0","20:20=0","20:23=1","22:20=0","22:23=1","20:0=0","16:3=0","16:20=0","20:17=0","20:19=1","20:20=0","20:23=1","21:8=1","22:20=0","22:23=1","16:9=1","26:12=1","22:12=1","19:12=1"]
+>look :: ook Princess Street The weather has rapidly deteriorated, raindrops bouncing off the slanted marquee onto the pavement. Darkness comes early in the winter months, but fortunately the street lamps keep this area of the city well illuminated. The prospect of the warm lobby of the eight-screen cinema t
+  OPS ["0:26=0","20:20=0","20:23=1","22:20=0","22:23=1","16:24=1","20:2=0","20:17=0","20:4=0","20:21=0","20:3=0","20:12=0","15:2=1","17:2=0","17:17=1","17:20=0","18:2=0","18:17=1","18:20=0","16:24=1","20:20=0","20:23=1","22:20=0","22:23=1","20:20=0","20:23=1","22:20=0","22:23=1","16:9=1","26:12=1","22:12=1","19:12=1"]
+OPS ["0:26=0","20:20=0","20:23=1","22:20=0","22:23=1","16:24=1","20:2=0","20:17=0","20:4=0","20:21=0","20:3=0","20:12=0","15:2=1","17:2=0","17:17=1","17:20=0","18:2=0","18:17=1","18:20=0","16:24=1","20:20=0","20:23=1","22:20=0","22:23=1","20:20=0","20:23=1","22:20=0","22:23=1","16:9=1","26:12=1","22:12=1","19:12=1"]
+EQ ["26:recently taken photograph@15","22:cellular phone@15","19:digital wristwatch@15"]
