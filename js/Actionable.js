@@ -1762,6 +1762,24 @@ var Actionable = {
                 var rowName = String(row.name || "").toLowerCase().replace(/\s+/g, " ").trim();
                 if (label && label !== row.name && row.labelProvenance !== "parser-vocabulary" && (" " + String(label).toLowerCase() + " ").indexOf(" " + rowName + " ") < 0
                     && Actionable.structuralNamePrinted(rowName, base, [text, Actionable.Scope.lastLookText, Actionable.Scope.lastInventoryText])) label = row.name;
+                // B8 permagic: obj.name must not flip with observed prose ("of paper" vs "of junk").
+                // RAM shortName is stable; strip leading particles for wrap/namePhrases authority.
+                // Observed text stays on displayName only.
+                var ramName = "";
+                try {
+                    if (mem && typeof ZRamReader !== "undefined" && ZRamReader.shortName)
+                        ramName = String(ZRamReader.shortName(mem, o.id) || "").replace(/\s+/g, " ").trim();
+                } catch (eSn) {}
+                if (ramName && ramName.charAt(0) !== "(") {
+                    var structural = ramName.replace(/^(a|an|the|of)\s+/i, "").trim() || ramName;
+                    var shown = display || label || structural;
+                    return Object.assign({}, row, {
+                        name: structural,
+                        structuralName: structural,
+                        displayName: shown,
+                        labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : (row.labelProvenance || "parser-vocabulary")
+                    });
+                }
                 return label === row.name ? Object.assign({},row,{displayName:display}) : Object.assign({}, row, { name: label, displayName:display, structuralName: o.name, labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : "observed-vocabulary" });
             });
         } catch (e) { return []; }
@@ -1844,8 +1862,9 @@ var Actionable = {
     namePhrases: (name) => {
         var raw = String(name || "").replace(/\s+/g, " ").trim();
         if (!raw) return [];
-        // Deterministic articles only — not a prose stopword list (plan: no
-        // text mining). Tokens come from the object's own short-name.
+        // Deterministic articles/particles only — not a prose stopword list.
+        // Leading "of/a/an/the" are not the object's head (B8: "of junk").
+        raw = raw.replace(/^(a|an|the|of)\s+/i, "").trim() || raw;
         var out = Actionable.isReferenceToken(raw) ? [] : [raw];
         raw.split(" ").forEach(function (t) {
             if (!t || t.length < 3 || Actionable.isGrammarParticle(t) || Actionable.isReferenceToken(t)) return;
@@ -2687,8 +2706,38 @@ var Actionable = {
             && replyLines.some(function (l) { return /\S/.test(l.textContent) && !/\?\s*$/.test(l.textContent.trim()); }));
         Actionable._fullNameSpans = { names: Actionable.multiWordNames(), bySource: new Map() };
         try { ordered.forEach(function (t) {
-            if (t.preferred && String(t.phrase).indexOf(' ') >= 0 && markedIds[String(t.objectId)]
-                && Actionable.replaceMarkedPhrase(activeLines, t, markedIds)) return;
+            if (t.preferred && markedIds[String(t.objectId)]) {
+                if (String(t.phrase).indexOf(' ') >= 0
+                    && Actionable.replaceMarkedPhrase(activeLines, t, markedIds)) return;
+                // B8: replaceMarkedPhrase only wins when the stale mark sits inside the
+                // new phrase's span ("papers" is not inside "of junk"). Retire this
+                // object's marks and wrap the preferred phrase on its own span.
+                if (t.fromName && Actionable.phrasePrintedIn(activeLines, t.phrase)) {
+                    var staleMarks = (Actionable.LiveMarks || []).filter(function (m) {
+                        return m && m.isConnected && !m.classList.contains('is-stale')
+                            && m.dataset.kind !== 'direction'
+                            && Actionable.markCoverIds(m).indexOf(String(t.objectId)) >= 0
+                            && String(m.textContent || '').toLowerCase().trim() !== String(t.phrase).toLowerCase().trim();
+                    });
+                    if (staleMarks.length) {
+                        var wrappedPref = Actionable.wrapFirstExact(activeLines, t.phrase, t);
+                        if (wrappedPref) {
+                            Actionable.retireMarks(staleMarks, markedIds);
+                            try {
+                                JSON.parse(t.markCoverIds || t.markCandidateIds || '[]').forEach(function (id) {
+                                    markedIds[String(id)] = true;
+                                });
+                            } catch (eCov) {}
+                            markedIds[String(t.objectId)] = true;
+                            var prefKey = String(t.objectId);
+                            var prevPref = Actionable.VerifiedNouns[prefKey];
+                            if (!prevPref || t.phrase.length >= prevPref.length)
+                                Actionable.VerifiedNouns[prefKey] = t.phrase;
+                            return;
+                        }
+                    }
+                }
+            }
             // A group cannot suppress an observed uniquely owned full label.
             // Its parser candidates stay intact; reconciliation will reserve
             // the unique label and leave other group owners represented.
