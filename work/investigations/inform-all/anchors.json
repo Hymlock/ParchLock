@@ -1,0 +1,1136 @@
+[
+ {
+  "file": "Adventureland.z5.js",
+  "v": 5,
+  "n": 107,
+  "best": [
+   {
+    "k": 0,
+    "ok": 16,
+    "bad": 2,
+    "lit": 14,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "holders 1/2; open 5/6"
+   },
+   {
+    "k": 16,
+    "ok": 3,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "self!transparent; dirs scenery 0/8; holders 1/2"
+   }
+  ]
+ },
+ {
+  "file": "b2demo.z5.js",
+  "v": 5,
+  "n": 60,
+  "best": [
+   {
+    "k": 0,
+    "ok": 10,
+    "bad": 3,
+    "lit": 7,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "holders 0/1; open 0/1; worn 0/1"
+   },
+   {
+    "k": 15,
+    "ok": 1,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "bedlam.z5.js",
+  "v": 5,
+  "n": 79,
+  "best": [
+   {
+    "k": 0,
+    "ok": 14,
+    "bad": 6,
+    "lit": 10,
+    "self": 1,
+    "dirs": 8,
+    "holders": 10,
+    "notes": "holders 4/10"
+   },
+   {
+    "k": 13,
+    "ok": 8,
+    "bad": 13,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 10,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 7/10"
+   }
+  ]
+ },
+ {
+  "file": "booth.z5.js",
+  "v": 5,
+  "n": 17,
+  "best": [
+   {
+    "k": 0,
+    "ok": 10,
+    "bad": 0,
+    "lit": 1,
+    "self": 1,
+    "dirs": 8,
+    "holders": 0,
+    "notes": ""
+   },
+   {
+    "k": 16,
+    "ok": 1,
+    "bad": 9,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 0,
+    "notes": "self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "break-in.z5.js",
+  "v": 5,
+  "n": 405,
+  "best": [
+   {
+    "k": 0,
+    "ok": 22,
+    "bad": 16,
+    "lit": 48,
+    "self": 2,
+    "dirs": 8,
+    "holders": 19,
+    "notes": "holders 9/19; open 1/7"
+   },
+   {
+    "k": 15,
+    "ok": 16,
+    "bad": 16,
+    "lit": 0,
+    "self": 2,
+    "dirs": 8,
+    "holders": 19,
+    "notes": "self!animate; self!transparent; self!animate; self!transparent; dirs scenery 0/8; holders 16/19; open 0/1"
+   }
+  ]
+ },
+ {
+  "file": "bse.z5.js",
+  "v": 5,
+  "n": 111,
+  "best": [
+   {
+    "k": 0,
+    "ok": 12,
+    "bad": 5,
+    "lit": 13,
+    "self": 1,
+    "dirs": 8,
+    "holders": 5,
+    "notes": "holders 2/5; open 0/2"
+   },
+   {
+    "k": 11,
+    "ok": 3,
+    "bad": 12,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 5,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 3/5"
+   }
+  ]
+ },
+ {
+  "file": "catseye.z3.js",
+  "v": 3,
+  "n": 39,
+  "best": [
+   {
+    "k": 0,
+    "ok": 1,
+    "bad": 5,
+    "lit": 0,
+    "self": 1,
+    "dirs": 4,
+    "holders": 0,
+    "notes": "self!transparent; dirs scenery 0/4"
+   },
+   {
+    "k": 1,
+    "ok": 0,
+    "bad": 6,
+    "lit": 1,
+    "self": 1,
+    "dirs": 4,
+    "holders": 0,
+    "notes": "self!animate; self!transparent; dirs scenery 0/4"
+   }
+  ]
+ },
+ {
+  "file": "cheater.z5.js",
+  "v": 5,
+  "n": 27,
+  "best": [
+   {
+    "k": 0,
+    "ok": 11,
+    "bad": 0,
+    "lit": 3,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": ""
+   },
+   {
+    "k": 16,
+    "ok": 2,
+    "bad": 9,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "claw.z5.js",
+  "v": 5,
+  "n": 111,
+  "best": [
+   {
+    "k": 2,
+    "ok": 15,
+    "bad": 3,
+    "lit": 33,
+    "self": 2,
+    "dirs": 8,
+    "holders": 4,
+    "notes": "holders 3/4; open 0/1; worn 0/1"
+   },
+   {
+    "k": 18,
+    "ok": 4,
+    "bad": 12,
+    "lit": 0,
+    "self": 2,
+    "dirs": 8,
+    "holders": 4,
+    "notes": "self!transparent; self!transparent; dirs scenery 0/8; holders 2/4"
+   }
+  ]
+ },
+ {
+  "file": "curses.z5.js",
+  "v": 5,
+  "n": 502,
+  "best": [
+   {
+    "k": 15,
+    "ok": 9,
+    "bad": 19,
+    "lit": 0,
+    "self": 1,
+    "dirs": 9,
+    "holders": 14,
+    "notes": "self!animate; self!transparent; dirs scenery 0/9; holders 9/14; open 0/3"
+   },
+   {
+    "k": 10,
+    "ok": 5,
+    "bad": 20,
+    "lit": 11,
+    "self": 1,
+    "dirs": 9,
+    "holders": 14,
+    "notes": "self!animate; self!transparent; dirs scenery 0/9; holders 5/14"
+   }
+  ]
+ },
+ {
+  "file": "dejavu.z3.js",
+  "v": 3,
+  "n": 44,
+  "best": [
+   {
+    "k": 4,
+    "ok": 5,
+    "bad": 9,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 3,
+    "notes": "self!transparent; dirs scenery 0/8"
+   },
+   {
+    "k": 5,
+    "ok": 4,
+    "bad": 11,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 3,
+    "notes": "self!transparent; dirs scenery 0/8; holders 2/3; open 1/2"
+   }
+  ]
+ },
+ {
+  "file": "Enemies.z8.js",
+  "v": 8,
+  "n": 439,
+  "best": [
+   {
+    "k": 19,
+    "ok": 33,
+    "bad": 26,
+    "lit": 10,
+    "self": 2,
+    "dirs": 8,
+    "holders": 45,
+    "notes": "self!animate; self!transparent; self!animate; self!transparent; dirs scenery 0/8; holders 33/45; open 0/2"
+   },
+   {
+    "k": 13,
+    "ok": 27,
+    "bad": 32,
+    "lit": 1,
+    "self": 2,
+    "dirs": 8,
+    "holders": 45,
+    "notes": "self!animate; self!transparent; self!animate; self!transparent; dirs scenery 0/8; holders 26/45; open 1/2"
+   }
+  ]
+ },
+ {
+  "file": "frozen.z5.js",
+  "v": 5,
+  "n": 78,
+  "best": [
+   {
+    "k": 0,
+    "ok": 11,
+    "bad": 1,
+    "lit": 22,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "open 0/1"
+   },
+   {
+    "k": 16,
+    "ok": 2,
+    "bad": 9,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "godot.z5.js",
+  "v": 5,
+  "n": 43,
+  "best": [
+   {
+    "k": 0,
+    "ok": 10,
+    "bad": 2,
+    "lit": 9,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "holders 0/2"
+   },
+   {
+    "k": 11,
+    "ok": 2,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "Gumshoe.z5.js",
+  "v": 5,
+  "n": 232,
+  "best": [
+   {
+    "k": 19,
+    "ok": 21,
+    "bad": 11,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 22,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 21/22"
+   },
+   {
+    "k": 15,
+    "ok": 17,
+    "bad": 19,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 22,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 14/22; open 3/4"
+   }
+  ]
+ },
+ {
+  "file": "heist.z8.js",
+  "v": 8,
+  "n": 555,
+  "best": [
+   {
+    "k": 19,
+    "ok": 37,
+    "bad": 29,
+    "lit": 1,
+    "self": 1,
+    "dirs": 8,
+    "holders": 51,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 37/51; open 0/5"
+   },
+   {
+    "k": 17,
+    "ok": 26,
+    "bad": 37,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 51,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 25/51; open 1/2"
+   }
+  ]
+ },
+ {
+  "file": "I-0.z5.js",
+  "v": 5,
+  "n": 307,
+  "best": [
+   {
+    "k": 0,
+    "ok": 32,
+    "bad": 23,
+    "lit": 36,
+    "self": 2,
+    "dirs": 10,
+    "holders": 26,
+    "notes": "holders 17/26; open 1/13; worn 0/2"
+   },
+   {
+    "k": 16,
+    "ok": 13,
+    "bad": 29,
+    "lit": 0,
+    "self": 2,
+    "dirs": 10,
+    "holders": 26,
+    "notes": "self!transparent; self!transparent; dirs scenery 0/10; holders 10/26; open 1/2"
+   }
+  ]
+ },
+ {
+  "file": "inhumane.z5.js",
+  "v": 5,
+  "n": 108,
+  "best": [
+   {
+    "k": 2,
+    "ok": 16,
+    "bad": 6,
+    "lit": 8,
+    "self": 1,
+    "dirs": 8,
+    "holders": 10,
+    "notes": "self!animate; holders 7/10; open 0/2"
+   },
+   {
+    "k": 21,
+    "ok": 9,
+    "bad": 11,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 10,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 9/10"
+   }
+  ]
+ },
+ {
+  "file": "Jigsaw.z8.js",
+  "v": 8,
+  "n": 511,
+  "best": [
+   {
+    "k": 0,
+    "ok": 23,
+    "bad": 18,
+    "lit": 148,
+    "self": 1,
+    "dirs": 8,
+    "holders": 16,
+    "notes": "holders 5/16; open 8/15"
+   },
+   {
+    "k": 14,
+    "ok": 5,
+    "bad": 21,
+    "lit": 8,
+    "self": 1,
+    "dirs": 8,
+    "holders": 16,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 5/16"
+   }
+  ]
+ },
+ {
+  "file": "karn.z5.js",
+  "v": 5,
+  "n": 275,
+  "best": [
+   {
+    "k": 15,
+    "ok": 16,
+    "bad": 14,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 20,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 16/20"
+   },
+   {
+    "k": 0,
+    "ok": 28,
+    "bad": 20,
+    "lit": 48,
+    "self": 1,
+    "dirs": 8,
+    "holders": 20,
+    "notes": "holders 12/20; open 6/15; worn 0/3"
+   }
+  ]
+ },
+ {
+  "file": "library.z5.js",
+  "v": 5,
+  "n": 76,
+  "best": [
+   {
+    "k": 0,
+    "ok": 13,
+    "bad": 1,
+    "lit": 10,
+    "self": 1,
+    "dirs": 8,
+    "holders": 4,
+    "notes": "holders 3/4"
+   },
+   {
+    "k": 19,
+    "ok": 3,
+    "bad": 11,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 4,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 3/4"
+   }
+  ]
+ },
+ {
+  "file": "lists.z5.js",
+  "v": 5,
+  "n": 34,
+  "best": [
+   {
+    "k": 0,
+    "ok": 13,
+    "bad": 0,
+    "lit": 2,
+    "self": 1,
+    "dirs": 8,
+    "holders": 3,
+    "notes": ""
+   },
+   {
+    "k": 19,
+    "ok": 3,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 3,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "lost.z5.js",
+  "v": 5,
+  "n": 156,
+  "best": [
+   {
+    "k": 0,
+    "ok": 13,
+    "bad": 12,
+    "lit": 18,
+    "self": 1,
+    "dirs": 8,
+    "holders": 7,
+    "notes": "holders 3/7; open 0/8"
+   },
+   {
+    "k": 16,
+    "ok": 5,
+    "bad": 13,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 7,
+    "notes": "self!transparent; dirs scenery 0/8; holders 3/7"
+   }
+  ]
+ },
+ {
+  "file": "mhpquest.z5.js",
+  "v": 5,
+  "n": 72,
+  "best": [
+   {
+    "k": 1,
+    "ok": 10,
+    "bad": 2,
+    "lit": 33,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "holders 0/1; open 0/1"
+   },
+   {
+    "k": 0,
+    "ok": 1,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "mindelec.z5.js",
+  "v": 5,
+  "n": 55,
+  "best": [
+   {
+    "k": 1,
+    "ok": 9,
+    "bad": 4,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 0,
+    "notes": "self!animate; open 0/3"
+   },
+   {
+    "k": 0,
+    "ok": 1,
+    "bad": 9,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 0,
+    "notes": "self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "minster.z5.js",
+  "v": 5,
+  "n": 394,
+  "best": [
+   {
+    "k": 15,
+    "ok": 19,
+    "bad": 17,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 20,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 13/20"
+   },
+   {
+    "k": 0,
+    "ok": 35,
+    "bad": 18,
+    "lit": 53,
+    "self": 1,
+    "dirs": 8,
+    "holders": 20,
+    "notes": "holders 13/20; open 10/20; worn 2/3"
+   }
+  ]
+ },
+ {
+  "file": "moonglow.z3.js",
+  "v": 3,
+  "n": 39,
+  "best": [
+   {
+    "k": 0,
+    "ok": 1,
+    "bad": 5,
+    "lit": 0,
+    "self": 1,
+    "dirs": 4,
+    "holders": 0,
+    "notes": "self!transparent; dirs scenery 0/4"
+   },
+   {
+    "k": 1,
+    "ok": 0,
+    "bad": 6,
+    "lit": 1,
+    "self": 1,
+    "dirs": 4,
+    "holders": 0,
+    "notes": "self!animate; self!transparent; dirs scenery 0/4"
+   }
+  ]
+ },
+ {
+  "file": "night.z5.js",
+  "v": 5,
+  "n": 122,
+  "best": [
+   {
+    "k": 0,
+    "ok": 15,
+    "bad": 1,
+    "lit": 24,
+    "self": 1,
+    "dirs": 8,
+    "holders": 6,
+    "notes": "holders 5/6"
+   },
+   {
+    "k": 19,
+    "ok": 6,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 6,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "ninepts.z5.js",
+  "v": 5,
+  "n": 54,
+  "best": [
+   {
+    "k": 0,
+    "ok": 14,
+    "bad": 10,
+    "lit": 4,
+    "self": 1,
+    "dirs": 8,
+    "holders": 6,
+    "notes": "holders 4/6; open 0/8"
+   },
+   {
+    "k": 10,
+    "ok": 6,
+    "bad": 10,
+    "lit": 1,
+    "self": 1,
+    "dirs": 8,
+    "holders": 6,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "paperchase.z5.js",
+  "v": 5,
+  "n": 70,
+  "best": [
+   {
+    "k": 2,
+    "ok": 9,
+    "bad": 2,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!animate; holders 0/1"
+   },
+   {
+    "k": 1,
+    "ok": 2,
+    "bad": 9,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "phlegm.z5.js",
+  "v": 5,
+  "n": 98,
+  "best": [
+   {
+    "k": 16,
+    "ok": 3,
+    "bad": 9,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!transparent; dirs scenery 0/8"
+   },
+   {
+    "k": 4,
+    "ok": 2,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 1,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "piece_v3.z5.js",
+  "v": 5,
+  "n": 106,
+  "best": [
+   {
+    "k": 0,
+    "ok": 19,
+    "bad": 5,
+    "lit": 18,
+    "self": 1,
+    "dirs": 8,
+    "holders": 12,
+    "notes": "holders 9/12; open 0/2"
+   },
+   {
+    "k": 19,
+    "ok": 11,
+    "bad": 11,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 12,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 11/12"
+   }
+  ]
+ },
+ {
+  "file": "praser5.z5.js",
+  "v": 5,
+  "n": 93,
+  "best": [
+   {
+    "k": 9,
+    "ok": 2,
+    "bad": 8,
+    "lit": 0,
+    "self": 0,
+    "dirs": 8,
+    "holders": 0,
+    "notes": "dirs scenery 0/8"
+   },
+   {
+    "k": 4,
+    "ok": 1,
+    "bad": 8,
+    "lit": 0,
+    "self": 0,
+    "dirs": 8,
+    "holders": 0,
+    "notes": "dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "Slackerx.z5.js",
+  "v": 5,
+  "n": 59,
+  "best": [
+   {
+    "k": 0,
+    "ok": 12,
+    "bad": 4,
+    "lit": 9,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "holders 0/2; open 2/4"
+   },
+   {
+    "k": 11,
+    "ok": 2,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "SoFar.z8.js",
+  "v": 8,
+  "n": 487,
+  "best": [
+   {
+    "k": 0,
+    "ok": 43,
+    "bad": 12,
+    "lit": 86,
+    "self": 2,
+    "dirs": 8,
+    "holders": 12,
+    "notes": "holders 10/12; open 21/31"
+   },
+   {
+    "k": 19,
+    "ok": 11,
+    "bad": 13,
+    "lit": 0,
+    "self": 2,
+    "dirs": 8,
+    "holders": 12,
+    "notes": "self!animate; self!transparent; self!animate; self!transparent; dirs scenery 0/8; holders 11/12"
+   }
+  ]
+ },
+ {
+  "file": "spirit.z5.js",
+  "v": 5,
+  "n": 817,
+  "best": [
+   {
+    "k": 19,
+    "ok": 91,
+    "bad": 35,
+    "lit": 4,
+    "self": 1,
+    "dirs": 8,
+    "holders": 116,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 91/116"
+   },
+   {
+    "k": 14,
+    "ok": 93,
+    "bad": 37,
+    "lit": 9,
+    "self": 1,
+    "dirs": 8,
+    "holders": 116,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 89/116"
+   }
+  ]
+ },
+ {
+  "file": "sutwin.z5.js",
+  "v": 5,
+  "n": 114,
+  "best": [
+   {
+    "k": 0,
+    "ok": 0,
+    "bad": 0,
+    "lit": 0,
+    "self": 0,
+    "dirs": 0,
+    "holders": 0,
+    "notes": ""
+   },
+   {
+    "k": 1,
+    "ok": 0,
+    "bad": 0,
+    "lit": 0,
+    "self": 0,
+    "dirs": 0,
+    "holders": 0,
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "file": "tatctae.z8.js",
+  "v": 8,
+  "n": 572,
+  "best": [
+   {
+    "k": 9,
+    "ok": 26,
+    "bad": 24,
+    "lit": 1,
+    "self": 1,
+    "dirs": 8,
+    "holders": 40,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 26/40"
+   },
+   {
+    "k": 21,
+    "ok": 20,
+    "bad": 30,
+    "lit": 3,
+    "self": 1,
+    "dirs": 8,
+    "holders": 40,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 20/40"
+   }
+  ]
+ },
+ {
+  "file": "tk1.z5.js",
+  "v": 5,
+  "n": 40,
+  "best": [
+   {
+    "k": 1,
+    "ok": 12,
+    "bad": 3,
+    "lit": 6,
+    "self": 1,
+    "dirs": 8,
+    "holders": 3,
+    "notes": "self!animate; open 0/2"
+   },
+   {
+    "k": 20,
+    "ok": 3,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 3,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "vindaloo.z5.js",
+  "v": 5,
+  "n": 74,
+  "best": [
+   {
+    "k": 0,
+    "ok": 10,
+    "bad": 5,
+    "lit": 21,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "holders 0/2; open 0/3"
+   },
+   {
+    "k": 11,
+    "ok": 2,
+    "bad": 10,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "weather.z5.js",
+  "v": 5,
+  "n": 70,
+  "best": [
+   {
+    "k": 1,
+    "ok": 11,
+    "bad": 9,
+    "lit": 9,
+    "self": 2,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "self!animate; self!animate; holders 0/2; open 1/6"
+   },
+   {
+    "k": 0,
+    "ok": 4,
+    "bad": 10,
+    "lit": 0,
+    "self": 2,
+    "dirs": 8,
+    "holders": 2,
+    "notes": "self!transparent; self!transparent; dirs scenery 0/8"
+   }
+  ]
+ },
+ {
+  "file": "wedding.z5.js",
+  "v": 5,
+  "n": 178,
+  "best": [
+   {
+    "k": 0,
+    "ok": 13,
+    "bad": 9,
+    "lit": 25,
+    "self": 1,
+    "dirs": 8,
+    "holders": 7,
+    "notes": "holders 3/7; open 0/5"
+   },
+   {
+    "k": 15,
+    "ok": 5,
+    "bad": 12,
+    "lit": 0,
+    "self": 1,
+    "dirs": 8,
+    "holders": 7,
+    "notes": "self!animate; self!transparent; dirs scenery 0/8; holders 5/7"
+   }
+  ]
+ }
+]
