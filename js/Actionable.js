@@ -1762,23 +1762,32 @@ var Actionable = {
                 var rowName = String(row.name || "").toLowerCase().replace(/\s+/g, " ").trim();
                 if (label && label !== row.name && row.labelProvenance !== "parser-vocabulary" && (" " + String(label).toLowerCase() + " ").indexOf(" " + rowName + " ") < 0
                     && Actionable.structuralNamePrinted(rowName, base, [text, Actionable.Scope.lastLookText, Actionable.Scope.lastInventoryText])) label = row.name;
-                // B8 permagic: obj.name must not flip with observed prose ("of paper" vs "of junk").
-                // RAM shortName is stable; strip leading particles for wrap/namePhrases authority.
-                // Observed text stays on displayName only.
+                // B8 permagic (narrowed #6291): only pin name to RAM shortName when the
+                // observed/current label is particle-led or mixes a particle with the head
+                // ("of paper"/"of junk"). Do not override deliberate observed-vocabulary
+                // labels catalog-wide. displayName still carries the printed phrase.
                 var ramName = "";
                 try {
                     if (mem && typeof ZRamReader !== "undefined" && ZRamReader.shortName)
                         ramName = String(ZRamReader.shortName(mem, o.id) || "").replace(/\s+/g, " ").trim();
                 } catch (eSn) {}
                 if (ramName && ramName.charAt(0) !== "(") {
-                    var structural = ramName.replace(/^(a|an|the|of)\s+/i, "").trim() || ramName;
-                    var shown = display || label || structural;
-                    return Object.assign({}, row, {
-                        name: structural,
-                        structuralName: structural,
-                        displayName: shown,
-                        labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : (row.labelProvenance || "parser-vocabulary")
-                    });
+                    var particleLead = /^(a|an|the|of)\s+/i;
+                    var structural = ramName.replace(particleLead, "").trim() || ramName;
+                    var lab = String(label || row.name || "").replace(/\s+/g, " ").trim();
+                    var labL = lab.toLowerCase(), st = structural.toLowerCase();
+                    var words = labL.split(/\s+/).filter(Boolean);
+                    var pin = particleLead.test(lab) || particleLead.test(String(row.name || ""))
+                        || (words.length > 1 && words.indexOf(st) >= 0
+                            && words.some(function (w) { return /^(a|an|the|of)$/.test(w); }));
+                    if (pin && structural) {
+                        return Object.assign({}, row, {
+                            name: structural,
+                            structuralName: o.structuralName || o.name || structural,
+                            displayName: display || label || structural,
+                            labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : (row.labelProvenance || "parser-vocabulary")
+                        });
+                    }
                 }
                 return label === row.name ? Object.assign({},row,{displayName:display}) : Object.assign({}, row, { name: label, displayName:display, structuralName: o.name, labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : "observed-vocabulary" });
             });
