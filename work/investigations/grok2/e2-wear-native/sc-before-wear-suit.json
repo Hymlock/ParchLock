@@ -1,0 +1,43 @@
+{
+  "inv": [
+    {
+      "id": 220,
+      "name": "safety line",
+      "worn": false
+    },
+    {
+      "id": 144,
+      "name": "space suit",
+      "worn": false
+    },
+    {
+      "id": 71,
+      "name": "tape library",
+      "worn": false
+    }
+  ],
+  "suits": [
+    {
+      "id": 144,
+      "name": "space suit",
+      "worn": false,
+      "parent": 239
+    }
+  ],
+  "cmds": {
+    "144": [
+      {
+        "C": "examine suit",
+        "iw": false
+      },
+      {
+        "C": "take suit",
+        "iw": false
+      },
+      {
+        "C": "wear suit",
+        "iw": true
+      }
+    ]
+  }
+}
