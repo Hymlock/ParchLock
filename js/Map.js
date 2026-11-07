@@ -213,7 +213,41 @@ var ParchLockMap = {
             $("<div>").addClass("note").appendTo(room);
             $("<div>").addClass("icon all-notes").click(ParchLockMap.ShowNotes).appendTo(room).hide();
 
+            ParchLockMap.BindRoomHold(room);   // before RoomClicked so a fired hold can swallow its click
             room.click(ParchLockMap.RoomClicked);
+        });
+    },
+
+    // M11: a map room box takes the Known Rooms row's long-press / right-click
+    // menu (RoomHoldAction: Notes, plus "Rewind to here" when offered). Same
+    // LongPressMs / LongPressMoveCancelPx contract; a fired hold eats the one
+    // trailing click so it never also re-centres the map.
+    BindRoomHold: (room) => {
+        var target = () => room.hasClass("shown") ? room.data("room") : null;
+        room.on("contextmenu", function (e) {
+            if ($(e.target).closest(".icon").length || !target()) return;
+            e.preventDefault(); e.stopPropagation();
+            ParchLockMap.RoomHoldAction(target());
+        });
+        var hold = null;
+        room.on("touchstart", function (e) {
+            var t = e.originalEvent && e.originalEvent.touches;
+            if (!t || t.length !== 1 || $(e.target).closest(".icon").length || !target()) { hold = null; return; }
+            var state = hold = { x: t[0].clientX, y: t[0].clientY, fired: false };
+            state.timer = setTimeout(function () {
+                if (hold !== state || ParchLockMap.DragMoved) return;
+                state.fired = true;
+                ParchLockMap.RoomHoldAction(target());
+            }, Actionable.LongPressMs);
+        }).on("touchmove", function (e) {
+            var t = e.originalEvent && e.originalEvent.touches;
+            if (!hold || !t || !t[0]) return;
+            var dx = t[0].clientX - hold.x, dy = t[0].clientY - hold.y;
+            if (dx * dx + dy * dy > Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx) { clearTimeout(hold.timer); hold = null; }
+        }).on("touchend touchcancel", function () {
+            if (hold) clearTimeout(hold.timer);
+        }).on("click", function (e) {
+            if (hold && hold.fired) { hold = null; e.stopImmediatePropagation(); e.preventDefault(); }
         });
     },
 
