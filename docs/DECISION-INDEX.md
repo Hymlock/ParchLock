@@ -4,7 +4,7 @@ One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
 This exists because the plan itself is not greppable: 168 decisions across
-10029 lines, with single lines over 20,000 characters, so one grep match
+10031 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
