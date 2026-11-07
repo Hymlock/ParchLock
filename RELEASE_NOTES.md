@@ -1,5 +1,12 @@
 # ParchLock Release Notes
 
+## Build 84 - 2026-11-07
+
+- Faster on phones: each command used to freeze the screen for about a second; it now takes about a tenth of a second.
+- Correct object flags (open, container, wear, light) for 35 more Inform games, so menus and maps offer the right actions and exits.
+- The Edifice: the Useful Rock stays in Equipment after the story changes your character, and the map shows the first room immediately.
+- "Cast at..." only appears in games that really have a cast verb. Android versionCode 59; shell cache 183.
+
 ## Build 83 - 2026-11-07
 
 - Accessibility: visible keyboard focus on buttons and tabs, readable Map tab colours, Tab key no longer trapped in the story input, Known Rooms "go to" works with Enter, labelled map toolbar.
