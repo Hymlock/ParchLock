@@ -1,5 +1,12 @@
 # ParchLock Release Notes
 
+## Build 83 - 2026-11-07
+
+- Accessibility: visible keyboard focus on buttons and tabs, readable Map tab colours, Tab key no longer trapped in the story input, Known Rooms "go to" works with Enter, labelled map toolbar.
+- Put: items with hyphenated names (School Days night-table) now appear in the "Put in..." list.
+- Map: dashed "?" exit boxes no longer have lines drawn through their names.
+- Faster: the game grammar is shared instead of copied on every refresh. Android versionCode 58; shell cache 182.
+
 ## Build 82 - 2026-11-07
 
 - Map: a room you just entered shows where its exits lead (from the game data) as dashed "?" boxes, instead of a lone box until you walk each way.
