@@ -1,5 +1,7 @@
 # Open work
 
+**Scope (operator, repeated 11-07): every census, fix and gate covers ALL 309 games (298 Z-machine: 26 ZIL + 272 non-ZIL; 11 Glulx). The release 80 matter only for the release copy. Never narrow a check to the 80.**
+
 Current November 4 order: Codex leads integration and return audits; Grok independently measures ZIL fallback/action defects. Both reviews and exact disjoint assignments: `work/mapping-research/items-codex/resume-20261020/nov4-lead/joint-next-work-plan.md`. Finish remaining ZIL useful consumers before regular Inform/Glulx. Closed rows below stay closed unless new evidence reopens them.
 
 Completed November 2 operator priority: D263 module learning persistence and learned-item radial precedence is implemented
@@ -49,6 +51,7 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 | I4 | bookvol and chico: start-up key prompt blocks checks | Radials in these 2 titles unverified | **Done** 237a3e97 | Gate start-up table (gate-startup.json): bookvol, Borderzo, chico, stiffmst, vgame, BlueLacuna now gated; BeingSteve stays no-prompt by design; controls byte-identical | HANDOFF #8; P3 | S |
 | I5 | P4: browser touch-verify on a sample | Would prove taps and radials work in Inform titles | **Done** (11-07) | grok touch probe (412x915, 5 titles): animate/openable/container rows match I1 TRUST. Fixes landed: put on surfaces (aebef2c3, D279), hyphenated names in picker uniqueness (26236385; School Days night-table end to end), Zork I Cast at removed (484ec830). Open, harmless: Open+Close shown regardless of state (grok investigating), Unlock with on non-lockables (D147 noise) | INFORM-PHASE-PLAN-draft P4 | M |
 | I6 | Glulx: 5 titles parked (no map, zero items) | Glulx games run with no map or inventory | Blocked | Needs an object model and a Glulx RAM provider; operator ruled this last | PRODUCTION_PLAN D38 | L |
+| I7 | Flag mapping complete for every non-ZIL Z game (all 309 minus 11 Glulx, not the release 80) | 42 games use an unproven default attribute layout, so radials can offer wrong Open/Put in/Wear | Open (11-07) | Census inform-all/coverage.cjs: 298 Z = 26 ZIL + 272 non-ZIL; 230 complete, 42 gaps (13 in the release 80). Batches: A grok, B grok2, C codex (inform-all/PLAN.md, bus #6230-6232); Claude reviews and lands exact-digest facts. Done = coverage.cjs 272 complete or each cell fail-closed with evidence. Must finish before I6 | operator 11-07 | L |
 
 ## Actions / radials
 
