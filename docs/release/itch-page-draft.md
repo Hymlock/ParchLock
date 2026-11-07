@@ -19,7 +19,7 @@ Type commands as you always have, or just tap. ParchLock reads the story's own g
 - **An Equipment screen** showing what you carry and wear.
 - **Notes, voice input and narration**, and a layout built for phones as well as desktop.
 
-It ships with **75 freely licensed stories**, from the Infocom-era classics' open-source descendants to modern community favourites. Every bundled story is included under its author's licence or permission; full credits and licences are in the app and in GAMES_INCLUDED.md.
+It ships with **75 freely licensed stories**, from early text-adventure classics to modern community favourites. Every bundled story is included under its author's licence or permission; full credits and licences are in the app and in GAMES_INCLUDED.md.
 
 ### Your own stories
 ParchLock plays Z-machine stories (.z3/.z5/.z8 and Blorb). **Glulx stories (.gblorb/.ulx) are also playable, with limitations:** they run with the story text and input only, without the map, underlines or Equipment screen.
