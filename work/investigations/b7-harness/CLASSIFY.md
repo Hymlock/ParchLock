@@ -14,6 +14,8 @@
 | attr-calibrator-phase-cd.js | same | LearningStores stub |
 | attr-calibrator-verb-disablement.js | same | LearningStores stub |
 | learned-words-adversarial-probes.js | LearnedWords.identity via LearningStores | LearningStores stub in vm |
+| d23-lookahead-labels.js | calibrate cleared without stable ZRamProvider/LearningStores; M09 admission | stubs + containment probe + isPlausible |
+| display-key-cache.js | 4d6d0c0 oracle drifted (casing) | cold/warm wipe vs current |
 
 ## Runner / ENV
 | harness | note |
@@ -26,13 +28,14 @@
 ## PRODUCT (do not fix under B7 test-only) — hand Claude
 | harness | evidence |
 |---|---|
-| d34-dictionary-verbs.js | Infocom Zork1/HHGG collect() emits dictionary-verb specialCommands (gate expected empty); informVerbFlags gate may be bypassed on collect path |
-| d94-cell-and-boot.js | 320x640 told 45 cols; harness floor still 48 |
-| display-key-cache.js | cache miss on Transmat Popper / Glow Bar display names |
-| d23-lookahead-labels.js | after calibration prop 12/13 not resolving to nw/se |
-| learned-words-layout-tour.js | wrapFirstExact+relocate marks FIRST "empty canteen" not LAST (tail " then empty canteen." not ".") |
-| d105-input-contract.js / d105-review-fixes.js / d119-live-audit.js | still TBD detailed (1–2 fails each) |
-| d96-menu-handle-map-tab.js / d100-read-aloud.js | TIMEOUT |
+| learned-words-layout-tour.js | Claude owns: wrapFirstExact marks FIRST not LAST |
+| d105-input-contract.js | Tools list unique Arrow keys — labels are title+detail concat; uniqueness or exact match |
+| d105-review-fixes.js | gap: controls lift stripBottom vs visible bottom (inset/layout) |
+| d119-live-audit.js | 48/2 TBD |
+| d96-menu-handle-map-tab.js / d100-read-aloud.js / p3-mic-lifecycle.js | TIMEOUT |
+| phase2-heuristic-cutover.js | 147/2 TBD |
+
+Claude fixed d34 (92299c96) + d94 (983f95b7). grok2 fixed d23+display-key (ab8b1172).
 
 ## Reviews done
 - M12 606dce5f ACCEPT (probe 9/0) bus #6112

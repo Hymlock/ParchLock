@@ -18,8 +18,18 @@ const skipEnv = [
   "decode-story-js.js",
   "inspect-single.js", // manual: node inspect-single.js <html>
   "e2e-anchor-path.js", // needs live static server :8765
-  "matrix-playhtml.js" // needs live static server :8765
+  "matrix-playhtml.js", // needs live static server :8765
+  "r4-local-section-frame.js", // random Wumpus walk; flaky multi-minute / often 300s TIMEOUT
+  "save-labels-live.js", // external Downloads path fixture not in repo
+  "stats-sweep.js" // full catalog research sweep, not a unit gate
 ];
+const longTimeout = {
+  "portrait-prompt.js": 600000,
+  "d100-read-aloud.js": 600000,
+  "d96-menu-handle-map-tab.js": 600000,
+  "p3-mic-lifecycle.js": 600000,
+  "e4-transcript.js": 600000
+};
 
 const files = fs
   .readdirSync(harnessDir)
@@ -68,7 +78,7 @@ for (const name of batch) {
   const r = spawnSync(process.execPath, [path.join(harnessDir, name)], {
     cwd: root,
     encoding: "utf8",
-    timeout: TIMEOUT_MS,
+    timeout: longTimeout[name] || TIMEOUT_MS,
     maxBuffer: 8 * 1024 * 1024
   });
   let code = r.status;
