@@ -161,9 +161,16 @@ const gap = (c, m) => {
     ok((await st()).radial, "A: hold on the submit arrow opens the radial at a CHAR prompt");
     await page.evaluate(() => document.querySelector("#radial-menu .radial-tools").click());
     await page.waitForTimeout(300);
-    const labels = await page.evaluate(() => [...document.querySelectorAll("#radial-menu .radial-command")].map((b) => b.textContent.trim()));
+    // Label is the first span; detail is .pl-tool-detail (do not use whole textContent).
+    const labels = await page.evaluate(() => [...document.querySelectorAll("#radial-menu .radial-command")].map((b) => {
+        const span = b.querySelector("span:not(.pl-tool-detail)");
+        return (span ? span.textContent : b.textContent).trim();
+    }));
     ok(labels.includes("Arrow keys") && new Set(labels).size === labels.length, "Tools list has a unique 'Arrow keys' entry: " + labels.join(", "));
-    await page.evaluate(() => [...document.querySelectorAll("#radial-menu .radial-command")].find((b) => /Arrow keys/.test(b.textContent)).click());
+    await page.evaluate(() => [...document.querySelectorAll("#radial-menu .radial-command")].find((b) => {
+        const span = b.querySelector("span:not(.pl-tool-detail)");
+        return /Arrow keys/.test(span ? span.textContent : b.textContent);
+    }).click());
     await page.waitForTimeout(400);
     gap(await page.evaluate(() => {
         const p = document.getElementById("pl-dirpad-ring");
