@@ -1,0 +1,2790 @@
+{
+ "zil": [
+  {
+   "file": "Ballyhoo.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Borderzo.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Cutthroats.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Deadline.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "worn",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Enchanter.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "animate",
+    "worn"
+   ]
+  },
+  {
+   "file": "Hitchhik.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "HollywoodHijinx.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Infidel.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "animate",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "LeatherGoddessesofPhobos.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Moonmist.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Planetfall.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "supporter",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "PlunderedHearts.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Seastalker.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "worn",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Sherlock.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 6,
+   "unmapped": [
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Sorcerer.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "worn",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Spellbreaker.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "worn",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Starcross.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Stationfall.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 6,
+   "unmapped": [
+    "openable"
+   ]
+  },
+  {
+   "file": "Suspect.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Suspended.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "animate",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "TheLurkingHorror.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 6,
+   "unmapped": [
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "TheWitness.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 4,
+   "unmapped": [
+    "openable",
+    "worn",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Wishbringer.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Zork1-TheGreatUndergroundEmpire.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "worn"
+   ]
+  },
+  {
+   "file": "Zork2-TheWizardofFrobozz.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 5,
+   "unmapped": [
+    "openable",
+    "worn"
+   ]
+  },
+  {
+   "file": "Zork3-TheDungeonMaster.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": true,
+   "mapped": 3,
+   "unmapped": [
+    "openable",
+    "animate",
+    "worn",
+    "light(runtime:9)"
+   ]
+  }
+ ],
+ "nonzil": [
+  {
+   "file": "905.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Accuse.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "acorncourt.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Advent.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Adventureland.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "adverbum.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "alice3.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "AllRoads.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "amish.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "amiss.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "anchor.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "annoy.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "AOTYRZ.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "appall.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Aug4.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "awaken.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ayac.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "b2demo.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Balances.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ballerina102.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "baron_EN.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bear.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bedlam.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "BeingAndrewPlotkin.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "BeingSteve.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "beneath.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "BibleRetold.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Biscuit.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bj.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "blair.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bluechairs.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "blues.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bofh.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bookvol.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "booth.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "boothdye.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "break-in.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 2,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Bronze.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bse.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "building.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "bunny.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "burglar.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "cabal.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "candy.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "CatcherInTheRye.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "catseye.z3.js",
+   "v": 3,
+   "names": true,
+   "fact": false,
+   "mapped": 2,
+   "unmapped": [
+    "openable",
+    "supporter",
+    "animate",
+    "worn",
+    "light"
+   ]
+  },
+  {
+   "file": "causality.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "cavern.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "change.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "cheater.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "cheeseshop.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "chico.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ChildsPlay.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "chix.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "cia.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "claw.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "ConanKillEverything.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Cove.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "csbb.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "CtDoom.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "curses.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "curves.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "cycles.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Cyclops.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Damnatio-Memoriae.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "DDIV.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "deadreck.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "death.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Debate.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "deephome.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "degen.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "dejavu.z3.js",
+   "v": 3,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Delusns.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "detective.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "devdoit.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "devours.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "dewdrops.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "djinni.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "dogslife.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "doll.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "dreamhold.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "DreamTooReal.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "dumont.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "edifice.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Enemies.z8.js",
+   "v": 8,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "enter.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "eric_dm.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "escape.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "eto.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "f209.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "fable.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Facility.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "faculty.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "farm.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "FFF.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Figaro.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "FineTune.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Fork.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "forms.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "fracture.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "frozen.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Galatea.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "gamlet.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "gardening.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "geb.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ghost.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Glass.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "godot.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "gostak.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "gourmet.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "GreatXavio.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "guess.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Gumshoe.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "gussdeath.z3.js",
+   "v": 3,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "heist.z8.js",
+   "v": 8,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Heliopause.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Help.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Heroine.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "housekey1.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "HouseOfDreamOfMoon.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "HugeCave.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "huntdark.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "I-0.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "identity.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Inevita.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Informat.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "inhumane.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "insight.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "jet.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Jigsaw.z8.js",
+   "v": 8,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "karn.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "kirby.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "KoA.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "kooku.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "lambs.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "lambs2.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "largemac.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "LASH.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "LDoDoom.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "library.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 2,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "limp.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "lists.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "LLR3.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "loose.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "lost.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 2,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "LostPig.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ludicorp.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "magic-toyshop.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "MakeItGood.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "mary.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Mask.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "medusa.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Mercy.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "metamorp.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "mhpquest.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "mimesis.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "mindelec.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "minster.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Mobius.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "moonglow.z3.js",
+   "v": 3,
+   "names": true,
+   "fact": false,
+   "mapped": 2,
+   "unmapped": [
+    "openable",
+    "supporter",
+    "animate",
+    "worn",
+    "light"
+   ]
+  },
+  {
+   "file": "Mulldoon.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Mullmurd.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "muse.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "musician.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "newday.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "night.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "NightBeforeChristmas.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ninepts.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "njag2.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "noroom.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "oad.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "omniquest.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "orevore.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "orion.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "pad.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "paperchase.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "parallel.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Peacock.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "pentari.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "permagic.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "PerrysWorld.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "phlegm.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Photograph.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "photopia.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "piece_v3.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "praser5.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Primrose.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "punkpnts.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "PUTPBAA.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Ralph.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "rameses.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "RBD.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Relief.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "reser.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "reverb.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ribbons.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "risorg.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "RoTA.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "RtDoom.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "samhain.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "saveprinceton.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Savoir-Faire.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "School.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "schooldays.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "selection.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "sgate.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "shade.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ShadowOfMemories.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ShadowSoldiers.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Shapes.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "sherbet.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Slackerx.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "SoFar.z8.js",
+   "v": 8,
+   "names": false,
+   "fact": true,
+   "mapped": 1,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "solitary.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Somewhere.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "spacest2.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "SpAdventure.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "spirit.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 2,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "sporkery1.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "spot.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "spring.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "stiffmst.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Sushi.zblorb.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "sutwin.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "suvehnux.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Swineback.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "sycamora.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Tangle.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "tatctae.z8.js",
+   "v": 8,
+   "names": false,
+   "fact": true,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "TCOTY.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "teacher.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "tell.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "temple.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "terror_tabby.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "tess.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "theatre.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "thegreat.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "TheWarblersNest.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "thorn.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "tirehoax.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "tk1.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "Tokyo2.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "TreasuresofaSlaversKingdom.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "troll.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "tryst205.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "tube.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "uhoh-demo.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "under.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Vacation.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "vampire.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "vespers.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "vgame.z8.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "vindaloo.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "vision.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "visitor.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "wadewar3.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "Wallpaper.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "warp.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "weather.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": false,
+   "mapped": 0,
+   "unmapped": [
+    "container(runtime:4)",
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "animate(runtime:0)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "wedding.z5.js",
+   "v": 5,
+   "names": false,
+   "fact": true,
+   "mapped": 2,
+   "unmapped": [
+    "open(runtime:14)",
+    "openable(runtime:15)",
+    "supporter(runtime:20)",
+    "worn(runtime:26)",
+    "light(runtime:9)"
+   ]
+  },
+  {
+   "file": "weirdness.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "whispers.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "windhal1.z8.js",
+   "v": 8,
+   "names": false,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "WiR1.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "WiR2.zblorb.js",
+   "v": 8,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "wireless.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "wossname.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "wump2ka.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "yagwad.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "zdungeon.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "zenon.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": true,
+   "mapped": 7,
+   "unmapped": []
+  },
+  {
+   "file": "ztuu.z5.js",
+   "v": 5,
+   "names": true,
+   "fact": false,
+   "mapped": 7,
+   "unmapped": []
+  }
+ ]
+}
