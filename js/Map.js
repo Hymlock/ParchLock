@@ -847,6 +847,28 @@ var ParchLockMap = {
             }
         }
 
+        // M12 (operator 11-07 "show them faded"): the game's own decoded exits
+        // (ExitMeta hintOnly, room look-ahead) draw their known destination in
+        // the exit's compass slot with the D51 tentative look, as the World map
+        // already does. The box re-centres and the chip sends the real
+        // direction; nothing is written to Exits or used for routing.
+        // Slot order: when two exits reach one room (Zork "north" and "northwest"
+        // both to North of House), the plain compass word wins the box.
+        var hintOrder = ["n", "e", "s", "w", "ne", "se", "sw", "nw", "up", "down", "in", "out"];
+        Object.keys(room.ExitMeta || {}).sort(function (a, b) { return hintOrder.indexOf(a) - hintOrder.indexOf(b); }).forEach(function (hdir) {
+            var hm = room.ExitMeta[hdir];
+            if (!hm || !hm.hintOnly || hm.toId == null || (room.Exits || {})[hdir] != null) return;
+            if (!isRealCompassDir(hdir) || claimedSlots[hdir]) return;
+            var target = (ParchLockMap.Rooms || []).find(function (r) { return r && r.HasRealId && String(r.ObjectId) === String(hm.toId); });
+            if (!target || String(target.Id) === String(room.Id)) return;
+            if (Object.prototype.hasOwnProperty.call(shownRoomIds, target.Id)) return;
+            if (typeof MapTopology !== "undefined" && MapTopology.isPlayerFacingRoom && !MapTopology.isPlayerFacingRoom(target)) return;
+            claimedSlots[hdir] = true;
+            ParchLockMap.DrawRoom(hdir, target);
+            $("#map .room.dir-" + hdir).addClass("tentative-exit");
+            shownRoomIds[target.Id] = hdir;
+        });
+
         // M7 R2: display-only "probably leads to" hint for an unwalked door
         // exit whose door carries a static door_to room. Only an exit chip with
         // no drawn neighbour is used; nothing is linked, routed or visited.
