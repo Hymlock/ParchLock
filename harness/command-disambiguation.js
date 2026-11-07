@@ -107,6 +107,15 @@ global.ZRamProvider = { getMem: () => ({ fake: true }) };
 global.ZRamReader = Object.assign(global.ZRamReader || {}, {
     hasDictionaryWord: (mem, w) => !!SPELL_DICT[String(w || "").toLowerCase()]
 });
+// Cast-gate: non-ZIL instrumentals need dictionary-verb bits (GrammarProvider.collect).
+global.GrammarProvider = Object.assign(global.GrammarProvider || {}, {
+    decodeD198: () => null,
+    collect: () => ({
+        specialCommands: Object.keys(SPELL_DICT).filter(function (k) { return SPELL_DICT[k]; }).map(function (k) {
+            return { label: k, command: k, source: "dictionary-verb" };
+        })
+    })
+});
 
 const spells = [
     { id: 60, name: "rezrov spell", aliases: ["spell"] },

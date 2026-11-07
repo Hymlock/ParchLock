@@ -811,6 +811,26 @@ var Actionable = {
         } catch (e) { return false; }
     },
 
+    // Dictionary VERB bit (GrammarProvider.collect dictionary-verb stream), not
+    // a bare token match. gamlet has "cast" as a non-verb word; Balances marks it a verb.
+    isDictionaryVerb: (word) => {
+        try {
+            if (!Actionable.isGameWord(word)) return false;
+            if (typeof GrammarProvider === "undefined" || !GrammarProvider.collect) return false;
+            var c = GrammarProvider.collect();
+            var key = Actionable.vocabularyKey(word);
+            var cmds = (c && c.specialCommands) || [];
+            return cmds.some(function (s) {
+                if (!s || s.source !== "dictionary-verb") return false;
+                var label = Actionable.vocabularyKey(s.label || s.command || "");
+                // "c,cast" style labels: match any comma-separated part
+                return label === key || String(s.label || s.command || "").split(",").some(function (part) {
+                    return Actionable.vocabularyKey(part) === key;
+                });
+            });
+        } catch (e) { return false; }
+    },
+
     // D147: "use X with Y" was submitted for every object in every game, and
     // `use` is not a verb in either the ZIL or the Inform 6 standard library.
     // Measured across the catalog's own dictionaries: ABSENT from Zork 1,
@@ -832,6 +852,7 @@ var Actionable = {
     // When the story's grammar is decoded (ZIL, D198), the verb must also have
     // the two-object form with that preposition: Zork I knows CAST only as a
     // one-object synonym of EXORCISE, so "cast A at B" can never parse there.
+    // Inform / no ZIL templates: require dictionary VERB bit (not bare token).
     availableInstrumentals: () => {
         try {
             var templates = null;
@@ -841,7 +862,12 @@ var Actionable = {
             } catch (eg) {}
             return Actionable.INSTRUMENTALS.filter(function (i) {
                 if (!Actionable.isGameWord(i.verb)) return false;
-                return !templates || templates.some(function (t) { return t.verb === i.verb && t.objectCount === 2 && t.prepositions.indexOf(i.prep) >= 0; });
+                if (templates) {
+                    return templates.some(function (t) {
+                        return t.verb === i.verb && t.objectCount === 2 && t.prepositions.indexOf(i.prep) >= 0;
+                    });
+                }
+                return Actionable.isDictionaryVerb(i.verb);
             });
         } catch (e) { return []; }
     },
