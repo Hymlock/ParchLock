@@ -1092,8 +1092,15 @@ body.light .icon-fav-on
 
 #map .room.tentative-exit
 {
-	opacity: 0.7;
+	/* Box stays opaque so connector lines never show through the name (phone 11-07, Build 82);
+	   only its text is dimmed to mark the exit as not yet walked. */
 	border: 1px dashed var(--pl-accent, #74d4b3);
+}
+
+#map .room.tentative-exit > .name,
+#map .room.tentative-exit > .dir
+{
+	opacity: 0.7;
 }
 
 #map .room.tentative-exit .name::after
