@@ -1,5 +1,9 @@
 # ParchLock Release Notes
 
+## Build 81 - 2026-11-07
+
+- Map: long-press (or right-click) a room box on the map for the same menu as the Known Rooms list: Notes, and "Rewind to here" when it is available. Android versionCode 56; shell cache 180.
+
 ## Build 80 - 2026-11-07
 
 - Equipment status: a stat with a long name ("Deaths this playthrough") takes two columns, so its words are no longer split on phones. Android versionCode 55; shell cache 179.
