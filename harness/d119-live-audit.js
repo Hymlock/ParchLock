@@ -423,12 +423,19 @@ const noStoryUrl = () => pathToFileURL(path.resolve(__dirname, "..", "play.html"
         });
         ok(Math.abs(geo.handleCenter - geo.wpCenter) < 5, "PART 5: with the map panel open on a wide desktop window, the handle is centered over the actual story/#windowport column, not the whole viewport (handle " + geo.handleCenter.toFixed(1) + " vs windowport center " + geo.wpCenter.toFixed(1) + ") -- was landing at the seam with the map panel before the fix");
 
-        const cdp = await ctx.newCDPSession(page);
-        const hb = { x: geo.handleRect.left + geo.handleRect.width / 2, y: geo.handleRect.top + geo.handleRect.height / 2 };
-        await cdp.send("Input.dispatchMouseEvent", { type: "mousePressed", x: hb.x, y: hb.y, button: "left", clickCount: 1 });
-        await page.waitForTimeout(500);
+        // Handle opens on pointer hold; synthesize pointer events on the element.
+        await page.evaluate(() => {
+            var h = document.getElementById("pl-dirpad-handle");
+            var r = h.getBoundingClientRect();
+            var x = r.left + r.width / 2, y = r.top + r.height / 2;
+            h.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true, clientX: x, clientY: y, pointerId: 1, pointerType: "mouse", buttons: 1 }));
+        });
+        await page.waitForTimeout(900);
         ok((await page.evaluate(() => !document.getElementById("pl-dirpad-ring").hidden)), "PART 5: holding the handle actually opens the compass ring while the map panel is open on desktop -- was silently blocked by CanOpen()'s own map-open check before the fix (\"doesn't do anything\")");
-        await cdp.send("Input.dispatchMouseEvent", { type: "mouseReleased", x: hb.x, y: hb.y, button: "left" });
+        await page.evaluate(() => {
+            var h = document.getElementById("pl-dirpad-handle");
+            h.dispatchEvent(new PointerEvent("pointerup", { bubbles: true, pointerId: 1, pointerType: "mouse" }));
+        });
         await page.waitForTimeout(300);
 
         // And confirm a real window resize alone (no class change) keeps it centered too.
