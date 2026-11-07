@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 168 decisions across
-10031 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 169 decisions across
+10041 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,8 +27,9 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
-| D284 | Distribution: free, non-monetized; itch.io primary, GitHub Releases, IF community; not Nexus |  |  |  |
-| D283 | Two releases: private invite-only (everything) and public (cleared titles only, no bundled Glulx) |  |  |  |
+| D285 | A carried container is never the inventory root (Advent wicker cage) | harness/carried-container-root.js | wump2ka |  |
+| D284 | Distribution: free, non-monetized; itch.io primary, GitHub Releases, IF community; not Nexus | harness/import-recognition.js tools/public-games.js |  |  |
+| D283 | Two releases: private invite-only (everything) and public (cleared titles only, no bundled Glulx) | harness/import-recognition.js tools/public-games.js |  |  |
 | D282 | Snapshot reuse between VM runs (B7 phone stall) |  |  |  |
 | D281 | Edifice player body swap: playerGlobal 18 (Q1) |  |  |  |
 | D280 | Inform flag mapping covers every non-ZIL title; layouts from library anchors (I7) |  |  | line 3065 |
