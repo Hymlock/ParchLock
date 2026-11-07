@@ -21,3 +21,18 @@ during a run (inRun). Glulx/RemGlk: no ZVM, snapshot path not used -> unaffected
 Proof plan: phone CDP before/after on Zork I (target << 200 ms per command), unit harness (hit/miss per case above incl. probe and /goto),
 operator-regressions 0 FAIL, three-engine gate on a sample + full 309 gate (every game, since snapshot feeds all Z titles).
 Prior-fix guard: D217 (library compass per generation), D198 frozen decode (7c1784bb), r1-r3 parked cache (b7-perf), D88 generation semantics.
+
+## r2 (after grok REJECT #6277 and grok2 ACCEPT-with-conditions #627x)
+grok's two counterexamples hold: (A) TurnRecorder._settle (450 ms after the VM returns) runs AttrCalibrator analyzers that change bitFor/applyTo
+with RAM unchanged; (B) snapshot itself reads the status-grid DOM (findLikelyLocation -> printedRoomNumber, D171). Key extended, not replaced:
+1. Learning version: one integer LearningVersion.n bumped by every semantic-table writer, at the write: AttrCalibrator.record (verbSuccess),
+   _correlateLocation / _correlateVerbBehavior outcomes, inventoryRootId write (1388-1430), wornBit write (1505), hydrate (1011-1027: replace/reset),
+   persist failure reset (1069-1076); ExitCalibrator hydrate/persist and diagonal hydration (436-465, 891+). AttributeSchema per-object
+   takeability overrides if written outside these. A harness enumerates writes by proxying the tables and fails if any write leaves n unchanged.
+2. Status input: the exact string printedRoomNumber() reads (status-grid text) joins the key; it is read fresh on every call (cheap DOM text),
+   so a repaint with a new room number misses.
+3. Hydrate BEFORE key lookup (calibrator hydration runs first, may bump n), as grok noted.
+4. grok2 conditions: never store while ZvmCapture.inRun; hot path (ZRamProvider.collect -> snapshot) uses the memo; copy cost measured
+   (structured copy of top level + arrays; elements frozen only if a harness proves no consumer mutates them), not 28 deep clones.
+Key = {mem.buffer, vmRuns, UndoRestoreSync.generation, digest, LearningVersion.n, statusGridText}.
+Unit harness must reproduce grok's A and B counterexamples as MISS cases, plus probe, /goto, restore, inRun re-entry.
