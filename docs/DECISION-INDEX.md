@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 163 decisions across
-10009 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 164 decisions across
+10013 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D280 | Inform flag mapping covers every non-ZIL title; layouts from library anchors (I7) |  |  | line 3063 |
 | D279 | Put on surfaces; ZIL instrumentals need their grammar form (I5) |  |  |  |
 | D278 | Map room boxes take the room menu; local map shows decoded exits (M11, M12) |  |  |  |
 | D277 | Long stat names span two Equipment columns |  |  |  |
@@ -295,38 +296,39 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | §61 | 2926 | 61. Compiled attribute declarations and audit corrections (D186) | D186 |
 | §62 | 2978 | 62. Attribute audit coverage and remaining decoder gaps |  |
 | §63 | 3021 | 63. Inform Z3 declaration layout (D200) | D200 |
-| §64 | 3062 | 64. D198 ZIL/Infocom composition architecture | D198 |
-| §65 | 3288 | 65. Unnamed early-Inform identity composition (D201) | D201 |
-| §66 | 3469 | 66. Original Map Controls (D202) | D202 |
-| §67 | 3486 | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | D203 |
-| §68 | 3556 | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | D204 |
-| §69 | 3682 | 69. Yourself hold radial for inventory/RPG verbs (D205) | D205 |
-| §70 | 3753 | 70. Learned words display and shared-copy repairs (2026-10-04) |  |
-| line 3790 | 3790 | Observed item descriptor precedence - regression correction (2026-10-04) |  |
-| §71 | 3799 | 71. Status probes, time games and the score alias (D207-D209) | D207 D208 D209 |
-| §72 | 3835 | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | D210 D211 D212 |
-| §73 | 3893 | 73. In-room steps and combat actions (D213) | D213 |
-| §74 | 3921 | 74. Underline lifetime, reply observation and Yourself breadth (D214) | D214 |
-| §75 | 3971 | 75. Save-tied state, authored endings and the rotating icon (D215) | D215 |
-| §76 | 4042 | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | D216 |
-| §77 | 4065 | 77. Library-compass lane for exit labels (D217) | D217 |
-| §78 | 4085 | 78. Inform 7 bookkeeping properties are not exits (D218) | D218 |
-| §79 | 4095 | 79. DarkScope: one heuristic darkness verdict per tick (D221) | D221 |
-| §80 | 4117 | 80. Inform 7 Map_Storage look-ahead lane (D223) | D223 |
-| §81 | 4136 | 81. Measured location fact and dark-admitted naming (D224) | D224 |
-| line 4155 | 4155 | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) |  |
-| line 4183 | 4183 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
-| line 4189 | 4189 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
-| §82 | 4194 | 82. Mark coverage and inventory label admission (D225) | D225 |
-| §83 | 4206 | 83. Inventory holder authority and recovery (D226) | D226 |
-| §84 | 4226 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
-| §85 | 4279 | 85. Authored state-gated food actions (D228) | D228 |
-| §86 | 4296 | 86. Measured container state and authored container forms (D229) | D229 |
-| §87 | 4307 | 87. More-page suggestion admission (D230) | D230 |
-| §88 | 4315 | 88. Authored unlock tool domain (D231) | D231 |
-| line 4323 | 4323 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
-| §89 | 4336 | 89. Save-linked cumulative playthrough history (D243) | D243 |
-| §90 | 4347 | 90. Display-only lock observations (D254; landed f82f243) | D254 |
-| §91 | 4361 | 91. Module learning and item preference retention (D263) | D263 |
-| §92 | 4390 | 92. Desktop movement key ownership (D264) | D264 |
-| §93 | 4395 | 93. Qualified owner-local Remove and compact FIND metadata (D265/D266) | D265 D266 |
+| line 3063 | 3063 | 63.1 No-name-table Inform layouts, all non-ZIL titles (D280, I7) | D280 |
+| §64 | 3066 | 64. D198 ZIL/Infocom composition architecture | D198 |
+| §65 | 3292 | 65. Unnamed early-Inform identity composition (D201) | D201 |
+| §66 | 3473 | 66. Original Map Controls (D202) | D202 |
+| §67 | 3490 | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | D203 |
+| §68 | 3560 | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | D204 |
+| §69 | 3686 | 69. Yourself hold radial for inventory/RPG verbs (D205) | D205 |
+| §70 | 3757 | 70. Learned words display and shared-copy repairs (2026-10-04) |  |
+| line 3794 | 3794 | Observed item descriptor precedence - regression correction (2026-10-04) |  |
+| §71 | 3803 | 71. Status probes, time games and the score alias (D207-D209) | D207 D208 D209 |
+| §72 | 3839 | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | D210 D211 D212 |
+| §73 | 3897 | 73. In-room steps and combat actions (D213) | D213 |
+| §74 | 3925 | 74. Underline lifetime, reply observation and Yourself breadth (D214) | D214 |
+| §75 | 3975 | 75. Save-tied state, authored endings and the rotating icon (D215) | D215 |
+| §76 | 4046 | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | D216 |
+| §77 | 4069 | 77. Library-compass lane for exit labels (D217) | D217 |
+| §78 | 4089 | 78. Inform 7 bookkeeping properties are not exits (D218) | D218 |
+| §79 | 4099 | 79. DarkScope: one heuristic darkness verdict per tick (D221) | D221 |
+| §80 | 4121 | 80. Inform 7 Map_Storage look-ahead lane (D223) | D223 |
+| §81 | 4140 | 81. Measured location fact and dark-admitted naming (D224) | D224 |
+| line 4159 | 4159 | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) |  |
+| line 4187 | 4187 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
+| line 4193 | 4193 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
+| §82 | 4198 | 82. Mark coverage and inventory label admission (D225) | D225 |
+| §83 | 4210 | 83. Inventory holder authority and recovery (D226) | D226 |
+| §84 | 4230 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
+| §85 | 4283 | 85. Authored state-gated food actions (D228) | D228 |
+| §86 | 4300 | 86. Measured container state and authored container forms (D229) | D229 |
+| §87 | 4311 | 87. More-page suggestion admission (D230) | D230 |
+| §88 | 4319 | 88. Authored unlock tool domain (D231) | D231 |
+| line 4327 | 4327 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
+| §89 | 4340 | 89. Save-linked cumulative playthrough history (D243) | D243 |
+| §90 | 4351 | 90. Display-only lock observations (D254; landed f82f243) | D254 |
+| §91 | 4365 | 91. Module learning and item preference retention (D263) | D263 |
+| §92 | 4394 | 92. Desktop movement key ownership (D264) | D264 |
+| §93 | 4399 | 93. Qualified owner-local Remove and compact FIND metadata (D265/D266) | D265 D266 |

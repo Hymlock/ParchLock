@@ -3059,6 +3059,10 @@ the whole-file classification genuinely once per loaded memory buffer.
 Evidence and packaging limits are recorded in [D200](PRODUCTION_PLAN.md#pl-d200).
 
 <a id="ar-s089" data-chapter-id="ar-s089"></a><a id="ar-ch64"></a>
+
+### 63.1 No-name-table Inform layouts, all non-ZIL titles (D280, I7)
+
+Scope is every non-ZIL Z title (272 of the 298 Z games; 309 minus 11 Glulx), never the release 80. A title with a declared name table (230) needs no fact. The 42 without one must not fall back to AttributeSchema.PROFILE: each gets an exact-digest ModuleStatFactsClaude attributeMap + wornAttribute derived from its own object table. Library anchors fix the layout (compass concealed, direction walls scenery, yourself animate/concealed/proper/transparent, rooms light); known layouts are L (no absent), TOY, WIN, TH and L+10, cross-checked by door/container/clothing/food/supporter exemplars. Titles with no decisive anchors stay fail-closed. Evidence and scripts: work/investigations/inform-all/ (coverage.cjs census, bits2/ classifier).
 ## 64. D198 ZIL/Infocom composition architecture
 
 **Lifecycle:** IMPLEMENTED / VALVES DEFAULT OFF. This section is the architecture
