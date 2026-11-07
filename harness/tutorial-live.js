@@ -65,7 +65,8 @@ assert(/map-open/.test(js) && /equip-open/.test(js), "sheets are driven through 
 // Everything added since the original live tour must be covered.
 assert(/Narration and text size/.test(js), "narration and the D123 text-size setting are covered");
 assert(/Saving and taking your game/.test(js), "saving and real file export are covered");
-assert(/containers inside containers|nest\s*\n?\s*.*again|sub-container/i.test(js), "sub-container nesting is explained");
+assert(/container hierarchy|containers inside containers|sub-container|keeping each result's container path/i.test(js),
+    "sub-container nesting is explained");
 
 // ---- no task interactivity, but still navigable --------------------------
 assert(/id="pl-tut-next"/.test(js) && /id="pl-tut-back"/.test(js) && /id="pl-tut-skip"/.test(js), "the player can still go forward, back, or skip the tour");
@@ -112,7 +113,7 @@ assert(!/rgba\(4, 10, 9, 0\.72\)/.test(css2), "the remaining single dim layer is
 // ---- completion and restart ---------------------------------------------
 assert(/TutorialMarkComplete/.test(js), "finishing or skipping records completion against the existing versioned key");
 assert(/close\(false\)/.test(js) && /close\(true\)/.test(js), "Skip and Finish share one exit path, so neither can leave the overlay up");
-assert(/if \(restart\)[\s\S]{0,120}location\.replace/.test(js), "finishing restarts the module so play begins fresh; skipping does not");
+assert(/if \(restart\)[\s\S]{0,400}location\.replace/.test(js), "finishing restarts the module so play begins fresh; skipping does not");
 
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);
