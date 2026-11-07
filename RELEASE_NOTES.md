@@ -1,5 +1,11 @@
 # ParchLock Release Notes
 
+## Build 82 - 2026-11-07
+
+- Map: a room you just entered shows where its exits lead (from the game data) as dashed "?" boxes, instead of a lone box until you walk each way.
+- Put: choosing a table, desk or other surface in the "Put in..." list now sends "put X on Y" (Inform games refuse "in" for surfaces).
+- Zork I no longer offers "Cast at..." (the game has no such command). Android versionCode 57; shell cache 181.
+
 ## Build 81 - 2026-11-07
 
 - Map: long-press (or right-click) a room box on the map for the same menu as the Known Rooms list: Notes, and "Rewind to here" when it is available. Android versionCode 56; shell cache 180.
