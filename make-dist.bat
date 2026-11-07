@@ -4,27 +4,50 @@ setlocal EnableExtensions EnableDelayedExpansion
 rem ParchLock runtime and corresponding-source builder.
 rem Runtime and source roots are allow-listed. Story copying remains unchanged
 rem by operator policy; the operator removes any stories before release.
+rem
+rem B1 (OPEN_WORK): build into a temp runtime stage; replace DEST only on success.
+rem B2 (OPEN_WORK): refuse a dirty git tree for runtime-critical paths unless
+rem MAKE_DIST_ALLOW_DIRTY=1 (loud override for local experiments).
 
 set "SRC=%~dp0"
 if "%SRC:~-1%"=="\" set "SRC=%SRC:~0,-1%"
 if "%~1"=="" (set "DEST=C:\Users\hymlo\Downloads\ParchLock-dist") else (set "DEST=%~1")
+set "RUNTIME_STAGE=%TEMP%\ParchLock-runtime-%RANDOM%-%RANDOM%"
 set "SOURCE_STAGE=%TEMP%\ParchLock-source-%RANDOM%-%RANDOM%"
-set "SOURCE_ZIP=%DEST%\ParchLock-source.zip"
+set "SOURCE_ZIP_STAGE=%TEMP%\ParchLock-source-zip-%RANDOM%-%RANDOM%.zip"
 set "ROBO=/E /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1"
 
 echo === ParchLock clean distribution ===
 echo Source: %SRC%
 echo Dest:   %DEST%
+echo Stage:  %RUNTIME_STAGE%
 
 if not exist "%SRC%\play.html" exit /b 1
-if exist "%DEST%" rmdir /s /q "%DEST%"
-if exist "%DEST%" (
-  echo ERROR: Could not replace "%DEST%".
-  exit /b 1
-)
-mkdir "%DEST%" || exit /b 1
 
-for %%D in (css img js lib games user licenses) do mkdir "%DEST%\%%D" 2>nul
+rem --- B2: dirty-tree guard (runtime-critical paths only) -----------------
+set "DIRTY_HIT="
+if exist "%SRC%\.git" (
+  pushd "%SRC%" >nul
+  for /f "delims=" %%L in ('git status --porcelain -- "js" "css" "index.html" "play.html" "service-worker.js" "manifest.json" "lib" 2^>nul') do (
+    set "DIRTY_HIT=1"
+    echo DIRTY: %%L
+  )
+  popd >nul
+)
+if defined DIRTY_HIT (
+  if /I "%MAKE_DIST_ALLOW_DIRTY%"=="1" (
+    echo WARNING: B2 override MAKE_DIST_ALLOW_DIRTY=1 — shipping a dirty runtime tree.
+  ) else (
+    echo ERROR: B2 dirty-tree guard: js/ css/ index.html play.html service-worker.js manifest.json lib must be clean.
+    echo ERROR: Commit or stash those paths, or set MAKE_DIST_ALLOW_DIRTY=1 to override ^(not for release^).
+    exit /b 2
+  )
+)
+
+rem --- B1: build into temp runtime stage ---------------------------------
+if exist "%RUNTIME_STAGE%" rmdir /s /q "%RUNTIME_STAGE%"
+mkdir "%RUNTIME_STAGE%" || exit /b 1
+for %%D in (css img js lib games user licenses) do mkdir "%RUNTIME_STAGE%\%%D" 2>nul
 
 rem Explicit runtime root allow-list.
 for %%F in (
@@ -36,31 +59,31 @@ for %%F in (
     echo ERROR: Required runtime file missing: %%F
     goto :fail
   )
-  copy /y "%SRC%\%%F" "%DEST%\%%F" >nul || goto :fail
+  copy /y "%SRC%\%%F" "%RUNTIME_STAGE%\%%F" >nul || goto :fail
 )
 
 rem Runtime directory allow-list. Markdown, source maps and staging notes do
 rem not match these declarations and therefore cannot ship.
-robocopy "%SRC%\css" "%DEST%\css" ParchLock.css CharCell.css parchment.css Tutorial.css LearnedWords.css RobotoMono-ExtraLight.ttf RobotoMono-OFL.txt /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
+robocopy "%SRC%\css" "%RUNTIME_STAGE%\css" ParchLock.css CharCell.css parchment.css Tutorial.css LearnedWords.css RobotoMono-ExtraLight.ttf RobotoMono-OFL.txt /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
-robocopy "%SRC%\img" "%DEST%\img" *.png *.svg *.ico *.css *.js /E /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
+robocopy "%SRC%\img" "%RUNTIME_STAGE%\img" *.png *.svg *.ico *.css *.js /E /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
-robocopy "%SRC%\js" "%DEST%\js" *.js /E /XF EmglkenHost.js EmglkenProvider.js HostEmglkenBridge.js /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
+robocopy "%SRC%\js" "%RUNTIME_STAGE%\js" *.js /E /XF EmglkenHost.js EmglkenProvider.js HostEmglkenBridge.js /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
-robocopy "%SRC%\lib" "%DEST%\lib" *.js *.wasm *.json *.html *.css *.gif /E /XD emglken parchment-modern /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
+robocopy "%SRC%\lib" "%RUNTIME_STAGE%\lib" *.js *.wasm *.json *.html *.css *.gif /E /XD emglken parchment-modern /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
-robocopy "%SRC%\licenses" "%DEST%\licenses" *.txt /E /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
+robocopy "%SRC%\licenses" "%RUNTIME_STAGE%\licenses" *.txt /E /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
 
 rem D97: story behavior deliberately remains unchanged. Rights review and
 rem removal before release are the operator's manual responsibility.
-if exist "%SRC%\games" robocopy "%SRC%\games" "%DEST%\games" *.* %ROBO% >nul
+if exist "%SRC%\games" robocopy "%SRC%\games" "%RUNTIME_STAGE%\games" *.* %ROBO% >nul
 if errorlevel 8 goto :fail
-if exist "%SRC%\user\_user-files-go-here.txt" copy /y "%SRC%\user\_user-files-go-here.txt" "%DEST%\user\" >nul
+if exist "%SRC%\user\_user-files-go-here.txt" copy /y "%SRC%\user\_user-files-go-here.txt" "%RUNTIME_STAGE%\user\" >nul
 
 echo Building PC launcher...
 call "%SRC%\build-pc-launcher.bat" || goto :fail
-copy /y "%SRC%\ParchLock.exe" "%DEST%\ParchLock.exe" >nul || goto :fail
+copy /y "%SRC%\ParchLock.exe" "%RUNTIME_STAGE%\ParchLock.exe" >nul || goto :fail
 
 for %%F in (
   play.html index.html manifest.json service-worker.js
@@ -70,7 +93,7 @@ for %%F in (
   js\StatTracker.js js\StatusGridDecoder.js js\EquipmentUI.js
   js\LearnedWords.js css\LearnedWords.css
   css\RobotoMono-ExtraLight.ttf lib\main.js
-) do if not exist "%DEST%\%%F" (
+) do if not exist "%RUNTIME_STAGE%\%%F" (
   echo ERROR: Runtime allow-list missed %%F
   goto :fail
 )
@@ -104,8 +127,31 @@ robocopy "%SRC%\android" "%SOURCE_STAGE%\android" *.* %ROBO% /XD .gradle build "
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\android\app\src\main\assets" 2>nul
 copy /y "%SRC%\android\app\src\main\assets\capacitor.plugins.json" "%SOURCE_STAGE%\android\app\src\main\assets\capacitor.plugins.json" >nul || goto :sourcefail
-powershell -NoProfile -Command "Compress-Archive -Path '%SOURCE_STAGE%\*' -DestinationPath '%SOURCE_ZIP%' -Force" || goto :sourcefail
-powershell -NoProfile -Command "$target=[IO.Path]::GetFullPath('%SOURCE_STAGE%'); $prefix=Join-Path ([IO.Path]::GetFullPath($env:TEMP)) 'ParchLock-source-'; if(-not $target.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe source staging path'}; if((Get-Item -LiteralPath $target).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Unexpected staging link'}; if(@(Get-ChildItem -LiteralPath $target -Recurse -Force -Attributes ReparsePoint -ErrorAction Stop).Count){throw 'Unexpected link inside staging tree'}; Remove-Item -LiteralPath $target -Recurse -Force" || exit /b 1
+powershell -NoProfile -Command "Compress-Archive -Path '%SOURCE_STAGE%\*' -DestinationPath '%SOURCE_ZIP_STAGE%' -Force" || goto :sourcefail
+powershell -NoProfile -Command "$target=[IO.Path]::GetFullPath('%SOURCE_STAGE%'); $prefix=Join-Path ([IO.Path]::GetFullPath($env:TEMP)) 'ParchLock-source-'; if(-not $target.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe source staging path'}; if((Get-Item -LiteralPath $target).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Unexpected staging link'}; if(@(Get-ChildItem -LiteralPath $target -Recurse -Force -Attributes ReparsePoint -ErrorAction Stop).Count){throw 'Unexpected link inside staging tree'}; Remove-Item -LiteralPath $target -Recurse -Force" || goto :fail
+
+rem Place the source zip inside the runtime stage BEFORE touching DEST so nothing
+rem can fail after the swap (claude peer review #6044).
+copy /y "%SOURCE_ZIP_STAGE%" "%RUNTIME_STAGE%\ParchLock-source.zip" >nul || goto :fail
+del /f /q "%SOURCE_ZIP_STAGE%" >nul 2>nul
+set "SOURCE_ZIP_STAGE="
+
+rem --- B1: atomic-ish swap — only now touch DEST ---------------------------
+if exist "%DEST%" (
+  set "DEST_OLD=%DEST%.old-%RANDOM%-%RANDOM%"
+  move "%DEST%" "!DEST_OLD!" >nul || (
+    echo ERROR: Could not move existing "%DEST%" aside.
+    goto :fail
+  )
+)
+mkdir "%DEST%" 2>nul
+robocopy "%RUNTIME_STAGE%" "%DEST%" *.* /E /MOVE /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
+if errorlevel 8 (
+  echo ERROR: Failed to promote runtime stage into "%DEST%".
+  goto :fail
+)
+if defined DEST_OLD if exist "!DEST_OLD!" rmdir /s /q "!DEST_OLD!" >nul 2>nul
+if exist "%RUNTIME_STAGE%" rmdir /s /q "%RUNTIME_STAGE%" >nul 2>nul
 
 echo Runtime and ParchLock-source.zip created successfully.
 exit /b 0
@@ -113,5 +159,12 @@ exit /b 0
 :sourcefail
 if exist "%SOURCE_STAGE%" powershell -NoProfile -Command "$target=[IO.Path]::GetFullPath('%SOURCE_STAGE%'); $prefix=Join-Path ([IO.Path]::GetFullPath($env:TEMP)) 'ParchLock-source-'; if(-not $target.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe source staging path'}; if((Get-Item -LiteralPath $target).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Unexpected staging link'}; if(@(Get-ChildItem -LiteralPath $target -Recurse -Force -Attributes ReparsePoint -ErrorAction Stop).Count){throw 'Unexpected link inside staging tree'}; Remove-Item -LiteralPath $target -Recurse -Force"
 :fail
-echo ERROR: ParchLock distribution build failed.
+rem If DEST was already moved aside, restore it and drop any partial new DEST.
+if defined DEST_OLD if exist "!DEST_OLD!" (
+  if exist "%DEST%" rmdir /s /q "%DEST%" >nul 2>nul
+  move "!DEST_OLD!" "%DEST%" >nul 2>nul
+)
+if exist "%RUNTIME_STAGE%" rmdir /s /q "%RUNTIME_STAGE%" >nul 2>nul
+if defined SOURCE_ZIP_STAGE if exist "%SOURCE_ZIP_STAGE%" del /f /q "%SOURCE_ZIP_STAGE%" >nul 2>nul
+echo ERROR: ParchLock distribution build failed. Prior DEST restored when a swap had started.
 exit /b 1

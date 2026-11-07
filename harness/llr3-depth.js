@@ -14,7 +14,19 @@ const check = (ok, msg) => { if (ok) { pass++; console.log('PASS: ' + msg); } el
     const toLine = async () => { for (let i = 0; i < 25; i++) { await p.evaluate(() => { document.querySelector('.parchlock-splash__start')?.click(); try { Message.Hide(); } catch (e) {} }); if (await p.locator('.Input.LineInput').count()) return; await p.keyboard.press('Space'); await p.waitForTimeout(150); } };
     await toLine();
     const txt = () => p.evaluate(() => document.querySelector('#windowport .BufferWindow').innerText);
-    const send = async c => { const n = (await txt()).length; await p.evaluate(c => { Input.Clear(); Input.Inject(c, true); }, c); await p.waitForTimeout(700); await toLine(); return (await txt()).slice(n); };
+    // Wait for reply growth + prompt (not fixed sleep): fixed 700ms made the seeded walk
+    // miss Cold room 219 on a loaded machine (grok2 audit 11-07; claude checkout revert).
+    const send = async c => {
+        const n = (await txt()).length;
+        await p.evaluate(c => { Input.Clear(); Input.Inject(c, true); }, c);
+        for (let i = 0; i < 100; i++) {
+            await p.waitForTimeout(100);
+            if ((await txt()).length > n + c.length && await p.locator('.Input.LineInput').count()) break;
+        }
+        await p.waitForTimeout(150);
+        await toLine();
+        return (await txt()).slice(n);
+    };
     const depth = () => p.evaluate(() => { WorldModel.tick(); const s = StatTracker.model().stats.depth; return s ? s.value : null; });
     let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed; };
     const dirs = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest'];
