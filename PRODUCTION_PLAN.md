@@ -10022,3 +10022,7 @@ Supersedes the M9 "still open" note in D262.
 ## D283 Two releases: private invite-only (everything) and public (cleared titles only, no bundled Glulx)
 
 **Status:** OPERATOR DECISION 2026-11-07. (1) An invite-only, non-public build ships with every module currently included (all 309, Glulx included). (2) A separate public build ships only modules confirmed available for us to distribute (GAMES_INCLUDED.md KEEP list; the licensing audit's EXCLUDE, NO GRANT and REVIEW titles stay out). The public build bundles no Glulx stories; it states that Glulx stories are playable with their limitations (story text and input only: no map, underlines or Equipment). I6 (Glulx map/objects) is closed as not in either release. B5's clean public repository follows the public list.
+
+## D284 Distribution: free, non-monetized; itch.io primary, GitHub Releases, IF community; not Nexus
+
+**Status:** OPERATOR DECISION 2026-11-07. ParchLock is released free with no monetization (many included titles are CC BY-NC, which a free release respects). Nexus Mods is not used: it hosts mods for specific supported games and ParchLock is a standalone app. Definite to-dos (OPEN_WORK R1-R7): release signing key (R1), itch.io page as the primary public home with APK, desktop build and source zip (R2), GitHub Releases on the B5 clean repository (R3), intfiction.org post and IFDB listing (R4), private invite-only full build (R5, per D283), direct USPTO name search (R6), F-Droid later (R7).
