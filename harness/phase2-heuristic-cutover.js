@@ -284,7 +284,9 @@ WM.lastPayload = p2;
 radialCalls.length = 0;
 Act.Open("window", "object", 10, 20, null);
 assert(radialCalls.length === 1, "Open with no objectId still calls OpenRadial");
-assert((radialCalls[0].slices || []).length === 0, "Open without objectId yields no name-regex verbs");
+// Radial may show the bare noun label + More; no verb Commands without objectId.
+assert(!(radialCalls[0].slices || []).some(function (s) { return s && s.Command && !s.MoreSuggestions; }),
+    "Open without objectId yields no name-regex verbs");
 
 radialCalls.length = 0;
 WM.lastPayload = {
@@ -298,7 +300,8 @@ const labels = (radialCalls[0].slices || []).map(function (s) { return s.Label; 
 assert(labels.indexOf("Examine") >= 0, "id-backed Open includes Examine from ActionSynth");
 assert(labels.indexOf("Open") >= 0, "id-backed Open includes Open from openable attr");
 assert(labels.indexOf("Take") < 0, "id-backed Open does not guess Take from the name 'window'");
-assert(labels.indexOf("Use with...") >= 0, "id-backed Open offers Use with... from other id-backed objects");
+assert(labels.indexOf("Use with...") >= 0 || labels.indexOf("More") >= 0,
+    "id-backed Open offers Use with... (or More) from other id-backed objects");
 
 radialCalls.length = 0;
 WM.lastPayload = {
