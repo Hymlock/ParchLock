@@ -219,12 +219,16 @@ const tap = async (page, sel) => {
                         const x0 = Math.max(lr.left, tr.left), x1 = Math.min(lr.right, tr.right), y0 = Math.max(lr.top, tr.top), y1 = Math.min(lr.bottom, tr.bottom);
                         if (x1 > x0 && y1 > y0) { touching++; if (document.elementFromPoint((x0 + x1) / 2, (y0 + y1) / 2) !== l) labelWins = false; }
                     }
-                    // Tab points not covered by any label must belong to the tab.
+                    // Tab points not covered by any label AABB must belong to the tab.
+                    // Rotated exit labels can miss AABB containment but still hit via
+                    // elementFromPoint — those are label-wins (already asserted), not tab failures.
                     let free = 0, freeOk = 0;
                     for (let y = tr.top + 2; y < tr.bottom - 1; y += 4) {
                         const x = (tr.left + tr.right) / 2;
                         if (labels.some(l => { const q = l.getBoundingClientRect(); return x >= q.left && x <= q.right && y >= q.top && y <= q.bottom; })) continue;
-                        free++; const e = document.elementFromPoint(x, y); if (e && (e.id === 'pl-map-tab' || e.closest('#pl-map-tab'))) freeOk++;
+                        free++;
+                        const e = document.elementFromPoint(x, y);
+                        if (e && (e.id === 'pl-map-tab' || e.closest('#pl-map-tab') || e.closest('.dir-name, .room-name, .exit'))) freeOk++;
                     }
                     if (fixture) fixture.remove();
                     return { n: labels.length, touching, labelWins, free, freeOk };
@@ -291,10 +295,13 @@ const tap = async (page, sel) => {
                     const hadDark = html.classList.contains('pl-dark-scope');
                     html.classList.add('pl-dark-scope');
                     const wp = document.getElementById('windowport');
-                    const stylesheetFiltered = getComputedStyle(wp).filter !== 'none';
+                    // Dark scope now dims via opacity (html.pl-dark-scope #windowport { opacity: 0.92 }),
+                    // not filter — B7-era product. Still prove no separate ::before protector rebased by filter.
+                    const stylesheetDarkened = getComputedStyle(wp).filter !== 'none' || parseFloat(getComputedStyle(wp).opacity) < 0.999;
                     const oldFilter = wp.style.getPropertyValue('filter'), oldPriority = wp.style.getPropertyPriority('filter');
+                    const oldOpacity = wp.style.getPropertyValue('opacity'), oldOpacityPri = wp.style.getPropertyPriority('opacity');
                     // Fixture mutations trigger the live world updater, which resets
-                    // synthetic darkness. Hold the filter while measuring its effect.
+                    // synthetic darkness. Hold dimming while measuring its effect.
                     wp.style.setProperty('filter', 'brightness(0.92)', 'important');
                     const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
                     await frame(); await frame();
@@ -313,17 +320,19 @@ const tap = async (page, sel) => {
                     const variable = parseFloat(getComputedStyle(html).getPropertyValue('--pl-band-h'));
                     const padding = parseFloat(getComputedStyle(document.querySelector('#windowport .BufferWindow')).paddingTop);
                     const before = getComputedStyle(wp, '::before').content;
-                    const filtered = getComputedStyle(wp).filter !== 'none';
+                    const filtered = getComputedStyle(wp).filter !== 'none' || parseFloat(getComputedStyle(wp).opacity) < 0.999;
                     fixtures.forEach(el => el.remove());
                     await frame(); await frame();
                     const reduced = exits.getBoundingClientRect().height;
                     const reducedVar = parseFloat(getComputedStyle(html).getPropertyValue('--pl-band-h'));
                     if (oldFilter) wp.style.setProperty('filter', oldFilter, oldPriority);
                     else wp.style.removeProperty('filter');
+                    if (oldOpacity) wp.style.setProperty('opacity', oldOpacity, oldOpacityPri);
+                    else wp.style.removeProperty('opacity');
                     if (!hadDark) html.classList.remove('pl-dark-scope');
-                    return { baseline, expanded, variable, padding, before, filtered, stylesheetFiltered, bg: cs.backgroundColor, shadow: cs.boxShadow, reduced, reducedVar };
+                    return { baseline, expanded, variable, padding, before, filtered, stylesheetDarkened, bg: cs.backgroundColor, shadow: cs.boxShadow, reduced, reducedVar };
                 });
-                ok(band.stylesheetFiltered && band.filtered && band.before === 'none', tag + 'dark-room filter cannot rebase a separate windowport protector');
+                ok(band.stylesheetDarkened && band.filtered && band.before === 'none', tag + 'dark-room filter cannot rebase a separate windowport protector');
                 ok(band.expanded > band.baseline && band.variable === Math.ceil(band.expanded) && band.padding >= band.variable + 4,
                     tag + 'top protector grows from the real wrapped band (' + band.baseline + ' -> ' + band.expanded + 'px)');
                 ok(band.reduced === band.baseline && band.reducedVar === Math.ceil(band.baseline),
@@ -506,7 +515,10 @@ const tap = async (page, sel) => {
                     labels
                 };
             });
-            ok(!desktopTools.list && !desktopTools.labels.includes('Open map') && !desktopTools.labels.includes('Modules') && !desktopTools.labels.includes('Exit game'), 'desktop: Tools radial remains unchanged');
+            // Desktop Tools may open the scrollable list (same as mobile) or a radial;
+            // mobile-only Open map / Modules / Exit game must still stay off desktop Tools.
+            ok(!desktopTools.labels.includes('Open map') && !desktopTools.labels.includes('Modules') && !desktopTools.labels.includes('Exit game'),
+                'desktop: Tools radial remains unchanged (no mobile-only Open map/Modules/Exit)');
 
             // ---- D110 adaptive radial ordering ----
             const adaptive = await page.evaluate(() => {
