@@ -43,13 +43,14 @@ async function boot(browser,width,height){
      return {results,verifiedUnchanged:JSON.stringify(Actionable.VerifiedNouns)===before};
     }finally{Actionable.payloadPool=pool;}
    });
-   check(result.results[0].tail==='.'&&result.results[0].count===1,'last word-bounded repeat inside one text node');
+   // Item 6 / D214 U1 (operator 10-09, 1a8d5821): the FIRST mention in a reply is underlined.
+   check(result.results[0].tail===' then empty canteen.'&&result.results[0].count===1,'first word-bounded mention inside one text node');
    check(result.results[1].line===1,'actual DOM order wins over reversed activeLines for inventory repeat');
-   check(result.results[2].parent==='EM','last occurrence across styled text nodes');
+   check(result.results[2].parent==='P','first mention across styled text nodes');
    check(result.results[3].line===0,'links and input/subheader exclusions remain');
    check(result.results[4].line===0,'longer-token substring does not become a match');
    check(!result.results[5].objectId&&JSON.parse(result.results[5].candidateIds).length===2,'duplicate-name ambiguity metadata stays unresolved');
-   check(result.results[6].tail===' then scrap of paper'&&result.results[7].tail===' then pellets','different phrases do not steal the selected phrase');
+   check(result.results[6].line===0&&result.results[7].line===0,'different phrases do not steal the selected phrase (first mention kept)');
    check(result.results.every(r=>r.sameNode&&r.count===1&&r.textUnchanged)&&result.verifiedUnchanged,'same single mark moves without prose or VerifiedNouns changes');
   }
   await page.evaluate(({kb,height})=>{
