@@ -170,14 +170,17 @@ assert(!adventCollect.discoveredObjects, "collect() does not return discoveredOb
 
 sandbox.ZRamProvider = { getMem: function () { return zork1; } };
 const zorkCollect = GrammarProvider.collect();
-assert((zorkCollect.specialCommands || []).length === 0, "Infocom collect() is empty, not a fake look/inventory pair");
-assert(zorkCollect.sources && zorkCollect.sources[0] && zorkCollect.sources[0].confidence < 0.1,
-    "empty collect() does not advertise fake confidence");
+// D198 grammar valve defaults ON: an Infocom story contributes only its decoded (validated) verbs,
+// never the Inform dictionary-flag path and never a fake look/inventory pair.
+const zorkSpecial = zorkCollect.specialCommands || [];
+assert(zorkSpecial.length > 0 && zorkSpecial.every(function (c) { return c.d198 === true; }),
+    "Infocom collect() holds only D198-decoded verbs (no Inform dictionary-flag verbs)");
+assert(!zorkSpecial.some(function (c) { return c.command === "look" && !c.d198; }), "no fake look/inventory pair");
 
 sandbox.ZRamProvider = { getMem: function () { return hitchhik; } };
 const hitchCollect = GrammarProvider.collect();
-assert((hitchCollect.specialCommands || []).length === 0,
-    "Hitchhik Infocom v5 collect() is empty despite entryLen 9");
+assert((hitchCollect.specialCommands || []).every(function (c) { return c.d198 === true; }),
+    "Hitchhik Infocom v5 collect() holds only D198-decoded verbs despite entryLen 9");
 
 const qolSandbox = { console, window: {}, $: null, setTimeout: function () {} };
 vm.createContext(qolSandbox);
