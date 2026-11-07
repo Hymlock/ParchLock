@@ -2,7 +2,7 @@ var GameList = [
 
     {
         Title: "Counterfeit Monkey",
-        Subtitle: "Glulx format — added 2026-09-12 to unblock D28 Glulx structural-provider research",
+        Subtitle: "A Removal in Five Acts",
         Author: "Emily Short",
         Filename: "CounterfeitMonkey.gblorb.js"
     },
