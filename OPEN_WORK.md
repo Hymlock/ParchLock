@@ -106,7 +106,7 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 |---|---|---|---|---|---|---|
 | E1 | Lapel (Sherlock 174): disclose GUI-click and whole-title proof gaps | None (record honesty) | Partly done | Codex natural proof (14af8535) needs peer review | HANDOFF #10; D262 | S |
 | E2 | Wear LH 133 / Starcross 176 natural-acquisition proof; LH ring id | Wear works in constructed tests only | Not started | Needs native routes | PRODUCTION_PLAN D262 | M |
-| E3 | V34/V69: document which slot is pinned and why | None | Not started | Docs only | HANDOFF #6 | S |
+| E3 | V34/V69: document which slot is pinned and why | None | **Done** (11-06) | All I6 playerGlobal facts pin 18 (V34); g18=g53 at every prompt, bear/dewdrops hold the PC only in 18. Open: no directed-NPC test (e3-v34-v69/NOTE.md) | HANDOFF #6 | S |
 | E4 | Seated/vehicle room-name rule: provenance | Active everywhere, proven only on seeds | Blocked | PARKED/UNACCEPTED (Codex) | PRODUCTION_PLAN D222 | M |
 | E5 | Codex audits: 16 Inform maps, ActionSynth, all solo-period commits (incl. e643191b, 1d9a3130) | Could reopen items | Partly done | Codex reviewed five solo commits (nov4-lead/solo-return-audit.md): source qualified ACCEPT, historical APK evidence REVISE; other16 Inform-map reviews remain. No duplicate catalog run | codex-votes-0231; SOLO-COMMITS | M |
 | E6 | Other seats' uncommitted work (~3,300 dirty entries): commit or discard | Risk of lost or stray work | Not started; takeover authorized | Operator Nov4 authorizes unavailable-seat recovery. Audit and preserve provenance before exact staging; no blanket discard or commit | git status | M |
