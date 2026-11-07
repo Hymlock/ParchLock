@@ -3065,7 +3065,11 @@ var Actionable = {
                             var targets = pool;
                             if (!targets.length) { Actionable.runChosenCommand(command); return; }
                             ParchLockQol.OpenRadial(x, y, targets.map(function (t) {
-                                var full = command + Actionable.referenceFor(t).noun;
+                                // I5 (grok I5-putron): a surface that is not a container takes "on", not
+                                // "in" (Inform: "That can't contain things."), when the game knows "on".
+                                var ta = t.attrs || {}, stem = command;
+                                if (wantsContainer && ta.supporter && !ta.container && / in $/.test(stem) && ActionSynth.literalAvailable("on")) stem = stem.replace(/ in $/, " on ");
+                                var full = stem + Actionable.referenceFor(t).noun;
                                 return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { if (!Actionable.radialCommandCurrent(c)) return; if (Actionable.runChosenCommand(full, sharedCommands ? "ambiguous-reference" : undefined) && c.intent) Actionable.noteIntentUsage(c.intent); } };
                             }), Object.assign({}, context, { objectStatusStamp: null }));
                         }

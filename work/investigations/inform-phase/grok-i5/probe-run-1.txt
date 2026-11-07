@@ -1,0 +1,20 @@
+﻿### lists.z5.js [look|open door|n|look]
+TARGET door2 :: NOT-FOUND; visible marks=["bookshelves","large desk","computer","couch","small glass box","huge genie"]
+TARGET desk :: word="large desk" obj=24 radialOpen=true labels=["Examine","Search","Unlock with...","More","Tools"] shot=lists-desk.png
+TARGET couch :: word="couch" obj=25 radialOpen=true labels=["Examine","Search","Unlock with...","More","Tools"] shot=lists-couch.png
+TARGET genie :: word="huge genie" obj=31 radialOpen=true labels=["Examine","Talk to","Unlock with...","Ask about...","More","Tools"] shot=lists-genie.png
+### godot.z5.js [look]
+TARGET boxclosed :: word="small brown box" obj=17 radialOpen=true labels=["Examine","Take","Open","Close","Search","More...","Tools"] shot=godot-boxclosed.png
+### godot.z5.js [open box|look]
+TARGET boxopen :: word="small brown box" obj=17 radialOpen=true labels=["Examine","Take","Open","Close","Search","More...","Tools"] shot=godot-boxopen.png
+### minster.z5.js [i]
+TARGET handbag :: word="handbag" obj=62 radialOpen=true labels=["Examine","Open","Close","Search","Empty","More...","Tools"] shot=minster-handbag.png
+### minster.z5.js [n|look]
+TARGET table :: word="trestle table" obj=100 radialOpen=true labels=["Examine","Search","Unlock with...","More","Tools"] shot=minster-table.png
+TARGET busker :: word="busker" obj=104 radialOpen=true labels=["Examine","Talk to","Unlock with...","Ask about...","More","Tools"] shot=minster-busker.png
+### break-in.z5.js [look]
+TARGET rucksack :: word="black rucksack" obj=46 radialOpen=true labels=["Examine","Take","Open","Close","Search","More...","Tools"] shot=break-in-rucksack.png
+TARGET chair :: NOT-FOUND; visible marks=["door","black rucksack","desk"]
+TARGET desk :: word="desk" obj=35 radialOpen=true labels=["Examine","Search","Unlock with...","More","Tools"] shot=break-in-desk.png
+### SoFar.z8.js [look]
+TARGET bench :: word="benches" obj=29 radialOpen=true labels=["Examine","Enter","Exit","Search","Unlock with...","More","Tools"] shot=SoFar-bench.png

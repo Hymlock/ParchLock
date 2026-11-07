@@ -1,0 +1,8 @@
+﻿### Zork1-TheGreatUndergroundEmpire.z3.js [n|e|open window|w|take sack|i]
+TARGET sack :: word="brown sack" obj=224 radialOpen=true labels=["Examine","Search","Empty","Open","Drop","More...","Tools"] put={"picker":["kitchen table","glass bottle","stairs","chimney","kitchen window","quantity of water","Tools"],"reply":["┬á",">┬á","INWLiving RoomOUT","UPAtticEBehind HouseDOWNStudio","Γ₧ñ","≡ƒÄñ"]} shot=Zork1-TheGreatUndergroundEmpire-sack.png
+### Zork1-TheGreatUndergroundEmpire.z3.js [n|e|open window|w|take bottle|w|look|i]
+TARGET bottle :: word="glass bottle" obj=236 radialOpen=true labels=["Examine","Search","Empty","Open","Drop","More...","Tools"] put={"picker":["trophy case","stairs","ancient map","sword","wooden door","More...","Tools"],"reply":["┬á",">┬á","INWStrange PassageOUT","UPAtticEKitchenDOWNStudio","Γ₧ñ","≡ƒÄñ"]} shot=Zork1-TheGreatUndergroundEmpire-bottle.png
+### minster.z5.js [n|i]
+TARGET handbag :: word="handbag" obj=62 radialOpen=true labels=["Examine","Open","Close","Search","Empty","More...","Tools"] put={"picker":["trestle table","red cup","green cup","blue cup","busker","Biblioll College","Tools"],"reply":["S","Chapel Street","INWOUT","UPEDOWN","Γ₧ñ","≡ƒÄñ"]} shot=minster-handbag.png
+### curses.z5.js [look|i]
+TARGET paper :: word="crumpled piece of paper" obj=31 radialOpen=true labels=["Examine","Drop","Give to...","Put in...","Unlock with...","More","Tools"] put={"picker":["hinged trapdoor","teachests","chocolate biscuit","electric torch","Tools"]} shot=curses-paper.png
