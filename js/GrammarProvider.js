@@ -130,18 +130,26 @@ var GrammarProvider = {
     // static-memory root, a self-sized monotonic pointer table, bounded parse
     // entries, dictionary verb-index cross-links, and the preposition table.
     // It returns game-wide grammar only; action numbers remain opaque.
+    // B7 perf (b7-perf/D198-MUTATION-AUDIT): every caller only reads the decode, so the cached
+    // result is deep-frozen and shared instead of JSON-copied per call (~20 calls per LOOK).
+    // The one writer, collect() in shadow mode, copies first.
+    _d198DeepFreeze: function (value) {
+        if (value && typeof value === "object" && !Object.isFrozen(value)) {
+            Object.freeze(value);
+            Object.keys(value).forEach(function (k) { GrammarProvider._d198DeepFreeze(value[k]); });
+        }
+        return value;
+    },
     decodeD198: function (mem) {
         var cache = GrammarProvider._d198DecodeCache;
         var cacheKey = mem && mem.buffer ? mem.buffer : mem;
-        if (cache && cacheKey && cache.has(cacheKey)) {
-            return GrammarProvider._d198Clone(cache.get(cacheKey));
-        }
+        if (cache && cacheKey && cache.has(cacheKey)) return cache.get(cacheKey);
 
         var result = GrammarProvider._decodeD198Uncached(mem);
         var cacheable = !!(result && result._d198Cacheable);
         if (result) delete result._d198Cacheable;
-        if (cacheable && cache && cacheKey) cache.set(cacheKey, result);
-        return GrammarProvider._d198Clone(result);
+        if (cacheable && cache && cacheKey) cache.set(cacheKey, GrammarProvider._d198DeepFreeze(result));
+        return result;
     },
 
     _decodeD198Uncached: function (mem) {
@@ -519,12 +527,12 @@ var GrammarProvider = {
             });
 
             var d198 = null;
-            if (mode === "shadow" || mode === "on") d198 = GrammarProvider.decodeD198(mem);
+            if (mode === "shadow") d198 = GrammarProvider._d198Clone(GrammarProvider.decodeD198(mem));
+            else if (mode === "on") d198 = GrammarProvider.decodeD198(mem);
             if (mode === "shadow") {
                 d198.activation = "shadow";
                 GrammarProvider._d198ShadowSnapshot = GrammarProvider._d198Clone(d198);
             } else if (mode === "on" && d198 && d198.classification === "confirmed-zil-family" && d198.evidence === "validated") {
-                d198.activation = "on";
                 var seen = {};
                 special.forEach(function (item) { seen[String(item.command || "").toLowerCase()] = true; });
                 d198.vocabulary.forEach(function (verb) {
