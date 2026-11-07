@@ -1,0 +1,46 @@
+Adventureland.z5.js exits
+  base: ["east>35","north>32","south>32","west>32"]
+  cand: ["east>35","north>32","south>32","up>33","west>32"]
+Adventureland.z5.js marks
+  base: ["East","North","South","West","trees"]
+  cand: ["East","North","South","Up","West","trees"]
+I-0.z5.js marks
+  base: ["air conditioning","car","gas","ignition","light","purse","stereo"]
+  cand: ["air conditioning","car","gas","ignition","key","light","purse","stereo"]
+Slackerx.z5.js marks
+  base: ["bag","east","night","pot","south","west"]
+  cand: ["bag","east","pot","south","west"]
+bse.z5.js exits
+  base: ["north>25","south>41"]
+  cand: ["north>25","northeast>35","south>41"]
+curses.z5.js exits
+  base: ["east>42","north>103","south>47"]
+  cand: ["down>36","east>42","north>103","south>47"]
+inhumane.z5.js rooms
+  base: ["18:In Your Tent"]
+  cand: ["18:In Your Tent","20:Center of Camp","21:Storage Tent","25:Roboff's Tent"]
+inhumane.z5.js exits
+  base: []
+  cand: ["south>20"]
+inhumane.z5.js marks
+  base: ["jeweled amulet"]
+  cand: ["jeweled amulet","south"]
+inhumane.z5.js inv2
+  base: ["19:jeweled amulet"]
+  cand: []
+karn.z5.js exits
+  base: ["east>44"]
+  cand: ["east>44","west>35"]
+karn.z5.js marks
+  base: ["TARDIS","east","main doors","scanner","six-side console"]
+  cand: ["TARDIS","east","main doors","scanner","six-side console","west"]
+night.z5.js marks
+  base: ["Macs","PCs","computer","desk","internet router","laser","northeast","printer table"]
+  cand: ["Macs","PCs","computer","desk","game","internet router","laser","northeast","printer table"]
+ninepts.z5.js inv2
+  base: ["50:small fishbowl","18:tiny bottle"]
+  cand: ["50:small fishbowl","51:fish","18:tiny bottle"]
+tk1.z5.js inv2
+  base: ["22:glass tube","21:hole in the floor"]
+  cand: ["22:glass tube","23:piece of paper","21:hole in the floor"]
+GATE: 34 games, 15 differences (each must be an intended, reviewed change)

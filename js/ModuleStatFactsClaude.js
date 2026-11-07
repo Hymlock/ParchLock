@@ -1534,4 +1534,63 @@ var ModuleStatFactsClaude = {
         "evidence": "Historical SCORE: You have so far scored 0 out of a possible 0, in 0 turns."
     }
 };
+
+// D280 / I7 (grok2 ACCEPT #6240): attribute layouts for no-name-table Inform titles, proven from each game's own
+// object table (library anchors: compass concealed, walls scenery, yourself animate/concealed/proper/transparent,
+// rooms light; door/container/clothing/food/supporter exemplars). Evidence: work/investigations/inform-all/.
+// Fills only flags an entry does not already state; an existing different value is kept and reported.
+(function (facts) {
+    var L = { animate: 0, clothing: 1, wearable: 1, concealed: 2, container: 3, door: 4, edible: 5, enterable: 6, light: 9,
+        lockable: 10, locked: 11, on: 13, open: 14, isOpen: 14, openable: 15, proper: 16, scenery: 17, static: 19,
+        supporter: 20, switchable: 21, transparent: 23 };
+    function shift(base, by, from) { var m = {}; for (var k in base) m[k] = base[k] + (base[k] >= from ? by : 0); return m; }
+    var TOY = shift(L, 1, 4);
+    var LAYOUTS = { L: [L, 26], TOY: [TOY, 27], WIN: [shift(TOY, 1, 0), 28], TH: [shift(L, 2, 0), 28], L10: [shift(L, 10, 0), 36] };
+    var TITLES = {
+        "76ceb0777c42378f6a787a3f8d6d5475d11f32630cb123eeedc92b820ffc57c3": "TH", // claw
+        "931b0be04ed43ca9791a809d567cba7ee27dc027f44a603f27e6180df938cf51": "WIN", // inhumane
+        "79c13cc1b0de63630290856760f39ac93485e90b9c7bc237962ca631cb161203": "TOY", // tk1
+        "9038c8045d4fc53892901315db98ebc2e36df37b5ea468e1723d6cbacec906d2": "TOY", // weather
+        "dd3e03151624d55e053530f40e70bd58ecc3588842ee274d4bbd3a9eb7cb8502": "L10", // tatctae
+        "ca19b493a8190382a95b15c7645480ef467207ecaa0b446525f0328b89996777": "L", // Adventureland
+        "ba22783cbe996dd2f8c44f0e6206a31b2bb87a5b01ff2c58ed63b545fea76c7b": "L", // b2demo
+        "c061ce09ac551078bdc21ea8580c0d049bd2ea0798f773fae5daba3d826d3fb6": "L", // bedlam
+        "e571f398af533fb176522be30314c4d8b3daabdc11b92f0115f09142114b8ee5": "L", // booth
+        "45da361177da2e073616082377ea37654bb10b8289024833f61e1422dedb6201": "L", // break-in
+        "13d210f12f373c2617353d2caffaec6150975963218af767940c86931322a943": "L", // bse
+        "b1584df5bb0c6f7ae3ea3092ef03148ea64a73be1ec6a9680a418364a2c18d0d": "L", // cheater
+        "330100bf1c1ab8ed64065ceb58145ebb87cb6faef5b331fbc6684be4f14fe7da": "L", // curses
+        "4d054e03616ec2fac3a2dce408ff8007ceff8ff0bde43f504c89dc1bdb12c8be": "L", // Enemies
+        "4afe11ed7de6d65678ea4ebeb08c4757762d101a3ec636ad1650766293ac8be9": "L", // frozen
+        "1acdf2cc0519c9c96afdfa27d0107820a513de509050f1f23ed1710f30d6ef97": "L", // godot
+        "3fbd9f00d865302050cca79db955ee34ba2d51f98fcbb650048fa5447dc8f27f": "L", // Gumshoe
+        "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616": "L", // heist
+        "bf8b6f2e3f01cf4312129e0585809358df938d14c4fc4eb308daa86b3df5dc0d": "L", // I-0
+        "1776c051db9cc3ceccd876e0cc8808188494db06957c231a9f27bc61e3f16fcf": "L", // Jigsaw
+        "99cfd10988a2307c9cfbe17d0ac34f5d430d2086f2666355274e1c39c35dc1d0": "L", // karn
+        "b3665eaf5e30520355a1f07657ffbd69e967ecb53942f86913d044e65fa30e11": "L", // library
+        "5e9cf5f5077975a461013294da134970ee7afe82a6f0c0121785c1446051cd59": "L", // lists
+        "9ad23948fdf8c4c4f72fadbe1818b4f17fc50dbf9d8fc81312ba9c4e44dc2ddb": "L", // lost
+        "41172c8e152229cde7a90aa78b04d2882223c8ba161cc67716a1660e26ea3cd1": "L", // minster
+        "134081ad18cf4c0fd643af8e7cd9a620955e45104ea4e1a96f70bb79745617d4": "L", // night
+        "6a39aa258e1cdcdfeb85b2e41f40f1ddba169aad6dfdb38971e7af96666f44a4": "L", // ninepts
+        "7bb622d1c5c65954361c49bf2522621cfd27af7ddf4a7f1041c286f1b0f57756": "L", // phlegm
+        "97e0c1bb2792fe70540e64709d0e0fd2cca5edebf9414758f032dcf0d5e39628": "L", // piece_v3
+        "a9528b18c7b9557a356d9ea3bb09924be218d4322ca6416748b89b02864dd3a5": "L", // Slackerx
+        "b94c01b794a728806f78a9ab5a2d2ac0fcbe04632206d501848c18c809feba1c": "L", // SoFar
+        "258199e5fb7b494d3c6e60cc4fbe466b08f729e90a06753db49f4af7bfdca2d5": "L", // spirit
+        "1bd61b11ec4075e5f6bff397c77e89032f866e08dd7a7cdd6e7b9f562da80072": "L", // vindaloo
+        "2ab09dc0227163e8cb6916a1a3008dc25ef8698464dd7f3353dcaf1225bb81e5": "L", // wedding
+    };
+    facts.__d280Conflicts = [];
+    Object.keys(TITLES).forEach(function (digest) {
+        var lay = LAYOUTS[TITLES[digest]], e = facts[digest] || (facts[digest] = {}), map = e.attributeMap || (e.attributeMap = {});
+        Object.keys(lay[0]).forEach(function (k) {
+            if (map[k] === undefined || map[k] === null) map[k] = lay[0][k];
+            else if (map[k] !== lay[0][k]) facts.__d280Conflicts.push(digest.slice(0, 12) + " " + k + " kept " + map[k] + " (layout " + lay[0][k] + ")");
+        });
+        if (!Number.isInteger(e.wornAttribute)) e.wornAttribute = lay[1];
+        else if (e.wornAttribute !== lay[1]) facts.__d280Conflicts.push(digest.slice(0, 12) + " worn kept " + e.wornAttribute + " (layout " + lay[1] + ")");
+    });
+})(ModuleStatFactsClaude);
 if (typeof module !== "undefined" && module.exports) module.exports = ModuleStatFactsClaude;

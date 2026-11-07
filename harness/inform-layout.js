@@ -1,5 +1,5 @@
 // OPEN_WORK I3: inform-layout harness. Static, no browser.
-// For every release Inform Z title (inventory.json, family confirmed-inform, vm z*), check that
+// For every non-ZIL Z title in games/ (D280/I7: all 309 minus Glulx minus ZIL, 272 titles), check that
 // AttributeSchema.bitFor resolves the expected bit for container/open/openable/supporter/animate/worn/light.
 // Expected: declared name table (ZRamReader.informAttributeNames) when present; otherwise the exact-digest
 // ModuleStatFactsClaude fact (attributeMap[flag], wornAttribute for worn). A flag with neither source is
@@ -33,7 +33,8 @@ function checkTitle(T){
     let got;try{got=T.A.bitFor(f,T.mem);}catch(x){got='THROW';}if(got!==e.bit)bad.push(f+':'+got+'!='+e.bit);}
   return{bad,unmapped,src:[...src].join('+')||'none'};
 }
-const rows=JSON.parse(fs.readFileSync(INV,'utf8')).filter(r=>r.family==='confirmed-inform'&&/^z/.test(r.vm||''));
+// D280/I7: every non-ZIL Z game in games/ (all 309 minus Glulx minus ZIL), not the release inventory.
+const rows=fs.readdirSync(root+"/games").filter(f=>/\.(z[1-8]|zblorb)\.js$/.test(f)).map(file=>({file})).filter(r=>{try{const T=load(r.file);r.digest=T.digest;const g=T.c.GrammarProvider.decodeD198(T.mem);return !(g&&g.classification==="confirmed-zil-family");}catch(e){return true;}});
 let pass=0,fail=0,unm=0;const loaded={};
 for(const r of rows){
   let T;try{T=load(r.file);}catch(e){console.log('FAIL '+r.file+' load: '+e.message);fail++;continue;}
