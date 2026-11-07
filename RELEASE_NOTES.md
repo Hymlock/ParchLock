@@ -1,5 +1,9 @@
 # ParchLock Release Notes
 
+## Build 85 (2.0.1) - 2026-11-07
+
+- Equipment: putting something into a container you carry (Colossal Cave: catching the bird in the cage) no longer makes Equipment show only that container. Android versionCode 60; shell cache 184.
+
 ## Build 84 - 2026-11-07
 
 - Faster on phones: each command used to freeze the screen for about a second; it now takes about a tenth of a second.
