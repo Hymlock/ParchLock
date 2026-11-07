@@ -1582,6 +1582,10 @@ var ModuleStatFactsClaude = {
         "1bd61b11ec4075e5f6bff397c77e89032f866e08dd7a7cdd6e7b9f562da80072": "L", // vindaloo
         "2ab09dc0227163e8cb6916a1a3008dc25ef8698464dd7f3353dcaf1225bb81e5": "L", // wedding
     };
+    // dejavu.z3 (I7 z3): grok bytecode (INSERT/OPEN/CLOSE/WEAR/REMOVE/light-list sites, inform-all/grok-batch.md) and grok2 bits-v3 object table
+    // (inform-all/Z3 cross-check #6261) agree: container 8, open 10, openable 11, animate 4, light 0, worn 2 (opcode). supporter unproven -> absent.
+    if (!facts["64bb01746966c2280185a56aa6e641b65fe0353dc28a2ac1b178194aad25e006"]) facts["64bb01746966c2280185a56aa6e641b65fe0353dc28a2ac1b178194aad25e006"] = {
+        wornAttribute: 2, attributeMap: { container: 8, open: 10, isOpen: 10, openable: 11, animate: 4, light: 0 } };
     facts.__d280Conflicts = [];
     Object.keys(TITLES).forEach(function (digest) {
         var lay = LAYOUTS[TITLES[digest]], e = facts[digest] || (facts[digest] = {}), map = e.attributeMap || (e.attributeMap = {});
