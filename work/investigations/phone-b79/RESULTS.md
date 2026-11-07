@@ -26,3 +26,11 @@ Not checked on B79: the Deaths tile wrap (needs another death); depth 3+.
 | Note (harmless, missing-over-wrong): Zork I mailbox radial also offers "Cast at..." | noted, not fixed |
 
 Still not phone-checked: Advent rewind from a map box, Book and Volume label (M14), Sherlock clock (S4), Deaths tile wrap (needs a death), seated move (M6).
+
+## 2026-11-07 ~22:20 ET, Build 80 (5adf015d), same device
+| Check | Result |
+|---|---|
+| Deaths tile: "DEATHS THIS PLAYTHROUGH" on one line across two columns (was "PLAYTHROUG/H" on B79) | PASS (bca1597d) |
+| LLR3 Depth tile 1 at start; deaths persist across sessions (2) | PASS |
+| Book and Volume (M14): Home room label is the real name, no ASCII fragments | PASS (Hallway not reached on phone; desktop-verified) |
+Still not phone-checked: Advent rewind from a map box (only the Known Rooms row opens it), Sherlock clock/hide (PASS on B77), seated move (PASS on B77 via link).
