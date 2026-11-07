@@ -36,3 +36,7 @@ table and source headers; qualified legal review remains appropriate.
 
 Full license texts, checksums and reproducibility details are included with
 `ParchLock-source.zip`. No story-module license is included here.
+
+## Release review (operator, 2026-11-07)
+
+Accepted as written by Hymlock Groves for the ParchLock releases. All shipped components are permissive (MIT, SIL OFL; Playwright is development-only). The Emglken 0.7.2 MIT/GPL-2.0 metadata discrepancy is accepted: ParchLock complies under either licence because every binary is distributed together with its matching ParchLock-source.zip (DISTRIBUTE.md step 10), and the release is free.
