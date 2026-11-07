@@ -73,3 +73,14 @@ Proposal r3:
 - Separately worth asking: should Actionable.Refresh tick twice? (second tick after TranslatorUI.applyDiscovered).
 Tests: the 15 r2 checks, plus: a VM run between two Loop passes misses; idle passes hit; a probe submitted
 inside a pass invalidates. Full 309x2 gate.
+
+## Outcome (claude, 11-07 ~09:45): parked after grok REJECT of r3 (#6209/#6210)
+A Loop pass is not a no-execution boundary: a queued StatTracker probe (StatTracker.js:3245 -> :4096
+Actionable.Submit) and /goto routes (Navigator Pump -> Input.Inject) run the VM synchronously inside the
+pass (keypress -> resume -> run proven synchronous). A correct cross-tick cache needs engine generation
+barriers on prepare/start/resume/run/restart/restore_file/restore_undo/autorestore, coverage of direct JIT
+RAM stores, and/or separating read-only snapshot collection from probe submission. That is a structural
+change; the measured benefit is ~0.03-0.1 s per Loop pass on desktop, with no reported phone sluggishness.
+Decision: park. The uncommitted r2 implementation was reverted; its 15-check harness is kept here as
+b7-attr-tick-cache.js for a future attempt. Reopen with phone timing evidence, starting from grok's #6209
+barrier list and the single-snapshot-per-generation recommendation.
