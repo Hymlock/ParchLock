@@ -180,6 +180,15 @@ var Actionable = {
         } catch (e) {}
         return w;
     },
+    // Second-object pickers (Put in, Give to, instrumentals). A concealed object (Inform: not listed in
+    // room descriptions) is offered only once the story text has underlined it: School Days' NPC Engine
+    // helper object sits in the player's room, concealed and never mentioned (phone 11-07).
+    pickerTarget: function (o, sourceId) {
+        if (!o || String(o.id) === String(sourceId) || o.examineOnly || o.revealedLocalGlobal) return false;
+        if (o.attrs && o.attrs.concealed && typeof document !== "undefined"
+            && !document.querySelector(".pl-act[data-object-id=\"" + String(o.id).replace(/"/g, "") + "\"]")) return false;
+        return true;
+    },
     referenceFor: function (obj, suppliedPool) {
         var pool = suppliedPool || Actionable.payloadPool();
         var noun = Actionable.disambiguatedNoun(obj);
@@ -3066,7 +3075,7 @@ var Actionable = {
                             var wantsContainer = /^put\b/.test(vLower);
                             var wantsRecipient = /^(give|ask|show|tell)\b/.test(vLower);
                             var pool = Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId) && !o.examineOnly && !o.revealedLocalGlobal && Actionable.referenceFor(o).unique;
+                                return Actionable.pickerTarget(o, objectId) && Actionable.referenceFor(o).unique;
                             });
                             if (wantsContainer || wantsRecipient) {
                                 var primary = [], rest = [];
@@ -3121,7 +3130,7 @@ var Actionable = {
                     return;
                 }
                 var others = Actionable.payloadPool().filter(function (o) {
-                    return o && String(o.id) !== String(objectId) && !o.examineOnly && !o.revealedLocalGlobal;
+                    return Actionable.pickerTarget(o, objectId);
                 });
                 // D147: one launcher per instrumental verb this story's own
                 // dictionary actually contains, instead of a single hardcoded
@@ -3134,7 +3143,7 @@ var Actionable = {
                             AttributeSchema.unlockToolAllowed(ZRamProvider.getMem(), objectId, context.kind) === false) return;
                         slices.push({ Label: inst.label, Score: 50, Usage: 0, UsageKey: "launcher:" + inst.verb + "-with:" + objectId, TrackTap: true, Action: function () {
                             ParchLockQol.OpenRadial(x, y, Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId) && !o.examineOnly && !o.revealedLocalGlobal && Actionable.referenceFor(o).unique;
+                                return Actionable.pickerTarget(o, objectId) && Actionable.referenceFor(o).unique;
                             }).map(function (other) {
                                 var source = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
                                 // D141/D147: the disambiguating form on BOTH
