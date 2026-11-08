@@ -1147,7 +1147,9 @@ var AttrCalibrator = {
                 if (entry.success) {
                     var insertCall = entry.trace.slice().reverse().find(function (t) { return t.op === "insert_obj" && t.args && String(t.args[0]) === String(entry.objectId); });
                     var holderId = insertCall && insertCall.args && insertCall.args[1];
-                    if (holderId != null && String(holderId) !== String(entry.beforeRoomId) && !AttrCalibrator.inventoryRootIsRoom(mem,holderId) && AttrCalibrator.inventoryHolderInWorld(mem,holderId,entry.beforeRoomId) && AttrCalibrator.table.inventoryRootId !== holderId) {
+                    // A take into something the player already carries (Advent: TAKE BIRD puts the bird in the
+                    // carried wicker cage) is a nested container, never the inventory root.
+                    if (holderId != null && String(holderId) !== String(entry.beforeRoomId) && !AttrCalibrator.inventoryRootIsRoom(mem,holderId) && AttrCalibrator.inventoryHolderInWorld(mem,holderId,entry.beforeRoomId) && !AttrCalibrator.inventoryHolderIsCarried(mem,holderId) && AttrCalibrator.table.inventoryRootId !== holderId) {
                         AttrCalibrator.table.inventoryRootId = holderId;
                         changed = true;
                     }
@@ -1275,8 +1277,29 @@ var AttrCalibrator = {
         try {
             if (mem) AttrCalibrator.hydrate(mem);
             var id = AttrCalibrator.table.inventoryRootId;
-            return id != null && !AttrCalibrator.inventoryRootIsRoom(mem,id) && AttrCalibrator.inventoryHolderInWorld(mem,id) ? id : null;
+            return id != null && !AttrCalibrator.inventoryRootIsRoom(mem,id) && AttrCalibrator.inventoryHolderInWorld(mem,id) && !AttrCalibrator.inventoryHolderIsCarried(mem,id) ? id : null;
         } catch (e) { return null; }
+    },
+
+    // True when `id` sits inside the resolved player (or inside the already-confirmed root): a carried
+    // container such as Advent's wicker cage. Such an object can never be the inventory root; a real
+    // holder (wump2ka's custom player, Sherlock's PC) hangs off the room, not off the player.
+    inventoryHolderIsCarried: function (mem, id) {
+        try {
+            if (!mem || id == null || typeof ZRamReader === 'undefined' || !ZRamReader.objectLinks) return false;
+            var owners = {};
+            try { var rp = ZRamReader.resolvePlayer && ZRamReader.resolvePlayer(mem); if (rp && rp.id) owners[String(rp.id)] = true; } catch (eP) {}
+            var known = AttrCalibrator.table && AttrCalibrator.table.inventoryRootId;
+            if (known != null && String(known) !== String(id)) owners[String(known)] = true;
+            if (owners[String(id)]) return false;
+            var node = ZRamReader.objectLinks(mem, id), seen = {};
+            for (var i = 0; i < 32 && node && node.parent && !seen[node.parent]; i++) {
+                if (owners[String(node.parent)]) return true;
+                seen[node.parent] = true;
+                node = ZRamReader.objectLinks(mem, node.parent);
+            }
+            return false;
+        } catch (e) { return false; }
     },
 
     // D73/Phase B follow-up fix (found live): `Actionable.Submit` only ever

@@ -23,7 +23,7 @@ ownership or permission.
   Opening `play.html` directly still plays, but the microphone cannot remember
   permission on a `file://` page.
 - Android: install the ParchLock APK from the distribution folder (for example
-  `ParchLock-build64.apk`).
+  `ParchLock-public.apk` in the public package, or `ParchLock.apk` in the private full package).
 - Library: open `index.html` and select **Modules** to add files.
 
 Supported local formats are Z-machine v3, v4, v5 and v8, zblorb, raw Glulx
@@ -44,3 +44,11 @@ See [USER_GUIDE.md](USER_GUIDE.md), [RELEASE_NOTES.md](RELEASE_NOTES.md),
 ParchLock modifications are provided under GNU GPL version 3; see `LICENSE`.
 Corresponding source for the distributed build is `ParchLock-source.zip`.
 Third-party components and included games retain their own licenses.
+
+
+## Downloads — 2.0.1
+
+[Get ParchLock 2.0.1 for Windows and Android](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.1).
+The complete ZIP contains the Windows launcher, signed Android APK and matching source ZIP together.
+The APK and source are also separate downloads on the same release page.
+Version 2.0.1 (Build 85, Android versionCode 60) fixes Equipment losing the rest of your inventory when an item goes into a container you carry.
