@@ -32,6 +32,22 @@ Run `npm ci`, then:
   documented in that script, performs a clean release build, and verifies the
   signature. It fails when signing material is absent.
 
+## Reproducing the public package
+
+The source ZIP includes `build-android-public.bat`, `release/public-games.txt`
+and `tools/public-games.js`. Copy the `games` folder from the matching public
+Windows distribution beside these extracted source files; story binaries are
+intentionally separate from the source ZIP. Run `npm ci`, then
+`build-android-public.bat dev` (or `release` with your own external signing key).
+The public wrapper uses the explicit 75-story list and generates its matching
+library menu. The unfiltered source `js/GameList.js` is replaced during that
+public build. A rebuilt APK signed with your own key will have a different
+signature from the distributed APK.
+
+The full/private build uses `build-android.bat` and the games supplied separately
+in its matching private distribution. Do not substitute that full catalog when
+reproducing or publishing the public package.
+
 The app icons (`img/icons/`, `img/favicon.*`, and the Android `mipmap-*`
 `ic_launcher*` images) are finished artwork files used as-is by every build; no
 build step regenerates them. They were produced from generated artwork (see

@@ -123,7 +123,7 @@ rem generated Android assets, secrets or signing material.
 mkdir "%SOURCE_STAGE%" || goto :fail
 for %%F in (
   index.html play.html manifest.json service-worker.js
-  make-dist.bat build-android.bat build-pc-launcher.bat package.json package-lock.json capacitor.config.json
+  make-dist.bat build-android.bat build-android-public.bat build-pc-launcher.bat package.json package-lock.json capacitor.config.json
   LICENSE NOTICE README.md USER_GUIDE.md RELEASE_NOTES.md PRIVACY.md
   CREDITS.md THIRD_PARTY_NOTICES.md SOURCE_BUILD.md GAMES_INCLUDED.md
 ) do copy /y "%SRC%\%%F" "%SOURCE_STAGE%\%%F" >nul || goto :sourcefail
@@ -134,10 +134,12 @@ for %%D in (css img js lib licenses) do (
 robocopy "%SRC%\native-hooks" "%SOURCE_STAGE%\native-hooks" *.* %ROBO% /XD build /XF *.log >nul
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\tools" 2>nul
-for %%F in (patch-android-tts.cjs test-android-tts.cjs) do (
+for %%F in (patch-android-tts.cjs test-android-tts.cjs public-games.js) do (
   if not exist "%SRC%\tools\%%F" goto :sourcefail
   copy /y "%SRC%\tools\%%F" "%SOURCE_STAGE%\tools\%%F" >nul || goto :sourcefail
 )
+mkdir "%SOURCE_STAGE%\release" 2>nul
+copy /y "%SRC%\release\public-games.txt" "%SOURCE_STAGE%\release\public-games.txt" >nul || goto :sourcefail
 robocopy "%SRC%\pc-launcher" "%SOURCE_STAGE%\pc-launcher" *.cs /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\vendor\emglken-stage" 2>nul
