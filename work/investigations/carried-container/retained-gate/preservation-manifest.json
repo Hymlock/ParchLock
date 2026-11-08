@@ -1,0 +1,26 @@
+{
+  "source": "Claude scratchpad retained output; copied without rerunning",
+  "files": {
+    "crb.jsonl": {
+      "sha256": "24530a1896e3f27f615dc2b4f7c89a273bbc3bdafe2db2839da7d4a2330010b2",
+      "rows": 91,
+      "unique": 91
+    },
+    "crc.jsonl": {
+      "sha256": "24530a1896e3f27f615dc2b4f7c89a273bbc3bdafe2db2839da7d4a2330010b2",
+      "rows": 91,
+      "unique": 91
+    },
+    "crt-b.jsonl": {
+      "sha256": "bd5aba0ecb3e3f7102342f0e65f6ae4c01dfe2632e2d7ed565f61f7e90516b11",
+      "rows": 8,
+      "unique": 8
+    },
+    "crt-c.jsonl": {
+      "sha256": "bd5aba0ecb3e3f7102342f0e65f6ae4c01dfe2632e2d7ed565f61f7e90516b11",
+      "rows": 8,
+      "unique": 8
+    }
+  },
+  "qualification": "Historical gate evidence; source/tree binding audited separately. No claim full309."
+}
