@@ -33,17 +33,17 @@ internal static class ParchLockLauncher
             if (Array.IndexOf(args ?? new string[0], "--desktop-shortcut") >= 0) icon.Consent = "unasked";
             if (icon.Consent == "unasked") icon.Ask();
 
-            // Browser saves and permissions belong to the origin, including its port.
-            const int port = 49371;
-            listener = new HttpListener();
-            listener.Prefixes.Add("http://127.0.0.1:" + port + "/");
-            listener.Prefixes.Add("http://localhost:" + port + "/");
-            try { listener.Start(); }
-            catch (HttpListenerException ex)
+            string portFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ParchLock", "server-port.txt");
+            int port;
+            listener = LocalServer.Open(portFile, delegate(int oldPort, int newPort)
             {
-                throw new InvalidOperationException(
-                    "ParchLock could not open its fixed local address (port 49371). Close another ParchLock instance or the program using that port and try again. The port is kept fixed to preserve browser saves and settings.", ex);
-            }
+                return MessageBox.Show(
+                    "Windows has blocked ParchLock's local address (port " + oldPort + "), or another program is using it. Virtualization can reserve ports even when no program is listening.\n\n" +
+                    "Use port " + newPort + " instead? ParchLock will remember it.\n\n" +
+                    "A different address has separate browser saves and settings. Existing data is not deleted, but will only be available at the old address. Choose No if you need to resolve the conflict and keep using that address.",
+                    "ParchLock local address", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes;
+            }, out port);
+            if (listener == null) return 0;
 
             Thread worker = new Thread(delegate() { Serve(listener, root); });
             worker.IsBackground = true;
@@ -187,6 +187,53 @@ internal static class ParchLockLauncher
         if (ext == ".woff2") return "font/woff2";
         if (ext == ".txt" || ext == ".md") return "text/plain; charset=utf-8";
         return "application/octet-stream";
+    }
+}
+
+internal static class LocalServer
+{
+    internal static HttpListener Open(string settings, Func<int, int, bool> acceptAlternative, out int port)
+    {
+        port = 49371;
+        if (File.Exists(settings))
+        {
+            int saved;
+            if (!int.TryParse(File.ReadAllText(settings).Trim(), out saved) || saved < 1024 || saved > 65535)
+                throw new InvalidOperationException("ParchLock's saved local port is invalid: " + settings);
+            port = saved;
+        }
+        try { return Listen(port); }
+        catch (HttpListenerException) { }
+
+        // Use a bounded range below Windows' usual dynamic-port range. Windows may
+        // reserve any range, so actually bind each candidate rather than assume it is free.
+        int previous = port;
+        for (int candidate = 43871; candidate < 43971; candidate++)
+        {
+            if (candidate == previous) continue;
+            HttpListener alternative;
+            try { alternative = Listen(candidate); }
+            catch (HttpListenerException) { continue; }
+            try
+            {
+                if (!acceptAlternative(previous, candidate)) { alternative.Close(); return null; }
+                Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(settings)));
+                File.WriteAllText(settings, candidate.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                port = candidate;
+                return alternative;
+            }
+            catch { alternative.Close(); throw; }
+        }
+        throw new InvalidOperationException("ParchLock could not open a local address. Close other ParchLock instances or check which ports Windows has reserved, then try again.");
+    }
+
+    private static HttpListener Listen(int port)
+    {
+        HttpListener listener = new HttpListener();
+        listener.Prefixes.Add("http://127.0.0.1:" + port + "/");
+        listener.Prefixes.Add("http://localhost:" + port + "/");
+        try { listener.Start(); return listener; }
+        catch { listener.Close(); throw; }
     }
 }
 
