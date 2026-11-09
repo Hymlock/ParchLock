@@ -3,13 +3,13 @@
   "build": 86,
   "androidVersionCode": 61,
   "shellCache": 185,
-  "sourceCommit": "6099946f2f67c2f52a291b604c412c315abde16d",
+  "sourceCommit": "5c4d7a4fbe8529cd1d3a11f13a45851620299601",
   "androidSourceCommit": "959daab119cd72a229ef7a687fcf24f6a11bf366",
   "certificateSha256": "8087575e05b3f9e4ea0ee8cc65a63d745ed8aec030c52958ea1a99c20245c000",
   "artifactSha256": {
-    "ParchLock-source.zip": "f33413f803f7412decadcbd1507d4ce275dd4dacf9c778ca9385bd4dfe0f84ef",
-    "ParchLock-complete-2.0.3.apk": "e0f87370324976c1ad0ebec5919457968b42736c8e50fa30cf39bf88c6f9b455",
-    "ParchLock-complete-2.0.3.zip": "ff2ac117bcb62c793c15516f8abb46784a0887ca854976bcd96882e3315c2f99"
+    "ParchLock-source.zip": "cb1d463603790de3d06c2b10964660b8a48d7a049575034e87829fc71a5d85a1",
+    "ParchLock-complete-2.0.3.zip": "d6b91ef901a62b9df0a7dac4c91830d8cd925400cb7e5cb0faa3949d1618d8fd",
+    "ParchLock-complete-2.0.3.apk": "e0f87370324976c1ad0ebec5919457968b42736c8e50fa30cf39bf88c6f9b455"
   },
   "androidVersionName": "2.0.2",
   "validation": "Desktop launcher: actual Windows-reserved port fallback, HTTP response, remembered address on restart, decline without changing settings, invalid settings error. Android APK unchanged from verified signed2.0.2 release."
