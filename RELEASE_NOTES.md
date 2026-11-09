@@ -4,6 +4,7 @@
 
 - Windows: if Windows reserves ParchLock's local port (for example after enabling virtualization), the launcher offers an available alternative and remembers it for future launches. It explains that browser saves and settings belong to the previous address; declining leaves that address unchanged. Existing data is not deleted.
 - Includes the unchanged signed Android 2.0.2 APK (Build 86, versionCode 61). No Android update is needed for this desktop-only fix.
+- Complete ZIP packaging restores the directory entries and portable file metadata used by the working 2.0.1 archive. Live itch.io web-play validation remains required.
 
 ## Build 86 (2.0.2) - 2026-11-09
 
