@@ -51,8 +51,7 @@ reproducing or publishing the public package.
 The app icons (`img/icons/`, `img/favicon.*`, and the Android `mipmap-*`
 `ic_launcher*` images) are finished artwork files used as-is by every build; no
 build step regenerates them. They were produced from generated artwork (see
-`CREDITS.md`) by the packing script `tools/icon-asset-pack.cjs`, which is kept in
-the project repository rather than in the source archive.
+`CREDITS.md`) by the packing script `tools/icon-asset-pack.cjs`, which was used during development; the finished artwork is all that builds need.
 
 The signing keystore and passwords must remain outside this project and every
 archive. Story modules are not corresponding source and are not included in the
@@ -78,3 +77,17 @@ Gargoyle/Bocfel `cca807be21d78588cf483317a0eda2769c5ee811`, Glulxe
 
 The exact tag's MIT license and its conflicting `package.json` license field are
 both documented in `THIRD_PARTY_NOTICES.md`; the discrepancy is not concealed.
+
+## Complete outputs
+
+Both Android batch builders finish by producing a complete ZIP beside the
+desktop folder. It includes the Windows launcher, the APK just built and the
+matching source ZIP. A failed APK build or verification does not create a new
+complete ZIP. `make-dist.bat` alone prepares the desktop/source staging folder;
+use `build-android.bat release` or `build-android-public.bat release` for a
+complete signed distribution.
+
+For isolated builds, set `PARCHLOCK_PC_DIST` to a new output folder before
+running either Android batch file. Existing published releases are not rebuilt
+or published automatically. Signing passwords are provided only in the invoking
+window, never saved in project files.

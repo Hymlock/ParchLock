@@ -1,6 +1,0 @@
-﻿
-ALIASQ :: {"156":{"words":[],"customParse":true},"dict":{"table":true,"night":true,"night-tab":false,"night-table":fals
-e,"cherry":true,"dresser":true},"changed":[{"id":156,"name":"night-table","noun":"table","before":true,"after":true,"c2
-":[156]}],"vk":["@41434","z:77,204,55,37,243,38"]}
-
-

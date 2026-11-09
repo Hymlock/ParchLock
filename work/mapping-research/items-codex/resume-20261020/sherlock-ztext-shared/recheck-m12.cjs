@@ -1,2 +1,0 @@
-const fs=require('fs'),path=require('path'),{spawn}=require('child_process');const d=__dirname;
-Promise.all(['base','candidate'].map(label=>new Promise(resolve=>{const log=fs.openSync(path.join(d,label+'-m12-round2.txt'),'w'),p=spawn(process.execPath,[path.join(d,label+'-m12-runner.cjs')],{cwd:process.cwd(),windowsHide:true,stdio:['ignore',log,log]});p.on('close',exit=>{fs.closeSync(log);resolve({label,exit});});}))).then(results=>{fs.writeFileSync(path.join(d,'m12-round2-results.json'),JSON.stringify(results,null,2)+'\n');console.log(JSON.stringify(results));});

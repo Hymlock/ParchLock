@@ -1,7 +1,0 @@
-sherlock sh-transp @4 LOOK IN PHIAL #128 TRUE "In the phial you see a clear, colourless liquid.\n \n> "
-sherlock sh-transp @4 EXAMINE PHIAL #128 TRUE "In the phial you see a clear, colourless liquid.\n \n> "
-sherlock sh-transp @4 LOOK IN BLACK BAG #172 FALSE "You would have to open the black bag to do that.\n \n> "
-sherlock sh-transp @14 LOOK IN AMPOULE #140 NOTEST "You cannot see any ampoule here.\n \n> "
-sherlock sh-transp @14 EXAMINE ETHERIUM GAS #139 NOTEST "You cannot see any etherium gas here.\n \n> "
-sherlock sh-transp @67 EXAMINE TELESCOPE #185 NOTEST "You cannot see any telescope here.\n \n> "
-sherlock sh-transp @67 LOOK THROUGH TELESCOPE #185 NOTEST "You cannot see any telescope here.\n \n> "

@@ -1,6 +1,0 @@
-﻿### minster.z5.js [n|look]
-TARGET table+ :: word="trestle table" obj=100 radialOpen=true labels=["Examine","Search","Unlock with...","More","Tools"] more=["Add","Adjust","Answer","Arrest","Ascend","More...","Tools"] shot=minster-table-more.png
-### godot.z5.js [look]
-TARGET box+ :: word="small brown box" obj=17 radialOpen=true labels=["Examine","Take","Open","Close","Search","More...","Tools"] more=["Empty","Unlock with...","More","Tools"] shot=godot-box-more.png
-### SoFar.z8.js [look]
-TARGET bench+ :: word="benches" obj=29 radialOpen=true labels=["Examine","Enter","Exit","Search","Unlock with...","More","Tools"] more=["About","Adjust","Aim","Answer","Applaud","More...","Tools"] shot=SoFar-bench-more.png

@@ -122,7 +122,7 @@ rem non-story allow-list. Never include games, AI/internal docs, build output,
 rem generated Android assets, secrets or signing material.
 mkdir "%SOURCE_STAGE%" || goto :fail
 for %%F in (
-  index.html play.html manifest.json service-worker.js
+  index.html play.html tutorial.html manifest.json service-worker.js
   make-dist.bat build-android.bat build-android-public.bat build-pc-launcher.bat package.json package-lock.json capacitor.config.json
   LICENSE NOTICE README.md USER_GUIDE.md RELEASE_NOTES.md PRIVACY.md
   CREDITS.md THIRD_PARTY_NOTICES.md SOURCE_BUILD.md GAMES_INCLUDED.md
@@ -134,7 +134,7 @@ for %%D in (css img js lib licenses) do (
 robocopy "%SRC%\native-hooks" "%SOURCE_STAGE%\native-hooks" *.* %ROBO% /XD build /XF *.log >nul
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\tools" 2>nul
-for %%F in (patch-android-tts.cjs test-android-tts.cjs public-games.js) do (
+for %%F in (patch-android-tts.cjs public-games.js package-complete.ps1) do (
   if not exist "%SRC%\tools\%%F" goto :sourcefail
   copy /y "%SRC%\tools\%%F" "%SOURCE_STAGE%\tools\%%F" >nul || goto :sourcefail
 )
@@ -144,7 +144,7 @@ robocopy "%SRC%\pc-launcher" "%SOURCE_STAGE%\pc-launcher" *.cs /NFL /NDL /NJH /N
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\vendor\emglken-stage" 2>nul
 for %%F in (package.json package-lock.json README.md smoke.mjs smoke.cjs) do if exist "%SRC%\vendor\emglken-stage\%%F" copy /y "%SRC%\vendor\emglken-stage\%%F" "%SOURCE_STAGE%\vendor\emglken-stage\%%F" >nul
-robocopy "%SRC%\android" "%SOURCE_STAGE%\android" *.* %ROBO% /XD .gradle build "%SRC%\android\app\build" "%SRC%\android\app\src\main\assets" /XF *.apk *.jks *.keystore local.properties >nul
+robocopy "%SRC%\android" "%SOURCE_STAGE%\android" *.* %ROBO% /XD .gradle .kotlin build "%SRC%\android\app\build" "%SRC%\android\app\src\main\assets" /XF *.apk *.jks *.keystore local.properties >nul
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\android\app\src\main\assets" 2>nul
 copy /y "%SRC%\android\app\src\main\assets\capacitor.plugins.json" "%SOURCE_STAGE%\android\app\src\main\assets\capacitor.plugins.json" >nul || goto :sourcefail

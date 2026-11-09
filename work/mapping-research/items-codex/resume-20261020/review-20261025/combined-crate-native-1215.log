@@ -1,1 +1,0 @@
-{"status":"PASS bounded two-owner actual generated state cycles; inspect rendered fields for badge scope","sourceStable":true,"cases":[{"name":"crate","commands":16,"renderedClosed":"packing crate\nclosed\nsurface","renderedOpen":"packing crate\nopen\n1 inside"}]}

@@ -1,2 +1,0 @@
-sherlock sh-vehicle @4 ENTER SOFA #239 NOTEST "This is no time for resting.\n \n> "
-sherlock sh-vehicle @53 ENTER CAB #295 NOTEST "[You cannot see any cab here.]\n \n> "

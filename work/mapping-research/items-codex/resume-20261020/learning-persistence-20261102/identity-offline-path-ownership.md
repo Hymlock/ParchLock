@@ -1,1 +1,0 @@
-Offline authorized paths (2026-11-02): js/LearningStores.js, js/ZRamReader.js, js/ExitCalibrator.js, js/StatTracker.js, js/LearnedWords.js. Authenticated bus halted423; no claim receipt fabricated. Root explicitly delegated these unclaimed files after finite independent design ACCEPT. Root owns js/AttrCalibrator.js and action/ranking lane. Scope excludes APK/device/catalog.

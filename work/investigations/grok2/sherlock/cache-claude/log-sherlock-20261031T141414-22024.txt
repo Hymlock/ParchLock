@@ -1,4 +1,0 @@
-sherlock conceal @3 look #239 TRUE "Holmes's Study\n \nThe study is in its usual disarray.\n \nYour friend is slouched o"
-sherlock conceal @3 examine sofa #239 NOTEST "On the sofa can be seen a morocco case and Holmes.\n \n> "
-sherlock conceal @3 examine mantelpiece #292 NOTEST "On the mantelpiece can be seen a pipe, a persian slipper, a knife, some mail and"
-sherlock conceal @3 take mantelpiece #292 NOTEST "That's impossible.\n \n> "

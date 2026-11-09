@@ -1,4 +1,0 @@
-sherlock sh-locked @0 OPEN FRONT DOOR #35 TRUE "You cannot do that. It is locked.\n \n> "
-sherlock sh-locked @4 OPEN BEDROOM DOOR #104 TRUE "You cannot do that. It is locked.\n \n> "
-sherlock sh-locked @4 OPEN BLACK BAG #172 FALSE "You open the black bag.\nInside you see a brown bottle and a blue bottle.\n \n> "
-sherlock sh-locked @17 OPEN PARLOUR DOOR #102 NOTEST "Mrs Hudson apologetically stands in front of the closed door. \"I'm terribly worr"

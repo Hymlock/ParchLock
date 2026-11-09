@@ -1,5 +1,0 @@
-# R3 design confirmation
-
-Design consensus on R2+R3, with one explicit implementation invariant required by their FIFO contract: a deferred restore's captured binding must use the most recent PRIOR queued successful SAVE of the same native name (its symbolic run handle and captured totals), or PRIOR queued forget/missing state, before considering restore-time disk candidates. The dictionary protects against FUTURE mutations; it must not override earlier native operations not yet materialized to disk. Example: late digest -> save A in runB -> restore A -> digest; restore must select runB even if old disk A belonged to runA. Add this exact permutation to the tests. This is a clarification of already agreed FIFO semantics, not a new storage approach.
-
-R3 resolves stale retained intent selection and future-sidecar reread problems. All other R2 requirements remain, including explicit run owners, exact identity, bounded dedup/operations, storage failure honesty, import precomputation/rollback, coupled wins, prior-fix guards, final shared gate and independent actual implementation/APK audit. No implementation review or tests performed.

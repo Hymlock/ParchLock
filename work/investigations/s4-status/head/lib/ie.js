@@ -1,1 +1,0 @@
-!function(){"use strict";$((function(){$("#errorcontent").text("Sorry, but Parchment depends on web features unsupported by this browser. Please try a more modern browser."),$("#errorpane").show()}))}();

@@ -1,3 +1,0 @@
-{"game":"Delusns.z5.js","exits":["east>37","west>35"],"marks":["Self","east","west"],"inv1":["181:fingerwatch","180:technician's jumpsuit"],"inv2":["181:fingerwatch","180:technician's jumpsuit"],"rooms":["101:MedLab","136:Output Station","140:Kitchenette","148:Factory Storage","156:Steel Corridor","34:Coral Reef","37:Anemones","40:Seafloor","67:VR Lab"]}
-{"game":"dogslife.z5.js","exits":["north>46"],"marks":["north","mailbox","\"Lectro Car\""],"inv1":[],"inv2":[],"rooms":["37:Driveway in front of your house","46:Freeblewhizz Road","47:Junction Freeblewhizz & Whizbang"]}
-{"game":"jet.z8.js","exits":[],"marks":["dragon's"],"inv1":["64:Omega watch","65:Space Suit"],"inv2":["64:Omega watch","65:Space Suit"],"rooms":["40:wrapped in the dragon's wing"]}

@@ -1,8 +1,0 @@
-{
- "key": "deadline",
- "game": "Deadline.z3.js",
- "bit": 25,
- "tmpl": "look",
- "tag": "scenery",
- "tests": []
-}

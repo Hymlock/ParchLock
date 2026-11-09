@@ -1,5 +1,0 @@
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/relwithdebinfo/CMakeFiles/pm_vm_probe.dir
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/relwithdebinfo/CMakeFiles/pm_vm_probe_smoke.dir
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/relwithdebinfo/CMakeFiles/test.dir
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/relwithdebinfo/CMakeFiles/edit_cache.dir
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/relwithdebinfo/CMakeFiles/rebuild_cache.dir

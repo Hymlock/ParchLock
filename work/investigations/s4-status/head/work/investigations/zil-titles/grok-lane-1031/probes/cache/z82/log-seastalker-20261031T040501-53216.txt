@@ -1,1 +1,0 @@
-seastalker sx82 @82 look #82 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

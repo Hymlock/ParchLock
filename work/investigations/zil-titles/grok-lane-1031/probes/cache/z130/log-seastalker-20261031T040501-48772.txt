@@ -1,1 +1,0 @@
-seastalker sx130 @130 look #130 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

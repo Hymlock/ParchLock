@@ -1,5 +1,0 @@
-{"key":"hg7","tag":"r45hh3","bit":28,"tests":[{"id":134,"name":"switch","step":54,"cmd":"switch on switch","expect":1,"bit":32},
-{"id":134,"name":"switch","step":54,"cmd":"switch off switch","expect":1,"bit":32},
-{"id":164,"name":"poetry appreciation chair","step":63,"cmd":"look","expect":1,"bit":28},
-{"id":164,"name":"poetry appreciation chair","step":63,"cmd":"get out of chair","expect":1,"bit":28},
-{"id":164,"name":"poetry appreciation chair","step":63,"cmd":"sit in chair","expect":1,"bit":28}]}

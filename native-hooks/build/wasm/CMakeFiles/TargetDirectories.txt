@@ -1,3 +1,0 @@
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/wasm/CMakeFiles/pm_vm_probe.dir
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/wasm/CMakeFiles/edit_cache.dir
-C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/wasm/CMakeFiles/rebuild_cache.dir

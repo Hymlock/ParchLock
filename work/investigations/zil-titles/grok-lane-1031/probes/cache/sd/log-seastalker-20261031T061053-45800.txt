@@ -1,7 +1,0 @@
-seastalker sdC @50 examine depth control #50 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
-seastalker sdC @66 examine depth control #66 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
-seastalker sdC @74 examine depth control #74 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
-seastalker sdC @78 examine depth control #78 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
-seastalker sdC @80 examine depth control #80 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
-seastalker sdC @84 examine depth control #84 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "
-seastalker sdC @90 examine depth control #90 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

@@ -1,2 +1,0 @@
-infidel scenery @11 look #31 FALSE "Work Tent\nYou are in a tent which used to house the workers and their personal e"
-infidel scenery @11 look #32 NOTEST "Work Tent\nYou are in a tent which used to house the workers and their personal e"

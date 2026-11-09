@@ -1,6 +1,0 @@
-zork3 talk-zork3 @13 hello waybread #34 FALSE "I think that only schizophrenics say \"Hello\" to a piece of waybread.\n \n> "
-zork3 talk-zork3 @13 squeeze waybread #34 FALSE "How singularly useless.\n \n> "
-zork3 talk-zork3 @13 shake waybread #34 FALSE "There's nothing in the piece of waybread.\n \n> "
-zork3 talk-zork3 @13 squeeze old man #116 TRUE "The old man does not understand this.\n \n> "
-zork3 talk-zork3 @13 shake old man #116 NOTEST "The old man is roused to consciousness. He peers at you through eyes which appea"
-zork3 talk-zork3 @13 attack old man #116 NOTEST "What do you want to attack the old man with?\n \n> "

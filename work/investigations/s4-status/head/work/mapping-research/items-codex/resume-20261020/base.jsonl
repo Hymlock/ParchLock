@@ -1,5 +1,0 @@
-{"game":"Alabaster.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
-{"game":"Enchanter.z3.js","exits":["northeast>227","southeast>212","west>45"],"marks":["spell","Book","northeast","southeast","west"],"inv1":["144:spell book","193:blorb spell","84:nitfol spell","59:frotz spell","80:gnusto spell"],"inv2":["144:spell book","193:blorb spell","84:nitfol spell","59:frotz spell","80:gnusto spell"],"rooms":["212:Dusty Trail","227:Outside of Shack","42:Fork","45:Long Road"]}
-{"game":"LostPig.z8.js","exits":[],"marks":["Boss","moon","forest","strange animal","big field","stone wall","Farm"],"inv1":["92:torch","91:pants"],"inv2":["92:torch","91:pants"],"rooms":["93:Outside"]}
-{"game":"TheLurkingHorror.z3.js","exits":["out>null","south>null"],"marks":["computer terminals","south","hacker"],"inv1":["97:assignment"],"inv2":["97:assignment"],"rooms":["110:Third Floor","137:Second Floor","176:Terminal Room","33:Kitchen","65:Computer Center"]}
-{"game":"Zork3-TheDungeonMaster.z3.js","exits":["north>null","south>63","up>null"],"marks":["south"],"inv1":[],"inv2":[],"rooms":["152:Damp Passage","62:Barren Area","63:Junction","64:Endless Stair","78:Creepy Crawl"]}

@@ -1,6 +1,0 @@
-PASS suvehnux no object has duplicate display coverage
-PASS suvehnux bare "cage" never marked inside "brass cage"
-PASS suvehnux brass cage mark covers 55
-PASS jigsaw no preposition/particle mark (intro)
-PASS planetfall brochure inventory matches native custody
-13 PASS / 0 FAIL

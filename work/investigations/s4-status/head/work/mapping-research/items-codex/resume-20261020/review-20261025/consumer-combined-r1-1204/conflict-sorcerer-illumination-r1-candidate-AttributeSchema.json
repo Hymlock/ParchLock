@@ -1,7 +1,0 @@
-[
-  {
-    "current": "        AttributeSchema.applyContainerState(attrs, obj, mem);\n",
-    "base": "",
-    "incoming": "        AttributeSchema.applyIlluminationState(attrs, obj, mem);\n"
-  }
-]

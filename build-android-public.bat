@@ -11,7 +11,7 @@ rem The full build (all stories) stays build-android.bat, unchanged.
 set "SRC=%~dp0"
 if "%SRC:~-1%"=="\" set "SRC=%SRC:~0,-1%"
 set "PARCHLOCK_GAMES_LIST=%SRC%\release\public-games.txt"
-set "PARCHLOCK_PC_DIST=C:\Users\hymlo\Downloads\ParchLock-dist-public"
+if not defined PARCHLOCK_PC_DIST set "PARCHLOCK_PC_DIST=C:\Users\hymlo\Downloads\ParchLock-dist-public"
 set "PARCHLOCK_APK_SUFFIX=-public"
 if not exist "%PARCHLOCK_GAMES_LIST%" (
   echo ERROR: missing %PARCHLOCK_GAMES_LIST% ^(run: node tools\public-games.js list^)

@@ -1,6 +1,0 @@
-{"game":"Mullmurd.z5.js","exits":["in>216","north>216","up>216"],"marks":["museum","up","north","light","stone crocuses","pillars"],"inv1":["211:torch","212:lockpick"],"inv2":["211:torch","212:lockpick"],"rooms":["213:Outside the Museum","216:Top of the Stairs"]}
-{"game":"Sherlock.z5.js","exits":[],"marks":["coat"],"inv1":["173:whistle","302:coat","287:pocket","150:pound note","174:lapel","188:hat","172:black bag"],"inv2":["173:whistle","302:coat","287:pocket","150:pound note","174:lapel","188:hat","172:black bag"],"rooms":["38:221-B Baker Street"]}
-{"game":"cycles.z5.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":["199:Darkness"]}
-{"game":"jet.z8.js","exits":[],"marks":["dragon's"],"inv1":["64:Omega watch","65:Space Suit"],"inv2":["64:Omega watch","65:Space Suit"],"rooms":["40:wrapped in the dragon's wing"]}
-{"game":"medusa.z5.js","exits":[],"marks":["vampire","elevator","red","toga","snakes","floor indicator","buttons"],"inv1":["62:toga","63:hair","64:snakes"],"inv2":["62:toga","63:hair","64:snakes"],"rooms":[]}
-{"game":"permagic.z5.js","exits":["east>34","out>34"],"marks":["of junk","report","east"],"inv1":["25:pen"],"inv2":["25:pen"],"rooms":["26:Your Cubicle","34:Hallway","36:Gunther's Cubicle"]}

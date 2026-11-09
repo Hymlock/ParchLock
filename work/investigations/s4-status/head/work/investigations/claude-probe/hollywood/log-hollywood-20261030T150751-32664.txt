@@ -1,8 +1,0 @@
-hollywood e7cont @4 open mailbox #225 TRUE "Opening the Buck Palace-endorsed, regulation mailbox reveals a copy of The Statu"
-hollywood e7cont @4 look in statue #243 NOTEST "You can't see any statue here!\n \n> "
-hollywood e7cont @5 look in mailbox #225 TRUE "You can see a copy of The Status Line, a yellowed piece of paper and a business "
-hollywood e7cont @6 look in business card #63 FALSE "You can't look inside a business card.\n \n> "
-hollywood e7cont @49 close mantle #194 NOTEST "You can't close that!\n \n> "
-hollywood e7cont @78 open piano #222 TRUE "Opening the piano reveals a violet punch card.\n \n> "
-hollywood e7cont @107 open sack #199 TRUE "Opening the sack reveals a Maltese finch.\n \n> "
-hollywood e7cont @320 open compartment #138 TRUE "Opening the small compartment reveals a catcher's mask.\n \nThe red match goes out"

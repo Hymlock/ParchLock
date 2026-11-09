@@ -1,2 +1,0 @@
-sherlock sh-openable @4 OPEN KNIFE #151 TRUE "It is already open.\n \n> "
-sherlock sh-openable @4 CLOSE STUDY DOOR #70 TRUE "You close the study door.\n \n> "

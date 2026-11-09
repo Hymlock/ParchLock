@@ -1,9 +1,0 @@
-{
-  "command": "node harness/operator-regressions.js",
-  "session": 86662,
-  "exit": 0,
-  "pass": 13,
-  "fail": 0,
-  "sourceSha256": "8d327bd5ace5394861288dc73cc520f877dcdc7649eae5444625dc9ee71f5f9c",
-  "provenance": "Actual completed tool session output, no duplicate accepted test run"
-}

@@ -1,2 +1,0 @@
-from pathlib import Path
-p=Path('harness/death-persistence/native.cjs');s=p.read_text();s=s.replace("await p.waitForTimeout(500);const card=", "await p.waitForTimeout(500);if(await p.locator('#message #close').isVisible())await p.locator('#message #close').click();await p.waitForTimeout(250);const card=");s=s.replace("assert.match(card,/Deaths this playthrough[\\s\\S]*2/)","assert.match(card,/Deaths this playthrough[\\s\\S]*2/i)");p.write_text(s)

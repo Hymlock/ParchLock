@@ -1,2 +1,0 @@
-BITFOR {"animate":0,"clothing":2,"concealed":3,"container":4,"door":5,"light":9,"on":13,"open":14,"openable":15,"scenery":17,"static":19,"supporter":20,"switchable":21,"transparent":23,"worn":26,"lockable":10,"locked":11}
-DUMP@end [{"id":21,"name":"the Order","attrs":["scenery"],"cmds":["examine joseph"]},{"id":38,"name":"altar","attrs":["scenery","supporter"],"cmds":["examine altar","search altar"]},{"id":18,"name":"prayer book","attrs":["moved","takeable"],"cmds":["examine book","take book","drop book","give book to ","put book in "]}]

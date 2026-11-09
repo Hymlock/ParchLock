@@ -1,1 +1,0 @@
-suspect mer @68 open mercedes trunk #133 TRUE "The Mercedes' trunk is securely locked.\n \n> "

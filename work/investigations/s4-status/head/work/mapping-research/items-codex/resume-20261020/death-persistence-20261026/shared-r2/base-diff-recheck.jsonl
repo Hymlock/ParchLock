@@ -1,3 +1,0 @@
-{"game":"Jigsaw.z8.js","exits":["east>148","in>148","northeast>154","southeast>150","west>162"],"marks":["party","attractive stranger","west","northeast","east"],"inv1":["144:white party ticket"],"inv2":["71:corner piece","144:white party ticket"],"rooms":["145:Century Park","148:Beer Tent","150:Behind Beer Tent","154:Churchyard","162:Kaldecki's Monument"]}
-{"game":"cycles.z5.js","exits":[],"marks":[],"inv1":[],"inv2":["70:money card"],"rooms":["191:Charles St. Station","199:Darkness"]}
-{"game":"medusa.z5.js","exits":[],"marks":["vampire","elevator","red","toga","snakes","floor indicator","buttons"],"inv1":["62:toga","63:hair","64:snakes"],"inv2":["62:toga","63:hair","64:snakes"],"rooms":[]}

@@ -1,2 +1,0 @@
-run file work\investigations\claude-probe\locked\run-suspect-20261030T150836-50092.json
-suspect fd @19 open front door #251 NOTEST "Alicia, wearing a wet overcoat, is here.\nAlicia enters the house, thanking you f"

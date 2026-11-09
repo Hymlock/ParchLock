@@ -1,2 +1,0 @@
-from pathlib import Path
-p=Path('work/mapping-research/items-codex/resume-20261020/death-persistence-20261026/prepare-final.cjs');s=p.read_text();a="for(const file of runtime){hashes[file]=";b="for(const file of runtime){for(const root of [base,candidate])fs.copyFileSync(path.join(project,file),path.join(root,file));if(changed.includes(file))fs.writeFileSync(path.join(base,file),require('child_process').execFileSync('git',['show','HEAD:'+file]));hashes[file]=";assert s.count(a)==1;s=s.replace(a,b);p.write_text(s)

@@ -1,5 +1,0 @@
-Infidel.z3.js examine beef ops 23
-Infidel.z3.js eat shovel ops 23
-Infidel.z3.js drink beef ops 22
-Infidel.z3.js eat beef ops 22
-Infidel.z3.js inventory ops 37

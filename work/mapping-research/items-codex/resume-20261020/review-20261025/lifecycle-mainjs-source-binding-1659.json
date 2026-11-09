@@ -1,6 +1,0 @@
-{
-  "currentRaw": "5155f95821cf719e218aa54d614d2d57cc2fbae8e533c9bb3aba09ac7aeaa7b9",
-  "frozenRaw": "9257aa57bfb2ddc9587df7f3a736719889f84111af206ef76607b2fdde9ad554",
-  "LFParity": true,
-  "scope": "Raw hashes differ; only normalized-text comparison determines EOL equivalence. Source note current-file hash and native frozen-file hash remain separate."
-}

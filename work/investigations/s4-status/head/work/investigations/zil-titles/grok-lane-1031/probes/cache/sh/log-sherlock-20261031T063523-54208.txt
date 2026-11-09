@@ -1,3 +1,0 @@
-sherlock shdbg @7 look #293 NOTEST "Holmes's Study\n \nThe study is in its usual disarray.\n \nThe bedroom door to the w"
-sherlock shdbg @7 i #293 NOTEST "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a"
-sherlock shdbg @7 WAIT #293 NOTEST "Time passes...\n \nThe visitor looks at his pocket watch and stands up. \"Thank you"

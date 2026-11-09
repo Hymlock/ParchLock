@@ -1,9 +1,0 @@
-{"game":"omniquest.z5.js","exits":["east>34"],"marks":["large clearing","dense forest","path","east","tree"],"inv1":[],"inv2":[],"rooms":["28:Large Clearing","34:Small Path","36:Fork in Path","41:Canyon Entrance"]}
-{"game":"rameses.zblorb.js","exits":[],"marks":["bunkbeds","walls","sink","wardrobe","doorway","window","Wayne","Paddy"],"inv1":[],"inv2":[],"rooms":["26:Dormitory Room"]}
-{"game":"selection.z5.js","exits":[],"marks":["manilla envelope","leather chair","single","Director's desk","blotter","bell","newspaper","brown book","magazine"],"inv1":["70:manilla envelope"],"inv2":["70:manilla envelope"],"rooms":["37:Office of the Director"]}
-{"game":"spot.z5.js","exits":[],"marks":["the spot"],"inv1":[],"inv2":[],"rooms":["24:In a room with the spot"]}
-{"game":"tell.z5.js","exits":["north>31"],"marks":["your SON","things","north","north","merchants","people","jeep"],"inv1":["57:plump grape","41:quiver","40:bow"],"inv2":["57:plump grape","41:quiver","40:bow"],"rooms":["29:Street St. in Swisserland City","31:Further down the street","43:Alley of instant death","45:South side of the square"]}
-{"game":"tk1.z5.js","exits":["north>20"],"marks":["north","panel"],"inv1":[],"inv2":["22:glass tube","21:hole in the floor"],"rooms":["17:Round Room","20:Corridor"]}
-{"game":"vgame.z8.js","error":"no-prompt"}
-{"game":"weirdness.z5.js","exits":["north>40","northwest>58","west>58"],"marks":["rumpled sheets","chest of drawers","writing desk","stool","wastebasket","north"],"inv1":[],"inv2":[],"rooms":["27:Jace's Room","40:Jace's Bathroom","58:Second Floor Hallway"]}
-{"game":"zenon.z5.js","exits":["south>31"],"marks":["door","south","bed","pressure guage","light switch"],"inv1":[],"inv2":["29:light switch"],"rooms":["25:Cell"]}

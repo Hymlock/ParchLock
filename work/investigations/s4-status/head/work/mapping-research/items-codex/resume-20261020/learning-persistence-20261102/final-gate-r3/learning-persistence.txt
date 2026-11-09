@@ -1,8 +1,0 @@
-[LearningStores] lock unavailable: Error: quota
-    at quota.c.localStorage.setItem (C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\harness\learning-persistence.js:123:45)
-    at writeValue (LearningStores:155:18)
-    at Object.persist (LearningStores:375:24)
-    at C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\harness\learning-persistence.js:124:28
-    at runNextTicks (node:internal/process/task_queues:64:5)
-    at process.processTimers (node:internal/timers:538:9)
-Learning persistence: 47 PASS, 0 FAIL

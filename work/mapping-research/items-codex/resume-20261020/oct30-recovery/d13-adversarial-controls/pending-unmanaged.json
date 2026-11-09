@@ -1,6 +1,0 @@
-{
-  "tier": "constructed malformed pending index and unrelated save sentinel, not real player save",
-  "sourceSha": "c8b087f15d8c72b565956b879d5ec8f428280c33f0bebfae2ba8d22dffeb355b",
-  "malformedIndexAccepted": false,
-  "unrelatedSentinelAfter": "save-sentinel"
-}

@@ -1,4 +1,0 @@
-hg7 r45ssb @106 turn off generator switch #96 NOTEST "You can't turn that off.\n \n> "
-hg7 r45ssb @106 switch on generator switch #96 NOTEST "Nothing happens.\n \n> "
-hg7 r45ssb @106 turn on cup #96 NOTEST "You can't turn that on.\n \n> "
-hg7 r45ssb @106 turn on improbability drive #96 NOTEST "Nothing happens.\n \n> "

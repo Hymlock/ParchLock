@@ -1,1 +1,0 @@
-seastalker ss75 @75 x sonar #75 NOTEST "(I don't know the word \"x\".)\n \n> "

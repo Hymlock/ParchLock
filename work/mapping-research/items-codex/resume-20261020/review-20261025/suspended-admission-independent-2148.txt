@@ -1,9 +1,0 @@
-Standing lh_food_scope_blind actual adversarial review: REVISE necessary conditions, no implementation GO.
-1. Guard before Actionable.Submit clears composing input at1362; an Inject-only guard is too late.
-2. Bind exact DOM field/window/request: Input.Inject selects all .Input.LineInput, including hidden/stale matches. Exactly one visible element alone is insufficient.
-3. An edit revision must include type-delete, programmatic edits and active IME composition; current empty value is insufficient to establish no edits.
-4. Preserve admission token, exact command and target throughout dispatch; flattening role choice to generic string loses provenance.
-5. Synchronous single-use validation and dispatch, no asynchronous gap; revalidate exact final text, role/enclosure/reference, request and parser context. Consume on first attempted dispatch.
-6. TurnRecorder.onAcceptedSubmit precedes synthetic key delivery and invokes listeners; wrapper stamp is not VM/parser receipt.
-7. Reject before Input.Inject early MapTopology.noteCommand side effect as well as before input mutation.
-G108/G98 remain necessary, not proven exhaustive. No files changed, tests or native replay by reviewer.

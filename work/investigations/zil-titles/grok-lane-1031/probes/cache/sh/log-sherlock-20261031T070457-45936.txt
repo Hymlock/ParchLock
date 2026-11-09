@@ -1,4 +1,0 @@
-sherlock sh-transp @44 EXAMINE TORCH THROUGH POOL #179 TRUE "You do not see anything unusual through the wax pool.\n \n> "
-sherlock sh-transp @44 EXAMINE EMERALD THROUGH GLASS #270 NOTEST "You would have to be holding the emerald to get a really good look at it.\n \n> "
-sherlock sh-transp @44 EXAMINE TORCH THROUGH GLASS #270 NOTEST "You train the magnifying glass on the torch.\nIt appears much larger now.\n \nThe p"
-sherlock sh-transp @44 EXAMINE POOL THROUGH PIPE #218 FALSE "You can't look through the pipe.\n \n> "

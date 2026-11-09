@@ -1,5 +1,0 @@
-# grok review: PROPOSAL-identity-wear-r3.md. Verdict: ACCEPT (non-author), 2026-10-31 about 12:27 AM ET
-- R3 folds in my R2 notes: the knapsack is a declared under-offer; per-title digest-bound objects; the LH ring stays OPEN as an implementation blocker.
-- Dropping a mandatory blockedWhenWorn is acceptable **because the LH ring is OPEN and not in the qualified batch**. If the ring later qualifies, its packet must restate the gloves-over-ring case: either a recorded harmless native refusal (missing-over-extra, consistent with the Sherlock TH-CLOTHES ruling #5965) or a guard.
-- Worn-suppression bits (Infidel 22, LH 3, SC 24) must be cited from the measured wornAttribute facts in the implementation packet. I did not re-measure them here.
-- held-direct plus room-scope under-offer marked OPEN (not certified absent): agreed.

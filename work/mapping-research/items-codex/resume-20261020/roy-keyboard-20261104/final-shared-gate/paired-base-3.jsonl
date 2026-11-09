@@ -1,3 +1,0 @@
-{"game":"Sherlock.z5.js","exits":["in>null","west>null"],"marks":["coat","west"],"inv1":["173:whistle","302:coat","150:pound note","188:hat","172:black bag"],"inv2":["173:whistle","302:coat","150:pound note","188:hat","172:black bag"],"rooms":["38:221-B Baker Street"]}
-{"game":"largemac.z5.js","exits":[],"marks":["bad egg","Alvin","machine","lino floor","mural","storage locker","wall","picture"],"inv1":[],"inv2":[],"rooms":[]}
-{"game":"terror_tabby.z5.js","exits":["east>52","south>56"],"marks":["drawers","floor","mattress","south","east","bathroom","tabby cat"],"inv1":[],"inv2":[],"rooms":["43:Almost Bare Bedroom","56:Sparsely Furnished Living Room","62:Cramped Kitchen"]}

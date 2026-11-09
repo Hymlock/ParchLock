@@ -1,7 +1,0 @@
-# Root investigation sealed before blind review
-
-Operator: death count must persist for the playthrough, tied to saves; currently disappears after quitting or loading earlier save. Fix, independent separate-session editorial/testing, stable test APK, then resume ZIL.
-
-Current evidence: StatTracker.countEnding increments model.deaths and saves model; load calls forgetReadings(m) with default resetPlaythrough, which clears deaths/wins/seenBanners unless resetPlaythrough===false. Resync passes true only restart/new-game; ordinary restore keeps current counters. SaveState's per-save snapshots currently contain map/labels, not playthrough counters or identity; boot fresh map lifecycle does not restore stats association. Existing D204 contract explicitly resets module load while preserving undo/restore same session, superseded by new operator persistence requirement. D215 selected-save transactional lifecycle is existing integration point. No code or solution committed. Need trace boot/autosave/export/import/failure ordering and actual user save family association before final proposal. Interpret desired count as cumulative per playthrough across reopening/older saves, separate new game; verify design against user wording.
-
-Known relevant guards: harness/death-terminal.js, StatTracker harness, SaveState/E4 fixtures, operator regressions and three-engine/full shared gate. Need retain ending detection/dedup and avoid counting restored transcript. No runtime edits; blind reviewer receives only operator report, not this half.

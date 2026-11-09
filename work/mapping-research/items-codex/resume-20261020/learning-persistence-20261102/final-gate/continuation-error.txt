@@ -1,7 +1,0 @@
-AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-241 !== 309
-
-    at merge (C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\work\mapping-research\items-codex\resume-20261020\learning-persistence-20261102\final-gate-continue.cjs:12:231)
-    at main (C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\work\mapping-research\items-codex\resume-20261020\learning-persistence-20261102\final-gate-continue.cjs:16:2)
-    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)

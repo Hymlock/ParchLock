@@ -1,9 +1,0 @@
-[
- {
-  "cmd": "i",
-  "reply": ">i\nYou're not holding anything.\n \nSomebody inside the Post Office is calling you.\n \nWhat next?\n> ",
-  "player": 219,
-  "held": [],
-  "appInv": []
- }
-]

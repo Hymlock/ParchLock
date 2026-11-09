@@ -1,3 +1,0 @@
-zork3 talk-zork3 @101 squeeze hooded figure #67 TRUE "The hooded figure does not understand this.\nYour quick reflexes cannot stop the "
-zork3 talk-zork3 @101 shake hooded figure #67 TRUE "This seems to have no effect.\nYou dodge as the hooded figure comes in low.\n \n> "
-zork3 talk-zork3 @101 give torch to hooded figure #67 NOTEST "The hooded figure isn't interested in your gifts.\nThe hooded figure thrusts, but"

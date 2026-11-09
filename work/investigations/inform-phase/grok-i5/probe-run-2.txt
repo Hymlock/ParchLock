@@ -1,9 +1,0 @@
-﻿### minster.z5.js [n|look]
-ERROR cdpSession.send: Protocol error (Input.dispatchTouchEvent): Must send a TouchStart first to start a new touch.
-### godot.z5.js [look]
-ERROR cdpSession.send: Protocol error (Input.dispatchTouchEvent): Must send a TouchStart first to start a new touch.
-### SoFar.z8.js [look]
-ERROR cdpSession.send: Protocol error (Input.dispatchTouchEvent): Must send a TouchStart first to start a new touch.
-### break-in.z5.js [take rucksack|look]
-TARGET desk+ :: NOT-FOUND; visible marks=["Greek restaurant","south","street light"]
-TARGET rucksack+ :: NOT-FOUND; visible marks=["Greek restaurant","south","street light"]

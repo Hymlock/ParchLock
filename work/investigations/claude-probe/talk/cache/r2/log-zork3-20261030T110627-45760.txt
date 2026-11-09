@@ -1,8 +1,0 @@
-zork3 talk-zork3 @13 look in waybread #34 NOTEST "I don't know how to look inside a piece of waybread.\n \n> "
-zork3 talk-zork3 @13 find waybread #34 NOTEST "You have it.\n \n> "
-zork3 talk-zork3 @13 hello waybread #34 FALSE "I think that only schizophrenics say \"Hello\" to a piece of waybread.\n \n> "
-zork3 talk-zork3 @13 hello old man #116 NOTEST "He is sleeping soundly and does not respond.\n \n> "
-zork3 talk-zork3 @68 look in man #27 NOTEST "You can't see any man here.\n \n> "
-zork3 talk-zork3 @68 find man #27 NOTEST "You can't see any man here.\n \n> "
-zork3 talk-zork3 @68 hello man #27 NOTEST "You can't see any man here.\n \n> "
-zork3 talk-zork3 @68 kiss man #27 NOTEST "You can't see any man here.\n \n> "

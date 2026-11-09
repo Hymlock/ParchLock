@@ -1,9 +1,0 @@
-# Early learned-membership preflight — finite design review
-
-2026-11-02; no tests/runtime edits. **ACCEPT with one finite revision:** reject absent exact item/form membership before presentation/reference work, but do not use LearnedWords.candidates as a supposedly raw preflight.
-
-Actual candidates calls eligible -> objects -> payloadPool/referenceFor (LearnedWords.js:91-105). Matching another authored form for the same object can therefore cause presentation work before the outer form comparison rejects the current never-learned command. Instead inspect current load().rows for exact objectId+trigger, !ignored and current manual/edited row shape, or add a raw membership helper. This raw match is only permission to continue full validation, never final authored eligibility. Existing candidates/reference/module/generation/authority checks still govern the qualifying pair. Attr learnedFormsFor can provide stored exact/remembered membership; its hydration/dictionary/suppression checks do not themselves require observed presentation resolution in the examined path.
-
-Regression should assert no payloadPool/referenceFor calls for (1) item with no learned/authored forms and (2) item with an unrelated authored form while current command has no matching form. Qualifying pair retains full current validation and stronger scope. This is a real scoped-work correction aligned with 'just learned items', not a test-snapshot mask. It may explain marks but no causal diagnosis/classification is asserted before passive output arrives.
-
-Root's passive two-title exact-driver diagnostic is accepted; it must avoid candidates/helper/provider/Refresh calls while gathering state. An R3 candidate comparison should retain unchanged baseline and earlier R2 evidence rather than overwrite them. No repeated test/native/fullgate performed by this reviewer.

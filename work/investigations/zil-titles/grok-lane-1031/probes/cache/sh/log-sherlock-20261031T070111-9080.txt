@@ -1,4 +1,0 @@
-sherlock sh-openable @4 OPEN KNIFE #151 TRUE "It is already open.\n \n> "
-sherlock sh-openable @4 CLOSE STUDY DOOR #70 TRUE "You close the study door.\n \n> "
-sherlock sh-openable @4 OPEN BLACK BAG #172 TRUE "You open the black bag.\nInside you see a brown bottle and a blue bottle.\n \n> "
-sherlock sh-openable @4 OPEN VIOLIN #207 FALSE "You could not possibly open the violin.\n \n> "

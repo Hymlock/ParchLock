@@ -1,4 +1,0 @@
-zork3 talk-zork3 @68 look in man #27 NOTEST "There is nothing special to be seen.\nYour \"friend\" examines his valuables with g"
-zork3 talk-zork3 @68 find man #27 NOTEST "It's right here.\nYour \"friend\" examines his valuables with great pride.\n \n> "
-zork3 talk-zork3 @68 hello man #27 NOTEST "He responds cheerfully. \"It is a wonderful day, isn't it?\"\nYour \"friend\" examine"
-zork3 talk-zork3 @68 kiss man #27 NOTEST "I'd sooner kiss a pig.\nYour \"friend\" examines his valuables with great pride.\n \n"

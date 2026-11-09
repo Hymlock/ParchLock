@@ -1,1 +1,0 @@
-seastalker sx178 @178 look #178 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

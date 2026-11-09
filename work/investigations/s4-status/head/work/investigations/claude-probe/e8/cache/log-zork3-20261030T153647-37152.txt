@@ -1,2 +1,0 @@
-zork3 e8climb24c @32 climb #23 TRUE "(up the wooden ladder)\nLadder Top\nThis is a very small room. In the corner is a "
-zork3 e8climb24c @32 climb #216 NOTEST "What do you want to climb up?\n \n> "

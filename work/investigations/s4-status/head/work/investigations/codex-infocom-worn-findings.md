@@ -1,9 +1,0 @@
-# Codex independent worn-state findings
-
-Sealed before reading Claude's findings. Fresh Planetfall native INVENTORY marks uniform224 and chronometer226 as being worn. Actual hierarchy is correct: uniform held by player, ID card225 inside uniform. Decoded worn/clothing false, no Yourself category. Native REMOVE UNIFORM succeeds and changes raw bytes [0,56,2,192] to [0,48,2,192], clearing bit12; stock Inform fallback reads worn26. Chronometer also has bit12 set. No Inform attribute declaration metadata, no calibrated worn override. Raw evidence: codex-infocom-worn-blind.json.
-
-Cause: AttributeSchema's stock Inform fallback is not a universal Z-machine ABI. These ZIL games do not supply Inform declaration names. Their initial worn state has no player calibration action; existing opcode calibration needs repeated observations and both polarities, so it does not repair fresh initial inventory. The UI is consistent with incorrectly mapped flags.
-
-Correct general source: compiler declarations when available, otherwise the existing per-executable observed opcode calibration or an exact native inventory role uniquely correlated to an already known live held ObjectId. Do not hardcode bit12 across ZIL, infer roles from garment names, fabricate a Yourself node or remap unrelated scenery/container bits. If native inventory roles are used, route through the existing inventory probe and identity correlation, distinguish worn=true and explicit not-worn on complete fresh replies, replace old role readings, clear on story/restore generation, and never auto WEAR/REMOVE to obtain evidence. Ambiguous labels must not grant roles. Preserve Inform and Treasures custom-property semantics.
-
-Suspect independent confirmation was not obtained in the short startup check; no claimed breadth. Planetfall source/raw transition is sufficient to identify the family mechanism without an exhaustive module sweep.

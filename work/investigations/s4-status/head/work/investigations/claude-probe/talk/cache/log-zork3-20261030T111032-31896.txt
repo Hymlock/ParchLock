@@ -1,4 +1,0 @@
-zork3 talk-zork3 @68 squeeze man #27 TRUE "The man does not understand this.\nYour \"friend\" examines his valuables with grea"
-zork3 talk-zork3 @68 shake man #27 TRUE "This seems to have no effect.\nYour \"friend\" examines his valuables with great pr"
-zork3 talk-zork3 @68 give torch to man #27 NOTEST "The man refuses it politely.\nYour \"friend\" examines his valuables with great pri"
-zork3 talk-zork3 @68 attack man #27 NOTEST "What do you want to attack the man with?\n \n> "

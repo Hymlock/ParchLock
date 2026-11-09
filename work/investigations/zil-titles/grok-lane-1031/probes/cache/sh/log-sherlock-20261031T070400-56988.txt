@@ -1,3 +1,0 @@
-sherlock sh-transp @4 LOOK IN PHIAL #128 TRUE "In the phial you see a clear, colourless liquid.\n \n> "
-sherlock sh-transp @44 EXAMINE TORCH THROUGH POOL #179 NOTEST "You cannot see any pool here.\n \n> "
-sherlock sh-transp @44 EXAMINE POOL THROUGH PIPE #218 NOTEST "You cannot see any pool here.\n \n> "

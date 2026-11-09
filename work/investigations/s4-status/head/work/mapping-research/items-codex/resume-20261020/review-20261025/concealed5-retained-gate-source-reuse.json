@@ -1,8 +1,0 @@
-{
-  "at": "2026-10-26T21:50:35.035Z",
-  "compared": 76,
-  "changed": [],
-  "method": "LF normalized current vs retained isolated candidate, preserving recorded raw hashes; first raw/LF-to-raw comparison failed due EOL; no gate result claimed until retained roots verified",
-  "retainedRawManifestMatched": 77,
-  "scope": "Reuse existing accepted7row0diff gate on unchanged source; actual candidate29ec vs reviewed3a comment-only distinction retained"
-}

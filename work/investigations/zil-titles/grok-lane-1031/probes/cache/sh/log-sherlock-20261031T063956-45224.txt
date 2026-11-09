@@ -1,2 +1,0 @@
-sherlock shdbg2 @7 WAIT #293 NOTEST "Time passes...\n \nMrs Hudson appears at the door, accompanied by a worried-lookin"
-sherlock shdbg2 @7 look #293 NOTEST "Holmes's Study\n \nThe study is in its usual disarray.\n \nThe visitor fidgets nervo"

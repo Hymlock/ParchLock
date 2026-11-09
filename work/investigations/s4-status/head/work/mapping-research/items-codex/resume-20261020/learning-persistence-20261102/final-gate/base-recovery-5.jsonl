@@ -1,8 +1,0 @@
-{"game":"permagic.z5.js","exits":["east>34","out>34"],"marks":["report","east","papers"],"inv1":["25:pen"],"inv2":["25:pen"],"rooms":["26:Your Cubicle","34:Hallway","36:Gunther's Cubicle"]}
-{"game":"ribbons.z5.js","exits":[],"marks":["model train display","pool table","corner","yellow ribbon","lighting"],"inv1":[],"inv2":[],"rooms":["28:Train"]}
-{"game":"sherbet.z5.js","exits":[],"marks":["for","Lady Amilia"],"inv1":["26:fedora hat","27:hand telescope"],"inv2":["26:fedora hat","27:hand telescope"],"rooms":[]}
-{"game":"sutwin.z5.js","exits":[],"marks":["window","inside"],"inv1":[],"inv2":[],"rooms":[]}
-{"game":"tess.z5.js","exits":["north>30","west>32"],"marks":["north","west","CRT"],"inv1":["26:stack"],"inv2":["36:book","26:stack"],"rooms":["28:Researcher's Office","30:Green House","32:Cryogenic Lab","35:Library"]}
-{"game":"tube.z5.js","exits":["south>38"],"marks":["south","automatic barrier"],"inv1":["33:shilling"],"inv2":["32:penny","33:shilling"],"rooms":["38:Station Corridor","40:Entrance Hall"]}
-{"game":"visitor.z5.js","exits":[],"marks":["bed","cupboard","chair","photos","window","door","Gladys"],"inv1":[],"inv2":[],"rooms":["24:Gladys's Room"]}
-{"game":"wireless.z5.js","exits":["west>47"],"marks":["memo","Simon","sign","podium","bell","coffee table","door","west","God's Rude Wireless"],"inv1":["74:memo"],"inv2":["74:memo"],"rooms":[]}

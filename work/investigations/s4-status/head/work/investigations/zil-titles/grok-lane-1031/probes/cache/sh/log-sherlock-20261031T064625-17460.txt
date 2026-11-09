@@ -1,5 +1,0 @@
-sherlock sh-container @4 LOOK IN PERSIAN SLIPPER #228 TRUE "In the persian slipper you see some tobacco.\n \n> "
-sherlock sh-container @4 LOOK IN PIPE #218 TRUE "In the pipe you see nothing.\n \n> "
-sherlock sh-container @4 LOOK IN BLACK BAG #172 TRUE "You would have to open the black bag to do that.\n \n> "
-sherlock sh-container @4 LOOK IN SOFA #239 FALSE "You cannot look inside a sofa.\n \n> "
-sherlock sh-container @4 LOOK IN MANTELPIECE #292 FALSE "You cannot look inside a mantelpiece.\n \n> "

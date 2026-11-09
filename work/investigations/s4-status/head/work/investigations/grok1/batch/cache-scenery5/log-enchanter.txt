@@ -1,6 +1,0 @@
-enchanter scenery @29 look #234 NOTEST "Jewel Room\nThis fabulous room commands a magnificent view of the Lonely Mountain"
-enchanter scenery @47 look #206 FALSE "Forest\nYou are in a dark forest, just north of a rusted gate. Except to the east"
-enchanter scenery @52 look #245 NOTEST "Forest\nYou are in a dark forest, just north of a rusted gate. Except to the east"
-enchanter scenery @55 look #235 NOTEST "Swamp\nYou are in a thick forest shading into a deep and miasmic swamp. The groun"
-enchanter scenery @64 look #20 FALSE "Library\nThis is a library, or rather it was until it was ransacked and despoiled"
-enchanter scenery @65 look #154 NOTEST "Library\nThis is a library, or rather it was until it was ransacked and despoiled"

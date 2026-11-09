@@ -1,5 +1,0 @@
-Spellbreaker.z3.js examine bread ops 46
-Spellbreaker.z3.js eat bread ops 40
-Spellbreaker.z3.js examine smoked fish ops 45
-Spellbreaker.z3.js eat smoked fish ops 39
-Spellbreaker.z3.js inventory ops 62

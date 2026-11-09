@@ -1,6 +1,0 @@
-{"game":"Help.z8.js","exits":[],"marks":["Snark","large piece of equipment","trophy"],"inv1":[],"inv2":["145:gold trophy"],"rooms":["94:Crash Site"]}
-{"game":"cycles.z5.js","exits":[],"marks":[],"inv1":[],"inv2":["70:money card"],"rooms":["191:Charles St. Station","199:Darkness"]}
-{"game":"jet.z8.js","exits":[],"marks":["dragon's"],"inv1":["64:Omega watch","65:Space Suit"],"inv2":["64:Omega watch","65:Space Suit"],"rooms":["40:wrapped in the dragon's wing"]}
-{"game":"medusa.z5.js","exits":[],"marks":["toga","snakes","elevator","floor indicator","buttons","red","mirror","vampire"],"inv1":["62:toga","63:hair","64:snakes"],"inv2":["62:toga","63:hair","64:snakes"],"rooms":[]}
-{"game":"suvehnux.z5.js","exits":[],"marks":["sliver of light","under","door","darkness","shelf","walls","brass cage","scroll"],"inv1":[],"inv2":["38:crystal","36:piece of parchment","33:leather bound book","31:vial of liquid","57:scroll","55:open brass cage"],"rooms":["25:Vault"]}
-{"game":"vespers.z8.js","exits":["west>332"],"marks":["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"],"inv1":["474:tinderbox","475:candle","476:frock"],"inv2":["474:tinderbox","475:candle","476:frock"],"rooms":["325:Your Bedroom","332:Entrance Hall","344:Cloister"]}

@@ -1,2 +1,0 @@
-from pathlib import Path
-p=Path('js/SaveState.js');s=p.read_bytes();a=b'if (PlaythroughState._ctx === ctx && ctx.generation === generation && PlaythroughState.path() === path) {';b=b'if (PlaythroughState._ctx === ctx && ctx.generation === generation && PlaythroughState.path() === path\r\n                        && PlaythroughState.digest(path)) {';assert s.count(a)==1;p.write_bytes(s.replace(a,b))

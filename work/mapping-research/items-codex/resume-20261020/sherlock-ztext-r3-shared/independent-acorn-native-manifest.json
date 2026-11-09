@@ -1,7 +1,0 @@
-{
-  "captureSha256": "73148a0763cc1263e2aad1907a7e2919a2174e108d4a2fffe58489cf5d7c4598",
-  "readerSha256": "ec2ceadb14b8a4d05133bc904547d48cbe87101259dfa19fee2b167c78a312b0",
-  "grammarSha256": "e2df8f17d13d3def5e60741e3d93b26d439654f510d5c8aad8e981707bd90069",
-  "captureMatchesReader": true,
-  "scope": "Independent original LOOK/TAKE ALL/I across immutable R2 base/candidate and R3 current. No VM writes. Individual command resolution stays empty for ambiguous ball objects; not per-object action acceptance."
-}

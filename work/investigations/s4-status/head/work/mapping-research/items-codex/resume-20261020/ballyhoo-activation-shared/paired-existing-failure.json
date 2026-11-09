@@ -1,6 +1,0 @@
-{
-  "base": "AssertionError [ERR_ASSERTION]: sanity: fixture 2 still exercises the nested-container branch",
-  "candidate": "AssertionError [ERR_ASSERTION]: sanity: fixture 2 still exercises the nested-container branch",
-  "same": true,
-  "limit": "Existing nested-fixture sanity assertion; not green acceptance. Current inspect-first behavior is preserved."
-}

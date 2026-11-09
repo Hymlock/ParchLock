@@ -111,6 +111,8 @@ if /I "%MODE%"=="release" (
   call "!APKSIGNER!" verify --verbose --print-certs "%APK_OUT%" || exit /b 1
 )
 
+powershell -NoProfile -ExecutionPolicy Bypass -File "%SRC%\tools\package-complete.ps1" -Distribution "%PC_DIST%" -Apk "%APK_OUT%" || exit /b 1
+
 echo Done: %APK_OUT%
 echo Desktop distribution: %PC_DIST%
 echo Source archive: %PC_DIST%\ParchLock-source.zip

@@ -1,1 +1,0 @@
-seastalker sd80 @80 x sonar #80 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

@@ -1,3 +1,0 @@
-sherlock sh-vehicle @53 ENTER CAB #295 TRUE "You and Holmes get into the cab.\n \n\"Where to, guv'nor?\"\n \n> "
-sherlock sh-vehicle @58 ENTER ROWBOAT #194 FALSE "Your friend looks at you grimly and says, \"I thought you had more sense than tha"
-sherlock sh-vehicle @135 ENTER BOAT #201 TRUE "You and Holmes get into the boat.\n \n> "

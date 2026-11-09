@@ -1,7 +1,0 @@
-bc47d4f9a05f642d91a1cc6f20392477cd91d1ea348df1234f775763fae3130d *witness-lamp.config.json
-a7b076abc4120f36eb53593230bd1e40964b50e1503853ae74bb5a144361a5e9 *witness-lamp.log
-1cb61bd7a8b6986c7498ff549b696bb28f3f496c8a871a9b58354884189e3624 *witness-lamp.run.json
-82d8847d8817db583b791be8bbf0421119abe56e0117e9c86ceb7297fe240185 *witness-match.config.json
-be4d5e35a3950862bc5e3fa3cbf83d121f6cdf38f64acb76eed28dbe382a9e40 *witness-match.log
-68074ec120805d827f1498862aa817587ddc98da21ff1addac8822f3cb93f610 *witness-match.run.json
-# tier: T1 native play.html walk (probe.cjs), JSEED RNG parity, passive test_attr recording; no RAM/fact writes. *.run.json absent = run aborted/unreached

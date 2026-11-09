@@ -1,3 +1,0 @@
-{"key":"zork3","game":"Zork3-TheDungeonMaster.z3.js","bit":24,"tag":"e8climb24c","tests":[
-{"id":23,"name":"wooden ladder","step":32,"expect":1,"cmd":"climb"},
-{"id":216,"name":"stairs","step":32,"expect":1,"cmd":"climb"}]}

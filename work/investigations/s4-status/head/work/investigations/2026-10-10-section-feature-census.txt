@@ -1,9 +1,0 @@
-{"game":"Enemies.z8.js","indexCount":0,"numberedNames":2,"section":false}
-{"game":"Fork.z5.js","indexCount":0,"numberedNames":1,"section":false}
-{"game":"Zork2-TheWizardofFrobozz.z3.js","indexCount":0,"numberedNames":1,"section":false}
-{"game":"Zork3-TheDungeonMaster.z3.js","indexCount":0,"numberedNames":1,"section":false}
-{"game":"enter.z5.js","indexCount":0,"numberedNames":10,"section":false}
-{"game":"kirby.z5.js","indexCount":0,"numberedNames":7,"section":false}
-{"game":"muse.z5.js","indexCount":0,"numberedNames":2,"section":false}
-{"game":"wump2ka.z5.js","indexCount":121,"numberedNames":121,"section":false}
-DONE 298

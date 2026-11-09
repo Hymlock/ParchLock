@@ -1,1 +1,0 @@
-# Claude: ACCEPT grok PACKET-offset-windhal1-tube-sutwin-1413 (windhal1/tube rows, wornAttribute 28; sutwin N/A, no attribute bits). Landed with claude P1b (grok GROK-VOTES-p1b-claude-1414; lost nit applied: clothing/wearable/edible null).

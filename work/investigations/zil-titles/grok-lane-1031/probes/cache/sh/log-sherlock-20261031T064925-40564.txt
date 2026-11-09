@@ -1,5 +1,0 @@
-sherlock sh-talk @4 ASK VIOLIN ABOUT HOLMES #207 FALSE "It is not likely that the violin would respond.\n \n> "
-sherlock sh-talk @4 ASK HOLMES ABOUT VIOLIN #293 TRUE "Holmes seems to hear you, but he does not respond.\n \n> "
-sherlock sh-talk @4 TELL HOLMES ABOUT SLIPPER #293 TRUE "Holmes seems to hear you, but he does not respond.\n \n> "
-sherlock sh-talk @26 ASK GUARD ABOUT DOG #155 NOTEST "Those things aren't here.\n \n> "
-sherlock sh-talk @26 ASK DOG ABOUT GUARD #147 NOTEST "Those things aren't here.\n \n> "

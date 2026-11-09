@@ -1,1 +1,0 @@
-learning-stores: 92 PASS, 0 FAIL

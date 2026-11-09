@@ -1,6 +1,0 @@
-planetfall scenery @14 look #214 FALSE "Escape Pod, in the safety web\nThis is one of the Feinstein's primary escape pods"
-planetfall scenery @27 look #212 NOTEST "Mess Corridor\nThis is a wide, east-west hallway with a large portal to the south"
-planetfall scenery @27 look #213 NOTEST "Mess Corridor\nThis is a wide, east-west hallway with a large portal to the south"
-planetfall scenery @33 look #7 FALSE "Tool Room\nThis is apparently a storage room for tools. Exits lead northeast and "
-planetfall scenery @39 look #124 NOTEST "Admin Corridor South\nThis section of hallway seems to have suffered some minor s"
-planetfall scenery @39 look #158 NOTEST "Admin Corridor South\nThis section of hallway seems to have suffered some minor s"

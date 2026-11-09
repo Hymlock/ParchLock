@@ -1,7 +1,0 @@
-# Bounded fresh ZorkIII custody follow-up: partial evidence, no integration
-
-Attempt2202: fresh ordinary26-command route, no RNG override/VM writes/hooks, sourceStable:true. Amulet39 native inventory parent202/bit4true says being worn; DROP moves39 to room48 with bit4 stilltrue; next I says empty handed. This supplies a same-owner held->dropped contrast. Retake was attempted on the lake and the roc killed the player before success: no reverse transition or final success. First route safety failure is retained; source3actions I-ROC tests HERE=ON-LAKE, so do custody controls on land.
-
-R2: same unforced route with immediate NORTH to verified Lake Shore52 before any controls. Both natural GET AMULET attempts failed probabilistically (authored SHINY-OBJECT-F PROB50). Amulet remained offstage0, and probe stopped without claiming held state. sourceStable:true. No blind retry loops or fabricated SAVE/retake proof. Output directories are exclusive; raw failures and helper bytes retained.
-
-Bare wornAttribute4 remains REVISE. Capability stays true when offstage/room; native worn wording is custody-qualified. New source-only consumer concern: ActionSynth inventory worn branch keeps Inspect/Remove and removes ordinary Drop; gsyntax REMOVE is TAKE synonym, so a separate direct-player relation must verify useful generated behavior rather than only a correct badge. No new production changes, no actual generatedRemove test, no allconsumer or state-transition closure.
