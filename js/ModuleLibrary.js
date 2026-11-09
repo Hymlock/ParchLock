@@ -712,7 +712,8 @@ var ModuleLibrary = (function () {
         var folderIcon = "<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 7V5h7l2 3h9v12H3V7Z'/></svg>";
         var body = "<div class='pl-module-manager'>" +
             "<p class='pl-module-intro'>Bring your next story along.</p>" +
-            "<div class='pl-module-actions'><label class='pl-module-import-card pl-module-primary'><span class='pl-module-import-icon'>" + uploadIcon + "</span><span class='pl-module-action-title'>Choose files</span><span class='pl-module-action-detail'>Add one story or a few</span><input id='pl-module-files' aria-label='Add module files' type='file' multiple accept='.z3,.z4,.z5,.z8,.zblorb,.gblorb,.ulx,.js'></label>" +
+            // Android providers may not know story MIME types; inspect the selected bytes instead.
+            "<div class='pl-module-actions'><label class='pl-module-import-card pl-module-primary'><span class='pl-module-import-icon'>" + uploadIcon + "</span><span class='pl-module-action-title'>Choose files</span><span class='pl-module-action-detail'>Add one story or a few</span><input id='pl-module-files' aria-label='Add module files' type='file' multiple></label>" +
             "<label class='pl-module-import-card'><span class='pl-module-import-icon'>" + folderIcon + "</span><span class='pl-module-action-title'>Choose folder</span><span class='pl-module-action-detail'>Bring a collection</span><input id='pl-module-folder' aria-label='Add module folder' type='file' multiple webkitdirectory></label></div>" +
             "<p id='pl-module-progress' aria-live='polite'></p><ul id='pl-module-results'></ul>" +
             "<section class='pl-module-collection' aria-label='Installed stories'><div class='pl-module-list-heading'><h3>Your stories</h3><span id='pl-module-count'></span></div><input id='pl-module-search' type='search' placeholder='Find a story or author' aria-label='Search installed stories'><div id='pl-module-list'></div></section>" +

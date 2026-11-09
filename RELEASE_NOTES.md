@@ -1,5 +1,10 @@
 # ParchLock Release Notes
 
+## Build 86 (2.0.2) - 2026-11-09
+
+- Android: supported story files no longer appear disabled in the Modules file picker when Android does not recognize their file types. Selected files still pass the existing content checks before import. Android versionCode 61; shell cache 185.
+- Imported Glulx stories now launch from their stored bytes instead of attempting a second script load that left them at "Loading". Glulx support remains play-only.
+
 ## Build 85 (2.0.1) - 2026-11-07
 
 - Equipment: putting something into a container you carry (Colossal Cave: catching the bird in the cage) no longer makes Equipment show only that container. Android versionCode 60; shell cache 184.

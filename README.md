@@ -46,9 +46,9 @@ Corresponding source for the distributed build is `ParchLock-source.zip`.
 Third-party components and included games retain their own licenses.
 
 
-## Downloads — 2.0.1
+## Downloads — 2.0.2
 
-[Get ParchLock 2.0.1 for Windows and Android](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.1).
+[Get ParchLock 2.0.2 for Windows and Android](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.2).
 The complete ZIP contains the Windows launcher, signed Android APK and matching source ZIP together.
 The APK and source are also separate downloads on the same release page.
-Version 2.0.1 (Build 85, Android versionCode 60) fixes Equipment losing the rest of your inventory when an item goes into a container you carry.
+Version 2.0.2 (Build 86, Android versionCode 61) fixes Android selecting supported module files and launching imported Glulx stories. Install the signed APK over the existing release to keep local data.

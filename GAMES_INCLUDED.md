@@ -1,8 +1,5 @@
 # Games included with ParchLock
 
-> **Public build:** this package bundles only the 75 Z-machine stories in release/public-games.txt. Listed Glulx titles are not bundled; imported Glulx stories support story text and input only.
-
-
 The ParchLock application is licensed under the GNU GPL version 3 (see `LICENSE`). **That licence does not cover the games listed here.** Each game is a separate work that remains the copyright of its author, and is included only because its author's licence or terms permit free, unmodified redistribution.
 
 - Every game is included **unmodified**. The original story file is stored byte-for-byte inside a small JavaScript wrapper in `games/` so the built-in interpreter can load it; the game data itself is not altered.
