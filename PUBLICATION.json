@@ -1,14 +1,16 @@
 {
-  "version": "2.0.2",
+  "version": "2.0.3",
   "build": 86,
   "androidVersionCode": 61,
   "shellCache": 185,
-  "sourceCommit": "959daab119cd72a229ef7a687fcf24f6a11bf366",
+  "sourceCommit": "6099946f2f67c2f52a291b604c412c315abde16d",
+  "androidSourceCommit": "959daab119cd72a229ef7a687fcf24f6a11bf366",
   "certificateSha256": "8087575e05b3f9e4ea0ee8cc65a63d745ed8aec030c52958ea1a99c20245c000",
   "artifactSha256": {
-    "ParchLock-complete-2.0.2.zip": "1ee2d40959408d757f9bfabce62ec87c6c741d7c9eee3139bf783949dcf204ec",
-    "ParchLock-public.apk": "e0f87370324976c1ad0ebec5919457968b42736c8e50fa30cf39bf88c6f9b455",
-    "ParchLock-source.zip": "90522ce7070199789eea700ae2d63238244c07eb9bb11446d1c0b4d8ee63161d"
+    "ParchLock-source.zip": "f33413f803f7412decadcbd1507d4ce275dd4dacf9c778ca9385bd4dfe0f84ef",
+    "ParchLock-complete-2.0.3.apk": "e0f87370324976c1ad0ebec5919457968b42736c8e50fa30cf39bf88c6f9b455",
+    "ParchLock-complete-2.0.3.zip": "ff2ac117bcb62c793c15516f8abb46784a0887ca854976bcd96882e3315c2f99"
   },
-  "validation": "Android 16 emulator: all eight supported formats imported and launched; invalid text rejected. Signed upgrade from 2.0.1 retained imported story and save. Motorola firmware not tested."
+  "androidVersionName": "2.0.2",
+  "validation": "Desktop launcher: actual Windows-reserved port fallback, HTTP response, remembered address on restart, decline without changing settings, invalid settings error. Android APK unchanged from verified signed2.0.2 release."
 }

@@ -1,5 +1,10 @@
 # ParchLock Release Notes
 
+## Desktop patch 2.0.3 - 2026-11-09
+
+- Windows: if Windows reserves ParchLock's local port (for example after enabling virtualization), the launcher offers an available alternative and remembers it for future launches. It explains that browser saves and settings belong to the previous address; declining leaves that address unchanged. Existing data is not deleted.
+- Includes the unchanged signed Android 2.0.2 APK (Build 86, versionCode 61). No Android update is needed for this desktop-only fix.
+
 ## Build 86 (2.0.2) - 2026-11-09
 
 - Android: supported story files no longer appear disabled in the Modules file picker when Android does not recognize their file types. Selected files still pass the existing content checks before import. Android versionCode 61; shell cache 185.
