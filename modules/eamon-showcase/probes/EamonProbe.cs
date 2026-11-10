@@ -28,9 +28,12 @@ public static class EamonProbe
             serializer.Serialize(table, restored);
             restored.Position = 0;
             var copy = serializer.Deserialize(restored) as IDbTable<IModule>;
+            using var compressedCopy = new MemoryStream();
+            using (var compressor = new GZipStream(compressedCopy, CompressionMode.Compress, true))
+                compressor.Write(restored.ToArray());
             serialization = new { ok = module != null && copy?.Records.FirstOrDefault()?.Name == module.Name,
                 title = module?.Name, rooms = module?.NumRooms, artifacts = module?.NumArtifacts,
-                roundTripBytes = restored.Length };
+                roundTripBytes = restored.Length, compressedCopy = Convert.ToBase64String(compressedCopy.ToArray()) };
         }
         catch (Exception e) { serialization = new { ok = false, error = e.ToString() }; }
         finally { if (Globals.gEngine != null) Globals.gEngine.MutatePropertyCounter++; Globals.gEngine = null; }

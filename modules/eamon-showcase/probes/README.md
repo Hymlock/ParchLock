@@ -14,4 +14,6 @@ On November 10, 2026, local headless Chromium passed the two-response/heartbeat 
 
 G1 remains OPEN: actual Eamon gameplay/console adaptation, nested fields, RNG fidelity, atomic persistence and restore, memory/timing budgets, all target deployments, Android WebView and hosted iframe/offline operation are unproven. The installed Capacitor source contains a service-worker request bridge with default resolution enabled; source presence is not an Android execution test. No Android device/emulator was connected at this check. Do not adopt this transport or change production imports on the strength of desktop results alone.
 
-`EamonProbe.cs` provides the reflection/serializer fixture method; the automated input runner currently tests `InputProbe.cs`, not full gameplay or the serializer. No playable importable Showcase file exists yet.
+`EamonProbe.cs` provides the reflection/serializer fixture method. `run-storage-probe.cjs` commits its actual serialized module output into an isolated IndexedDB database, closes the persistent Chromium process, starts a fresh process with the same scratch profile, and deserializes the stored bytes. This passed with identical Beginner's Cave title/room/artifact counts on November 10. It does not prove engine saves, multi-file atomicity, campaign progress or production learning persistence. The scratch profile remains as evidence and contains no production app storage. The prepare script runs both input and storage checks.
+
+No playable importable Showcase file exists yet.

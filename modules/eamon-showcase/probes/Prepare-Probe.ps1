@@ -45,4 +45,7 @@ try {
     $env:PARCHLOCK_PROBE_WORK = $workRoot
     & node (Join-Path $PSScriptRoot 'run-input-probe.cjs')
     if ($LASTEXITCODE) { throw 'Input mechanism check failed; inspect the scratch receipt.' }
+    $env:PARCHLOCK_EAMON_UPSTREAM = $upstreamRoot
+    & node (Join-Path $PSScriptRoot 'run-storage-probe.cjs')
+    if ($LASTEXITCODE) { throw 'Serializer storage check failed; inspect the scratch receipt.' }
 } finally { Pop-Location }
