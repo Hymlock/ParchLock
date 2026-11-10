@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>Isolated input mechanism probe</title>
+<p>Not ParchLock gameplay. Local feasibility fixture only.</p>
+<script>
+window.receipt = {messages:[], requests:[], ticks:0};
+setInterval(() => receipt.ticks++, 20);
+(async () => {
+ await navigator.serviceWorker.register('/input-sw.js');
+ await navigator.serviceWorker.ready;
+ if (!navigator.serviceWorker.controller) await new Promise(resolve => navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));
+ navigator.serviceWorker.addEventListener('message', event => {
+  receipt.requests.push({prompt:event.data.prompt,ticks:receipt.ticks});
+  setTimeout(() => {
+   const response={id:event.data.id,value:event.data.prompt==='first'?'alpha':'beta',cancel:new URLSearchParams(location.search).has('cancel')};
+   navigator.serviceWorker.controller.postMessage(response);
+   // A stale duplicate must not satisfy the next input request.
+   navigator.serviceWorker.controller.postMessage(response);
+  }, 250);
+ });
+ const worker = new Worker('/worker-input.js',{type:'module'});
+ worker.onmessage = event => receipt.messages.push(event.data);
+ worker.onerror = event => receipt.messages.push({kind:'error',value:event.message});
+ window.probeWorker = worker;
+})().catch(error => receipt.messages.push({kind:'error',value:String(error)}));
+</script>
