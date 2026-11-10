@@ -18,6 +18,8 @@ First work: source/provenance and existing-system audit, then gate G1 for the em
 
 The first reproducible [feasibility probes](probes/README.md) are now present. Desktop Chromium passed assembly/serializer smoke checks and synchronous worker input/resume, responsive-page, duplicate-reply and cancellation checks. These are partial results; G1 is still open and no gameplay or Android acceptance is claimed.
 
+Android is mandatory: verify the final signed APK contains and can load the app-owned engine assets; import the separate Showcase through the phone's existing Modules picker; launch Main Hall and exercise adventures offline; retain installed data, character/campaign progress, saves and learned data across quit, force-stop and restart. Test the built APK itself, not only desktop source. Current Android builds stage through make-dist and capacitor-www before cap copy; those allowlists and the existing service worker need explicit review when runtime adoption is approved. Desktop probe success cannot waive these checks.
+
 ## Repository layout
 
 - This folder: module-specific source, package contracts and build entry points as implemented.
