@@ -105,7 +105,8 @@ until each adventure's entry conditions are read from source (that figure is not
 | 5 | The Temple of Ngurct (draft), Stronghold of Kahr-Dur (draft), A Runcible Cargo, The Vile Grimoire of Jaldi'al |
 
 Before the table is frozen: prove at least one source-legal route through every gate, including
-adventures' own entry checks (for example The Training Ground requires armour expertise above 25). If a
+adventures' own entry checks (for example The Training Ground refuses characters whose armour
+expertise exceeds 25). If a
 tier has no valid route, change the added placement, never the source check.
 
 **What counts as a clear.** Each adventure gets an outcome contract written from its source: returned
@@ -113,7 +114,9 @@ alive, quest success as an exact state condition, failure, death, abort. The eng
 exit alone is not success (Stronghold of Kahr-Dur uses it after printing that the quest failed).
 Adventures with a quest clear on the quest condition; whether an adventure has no quest is decided by
 reading it; then leaving alive through its own exit clears it. A return counts only for a valid, active
-expedition of that character. Conditions are evaluated from engine state after upstream's own cleanup.
+expedition of that character. The quest facts are captured at the end of the adventure while its world
+state is still available, then bound to the successful upstream cleanup and the durable returned-character
+revision; they are never read from a freshly loaded Main Hall.
 
 **Ownership.** Progress belongs to the character and is saved with it; it is lost with the character.
 Restoring an older save restores that save's progress. Credits are idempotent: never granted twice. Restore
@@ -179,9 +182,13 @@ Importing it gives one module in the library with adventure selection inside; no
 The complete desktop distribution still includes its matching signed APK; the Showcase download does not
 replace that. Upstream Parchment/Parchmap repositories are not touched.
 
-Consequence to settle in gate G1: which parts live in the app (the host adapter) and which in the package
-(engine runtime, assemblies, data), and how the app verifies an imported package that contains executable
-runtime code (pinned manifest hash or signature) before running it.
+Trust boundary (agreed direction; the mechanism is proven in gate G1): the app owns the host adapter and
+every privileged integration; the package declares only the engine, adventure and data payload with exact
+manifest and member hashes. A package's own hashes prove integrity, not authenticity, so the app also
+verifies a trusted release identity (a pinned approved digest or a signature, whichever fits the existing
+build and import flow). The app never runs arbitrary package script or grants file, network or device
+access because a manifest asks; host file access is confined to the campaign's virtual file system. No
+user accounts or installers. Today's Z-machine story import does not already provide this boundary.
 
 ## 10. Work packages
 
