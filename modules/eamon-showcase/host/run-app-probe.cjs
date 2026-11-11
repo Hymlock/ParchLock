@@ -30,7 +30,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     const view = process.env.PARCHLOCK_APP_MOBILE ? {viewport: {width: 412, height: 915}, isMobile: true, hasTouch: true} : {viewport: {width: 1280, height: 800}};
     // PARCHLOCK_HOST_CDP + PARCHLOCK_HOST_URL: drive the play screen of an app already running on a device.
     const cdp = process.env.PARCHLOCK_HOST_CDP, appUrl = process.env.PARCHLOCK_HOST_URL;
-    browser = cdp ? await chromium.connectOverCDP(cdp) : profile ? await chromium.launchPersistentContext(profile, {headless: true, ...view}) : await chromium.launch({headless: true});
+    browser = cdp ? await chromium.connectOverCDP(cdp) : profile ? await chromium.launchPersistentContext(profile, {headless: true, ...view}) : await chromium.launch({headless: true, channel: process.env.PARCHLOCK_APP_CHANNEL || undefined});
+    if (process.env.PARCHLOCK_APP_CHANNEL) receipt.scope = 'Eamon inside the ParchLock play screen, installed browser: ' + process.env.PARCHLOCK_APP_CHANNEL + ' ' + browser.version();
     const context = cdp ? browser.contexts()[0] : profile ? browser : await browser.newContext(view);
     await context.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); } catch (e) {} });
     const page = cdp ? context.pages()[0] : await context.newPage();
