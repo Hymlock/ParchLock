@@ -39,17 +39,17 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     const appUrl = process.env.PARCHLOCK_HOST_URL;
     const page = appUrl ? browser.contexts()[0].pages()[0] : cdp ? await browser.contexts()[0].newPage() : await browser.newPage();
     if (appUrl) receipt.appStartUrl = page.url();
-    if (process.env.PARCHLOCK_HOST_FAIL_COMMIT) await page.addInitScript(() => {
+    if (process.env.PARCHLOCK_HOST_FAIL_COMMIT || process.env.PARCHLOCK_HOST_FAIL_RESULT) await page.addInitScript(failCommit => {
       const transaction = IDBDatabase.prototype.transaction;
       IDBDatabase.prototype.transaction = function (stores, mode, ...rest) {
-        if (this.name === 'parchlock-eamon-probe' && mode === 'readwrite')
+        if (failCommit && this.name === 'parchlock-eamon-probe' && mode === 'readwrite')
           throw new DOMException('Injected transaction-start storage failure', 'QuotaExceededError');
         return transaction.call(this, stores, mode, ...rest);
       };
       window.__probeTerminations = 0;
       const terminate = Worker.prototype.terminate;
       Worker.prototype.terminate = function () { window.__probeTerminations++; return terminate.call(this); };
-    });
+    }, !!process.env.PARCHLOCK_HOST_FAIL_COMMIT);
     if (cdp) receipt.scope = 'Remote browser over CDP: ' + (await browser.version()) + ' ' + (await page.evaluate(() => navigator.userAgent));
     page.on('console', m => logs.push({type: m.type(), text: m.text()}));
     page.on('pageerror', e => logs.push({type: 'pageerror', text: String(e)}));
@@ -58,6 +58,7 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     const settle = () => page.waitForFunction(() => eamon.pending || eamon.events.some(e => e.kind === 'result' || e.kind === 'error'), null, {timeout: 120000});
     await settle();
     receipt.firstPromptMs = Date.now() - began;
+    if (process.env.PARCHLOCK_HOST_FAIL_RESULT) await page.evaluate(() => eamon.worker.onmessage({data:{kind:'result',value:'error: injected engine result'}}));
     let mark = 0;
     // Rules mode: {rules:[[regex, answer]...], max:N}. Each prompt is answered by the first rule matching
     // its final line; a rule answer may be a list, used in order and then dropped.
@@ -112,10 +113,11 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     receipt.scriptCompleted = (rules ? true : receipt.steps.length === script.length) && !receipt.steps.some(s => s.failed);
     receipt.engineError = final.events.find(e => e.kind === 'error' || (e.kind === 'result' && String(e.value).startsWith('error'))) || null;
     if (process.env.PARCHLOCK_HOST_FAIL_COMMIT) receipt.expectedFailurePass = !!receipt.storage.commitError && final.failed && !final.pending && final.inputDisabled && final.terminatedWorkers === 1 && !!receipt.engineError;
+    if (process.env.PARCHLOCK_HOST_FAIL_RESULT) receipt.expectedResultFailurePass = final.failed && !final.pending && final.inputDisabled && final.terminatedWorkers === 1 && !!receipt.engineError && final.screen.includes('injected engine result');
     fs.writeFileSync(path.join(work, receiptName), JSON.stringify(receipt, null, 2));
     if (cdp && !appUrl && !process.env.PARCHLOCK_HOST_KEEP) await page.close();
     console.log(final.screen.slice(-(Number(process.env.PARCHLOCK_HOST_TAIL) || 2500)));
     console.log('\n--- first prompt ms', receipt.firstPromptMs, 'max turn ms', receipt.maxTurnMs, 'steps', receipt.steps.length, 'pending', JSON.stringify(final.pending), 'storage', JSON.stringify(receipt.storage), 'events', JSON.stringify(final.events.filter(e => e.kind !== 'result')).slice(0, 900));
-    if (process.env.PARCHLOCK_HOST_FAIL_COMMIT ? !receipt.expectedFailurePass : (receipt.engineError || !receipt.scriptCompleted)) process.exitCode = 1;
+    if (process.env.PARCHLOCK_HOST_FAIL_RESULT ? !receipt.expectedResultFailurePass : process.env.PARCHLOCK_HOST_FAIL_COMMIT ? !receipt.expectedFailurePass : (receipt.engineError || !receipt.scriptCompleted)) process.exitCode = 1;
   } finally { if (browser) await browser.close(); await new Promise(r => server.close(r)); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

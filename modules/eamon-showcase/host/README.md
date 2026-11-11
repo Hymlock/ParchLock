@@ -71,6 +71,10 @@ The earlier observed loss describes the host before this candidate, not intended
 Unlike upstream's log-and-continue save errors, the candidate treats serialization failure as fatal
 before durable flush. Any page-side storage failure also stops and discards the worker; its advanced
 in-memory snapshot must never be reused after a failed commit. Reopen reads the last durable revision.
+Returned engine-error results also use this fatal path in both the probe and application adapter.
+Injected result-message checks confirmed visible failure and one worker termination; they do not prove
+an actual native serializer exception or mid-write interruption. A normal real-play-screen session
+still passed after the change. Those remaining failure families are not waived.
 
 Further gate checks (desktop Chromium): the heaviest adventure by code size, The Vile Grimoire of Jaldi'al (8,174 lines), launched from the Main Hall in about 1 s and played; nested parser questions ("Get who or what?", "Examine who or what?") were answered and correctly classified as not safe points; cancelling the pending input ended the run as "cancelled", and the next start resumed that adventure from its saved game. Script: the answer `<cancel>` in a rules file.
 

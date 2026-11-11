@@ -34,6 +34,12 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     if (process.env.PARCHLOCK_APP_CHANNEL) receipt.scope = 'Eamon inside the ParchLock play screen, installed browser: ' + process.env.PARCHLOCK_APP_CHANNEL + ' ' + browser.version();
     const context = cdp ? browser.contexts()[0] : profile ? browser : await browser.newContext(view);
     await context.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); } catch (e) {} });
+    if (process.env.PARCHLOCK_HOST_FAIL_RESULT) await context.addInitScript(() => {
+      window.__probeTerminations=0;
+      const terminate=Worker.prototype.terminate;
+      Worker.prototype.terminate=function(){window.__probeTerminations++;return terminate.call(this);};
+      window.Worker=new Proxy(Worker,{construct(Target,args){const worker=new Target(...args);if(String(args[0]).includes('host-worker.js'))window.__probeEngineWorker=worker;return worker;}});
+    });
     if (process.env.PARCHLOCK_HOST_FAIL_COMMIT) await context.addInitScript(failAt => {
       const transaction = IDBDatabase.prototype.transaction;
       let writes = 0;
@@ -63,6 +69,7 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     await page.locator('#message #close').click({timeout: 8000}).catch(() => {});
     await ready();
     receipt.firstPromptMs = Date.now() - began;
+    if (process.env.PARCHLOCK_HOST_FAIL_RESULT) await page.evaluate(() => window.__probeEngineWorker.onmessage({data:{kind:'result',value:'error: injected engine result'}}));
     const rules = script.rules.map(([pattern, answer]) => ({pattern: new RegExp(pattern), answer}));
     for (let n = 0; n < (script.max || 200); n++) {
       const state = await page.evaluate(() => ({input: (() => { const i = document.querySelector('#windowport input.Input'); return i ? (i.className.includes('LineInput') ? 'line' : 'char') : null; })(), error: (document.querySelector('#errorcontent') || {}).innerText || '', ended: !!(window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state.events.length)}));
@@ -96,10 +103,14 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       receipt.failureState = await page.evaluate(() => ({terminatedWorkers:window.__probeTerminations || 0,error:(document.querySelector('#errorcontent') || {}).innerText || ''}));
       receipt.expectedFailurePass = !!final?.commitError && receipt.failureState.terminatedWorkers === 1 && /progress could not be saved/i.test(receipt.failureState.error);
     }
+    if (process.env.PARCHLOCK_HOST_FAIL_RESULT) {
+      receipt.failureState=await page.evaluate(()=>({terminatedWorkers:window.__probeTerminations,error:(document.querySelector('#errorcontent')||{}).innerText||''}));
+      receipt.expectedResultFailurePass=receipt.failureState.terminatedWorkers===1&&receipt.failureState.error.includes('injected engine result');
+    }
     if (process.env.PARCHLOCK_APP_SHOT) await page.screenshot({path: process.env.PARCHLOCK_APP_SHOT});
     fs.writeFileSync(path.join(work, process.env.PARCHLOCK_HOST_RECEIPT || 'app-probe-receipt.json'), JSON.stringify(receipt, null, 2));
     console.log(receipt.screenTail.slice(-(Number(process.env.PARCHLOCK_HOST_TAIL) || 1500)));
     console.log('\n--- first prompt ms', receipt.firstPromptMs, 'steps', receipt.steps.length, 'vm', JSON.stringify(final), 'stopped', JSON.stringify(receipt.stopped || null), 'last', JSON.stringify(receipt.steps[receipt.steps.length - 1] || null), '\nlogs', JSON.stringify(logs.slice(0, 12)));
-    if (process.env.PARCHLOCK_HOST_FAIL_COMMIT ? !receipt.expectedFailurePass : receipt.failed) process.exitCode = 1;
+    if (process.env.PARCHLOCK_HOST_FAIL_RESULT ? !receipt.expectedResultFailurePass : process.env.PARCHLOCK_HOST_FAIL_COMMIT ? !receipt.expectedFailurePass : receipt.failed) process.exitCode = 1;
   } finally { if (browser) await browser.close(); await new Promise(r => server.close(r)); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

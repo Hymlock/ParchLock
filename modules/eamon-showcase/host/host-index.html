@@ -82,6 +82,8 @@ document.getElementById('bar').addEventListener('submit', event => { event.preve
       eamon.pending = data;
       entryEl.maxLength = data.type === 'key' ? 1 : Math.min(data.size, 4096);
       entryEl.focus();
+    } else if (data.kind === 'error' || (data.kind === 'result' && String(data.value).startsWith('error'))) {
+      fail(data.value);
     } else eamon.events.push(data);
   };
   worker.onerror = event => fail(event.message);

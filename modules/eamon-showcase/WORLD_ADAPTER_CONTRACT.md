@@ -42,6 +42,11 @@ than a guessed inventory root or another character's gear.
 - The engine's printing helpers are NOT read-only queries. `Room.BuildPrintedFullDesc` updates `Seen`,
   and `Engine.CheckDoor` can change a door category field. Do not call printing/check helpers to generate
   UI snapshots or visible exits without a side-effect audit. No extra RNG calls or simulated commands.
+- Even query-shaped APIs need that audit: base `Room.IsArtifactListedInRoom` and
+  `Room.IsMonsterListedInRoom` set an unlisted entity's `Seen` flag. `GetContainedList(recurse:true)`
+  traverses custody, not a player-visibility boundary. Neither is a safe shortcut to a visible-object
+  snapshot. Preserve engine visibility/exposure semantics without revealing closed contents or hidden
+  occupants, and verify the read-only projection leaves those native flags unchanged.
 - Native `Command` bindings carry `Verb` and `Synonyms` (for example GetCommand binds get/take).
   Vocabulary alone does not prove a target/action is legal. Review target predicates and per-adventure
   overrides; a displayed form must address the correct visible/reachable object and current state.
