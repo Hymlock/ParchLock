@@ -471,6 +471,7 @@ var ModuleLibrary = (function () {
         var path = normalizePath(value);
         var item = find(path);
         if (!item) return Promise.reject(new Error("Module is not installed."));
+        if (item.Format === "eamon") return Promise.resolve(item.id);
         var load = item.Local
             ? getBytes(path).then(function (bytes) { return { bytes: bytes, name: path.replace(/\.js$/i, "") }; })
             : fetch(path).then(function (res) {
@@ -483,6 +484,21 @@ var ModuleLibrary = (function () {
         });
     }
 
+    // An installed Eamon Showcase is its own executable: the loader only ever fetches an empty placeholder
+    // for it, so its identity is the approved package digest recorded at install (js/EamonPackage.js).
+    // Same shape as a captured story identity; it has no Z/Glulx header and no story bytes.
+    function eamonIdentityForPath(sourcePath) {
+        var match = /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(sourcePath || "");
+        if (!match) return null;
+        var item = cache.find(function (entry) { return entry.id === match[1] && entry.Format === "eamon"; });
+        if (!item) return null;
+        if (executableIdentityByPath[sourcePath]) return executableIdentityByPath[sourcePath];
+        var summary = Object.freeze({ digest: item.id, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, header: null });
+        return (executableIdentityByPath[sourcePath] = Object.freeze({
+            digest: item.id, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, bytes: new Uint8Array(0), summary: summary
+        }));
+    }
+
     function identityForPath(value) {
         var sourcePath = value ? normalizePath(value) : "";
         if (!sourcePath) {
@@ -492,6 +508,7 @@ var ModuleLibrary = (function () {
                 }
             } catch (e) {}
         }
+        if (sourcePath && /\.eamon\.js$/.test(sourcePath)) return eamonIdentityForPath(sourcePath);
         return sourcePath ? (executableIdentityByPath[sourcePath] || null) : executableIdentity;
     }
 

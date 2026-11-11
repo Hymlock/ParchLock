@@ -246,7 +246,8 @@ var LearningStores = (function () {
                 if (!z || !id.header || typeof ZRamReader === "undefined") return null;
                 var stable = [0,2,3,4,5,8,9,10,11,12,13,14,15,18,19,20,21,22,23,26,27];
                 if (!stable.every(function (at) { return id.header[at] === ZRamReader.u8(mem, at); })) return null;
-            } else if (requireZMemory !== false || !/^(?:ulx|gblorb)$/.test(id.format || "")) return null;
+            // Formats with no Z memory to cross-check: Glulx, and the Eamon Showcase package (package digest).
+            } else if (requireZMemory !== false || !/^(?:ulx|gblorb|eamon)$/.test(id.format || "")) return null;
             return { identityKey: "sha256:" + id.digest, digest: id.digest };
         } catch (e) { return null; }
     }
