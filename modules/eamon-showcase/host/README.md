@@ -31,7 +31,7 @@ Not yet connected: map, underlines, direction buttons, Equipment, stats, read-al
 
 ## Saving
 
-- Safe points are top-level waits only (plan section 5): the adventure's own command prompt and a menu waiting for a choice, decided from which engine code is asking. Nested prompts (shop steps, registration, yes/no inside an action, "press any key") save nothing. At a safe point the host sends the files that changed since the last one, plus the name of the program now running, as one batch.
+- Safe points are top-level waits only (plan section 5): the adventure's own command prompt and the Main Hall's top menu (not its sub-menus), decided from which engine code is asking; anything unrecognised is not a safe point. Nested prompts (shop steps, registration, yes/no inside an action, "press any key") save nothing. At a safe point the host sends the files that changed since the last one, plus the name of the program now running, as one batch.
 - The page stores each batch in a single IndexedDB transaction, so a revision is all or nothing. The player's answer is not passed to the engine until that transaction has completed, so the engine never runs ahead of durable storage.
 - On start, saved files (and recorded deletions) are laid over the pristine bundle and the saved program is relaunched. The engine's own resume logic does the rest.
 - `PARCHLOCK_HOST_PROFILE` + `PARCHLOCK_HOST_PORT` keep one browser profile and origin across runs; `PARCHLOCK_HOST_CDP` drives an already running browser such as Chrome on a phone over adb.
@@ -62,7 +62,7 @@ Character return: stopping at the Main Hall menu right after returning from an a
 
 ## Not done
 
-- The in-app run used a debug-signed side-by-side build with the engine baked into the app, not the release-signed APK and not an imported Showcase package. Importing is not implemented. The host page was opened directly; it has not run alongside ParchLock's own service worker or inside ParchLock's play screen. Airplane mode was not switched on for the run.
+- The in-app run used a debug-signed side-by-side build with the engine baked into the app, not the release-signed APK and not an imported Showcase package. Importing is not implemented. A later debug build did run through ParchLock's own service worker and play screen (see above); that is still a debug build with the engine baked in. Airplane mode was not switched on for the run.
 - The Windows launcher executable has not been run end to end, and nothing has been run from a hosted site.
 - Raw framework size is above the 20 MB target; trimming is untried.
 - A restart resumes from the engine's last saved game, not the exact turn. Force-stop in the middle of a write, storage-full and two-tabs-at-once cases are untested.

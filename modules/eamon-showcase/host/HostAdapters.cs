@@ -101,15 +101,27 @@ namespace ParchLock.EamonHost
 		/// </summary>
 		static bool IsSafePoint()
 		{
-			foreach (var frame in new StackTrace(false).GetFrames())
+			// Unknown context is never a safe point. Relies on type and method names, so the engine
+			// must stay untrimmed and unobfuscated (the build sets PublishTrimmed=false).
+			var frames = new StackTrace(false).GetFrames();
+			var menuDepth = 0;
+			string asker = null, askerMethod = null;
+			foreach (var frame in frames)
 			{
 				var method = frame.GetMethod();
 				var type = method?.DeclaringType;
 				if (type == null || type == typeof(HostTextReader)) continue;
 				var name = type.FullName ?? "";
-				return name.EndsWith(".GetPlayerInputState", StringComparison.Ordinal) || (name == "Eamon.Game.Menus.Menu" && method.Name == "Execute");
+				if (asker == null) { asker = name; askerMethod = method.Name; }
+				if (name == "Eamon.Game.Menus.Menu" && method.Name == "Execute") menuDepth++;
 			}
-			return false;
+			if (asker == null) return false;
+			// An adventure's own command prompt.
+			if (asker.EndsWith(".GetPlayerInputState", StringComparison.Ordinal)) return true;
+			// The Main Hall's top menu only: asked directly by Menu.Execute, not from a sub-menu
+			// (Menu.Execute calls sub-menus recursively), and only while the Main Hall engine is running.
+			var engine = gEngine?.GetType().FullName ?? "";
+			return asker == "Eamon.Game.Menus.Menu" && askerMethod == "Execute" && menuDepth == 1 && engine.StartsWith("EamonMH.", StringComparison.Ordinal);
 		}
 
 		public virtual RetCode ReadField(StringBuilder buf, long bufSize, char[] boxChars, string emptyVal, Func<char, bool> validCharFunc)
