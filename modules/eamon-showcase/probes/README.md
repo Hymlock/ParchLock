@@ -49,3 +49,28 @@ must equal one. Remove the copied probe from scratch and rebuild afterward; it i
 content. No source engine changes are needed. The candidate keeps previous file bytes in memory for an
 exact comparison and stages those same scanned bytes. Its memory/performance cost still needs real-target
 measurement; this narrow test does not certify gameplay saves, transaction failure or campaign identity.
+
+## Native visibility-query side effect
+
+With `VisibilityProbe.cs` copied into the private host scratch project, select
+`PARCHLOCK_PROBE_CASE=visibility` in the same `run-persistence-probe.cjs` harness. The actual base
+Room/Artifact fixture starts with an unlisted artifact whose Seen flag is false. Calling the native
+`IsArtifactListedInRoom` returns false but sets Seen true; a direct field/custody comparison in that
+controlled fixture leaves it false. This passed in Chromium. The fixture replaces only primitive
+category construction; it is not a full world provider, a visibility specification for custom
+adventures, or proof that every unlisted object is hidden. Remove the copied probe and rebuild afterward.
+
+## App acknowledgement ordering and fatal failures
+
+The host runners support isolated injected fault controls; never use them with real user profiles.
+`PARCHLOCK_HOST_FAIL_COMMIT=1` rejects the first native storage transaction, and the app runner also
+accepts another transaction number. `PARCHLOCK_HOST_FAIL_RESULT=1` injects a returned engine-error
+message. The tests require a visible error and worker termination, not silent waiting. They do not
+produce an actual native serializer failure or establish mid-write crash/real-quota safety.
+
+`PARCHLOCK_HOST_DELAY_ACK=250` in `run-app-probe.cjs` delays delivery of IndexedDB's completion callback
+and checks that neither a new prompt nor successful-exit event is published first. Before the candidate
+fix the bounded session violated ordering; afterward six writes/six acknowledgements had no violation.
+The real transaction has already completed during this artificial delay: it tests acknowledgement/UI
+ordering, not database atomicity. The normal app session and injected storage-failure checks also passed.
+The standalone diagnostic page's raw output buffer is not the production story/narration delivery path.

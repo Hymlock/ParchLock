@@ -34,6 +34,27 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     if (process.env.PARCHLOCK_APP_CHANNEL) receipt.scope = 'Eamon inside the ParchLock play screen, installed browser: ' + process.env.PARCHLOCK_APP_CHANNEL + ' ' + browser.version();
     const context = cdp ? browser.contexts()[0] : profile ? browser : await browser.newContext(view);
     await context.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); } catch (e) {} });
+    if (process.env.PARCHLOCK_HOST_DELAY_ACK) await context.addInitScript(delay => {
+      const transaction=IDBDatabase.prototype.transaction;
+      const complete=Object.getOwnPropertyDescriptor(IDBTransaction.prototype,'oncomplete');
+      const probe=window.__ackProbe={started:0,acknowledged:0,violations:[]};
+      let baseline=0;
+      IDBDatabase.prototype.transaction=function(stores,mode,...rest){
+        const tx=transaction.call(this,stores,mode,...rest);
+        if(this.name==='parchlock-eamon'&&mode==='readwrite') {
+          probe.started++;baseline=window.__PARCHLOCK_EAMON__?.state.prompts||0;
+          Object.defineProperty(tx,'oncomplete',{configurable:true,get(){return complete.get.call(tx);},set(handler){
+            complete.set.call(tx,event=>setTimeout(()=>{probe.acknowledged++;handler.call(tx,event);},delay));
+          }});
+        }
+        return tx;
+      };
+      setInterval(()=>{
+        const state=window.__PARCHLOCK_EAMON__?.state;
+        if(state&&probe.started>probe.acknowledged&&(state.prompts>baseline||state.events.includes('done'))&&probe.violations.length<20)
+          probe.violations.push({prompts:state.prompts,baseline,done:state.events.includes('done')});
+      },10);
+    },Number(process.env.PARCHLOCK_HOST_DELAY_ACK));
     if (process.env.PARCHLOCK_HOST_FAIL_RESULT) await context.addInitScript(() => {
       window.__probeTerminations=0;
       const terminate=Worker.prototype.terminate;
@@ -99,6 +120,11 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     receipt.vm = final; receipt.logs = logs.slice(0, 40);
     receipt.screenTail = (await text()).slice(-3000);
     receipt.failed = receipt.steps.some(s => s.failed) || !final || !!final.commitError;
+    if (process.env.PARCHLOCK_HOST_DELAY_ACK) {
+      receipt.acknowledgements=await page.evaluate(()=>window.__ackProbe);
+      receipt.ackOrderPass=receipt.acknowledgements.started>0&&receipt.acknowledgements.started===receipt.acknowledgements.acknowledged&&receipt.acknowledgements.violations.length===0;
+      receipt.failed=receipt.failed||!receipt.ackOrderPass;
+    }
     if (process.env.PARCHLOCK_HOST_FAIL_COMMIT) {
       receipt.failureState = await page.evaluate(() => ({terminatedWorkers:window.__probeTerminations || 0,error:(document.querySelector('#errorcontent') || {}).innerText || ''}));
       receipt.expectedFailurePass = !!final?.commitError && receipt.failureState.terminatedWorkers === 1 && /progress could not be saved/i.test(receipt.failureState.error);
