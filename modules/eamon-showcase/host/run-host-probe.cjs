@@ -98,6 +98,10 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
       receipt.steps.push({failed: 'required final screen pattern missing', expected: script.expectFinalRegex});
     if (script.safeFinal === true && !final.pending?.safePoint)
       receipt.steps.push({failed: 'final prompt was not a safe point'});
+    if (script.expectInput && final.pending?.type !== script.expectInput)
+      receipt.steps.push({failed: 'unexpected final input type',expected:script.expectInput});
+    if (script.expectPhase && !final.events.some(event=>event.kind==='phase'&&String(event.detail).includes(script.expectPhase)))
+      receipt.steps.push({failed:'required native plugin/adventure phase missing',expected:script.expectPhase});
     if (process.env.PARCHLOCK_HOST_EXPORT) {
       const stored = await page.evaluate(async () => {
         const tx = (await database).transaction(['files', 'meta']);

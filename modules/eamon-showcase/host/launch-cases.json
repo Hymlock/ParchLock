@@ -1,0 +1,171 @@
+{
+  "status": "startup-test inputs only; not tier assignments or outcome acceptance",
+  "upstreamCommit": "5db64a37afe0b5455ee477e067fca4e6d249e419",
+  "cases": [
+    {
+      "title": "Alternate Beginner's Cave",
+      "extraAnswers": null,
+      "module": "AlternateBeginnersCave",
+      "plugin": "AlternateBeginnersCave.dll",
+      "phase": "AlternateBeginnersCave",
+      "nativeFilesetUid": 1
+    },
+    {
+      "title": "A Runcible Cargo",
+      "extraAnswers": null,
+      "module": "ARuncibleCargo",
+      "plugin": "ARuncibleCargo.dll",
+      "phase": "ARuncibleCargo",
+      "nativeFilesetUid": 2
+    },
+    {
+      "title": "Beginner's Cave II",
+      "extraAnswers": null,
+      "module": "BeginnersCaveII",
+      "plugin": "BeginnersCaveII.dll",
+      "phase": "BeginnersCaveII",
+      "nativeFilesetUid": 3
+    },
+    {
+      "title": "Beginner's Forest",
+      "extraAnswers": null,
+      "module": "BeginnersForest",
+      "plugin": "BeginnersForest.dll",
+      "phase": "BeginnersForest",
+      "nativeFilesetUid": 4
+    },
+    {
+      "title": "DharmaQuest",
+      "extraAnswers": null,
+      "module": "Dharmaquest",
+      "plugin": "Dharmaquest.dll",
+      "phase": "Dharmaquest",
+      "nativeFilesetUid": 6
+    },
+    {
+      "title": "Escape from Mt. Moon",
+      "extraAnswers": null,
+      "module": "EscapeFromMtMoon",
+      "plugin": "EamonRT.dll",
+      "phase": "EscapeFromMtMoon",
+      "nativeFilesetUid": 7
+    },
+    {
+      "title": "Firestorm",
+      "extraAnswers": null,
+      "module": "Firestorm",
+      "plugin": "Firestorm.dll",
+      "phase": "Firestorm",
+      "nativeFilesetUid": 8
+    },
+    {
+      "title": "Land of the Mountain King",
+      "extraAnswers": null,
+      "module": "LandOfTheMountainKing",
+      "plugin": "LandOfTheMountainKing.dll",
+      "phase": "LandOfTheMountainKing",
+      "nativeFilesetUid": 9
+    },
+    {
+      "title": "Orb of My Life",
+      "extraAnswers": null,
+      "module": "OrbOfMyLife",
+      "plugin": "OrbOfMyLife.dll",
+      "phase": "OrbOfMyLife",
+      "nativeFilesetUid": 10
+    },
+    {
+      "title": "Stronghold of Kahr-Dur",
+      "extraAnswers": null,
+      "module": "StrongholdOfKahrDur",
+      "plugin": "StrongholdOfKahrDur.dll",
+      "phase": "StrongholdOfKahrDur",
+      "nativeFilesetUid": 12
+    },
+    {
+      "title": "The Beginner's Cave",
+      "extraAnswers": null,
+      "module": "TheBeginnersCave",
+      "plugin": "TheBeginnersCave.dll",
+      "phase": "TheBeginnersCave",
+      "nativeFilesetUid": 14
+    },
+    {
+      "title": "The Deep Canyon",
+      "extraAnswers": null,
+      "module": "TheDeepCanyon",
+      "plugin": "TheDeepCanyon.dll",
+      "phase": "TheDeepCanyon",
+      "nativeFilesetUid": 15
+    },
+    {
+      "title": "The Pyramid of Anharos",
+      "extraAnswers": [
+        [
+          "Good, an Average, or No guide",
+          "N"
+        ]
+      ],
+      "module": "ThePyramidOfAnharos",
+      "plugin": "ThePyramidOfAnharos.dll",
+      "phase": "ThePyramidOfAnharos",
+      "nativeFilesetUid": 16
+    },
+    {
+      "title": "The Sub-Aquan Laboratory",
+      "extraAnswers": null,
+      "module": "TheSubAquanLaboratory",
+      "plugin": "TheSubAquanLaboratory.dll",
+      "phase": "TheSubAquanLaboratory",
+      "nativeFilesetUid": 17
+    },
+    {
+      "title": "The Temple of Ngurct",
+      "extraAnswers": null,
+      "module": "TheTempleOfNgurct",
+      "plugin": "TheTempleOfNgurct.dll",
+      "phase": "TheTempleOfNgurct",
+      "nativeFilesetUid": 18
+    },
+    {
+      "title": "The Tower of Eamon",
+      "extraAnswers": null,
+      "module": "TheTowerOfEamon",
+      "plugin": "EamonRT.dll",
+      "phase": "TheTowerOfEamon",
+      "nativeFilesetUid": 19
+    },
+    {
+      "title": "The Training Ground",
+      "extraAnswers": null,
+      "module": "TheTrainingGround",
+      "plugin": "TheTrainingGround.dll",
+      "phase": "TheTrainingGround",
+      "nativeFilesetUid": 20
+    },
+    {
+      "title": "The Vile Grimoire of Jaldi'al",
+      "extraAnswers": null,
+      "module": "TheVileGrimoireOfJaldial",
+      "plugin": "TheVileGrimoireOfJaldial.dll",
+      "phase": "TheVileGrimoireOfJaldial",
+      "nativeFilesetUid": 21
+    },
+    {
+      "title": "The Wayfarers Inn",
+      "extraAnswers": null,
+      "module": "TheWayfarersInn",
+      "plugin": "TheWayfarersInn.dll",
+      "phase": "TheWayfarersInn",
+      "nativeFilesetUid": 22
+    },
+    {
+      "title": "Wrenhold's Secret Vigil",
+      "extraAnswers": null,
+      "module": "WrenholdsSecretVigil",
+      "plugin": "WrenholdsSecretVigil.dll",
+      "phase": "WrenholdsSecretVigil",
+      "nativeFilesetUid": 23
+    }
+  ]
+}
