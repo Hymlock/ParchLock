@@ -1,0 +1,45 @@
+{
+  "safeFinal": true,
+  "expectInput": "line",
+  "expectPhase": "ARuncibleCargo",
+  "max": 90,
+  "rules": [
+    [
+      "D for desk",
+      "D"
+    ],
+    [
+      "type it in now",
+      "Confucious Maximus"
+    ],
+    [
+      "Y for yes or N",
+      "Y"
+    ],
+    [
+      "Press any key",
+      " "
+    ],
+    [
+      "^.X.: $",
+      [
+        "1"
+      ]
+    ],
+    [
+      "Enter the selection",
+      "2"
+    ],
+    [
+      "^> $",
+      [
+        "save 1",
+        "<stop>"
+      ]
+    ],
+    [
+      "Return to the Main Hall",
+      "Y"
+    ]
+  ]
+}

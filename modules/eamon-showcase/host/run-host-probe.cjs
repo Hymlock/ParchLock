@@ -17,6 +17,9 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
   const logs = [];
   const server = http.createServer((req, res) => {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    if (pathname === '/probe-seed.html' && process.env.PARCHLOCK_HOST_SEED_STORE) {
+      res.setHeader('Content-Type','text/html');res.end('<title>Private G1 store fixture</title>');return;
+    }
     let file;
     if (fixtures.has(pathname)) file = path.join(__dirname, pathname.slice(1));
     else if (appFiles.has(pathname)) file = path.join(appDir, pathname.slice(1));
@@ -39,6 +42,16 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     const appUrl = process.env.PARCHLOCK_HOST_URL;
     const page = appUrl ? browser.contexts()[0].pages()[0] : cdp ? await browser.contexts()[0].newPage() : await browser.newPage();
     if (appUrl) receipt.appStartUrl = page.url();
+    if (process.env.PARCHLOCK_HOST_TEST_MAIN_HALL_BOOT) {
+      receipt.controlledMainHallBoot=true; // Startup-choice fixture only, not a shipped resume UI.
+      await page.addInitScript(()=>{
+        const post=Worker.prototype.postMessage;
+        Worker.prototype.postMessage=function(message,...rest){
+          if(message?.kind==='boot')message={...message,launch:['-pfn','EamonMH.dll','-fsfn','ADVENTURES.DAT']};
+          return post.call(this,message,...rest);
+        };
+      });
+    }
     if (process.env.PARCHLOCK_HOST_FAIL_COMMIT || process.env.PARCHLOCK_HOST_FAIL_RESULT) await page.addInitScript(failCommit => {
       const transaction = IDBDatabase.prototype.transaction;
       IDBDatabase.prototype.transaction = function (stores, mode, ...rest) {
@@ -53,6 +66,27 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     if (cdp) receipt.scope = 'Remote browser over CDP: ' + (await browser.version()) + ' ' + (await page.evaluate(() => navigator.userAgent));
     page.on('console', m => logs.push({type: m.type(), text: m.text()}));
     page.on('pageerror', e => logs.push({type: 'pageerror', text: String(e)}));
+    if (process.env.PARCHLOCK_HOST_SEED_STORE) {
+      const fixture=JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SEED_STORE,'utf8'));
+      await page.goto('http://127.0.0.1:'+server.address().port+'/probe-seed.html');
+      await page.evaluate(data=>new Promise((resolve,reject)=>{
+        const request=indexedDB.open('parchlock-eamon-probe',1);
+        request.onupgradeneeded=()=>{request.result.createObjectStore('files',{keyPath:'path'});request.result.createObjectStore('meta',{keyPath:'key'});};
+        request.onerror=()=>reject(request.error);
+        request.onsuccess=()=>{
+          const db=request.result, check=db.transaction('files'), count=check.objectStore('files').count();
+          count.onsuccess=()=>{
+            if(count.result){db.close();reject(new Error('Seed requires an empty private test store'));return;}
+            const tx=db.transaction(['files','meta'],'readwrite');
+            for(const file of data.files)tx.objectStore('files').put({...file,bytes:file.bytes?Uint8Array.from(file.bytes):null});
+            for(const entry of data.meta)tx.objectStore('meta').put(entry);
+            tx.oncomplete=()=>{db.close();resolve();};tx.onerror=tx.onabort=()=>reject(tx.error);
+          };
+          count.onerror=()=>reject(count.error);
+        };
+      }),fixture);
+      receipt.seededPrivateTestStore=true;
+    }
     const began = Date.now();
     await page.goto(appUrl || 'http://127.0.0.1:' + server.address().port + '/host-index.html');
     const settle = () => page.waitForFunction(() => eamon.pending || eamon.events.some(e => e.kind === 'result' || e.kind === 'error'), null, {timeout: 120000});
@@ -96,8 +130,10 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
       receipt.steps.push({failed: 'required final screen text missing', expected: script.expectFinal});
     if (script.expectFinalRegex && !script.expectFinalRegex.every(pattern => new RegExp(pattern).test(final.screen)))
       receipt.steps.push({failed: 'required final screen pattern missing', expected: script.expectFinalRegex});
-    if (script.safeFinal === true && !final.pending?.safePoint)
-      receipt.steps.push({failed: 'final prompt was not a safe point'});
+    if (script.rejectFinalRegex && script.rejectFinalRegex.some(pattern => new RegExp(pattern).test(final.screen)))
+      receipt.steps.push({failed:'unexpected final screen pattern',rejected:script.rejectFinalRegex});
+    if (typeof script.safeFinal === 'boolean' && final.pending?.safePoint !== script.safeFinal)
+      receipt.steps.push({failed: 'final prompt safe-point classification did not match',expected:script.safeFinal});
     if (script.expectInput && final.pending?.type !== script.expectInput)
       receipt.steps.push({failed: 'unexpected final input type',expected:script.expectInput});
     if (script.expectPhase && !final.events.some(event=>event.kind==='phase'&&String(event.detail).includes(script.expectPhase)))

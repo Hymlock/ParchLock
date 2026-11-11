@@ -82,6 +82,29 @@ Windows launcher path: `ParchLock.exe` is a local web server on `http://127.0.0.
 
 Character return: stopping at the Main Hall menu right after returning from an adventure and restarting opened straight at that menu with the character on file; the loot sale did not replay (that sale was 0 gold, so a double payment is not ruled out by this run alone).
 
+### Actual fee-bearing recall (bounded desktop continuation)
+
+This is different from ordinary registration lookup and from `quit hall`, which took another native
+return path in the first attempted script. The retained first attempt did not satisfy the fee assertion.
+Using the upstream character Confucious Maximus, the host entered A Runcible Cargo and saved a game,
+then closed without normal exit. A controlled test startup choice booted Main Hall while retaining the
+native abandoned-adventure files. Registration then executed the real paid recall, including its
+native save-file deletion. One observed fee was 83 gold (1244 -> 1161); after closing and reopening,
+the character table was unchanged and no new recall charge was printed. This is not a shipped Hall/
+resume choice UI, and neither run is principal quest-outcome evidence.
+
+A second test seeded an empty private profile with that actual pre-recall snapshot, interrupted at the
+post-recall single-key prompt, and verified ZERO commits and the old store unchanged. Retrying to the
+top Hall menu committed once: a native fee of 88 gold (1244 -> 1156), Alive character and 15 expected
+save-file tombstones. The fee is native and varies; the test compares the amount actually printed, not
+a hardcoded price. It does not prove crash safety between serializer writes or during IndexedDB commit.
+
+Recipes: `recall-abandon.json`, `recall-complete.json`, `recall-interrupt.json`, `recall-restart.json`.
+Use a dedicated profile/fixed port. `PARCHLOCK_HOST_TEST_MAIN_HALL_BOOT=1` is a controlled startup fixture;
+it changes only the test worker's boot arguments. `PARCHLOCK_HOST_EXPORT` records the actual private
+store. `PARCHLOCK_HOST_SEED_STORE` accepts that exported fixture only into an empty private test store;
+never point these controls at a user's real storage or treat them as the final campaign start mechanism.
+
 ## Not done
 
 - The in-app run used a debug-signed side-by-side build with the engine baked into the app, not the release-signed APK and not an imported Showcase package. Importing is not implemented. A later debug build did run through ParchLock's own service worker and play screen (see above); that is still a debug build with the engine baked in. Airplane mode was not switched on for the run.
@@ -92,7 +115,10 @@ Character return: stopping at the Main Hall menu right after returning from an a
   including nested-menu classifications and the heaviest adventure. It is not adopted, not Android
   accepted, and not a measured final import-package size.
 - A restart resumes from the engine's last saved game, not the exact turn. Force-stop in the middle of a write, storage-full and two-tabs-at-once cases are untested.
-- Restart while the Main Hall is processing a returning character is untested.
+- Paid-recall interruption at the nested key prompt is covered above; interruption between native
+  serializer writes, during the durable commit, and paid/nonzero-loot regular return cases remain open.
 - Only two adventures exercised, lightly. No combat, spells, death, or the other 18 adventures.
 - Engine pacing delays are currently skipped.
-- No independent review of this code.
+- Grok performed a focused independent read-only review of the Hall checkpoint/content-snapshot
+  candidate (accept with changes, not full G1 acceptance). Current corrections and remaining host/UI
+  integration still require their actual independent reviews; no blanket implementation pass exists.

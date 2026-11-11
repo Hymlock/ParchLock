@@ -1,0 +1,32 @@
+{
+  "expectPhase": "EamonMH.dll",
+  "safeFinal": true,
+  "rules": [
+    [
+      "D for desk",
+      "D"
+    ],
+    [
+      "type it in now",
+      "Confucious Maximus"
+    ],
+    [
+      "Y for yes or N",
+      "Y"
+    ],
+    [
+      "Press any key",
+      " "
+    ],
+    [
+      "^.X.: $",
+      "<stop>"
+    ]
+  ],
+  "expectFinal": [
+    "charged",
+    "Welcome back from yer adventure"
+  ],
+  "expectInput": "field",
+  "max": 20
+}
