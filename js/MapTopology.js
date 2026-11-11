@@ -1105,7 +1105,7 @@ var MapTopology = {
                     MapTopology.prevRoomId = null;
                     MapTopology.prevRoomName = "";
                     if (typeof ParchLock !== "undefined" && ParchLock.GameFilename) {
-                        try { localStorage.removeItem("PL_Map_" + ParchLock.GameFilename); } catch (eL) {}
+                        try { localStorage.removeItem(ParchLockMap.StorageKey ? ParchLockMap.StorageKey() : "PL_Map_" + ParchLock.GameFilename); } catch (eL) {}
                     }
                     try { ParchLockMap.UpdateStats(); ParchLockMap.RebuildRoomsList(); ParchLockMap.RebuildNotesList(); ParchLockMap.ApplyNotesAddButtonPref(); ParchLockMap.Draw(); } catch (eD) {}
                 }

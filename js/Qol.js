@@ -585,6 +585,16 @@ var ParchLockQol = {
             }
             var mapKey = ParchLockMap.StorageKey();
             previous.push({ Key: mapKey, Data: localStorage.getItem(mapKey) });
+            // The other worlds' maps of a multi-world story (see ParchLock.GetSaveData), inside this rollback.
+            if (data.ScopedMaps && typeof data.ScopedMaps === "object") {
+                Object.keys(data.ScopedMaps).forEach(function (world) {
+                    if (world === ParchLockMap.Scope) return;
+                    WorkspaceUI.ValidateMap({ Map: data.ScopedMaps[world] });
+                    var worldKey = "PL_Map_" + ParchLock.GameFilename + "#" + world;
+                    previous.push({ Key: worldKey, Data: localStorage.getItem(worldKey) });
+                    localStorage.setItem(worldKey, JSON.stringify(data.ScopedMaps[world]));
+                });
+            }
 
             // D112: a new Rooms array invalidates any active Notes scope
             // (the previously-scoped room record no longer exists in it).

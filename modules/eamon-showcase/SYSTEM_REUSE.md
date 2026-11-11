@@ -61,9 +61,40 @@ parser. Offer only Eamon's own commands; do not add commands Eamon does not have
 | R12 | **Numbered menus** (Main Hall, shops) | searched `Actionable`, `CharKeys`, `Input`, `Qol`, `DirectionalRadial`, `StatTracker`: no existing mechanism offers numbered menu choices for taps; Z menus are typed or key-proxy too | no new mechanism. Options: leave as typed (current); or offer the choice keys through the existing submit-button command radial (R3 list) while a single-key prompt is pending | Open: operator or seat decision |
 | R13 | **Map, direction chips, fast travel** (`MapTopology`, `ParchLockMap`, `DirectionalRadial`, `Navigator`) read payload `roomId`, `roomName`, `exits`, `probe.roomSource` | none after two gate edits ("eamon-live", "eamon-native") | provider | Built (fast travel and encounter stop not yet tested) |
 | R14 | **Equipment** (`EquipmentUI.model/rows`): payload `playerId`, `parentId`, `attrs.worn`, `container` | none for Yourself, worn and carried | provider | Built (drag commands and containers not yet tested) |
-| R16 | **Per-adventure scope** (plan: bundle + adventure + kind + id; one map per adventure). Map storage is keyed by story path (`PL_Map_` + path), learning by executable identity | all 20 adventures share one story path and one identity; native room/artifact numbers repeat between adventures | qualify ids by adventure in the snapshot, and give each adventure its own map through the existing map storage | Built: ids = adventure code (stable hash, collision-free for all 24 names) x 1,000,000 + kind base + native number; `ParchLockMap.Scope` / `StorageKey()` / `SetScope()` scope `PL_Map_` and `PL_MapSlots_` keys (empty scope for every other story, so their keys are unchanged); the provider selects the adventure's map, or an empty Main Hall map. Verified: Beginner's Cave map kept under its own key after leaving and entering the Vile Grimoire on a fresh map |
+| R16 | **Per-adventure scope** (plan: one map per adventure). Map storage keyed by story path (`PL_Map_` + path), learning by executable identity | all 20 adventures share one story path and identity; native room/artifact numbers repeat between adventures | `ParchLockMap.Scope` / `StorageKey()` / `SetScope()` scope the existing `PL_Map_` and `PL_MapSlots_` keys (empty scope for every other story: keys unchanged; reset in `ParchLock.SetTitle`). The provider selects the adventure's map, or an empty Main Hall map. Every existing key user follows the scope: uninstall removes all `#world` keys (`ModuleLibrary.removeLocal`), the declined-restore wipe uses `StorageKey()` (`MapTopology`), save packages carry the other worlds as `ScopedMaps` (`ParchLock.GetSaveData`) and import restores them inside the existing rollback (`ParchLockQol.ImportPackageData`). Ids = adventure code x 1,000,000 + kind base + native number. Plan identity is bundle + adventure + kind + id: the bundle part is the R10 owner (package digest) that every learning/stats store is keyed under, not a field inside the id | Built with callers fixed after Grok audit #3367 (candidate, not accepted): Beginner's Cave map kept across Main Hall and Vile Grimoire; uninstall leaves no map keys; export/import round-trips the Cave map from the Main Hall |
 | R15 | **Read-aloud** (`ReadAloud`: BufferWindow observer) | reflow joins lines so narration reads whole sentences; three "Failed to read text" errors were seen on the phone | none known; trace the errors | Open: trace |
 
 Order of work: R10 identity (unblocks R6, R9 and learning) -> R3/R4 vocabulary -> R2 rules entries -> R9 stats
 facts -> R7/R8 save events -> R12 decision. Each change goes into the named existing function or data table;
 nothing here adds a parallel menu, store, parser or UI.
+
+### R16 adventure codes (from each adventure's own MODULE.DAT, which is what `GetModule().Name` returns; runtime ids observed: Beginner's Cave 30,000,00x, Vile Grimoire scope name matches)
+
+| Folder | `GetModule().Name` (MODULE.DAT) | Adventure code |
+| --- | --- | --- |
+| ARuncibleCargo | A Runcible Cargo | 1863 |
+| AlternateBeginnersCave | Alternate Beginner's Cave | 1025 |
+| BeginnersCaveII | Beginner's Cave II | 1097 |
+| BeginnersForest | Beginner's Forest | 1527 |
+| DemoAdventure | Eamon Deluxe 5.0 Demo Adventure | 711 |
+| Dharmaquest | DharmaQuest | 931 |
+| EscapeFromMtMoon | Escape from Mt. Moon | 1561 |
+| Firestorm | Firestorm | 1435 |
+| LandOfTheMountainKing | Land of the Mountain King | 157 |
+| OrbOfMyLife | Orb of My Life | 284 |
+| SampleAdventure | Sample Adventure | 188 |
+| StrongholdOfKahrDur | Stronghold of Kahr-Dur | 169 |
+| TestAdventure | Test Adventure | 1638 |
+| TheBeginnersCave | The Beginner's Cave | 30 |
+| TheDeepCanyon | The Deep Canyon | 1251 |
+| ThePyramidOfAnharos | The Pyramid of Anharos | 1742 |
+| TheSubAquanLaboratory | The Sub-Aquan Laboratory | 1127 |
+| TheTempleOfNgurct | The Temple of Ngurct | 1474 |
+| TheTowerOfEamon | The Tower of Eamon | 1543 |
+| TheTrainingGround | The Training Ground | 378 |
+| TheVileGrimoireOfJaldial | The Vile Grimoire of Jaldi'al | 72 |
+| TheWayfarersInn | The Wayfarers Inn | 1336 |
+| WrenholdsSecretVigil | Wrenhold's Secret Vigil | 428 |
+| (Main Hall) | Main Hall: map scope name only; the Hall has no rooms, so no ids | 308 |
+
+Collisions: none (24 names, 24 distinct codes).

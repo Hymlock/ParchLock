@@ -75,7 +75,9 @@ var EamonProvider = {
             var inHall = vm && vm.state && /EamonMH/.test(vm.state.phase || "");
             if (world && world.adventure) ParchLockMap.SetScope(world.adventure);
             else if (inHall) ParchLockMap.SetScope("Main Hall");
-        } catch (e) {}
+        } catch (e) {
+            if (!EamonProvider._scopeWarned) { EamonProvider._scopeWarned = true; try { console.warn("Eamon map scope switch failed", e); } catch (e2) {} }
+        }
     },
 
     collect: () => {

@@ -298,6 +298,7 @@ var ParchLock = {
         var story = new URLSearchParams(window.location.search).get("story");
         ParchLock.StoryPath = story ? ModuleLibrary.normalizePath(story) : "";
         ParchLock.GameFilename = "";
+        if (typeof ParchLockMap !== "undefined") ParchLockMap.Scope = "";
         if (ParchLock.StoryPath) ParchLock.GameFilename = ParchLock.StoryPath.indexOf("games/") === 0
             ? ParchLock.StoryPath.slice(6)
             : ParchLock.StoryPath;
@@ -597,6 +598,17 @@ var ParchLock = {
             Map: ParchLockMap.Rooms,
             Save: s
         };
+        // A story with several worlds (the Eamon Showcase: one map per adventure) also exports the other
+        // worlds' maps, keyed by world; Map stays the world in play, so existing packages are unchanged.
+        try {
+            if (ParchLockMap.Scope) ParchLockMap.Save();
+            var scopedPrefix = "PL_Map_" + ParchLock.GameFilename + "#", maps = {};
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && key.indexOf(scopedPrefix) === 0) maps[key.slice(scopedPrefix.length)] = JSON.parse(localStorage.getItem(key));
+            }
+            if (Object.keys(maps).length) { o.MapScope = ParchLockMap.Scope; o.ScopedMaps = maps; }
+        } catch (eScoped) {}
 
         return JSON.stringify(o);
     }

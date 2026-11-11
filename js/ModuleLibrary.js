@@ -629,6 +629,12 @@ var ModuleLibrary = (function () {
             cache = cache.filter(function (entry) { return entry.id !== item.id; });
             removeFlags(item.Path);
             [LEGACY.map, LEGACY.mapSlots, LEGACY.gameId].forEach(function (prefix) { localStorage.removeItem(prefix + item.Path); });
+            // A module with several worlds (the Eamon Showcase) keeps one map per world: "<prefix><path>#<world>".
+            [LEGACY.map, LEGACY.mapSlots].forEach(function (prefix) {
+                var scoped = prefix + item.Path + "#", doomed = [];
+                for (var i = 0; i < localStorage.length; i++) { var key = localStorage.key(i); if (key && key.indexOf(scoped) === 0) doomed.push(key); }
+                doomed.forEach(function (key) { localStorage.removeItem(key); });
+            });
             saveCache();
             changed();
             return true;
