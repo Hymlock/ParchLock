@@ -33,6 +33,9 @@ Not yet connected: map, underlines, direction buttons, Equipment, stats, read-al
 
 - Safe points are top-level waits only (plan section 5): the adventure's own command prompt and the Main Hall's top menu (not its sub-menus), decided from which engine code is asking; anything unrecognised is not a safe point. Nested prompts (shop steps, registration, yes/no inside an action, "press any key") save nothing. At a safe point the host sends the files that changed since the last one, plus the name of the program now running, as one batch.
 - The page stores each batch in a single IndexedDB transaction, so a revision is all or nothing. The player's answer is not passed to the engine until that transaction has completed, so the engine never runs ahead of durable storage.
+- Changed files are detected by exact byte comparison against the previous snapshot, not size/timestamp:
+  a same-length rewrite with the same timestamp must still reach durable storage. The bytes staged are
+  the bytes scanned. Snapshot memory overhead and real-target timings remain part of G1 measurement.
 - On start, saved files (and recorded deletions) are laid over the pristine bundle and the saved program is relaunched. The engine's own resume logic does the rest.
 - `PARCHLOCK_HOST_PROFILE` + `PARCHLOCK_HOST_PORT` keep one browser profile and origin across runs; `PARCHLOCK_HOST_CDP` drives an already running browser such as Chrome on a phone over adb.
 

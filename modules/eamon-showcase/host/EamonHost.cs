@@ -14,15 +14,16 @@ namespace ParchLock.EamonHost
 	/// </summary>
 	public static class Persistence
 	{
-		static Dictionary<string, (long Length, long Stamp)> _known = new Dictionary<string, (long, long)>();
+		static Dictionary<string, byte[]> _known = new Dictionary<string, byte[]>();
 		static string _launch = "";
 
-		static Dictionary<string, (long, long)> Scan()
+		static Dictionary<string, byte[]> Scan()
 		{
-			var result = new Dictionary<string, (long, long)>();
+			var result = new Dictionary<string, byte[]>();
 			if (!Directory.Exists(Entry.BasePath)) return result;
 			foreach (var file in new DirectoryInfo(Entry.BasePath).EnumerateFiles("*", SearchOption.AllDirectories))
-				result[file.FullName.Substring(Entry.BasePath.Length + 1)] = (file.Length, file.LastWriteTimeUtc.Ticks);
+				// MEMFS timestamps can coincide; equal size/time does not imply equal contents.
+				result[file.FullName.Substring(Entry.BasePath.Length + 1)] = File.ReadAllBytes(file.FullName);
 			return result;
 		}
 
@@ -33,9 +34,9 @@ namespace ParchLock.EamonHost
 			var now = Scan();
 			var changed = false;
 			foreach (var item in now)
-				if (!_known.TryGetValue(item.Key, out var before) || before != item.Value)
+				if (!_known.TryGetValue(item.Key, out var before) || !before.AsSpan().SequenceEqual(item.Value))
 				{
-					HostBridge.Stage(item.Key, File.ReadAllBytes(Path.Combine(Entry.BasePath, item.Key)));
+					HostBridge.Stage(item.Key, item.Value);
 					changed = true;
 				}
 			foreach (var path in _known.Keys)

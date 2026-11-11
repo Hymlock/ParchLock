@@ -17,3 +17,18 @@ G1 remains OPEN: actual Eamon gameplay/console adaptation, nested fields, RNG fi
 `EamonProbe.cs` provides the reflection/serializer fixture method. `run-storage-probe.cjs` commits its actual serialized module output into an isolated IndexedDB database, closes the persistent Chromium process, starts a fresh process with the same scratch profile, and deserializes the stored bytes. This passed with identical Beginner's Cave title/room/artifact counts on November 10. It does not prove engine saves, multi-file atomicity, campaign progress or production learning persistence. The scratch profile remains as evidence and contains no production app storage. The prepare script runs both input and storage checks.
 
 No playable importable Showcase file exists yet.
+
+## Same-metadata file changes (G1 host continuation)
+
+`MetadataProbe.cs` targets the actual host's `Persistence.Flush`: it baselines bytes 1/2/3, writes
+4/5/6 with equal length and a fixed identical timestamp, then flushes twice. The old metadata-only
+scanner missed the changed file entirely. The content-based candidate stages the exact changed bytes
+once and commits once; the unchanged second flush does nothing. This passed in local Chromium.
+
+To reproduce, copy only this probe C# file into an already prepared private `eamon-host` scratch project,
+publish it, then run `run-persistence-probe.cjs` with `PARCHLOCK_SOURCE_ROOT` and `PARCHLOCK_HOST_WORK`.
+Inspect `codex-metadata-receipt.json`: `sameStamp` must be true, staged bytes must be `[4,5,6]`, and commits
+must equal one. Remove the copied probe from scratch and rebuild afterward; it is not runtime/package
+content. No source engine changes are needed. The candidate keeps previous file bytes in memory for an
+exact comparison and stages those same scanned bytes. Its memory/performance cost still needs real-target
+measurement; this narrow test does not certify gameplay saves, transaction failure or campaign identity.
