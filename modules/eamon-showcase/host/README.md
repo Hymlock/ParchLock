@@ -125,3 +125,33 @@ never point these controls at a user's real storage or treat them as the final c
 - Grok performed a focused independent read-only review of the Hall checkpoint/content-snapshot
   candidate (accept with changes, not full G1 acceptance). Current corrections and remaining host/UI
   integration still require their actual independent reviews; no blanket implementation pass exists.
+
+## Player-facing integration (November 11, Claude continuation; candidate, not reviewed)
+
+- **World data** (`WorldSnapshot.cs` -> `js/EamonProvider.js` -> existing `WorldModel`): at an adventure's
+  own prompt only, a read-only picture built from engine fields and location arithmetic. Objects and
+  monsters appear only once the game has shown them (`Seen`) and only in a lit room; exits are exactly
+  those the game's own `IsDirectionInObviousExitsList` gives; a destination is named only after a visit.
+  It never calls the engine's printing or "listed in room" helpers (they set `Seen`) and draws no
+  random numbers. Ids: rooms as-is, artifacts +100000, monsters +200000, Yourself 300000. Two consumer
+  gates accept the new source (`js/ParchLock.js` "eamon-live", `js/MapTopology.js` "eamon-native").
+  Result: the map builds as you walk, direction chips and exits work, objects/exits are underlined,
+  Equipment shows Yourself with worn gear under it.
+- **Tap menus**: each object carries the Eamon parser's own verbs for its present state
+  (`nativeCommands`); `Actionable` offers those as given instead of Z-machine grammar synthesis.
+- **Presentation**: Eamon's fixed 80-column text is reflowed for any window width (presentation only);
+  a status line shows the room (or "Main Hall") and health.
+- **Import**: `js/EamonPackage.js` + `ModuleLibrary`: a `.eamon` file chosen in Modules -> Choose files
+  installs as one library entry (`local/<sha256>.eamon.js`) and plays from its own package cache,
+  served by the app's service worker; app updates never purge it; removing it keeps campaign progress.
+  A package runs only if its whole-file SHA-256 is listed in `TRUSTED` in `js/EamonPackage.js`.
+  **The current pin is a development build (`0.1.0-dev`, a4f77d98...); a release must replace it.**
+  Build a package with `node host/pack-showcase.cjs <work> <out.eamon> <version> [--pin]` (deterministic).
+- Verified on desktop Chromium: import (0.7 s for 11.1 MB, 381 files) -> Main Hall -> Beginner's Cave with
+  no development overlay served; map 4 rooms correctly linked. Ordinary-module regression
+  (`probes/run-existing-module-regression.cjs`): z3, z5, z8, zblorb, gblorb, ulx and offline z5/ulx pass.
+
+Still open for this layer: Android import through the real picker (phone was disconnected); stats panel
+(StatTracker does not yet read Eamon figures; the status line does show health); Main Hall menus are
+numbered text, not tappable choices (proposal only); `parchlock-eamon` progress database is one global
+campaign; independent review of all of the above.
