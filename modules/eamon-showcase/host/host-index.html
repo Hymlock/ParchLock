@@ -1,0 +1,48 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Eamon host probe</title>
+<style>body{margin:0;background:#111;color:#ddd;font:14px/1.3 monospace}#screen{white-space:pre-wrap;padding:8px;margin:0 0 48px}#bar{position:fixed;bottom:0;left:0;right:0;display:flex;background:#222}#entry{flex:1;font:inherit;padding:8px;background:#000;color:#fff;border:0}</style>
+<p style="margin:8px">Gate G1 host probe. Not the ParchLock integration.</p>
+<pre id="screen"></pre>
+<form id="bar"><input id="entry" autocomplete="off" autocapitalize="off"><button>Send</button></form>
+<script>
+// window.eamon is the whole page-side contract: screen text, the pending read, and answer().
+const eamon = window.eamon = {screen: '', pending: null, answers: new Map(), events: [], ticks: 0, turns: []};
+setInterval(() => eamon.ticks++, 20);
+const screenEl = document.getElementById('screen'), entryEl = document.getElementById('entry');
+function post(id) {
+  const answer = eamon.answers.get(String(id));
+  if (answer && navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({kind: 'eamon-answer', id, ...answer});
+}
+eamon.answer = (value, cancel) => {
+  if (!eamon.pending) return false;
+  const id = eamon.pending.id;
+  eamon.turns.push({id, sent: performance.now()});
+  eamon.answers.set(String(id), {value, cancel: !!cancel});
+  eamon.pending = null;
+  post(id);
+  return true;
+};
+document.getElementById('bar').addEventListener('submit', event => { event.preventDefault(); if (eamon.answer(entryEl.value)) entryEl.value = ''; });
+(async () => {
+  await navigator.serviceWorker.register('./host-sw.js');
+  await navigator.serviceWorker.ready;
+  if (!navigator.serviceWorker.controller) await new Promise(resolve => navigator.serviceWorker.addEventListener('controllerchange', resolve, {once: true}));
+  navigator.serviceWorker.addEventListener('message', event => { if (event.data.kind === 'eamon-poll') post(event.data.id); });
+  const worker = eamon.worker = new Worker('./host-worker.js', {type: 'module'});
+  worker.onmessage = event => {
+    const data = event.data;
+    if (data.kind === 'output') {
+      eamon.screen = eamon.screen.slice(0, data.keep) + data.text;
+      screenEl.textContent = eamon.screen;
+      window.scrollTo(0, document.body.scrollHeight);
+    } else if (data.kind === 'read') {
+      eamon.answers.clear();
+      const turn = eamon.turns[eamon.turns.length - 1];
+      if (turn && !turn.ms) turn.ms = performance.now() - turn.sent;
+      eamon.pending = data;
+      entryEl.maxLength = data.type === 'key' ? 1 : Math.min(data.size, 4096);
+      entryEl.focus();
+    } else eamon.events.push(data);
+  };
+  worker.onerror = event => eamon.events.push({kind: 'error', value: event.message});
+})().catch(error => eamon.events.push({kind: 'error', value: String(error)}));
+</script>

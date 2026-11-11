@@ -20,6 +20,8 @@ The first reproducible [feasibility probes](probes/README.md) are now present. D
 
 Android is mandatory: verify the final signed APK contains and can load the app-owned engine assets; import the separate Showcase through the phone's existing Modules picker; launch Main Hall and exercise adventures offline; retain installed data, character/campaign progress, saves and learned data across quit, force-stop and restart. Test the built APK itself, not only desktop source. Current Android builds stage through make-dist and capacitor-www before cap copy; those allowlists and the existing service worker need explicit review when runtime adoption is approved. Desktop probe success cannot waive these checks.
 
+The real engine now runs under an [engine host](host/README.md): in desktop Chromium a scripted session created a character in the Main Hall, played, saved, restored and left The Beginner's Cave, and returned to the Main Hall with the character written back. Durable storage, Android, Windows, hosted and size checks are still open, so G1 remains open.
+
 ## Repository layout
 
 - This folder: module-specific source, package contracts and build entry points as implemented.

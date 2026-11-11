@@ -1,0 +1,11 @@
+{"max":60,"rules":[
+["D for desk","D"],["type it in now","Parch Tester"],["Y for yes or N","Y"],["0=Male","0"],["commit suicide","N"],["R to read instructions","T"],["Press any key"," "],
+["^.X.: $",["2","1","5","X"]],
+["B=Buy weapon",["B","X"]],
+["5=Sword",["5","X"]],
+["G=Good quality",["G"]],
+["1=Leather",["1"]],
+["Enter the selection",["14"]],
+["Leave this adventure","Y"],
+["^> $",["s","look","inventory","status","save 1","e","get all","restore 1","n","n"]]
+]}
