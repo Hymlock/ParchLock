@@ -24,11 +24,37 @@ var EamonProvider = {
         if (o.worn) { a.worn = true; a.isWorn = true; }
         if (o.wearable) { a.wearable = true; a.clothing = true; }
         if (o.container) a.container = true;
-        if (o.edible || o.drinkable) a.edible = true;
+        if (o.edible) a.edible = true;
+        if (o.fixed || o.door) { a.takeable = false; a.scenery = true; }
         return a;
     },
 
-    item: (o, world) => ({
+    // Verb forms the Eamon CS parser itself accepts (EamonRT command set), chosen from the engine's own
+    // facts about the object. The game remains the judge: a form may still be refused in play.
+    commands: (o, held) => {
+        var n = o.name, list = [];
+        var add = function (verb, command) { list.push({ verb: verb, command: command || (verb + " " + n), confidence: 0.95 }); };
+        add("examine");
+        if (o.kind === "monster") {
+            if (o.reaction !== "Friend") add("attack");
+            else add("inventory");
+            return list;
+        }
+        if (held) {
+            if (o.weapon && !o.ready) add("ready");
+            if (o.wearable && !o.worn) add("wear");
+            if (o.worn) add("remove");
+        } else if (!o.fixed && !o.door) add("get");
+        if (o.readable) add("read");
+        if (o.drinkable) add("drink");
+        if (o.edible) add("eat");
+        if (o.light) add("light");
+        if (o.container || o.door) { add("open"); add("close"); }
+        if (held && !o.worn) { add("drop"); add("give", "give " + n + " to "); add("put", "put " + n + " in "); }
+        return list;
+    },
+
+    item: (o, world, held) => ({
         id: o.id,
         name: o.name,
         parentId: o.parent != null ? o.parent : null,
@@ -36,6 +62,8 @@ var EamonProvider = {
         aliases: (o.aliases || []).slice(),
         confidence: 0.95,
         discovered: true,
+        // Eamon's own verbs for this thing in its present state; the shared menu path offers these as given.
+        nativeCommands: EamonProvider.commands(o, held),
         eamon: { kind: o.kind, ready: !!o.ready, weapon: !!o.weapon, readable: !!o.readable, light: !!o.light, door: !!o.door, state: o.state || "", reaction: o.reaction || "" }
     }),
 
@@ -50,8 +78,8 @@ var EamonProvider = {
                 probe: { status: "eamon-idle", playerId: null, roomId: 0, scopeCount: 0 }
             };
         }
-        var objects = (world.objects || []).map(function (o) { return EamonProvider.item(o, world); });
-        var inventory = (world.inventory || []).map(function (o) { return EamonProvider.item(o, world); });
+        var objects = (world.objects || []).map(function (o) { return EamonProvider.item(o, world, false); });
+        var inventory = (world.inventory || []).map(function (o) { return EamonProvider.item(o, world, true); });
         var exits = (world.exits || []).map(function (e) {
             return {
                 label: e.label, command: e.command || e.label, prop: null,

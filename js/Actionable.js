@@ -1011,6 +1011,11 @@ var Actionable = {
     _resolveObjectCommands: (objectId, kind, options) => {
         var target = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
         if (target && !Actionable.referenceFor(target).unique && !(options && options.allowAmbiguousReference)) return [];
+        // An engine that states its own verb forms for an object (js/EamonProvider.js) is the authority
+        // for them; Z-machine grammar synthesis does not apply to it.
+        if (target && Array.isArray(target.nativeCommands)) {
+            return target.nativeCommands.map(function (c) { return { verb: c.verb, command: c.command, confidence: c.confidence || 0.95 }; });
+        }
         // D214 P1 is observed possession, not evidence of a transferable item.
         if (target && target.possessedBy != null) {
             if (typeof ActionSynth === "undefined" || ActionSynth.inspectVerbDisabled()) return [];
