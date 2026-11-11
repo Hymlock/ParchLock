@@ -17,6 +17,8 @@ namespace ParchLock.EamonHost
 		[JSImport("phase", "eamon-host")] internal static partial void Phase(string kind, string detail);
 		/// <summary>Blocks until the page answers. Returns null when the host cancels.</summary>
 		[JSImport("read", "eamon-host")] internal static partial string Read(string kind, int size, string fill, string mask, string defaultText, bool safePoint);
+		/// <summary>What the player can perceive now, as JSON; empty when the engine is not at an adventure's own prompt.</summary>
+		[JSImport("world", "eamon-host")] internal static partial void World(string json);
 		[JSImport("sleep", "eamon-host")] internal static partial void Sleep(int milliseconds);
 		[JSImport("stage", "eamon-host")] internal static partial void Stage(string path, byte[] bytes);
 		[JSImport("unstage", "eamon-host")] internal static partial void Unstage(string path);
@@ -66,6 +68,14 @@ namespace ParchLock.EamonHost
 				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();
 				Persistence.Flush();
 			}
+			// ParchLock's map, exits and object lists follow the game only at an adventure's own prompt.
+			// Anywhere else (the Main Hall, a nested question) there is no world to offer actions on.
+			string world = null;
+			if (safePoint && !(gEngine is EamonMH.Framework.Plugin.IEngine))
+			{
+				try { world = WorldSnapshot.Build(); } catch (Exception) { world = null; }
+			}
+			HostBridge.World(world ?? "");
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
 			var startColumn = lastIndex > -1 ? text.Length - (lastIndex + 1) : (long)text.Length;

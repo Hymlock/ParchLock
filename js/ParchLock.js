@@ -461,7 +461,8 @@ var ParchLock = {
         try {
             if (typeof WorldModel !== "undefined" && WorldModel.tick) WorldModel.tick();
             var p = WorldModel && WorldModel.lastPayload;
-            var structural = p && p.probe && p.probe.status === "z-ram-live" && p.roomName;
+            // "eamon-live": the same kind of fact, from the Eamon engine's own room record (js/EamonProvider.js).
+            var structural = p && p.probe && (p.probe.status === "z-ram-live" || p.probe.status === "eamon-live") && p.roomName;
             /* D24: identity only. Room-graph entry is MapTopology.tick(payload) via TranslatorUI.tick. */
             if (structural && typeof ParchLockMap !== "undefined") {
                 var roomName = ParchLock.CleanRoomName(p.roomName);

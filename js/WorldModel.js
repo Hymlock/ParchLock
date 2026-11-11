@@ -42,6 +42,8 @@ var WorldModel = {
         };
         try { wire("z-ram", typeof ZRamProvider !== "undefined" && ZRamProvider,
             function () { return ZRamProvider.collect(); }); } catch (e) {}
+        try { wire("eamon", typeof EamonProvider !== "undefined" && EamonProvider,
+            function () { return EamonProvider.collect(); }); } catch (e) {}
         try { wire("grammar-ram", typeof GrammarProvider !== "undefined" && GrammarProvider,
             function () { return GrammarProvider.collect(); }); } catch (e) {}
         try { wire("buffer-tap", typeof BufferTapProvider !== "undefined" && BufferTapProvider,

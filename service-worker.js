@@ -112,6 +112,7 @@ const APP_SHELL = [
     "js/WorldMapLayout.js",
     "js/WorldModel.js",
     "js/ZRamProvider.js",
+    "js/EamonProvider.js",
     "js/ZRamReader.js",
     "js/ZvmCapture.js",
     "lib/ie.js",

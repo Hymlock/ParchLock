@@ -134,7 +134,8 @@ var MapTopology = {
                 && !ZRamReader.isInformCompiled(ZRamProvider.getMem())) return true;
         } catch (eZ) {}
         var src = payload.probe && payload.probe.roomSource;
-        var det = src === "player-containment" || src === "measured-fact";
+        // "eamon-native": the room is the Eamon engine's own current-room record (js/EamonProvider.js).
+        var det = src === "player-containment" || src === "measured-fact" || src === "eamon-native";
         if (!det) return false;
         return MapTopology.isRoomAnnounced(payload.roomName);
     },

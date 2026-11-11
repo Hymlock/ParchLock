@@ -117,6 +117,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     await page.waitForFunction(() => { const vm=window.__PARCHLOCK_EAMON__; return !vm || vm.state.commitError || vm.state.pendingCommits === 0; },null,{timeout:10000});
     const final = await page.evaluate(() => { const s = window.__PARCHLOCK_EAMON__ ? window.__PARCHLOCK_EAMON__.state : null; return s && {phase: s.phase, restored: s.restored, commits: s.commits, pendingCommits: s.pendingCommits, commitError: s.commitError, turns: s.turns, events: s.events}; });
     if (receipt.readyTimeout) receipt.dom = await page.evaluate(() => ({inputs: [...document.querySelectorAll('input,textarea')].map(i => i.id + '|' + i.className + '|' + (i.offsetParent ? 'shown' : 'hidden')), windows: [...document.querySelectorAll('#windowport > *')].map(w => w.id + '|' + w.className), pending: !!window.__PARCHLOCK_EAMON__}));
+    // PARCHLOCK_APP_EVAL: an expression evaluated in the page at the end, for inspecting ParchLock's own state.
+    if (process.env.PARCHLOCK_APP_EVAL) { receipt.evaluated = await page.evaluate(process.env.PARCHLOCK_APP_EVAL).catch(e => 'eval failed: ' + e); console.log('EVAL ' + JSON.stringify(receipt.evaluated)); }
     receipt.vm = final; receipt.logs = logs.slice(0, 40);
     receipt.screenTail = (await text()).slice(-3000);
     receipt.failed = receipt.steps.some(s => s.failed) || !final || !!final.commitError;
