@@ -74,11 +74,16 @@ namespace EamonPM
 			if (nlIndex > startIndex) startIndex = nlIndex + 1;
 			OutputBuf.Clear();
 			OutputBuf.Append(text.Substring(startIndex));
+			// Keep the delivered copy aligned, and tell the page its text positions moved.
+			RefreshDelivered(text);
+			_delivered = _delivered.Substring(Math.Min(startIndex, _delivered.Length));
+			ParchLock.EamonHost.HostBridge.Trim(startIndex);
 		}
 
-		public static void RefreshOutputWindowText()
+		public static void RefreshOutputWindowText() => RefreshDelivered(OutputBuf.ToString());
+
+		static void RefreshDelivered(string text)
 		{
-			var text = OutputBuf.ToString();
 			if (text == _delivered) return;
 			var limit = Math.Min(text.Length, _delivered.Length);
 			var keep = 0;

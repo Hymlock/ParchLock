@@ -13,9 +13,10 @@ namespace ParchLock.EamonHost
 	public static partial class HostBridge
 	{
 		[JSImport("output", "eamon-host")] internal static partial void Output(int keep, string text);
+		[JSImport("trim", "eamon-host")] internal static partial void Trim(int dropped);
 		[JSImport("phase", "eamon-host")] internal static partial void Phase(string kind, string detail);
 		/// <summary>Blocks until the page answers. Returns null when the host cancels.</summary>
-		[JSImport("read", "eamon-host")] internal static partial string Read(string kind, int size, string fill, string mask, string defaultText);
+		[JSImport("read", "eamon-host")] internal static partial string Read(string kind, int size, string fill, string mask, string defaultText, bool safePoint);
 		[JSImport("sleep", "eamon-host")] internal static partial void Sleep(int milliseconds);
 		[JSImport("stage", "eamon-host")] internal static partial void Stage(string path, byte[] bytes);
 		[JSImport("unstage", "eamon-host")] internal static partial void Unstage(string path);
@@ -57,8 +58,10 @@ namespace ParchLock.EamonHost
 			if (!EnableInput) { buf.Clear(); return RetCode.Success; }
 
 			App.RefreshOutputWindowText();
-			// Safe point: the engine is idle with every file closed, waiting for the player.
-			Persistence.Flush();
+			// Only a top-level wait is a safe point (plan section 5). A nested prompt (a parser question,
+			// a shop or registration step, a yes/no inside an action) is mid-transaction and saves nothing.
+			var safePoint = IsSafePoint();
+			if (safePoint) Persistence.Flush();
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
 			var startColumn = lastIndex > -1 ? text.Length - (lastIndex + 1) : (long)text.Length;
@@ -69,7 +72,7 @@ namespace ParchLock.EamonHost
 			while (true)
 			{
 				var reply = HostBridge.Read(anyKey ? "key" : (ReadLineMode ? "line" : "field"), (int)Math.Min(bufSize, int.MaxValue),
-					fillChar == '\0' ? "" : fillChar.ToString(), maskChar == '\0' ? "" : maskChar.ToString(), defaultText);
+					fillChar == '\0' ? "" : fillChar.ToString(), maskChar == '\0' ? "" : maskChar.ToString(), defaultText, safePoint);
 				if (reply == null) throw new HostCancelledException();
 
 				buf.Clear();
@@ -89,6 +92,24 @@ namespace ParchLock.EamonHost
 			if (gEngine.Out != null) gEngine.Out.WriteLine("{0}", Buf01);
 			else if (gEngine.Error != null) gEngine.Error.WriteLine("{0}", Buf01);
 			return RetCode.Success;
+		}
+
+		/// <summary>
+		/// True when the engine is waiting at the top level: the adventure's own command prompt
+		/// (GetPlayerInputState) or a menu waiting for a choice (Menu.Execute). Decided from who is
+		/// asking, not from what the prompt says.
+		/// </summary>
+		static bool IsSafePoint()
+		{
+			foreach (var frame in new StackTrace(false).GetFrames())
+			{
+				var method = frame.GetMethod();
+				var type = method?.DeclaringType;
+				if (type == null || type == typeof(HostTextReader)) continue;
+				var name = type.FullName ?? "";
+				return name.EndsWith(".GetPlayerInputState", StringComparison.Ordinal) || (name == "Eamon.Game.Menus.Menu" && method.Name == "Execute");
+			}
+			return false;
 		}
 
 		public virtual RetCode ReadField(StringBuilder buf, long bufSize, char[] boxChars, string emptyVal, Func<char, bool> validCharFunc)

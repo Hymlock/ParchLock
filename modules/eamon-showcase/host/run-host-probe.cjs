@@ -6,7 +6,10 @@ const {chromium} = require(path.join(process.env.PARCHLOCK_SOURCE_ROOT, 'node_mo
 const work = path.resolve(process.env.PARCHLOCK_HOST_WORK);
 const root = path.join(work, 'eamon-host/bin/Release/net8.0/publish/wwwroot');
 const dataRoot = path.join(work, 'data');
-const fixtures = new Set(['/host-index.html', '/host-sw.js', '/host-worker.js']);
+const fixtures = new Set(['/host-index.html', '/host-sw.js']);
+// App-owned host files live in the app's lib/eamon and are served to the standalone probe from there.
+const appFiles = new Set(['/host-worker.js', '/input-relay.js']);
+const appDir = path.join(__dirname, '../../../lib/eamon');
 const mime = {'.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.wasm': 'application/wasm'};
 const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'utf8').replace(/^﻿/, ''));
 const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.json';
@@ -16,6 +19,7 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     let file;
     if (fixtures.has(pathname)) file = path.join(__dirname, pathname.slice(1));
+    else if (appFiles.has(pathname)) file = path.join(appDir, pathname.slice(1));
     else if (pathname.startsWith('/eamon-data/')) { file = path.resolve(dataRoot, pathname.slice(12)); if (!file.startsWith(dataRoot + path.sep)) { res.writeHead(403).end(); return; } }
     else { file = path.resolve(root, '.' + pathname); if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; } }
     fs.readFile(file, (error, bytes) => {
@@ -54,7 +58,7 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
       const rule = rules.find(r => r.pattern.test(tail) && (!Array.isArray(r.answer) || r.answer.length));
       if (!rule) { receipt.steps.push({prompt: tail, failed: 'no rule for this prompt'}); break; }
       const send = Array.isArray(rule.answer) ? rule.answer.shift() : rule.answer;
-      receipt.steps.push({prompt: tail.slice(-160), send});
+      receipt.steps.push({prompt: tail.slice(-160), send, safePoint: await page.evaluate(() => !!(eamon.pending && eamon.pending.safePoint))});
       await page.evaluate(value => eamon.answer(value), send);
       await settle();
     }

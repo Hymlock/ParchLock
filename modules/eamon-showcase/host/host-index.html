@@ -54,6 +54,8 @@ document.getElementById('bar').addEventListener('submit', event => { event.preve
       loadSaved().then(saved => { eamon.restored = {files: saved.files.length, launch: saved.launch, revision: saved.revision}; eamon.baseRevision = saved.revision; worker.postMessage({kind: 'boot', files: saved.files, launch: saved.launch}); });
     } else if (data.kind === 'commit') {
       eamon.commit = eamon.commit.then(() => store(data, eamon.baseRevision)).catch(error => { eamon.commitError = String(error); throw error; });
+    } else if (data.kind === 'trim') {
+      eamon.screen = eamon.screen.slice(data.dropped);
     } else if (data.kind === 'output') {
       eamon.screen = eamon.screen.slice(0, data.keep) + data.text;
       screenEl.textContent = eamon.screen;

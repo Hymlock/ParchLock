@@ -18,9 +18,20 @@ host/Prepare-Host.ps1 -Upstream <pinned Eamon-CS clone> -Work <new private scrat
 PARCHLOCK_SOURCE_ROOT=<repo> PARCHLOCK_HOST_WORK=<scratch> PARCHLOCK_HOST_SCRIPT=host/play-beginners-cave.json node host/run-host-probe.cjs
 ```
 
+## Inside ParchLock's play screen (G1 app-integration candidate, not adopted)
+
+App-owned files in `lib/eamon/`: `zvm.js` (engine adapter), `host-worker.js`, `input-relay.js`, `story.z8.js`.
+
+- ParchLock's vendor loader (`lib/main.js`, untouched) starts a story by loading `<lib_path>zvm.js` and constructing `window.ZVM` against its Glk. For a story id ending `.eamon`, `js/Consts.js` points `lib_path` at `lib/eamon/`, so the loader constructs the Eamon adapter instead. **Deviation to review:** the plan asked whether the loader can start a non-Glk engine without patching minified code. It cannot start one directly; this adapter presents the engine through the same Glk start/resume contract the Z-machine engine uses. `story.z8.js` is an empty placeholder the loader requires; it is not the module's identity and must never be treated as an imported story.
+- Text goes into the ordinary story window, fed at each prompt (the engine rewrites the tail of its screen while working, and the window is append-only). Line prompts use the normal line input; single-key prompts use the normal character input, so ParchLock's mobile input box and key proxy apply unchanged.
+- `service-worker.js` loads `input-relay.js`; the page confirms the controlling service worker carries the relay before starting the engine.
+- `run-app-probe.cjs` plays through the real `play.html`, on desktop or on a device over CDP.
+
+Not yet connected: map, underlines, direction buttons, Equipment, stats, read-aloud tuning (plan package D). The engine's fixed 80-column layout wraps badly in a narrow window. Storage is one global `parchlock-eamon` database, not yet scoped to a campaign or package.
+
 ## Saving
 
-- At every prompt the engine is idle with all files closed. That is the safe point: the host sends the files that changed since the last one, plus the name of the program now running, as one batch.
+- Safe points are top-level waits only (plan section 5): the adventure's own command prompt and a menu waiting for a choice, decided from which engine code is asking. Nested prompts (shop steps, registration, yes/no inside an action, "press any key") save nothing. At a safe point the host sends the files that changed since the last one, plus the name of the program now running, as one batch.
 - The page stores each batch in a single IndexedDB transaction, so a revision is all or nothing. The player's answer is not passed to the engine until that transaction has completed, so the engine never runs ahead of durable storage.
 - On start, saved files (and recorded deletions) are laid over the pristine bundle and the saved program is relaunched. The engine's own resume logic does the rest.
 - `PARCHLOCK_HOST_PROFILE` + `PARCHLOCK_HOST_PORT` keep one browser profile and origin across runs; `PARCHLOCK_HOST_CDP` drives an already running browser such as Chrome on a phone over adb.
@@ -38,6 +49,10 @@ Chrome 156 on an Android phone (NX799J) over USB, same full session script: pass
 Inside the app's own WebView on the same phone (Android 16, WebView 156): a side-by-side debug build (`android-probe.init.gradle`, app id `com.parchlock.app.g1probe`) carrying the normal ParchLock assets plus this host under `/eamon/`, served by Capacitor at `https://localhost`. The full session script passed. Then: stop inside the adventure after a quick save, `am force-stop`, relaunch: the adventure resumed with "Welcome back", finished, and the character was on file in the Main Hall. First prompt 0.7 to 0.9 s, ordinary turns 9 to 40 ms, adventure start about 0.3 s. `PARCHLOCK_HOST_URL` points the runner at a host already inside an app.
 
 Download: framework 28.0 MB raw, 8.4 MB Brotli (untrimmed); game data under 1 MB.
+
+In the real play screen: full session passed on desktop Chromium and on the phone inside the debug probe app (through ParchLock's own service worker and mobile input path). Restart after a quick save resumed the adventure. Interrupting at a nested prompt (inside the shop) and restarting came back at the Main Hall entrance. An existing Z-machine story still loads normally with these changes.
+
+Known consequence of the engine's own behaviour: a newly created character and Main Hall purchases are written to file only when the character leaves the hall, so a kill before that loses them.
 
 ## Not done
 
