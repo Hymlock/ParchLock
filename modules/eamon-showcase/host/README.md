@@ -18,19 +18,32 @@ host/Prepare-Host.ps1 -Upstream <pinned Eamon-CS clone> -Work <new private scrat
 PARCHLOCK_SOURCE_ROOT=<repo> PARCHLOCK_HOST_WORK=<scratch> PARCHLOCK_HOST_SCRIPT=host/play-beginners-cave.json node host/run-host-probe.cjs
 ```
 
-## Result so far (local headless Chromium only)
+## Saving
 
-One scripted session, engine untouched: Main Hall start, new character, weapon and armour purchase, adventure list, launch The Beginner's Cave, movement, look, inventory, status, quick save, quick restore, leave the adventure, loot sale, return to the Main Hall with the character written back, examine abilities, leave. The plugin chain ended cleanly.
+- At every prompt the engine is idle with all files closed. That is the safe point: the host sends the files that changed since the last one, plus the name of the program now running, as one batch.
+- The page stores each batch in a single IndexedDB transaction, so a revision is all or nothing. The player's answer is not passed to the engine until that transaction has completed, so the engine never runs ahead of durable storage.
+- On start, saved files (and recorded deletions) are laid over the pristine bundle and the saved program is relaunched. The engine's own resume logic does the rest.
+- `PARCHLOCK_HOST_PROFILE` + `PARCHLOCK_HOST_PORT` keep one browser profile and origin across runs; `PARCHLOCK_HOST_CDP` drives an already running browser such as Chrome on a phone over adb.
 
-- First prompt about 0.9 s after page load (runtime 0.3 s, 155 data files 0.1 s).
-- Ordinary turns 2 to 95 ms; adventure start about 0.4 s; return to Main Hall about 0.3 s.
-- Download: framework 28.0 MB raw, 8.4 MB Brotli (untrimmed); game data under 1 MB.
+## Results so far
+
+Desktop headless Chromium, engine untouched:
+
+- One session: Main Hall start, new character, weapon and armour purchase, adventure list, launch The Beginner's Cave, movement, look, inventory, status, quick save, quick restore, leave, loot sale, return to the Main Hall with the character written back, examine abilities, leave. The plugin chain ended cleanly.
+- Across browser restarts (same profile): session 1 stopped inside the adventure after a quick save; session 2 reopened straight into the adventure with the engine's "Welcome back"; session 3 finished it and returned to the Main Hall with the character on file; session 4 started at the Main Hall with that character still on file.
+- First prompt about 1 s after page load. Ordinary turns 2 to 95 ms; adventure start about 0.4 s.
+
+Chrome 156 on an Android phone (NX799J) over USB, same full session script: passed. First prompt 3.7 s, ordinary turns 25 to 110 ms, adventure start 1.4 s, return to Main Hall 1.1 s.
+
+Download: framework 28.0 MB raw, 8.4 MB Brotli (untrimmed); game data under 1 MB.
 
 ## Not done
 
-- No persistence yet: the file system is memory only and is lost on reload. Safe-point snapshots to durable storage are the next step.
-- No Android signed-APK, Windows launcher or hosted-site run. Offline service-worker interplay with ParchLock's existing service worker is untested.
+- Phone result is Chrome the browser, not the signed ParchLock APK's WebView, which is the required target. Service-worker behaviour inside the app, and alongside ParchLock's existing service worker, is untested.
+- No Windows launcher or hosted-site run.
 - Raw framework size is above the 20 MB target; trimming is untried.
+- A restart resumes from the engine's last saved game, not the exact turn. Force-stop in the middle of a write, storage-full and two-tabs-at-once cases are untested.
+- Restart while the Main Hall is processing a returning character is untested.
 - Only one adventure exercised, lightly. No combat, spells, death, or the other 19 adventures.
 - Engine pacing delays are currently skipped.
 - No independent review of this code.

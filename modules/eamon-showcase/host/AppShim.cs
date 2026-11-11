@@ -33,6 +33,8 @@ namespace EamonPM
 		public static string BasePath { get; set; }
 		public static string WorkDir { get; set; }
 		public static string[] NextArgs { get; set; }
+		/// <summary>The plugin now running; saved with each revision so a restart resumes the same program.</summary>
+		public static string[] CurrentArgs { get; set; }
 		public static int OutputBufMaxSize { get; set; } = 65536;
 
 		// The screen text as last delivered to the page. Upstream rewrites the buffer tail in place
@@ -104,6 +106,7 @@ namespace EamonPM
 		{
 			while (args != null && args.Length >= 2 && args[0].Equals("-pfn", StringComparison.OrdinalIgnoreCase))
 			{
+				CurrentArgs = args;
 				ParchLock.EamonHost.HostBridge.Phase("plugin", string.Join(" ", args));
 				ExecutePlugin(args, true);
 				RefreshOutputWindowText();

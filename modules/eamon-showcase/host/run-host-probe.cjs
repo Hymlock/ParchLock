@@ -24,11 +24,15 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
       res.setHeader('Content-Type', mime[path.extname(file)] || 'application/octet-stream'); res.end(bytes);
     });
   });
-  await new Promise(r => server.listen(0, '127.0.0.1', r));
+  await new Promise(r => server.listen(Number(process.env.PARCHLOCK_HOST_PORT) || 0, '127.0.0.1', r));
   let browser; const receipt = {scope: 'Local headless Chromium only. Real Eamon CS engine in a .NET worker with the ParchLock host adapters.', steps: []};
   try {
-    browser = await chromium.launch({headless: true});
-    const page = await browser.newPage();
+    const profile = process.env.PARCHLOCK_HOST_PROFILE;
+    // PARCHLOCK_HOST_CDP drives an already running browser, e.g. Chrome on a phone over adb.
+    const cdp = process.env.PARCHLOCK_HOST_CDP;
+    browser = cdp ? await chromium.connectOverCDP(cdp) : profile ? await chromium.launchPersistentContext(profile, {headless: true}) : await chromium.launch({headless: true});
+    const page = cdp ? await browser.contexts()[0].newPage() : await browser.newPage();
+    if (cdp) receipt.scope = 'Remote browser over CDP: ' + (await browser.version()) + ' ' + (await page.evaluate(() => navigator.userAgent));
     page.on('console', m => logs.push({type: m.type(), text: m.text()}));
     page.on('pageerror', e => logs.push({type: 'pageerror', text: String(e)}));
     const began = Date.now();
@@ -63,6 +67,8 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
       await page.evaluate(value => eamon.answer(value), send);
       await settle();
     }
+    await page.evaluate(() => eamon.commit.catch(() => {}));
+    receipt.storage = await page.evaluate(() => ({restored: eamon.restored, commits: eamon.commits, commitError: eamon.commitError}));
     const final = await page.evaluate(() => ({screen: eamon.screen, pending: eamon.pending, events: eamon.events, turns: eamon.turns.map(t => Math.round(t.ms || -1)), ticks: eamon.ticks}));
     receipt.finalScreenTail = final.screen.slice(-3000);
     receipt.pending = final.pending; receipt.events = final.events; receipt.turnMs = final.turns;
@@ -70,8 +76,9 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     receipt.scriptCompleted = (rules ? true : receipt.steps.length === script.length) && !receipt.steps.some(s => s.failed);
     receipt.engineError = final.events.find(e => e.kind === 'error' || (e.kind === 'result' && String(e.value).startsWith('error'))) || null;
     fs.writeFileSync(path.join(work, receiptName), JSON.stringify(receipt, null, 2));
+    if (cdp && !process.env.PARCHLOCK_HOST_KEEP) await page.close();
     console.log(final.screen.slice(-(Number(process.env.PARCHLOCK_HOST_TAIL) || 2500)));
-    console.log('\n--- first prompt ms', receipt.firstPromptMs, 'max turn ms', receipt.maxTurnMs, 'steps', receipt.steps.length, 'pending', JSON.stringify(final.pending), 'events', JSON.stringify(final.events).slice(0, 1500));
+    console.log('\n--- first prompt ms', receipt.firstPromptMs, 'max turn ms', receipt.maxTurnMs, 'steps', receipt.steps.length, 'pending', JSON.stringify(final.pending), 'storage', JSON.stringify(receipt.storage), 'events', JSON.stringify(final.events.filter(e => e.kind !== 'result')).slice(0, 900));
     if (receipt.engineError || !receipt.scriptCompleted) process.exitCode = 1;
   } finally { if (browser) await browser.close(); await new Promise(r => server.close(r)); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

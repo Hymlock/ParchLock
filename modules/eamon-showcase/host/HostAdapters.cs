@@ -17,6 +17,10 @@ namespace ParchLock.EamonHost
 		/// <summary>Blocks until the page answers. Returns null when the host cancels.</summary>
 		[JSImport("read", "eamon-host")] internal static partial string Read(string kind, int size, string fill, string mask, string defaultText);
 		[JSImport("sleep", "eamon-host")] internal static partial void Sleep(int milliseconds);
+		[JSImport("stage", "eamon-host")] internal static partial void Stage(string path, byte[] bytes);
+		[JSImport("unstage", "eamon-host")] internal static partial void Unstage(string path);
+		/// <summary>Everything staged since the last commit becomes one atomic durable revision.</summary>
+		[JSImport("commit", "eamon-host")] internal static partial void Commit(string launch);
 	}
 
 	public class HostMutex : IMutex
@@ -53,6 +57,8 @@ namespace ParchLock.EamonHost
 			if (!EnableInput) { buf.Clear(); return RetCode.Success; }
 
 			App.RefreshOutputWindowText();
+			// Safe point: the engine is idle with every file closed, waiting for the player.
+			Persistence.Flush();
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
 			var startColumn = lastIndex > -1 ? text.Length - (lastIndex + 1) : (long)text.Length;

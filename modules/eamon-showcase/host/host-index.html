@@ -5,7 +5,27 @@
 <form id="bar"><input id="entry" autocomplete="off" autocapitalize="off"><button>Send</button></form>
 <script>
 // window.eamon is the whole page-side contract: screen text, the pending read, and answer().
-const eamon = window.eamon = {screen: '', pending: null, answers: new Map(), events: [], ticks: 0, turns: []};
+const eamon = window.eamon = {screen: '', pending: null, answers: new Map(), events: [], ticks: 0, turns: [], commit: Promise.resolve(), commits: 0, commitError: null};
+// Durable store for the probe: one transaction per engine safe point, so a revision is all or nothing.
+const database = new Promise((resolve, reject) => {
+  const request = indexedDB.open('parchlock-eamon-probe', 1);
+  request.onupgradeneeded = () => { request.result.createObjectStore('files', {keyPath: 'path'}); request.result.createObjectStore('meta', {keyPath: 'key'}); };
+  request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error);
+});
+async function loadSaved() {
+  const tx = (await database).transaction(['files', 'meta']);
+  const get = request => new Promise((resolve, reject) => { request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error); });
+  const [files, state] = await Promise.all([get(tx.objectStore('files').getAll()), get(tx.objectStore('meta').get('state'))]);
+  return {files, launch: state ? state.launch : null, revision: state ? state.revision : 0};
+}
+async function store(data, base) {
+  const tx = (await database).transaction(['files', 'meta'], 'readwrite', {durability: 'strict'});
+  for (const file of data.puts) tx.objectStore('files').put(file);
+  for (const path of data.deletes) tx.objectStore('files').put({path, deleted: true});
+  tx.objectStore('meta').put({key: 'state', launch: data.launch, revision: base + data.revision, time: Date.now()});
+  await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = tx.onabort = () => reject(tx.error); });
+  eamon.commits++;
+}
 setInterval(() => eamon.ticks++, 20);
 const screenEl = document.getElementById('screen'), entryEl = document.getElementById('entry');
 function post(id) {
@@ -16,9 +36,9 @@ eamon.answer = (value, cancel) => {
   if (!eamon.pending) return false;
   const id = eamon.pending.id;
   eamon.turns.push({id, sent: performance.now()});
-  eamon.answers.set(String(id), {value, cancel: !!cancel});
   eamon.pending = null;
-  post(id);
+  // The engine does not move on until the safe point it is waiting at is durably stored.
+  eamon.commit.then(() => { eamon.answers.set(String(id), {value, cancel: !!cancel}); post(id); });
   return true;
 };
 document.getElementById('bar').addEventListener('submit', event => { event.preventDefault(); if (eamon.answer(entryEl.value)) entryEl.value = ''; });
@@ -30,7 +50,11 @@ document.getElementById('bar').addEventListener('submit', event => { event.preve
   const worker = eamon.worker = new Worker('./host-worker.js', {type: 'module'});
   worker.onmessage = event => {
     const data = event.data;
-    if (data.kind === 'output') {
+    if (data.kind === 'hello') {
+      loadSaved().then(saved => { eamon.restored = {files: saved.files.length, launch: saved.launch, revision: saved.revision}; eamon.baseRevision = saved.revision; worker.postMessage({kind: 'boot', files: saved.files, launch: saved.launch}); });
+    } else if (data.kind === 'commit') {
+      eamon.commit = eamon.commit.then(() => store(data, eamon.baseRevision)).catch(error => { eamon.commitError = String(error); throw error; });
+    } else if (data.kind === 'output') {
       eamon.screen = eamon.screen.slice(0, data.keep) + data.text;
       screenEl.textContent = eamon.screen;
       window.scrollTo(0, document.body.scrollHeight);
