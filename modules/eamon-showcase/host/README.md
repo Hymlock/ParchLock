@@ -54,6 +54,8 @@ In the real play screen: full session passed on desktop Chromium and on the phon
 
 Known consequence of the engine's own behaviour: a newly created character and Main Hall purchases are written to file only when the character leaves the hall, so a kill before that loses them.
 
+Further gate checks (desktop Chromium): the heaviest adventure by code size, The Vile Grimoire of Jaldi'al (8,174 lines), launched from the Main Hall in about 1 s and played; nested parser questions ("Get who or what?", "Examine who or what?") were answered and correctly classified as not safe points; cancelling the pending input ended the run as "cancelled", and the next start resumed that adventure from its saved game. Script: the answer `<cancel>` in a rules file.
+
 ## Not done
 
 - The in-app run used a debug-signed side-by-side build with the engine baked into the app, not the release-signed APK and not an imported Showcase package. Importing is not implemented. The host page was opened directly; it has not run alongside ParchLock's own service worker or inside ParchLock's play screen. Airplane mode was not switched on for the run.
@@ -61,6 +63,6 @@ Known consequence of the engine's own behaviour: a newly created character and M
 - Raw framework size is above the 20 MB target; trimming is untried.
 - A restart resumes from the engine's last saved game, not the exact turn. Force-stop in the middle of a write, storage-full and two-tabs-at-once cases are untested.
 - Restart while the Main Hall is processing a returning character is untested.
-- Only one adventure exercised, lightly. No combat, spells, death, or the other 19 adventures.
+- Only two adventures exercised, lightly. No combat, spells, death, or the other 18 adventures.
 - Engine pacing delays are currently skipped.
 - No independent review of this code.

@@ -59,7 +59,8 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
       if (!rule) { receipt.steps.push({prompt: tail, failed: 'no rule for this prompt'}); break; }
       const send = Array.isArray(rule.answer) ? rule.answer.shift() : rule.answer;
       receipt.steps.push({prompt: tail.slice(-160), send, safePoint: await page.evaluate(() => !!(eamon.pending && eamon.pending.safePoint))});
-      await page.evaluate(value => eamon.answer(value), send);
+      // The answer "<cancel>" withdraws the pending input, as the app would when a session is closed.
+      await page.evaluate(value => value === '<cancel>' ? eamon.answer('', true) : eamon.answer(value), send);
       await settle();
     }
     for (const step of rules ? [] : script) {
