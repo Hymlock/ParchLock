@@ -18,6 +18,23 @@ G1 remains OPEN: actual Eamon gameplay/console adaptation, nested fields, RNG fi
 
 No playable importable Showcase file exists yet.
 
+## Ordinary-module regression protection
+
+`run-existing-module-regression.cjs` uses `PARCHLOCK_SOURCE_ROOT` and a private
+`PARCHLOCK_REGRESSION_WORK` directory. It decodes existing repository stories into scratch fixtures,
+imports them through the real Modules file input/change handler, checks compatible-wrapper duplicate
+detection, and interacts with imported Z3/Z5/Z8/Zblorb/Gblorb/raw-Glulx stories. It also reloads imported
+Z5 and raw Glulx with browser networking offline and checks no Eamon VM was selected. It does not modify
+the operator's existing browser profile, source story files or installed APK.
+
+Set `PARCHLOCK_REGRESSION_SAVE_PROBE=1` for the bounded Adventure Z5 lifecycle check: obtain the lamp,
+operate its supported switch commands, save through the normal dialog, leave the saved room, load the
+save and assert the restored status line. The actual persisted AttrCalib record must survive page reload
+unchanged. This is not a full audit of every learning store, radial preference, save sidecar, undo or
+erase control. It does not test the differently titled Humongous Cave story. No authentic Z4 fixture
+has been exercised here; Android signed-APK regressions remain mandatory. These tests passed in local
+Chromium on November 11, 2026; they do not certify every story or waive those gaps.
+
 ## Same-metadata file changes (G1 host continuation)
 
 `MetadataProbe.cs` targets the actual host's `Persistence.Flush`: it baselines bytes 1/2/3, writes
