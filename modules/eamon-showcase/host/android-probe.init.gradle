@@ -1,0 +1,18 @@
+// Gate G1 probe only. Builds a side-by-side DEBUG app (com.parchlock.app.g1probe) that carries the
+// normal ParchLock web assets plus the Eamon host under /eamon/, without changing any project file
+// and without touching an installed ParchLock. Never use for a release.
+//
+//   set EAMON_G1_PROBE_DIR=<private scratch dir containing assets/public/eamon/... and res/values/*.xml>
+//   android\gradlew.bat :app:assembleDebug --init-script modules\eamon-showcase\host\android-probe.init.gradle
+//
+// assets/public/eamon holds: host-index.html, host-sw.js, host-worker.js, _framework/ (published,
+// without .br/.gz), eamon-data/ (manifest.json without a byte-order mark, plus the data files).
+def probeDir = System.getenv('EAMON_G1_PROBE_DIR')
+if (!probeDir) throw new GradleException('EAMON_G1_PROBE_DIR is required for the G1 probe build.')
+allprojects { p ->
+    p.plugins.withId('com.android.application') {
+        p.android.buildTypes.debug.applicationIdSuffix = '.g1probe'
+        p.android.sourceSets.debug.assets.srcDirs += [probeDir + '/assets']
+        p.android.sourceSets.debug.res.srcDirs += [probeDir + '/res']
+    }
+}

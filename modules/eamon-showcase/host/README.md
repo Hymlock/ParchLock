@@ -35,11 +35,13 @@ Desktop headless Chromium, engine untouched:
 
 Chrome 156 on an Android phone (NX799J) over USB, same full session script: passed. First prompt 3.7 s, ordinary turns 25 to 110 ms, adventure start 1.4 s, return to Main Hall 1.1 s.
 
+Inside the app's own WebView on the same phone (Android 16, WebView 156): a side-by-side debug build (`android-probe.init.gradle`, app id `com.parchlock.app.g1probe`) carrying the normal ParchLock assets plus this host under `/eamon/`, served by Capacitor at `https://localhost`. The full session script passed. Then: stop inside the adventure after a quick save, `am force-stop`, relaunch: the adventure resumed with "Welcome back", finished, and the character was on file in the Main Hall. First prompt 0.7 to 0.9 s, ordinary turns 9 to 40 ms, adventure start about 0.3 s. `PARCHLOCK_HOST_URL` points the runner at a host already inside an app.
+
 Download: framework 28.0 MB raw, 8.4 MB Brotli (untrimmed); game data under 1 MB.
 
 ## Not done
 
-- Phone result is Chrome the browser, not the signed ParchLock APK's WebView, which is the required target. Service-worker behaviour inside the app, and alongside ParchLock's existing service worker, is untested.
+- The in-app run used a debug-signed side-by-side build with the engine baked into the app, not the release-signed APK and not an imported Showcase package. Importing is not implemented. The host page was opened directly; it has not run alongside ParchLock's own service worker or inside ParchLock's play screen. Airplane mode was not switched on for the run.
 - No Windows launcher or hosted-site run.
 - Raw framework size is above the 20 MB target; trimming is untried.
 - A restart resumes from the engine's last saved game, not the exact turn. Force-stop in the middle of a write, storage-full and two-tabs-at-once cases are untested.

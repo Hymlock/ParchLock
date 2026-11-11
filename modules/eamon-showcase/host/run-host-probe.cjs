@@ -31,12 +31,15 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     // PARCHLOCK_HOST_CDP drives an already running browser, e.g. Chrome on a phone over adb.
     const cdp = process.env.PARCHLOCK_HOST_CDP;
     browser = cdp ? await chromium.connectOverCDP(cdp) : profile ? await chromium.launchPersistentContext(profile, {headless: true}) : await chromium.launch({headless: true});
-    const page = cdp ? await browser.contexts()[0].newPage() : await browser.newPage();
+    // PARCHLOCK_HOST_URL: the host is already inside the app under test (an Android WebView cannot open tabs).
+    const appUrl = process.env.PARCHLOCK_HOST_URL;
+    const page = appUrl ? browser.contexts()[0].pages()[0] : cdp ? await browser.contexts()[0].newPage() : await browser.newPage();
+    if (appUrl) receipt.appStartUrl = page.url();
     if (cdp) receipt.scope = 'Remote browser over CDP: ' + (await browser.version()) + ' ' + (await page.evaluate(() => navigator.userAgent));
     page.on('console', m => logs.push({type: m.type(), text: m.text()}));
     page.on('pageerror', e => logs.push({type: 'pageerror', text: String(e)}));
     const began = Date.now();
-    await page.goto('http://127.0.0.1:' + server.address().port + '/host-index.html');
+    await page.goto(appUrl || 'http://127.0.0.1:' + server.address().port + '/host-index.html');
     const settle = () => page.waitForFunction(() => eamon.pending || eamon.events.some(e => e.kind === 'result' || e.kind === 'error'), null, {timeout: 120000});
     await settle();
     receipt.firstPromptMs = Date.now() - began;
@@ -76,7 +79,7 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     receipt.scriptCompleted = (rules ? true : receipt.steps.length === script.length) && !receipt.steps.some(s => s.failed);
     receipt.engineError = final.events.find(e => e.kind === 'error' || (e.kind === 'result' && String(e.value).startsWith('error'))) || null;
     fs.writeFileSync(path.join(work, receiptName), JSON.stringify(receipt, null, 2));
-    if (cdp && !process.env.PARCHLOCK_HOST_KEEP) await page.close();
+    if (cdp && !appUrl && !process.env.PARCHLOCK_HOST_KEEP) await page.close();
     console.log(final.screen.slice(-(Number(process.env.PARCHLOCK_HOST_TAIL) || 2500)));
     console.log('\n--- first prompt ms', receipt.firstPromptMs, 'max turn ms', receipt.maxTurnMs, 'steps', receipt.steps.length, 'pending', JSON.stringify(final.pending), 'storage', JSON.stringify(receipt.storage), 'events', JSON.stringify(final.events.filter(e => e.kind !== 'result')).slice(0, 900));
     if (receipt.engineError || !receipt.scriptCompleted) process.exitCode = 1;
