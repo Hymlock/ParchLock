@@ -11,6 +11,8 @@ namespace ParchLock.EamonHost
 	/// <summary>
 	/// The runtime's in-memory file system is the only place the engine can write, so saving is
 	/// "send what changed since the last safe point". The page stores each batch atomically.
+	/// This snapshot is worker-local, not a durable acknowledgement. A failed serialization or page
+	/// commit must terminate the worker; never reuse it after failure. Reopen from durable storage.
 	/// </summary>
 	public static class Persistence
 	{

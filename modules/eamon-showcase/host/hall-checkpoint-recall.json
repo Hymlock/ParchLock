@@ -3,6 +3,10 @@
   "expectFinal": [
     "Hall Keeper"
   ],
+  "expectFinalRegex": [
+    "Armor:\\s+Leather & Shield",
+    "Weapon Names:[\\s\\S]*?\\n Sword\\s+10%"
+  ],
   "max": 5,
   "rules": [
     [

@@ -34,6 +34,18 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     if (process.env.PARCHLOCK_APP_CHANNEL) receipt.scope = 'Eamon inside the ParchLock play screen, installed browser: ' + process.env.PARCHLOCK_APP_CHANNEL + ' ' + browser.version();
     const context = cdp ? browser.contexts()[0] : profile ? browser : await browser.newContext(view);
     await context.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); } catch (e) {} });
+    if (process.env.PARCHLOCK_HOST_FAIL_COMMIT) await context.addInitScript(failAt => {
+      const transaction = IDBDatabase.prototype.transaction;
+      let writes = 0;
+      IDBDatabase.prototype.transaction = function (stores, mode, ...rest) {
+        if (this.name === 'parchlock-eamon' && mode === 'readwrite' && ++writes === failAt)
+          throw new DOMException('Injected transaction-start storage failure', 'QuotaExceededError');
+        return transaction.call(this, stores, mode, ...rest);
+      };
+      window.__probeTerminations = 0;
+      const terminate = Worker.prototype.terminate;
+      Worker.prototype.terminate = function () { window.__probeTerminations++; return terminate.call(this); };
+    }, Number(process.env.PARCHLOCK_HOST_FAIL_COMMIT));
     const page = cdp ? context.pages()[0] : await context.newPage();
     if (cdp) receipt.scope = 'Eamon inside the ParchLock play screen, on device: ' + (await page.evaluate(() => navigator.userAgent));
     page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') logs.push({type: m.type(), text: m.text().slice(0, 300)}); });
@@ -71,18 +83,23 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       }, [state.input, send]);
       else if (state.input === 'char') await input.press(send === ' ' ? 'Space' : send);
       else { await input.fill(send); await input.press('Enter'); }
-      await page.waitForFunction(n => { const vm = window.__PARCHLOCK_EAMON__; return vm.state.turns.length > n || vm.state.events.length; }, before, {timeout: 120000});
+      await page.waitForFunction(n => { const vm = window.__PARCHLOCK_EAMON__; return vm.state.turns.length > n || vm.state.events.length || vm.state.commitError; }, before, {timeout: 120000});
       await ready();
     }
-    const final = await page.evaluate(() => { const s = window.__PARCHLOCK_EAMON__ ? window.__PARCHLOCK_EAMON__.state : null; return s && {phase: s.phase, restored: s.restored, commits: s.commits, commitError: s.commitError, turns: s.turns, events: s.events}; });
+    await page.waitForFunction(() => { const vm=window.__PARCHLOCK_EAMON__; return !vm || vm.state.commitError || vm.state.pendingCommits === 0; },null,{timeout:10000});
+    const final = await page.evaluate(() => { const s = window.__PARCHLOCK_EAMON__ ? window.__PARCHLOCK_EAMON__.state : null; return s && {phase: s.phase, restored: s.restored, commits: s.commits, pendingCommits: s.pendingCommits, commitError: s.commitError, turns: s.turns, events: s.events}; });
     if (receipt.readyTimeout) receipt.dom = await page.evaluate(() => ({inputs: [...document.querySelectorAll('input,textarea')].map(i => i.id + '|' + i.className + '|' + (i.offsetParent ? 'shown' : 'hidden')), windows: [...document.querySelectorAll('#windowport > *')].map(w => w.id + '|' + w.className), pending: !!window.__PARCHLOCK_EAMON__}));
     receipt.vm = final; receipt.logs = logs.slice(0, 40);
     receipt.screenTail = (await text()).slice(-3000);
     receipt.failed = receipt.steps.some(s => s.failed) || !final || !!final.commitError;
+    if (process.env.PARCHLOCK_HOST_FAIL_COMMIT) {
+      receipt.failureState = await page.evaluate(() => ({terminatedWorkers:window.__probeTerminations || 0,error:(document.querySelector('#errorcontent') || {}).innerText || ''}));
+      receipt.expectedFailurePass = !!final?.commitError && receipt.failureState.terminatedWorkers === 1 && /progress could not be saved/i.test(receipt.failureState.error);
+    }
     if (process.env.PARCHLOCK_APP_SHOT) await page.screenshot({path: process.env.PARCHLOCK_APP_SHOT});
     fs.writeFileSync(path.join(work, process.env.PARCHLOCK_HOST_RECEIPT || 'app-probe-receipt.json'), JSON.stringify(receipt, null, 2));
     console.log(receipt.screenTail.slice(-(Number(process.env.PARCHLOCK_HOST_TAIL) || 1500)));
     console.log('\n--- first prompt ms', receipt.firstPromptMs, 'steps', receipt.steps.length, 'vm', JSON.stringify(final), 'stopped', JSON.stringify(receipt.stopped || null), 'last', JSON.stringify(receipt.steps[receipt.steps.length - 1] || null), '\nlogs', JSON.stringify(logs.slice(0, 12)));
-    if (receipt.failed) process.exitCode = 1;
+    if (process.env.PARCHLOCK_HOST_FAIL_COMMIT ? !receipt.expectedFailurePass : receipt.failed) process.exitCode = 1;
   } finally { if (browser) await browser.close(); await new Promise(r => server.close(r)); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

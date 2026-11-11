@@ -64,7 +64,10 @@ Replaced by new host code: everything upstream's launcher `EamonPM` provides.
 web/itch: exact runtime version and mode; no main-thread freeze; ordinary commands; a nested parser
 clarification; a Main Hall field prompt and character creation; save and restore; host cancel; plugin
 resolution for the heaviest adventure; serializer round trip. Targets, each with a stated measurement
-method: cold start <= 5 s, command round trip <= 200 ms, added package size <= 20 MB. `file://` launch is
+method: cold start <= 5 s, command round trip <= 200 ms. Operator revision, November 11, 2026:
+the earlier added-package-size target of 20 MB is advisory, not a blocking gate. Keep the working
+untrimmed runtime as the baseline; size reduction is optional and must not compromise correctness,
+importing or signed Android operation. Record actual sizes. `file://` launch is
 not required. Also to verify: `Input.js` line-input gating, and that the vendor loader can start a non-Glk
 engine without patching minified code.
 

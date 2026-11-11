@@ -4,6 +4,8 @@ Development source home for ParchLock's Eamon Showcase. This folder is NOT an in
 
 [Accepted master plan](../../docs/EAMON_SHOWCASE_PLAN.md)
 
+[Existing-system reuse register and remaining integration obligations](SYSTEM_REUSE.md)
+
 ## What the player receives
 
 One separately versioned, importable Showcase download on both ParchLock distribution releases. The player selects the file using the existing **Modules -> Choose files / Import** interface. It installs ONE library entry. Opening it enters the Main Hall; all campaign adventures are selected from inside that module. No companion application, external service or manual folder-copy installation.

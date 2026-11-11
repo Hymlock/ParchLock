@@ -62,11 +62,15 @@ calls the same flag-guarded serializers as the upstream Hall shutdown, with `pri
 the atomic host flush. Flags remain set; shop, reward and quest logic is not rerun. Serialization failure
 aborts before a durable flush. Local Chromium testing created a new character, bought a sword and armor,
 closed the browser at the Hall menu without a normal game exit, then reopened and found the character,
-equipment and remaining gold. Serialized character/inventory records were unchanged after restart and
-matched a run using the engine's original shutdown serializers with the checkpoint hook disabled.
+equipment and remaining gold. Serialized character/inventory records were unchanged after restart.
+Later unchanged-data exit runs with and without the hook also kept those bytes unchanged, but did NOT
+prove native-shutdown equivalence after identical purchases: those exit runs had no modified flags.
 This closes the observed loss in that bounded desktop scenario only: independent review, signed Android,
 interrupted serializer writes, storage failure, concurrent tabs and campaign/save integration remain open.
 The earlier observed loss describes the host before this candidate, not intended final behavior.
+Unlike upstream's log-and-continue save errors, the candidate treats serialization failure as fatal
+before durable flush. Any page-side storage failure also stops and discards the worker; its advanced
+in-memory snapshot must never be reused after a failed commit. Reopen reads the last durable revision.
 
 Further gate checks (desktop Chromium): the heaviest adventure by code size, The Vile Grimoire of Jaldi'al (8,174 lines), launched from the Main Hall in about 1 s and played; nested parser questions ("Get who or what?", "Examine who or what?") were answered and correctly classified as not safe points; cancelling the pending input ended the run as "cancelled", and the next start resumed that adventure from its saved game. Script: the answer `<cancel>` in a rules file.
 
@@ -78,7 +82,11 @@ Character return: stopping at the Main Hall menu right after returning from an a
 
 - The in-app run used a debug-signed side-by-side build with the engine baked into the app, not the release-signed APK and not an imported Showcase package. Importing is not implemented. A later debug build did run through ParchLock's own service worker and play screen (see above); that is still a debug build with the engine baked in. Airplane mode was not switched on for the run.
 - The Windows launcher executable has not been run end to end, and nothing has been run from a hosted site.
-- Raw framework size is above the 20 MB target; trimming is untried.
+- Untrimmed framework is about 28 MB. The operator made size reduction optional on November 11;
+  retain the untrimmed baseline. An isolated framework-trim experiment (engine/serializer assemblies
+  explicitly preserved) measured 12,109,477 raw framework bytes and passed bounded desktop sessions,
+  including nested-menu classifications and the heaviest adventure. It is not adopted, not Android
+  accepted, and not a measured final import-package size.
 - A restart resumes from the engine's last saved game, not the exact turn. Force-stop in the middle of a write, storage-full and two-tabs-at-once cases are untested.
 - Restart while the Main Hall is processing a returning character is untested.
 - Only two adventures exercised, lightly. No combat, spells, death, or the other 18 adventures.
