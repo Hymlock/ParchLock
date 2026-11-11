@@ -14,7 +14,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
   const server = http.createServer((req, res) => {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     let root = repo, rel = pathname === '/' ? '/index.html' : pathname;
-    for (const [prefix, dir] of overlays) if (pathname.startsWith(prefix)) { root = dir; rel = '/' + pathname.slice(prefix.length); }
+    // An imported package must supply the engine itself: no development overlay is served then.
+    for (const [prefix, dir] of (process.env.PARCHLOCK_APP_IMPORT ? [] : overlays)) if (pathname.startsWith(prefix)) { root = dir; rel = '/' + pathname.slice(prefix.length); }
     const file = path.resolve(root, '.' + rel);
     if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
     fs.readFile(file, (error, bytes) => {
@@ -78,7 +79,25 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') logs.push({type: m.type(), text: m.text().slice(0, 300)}); });
     page.on('pageerror', e => logs.push({type: 'pageerror', text: String(e).slice(0, 400)}));
     const began = Date.now();
-    const story = process.env.PARCHLOCK_APP_STORY || 'eamon/showcase.eamon';
+    let story = process.env.PARCHLOCK_APP_STORY || 'eamon/showcase.eamon';
+    // PARCHLOCK_APP_IMPORT=<file.eamon>: install it the way a player does, through Modules -> Choose files,
+    // then open the library entry it creates.
+    if (process.env.PARCHLOCK_APP_IMPORT) {
+      const origin = appUrl ? new URL(appUrl).origin : 'http://127.0.0.1:' + server.address().port;
+      await page.goto(origin + '/index.html');
+      await page.waitForFunction(() => typeof ModuleLibrary !== 'undefined' && typeof EamonPackage !== 'undefined');
+      await page.evaluate(() => ModuleLibrary.openManager());
+      const importStarted = Date.now();
+      await page.locator('#pl-module-files').setInputFiles(process.env.PARCHLOCK_APP_IMPORT);
+      await page.waitForFunction(() => /added|already present|rejected/.test((document.querySelector('#pl-module-results') || {}).innerText || ''), null, {timeout: 180000});
+      receipt.importMs = Date.now() - importStarted;
+      receipt.importResult = await page.evaluate(() => document.querySelector('#pl-module-results').innerText);
+      const entry = await page.evaluate(() => ModuleLibrary.all().filter(g => g.Format === 'eamon').map(g => ({path: g.Path, title: g.Title, compat: g.Compat, size: g.Size}))[0] || null);
+      receipt.libraryEntry = entry;
+      console.log('IMPORT ' + JSON.stringify({ms: receipt.importMs, result: receipt.importResult, entry}));
+      if (!entry) throw new Error('import produced no library entry: ' + receipt.importResult);
+      story = entry.path;
+    }
     await page.goto(appUrl ? appUrl + '?story=' + story : 'http://127.0.0.1:' + server.address().port + '/play.html?story=' + story);
     // The story window's own input element is the contract every ParchLock game uses.
     const ready = () => page.waitForFunction(() => {

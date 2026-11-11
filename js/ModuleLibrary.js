@@ -7,7 +7,7 @@ var ModuleLibrary = (function () {
     var STORE = "modules";
     var CACHE_KEY = "PL_Modules_Index";
     var HIDDEN_KEY = "PL_Modules_Hidden";
-    var LOCAL_RE = /^local\/([0-9a-f]{64})\.(z3|z4|z5|z8|zblorb|gblorb|ulx)\.js$/;
+    var LOCAL_RE = /^local\/([0-9a-f]{64})\.(z3|z4|z5|z8|zblorb|gblorb|ulx|eamon)\.js$/;
     var MAX_STORY_BYTES = 64 * 1024 * 1024;
     var MAX_IFMD_BYTES = 512 * 1024;
     var listeners = [];
@@ -282,9 +282,35 @@ var ModuleLibrary = (function () {
         };
     }
 
+    // The Eamon Showcase is one importable package holding a whole campaign (js/EamonPackage.js). Its
+    // files are kept by the package installer; the library row records only what the shelf shows.
+    function addEamonPackage(bytes, file) {
+        return EamonPackage.install(bytes).then(function (pkg) {
+            var record = {
+                id: pkg.id, path: "local/" + pkg.id + ".eamon.js", bytes: new ArrayBuffer(0),
+                title: pkg.title, author: "Eamon CS adventures", subtitle: pkg.version ? "Version " + pkg.version : "",
+                format: "eamon", compat: "Eamon campaign: Main Hall and adventures", size: pkg.size,
+                addedAt: new Date().toISOString(), filenameHint: String(file.name || "").slice(0, 255), metadataOrigin: "package"
+            };
+            var duplicate = cache.some(function (entry) { return entry.id === pkg.id; });
+            return request("put", record).then(function () {
+                var item = metadata(record);
+                cache = cache.filter(function (entry) { return entry.id !== pkg.id; });
+                cache.push(item);
+                saveCache();
+                changed();
+                requestPersistence();
+                item.Duplicate = duplicate;
+                return item;
+            });
+        });
+    }
+
     function addFile(file) {
         return file.arrayBuffer().then(function (buffer) {
-            var inspected = inspect(new Uint8Array(buffer), file.name);
+            var raw = new Uint8Array(buffer);
+            if (typeof EamonPackage !== "undefined" && EamonPackage.looksLikePackage(raw, file.name)) return addEamonPackage(raw, file);
+            var inspected = inspect(raw, file.name);
             return hash(inspected.bytes).then(function (id) {
                 var path = "local/" + id + "." + inspected.format + ".js";
                 var info = inspected.metadata || {};
@@ -580,6 +606,9 @@ var ModuleLibrary = (function () {
         var item = find(path);
         if (!item || !item.Local) return Promise.resolve(false);
         return request("delete", item.id).then(function () {
+            // Removing the Showcase removes its installed files; campaign progress is kept (plan section 7).
+            if (item.Format === "eamon" && typeof EamonPackage !== "undefined") return EamonPackage.remove(item.id);
+        }).then(function () {
             cache = cache.filter(function (entry) { return entry.id !== item.id; });
             removeFlags(item.Path);
             [LEGACY.map, LEGACY.mapSlots, LEGACY.gameId].forEach(function (prefix) { localStorage.removeItem(prefix + item.Path); });
@@ -718,7 +747,7 @@ var ModuleLibrary = (function () {
             "<p id='pl-module-progress' aria-live='polite'></p><ul id='pl-module-results'></ul>" +
             "<section class='pl-module-collection' aria-label='Installed stories'><div class='pl-module-list-heading'><h3>Your stories</h3><span id='pl-module-count'></span></div><input id='pl-module-search' type='search' placeholder='Find a story or author' aria-label='Search installed stories'><div id='pl-module-list'></div></section>" +
             "<details class='pl-module-library-options'><summary>Library options</summary><div class='pl-module-maintenance'><button id='pl-module-restore' type='button'>Restore built-ins</button><button id='pl-module-remove-all' type='button'>Remove all</button></div></details>" +
-            "<p class='pl-module-permission'>Only add stories you have permission to use.</p><details class='pl-module-format-note'><summary>Supported formats &amp; storage</summary><p>Z-machine: .z3, .z4, .z5, .z8 and .zblorb. Glulx: .ulx and .gblorb. Compatible .js files are also accepted. ParchLock checks compatibility, not ownership or permission.</p><p>Z-machine modules support mapping, actions and radials. Glulx modules are play-only.</p><p class='pl-module-storage-note'>Imported stories stay on this device. Clearing browser or app storage removes imported modules and local state.</p></details></div>";
+            "<p class='pl-module-permission'>Only add stories you have permission to use.</p><details class='pl-module-format-note'><summary>Supported formats &amp; storage</summary><p>Z-machine: .z3, .z4, .z5, .z8 and .zblorb. Glulx: .ulx and .gblorb. Compatible .js files are also accepted. The Eamon Showcase: its .eamon package. ParchLock checks compatibility, not ownership or permission.</p><p>Z-machine modules support mapping, actions and radials. Glulx modules are play-only.</p><p class='pl-module-storage-note'>Imported stories stay on this device. Clearing browser or app storage removes imported modules and local state.</p></details></div>";
         Message.Show("Modules", body, true);
         $("#message #close").text("\u2715").attr("aria-label", "Close");
         bindPicker("#pl-module-files");

@@ -90,6 +90,7 @@ const APP_SHELL = [
     "js/Message.js",
     "js/IconRotation.js",
     "js/MobileLayout.js",
+    "js/EamonPackage.js",
     "js/ModuleLibrary.js",
     "js/Navigator.js",
     "js/ParchLock.js",
@@ -142,6 +143,8 @@ self.addEventListener("activate", function (event) {
     event.waitUntil(
         caches.keys().then(function (names) {
             return Promise.all(names.map(function (name) {
+                // Installed Eamon Showcase packages are player content, not app shell: never purge them.
+                if (/^parchlock-eamon-pkg-/.test(name)) return;
                 if (name !== CACHE_VERSION && name !== RUNTIME_CACHE) return caches.delete(name);
             }));
         }).then(function () { return self.clients.claim(); })
@@ -153,6 +156,16 @@ self.addEventListener("fetch", function (event) {
     if (req.method !== "GET") return;
     var url = new URL(req.url);
     if (/\/eamon-input$/.test(url.pathname)) return; // answered by the Eamon input relay above
+    // Files of an installed Eamon Showcase package (js/EamonPackage.js), only ever from this device.
+    var eamonPkg = url.origin === self.location.origin && /\/lib\/eamon\/pkg\/([0-9a-f]{64})\//.exec(url.pathname);
+    if (eamonPkg) {
+        event.respondWith(caches.open("parchlock-eamon-pkg-" + eamonPkg[1]).then(function (cache) {
+            return cache.match(url.origin + url.pathname);
+        }).then(function (hit) {
+            return hit || new Response("Not part of the installed Eamon Showcase.", { status: 404, headers: { "Content-Type": "text/plain" } });
+        }));
+        return;
+    }
 
     // IndexedDB-backed modules are virtual URLs handled by ModuleLibrary's
     // jQuery adapter. A leak into fetch must fail locally, never reach a
