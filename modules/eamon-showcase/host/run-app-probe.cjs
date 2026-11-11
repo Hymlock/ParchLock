@@ -33,7 +33,7 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     browser = cdp ? await chromium.connectOverCDP(cdp) : profile ? await chromium.launchPersistentContext(profile, {headless: true, ...view}) : await chromium.launch({headless: true, channel: process.env.PARCHLOCK_APP_CHANNEL || undefined});
     if (process.env.PARCHLOCK_APP_CHANNEL) receipt.scope = 'Eamon inside the ParchLock play screen, installed browser: ' + process.env.PARCHLOCK_APP_CHANNEL + ' ' + browser.version();
     const context = cdp ? browser.contexts()[0] : profile ? browser : await browser.newContext(view);
-    await context.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); } catch (e) {} });
+    await context.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); if (!window.__keepTour) localStorage.setItem('PL_TutorialLibrarySeen', '1'); } catch (e) {} });
     if (process.env.PARCHLOCK_HOST_DELAY_ACK) await context.addInitScript(delay => {
       const transaction=IDBDatabase.prototype.transaction;
       const complete=Object.getOwnPropertyDescriptor(IDBTransaction.prototype,'oncomplete');
@@ -95,6 +95,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     for (let n = 0; n < (script.max || 200); n++) {
       const state = await page.evaluate(() => ({input: (() => { const i = document.querySelector('#windowport input.Input'); return i ? (i.className.includes('LineInput') ? 'line' : 'char') : null; })(), error: (document.querySelector('#errorcontent') || {}).innerText || '', ended: !!(window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state.events.length)}));
       if (state.ended || !state.input) { receipt.stopped = state; break; }
+      // ParchLock follows the game on a 200 ms loop; PARCHLOCK_APP_PACE (ms) plays at a human pace so it sees every turn.
+      if (process.env.PARCHLOCK_APP_PACE) await page.waitForTimeout(Number(process.env.PARCHLOCK_APP_PACE));
       const screen = (await text()).replace(/ /g, ' ').replace(/\s+$/, '');
       const tail = screen.slice(screen.lastIndexOf('\n') + 1);
       const rule = rules.find(r => (r.pattern.test(tail) || r.pattern.test(tail + " ")) && (!Array.isArray(r.answer) || r.answer.length));
@@ -105,13 +107,16 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       const before = await page.evaluate(() => window.__PARCHLOCK_EAMON__.state.turns.length);
       // On the mobile shell ParchLock owns input focus and re-issues keys to the story window with
       // jQuery key events (js/Input.js, js/CharKeys.js); the probe sends through that same path.
-      if (cdp) await page.evaluate(([kind, value]) => {
+      if (cdp || process.env.PARCHLOCK_APP_MOBILE) await page.evaluate(([kind, value]) => {
         if (kind === 'char') jQuery('.Input.CharInput').trigger(jQuery.Event('keypress', {which: value.codePointAt(0)}));
         else { jQuery('.Input.LineInput').val(value); jQuery('.Input.LineInput').trigger(jQuery.Event('keypress', {which: 13})); }
       }, [state.input, send]);
       else if (state.input === 'char') await input.press(send === ' ' ? 'Space' : send);
-      else { await input.fill(send); await input.press('Enter'); }
-      await page.waitForFunction(n => { const vm = window.__PARCHLOCK_EAMON__; return vm.state.turns.length > n || vm.state.events.length || vm.state.commitError; }, before, {timeout: 120000});
+      // A typed command goes through ParchLock's own submit path (the one its buttons and radials use),
+      // so autocomplete or focus handling cannot swallow the Enter key.
+      else await page.evaluate(value => { Input.Clear(); Input.Inject(value, true); }, send);
+      await page.waitForFunction(n => { const vm = window.__PARCHLOCK_EAMON__; return vm.state.turns.length > n || vm.state.events.length || vm.state.commitError; }, before, {timeout: Number(process.env.PARCHLOCK_APP_STEP_WAIT) || 120000}).catch(() => { receipt.stalledAfter = receipt.steps[receipt.steps.length - 1]; });
+      if (receipt.stalledAfter) { receipt.stallState = await page.evaluate(() => ({inputs: [...document.querySelectorAll('#windowport input')].map(i => i.className + '|' + i.value + '|' + (i.disabled ? 'disabled' : 'on')), message: document.querySelector('#message') && getComputedStyle(document.querySelector('#message')).display, active: document.activeElement && (document.activeElement.id + '.' + document.activeElement.className), prompts: window.__PARCHLOCK_EAMON__.state.prompts})); console.log('STALL ' + JSON.stringify(receipt.stalledAfter) + ' ' + JSON.stringify(receipt.stallState)); break; }
       await ready();
     }
     await page.waitForFunction(() => { const vm=window.__PARCHLOCK_EAMON__; return !vm || vm.state.commitError || vm.state.pendingCommits === 0; },null,{timeout:10000});
@@ -135,6 +140,7 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       receipt.failureState=await page.evaluate(()=>({terminatedWorkers:window.__probeTerminations,error:(document.querySelector('#errorcontent')||{}).innerText||''}));
       receipt.expectedResultFailurePass=receipt.failureState.terminatedWorkers===1&&receipt.failureState.error.includes('injected engine result');
     }
+    await page.locator('text=Skip tour').click({timeout: 1500}).catch(() => {});
     if (process.env.PARCHLOCK_APP_SHOT) await page.screenshot({path: process.env.PARCHLOCK_APP_SHOT});
     fs.writeFileSync(path.join(work, process.env.PARCHLOCK_HOST_RECEIPT || 'app-probe-receipt.json'), JSON.stringify(receipt, null, 2));
     console.log(receipt.screenTail.slice(-(Number(process.env.PARCHLOCK_HOST_TAIL) || 1500)));
