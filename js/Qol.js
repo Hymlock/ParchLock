@@ -583,7 +583,7 @@ var ParchLockQol = {
                 var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
                 stateWrites = SaveState.importWrites(data.SaveStates, importedNames);
             }
-            var mapKey = "PL_Map_" + ParchLock.GameFilename;
+            var mapKey = ParchLockMap.StorageKey();
             previous.push({ Key: mapKey, Data: localStorage.getItem(mapKey) });
 
             // D112: a new Rooms array invalidates any active Notes scope

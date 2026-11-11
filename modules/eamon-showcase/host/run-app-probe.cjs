@@ -18,6 +18,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     for (const [prefix, dir] of (process.env.PARCHLOCK_APP_IMPORT ? [] : overlays)) if (pathname.startsWith(prefix)) { root = dir; rel = '/' + pathname.slice(prefix.length); }
     const file = path.resolve(root, '.' + rel);
     if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
+    // PARCHLOCK_APP_OMIT=<path>: serve that script empty, to bisect a fault to one component.
+    if (process.env.PARCHLOCK_APP_OMIT && pathname === '/' + process.env.PARCHLOCK_APP_OMIT) { res.setHeader('Content-Type', 'text/javascript'); res.end('/* omitted for this run */'); return; }
     fs.readFile(file, (error, bytes) => {
       if (error) { res.writeHead(404).end(); return; }
       if (path.basename(file) === 'manifest.json' && bytes[0] === 0xEF) bytes = bytes.subarray(3);
@@ -76,7 +78,7 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     }, Number(process.env.PARCHLOCK_HOST_FAIL_COMMIT));
     const page = cdp ? context.pages()[0] : await context.newPage();
     if (cdp) receipt.scope = 'Eamon inside the ParchLock play screen, on device: ' + (await page.evaluate(() => navigator.userAgent));
-    page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') logs.push({type: m.type(), text: m.text().slice(0, 300)}); });
+    page.on('console', m => { if (process.env.PARCHLOCK_APP_ALLLOGS || m.type() === 'error' || m.type() === 'warning') logs.push({type: m.type(), text: m.text().slice(0, 300)}); });
     page.on('pageerror', e => logs.push({type: 'pageerror', text: String(e).slice(0, 400)}));
     const began = Date.now();
     let story = process.env.PARCHLOCK_APP_STORY || 'eamon/showcase.eamon';
@@ -122,6 +124,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       if (!rule) { receipt.steps.push({prompt: tail, failed: 'no rule for this prompt'}); break; }
       const send = Array.isArray(rule.answer) ? rule.answer.shift() : rule.answer;
       receipt.steps.push({prompt: tail.slice(-120), kind: state.input, send});
+      // ParchLock's guided tour opens once over the play screen and takes the keyboard; dismiss it as a player would.
+      if (await page.locator('#pl-tut-overlay').isVisible().catch(() => false)) await page.locator('text=Skip tour').click({timeout: 2000}).catch(() => {});
       const input = page.locator('#windowport input.Input');
       const before = await page.evaluate(() => window.__PARCHLOCK_EAMON__.state.turns.length);
       // On the mobile shell ParchLock owns input focus and re-issues keys to the story window with
@@ -163,7 +167,7 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     if (process.env.PARCHLOCK_APP_SHOT) await page.screenshot({path: process.env.PARCHLOCK_APP_SHOT});
     fs.writeFileSync(path.join(work, process.env.PARCHLOCK_HOST_RECEIPT || 'app-probe-receipt.json'), JSON.stringify(receipt, null, 2));
     console.log(receipt.screenTail.slice(-(Number(process.env.PARCHLOCK_HOST_TAIL) || 1500)));
-    console.log('\n--- first prompt ms', receipt.firstPromptMs, 'steps', receipt.steps.length, 'vm', JSON.stringify(final), 'stopped', JSON.stringify(receipt.stopped || null), 'last', JSON.stringify(receipt.steps[receipt.steps.length - 1] || null), '\nlogs', JSON.stringify(logs.slice(0, 12)));
+    console.log('\n--- first prompt ms', receipt.firstPromptMs, 'steps', receipt.steps.length, 'vm', JSON.stringify(final), 'stopped', JSON.stringify(receipt.stopped || null), 'last', JSON.stringify(receipt.steps[receipt.steps.length - 1] || null), '\nlogs', JSON.stringify(process.env.PARCHLOCK_APP_ALLLOGS ? logs.slice(-40) : logs.slice(0, 12)));
     if (process.env.PARCHLOCK_HOST_FAIL_RESULT ? !receipt.expectedResultFailurePass : process.env.PARCHLOCK_HOST_FAIL_COMMIT ? !receipt.expectedFailurePass : receipt.failed) process.exitCode = 1;
   } finally { if (browser) await browser.close(); await new Promise(r => server.close(r)); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

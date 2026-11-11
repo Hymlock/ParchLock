@@ -1549,16 +1549,31 @@ var ParchLockMap = {
         $("#map #rooms").removeClass("dragging");
     },
 
+    // A module that holds several separate worlds (the Eamon Showcase: one map per adventure) names the
+    // world in play; every other story keeps the empty scope, so its storage keys are unchanged.
+    Scope: "",
+    StorageKey: () => "PL_Map_" + ParchLock.GameFilename + (ParchLockMap.Scope ? "#" + ParchLockMap.Scope : ""),
+    SetScope: (scope) => {
+        scope = String(scope || "");
+        if (scope === ParchLockMap.Scope) return;
+        ParchLockMap.Save();
+        ParchLockMap.Scope = scope;
+        ParchLockMap.NotesScopeRoomKey = null;
+        ParchLockMap.Clear({ seed: false });
+        ParchLockMap.Load();
+        try { ParchLockMap.RefreshMapPanels(); } catch (e) {}
+    },
+
     Save: () => {
         if (!ParchLock.GameFilename || ParchLockMap.PersistenceBlocked) return;
         var mapData = JSON.stringify(ParchLockMap.Rooms);
-        localStorage.setItem("PL_Map_" + ParchLock.GameFilename, mapData);
+        localStorage.setItem(ParchLockMap.StorageKey(), mapData);
     },
 
     Load: () => {
         if (!ParchLock.GameFilename) return;
         try {
-            var mapData = localStorage.getItem("PL_Map_" + ParchLock.GameFilename);
+            var mapData = localStorage.getItem(ParchLockMap.StorageKey());
             if (mapData) {
                 var data = { Map: JSON.parse(mapData) };
                 WorkspaceUI.ValidateMap(data);

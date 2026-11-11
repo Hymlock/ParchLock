@@ -21,7 +21,18 @@ namespace ParchLock.EamonHost
 	{
 		// One id space for ParchLock: rooms keep their own number; other kinds are offset so a room,
 		// an artifact and a monster with the same native number never collide.
-		internal const long ArtifactBase = 100000, MonsterBase = 200000, PlayerId = 300000;
+		internal const long ArtifactBase = 100000, MonsterBase = 200000, PlayerBase = 300000;
+		// Native numbers repeat between adventures, so every id also carries the adventure:
+		// adventure code * 1,000,000 + kind base + native number. The code is a stable hash of the
+		// adventure name (checked collision-free for the 23 shipped adventures).
+		static long _adventure;
+		static long PlayerId => _adventure + PlayerBase;
+		static long AdventureCode(string name)
+		{
+			uint hash = 2166136261;
+			foreach (var ch in (name ?? "").ToLowerInvariant()) { hash ^= ch; hash *= 16777619; }
+			return (hash % 2000 + 1) * 1000000L;
+		}
 
 		internal static string Build()
 		{
@@ -32,6 +43,7 @@ namespace ParchLock.EamonHost
 			var room = db.RoomTable.FindRecord(state.Ro);
 			var self = db.MonsterTable.FindRecord(state.Cm);
 			if (room == null || self == null) return null;
+			_adventure = AdventureCode(engine.GetModule()?.Name);
 
 			var lit = room.IsLit();
 			var exits = new List<object>();
@@ -51,13 +63,13 @@ namespace ParchLock.EamonHost
 					if (dir == null) continue;
 					var dest = room.IsDirectionRoom(dv) ? db.RoomTable.FindRecord(room.GetDir(dv)) : null;
 					var known = dest != null && dest.Seen;
-					exits.Add(new { label = dir.Name.ToLowerInvariant(), command = (dir.Abbr ?? dir.Name).ToLowerInvariant(), to = known ? (long?)dest.Uid : null, toName = known ? dest.Name : null, door = room.IsDirectionDoor(dv) });
+					exits.Add(new { label = dir.Name.ToLowerInvariant(), command = (dir.Abbr ?? dir.Name).ToLowerInvariant(), to = known ? (long?)(_adventure + dest.Uid) : null, toName = known ? dest.Name : null, door = room.IsDirectionDoor(dv) });
 				}
 				foreach (var a in artifacts)
 					if (a.Seen && a.IsInRoomUid(room.Uid)) { objects.Add(Describe(a, null, self)); shown.Add(a.Uid); }
 				foreach (var m in db.MonsterTable.Records)
 					if (m.Uid != self.Uid && m.Seen && m.IsInRoomUid(room.Uid))
-						objects.Add(new { id = MonsterBase + m.Uid, name = m.Name, parent = (long?)null, kind = "monster", aliases = m.Synonyms ?? Array.Empty<string>(), reaction = m.Reaction.ToString(), count = m.CurrGroupCount });
+						objects.Add(new { id = _adventure + MonsterBase + m.Uid, name = m.Name, parent = (long?)null, kind = "monster", aliases = m.Synonyms ?? Array.Empty<string>(), reaction = m.Reaction.ToString(), count = m.CurrGroupCount });
 			}
 
 			foreach (var a in artifacts)
@@ -77,7 +89,7 @@ namespace ParchLock.EamonHost
 					if (!shown.Contains(holder)) continue;
 					var holderRecord = db.ArtifactTable.FindRecord(holder);
 					var held = holderRecord != null && (holderRecord.IsCarriedByMonster(MonsterType.CharMonster, true) || holderRecord.IsWornByMonster(MonsterType.CharMonster, true));
-					(held ? inventory : objects).Add(Describe(a, ArtifactBase + holder, self));
+					(held ? inventory : objects).Add(Describe(a, _adventure + ArtifactBase + holder, self));
 					shown.Add(a.Uid);
 				}
 
@@ -91,14 +103,14 @@ namespace ParchLock.EamonHost
 
 			return JsonSerializer.Serialize(new
 			{
-				adventure = engine.GetModule()?.Name, room = new { id = room.Uid, name = room.Name, lit }, exits, objects, inventory, stats,
+				adventure = engine.GetModule()?.Name, room = new { id = _adventure + room.Uid, name = room.Name, lit }, exits, objects, inventory, stats,
 				playerId = PlayerId
 			});
 		}
 
 		static object Describe(IArtifact a, long? parent, IMonster self, bool worn = false) => new
 		{
-			id = ArtifactBase + a.Uid, name = a.Name, parent, kind = "artifact", aliases = a.Synonyms ?? Array.Empty<string>(),
+			id = _adventure + ArtifactBase + a.Uid, name = a.Name, parent, kind = "artifact", aliases = a.Synonyms ?? Array.Empty<string>(),
 			worn, ready = self.Weapon == a.Uid, wearable = a.Wearable != null, container = a.GeneralContainer != null,
 			weapon = a.GeneralWeapon != null, readable = a.Readable != null, edible = a.Edible != null, drinkable = a.Drinkable != null,
 			light = a.LightSource != null, door = a.DoorGate != null, @fixed = a.IsUnmovable(), state = a.StateDesc ?? ""

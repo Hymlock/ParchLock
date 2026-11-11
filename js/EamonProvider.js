@@ -67,9 +67,21 @@ var EamonProvider = {
         eamon: { kind: o.kind, ready: !!o.ready, weapon: !!o.weapon, readable: !!o.readable, light: !!o.light, door: !!o.door, state: o.state || "", reaction: o.reaction || "" }
     }),
 
+    // One map per adventure (plan section 7): the existing map storage, scoped by adventure name.
+    syncMapScope: (world) => {
+        try {
+            if (typeof ParchLockMap === "undefined" || !ParchLockMap.SetScope) return;
+            var vm = window.__PARCHLOCK_EAMON__;
+            var inHall = vm && vm.state && /EamonMH/.test(vm.state.phase || "");
+            if (world && world.adventure) ParchLockMap.SetScope(world.adventure);
+            else if (inHall) ParchLockMap.SetScope("Main Hall");
+        } catch (e) {}
+    },
+
     collect: () => {
         if (!EamonProvider.active()) return { sources: [] };
         var world = EamonProvider.world();
+        EamonProvider.syncMapScope(world);
         if (!world || !world.room) {
             // Structural, and empty on purpose: there is no room to map or act in right now.
             return {

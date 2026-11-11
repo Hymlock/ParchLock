@@ -404,7 +404,7 @@ var WorkspaceUI = {
         // D13: erase learned data whose every owner story is uninstalled.
         try { if (typeof LearningStores !== "undefined") LearningStores.addOptions(groups.learned); } catch (eLearn) {}
     },
-    MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename,
+    MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename + (ParchLockMap.Scope ? "#" + ParchLockMap.Scope : ""),
     ReadSlots: () => {
         try { var slots = JSON.parse(localStorage.getItem(WorkspaceUI.MapKey()) || "[]"); return Array.isArray(slots) ? slots : []; } catch (_) { return []; }
     },
@@ -416,7 +416,7 @@ var WorkspaceUI = {
     },
     LoadMap: data => {
         var previousRooms = ParchLockMap.Rooms, previousBlocked = ParchLockMap.PersistenceBlocked;
-        var key = "PL_Map_" + ParchLock.GameFilename, previous;
+        var key = ParchLockMap.StorageKey(), previous;
         try {
             if (!ParchLock.GameFilename) throw new Error("Open a story first.");
             WorkspaceUI.ValidateMap(data);
