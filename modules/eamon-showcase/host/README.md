@@ -54,6 +54,17 @@ In the real play screen: full session passed on desktop Chromium and on the phon
 
 Known consequence of the engine's own behaviour: a newly created character and Main Hall purchases are written to file only when the character leaves the hall, so a kill before that loses them.
 
+G1 Hall durability candidate (Codex continuation): at a verified top-level Hall menu, `HallCheckpoint`
+calls the same flag-guarded serializers as the upstream Hall shutdown, with `printOutput=false`, before
+the atomic host flush. Flags remain set; shop, reward and quest logic is not rerun. Serialization failure
+aborts before a durable flush. Local Chromium testing created a new character, bought a sword and armor,
+closed the browser at the Hall menu without a normal game exit, then reopened and found the character,
+equipment and remaining gold. Serialized character/inventory records were unchanged after restart and
+matched a run using the engine's original shutdown serializers with the checkpoint hook disabled.
+This closes the observed loss in that bounded desktop scenario only: independent review, signed Android,
+interrupted serializer writes, storage failure, concurrent tabs and campaign/save integration remain open.
+The earlier observed loss describes the host before this candidate, not intended final behavior.
+
 Further gate checks (desktop Chromium): the heaviest adventure by code size, The Vile Grimoire of Jaldi'al (8,174 lines), launched from the Main Hall in about 1 s and played; nested parser questions ("Get who or what?", "Examine who or what?") were answered and correctly classified as not safe points; cancelling the pending input ended the run as "cancelled", and the next start resumed that adventure from its saved game. Script: the answer `<cancel>` in a rules file.
 
 Windows launcher path: `ParchLock.exe` is a local web server on `http://127.0.0.1` that opens Chrome or Edge, and its server code already serves every file type the engine needs (`.wasm`, `.json`, `.js`, binary data). The full session through the real play screen passed in the installed Chrome 157 and Edge 157 (`PARCHLOCK_APP_CHANNEL=chrome|msedge`). The launcher executable itself was not started, and the engine files were served by the probe's server, not from a launcher folder.

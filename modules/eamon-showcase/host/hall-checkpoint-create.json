@@ -1,0 +1,60 @@
+{
+  "rules": [
+    [
+      "D for desk",
+      "D"
+    ],
+    [
+      "type it in now",
+      "Hall Keeper"
+    ],
+    [
+      "Y for yes or N",
+      "Y"
+    ],
+    [
+      "0=Male",
+      "0"
+    ],
+    [
+      "commit suicide",
+      "N"
+    ],
+    [
+      "R to read instructions",
+      "T"
+    ],
+    [
+      "Press any key",
+      " "
+    ],
+    [
+      "^.X.: $",
+      [
+        "2",
+        "<stop>"
+      ]
+    ],
+    [
+      "B=Buy weapon",
+      "B"
+    ],
+    [
+      "5=Sword",
+      "5"
+    ],
+    [
+      "G=Good quality",
+      "G"
+    ],
+    [
+      "1=Leather",
+      "1"
+    ]
+  ],
+  "max": 30,
+  "expectFinal": [
+    "Hall Keeper"
+  ],
+  "safeFinal": true
+}

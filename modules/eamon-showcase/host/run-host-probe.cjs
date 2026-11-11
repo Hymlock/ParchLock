@@ -59,6 +59,8 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
       if (!rule) { receipt.steps.push({prompt: tail, failed: 'no rule for this prompt'}); break; }
       const send = Array.isArray(rule.answer) ? rule.answer.shift() : rule.answer;
       receipt.steps.push({prompt: tail.slice(-160), send, safePoint: await page.evaluate(() => !!(eamon.pending && eamon.pending.safePoint))});
+      // Deliberately stop at this prompt without submitting input or a graceful game exit.
+      if (send === '<stop>') break;
       // The answer "<cancel>" withdraws the pending input, as the app would when a session is closed.
       await page.evaluate(value => value === '<cancel>' ? eamon.answer('', true) : eamon.answer(value), send);
       await settle();
@@ -78,6 +80,19 @@ const receiptName = process.env.PARCHLOCK_HOST_RECEIPT || 'host-probe-receipt.js
     await page.evaluate(() => eamon.commit.catch(() => {}));
     receipt.storage = await page.evaluate(() => ({restored: eamon.restored, commits: eamon.commits, commitError: eamon.commitError}));
     const final = await page.evaluate(() => ({screen: eamon.screen, pending: eamon.pending, events: eamon.events, turns: eamon.turns.map(t => Math.round(t.ms || -1)), ticks: eamon.ticks}));
+    if (script.expectFinal && !script.expectFinal.every(text => final.screen.includes(text)))
+      receipt.steps.push({failed: 'required final screen text missing', expected: script.expectFinal});
+    if (script.safeFinal === true && !final.pending?.safePoint)
+      receipt.steps.push({failed: 'final prompt was not a safe point'});
+    if (process.env.PARCHLOCK_HOST_EXPORT) {
+      const stored = await page.evaluate(async () => {
+        const tx = (await database).transaction(['files', 'meta']);
+        const get = request => new Promise((resolve,reject) => {request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
+        const [files,meta] = await Promise.all([get(tx.objectStore('files').getAll()),get(tx.objectStore('meta').getAll())]);
+        return {files:files.map(file=>({...file,bytes:file.bytes?Array.from(file.bytes):null})),meta};
+      });
+      fs.writeFileSync(path.join(work,process.env.PARCHLOCK_HOST_EXPORT),JSON.stringify(stored));
+    }
     receipt.finalScreenTail = final.screen.slice(-3000);
     receipt.pending = final.pending; receipt.events = final.events; receipt.turnMs = final.turns;
     receipt.maxTurnMs = Math.max(0, ...final.turns); receipt.logs = logs.filter(l => l.type !== 'log').slice(0, 40);

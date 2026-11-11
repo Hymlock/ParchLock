@@ -1,0 +1,26 @@
+{
+  "rules": [
+    [
+      "D for desk",
+      "D"
+    ],
+    [
+      "type it in now",
+      "Hall Keeper"
+    ],
+    [
+      "Press any key",
+      " "
+    ],
+    [
+      "^.X.: $",
+      [
+        "X"
+      ]
+    ]
+  ],
+  "expectFinal": [
+    "Hall Keeper"
+  ],
+  "max": 25
+}

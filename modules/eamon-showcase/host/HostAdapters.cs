@@ -61,7 +61,11 @@ namespace ParchLock.EamonHost
 			// Only a top-level wait is a safe point (plan section 5). A nested prompt (a parser question,
 			// a shop or registration step, a yes/no inside an action) is mid-transaction and saves nothing.
 			var safePoint = IsSafePoint();
-			if (safePoint) Persistence.Flush();
+			if (safePoint)
+			{
+				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();
+				Persistence.Flush();
+			}
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
 			var startColumn = lastIndex > -1 ? text.Length - (lastIndex + 1) : (long)text.Length;
