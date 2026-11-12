@@ -161,6 +161,14 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     if (receipt.readyTimeout) receipt.dom = await page.evaluate(() => ({inputs: [...document.querySelectorAll('input,textarea')].map(i => i.id + '|' + i.className + '|' + (i.offsetParent ? 'shown' : 'hidden')), windows: [...document.querySelectorAll('#windowport > *')].map(w => w.id + '|' + w.className), pending: !!window.__PARCHLOCK_EAMON__}));
     // PARCHLOCK_APP_EVAL: an expression evaluated in the page at the end, for inspecting ParchLock's own state.
     if (process.env.PARCHLOCK_APP_EVAL) { receipt.evaluated = await page.evaluate(process.env.PARCHLOCK_APP_EVAL).catch(e => 'eval failed: ' + e); console.log('EVAL ' + JSON.stringify(receipt.evaluated)); }
+    // PARCHLOCK_APP_AFTER_RELOAD: the page reloads itself (an import that reopens the story); evaluate this once it is back.
+    if (process.env.PARCHLOCK_APP_AFTER_RELOAD) {
+      await page.waitForEvent('load', {timeout: 30000}).catch(() => {});
+      await ready();
+      await page.waitForFunction(() => window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state.prompts > 0, null, {timeout: 120000}).catch(() => {});
+      receipt.afterReload = await page.evaluate(process.env.PARCHLOCK_APP_AFTER_RELOAD).catch(e => 'eval failed: ' + e);
+      console.log('AFTER_RELOAD ' + JSON.stringify(receipt.afterReload));
+    }
     receipt.vm = final; receipt.logs = logs.slice(0, 40);
     receipt.screenTail = (await text()).slice(-3000);
     // A stalled step is a failure even though the loop ended normally (Grok #3373).

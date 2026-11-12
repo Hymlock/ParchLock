@@ -161,7 +161,8 @@ not written into the story text.
   each game save carries its own map and item-label snapshot (`SaveState`) and transcript marker
   (`Transcript`), restoring a save restores those, a new game archives the working map, playthrough
   history follows the save (`PlaythroughState`), saves appear in the existing save-file manager, and
-  save packages export and import every adventure's maps and saves. Eamon's own SAVE and RESTORE
+  save packages export and import every adventure's maps and saves (for Eamon, the whole campaign file
+  set travels with the package as one unit and the story reopens on it). Eamon's own SAVE and RESTORE
   commands drive these through the same entry points the Glk save dialog drives for Z-machine stories;
   save names identify the adventure and slot. All of it survives quit, force-stop and restart on every
   target, as it does for a regular module.

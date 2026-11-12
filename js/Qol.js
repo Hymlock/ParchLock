@@ -215,9 +215,18 @@ var ParchLockQol = {
             if (typeof Transcript === "undefined" || !Transcript.exportFor) return Promise.resolve(json);
             var data = JSON.parse(json);
             var names = (data.Save || []).map(s => String(s && s.Key || "")).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+            // An Eamon campaign: its own save names (every save of this story) and the campaign files.
+            var eamon = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.exportCampaign ? window.__PARCHLOCK_EAMON__ : null;
+            if (eamon) {
+                if (Transcript.meta) names = names.concat(Object.keys(Transcript.meta.saves || {}));
+                var prefix = typeof SaveState !== "undefined" ? SaveState.keyFor(SaveState.storyId(), "") : null;
+                if (prefix) for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && k.indexOf(prefix) === 0) names.push(k.slice(prefix.length)); }
+                names = Array.from(new Set(names));
+            }
             // D215: each save's own map and item labels travel with it.
             try { var states = typeof SaveState !== "undefined" ? SaveState.exportFor(names) : null; if (states) { data.SaveStates = states; json = JSON.stringify(data); } } catch (eStates) {}
-            return Transcript.exportFor(names).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => json);
+            var campaign = eamon ? eamon.exportCampaign().then(c => { data.EamonCampaign = c; }) : Promise.resolve();
+            return campaign.then(() => Transcript.exportFor(names)).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => JSON.stringify(data));
         } catch (e) { return Promise.resolve(json); }
     },
 
@@ -571,6 +580,9 @@ var ParchLockQol = {
             // E4: transcript records are validated before anything is changed.
             if (typeof Transcript !== "undefined" && Transcript.validImport && !Transcript.validImport(data.Transcripts)) throw new Error("Invalid transcript records in this package");
             if (typeof SaveState !== "undefined" && !SaveState.validImport(data.SaveStates)) throw new Error("Invalid save map records in this package");
+            // An Eamon campaign imports only into the open Eamon story, validated before anything is written.
+            var eamonVm = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__;
+            if (data.EamonCampaign != null && !(eamonVm && eamonVm.validCampaign && eamonVm.validCampaign(data.EamonCampaign))) throw new Error(eamonVm ? "Invalid Eamon campaign in this package" : "This package holds an Eamon campaign: open the Eamon story before importing it");
             if (data.Map.some((room, index) => room.Id !== index || Object.values(room.Exits).some(id => !Number.isInteger(id) || id < 0 || id >= data.Map.length))) throw new Error("Invalid room connections");
             if (data.Save.some(entry => !entry || typeof entry.Key !== "string" || typeof entry.Data !== "string" || !/^(dirent|content):(save|data|transcript|command):[^:]+:.+/.test(entry.Key))) throw new Error("Invalid save entries");
             if (data.Save.length && !ParchLock.GameId) throw new Error("Wait for the story identity before importing saves");
@@ -581,6 +593,8 @@ var ParchLockQol = {
             if (typeof SaveState !== "undefined") {
                 if ((data.Save.length || data.SaveStates) && SaveState.importReady && !SaveState.importReady()) throw new Error("Wait for the story to finish loading before importing saves.");
                 var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+                // An Eamon campaign's saves are its engine slots, named in its SaveStates (no Glk dirents).
+                if (data.EamonCampaign && data.SaveStates && data.SaveStates.saves) importedNames = importedNames.concat(Object.keys(data.SaveStates.saves));
                 stateWrites = SaveState.importWrites(data.SaveStates, importedNames);
             }
             var mapKey = ParchLockMap.StorageKey();
@@ -624,7 +638,13 @@ var ParchLockQol = {
             ParchLockMap.Save();
             try { if (typeof Transcript !== "undefined" && Transcript.importRecords && data.Transcripts) Transcript.importRecords(data.Transcripts); } catch (eTx) {}
 
-            Message.Show("Import Complete", "The save package and map data were imported.");
+            if (data.EamonCampaign && eamonVm && eamonVm.importCampaign) {
+                // The campaign files replace this device's campaign in one transaction, then the story reopens on them.
+                eamonVm.importCampaign(data.EamonCampaign).then(() => {
+                    Message.Show("Import Complete", "The save package, maps and Eamon campaign were imported. The story will reopen.");
+                    setTimeout(() => location.reload(), 1500);
+                }, err => Message.Show("Import Failed", ParchLockQol.EscapeHtml("The Eamon campaign could not be stored: " + (err && err.message || err) + ". This device's campaign is unchanged; reopen the story to continue."), true));
+            } else Message.Show("Import Complete", "The save package and map data were imported.");
             importSucceeded = true;
         }
         catch(e) {
