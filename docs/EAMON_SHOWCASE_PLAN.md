@@ -462,12 +462,12 @@ G. Independent adversarial review, final candidate on real targets, release.
    empty Send after a reload has nothing to repeat (history is this session's top-level sends only; intended, Grok
    #3451). K1 verified live 2026-11-12 (Alternate Beginner's Cave box, typed through the keyboard path): REMOVE
    KNIFE FROM BOX, DROP, GET, PUT KNIFE IN BOX, REMOVE SHIELD, WEAR SHIELD all accepted by the engine, and the final
-   tree matches it (dagger in the open box, shield worn, sword readied); GIVE X TO Y and PUT X ON Y still need a
-   fixture with a monster in reach and an on-container. K2 verified: the sheet has no key handlers and no positive
+   tree matches it (dagger in the open box, shield worn, sword readied). GIVE verified the same way (the bird): GIVE
+   5 TO BIRD reaches the game's own "Are you sure (Y/N)", GIVE SHIELD TO BIRD gets the game's refusal, and the tree
+   follows (shield held after REMOVE). PUT X ON Y still needs an adventure with an on-container (EQ-DROP-ON-1). K2 verified: the sheet has no key handlers and no positive
    tabindex, the line input stays focusable with the sheet open, and the only key the open sheet suppresses is the
    Ctrl+Shift+Arrow move; Tab on the line input is ParchLock's autocomplete for every engine (B7), unchanged by the
-   sheet. Existing-module regression 8/8 after these shared JS changes. Still to do: K1 GIVE/PUT ON and the remaining
-   EQ checks.
+   sheet. Existing-module regression 8/8 after these shared JS changes. Still to do: PUT ON and the remaining EQ checks.
 
 ## 12. Still to be evidenced (not disputes)
 
