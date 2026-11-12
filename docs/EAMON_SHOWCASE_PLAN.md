@@ -438,6 +438,11 @@ attached to a save (map snapshots, transcripts, learning) persists with that sav
 by a new release; every Showcase system (import, inventory, saves, maps, narration, navigation, learning, transcripts)
 is audited for hooking into the right ParchLock save system, and orphaned dev-build maps not attached to any save are
 cleaned out.
+Built 2026-11-12, item 6: a refused campaign shows the reason with Download Package and Start a new campaign side by
+side; starting a new campaign asks once more ("This permanently deletes the old campaign on this device: all its
+characters, their progress and their saved games. This cannot be undone.") and only then clears the campaign files and
+reopens. Verified: the dialog and both buttons; Download Package carries the campaign; Cancel deletes nothing; confirm
+clears it and the Showcase starts fresh at the outer chamber. Item 5 built (Pyramid contract). Item 4 confirmed in code.
 
 ## 10. Work packages
 
