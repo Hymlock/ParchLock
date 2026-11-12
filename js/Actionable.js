@@ -1344,7 +1344,7 @@ var Actionable = {
         return !!text.trim() && !/\s$/.test(text);
     },
     // A radial entry whose "command" explains why it cannot be sent (shown, never typed into the game).
-    EXPLAIN: " explain:",
+    EXPLAIN: "\u0000explain:",
     runChosenCommand: (command, source) => {
         var text = String(command == null ? "" : command);
         if (text.indexOf(Actionable.EXPLAIN) === 0) { try { Message.Show("Not done", ParchLockQol.EscapeHtml(text.slice(Actionable.EXPLAIN.length))); } catch (eX) {} return false; }
