@@ -28,7 +28,7 @@ namespace ParchLock.EamonHost
 	internal static class HallKeys
 	{
 		// Symbols nobody types as a command (Grok #3385 C1: 'L' collided with the universal "l" for look).
-		internal const char Ledger = '#', Stones = '@', Fire = '&', Board = '%';
+		internal const char Ledger = '#', Stones = '@', Fire = '&', Board = '%', Trophies = '$';
 	}
 
 	/// <summary>The Hall's description before upstream's own subtitle: the names ParchLock underlines.</summary>
@@ -43,9 +43,9 @@ namespace ParchLock.EamonHost
 			if (FreshEntry)
 			{
 				FreshEntry = false;
-				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk. At the far end a stair leads down toward the Village.");
+				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk, and trophies of cleared adventures hang on the Trophy Wall. At the far end a stair leads down toward the Village.");
 			}
-			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board and the stair are here.");
+			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board, the Trophy Wall and the stair are here.");
 			base.PrintMainHallMenuSubtitle();
 		}
 	}
@@ -66,6 +66,7 @@ namespace ParchLock.EamonHost
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Stones; x.LineText = ""; x.SubMenu = new StonesMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Fire; x.LineText = ""; x.SubMenu = new FireMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Board; x.LineText = ""; x.SubMenu = new QuestBoardMenu(); }));
+			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Trophies; x.LineText = ""; x.SubMenu = new TrophyWallMenu(); }));
 		}
 	}
 
@@ -126,9 +127,12 @@ namespace ParchLock.EamonHost
 		{
 			gOut.Print("{0}", gEngine.LineSep);
 			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
-			var cleared = character != null ? RunLedger.ClearedAdventures(RunLedger.CharacterId(character.Uid, character.Name ?? "")) : new HashSet<string>();
-			var open = ProgressionGate.OpenTier(cleared);
-			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared.");
+			var id = character != null ? RunLedger.CharacterId(character.Uid, character.Name ?? "") : null;
+			var everCleared = RunLedger.ClearedAdventures(id);
+			var (cycle, cleared) = RunLedger.CurrentCycle(id);
+			var open = ProgressionGate.OpenTier(everCleared);
+			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared. Clear every adventure and a New Game+ cycle begins, in which each can be credited again.");
+			if (cycle > 1) gOut.Print("New Game+ cycle {0}: \"(cleared)\" marks the adventures cleared in this cycle.", cycle);
 			for (var tier = 1; tier <= 5; tier++)
 			{
 				gOut.Print("Tier {0}, {1}: {2}", tier, ProgressionGate.TierNames[tier], tier <= open ? "open" : "locked");
@@ -140,6 +144,42 @@ namespace ParchLock.EamonHost
 		}
 
 		public QuestBoardMenu() { Buf = gEngine.Buf; }
+	}
+
+	/// <summary>The Trophy Wall: one trophy per credited clear (RunLedger's trophy records). The trophy names are
+	/// ParchLock content drawn from each adventure's own story.</summary>
+	public class TrophyWallMenu : Menu
+	{
+		static readonly Dictionary<string, string> Names = new Dictionary<string, string>(StringComparer.Ordinal)
+		{
+			["The Beginner's Cave"] = "a ribbon from Cynthia's dress", ["The Training Ground"] = "a practice-yard token",
+			["The Wayfarers Inn"] = "a sprig from Charlotte's grave", ["Beginner's Forest"] = "a leaf from the Fairy Queen's crown",
+			["Beginner's Cave II"] = "a lantern from the Warlord's cave", ["Alternate Beginner's Cave"] = "a ribbon from Nina's slippers",
+			["The Deep Canyon"] = "a stone from the deep canyon", ["The Pyramid of Anharos"] = "a scarab from the pyramid",
+			["Land of the Mountain King"] = "a shard of the mountain king's crown", ["The Tower of Eamon"] = "a page of the Book of Evil Plans",
+			["DharmaQuest"] = "a laurel from the gods' ceremony", ["Firestorm"] = "a cinder from Thorak's fire",
+			["Wrenhold's Secret Vigil"] = "an arrow from King Argas", ["The Sub-Aquan Laboratory"] = "a vial from the laboratory",
+			["Orb of My Life"] = "a sliver of glass from the Orb of Life", ["Escape from Mt. Moon"] = "a moonstone",
+			["The Temple of Ngurct"] = "a link of the medallion's chain", ["Stronghold of Kahr-Dur"] = "the banner of Kahr-Dur",
+			["A Runcible Cargo"] = "a bandit's sash", ["The Vile Grimoire of Jaldi'al"] = "the Grimoire's torn page",
+		};
+
+		public override void Execute()
+		{
+			gOut.Print("{0}", gEngine.LineSep);
+			var trophies = RunLedger.Trophies();
+			if (trophies.Count == 0) gOut.Print("The Trophy Wall is bare. Its hooks wait for the first cleared adventure.");
+			else
+			{
+				gOut.Print("On the Trophy Wall hang the trophies of cleared adventures:");
+				foreach (var t in trophies)
+					gOut.WriteLine("  {0}, from {1}: earned by {2} on {3} ({4})", Names.TryGetValue(t.adventure, out var n) ? n : "a trophy", t.adventure, t.name, t.date,
+						(t.quest == "true" ? "the quest fulfilled" : "returned alive through its own exit") + (t.cycle > 1 ? ", New Game+ cycle " + t.cycle : ""));
+			}
+			gEngine.In.KeyPress(Buf);
+		}
+
+		public TrophyWallMenu() { Buf = gEngine.Buf; }
 	}
 
 	/// <summary>The Stones of the Fallen: the names of characters who died, from the character file.</summary>

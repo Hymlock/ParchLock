@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using static Eamon.Game.Plugin.Globals;
 
@@ -21,6 +22,13 @@ namespace ParchLock.EamonHost
 		static string _dir, _run;
 		static object _trackedEngine;
 		static string LedgerPath => Entry.BasePath + "/System/Bin/PLCLEARS.DAT";
+		static string TrophiesPath => Entry.BasePath + "/System/Bin/PLTROPHIES.DAT";
+		internal sealed class Trophy { public string character { get; set; } public string name { get; set; } public string adventure { get; set; } public string run { get; set; } public string date { get; set; } public string quest { get; set; } public int cycle { get; set; } }
+		internal static List<Trophy> Trophies()
+		{
+			try { return File.Exists(TrophiesPath) ? JsonSerializer.Deserialize<List<Trophy>>(File.ReadAllText(TrophiesPath)) ?? new List<Trophy>() : new List<Trophy>(); }
+			catch (Exception) { return new List<Trophy>(); }
+		}
 		static string CharactersPath => Entry.BasePath + "/System/Bin/PLCHARS.DAT";
 		static string RunPath(string dir, long slot = 0) => Path.Combine(dir, slot > 0 ? "PLRUN_" + slot + ".DAT" : "PLRUN.DAT");
 
@@ -80,38 +88,69 @@ namespace ParchLock.EamonHost
 			return map[key][1];
 		}
 
-		/// <summary>The adventures this character has a credited clear in.</summary>
+		// The clear ledger (System/Bin/PLCLEARS.DAT): per ParchLock character id, the current New Game+ cycle and every
+		// credited clear (adventure, run, cycle). Old cycles stay as history.
+		internal sealed class Clear { public string adventure { get; set; } public string run { get; set; } public int cycle { get; set; } }
+		internal sealed class CharacterClears { public int cycle { get; set; } = 1; public List<Clear> clears { get; set; } = new List<Clear>(); }
+
+		static Dictionary<string, CharacterClears> ReadLedger()
+		{
+			try { return File.Exists(LedgerPath) ? JsonSerializer.Deserialize<Dictionary<string, CharacterClears>>(File.ReadAllText(LedgerPath)) ?? new Dictionary<string, CharacterClears>() : new Dictionary<string, CharacterClears>(); }
+			catch (Exception) { return new Dictionary<string, CharacterClears>(); }
+		}
+
+		/// <summary>The adventures this character has ever cleared (any cycle): the Guild rank and tier gates use these,
+		/// since New Game+ never resets the character.</summary>
 		internal static HashSet<string> ClearedAdventures(string characterId)
 		{
 			var result = new HashSet<string>(StringComparer.Ordinal);
-			if (string.IsNullOrEmpty(characterId) || !File.Exists(LedgerPath)) return result;
-			var ledger = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(File.ReadAllText(LedgerPath)) ?? new Dictionary<string, List<string>>();
-			foreach (var entry in ledger)
-				if (entry.Value.Count > 0 && entry.Key.StartsWith(characterId + "|", StringComparison.Ordinal)) result.Add(entry.Key.Substring(characterId.Length + 1));
+			if (!string.IsNullOrEmpty(characterId) && ReadLedger().TryGetValue(characterId, out var c)) foreach (var clear in c.clears) result.Add(clear.adventure);
 			return result;
 		}
 
-		/// <summary>Records a clear of this run for this character and adventure: "credited", or "already credited"
-		/// when this run was credited before (a restored or imported copy of it). Bound to the adventure engine that
-		/// was tracked and to a character seen in it (Grok #3410 F1).</summary>
-		internal static string Credit(object engine, string characterId, string adventure)
+		/// <summary>This character's current cycle and the adventures cleared in it.</summary>
+		internal static (int Cycle, HashSet<string> Cleared) CurrentCycle(string characterId)
+		{
+			var cleared = new HashSet<string>(StringComparer.Ordinal);
+			if (string.IsNullOrEmpty(characterId) || !ReadLedger().TryGetValue(characterId, out var c)) return (1, cleared);
+			foreach (var clear in c.clears) if (clear.cycle == c.cycle) cleared.Add(clear.adventure);
+			return (c.cycle, cleared);
+		}
+
+		/// <summary>Records a clear of this run for this character and adventure. "already credited": this run was
+		/// credited before (a restored or imported copy of it). "already cleared": cleared earlier in this New Game+
+		/// cycle. "credited", or "credited, new cycle N" when this clear completes every Showcase adventure in the
+		/// cycle (operator, #3416 and #3427). Bound to the adventure engine that was tracked and to a character seen in
+		/// it (Grok #3410 F1).</summary>
+		internal static string Credit(object engine, string characterId, string adventure, string characterName = null, string quest = null)
 		{
 			if (string.IsNullOrEmpty(_run) || !ReferenceEquals(engine, _trackedEngine)) return "no run";
 			if (string.IsNullOrEmpty(characterId)) return "no character";
 			if (_run.StartsWith(Unbound, StringComparison.Ordinal)) return "unbound run";
-			var ledger = File.Exists(LedgerPath)
-				? JsonSerializer.Deserialize<Dictionary<string, List<string>>>(File.ReadAllText(LedgerPath)) ?? new Dictionary<string, List<string>>()
-				: new Dictionary<string, List<string>>();
-			var key = characterId + "|" + adventure;
-			if (!ledger.TryGetValue(key, out var runs)) ledger[key] = runs = new List<string>();
-			if (runs.Contains(_run)) return "already credited";
-			// Operator policy (2026-11-12): a clear is credited once per character and adventure; a fresh replay
-			// plays normally (the engine still pays its own rewards) but earns no second credit.
-			if (runs.Count > 0) return "already cleared";
-			runs.Add(_run);
+			var ledger = ReadLedger();
+			if (!ledger.TryGetValue(characterId, out var c)) ledger[characterId] = c = new CharacterClears();
+			if (c.clears.Any(x => x.run == _run)) return "already credited";
+			if (c.clears.Any(x => x.cycle == c.cycle && x.adventure == adventure)) return "already cleared";
+			c.clears.Add(new Clear { adventure = adventure, run = _run, cycle = c.cycle });
+			var result = "credited";
+			// "All loaded" = the Showcase's tiered adventures (ProgressionGate.Tiers, the package's complete set): once every
+			// one is cleared in this cycle, the next cycle opens. Only a credit can advance it, so save/restore cannot.
+			if (ProgressionGate.Tiers.Keys.All(a => c.clears.Any(x => x.cycle == c.cycle && x.adventure == a)))
+			{
+				c.cycle++;
+				result = "credited, new cycle " + c.cycle;
+			}
 			Directory.CreateDirectory(Path.GetDirectoryName(LedgerPath));
 			File.WriteAllText(LedgerPath, JsonSerializer.Serialize(ledger));
-			return "credited";
+			// The Trophy Wall's record of this credit: who, which adventure, when, which cycle and what counted.
+			try
+			{
+				var trophies = File.Exists(TrophiesPath) ? JsonSerializer.Deserialize<List<Trophy>>(File.ReadAllText(TrophiesPath)) ?? new List<Trophy>() : new List<Trophy>();
+				trophies.Add(new Trophy { character = characterId, name = characterName ?? "", adventure = adventure, run = _run, date = DateTime.UtcNow.ToString("yyyy-MM-dd"), quest = quest ?? "", cycle = c.clears.Last().cycle });
+				File.WriteAllText(TrophiesPath, JsonSerializer.Serialize(trophies));
+			}
+			catch (Exception) { }
+			return result;
 		}
 	}
 }

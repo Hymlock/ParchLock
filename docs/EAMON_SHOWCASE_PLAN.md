@@ -160,7 +160,14 @@ engine then (proved by a host probe). Gold and gains come from the exported char
 gold). Each save slot carries the run id it was saved in, and a successful RESTORE makes that run current, so
 a restored or imported pre-exit save can never earn a second credit for its run; a fresh entry starts a new
 run. Operator decision (2026-11-12): a clear is credited once per character and adventure; a fresh replay plays
-normally, and the engine still pays its own rewards, but earns no second credit. Verified live: The Training Ground
+normally, and the engine still pays its own rewards, but earns no second credit. Owner request (#3427, 2026-11-12): New Game+. Credit
+stays once per character and adventure within a cycle; when a character has cleared every Showcase adventure (the
+twenty in the tier table, the package's complete set) in the current cycle, the next cycle opens and each adventure
+can be credited once again. The character is never reset (stats, inventory, gold, maps, history carry over). The
+ledger keeps a cycle per character with every clear (adventure, run, cycle) as history; tier gates and the Guild rank
+use clears from any cycle. Only a credit can open a cycle, so save and restore cannot; a run already credited stays
+"already credited" in any cycle. The player is told in the debriefing ("New Game+: cycle N begins..."), and the
+Quest Board and Trophy Wall show the cycle. Verified live: The Training Ground
 credited on the first exit, "already cleared" on a second run. Open for the operator (found 2026-11-12): under the
 no-quest rule, entering The Training Ground and leaving at once is a clear (verified live), so it can count towards
 the tier 1 gate without any play; decide whether a no-quest adventure needs more than leaving alive. A restored slot that has lost its
