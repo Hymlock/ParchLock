@@ -37,7 +37,7 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     if (process.env.PARCHLOCK_APP_CHANNEL) receipt.scope = 'Eamon inside the ParchLock play screen, installed browser: ' + process.env.PARCHLOCK_APP_CHANNEL + ' ' + browser.version();
     const context = cdp ? browser.contexts()[0] : profile ? browser : await browser.newContext(view);
     // PARCHLOCK_APP_NOTOUR=1: start as a player who has finished ParchLock's guided tour.
-    await context.addInitScript(noTour => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); localStorage.setItem('PL_TutorialLibrarySeen', '1'); if (noTour) localStorage.setItem('PL_TutorialSeen', '1'); } catch (e) {} }, !!process.env.PARCHLOCK_APP_NOTOUR);
+    await context.addInitScript(flags => { const noTour = flags.noTour; try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); localStorage.setItem('PL_TutorialLibrarySeen', '1'); if (noTour) localStorage.setItem('PL_TutorialSeen', '1'); if (flags.debug) localStorage.setItem('PL_EamonDebug', '1'); } catch (e) {} }, {noTour: !!process.env.PARCHLOCK_APP_NOTOUR, debug: !!process.env.PARCHLOCK_APP_DEBUG});
     if (process.env.PARCHLOCK_HOST_DELAY_ACK) await context.addInitScript(delay => {
       const transaction=IDBDatabase.prototype.transaction;
       const complete=Object.getOwnPropertyDescriptor(IDBTransaction.prototype,'oncomplete');
@@ -150,7 +150,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     if (process.env.PARCHLOCK_APP_EVAL) { receipt.evaluated = await page.evaluate(process.env.PARCHLOCK_APP_EVAL).catch(e => 'eval failed: ' + e); console.log('EVAL ' + JSON.stringify(receipt.evaluated)); }
     receipt.vm = final; receipt.logs = logs.slice(0, 40);
     receipt.screenTail = (await text()).slice(-3000);
-    receipt.failed = receipt.steps.some(s => s.failed) || !final || !!final.commitError;
+    // A stalled step is a failure even though the loop ended normally (Grok #3373).
+    receipt.failed = receipt.steps.some(s => s.failed) || !final || !!final.commitError || !!receipt.stalledAfter;
     if (process.env.PARCHLOCK_HOST_DELAY_ACK) {
       receipt.acknowledgements=await page.evaluate(()=>window.__ackProbe);
       receipt.ackOrderPass=receipt.acknowledgements.started>0&&receipt.acknowledgements.started===receipt.acknowledgements.acknowledged&&receipt.acknowledgements.violations.length===0;

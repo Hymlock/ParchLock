@@ -805,7 +805,7 @@ var Actionable = {
     isGameWord: (word) => {
         try {
             // An Eamon adventure answers from its own parser vocabulary (js/EamonProvider.js).
-            if (typeof EamonProvider !== "undefined" && EamonProvider.vocabulary && EamonProvider.vocabulary()) return EamonProvider.hasWord(word);
+            if (typeof ActionSynth !== "undefined" && ActionSynth.eamonVocabularyActive && ActionSynth.eamonVocabularyActive()) return EamonProvider.hasWord(word);
             if (typeof ZRamProvider === "undefined" || !ZRamProvider.getMem) return false;
             var mem = ZRamProvider.getMem();
             if (!mem || typeof ZRamReader === "undefined" || !ZRamReader.hasDictionaryWord) return false;

@@ -12,6 +12,16 @@ var EamonProvider = {
 
     active: () => !!(typeof window !== "undefined" && window.__PARCHLOCK_EAMON__),
 
+    // Eamon fact -> Eamon command rows, read by ActionSynth.verbsForAttrs only while an Eamon adventure is
+    // active. Deliberately not in ActionSynth.rules, which AttrCalibrator enumerates for every story.
+    RULES: {
+        readyWeapon: ["ready"],
+        drinkable: ["drink"],
+        readable: ["read"],
+        lightSource: ["light"],
+        attackable: ["attack"]
+    },
+
     world: () => {
         var vm = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__;
         return vm && vm.state ? vm.state.world : null;
@@ -19,7 +29,7 @@ var EamonProvider = {
 
     attrs: (o) => {
         var a = {};
-        if (o.kind === "monster") { a.animate = true; a.talkable = true; if (o.reaction !== "Friend") a.hostile = true; return a; }
+        if (o.kind === "monster") { a.animate = true; a.talkable = true; if (o.reaction !== "Friend") a.attackable = true; return a; }
         a.takeable = true;
         if (o.worn) { a.worn = true; a.isWorn = true; }
         if (o.wearable) { a.wearable = true; a.clothing = true; }

@@ -8,6 +8,7 @@ var ModuleStatFacts = {
             "health"
         ],
         "replyFamily": "eamon-status",
+        "engine": "Eamon CS 3.1.0 (5db64a37afe0b5455ee477e067fca4e6d249e419)",
         "outcome": "line",
         "evidence": "2026-11-11 Eamon CS 3.1.0 STATUS in The Beginner's Cave (Damage Taken d/h, Gold, In bank, attributes, Armor Expertise, Weight carried); The Vile Grimoire of Jaldi'al answers \"You are at N percent health.\""
     },

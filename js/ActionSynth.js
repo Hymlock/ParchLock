@@ -15,12 +15,6 @@ var ActionSynth = {
         talkable: ["talk to"],
         // D239: bare "climb X" only; the game picks the direction (CLIMB OBJECT -> V-CLIMB-FOO).
         climbable: ["climb"],
-        // Facts only the Eamon provider sets (js/EamonProvider.js); Eamon's own command words.
-        readyWeapon: ["ready"],
-        drinkable: ["drink"],
-        readable: ["read"],
-        lightSource: ["light"],
-        hostile: ["attack"],
         default: ["examine"]
     },
 
@@ -50,6 +44,13 @@ var ActionSynth = {
     // literal of the form ("give" and "to", "put" and "in") must be in the
     // story's dictionary. Only decided where a dictionary adapter exists (Z
     // RAM); elsewhere (Glulx, no memory yet) existing behaviour is unchanged.
+    // True only for an Eamon adventure in play and never while a Z-machine is loaded.
+    eamonVocabularyActive: () => {
+        try {
+            if (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem && ZRamProvider.getMem()) return false;
+            return typeof EamonProvider !== "undefined" && !!EamonProvider.vocabulary && !!EamonProvider.vocabulary();
+        } catch (e) { return false; }
+    },
     literalAvailable: (literals) => {
         var mem = null;
         try { mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null; } catch (eMem) { mem = null; }
@@ -233,7 +234,12 @@ var ActionSynth = {
             }
         } catch (eL) {}
         if (a.nativeUseVerb === "use" && verbs.indexOf("use") < 0) verbs.push("use");
-        if (typeof EamonProvider !== "undefined" && EamonProvider.vocabulary && EamonProvider.vocabulary()) {
+        // An Eamon adventure: its provider's own fact rows (kept out of this shared table, which is also
+        // AttrCalibrator's verb source for every story), then only words the Eamon parser knows.
+        if (ActionSynth.eamonVocabularyActive()) {
+            Object.keys(EamonProvider.RULES).forEach(function (key) {
+                if (a[key]) EamonProvider.RULES[key].forEach(function (v) { if (verbs.indexOf(v) < 0) verbs.push(v); });
+            });
             verbs = verbs.filter(function (v) { return ActionSynth.literalAvailable(v); });
         }
         return verbs.map(function (v) { return ActionSynth.projectGeneratedActivation(v, objectId, options.context); })
