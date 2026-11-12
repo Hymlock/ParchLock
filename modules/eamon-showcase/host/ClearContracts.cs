@@ -71,6 +71,17 @@ namespace ParchLock.EamonHost
 			// the magic elven bow (artifact 50, starts in limbo) before the bow-naming prompt (PlayerMoveCheckState.cs
 			// :162-205), its last prompt with ExitType still None (Grok #3407 fix 1).
 			["Wrenhold's Secret Vigil"] = @"{ ""quest"": { ""all"": [ { ""artifact"": 50, ""carried"": true }, { ""artifact"": 4, ""inLimbo"": true } ] } }",
+			// The Sub-Aquan Laboratory: information for Mayor Frump. Shutdown pays when QuestValue > 0 after adding a share
+			// for zone-2 (lab) rooms seen (MainLoop.cs); QuestValue grows by reading the lab's documents (ReadCommand.cs:40,
+			// :110, :136). Before Shutdown that is: a document read, or any lab room seen. For Grok's review.
+			["The Sub-Aquan Laboratory"] = @"{ ""quest"": { ""any"": [ { ""gameState"": ""QuestValue"", ""greaterThan"": 0 }, { ""zone"": 2, ""roomsSeenAtLeast"": 1 } ] } }",
+			// Orb of My Life: the Orb of Life (artifact 23) carried by the player at the exit (MainLoop.cs Shutdown, checked
+			// before it is put in limbo there). For Grok's review.
+			["Orb of My Life"] = @"{ ""quest"": { ""artifact"": 23, ""carried"": true } }",
+			// Escape from Mt. Moon: "safely navigate its corridors and investigate the activities of Team Rocket" (effect
+			// 200); stock engine, nothing checks the investigation, so escaping alive through an exit is the clear.
+			// Interpretation, for Grok's and the operator's review.
+			["Escape from Mt. Moon"] = @"{ ""quest"": null }",
 			["Alternate Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 11, ""inPlayerRoom"": true }, { ""monster"": 11, ""reactionAbove"": ""Neutral"" } ] } }",
 		};
 
@@ -142,15 +153,24 @@ namespace ParchLock.EamonHost
 					default: return a.IsInRoomUid(v.GetInt64());
 				}
 			}
+			if (keys.Contains("zone"))
+			{
+				// Rooms of an adventure zone the player has seen (Room.Seen), as an engine's own Shutdown counts them.
+				if (keys.Length != 2 || !keys.Contains("roomsSeenAtLeast")) throw new InvalidOperationException("zone needs exactly: roomsSeenAtLeast");
+				var zone = c.GetProperty("zone").GetInt64();
+				return db.RoomTable.Records.Count(r => r.Zone == zone && r.Seen) >= c.GetProperty("roomsSeenAtLeast").GetInt64();
+			}
 			if (keys.Contains("gameState"))
 			{
-				if (keys.Length != 2 || !keys.Contains("equals")) throw new InvalidOperationException("gameState needs exactly: equals");
+				var comparison = keys.Contains("equals") ? "equals" : keys.Contains("greaterThan") ? "greaterThan" : null;
+				if (keys.Length != 2 || comparison == null) throw new InvalidOperationException("gameState needs exactly one of: equals, greaterThan");
 				var field = c.GetProperty("gameState").GetString();
 				PropertyInfo property;
 				try { property = state.GetType().GetProperty(field, BindingFlags.Public | BindingFlags.Instance); }
 				catch (AmbiguousMatchException) { throw new InvalidOperationException("ambiguous game state property " + field); }
 				if (property == null) throw new InvalidOperationException("no game state property " + field + " (properties only)");
-				return Convert.ToInt64(property.GetValue(state)) == c.GetProperty("equals").GetInt64();
+				var value = Convert.ToInt64(property.GetValue(state));
+				return comparison == "equals" ? value == c.GetProperty("equals").GetInt64() : value > c.GetProperty("greaterThan").GetInt64();
 			}
 			throw new InvalidOperationException("unknown contract clause " + c.GetRawText());
 		}
