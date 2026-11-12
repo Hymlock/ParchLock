@@ -451,6 +451,13 @@ Download Package, and installs only on Yes. Verified: a package changing The Tra
 changed nothing (the campaign stayed on the old package); a package changing only Beginner's Cave II installed without
 asking and carried the campaign over. A save-format change arrives with an app update, which cannot be intercepted
 beforehand; that case is the refusal with Download Package and Start a new campaign (item 6).
+Grok #3479: Download Package now always says what happened ("Copy saved as <name>." or why it could not be made);
+Start a new campaign also forgets the deleted saves' transcripts and map snapshots (verified: none left, campaign files
+0). Owner to confirm: both buttons appear together with Download Package first, and the confirmation points back to it
+(read as "only after export has been offered"). A campaign that never recorded fingerprints warns for every afield
+character (fails safe). The update check was also verified with a character afield in an unchanged adventure: no
+warning, and after the update the game resumed in that adventure with its save. On the phone, still to check that the
+WebView shows these confirmations (a WebView that answered No would cancel silently).
 
 ## 10. Work packages
 
