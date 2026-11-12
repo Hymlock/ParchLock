@@ -84,6 +84,7 @@ namespace ParchLock.EamonHost
 				string credit = "not a clear";
 				if (cleared) { try { credit = RunLedger.Credit(_adventure, _character, _adventureName); } catch (Exception e) { credit = "error: " + e.Message; } }
 				HostBridge.Lifecycle("adventure-ended", _adventureName + "|" + _adventure.ExitType + "|die=" + _dieAtPrompt + "|quest=" + ClearContracts.Latest + "|run=" + RunLedger.Current + "|credit=" + credit);
+				Debrief.Ended(_adventureName, _adventure.ExitType.ToString(), _dieAtPrompt, ClearContracts.Latest, credit);
 			}
 			ClearContracts.Reset();
 			_adventure = null;

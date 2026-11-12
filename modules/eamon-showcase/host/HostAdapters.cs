@@ -72,6 +72,7 @@ namespace ParchLock.EamonHost
 				&& App.OutputBuf.ToString().TrimEnd().EndsWith("Enter the selection or X to exit:", StringComparison.Ordinal);
 			if (adventureChoice)
 			{
+				try { Debrief.AtChoice(); } catch (Exception) { }
 				string legend = null;
 				try { legend = ProgressionGate.Legend(); } catch (Exception) { legend = null; }
 				if (legend != null) { gEngine.Out.Print("{0}", legend); gEngine.Out.Write("{0}Enter the selection or X to exit: ", Environment.NewLine); }
@@ -81,6 +82,7 @@ namespace ParchLock.EamonHost
 				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();
 				Persistence.Flush();
 				SaveEvents.AfterFlush();
+				try { Debrief.ReportIfDue(); } catch (Exception) { }
 			}
 			if (!(gEngine is EamonMH.Framework.Plugin.IEngine)) SaveEvents.Track();
 			// ParchLock's map, exits and object lists follow the game only at an adventure's own prompt.

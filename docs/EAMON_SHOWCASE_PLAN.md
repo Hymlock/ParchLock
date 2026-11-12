@@ -189,7 +189,11 @@ starts. Both of those clears were walk-in, walk-out exits (see the open operator
 
 **Debriefing.** After returning to the Main Hall, a ParchLock panel shows treasure sold, gold gained,
 whether a clear was credited and why, rank and any newly opened tier, using the engine's own figures. It is
-not written into the story text.
+not written into the story text. Built (2026-11-12): the host notes the Hall character's gold and rank at the
+adventure selection and, at the Hall's first safe prompt after the return (after its commit), reports the adventure,
+the credit decision, gold before and after, the Guild rank and any newly opened tier; the page shows it in ParchLock's
+Message dialog. Verified live: "Cleared, and credited" and "A new tier of adventures is open: tier 2". Treasure
+sold is not itemised yet (it is inside the gold difference).
 
 ## 7. ParchLock features
 

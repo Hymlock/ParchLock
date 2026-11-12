@@ -132,6 +132,9 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       receipt.steps.push({prompt: tail.slice(-120), kind: state.input, send});
       // ParchLock's guided tour opens once over the play screen and takes the keyboard; dismiss it as a player would.
       if (await page.locator('#pl-tut-overlay').isVisible().catch(() => false)) await page.locator('text=Skip tour').click({timeout: 2000}).catch(() => {});
+      // A ParchLock dialog (e.g. the Eamon debriefing) is closed first, as a player would; its text is kept.
+      const dialog = await page.evaluate(() => (typeof Message !== 'undefined' && Message.IsOpen) ? (document.querySelector('#message') || {}).innerText || '' : null);
+      if (dialog !== null) { (receipt.dialogsSeen = receipt.dialogsSeen || []).push(dialog.replace(/\s+/g, ' ').trim().slice(0, 300)); await page.evaluate(() => Message.Hide()); }
       const input = page.locator('#windowport input.Input');
       const before = await page.evaluate(() => window.__PARCHLOCK_EAMON__.state.turns.length);
       // On the mobile shell ParchLock owns input focus and re-issues keys to the story window with
