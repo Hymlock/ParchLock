@@ -73,3 +73,17 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 ## Operator addition: items are usable
 
 "Players can use the hall's items for various purposes." Each object needs real uses (take, use, give, burn, read, sit, offer...), not only examine/read-outs, and each use must do something true in the game or campaign. Uses must not duplicate an existing place's service unless they are a themed route into that same upstream service (for example the Shield Wall opening the engine's own Examine Abilities).
+## Settled with Grok (#3379)
+
+- Mechanism: no replacement Main Hall plugin in the package. The app-owned host registers the Hall's class mappings beside EamonMH, the way it already injects portability mappings (`AppShim.LoadPortabilityClassMappings`); object text and data may ship in the package, labelled ParchLock content. Campaign reads and tier locks stay in the host (the progression authority). Option B (a separate Great Hall world) is dropped.
+- Long Fire: sitting opens ParchLock's debriefing panel for the latest return; the story text does not reprint the debrief. No healing, burning loot or rest mechanic.
+- Skald: tales only of open adventures, from the adventure's own intro and author line; no payment, no start.
+- Quest Board: lists the tiers and the unlock rule and can say why an open adventure would still refuse this character (its own entry check). Taking a notice leads to the adventure desk's own flow; it is not a second way to start.
+- Trophy Wall: credited clears only. A separate chronicle of failed or abandoned quests may follow from the outcome contracts.
+- Stones of the Fallen: dead characters from the character file; reads ParchLock's existing death history, no second counter.
+- Long Tables: dropped until a real purpose exists.
+- Shield Wall: a themed route to the engine's Examine Abilities (the same key the room command sends).
+- Guild Ledger: read-only roster in the Hall (including who is afield); signing stays at the registration desk in the outer chamber, which becomes its own later room with the real desk, sign and beer trap.
+- Great Tapestry: opens ParchLock's existing world-map view with campaign data; waits for that data.
+- Stair: the Village exit's themed object, sending the same key.
+- Order: Hall rooms (built); then upstream-backed objects (Shield Wall, Stair, Ledger, Stones); then, after the campaign record (package E), the Fire, Board, Skald, Trophies and Tapestry.
