@@ -43,8 +43,18 @@ namespace ParchLock.EamonHost
 		{
 			cleared ??= Cleared();
 			var open = 1;
-			while (open < 5 && Tiers.Count(t => t.Value == open && cleared.Contains(t.Key)) >= ClearsToOpen) open++;
+			while (open < 5 && TierCount(open, cleared) >= ClearsToOpen) open++;
 			return open;
+		}
+
+		/// <summary>Completed adventures of a tier, for its gate. The five beginner alternatives count as one at most, whether
+		/// credited, overqualified or both (Grok #3439): one real clear plus overqualification, or training alone, never opens
+		/// the next tier; a second, different adventure (The Wayfarers Inn, which admits anyone) is always needed.</summary>
+		internal static int TierCount(int tier, HashSet<string> completed)
+		{
+			var names = Tiers.Where(t => t.Value == tier && completed.Contains(t.Key)).Select(t => t.Key).ToList();
+			var alternatives = names.Count(n => BeginnerAlternatives.Contains(n));
+			return names.Count - alternatives + (alternatives > 0 ? 1 : 0);
 		}
 
 		// Upstream's demonstration and test modules ride along in the bundle outside the campaign (not in the release's 20).
@@ -60,7 +70,7 @@ namespace ParchLock.EamonHost
 			if (tier <= 1) return null;
 			cleared ??= Cleared();
 			if (tier <= OpenTier(cleared)) return null;
-			var below = Tiers.Count(t => t.Value == tier - 1 && cleared.Contains(t.Key));
+			var below = TierCount(tier - 1, cleared);
 			return string.Format("{0} is a tier {1} adventure ({2}). It opens once you have cleared two different tier {3} adventures ({4}); you have cleared {5}.",
 				adventure.Trim(), tier, TierNames[tier], tier - 1, TierNames[tier - 1], below);
 		}
@@ -86,6 +96,22 @@ namespace ParchLock.EamonHost
 			if (!beginner) foreach (var a in BeginnersStory) result.Add(a);
 			if (c.ArmorExpertise > 25) result.Add("The Training Ground");
 			return result;
+		}
+
+		/// <summary>A warning before training would close beginner adventures the character has not completed (Grok #3439):
+		/// null when no beginner adventure is still open to them or one is already credited.</summary>
+		internal static string TrainingWarning(Eamon.Framework.ICharacter c, bool armour)
+		{
+			if (c == null) return null;
+			var credited = RunLedger.ClearedAdventures(RunLedger.CharacterId(c.Uid, c.Name ?? ""));
+			if (credited.Overlaps(BeginnerAlternatives)) return null;
+			var closed = Outgrown(c);
+			var stillBeginner = !closed.Contains("The Beginner's Cave");
+			var trainingGroundOpen = !closed.Contains("The Training Ground");
+			if (!stillBeginner && !(armour && trainingGroundOpen)) return null;
+			var what = stillBeginner ? "any change to your weapon skills or armour expertise closes the four beginner adventures (The Beginner's Cave, Beginner's Forest, Beginner's Cave II, Alternate Beginner's Cave) to you for good" : "";
+			if (armour && trainingGroundOpen) what += (what.Length > 0 ? ", and " : "") + "armour expertise above 25 closes The Training Ground";
+			return "A word from the guild: " + what + ". An adventure you can no longer enter counts as completed for New Game+, but earns no credit or trophy.";
 		}
 
 		/// <summary>The fileset (adventure) a typed selection names, or null.</summary>

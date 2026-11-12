@@ -150,12 +150,14 @@ namespace ParchLock.EamonHost
 			gOut.Print("{0}", gEngine.LineSep);
 			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
 			var id = character != null ? RunLedger.CharacterId(character.Uid, character.Name ?? "") : null;
-			var everCleared = RunLedger.ClearedAdventures(id);
 			var outgrown = ProgressionGate.Outgrown(character);
 			var (cycle, cleared) = RunLedger.CurrentCycle(id, outgrown);
 			var open = ProgressionGate.OpenTier(ProgressionGate.Completed(character, id));
-			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared. Complete every adventure (of the beginner adventures one is enough: they are alternatives) and New Game+ is offered, in which each can be credited again.");
+			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been completed; the five beginner adventures are alternatives and count as one. Complete every adventure (one beginner adventure is enough) and New Game+ is offered, in which each can be credited again.");
 			if (cycle > 1) gOut.Print("New Game+ cycle {0}: \"(cleared)\" marks the adventures cleared in this cycle.", cycle);
+			// The last beginner adventure still open, with none completed yet (Grok #3439).
+			if (outgrown.Contains("The Beginner's Cave") && !outgrown.Contains("The Training Ground") && !RunLedger.ClearedAdventures(id).Overlaps(ProgressionGate.BeginnerAlternatives))
+				gOut.Print("A notice in red: The Training Ground is the last beginner adventure still open to you; armour expertise above 25 will close it too.");
 			for (var tier = 1; tier <= 5; tier++)
 			{
 				gOut.Print("Tier {0}, {1}: {2}", tier, ProgressionGate.TierNames[tier], tier <= open ? "open" : "locked");
@@ -340,6 +342,31 @@ namespace ParchLock.EamonHost
 		}
 
 		public SkaldMenu() { Buf = gEngine.Buf; }
+	}
+
+	/// <summary>Don Diego's weapon training (upstream DonDiegoMenu) with ParchLock's warning first: training can close the
+	/// beginner adventures for good (Grok #3439).</summary>
+	[ClassMappings(typeof(EamonMH.Framework.Menus.ActionMenus.IDonDiegoMenu))]
+	public class HallDonDiegoMenu : EamonMH.Game.Menus.ActionMenus.DonDiegoMenu
+	{
+		public override void Execute()
+		{
+			var warning = ProgressionGate.TrainingWarning((gEngine as EamonMH.Framework.Plugin.IEngine)?.Character, false);
+			if (warning != null) { gOut.Print("{0}", gEngine.LineSep); gOut.Print("{0}", warning); }
+			base.Execute();
+		}
+	}
+
+	/// <summary>The armour master's training (upstream MasterArmorMenu) with the same warning, including The Training Ground.</summary>
+	[ClassMappings(typeof(EamonMH.Framework.Menus.ActionMenus.IMasterArmorMenu))]
+	public class HallMasterArmorMenu : EamonMH.Game.Menus.ActionMenus.MasterArmorMenu
+	{
+		public override void Execute()
+		{
+			var warning = ProgressionGate.TrainingWarning((gEngine as EamonMH.Framework.Plugin.IEngine)?.Character, true);
+			if (warning != null) { gOut.Print("{0}", gEngine.LineSep); gOut.Print("{0}", warning); }
+			base.Execute();
+		}
 	}
 
 	/// <summary>The Stones of the Fallen: the names of characters who died, from the character file.</summary>

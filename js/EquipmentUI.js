@@ -838,7 +838,7 @@ var EquipmentUI = {
                 el.addEventListener("click", function (e) {
                     if (e.target.closest && e.target.closest(".equip-grip")) return;
                     // Not the click that ends a drag released over this same row (Grok #3437).
-                    if (Date.now() < (el._holdContextUntil || 0) || EquipmentUI._drag || Date.now() - (EquipmentUI._dragEndedAt || 0) < 300) return;
+                    if (Date.now() < (el._holdContextUntil || 0) || EquipmentUI._drag || Date.now() - (EquipmentUI._dragEndedAt || 0) < 450) return;
                     if (typeof Actionable !== "undefined") Actionable.Open(String(o.name).toLowerCase(), "inventory", e.clientX, e.clientY, o.id);
                 });
 

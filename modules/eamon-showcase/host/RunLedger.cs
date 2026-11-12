@@ -117,8 +117,8 @@ namespace ParchLock.EamonHost
 				|| c.clears.Any(x => ProgressionGate.BeginnerAlternatives.Contains(x.adventure) && (x.cycle == c.cycle || c.cycle > 1));
 		}
 
-		/// <summary>The Showcase adventures still to complete in this character's current cycle (not cleared, not outgrown).</summary>
-		/// <summary>(outgrown: the adventures the character is overqualified for, marked completed by operator decision.)</summary>
+		/// <summary>The Showcase adventures still to complete in this character's current cycle (not cleared, not overqualified;
+		/// outgrown = the adventures the character is overqualified for, marked completed by operator decision).</summary>
 		internal static List<string> RemainingInCycle(string characterId, HashSet<string> outgrown)
 		{
 			outgrown = outgrown ?? new HashSet<string>();

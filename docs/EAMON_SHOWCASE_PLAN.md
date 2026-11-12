@@ -201,8 +201,11 @@ room command): before it is earned it names exactly what remains; once earned it
 and the Quest Board shows the same offer. The character is never reset. Operator decision (2026-11-12, later): an adventure whose own
 entry check now refuses the character as overqualified (the four beginner caves once no longer a beginner; The
 Training Ground above armour expertise 25) is marked completed for that character, in the first cycle and every
-New Game+ cycle, and the tier gates count it, so no character is locked out of completion or of a tier for a
-technical reason. It earns no credit or trophy; the Quest Board shows "(overqualified: completed)". Nothing has to be visited or selected to
+New Game+ cycle, so no character is locked out of completion for a technical reason. For the tier gates the five
+beginner alternatives count as one completion at most, whether credited, overqualified or both (Grok #3439): an
+overqualified beginner adventure never stands in for a second, different adventure, so neither training alone nor
+one beginner clear opens tier 2; The Wayfarers Inn, which admits anyone, is always the other tier 1 completion
+needed, so no character is locked out of a tier either. It earns no credit or trophy; the Quest Board shows "(overqualified: completed)". Nothing has to be visited or selected to
 activate it: it is read from the character's own record whenever the progression is checked. The Trophy Wall shows
 the signed-in character's shelf for the current cycle (operator 2026-11-12): the trophies earned in this cycle, plus
 the latest earlier trophy of an adventure the character is overqualified for (it cannot be earned again, so it
