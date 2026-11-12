@@ -57,7 +57,17 @@ namespace ParchLock.EamonHost
 			});
 			_ending = null;
 			_goldAtChoice = null;
+			// Kept in the campaign files so the Long Fire can tell it again, after a restart too.
+			try { System.IO.File.WriteAllText(LastPath, payload); } catch (Exception) { }
 			HostBridge.Lifecycle("debrief", payload);
+		}
+
+		static string LastPath => Entry.BasePath + "/System/Bin/PLDEBRIEF.DAT";
+
+		/// <summary>The latest debriefing, or null when no adventure has ended yet.</summary>
+		internal static string Last()
+		{
+			try { return System.IO.File.Exists(LastPath) ? System.IO.File.ReadAllText(LastPath) : null; } catch (Exception) { return null; }
 		}
 	}
 }

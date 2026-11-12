@@ -28,7 +28,7 @@ namespace ParchLock.EamonHost
 	internal static class HallKeys
 	{
 		// Symbols nobody types as a command (Grok #3385 C1: 'L' collided with the universal "l" for look).
-		internal const char Ledger = '#', Stones = '@', Fire = '&';
+		internal const char Ledger = '#', Stones = '@', Fire = '&', Board = '%';
 	}
 
 	/// <summary>The Hall's description before upstream's own subtitle: the names ParchLock underlines.</summary>
@@ -43,9 +43,9 @@ namespace ParchLock.EamonHost
 			if (FreshEntry)
 			{
 				FreshEntry = false;
-				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. At the far end a stair leads down toward the Village.");
+				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk. At the far end a stair leads down toward the Village.");
 			}
-			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen and the stair are here.");
+			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board and the stair are here.");
 			base.PrintMainHallMenuSubtitle();
 		}
 	}
@@ -65,6 +65,7 @@ namespace ParchLock.EamonHost
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Ledger; x.LineText = ""; x.SubMenu = new LedgerMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Stones; x.LineText = ""; x.SubMenu = new StonesMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Fire; x.LineText = ""; x.SubMenu = new FireMenu(); }));
+			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Board; x.LineText = ""; x.SubMenu = new QuestBoardMenu(); }));
 		}
 	}
 
@@ -94,19 +95,51 @@ namespace ParchLock.EamonHost
 	}
 
 	/// <summary>
-	/// The Long Fire. Its purpose is the debriefing of the latest return (ParchLock's debriefing panel, plan
-	/// package E). Until that record exists, the true answer is that no tale is waiting.
+	/// The Long Fire: sitting by it opens ParchLock's debriefing panel for the latest return again (plan section 6);
+	/// the story text names the tale and does not reprint it. Before any return, no tale is waiting.
 	/// </summary>
 	public class FireMenu : Menu
 	{
 		public override void Execute()
 		{
 			gOut.Print("{0}", gEngine.LineSep);
-			gOut.Print("You sit by the Long Fire. The embers have no new tale for you yet.");
+			var last = Debrief.Last();
+			string adventure = null;
+			try { if (last != null) using (var d = System.Text.Json.JsonDocument.Parse(last)) adventure = d.RootElement.GetProperty("adventure").GetString(); } catch (Exception) { adventure = null; }
+			if (adventure == null) gOut.Print("You sit by the Long Fire. The embers have no new tale for you yet.");
+			else
+			{
+				gOut.Print("You sit by the Long Fire, and the old skald recounts your last adventure, {0}.", adventure);
+				HostBridge.Lifecycle("debrief", last);
+			}
 			gEngine.In.KeyPress(Buf);
 		}
 
 		public FireMenu() { Buf = gEngine.Buf; }
+	}
+
+	/// <summary>The Quest Board: every adventure by tier, open or locked, this character's clears, and the unlock rule
+	/// (ParchLock's tier gates, ProgressionGate). Reading it starts nothing; the desk's own selection does that.</summary>
+	public class QuestBoardMenu : Menu
+	{
+		public override void Execute()
+		{
+			gOut.Print("{0}", gEngine.LineSep);
+			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
+			var cleared = character != null ? RunLedger.ClearedAdventures(RunLedger.CharacterId(character.Uid, character.Name ?? "")) : new HashSet<string>();
+			var open = ProgressionGate.OpenTier(cleared);
+			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared.");
+			for (var tier = 1; tier <= 5; tier++)
+			{
+				gOut.Print("Tier {0}, {1}: {2}", tier, ProgressionGate.TierNames[tier], tier <= open ? "open" : "locked");
+				// One line per notice (Print adds a blank line after each).
+				foreach (var adventure in ProgressionGate.Tiers.Where(t => t.Value == tier).Select(t => t.Key).OrderBy(n => n))
+					gOut.WriteLine("  {0}{1}", adventure, cleared.Contains(adventure) ? " (cleared)" : "");
+			}
+			gEngine.In.KeyPress(Buf);
+		}
+
+		public QuestBoardMenu() { Buf = gEngine.Buf; }
 	}
 
 	/// <summary>The Stones of the Fallen: the names of characters who died, from the character file.</summary>

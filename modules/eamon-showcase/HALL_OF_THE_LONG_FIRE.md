@@ -103,7 +103,8 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - `HallContent.cs`: `HallEngine` (EamonMH engine + host mappings, set via `EamonMH.Program.EngineType` in `AppShim.ExecutePlugin`); `HallMhMenu` prints the Hall description before upstream's subtitle; `HallMainHallMenu` adds hidden choices L (Guild Ledger) and F (Stones of the Fallen); `LedgerMenu` and `StonesMenu` answer from the character file through the engine's own output.
 - `HallSnapshot`: Main Hall objects (Shield Wall -> 5, stair -> 6, Guild Ledger -> L, Stones -> F) with a Hall vocabulary (examine, read, climb); `Translate` maps "<verb> <object>" to the key; hidden items are neither exits nor room commands; the Main Hall engine is recognised by type, not name. A Hall line echoes the typed text, not the key.
 - Verified: the four names are underlined; the radial offers examine/read/climb from ParchLock's shared verb table; read ledger lists the roster with in the hall / away / fallen; examine stones answers; climb stair arrives in the Village; ordinary regression 8/8.
-- Not yet: Long Fire, Skald, Quest Board, Trophy Wall, Great Tapestry (need package E); outer chamber room; phone.
+- Built 2026-11-12 (package E in place): the Long Fire (sitting reopens the latest debriefing panel; the story text only names the tale; the debriefing is kept in the campaign files, PLDEBRIEF.DAT) and the Quest Board (read/examine: the five tiers, open or locked, this character's clears, the unlock rule; it starts nothing). Verified live after a Training Ground clear.
+- Not yet: Skald, Trophy Wall, Great Tapestry; outer chamber room; phone.
 
 ## After Grok review #3385
 
