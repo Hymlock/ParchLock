@@ -143,7 +143,12 @@ The outcome is bound when the plugin returns: ExitType FinishAdventure and Die 0
 engine then (proved by a host probe). Gold and gains come from the exported character (final minus entry
 gold). Each save slot carries the run id it was saved in, and a successful RESTORE makes that run current, so
 a restored or imported pre-exit save can never earn a second credit for its run; a fresh entry starts a new
-run, and whether a fresh replay may be credited again is a policy choice to record. Entry gates stay in the
+run, and whether a fresh replay may be credited again is a policy choice to record. A restored slot that has lost its
+run stamp starts an unbound run, and saves made from it stay unbound: that play-through is never credited until a
+fresh entry or Start Over (fail-closed by design, not a defect). Characters are keyed by a ParchLock id per record
+uid and name; a deleted character recreated with the same name at a recycled uid inherits the old id (known limit).
+The credit ledger, the run stamps and the returned character are committed in one IndexedDB transaction on every
+target (the Windows launcher and Android run the same page storage). Entry gates stay in the
 engine (the Beginners intro check, The Training Ground's own refusal).
 
 **Ownership.** Progress belongs to the character and is saved with it; it is lost with the character.
