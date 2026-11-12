@@ -45,11 +45,16 @@ namespace ParchLock.EamonHost
 
 		static EamonRT.Framework.Plugin.IEngine _adventure;
 		static string _adventureName, _deletedPending;
+		static long _dieAtPrompt;
 
 		/// <summary>Called at every adventure prompt: the adventure engine now running.</summary>
 		internal static void Track()
 		{
-			if (gEngine is EamonRT.Framework.Plugin.IEngine rt) { _adventure = rt; _adventureName = gEngine.GetModule()?.Name ?? ""; }
+			if (gEngine is EamonRT.Framework.Plugin.IEngine rt)
+			{
+				_adventure = rt; _adventureName = gEngine.GetModule()?.Name ?? "";
+				try { _dieAtPrompt = gEngine.GetGameState()?.Die ?? -99; } catch (Exception) { _dieAtPrompt = -98; }
+			}
 		}
 
 		/// <summary>Called by the plugin loop after a plugin returns. Going to the Main Hall, finishing, Start Over
@@ -58,6 +63,10 @@ namespace ParchLock.EamonHost
 		internal static void AfterPlugin()
 		{
 			if (_adventure != null && _adventure.DeleteGameStateAfterLoop && !string.IsNullOrEmpty(_adventureName)) _deletedPending = _adventureName;
+			// How the adventure ended (plan section 6; Grok #3402 P3). Probed: after the plugin returns ExitType is still
+			// readable from the engine object, but its game state is gone (GetGameState() is null), so Die is the value
+			// at the adventure's last prompt: the exit Y/N for FinishAdventure, the death menu (Die 1) for a death.
+			if (_adventure != null) HostBridge.Lifecycle("adventure-ended", _adventureName + "|" + _adventure.ExitType + "|die=" + _dieAtPrompt);
 			_adventure = null;
 		}
 
