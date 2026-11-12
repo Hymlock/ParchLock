@@ -422,11 +422,22 @@ saved slot charged upstream's fee exactly (22 - 99 = -77, with upstream's lien t
 map snapshot left ParchLock. Regression 8/8.
 Grok #3464: the recall and carry-over chain (#3453 to #3463) is accepted end to end on Windows. Still to do before it is done: the APK probe (a character afield in a changed adventure on the phone build, and one save-package round trip), at the next APK build.
 
-**Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
-promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
-map wanted later (a new view, not the room map)? (3) Keyboard access to the Equipment sheet is out of scope for this
-release (it is missing for every engine); a shared follow-up? (4) The armour-master warning judges one visit
-(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings. (6) After a refused campaign, a "Start a new campaign" button (it deletes the old campaign, so it waits for you). (7) Maps made under earlier dev packages stay under their old keys and are not shown; reading them once into the stable key is a small follow-up if wanted. (8) Learning, transcripts and per-save map snapshots restart with each package (an imported save package keeps its own); removing an old release from the Library deletes its transcript.
+**Owner answers (2026-11-12, relayed by Grok #3471), replacing the parked questions.** (1) Updates carry a campaign
+over whenever possible; if an update would break a campaign, the player is warned before updating and offered export.
+(2) The Great Tapestry stays text; no graphic campaign map. (3) No keyboard access for the Equipment sheet; the typed
+parser covers it; not a follow-up. (4) The armour-master warning judges the whole visit: it warns only when the strikes
+the character can afford could take expertise above 25 (25 still qualifies; The Training Ground refuses above 25),
+confirmed in code (ProgressionGate.TrainingWarning: expertise + 2 x affordable strikes > 25; Outgrown: expertise > 25).
+(5) The Pyramid of Anharos: effect 51 (tomb restored, the cloud gone, no companion to testify) is a clear, so the
+companion requirement is dropped (contract: KV == 1 and KF != 1); The Tower of Eamon keeps its contract (the Book of
+Evil Plans carried out, contents counted); Escape from Mt. Moon stays as settled (exit room 12 past the beaten Rocket
+boss). (6) "Start a new campaign" after a refused campaign: only after export has been offered, with a plain
+confirmation that the old campaign and its characters will be permanently deleted. (7) No migration of maps from
+earlier dev packages (development needs no backward compatibility). (8) ParchLock's save rules apply: everything
+attached to a save (map snapshots, transcripts, learning) persists with that save and is deleted with it, never reset
+by a new release; every Showcase system (import, inventory, saves, maps, narration, navigation, learning, transcripts)
+is audited for hooking into the right ParchLock save system, and orphaned dev-build maps not attached to any save are
+cleaned out.
 
 ## 10. Work packages
 

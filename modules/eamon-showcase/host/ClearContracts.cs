@@ -54,10 +54,11 @@ namespace ParchLock.EamonHost
 			// Completion (operator 2026-11-12): the only exit is room 60, "Outside Main Hall. Congratulations!!!!" (the start
 			// room has no exit), so reaching it is the author's end; stated explicitly.
 			["The Deep Canyon"] = @"{ ""quest"": { ""gameState"": ""Ro"", ""equals"": 60 } }",
-			// The Pyramid of Anharos: the success branch of MainLoop.Shutdown: KV == 1 (set by PUT, PutCommand.cs:71),
-			// KF != 1 (SayCommand.cs:46 toggles it), and Omar, Ali or Farouk (monsters 1, 2, 6) in the player's room;
-			// every other branch levies tax and takes the gold. Facts settled before the exit Y/N. For Grok's review.
-			["The Pyramid of Anharos"] = @"{ ""quest"": { ""all"": [ { ""gameState"": ""KV"", ""equals"": 1 }, { ""not"": { ""gameState"": ""KF"", ""equals"": 1 } }, { ""any"": [ { ""monster"": 1, ""inPlayerRoom"": true }, { ""monster"": 2, ""inPlayerRoom"": true }, { ""monster"": 6, ""inPlayerRoom"": true } ] } ] } }",
+			// The Pyramid of Anharos: MainLoop.Shutdown's tomb-restored branch: KV == 1 (set by PUT, PutCommand.cs:71) and
+			// KF != 1 (SayCommand.cs:46 toggles it). With Omar, Ali or Farouk present the elders pay a reward (effects 35-38);
+			// without one, effect 51 ("the black cloud has vanished", no reward) is still the author's success, so a companion
+			// is not required (owner 2026-11-12, #3471). Every other branch levies tax and takes the gold.
+			["The Pyramid of Anharos"] = @"{ ""quest"": { ""all"": [ { ""gameState"": ""KV"", ""equals"": 1 }, { ""not"": { ""gameState"": ""KF"", ""equals"": 1 } } ] } }",
 			// Land of the Mountain King: no exit; the only finish is the scripted one when the mountain king (monster 1)
 			// dies (CombatComponent.cs:32-51); its last prompts are the key presses after that death. For Grok's review.
 			["Land of the Mountain King"] = @"{ ""quest"": { ""monster"": 1, ""dead"": true } }",
