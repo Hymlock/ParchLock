@@ -336,6 +336,35 @@ build and import flow). The app never runs arbitrary package script or grants fi
 access because a manifest asks; host file access is confined to the campaign's virtual file system. No
 user accounts or installers. Today's Z-machine story import does not already provide this boundary.
 
+**Campaign storage across package releases (decision with Grok, #3448/#3451, for the owner's review).** The
+campaign's saved files are an overlay on the package's pristine bundle (changed files plus deletion markers). A new
+package release with the same engine signature carries the campaign over (B); a changed engine signature refuses
+to boot the campaign and offers export (C). Dropping all data on every release (A) is rejected: progress belongs
+to the character. Plain carry-over is unsafe, so B holds only with four conditions, and until they are built a
+different package digest takes the C path (refuse, offer export), never a silent carry-over:
+- B1 ownership split: on a stamp change every overlay entry for a package-owned path (and its deletion marker) is
+  dropped so the new package wins; only an explicit campaign-owned allow-list is kept (characters file, PLCHARS,
+  PLCLEARS, PLTROPHIES, PLDEBRIEF, save slots with their PLRUN_n, other host-owned per-character files), in one
+  store() transaction with the new stamp. A new file type fails toward the package.
+- B2 slot fingerprint: each save slot records a fingerprint of its adventure's pristine package files; RESTORE of
+  a slot whose fingerprint differs (or that has none) is refused with a plain message; the character and credits
+  are untouched.
+- B3 stable identity: fileset uids are append-only and adventure names never change (a package-build check
+  against the previous release; a rename needs an old->new alias map applied on read). Earned credits stand even
+  if a later contract is stricter.
+- B4 import: a save package from another digest is accepted when the engine signature matches, through B1/B2;
+  otherwise refused as now.
+- C never deletes: a reset is only ever the player's choice after export has been offered.
+- One notice per stamp change, with the count of slots that can no longer be restored.
+Probes once built: p1 (changed adventure file wins, that slot refused, credit stands, other slots restore), p2
+(engine change refuses boot and keeps data), p3 (export from N imports into N+1).
+
+**Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
+promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
+map wanted later (a new view, not the room map)? (3) Keyboard access to the Equipment sheet is out of scope for this
+release (it is missing for every engine); a shared follow-up? (4) The armour-master warning judges one visit
+(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings.
+
 ## 10. Work packages
 
 A. Baseline: dispositions; rights ledger; per adventure: behaviour inventory, entry conditions, outcome
@@ -422,7 +451,12 @@ G. Independent adversarial review, final candidate on real targets, release.
    sword readied, leather armor and shield worn); recoverInventory checked from source as inert for Eamon (room
    objects are never worn and monster-held artifacts are never listed, so an empty inventory recovers nothing and no
    monster can be promoted to holder). EQ-GESTURE-5 sent to Grok (#3450): Equipment has no keyboard path for any
-   engine, so proposed out of scope for this release. Still to do: the remaining EQ checks.
+   engine, so out of scope for this release (Grok #3452 ACCEPT, owner question 3), on two conditions: K1 every
+   Equipment action has a typed Eamon command the parser accepts (TAKE, DROP, GIVE X TO Y, PUT X IN/ON Y, REMOVE X
+   FROM Y, WEAR, REMOVE), each typed and checked in the engine tree; K2 with the sheet open, Tab and Enter still reach
+   the line input and Send and nothing in the sheet swallows keys (a trap would be a bug to fix now). For Eamon an
+   empty Send after a reload has nothing to repeat (history is this session's top-level sends only; intended, Grok
+   #3451). Still to do: K1, K2 and the remaining EQ checks.
 
 ## 12. Still to be evidenced (not disputes)
 

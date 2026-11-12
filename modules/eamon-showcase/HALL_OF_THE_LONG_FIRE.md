@@ -28,7 +28,7 @@ Every object is tied to something real in the game or the campaign. Nothing is d
 | **The Long Tables** (both sides of the fire) | tankards, mead, loud company | to be settled with Grok. Correction (source check): upstream "join the men drinking beer" (`DrinkBeerMenu`) is a joke death for ignoring the sign, not a drinking event, so it is not reused as a table purpose | upstream `DrinkBeerMenu.cs` |
 | **The Shield Wall** (both walls) | members' shields | **Examine your shield**: your character sheet (the engine's own Examine Abilities) | upstream Examine Abilities |
 | **The Guild Ledger** (on the desk) | the Irishman's book of names | **Read the ledger**: the guild roster; **sign the ledger**: register a new character (the upstream registration flow) | character file, upstream registration |
-| **The Great Tapestry** (far wall) | the known lands, five regions | the campaign map: the five tiers as regions, which are open, how far the character has come. Opens ParchLock's existing world map view for the campaign | tier policy, campaign record |
+| **The Great Tapestry** (far wall) | the known lands, five regions | the campaign map, as text: the five tiers as regions, which are open, how far the character has come (not the room map; Grok #3452) | tier policy, campaign record |
 | **The Stair to the Village** (far end) | worn stone steps | the exit south to the Village (HALL_AS_ROOMS.md) | upstream Village menu |
 
 Each object is a real game object in the Hall room: underlined in the text, on the long-press radial,
@@ -84,7 +84,7 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - Long Tables: dropped until a real purpose exists.
 - Shield Wall: a themed route to the engine's Examine Abilities (the same key the room command sends).
 - Guild Ledger: read-only roster in the Hall (including who is afield); signing stays at the registration desk in the outer chamber, which becomes its own later room with the real desk, sign and beer trap.
-- Great Tapestry: opens ParchLock's existing world-map view with campaign data; waits for that data.
+- Great Tapestry: a text view of the campaign (examine). Not ParchLock's World Map view, which draws the current game's rooms and exits; a graphic campaign map would be a new view (owner question).
 - Stair: the Village exit's themed object, sending the same key.
 - Order: Hall rooms (built); then upstream-backed objects (Shield Wall, Stair, Ledger, Stones); then, after the campaign record (package E), the Fire, Board, Skald, Trophies and Tapestry.
 
@@ -106,8 +106,8 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - Built 2026-11-12 (package E in place): the Long Fire (sitting reopens the latest debriefing panel; the story text only names the tale; the debriefing is kept in the campaign files, PLDEBRIEF.DAT) and the Quest Board (read/examine: the five tiers, open or locked, this character's clears, the unlock rule; it starts nothing). Verified live after a Training Ground clear.
 - Built 2026-11-12: the Trophy Wall (examine: one trophy per credited clear, with who, when, what counted and the New Game+ cycle; trophy names are ParchLock content from each adventure's story). Verified live.
 - Built 2026-11-12: the Skald ("ask skald" / examine: lists the adventures, tells an open one from its own intro story, or its own module description when it has none, with its author line; a locked one gets "That tale is not yet yours to hear"; starts nothing). Verified live.
-- Built 2026-11-12: the Great Tapestry (examine tapestry: the five tiers as regions, lit where open and in shadow where locked, with locked regions showing only how many adventures they hold; adventures completed this cycle in gold thread; the character's figure in the furthest open region, with the New Game+ cycle mark). It reads the same records as the Quest Board and starts nothing. Verified live (fresh character: Novice Initiative lit, four regions in shadow).
-- Open question (Grok, #3444 rule): whether the Tapestry should also open ParchLock's World Map view. That view draws rooms and exits from the current game, so a tier map would need campaign data shaped as rooms; the text view stands until that is decided.
+- Built 2026-11-12: the Great Tapestry (examine tapestry: the five tiers as regions, lit where open and in shadow where locked, with locked regions showing only how many adventures they hold; adventures completed this cycle in gold thread, outgrown ones in grey thread; the character's figure in the furthest open region, with the New Game+ cycle mark). It reads the same records as the Quest Board and starts nothing. Verified live (fresh character: Novice Initiative lit, four regions in shadow).
+- Decided (Grok #3452): text only. The World Map view's routing, travel, fog and exit chips all act on the room graph, so five synthetic tier "rooms" would be campaign data passing as a room map. Owner question for later: a graphic campaign map as a new view.
 - Not yet: outer chamber room; phone.
 
 ## After Grok review #3385

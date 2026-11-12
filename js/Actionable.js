@@ -1400,8 +1400,7 @@ var Actionable = {
         // as "restore" at a nested prompt is never treated as a timeline command below (Grok #3446 F1).
         var eamonNested = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel;
         if (eamonNested && source !== "user-voice") return false;
-        try {
-            if (eamonNested) throw 0;
+        if (!eamonNested) try {
             if (/^(undo|restore|restart)$/i.test(String(command || "").trim())) {
                 window.__PL_RESYNC__ = Date.now();
                 if (typeof TextGate !== "undefined" && /^(restore|restart)$/i.test(String(command).trim())) TextGate.reset();

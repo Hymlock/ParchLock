@@ -100,8 +100,9 @@ namespace ParchLock.EamonHost
 
 		/// <summary>A warning only when the very next training session would disqualify the character (operator 2026-11-12,
 		/// #3444): while still a beginner, the first session closes the four beginner adventures (Don Diego: only training
-		/// axe, club or sword does; the beginner check ignores spear and bow); at armour expertise 24 or more, one more armour
-		/// session (up to +2) can pass 25 and close The Training Ground. Never otherwise, never once a beginner adventure is
+		/// axe, club or sword does; the beginner check ignores spear and bow); at the armour master, when this visit can pass 25
+		/// and close The Training Ground: current expertise plus the most the character's gold can buy (each paid strike adds
+		/// at most 2; Grok #3446). Never otherwise, never once a beginner adventure is
 		/// credited.</summary>
 		internal static string TrainingWarning(Eamon.Framework.ICharacter c, bool armour, long maxArmourGain = 2)
 		{

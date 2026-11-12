@@ -370,14 +370,15 @@ namespace ParchLock.EamonHost
 		public override void Execute()
 		{
 			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
-			long maxGain = 2;
+			// An unknown price fails toward the warning: the upstream expertise cap (Grok #3451 N1).
+			long maxGain = 79;
 			try
 			{
 				// The strike price exactly as upstream MasterArmorMenu computes it; each strike adds at most 2.
 				var ap = gEngine.GetMerchantAskPrice(gEngine.ArmorTrainingPrice, (double)gEngine.GetMerchantRtio(character.GetMerchantAdjustedCharisma()));
-				maxGain = ap > 0 ? 2 * (character.HeldGold / ap) : 2;
+				maxGain = ap > 0 ? 2 * (character.HeldGold / ap) : 79;
 			}
-			catch (Exception) { maxGain = 2; }
+			catch (Exception) { maxGain = 79; }
 			var warning = ProgressionGate.TrainingWarning(character, true, maxGain);
 			if (warning != null) { gOut.Print("{0}", gEngine.LineSep); gOut.Print("{0}", warning); }
 			base.Execute();
@@ -397,15 +398,20 @@ namespace ParchLock.EamonHost
 			var id = character != null ? RunLedger.CharacterId(character.Uid, character.Name ?? "") : null;
 			var completed = ProgressionGate.Completed(character, id);
 			var open = ProgressionGate.OpenTier(completed);
-			var (cycle, cleared) = RunLedger.CurrentCycle(id, ProgressionGate.Outgrown(character));
+			var outgrown = ProgressionGate.Outgrown(character);
+			var (cycle, cleared) = RunLedger.CurrentCycle(id, outgrown);
 			gOut.Print("The Great Tapestry covers the far wall: the known lands woven in five regions, from the green fields of the novices to the storm-lit peaks of the heroes.");
 			for (var tier = 1; tier <= 5; tier++)
 			{
 				var names = ProgressionGate.Tiers.Where(t => t.Value == tier).Select(t => t.Key).OrderBy(n => n).ToList();
 				var gold = names.Where(n => cleared.Contains(n)).ToList();
-				gOut.WriteLine("  {0}, {1}: {2}{3}", ProgressionGate.TierNames[tier], tier <= open ? "lit" : "still in shadow",
+				// Outgrown adventures count as completed (the Quest Board's "(overqualified: completed)") but earn no credit
+				// or trophy, so they get their own strand, not gold (Grok #3452 F1).
+				var grey = names.Where(n => outgrown.Contains(n) && !cleared.Contains(n)).ToList();
+				gOut.WriteLine("  {0}, {1}: {2}{3}{4}", ProgressionGate.TierNames[tier], tier <= open ? "lit" : "still in shadow",
 					tier <= open ? string.Join(", ", names) : names.Count + " adventures not yet revealed",
-					gold.Count > 0 ? ". In gold thread: " + string.Join(", ", gold) : "");
+					gold.Count > 0 ? ". In gold thread: " + string.Join(", ", gold) : "",
+					grey.Count > 0 ? ". In grey thread (outgrown): " + string.Join(", ", grey) : "");
 			}
 			if (character != null) gOut.Print("A small figure of {0} stands in {1}{2}.", character.Name, ProgressionGate.TierNames[open], cycle > 1 ? ", stitched with the mark of New Game+ cycle " + cycle : "");
 			gEngine.In.KeyPress(Buf);
