@@ -106,6 +106,15 @@ var EamonProvider = {
         eamon: { kind: o.kind, ready: !!o.ready, weapon: !!o.weapon, readable: !!o.readable, light: !!o.light, door: !!o.door, state: o.state || "", reaction: o.reaction || "" }
     }),
 
+    // Fast travel stops for a known, visible threat (plan section 7): a monster the game has shown in this room
+    // whose reaction is Enemy. Only what the snapshot already holds (seen, lit), so a hidden one is never revealed.
+    routeThreat: () => {
+        var world = EamonProvider.active() ? EamonProvider.world() : null;
+        if (!world || !world.room) return null;
+        var enemies = (world.objects || []).filter(function (o) { return o.kind === "monster" && o.reaction === "Enemy"; });
+        return enemies.length ? enemies.map(function (o) { return o.name; }) : null;
+    },
+
     // One map per adventure (plan section 7): the existing map storage, scoped by adventure name.
     syncMapScope: (world) => {
         try {

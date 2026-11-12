@@ -15,6 +15,9 @@ var Navigator = {
         Navigator.InterruptReason = "";
         Navigator.Running = true; Navigator._seatedTried = false;
         try { if (typeof Actionable !== "undefined" && Actionable.cancelTapMove) Actionable.cancelTapMove(); } catch (eTap) {}
+        // A visible threat here already: no route starts (and narration is not cut off).
+        var threat = Navigator.routeThreat();
+        if (threat) { Navigator.ClearQueue(Navigator.threatReason(threat)); return; }
         // D159 (operator-reported): during fast travel the narration "gets
         // stuck on your original location". Every room the route passes
         // THROUGH prints a description, each is queued for speech, and speech
@@ -114,6 +117,16 @@ var Navigator = {
             Navigator.Awaiting = null;
         }
         if (!Navigator.StepQueue.length) { Navigator.Running = false; return; }
+        // Plan section 7 / acceptance 5: an encounter on the way stops the route in this room and drops the
+        // later moves. The hold released here, the arrival text it swallowed is read once.
+        var threat = Navigator.routeThreat();
+        if (threat) {
+            var heard = Navigator.textSinceStep();
+            Navigator.stopSpeechHold();
+            try { if (heard && typeof ReadAloud !== "undefined" && ReadAloud.onStoryDelta) ReadAloud.onStoryDelta(heard); } catch (eSpeak) {}
+            Navigator.ClearQueue(Navigator.threatReason(threat));
+            return;
+        }
         try {
             var room = current;
             var next = Navigator.StepQueue[0];
@@ -160,6 +173,7 @@ var Navigator = {
         // room and direction a failed step can only be reported, never
         // learned from -- and the router would keep planning the same broken
         // route every time.
+        Navigator._stepAnchor = Navigator.lastStoryLine();
         Navigator.Awaiting = {
             target: current.Exits[dir],
             at: Date.now(),
@@ -188,6 +202,37 @@ var Navigator = {
             return;
         } finally { Navigator.Submitting = false; }
         Navigator.Timer = setTimeout(Navigator.Pump, 100);
+    },
+
+    // A known, visible threat in the current room, from the story's own provider (Eamon: a shown monster
+    // whose reaction is Enemy). Other stories report none, so their routes are unchanged.
+    routeThreat: () => {
+        try { return typeof EamonProvider !== "undefined" && EamonProvider.routeThreat ? EamonProvider.routeThreat() : null; } catch (e) { return null; }
+    },
+    threatReason: (names) => "Stopped here: " + names.join(", ") + (names.length > 1 ? " are" : " is") + " hostile.",
+    lastStoryLine: () => {
+        try {
+            var roots = typeof ReadAloud !== "undefined" && ReadAloud.bufferRoots ? ReadAloud.bufferRoots() : [];
+            var lines = roots.length ? roots[roots.length - 1].querySelectorAll(".BufferLine") : [];
+            return lines.length ? lines[lines.length - 1] : null;
+        } catch (e) { return null; }
+    },
+    // The story text printed since the last route step was sent (the room the route stopped in).
+    textSinceStep: () => {
+        try {
+            var anchor = Navigator._stepAnchor, out = [], after = !anchor;
+            if (typeof ReadAloud === "undefined" || !ReadAloud.bufferRoots) return "";
+            ReadAloud.bufferRoots().forEach(function (root) {
+                Array.prototype.forEach.call(root.querySelectorAll(".BufferLine"), function (el) {
+                    if (el === anchor) { after = true; return; }
+                    if (!after || (el.parentElement && el.parentElement.classList.contains("BufferLine"))) return;
+                    if (el.querySelector && el.querySelector(".Input, .LineInput, .CharInput")) return;
+                    var t = String(ReadAloud.speakableText(el) || "").trim();
+                    if (t) out.push(t);
+                });
+            });
+            return out.join(" ");
+        } catch (e) { return ""; }
     },
 
     // Expand short compass keys so the parser gets a full word when the
