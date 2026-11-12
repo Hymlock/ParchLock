@@ -225,8 +225,13 @@ var ParchLockQol = {
             }
             // D215: each save's own map and item labels travel with it.
             try { var states = typeof SaveState !== "undefined" ? SaveState.exportFor(names) : null; if (states) { data.SaveStates = states; json = JSON.stringify(data); } } catch (eStates) {}
-            var campaign = eamon ? eamon.exportCampaign().then(c => { data.EamonCampaign = c; }) : Promise.resolve();
-            return campaign.then(() => Transcript.exportFor(names)).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => JSON.stringify(data));
+            // A campaign with no files yet is left out: importing it must never wipe another device's campaign (Grok #3392 Q3).
+            // A campaign that cannot be read fails the export rather than produce a backup that silently lacks it (L1).
+            var campaign = eamon ? eamon.exportCampaign().then(c => { if (eamon.campaignFileCount(c)) data.EamonCampaign = c; }, err => {
+                Message.Show("Export Failed", ParchLockQol.EscapeHtml("The Eamon campaign could not be read: " + (err && err.message || err)), true);
+                throw err;
+            }) : Promise.resolve();
+            return campaign.then(() => Transcript.exportFor(names).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => JSON.stringify(data)));
         } catch (e) { return Promise.resolve(json); }
     },
 
@@ -566,8 +571,38 @@ var ParchLockQol = {
         $("#import-package-submit").click(() => ParchLockQol.ImportPackageData($("#import-package-box").val()));
     },
 
-    ImportPackageData: (text) => {
+    // An Eamon campaign package (Grok #3392 Q1): the campaign transaction is the write that can fail for reasons
+    // outside ParchLock (quota, a blocked database), so it goes first, with this device's campaign kept as a
+    // rollback copy; ParchLock's own records (maps, save snapshots, transcripts) follow only once it is stored,
+    // and if they fail the device's campaign is put back. The engine is stopped for the swap, so the story
+    // reopens either way.
+    ImportEamonCampaign: (text, data) => {
+        var vm = window.__PARCHLOCK_EAMON__;
+        var fail = (message) => Message.Show("Import Failed", ParchLockQol.EscapeHtml(message), true, () => location.reload());
+        var rollback = null;
+        return vm.exportCampaign().then(current => {
+            rollback = current;
+            var mine = vm.campaignFileCount(current), theirs = vm.campaignFileCount(data.EamonCampaign);
+            if (mine && ((Number(data.EamonCampaign.revision) || 0) < (Number(current.revision) || 0) || theirs < mine)
+                && !confirm("This replaces your Eamon campaign on this device (characters and saved games) with the one in the package, which is older or smaller. Continue?"))
+                return "declined";
+            return vm.importCampaign(data.EamonCampaign).then(() => {
+                var result = ParchLockQol.ImportPackageData(text, { campaignStored: true });
+                if (result === true) {
+                    Message.Show("Import Complete", "The save package, maps and Eamon campaign were imported. The story will reopen.");
+                    setTimeout(() => location.reload(), 1500);
+                    return "imported";
+                }
+                result = String(result).replace(/\.+$/, "");
+                return vm.importCampaign(rollback).then(() => { fail(result + ". This device's campaign was put back; the story will reopen."); return "rolled back"; },
+                    err => { fail(result + ". The device's campaign could not be put back either (" + (err && err.message || err) + ")."); return "failed"; });
+            }, err => { fail("The Eamon campaign could not be stored: " + (err && err.message || err) + ". This device's campaign is unchanged; the story will reopen."); return "failed"; });
+        }, err => { Message.Show("Import Failed", ParchLockQol.EscapeHtml("This device's Eamon campaign could not be read, so it was left untouched: " + (err && err.message || err)), true); return "failed"; });
+    },
 
+    ImportPackageData: (text, stage) => {
+
+        var campaignStored = !!(stage && stage.campaignStored);
         var previous = [], previousRooms = ParchLockMap.Rooms, importSucceeded = false;
         var previousBlocked = ParchLockMap.PersistenceBlocked;
         try {
@@ -575,7 +610,9 @@ var ParchLockQol = {
             var data = JSON.parse(text);
 
             if (!data || !Array.isArray(data.Map) || !Array.isArray(data.Save)) throw new Error("Invalid package");
-            if (data.Story && data.Story !== ParchLock.GameFilename) throw new Error("This package belongs to another story");
+            if (data.Story && data.Story !== ParchLock.GameFilename) throw new Error(data.EamonCampaign != null && window.__PARCHLOCK_EAMON__ ? "This package was made with another Showcase version" : "This package belongs to another story");
+            // A campaign is applied only to the exact story (and Showcase version) it came from (Grok #3392 V2).
+            if (data.EamonCampaign != null && data.Story !== ParchLock.GameFilename) throw new Error("This package's Eamon campaign names no Showcase version");
             WorkspaceUI.ValidateMap(data);
             // E4: transcript records are validated before anything is changed.
             if (typeof Transcript !== "undefined" && Transcript.validImport && !Transcript.validImport(data.Transcripts)) throw new Error("Invalid transcript records in this package");
@@ -597,6 +634,8 @@ var ParchLockQol = {
                 if (data.EamonCampaign && data.SaveStates && data.SaveStates.saves) importedNames = importedNames.concat(Object.keys(data.SaveStates.saves));
                 stateWrites = SaveState.importWrites(data.SaveStates, importedNames);
             }
+            // Everything is validated: a campaign package now stores the campaign first (ImportEamonCampaign).
+            if (data.EamonCampaign != null && !campaignStored) { ParchLockQol.ImportEamonCampaign(text, data); return "pending"; }
             var mapKey = ParchLockMap.StorageKey();
             previous.push({ Key: mapKey, Data: localStorage.getItem(mapKey) });
             // The other worlds' maps of a multi-world story (see ParchLock.GetSaveData), inside this rollback.
@@ -638,13 +677,7 @@ var ParchLockQol = {
             ParchLockMap.Save();
             try { if (typeof Transcript !== "undefined" && Transcript.importRecords && data.Transcripts) Transcript.importRecords(data.Transcripts); } catch (eTx) {}
 
-            if (data.EamonCampaign && eamonVm && eamonVm.importCampaign) {
-                // The campaign files replace this device's campaign in one transaction, then the story reopens on them.
-                eamonVm.importCampaign(data.EamonCampaign).then(() => {
-                    Message.Show("Import Complete", "The save package, maps and Eamon campaign were imported. The story will reopen.");
-                    setTimeout(() => location.reload(), 1500);
-                }, err => Message.Show("Import Failed", ParchLockQol.EscapeHtml("The Eamon campaign could not be stored: " + (err && err.message || err) + ". This device's campaign is unchanged; reopen the story to continue."), true));
-            } else Message.Show("Import Complete", "The save package and map data were imported.");
+            if (!campaignStored) Message.Show("Import Complete", "The save package and map data were imported.");
             importSucceeded = true;
         }
         catch(e) {
@@ -655,9 +688,11 @@ var ParchLockQol = {
                 try { if (entry.Data === null) localStorage.removeItem(entry.Key); else localStorage.setItem(entry.Key, entry.Data); }
                 catch (rollbackError) { ParchLockMap.PersistenceBlocked = true; }
             });
+            if (campaignStored) return e.message;
             Message.Show("Import Failed", ParchLockQol.EscapeHtml(e.message), true);
         }
         if (importSucceeded && typeof SaveState !== "undefined" && SaveState.afterImport) SaveState.afterImport();
+        return importSucceeded;
     },
 
     GetRadialCommands: () => {

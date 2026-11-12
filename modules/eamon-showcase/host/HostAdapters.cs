@@ -70,7 +70,9 @@ namespace ParchLock.EamonHost
 			{
 				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();
 				Persistence.Flush();
+				SaveEvents.AfterFlush();
 			}
+			if (!(gEngine is EamonMH.Framework.Plugin.IEngine)) SaveEvents.Track();
 			// ParchLock's map, exits and object lists follow the game only at an adventure's own prompt.
 			// Anywhere else (the Main Hall, a nested question) there is no world to offer actions on.
 			// In the Main Hall engine, the Hall's own rooms (HallSnapshot.cs), at every prompt, so a place's
@@ -91,6 +93,8 @@ namespace ParchLock.EamonHost
 			HostBridge.World(world ?? "");
 			// Save/restore/new-adventure events follow this prompt's world snapshot (the page needs the room first).
 			if (safePoint && !(gEngine is EamonMH.Framework.Plugin.IEngine)) { try { SaveEvents.Report(); } catch (Exception) { } }
+			// The death menu's Start Over deletes the adventure's saves and waits for a key: a new game (Grok #3391 G1).
+			else if (!(gEngine is EamonMH.Framework.Plugin.IEngine)) { try { SaveEvents.ReportStartOver(); } catch (Exception) { } }
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
 			var startColumn = lastIndex > -1 ? text.Length - (lastIndex + 1) : (long)text.Length;

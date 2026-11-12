@@ -43,6 +43,44 @@ namespace ParchLock.EamonHost
 			}
 		}
 
+		static EamonRT.Framework.Plugin.IEngine _adventure;
+		static string _adventureName, _deletedPending;
+
+		/// <summary>Called at every adventure prompt: the adventure engine now running.</summary>
+		internal static void Track()
+		{
+			if (gEngine is EamonRT.Framework.Plugin.IEngine rt) { _adventure = rt; _adventureName = gEngine.GetModule()?.Name ?? ""; }
+		}
+
+		/// <summary>Called by the plugin loop after a plugin returns. Going to the Main Hall, finishing, Start Over
+		/// and deleting the character all delete every save slot of that adventure (Config.DeleteGameState after the
+		/// loop), so its save names stop naming saves (Grok #3391 N3).</summary>
+		internal static void AfterPlugin()
+		{
+			if (_adventure != null && _adventure.DeleteGameStateAfterLoop && !string.IsNullOrEmpty(_adventureName)) _deletedPending = _adventureName;
+			_adventure = null;
+		}
+
+		/// <summary>Called after a safe-point commit: the deletion is durable, so ParchLock forgets those saves now.</summary>
+		internal static void AfterFlush()
+		{
+			if (_deletedPending == null) return;
+			HostBridge.Lifecycle("saves-deleted", _deletedPending);
+			_deletedPending = null;
+		}
+
+		static object _startOver;
+		/// <summary>Called at an adventure's other prompts. Start Over (death menu) has already deleted every save
+		/// slot (Config.DeleteGameState, startOver) and the next run boots straight back into the adventure from
+		/// its module files, so the plugin loop never sees a Hall entry: this is that adventure's new game.</summary>
+		internal static void ReportStartOver()
+		{
+			var rt = gEngine as EamonRT.Framework.Plugin.IEngine;
+			if (rt == null || !rt.StartOver || ReferenceEquals(rt, _startOver)) return;
+			_startOver = rt;
+			HostBridge.Lifecycle("adventure-fresh", gEngine.GetModule()?.Name ?? "");
+		}
+
 		/// <summary>One save name per adventure and slot, e.g. "The Beginner's Cave, slot 1: Quick Saved Game".</summary>
 		static string Name(string adventure, long slot, string saveName) => adventure + ", slot " + slot + ": " + saveName.Trim();
 	}

@@ -54,11 +54,24 @@ namespace ParchLock.EamonHost
 	{
 		public const string BasePath = "/Eamon-CS";
 
+		/// <summary>A relative path inside the campaign file system, or an exception: every file the page hands in
+		/// (bundle member, saved file, tombstone) is resolved here, never outside BasePath (Grok #3392 V1).</summary>
+		static string Resolve(string relativePath)
+		{
+			var relative = (relativePath ?? "").Replace('\\', '/');
+			if (relative.Length == 0 || relative.StartsWith("/") || relative.Contains(':')
+				|| relative.Split('/').Any(s => s.Length == 0 || s == "." || s == ".." || s.Any(char.IsControl)))
+				throw new ArgumentException("Refused file path: " + relativePath);
+			var full = Path.GetFullPath(Path.Combine(BasePath, relative));
+			if (!full.StartsWith(BasePath + "/", StringComparison.Ordinal)) throw new ArgumentException("Refused file path: " + relativePath);
+			return full;
+		}
+
 		/// <summary>Place one bundle or saved file into the runtime's file system (the single storage authority).</summary>
 		[JSExport]
 		public static void WriteFile(string relativePath, byte[] bytes)
 		{
-			var path = Path.Combine(BasePath, relativePath.Replace('\\', '/'));
+			var path = Resolve(relativePath);
 			Directory.CreateDirectory(Path.GetDirectoryName(path));
 			File.WriteAllBytes(path, bytes);
 		}
@@ -70,12 +83,12 @@ namespace ParchLock.EamonHost
 				: Array.Empty<string>();
 
 		[JSExport]
-		public static byte[] ReadFile(string relativePath) => File.ReadAllBytes(Path.Combine(BasePath, relativePath));
+		public static byte[] ReadFile(string relativePath) => File.ReadAllBytes(Resolve(relativePath));
 
 		[JSExport]
 		public static void DeleteFile(string relativePath)
 		{
-			var path = Path.Combine(BasePath, relativePath);
+			var path = Resolve(relativePath);
 			if (File.Exists(path)) File.Delete(path);
 		}
 
@@ -94,6 +107,7 @@ namespace ParchLock.EamonHost
 				App.RefreshOutputWindowText();
 				App.CurrentArgs = null;
 				Persistence.Flush();
+				SaveEvents.AfterFlush();
 				return "done";
 			}
 			catch (Exception e)

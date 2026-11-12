@@ -125,6 +125,7 @@ namespace EamonPM
 				CurrentArgs = args;
 				ParchLock.EamonHost.HostBridge.Phase("plugin", string.Join(" ", args));
 				ExecutePlugin(args, true);
+				ParchLock.EamonHost.SaveEvents.AfterPlugin();
 				RefreshOutputWindowText();
 				args = NextArgs;
 				NextArgs = null;
