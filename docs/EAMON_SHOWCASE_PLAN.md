@@ -358,6 +358,10 @@ different package digest takes the C path (refuse, offer export), never a silent
 - One notice per stamp change, with the count of slots that can no longer be restored.
 Probes once built: p1 (changed adventure file wins, that slot refused, credit stands, other slots restore), p2
 (engine change refuses boot and keeps data), p3 (export from N imports into N+1).
+Built 2026-11-12 (groundwork, no behaviour change): every commit records the installed package digest as the
+campaign stamp, the campaign export carries it, and boot notes whether it changed (verified live). Findings sent to
+Grok before B is built (#3453): an in-progress adventure is itself overlay state (FRESHMEAT and rewritten data files),
+so it needs the slot fingerprint rule too; and the interim C rule would refuse the campaign after every rebuild.
 
 **Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
 promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
