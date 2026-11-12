@@ -35,6 +35,17 @@ namespace ParchLock.EamonHost
 			// Whether the "long-lost documentation" (deed 70 or diary 85) is also required is open. Claude's reading;
 			// Grok's blind version (#3419) pending.
 			["The Wayfarers Inn"] = @"{ ""quest"": { ""gameState"": ""CharlotteRestInPeace"", ""equals"": 1 } }",
+			// Beginner's Forest: rescuing the Fairy Queen (monster 8). Meeting her prints "thanks you for rescuing her",
+			// gives the crown and sets her Field1 to 1 (GetPlayerInputState.cs:28-58); nothing resets it. Last prompt: exit Y/N.
+			// Claude's reading, for Grok's review.
+			["Beginner's Forest"] = @"{ ""quest"": { ""monster"": 8, ""field"": ""Field1"", ""equals"": 1 } }",
+			// Beginner's Cave II: no quest text, no reward or finish code (only OpenCommand, Monster, IntroStory). Claude's
+			// reading, for Grok's review.
+			["Beginner's Cave II"] = @"{ ""quest"": null }",
+			// Alternate Beginner's Cave: Nina's reward, MainLoop.cs Shutdown: Nina (monster 11) in the player's room at the exit
+			// with Reaction == Friend (exactly; Friend is the only reaction above Neutral). Last prompt: exit Y/N; Claude's
+			// reading, for Grok's review.
+			["Alternate Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 11, ""inPlayerRoom"": true }, { ""monster"": 11, ""reactionAbove"": ""Neutral"" } ] } }",
 		};
 
 		/// <summary>The latest evaluation for the running adventure: "true", "false", "none" (no quest), "uncontracted"
@@ -62,8 +73,8 @@ namespace ParchLock.EamonHost
 		// Each leaf names one subject and exactly one predicate (plus the "recurse" modifier for artifacts); any other
 		// key is refused, so a typo can never be read as a different test (Grok #3407 item 3). Defaults follow the
 		// engine: carried, worn and container tests are not recursive unless "recurse": true (item 2).
-		static readonly string[] MonsterPredicates = { "inPlayerRoom", "reactionAbove", "inLimbo", "inRoom" };
-		static readonly string[] ArtifactPredicates = { "carried", "worn", "inContainer", "carriedByMonster", "inLimbo", "inRoom" };
+		static readonly string[] MonsterPredicates = { "inPlayerRoom", "reactionAbove", "inLimbo", "inRoom", "field" };
+		static readonly string[] ArtifactPredicates = { "carried", "worn", "inContainer", "carriedByMonster", "inLimbo", "inRoom", "field" };
 
 		static bool Holds(JsonElement c)
 		{
@@ -75,9 +86,10 @@ namespace ParchLock.EamonHost
 			var db = gEngine.Database;
 			if (keys.Contains("monster"))
 			{
-				var predicate = Single(c, keys, "monster", MonsterPredicates, null);
+				var predicate = Single(c, keys, "monster", MonsterPredicates, "equals");
 				var m = db.MonsterTable.FindRecord(c.GetProperty("monster").GetInt64()) ?? throw new InvalidOperationException("no monster " + c.GetProperty("monster"));
 				var v = c.GetProperty(predicate);
+				if (predicate == "field") return FieldEquals(m, c);
 				switch (predicate)
 				{
 					case "inPlayerRoom": return (m.Location == state.Ro) == v.GetBoolean();
@@ -88,9 +100,10 @@ namespace ParchLock.EamonHost
 			}
 			if (keys.Contains("artifact"))
 			{
-				var predicate = Single(c, keys, "artifact", ArtifactPredicates, "recurse");
+				var predicate = Single(c, keys, "artifact", ArtifactPredicates, "recurse", "equals");
 				var recurse = c.TryGetProperty("recurse", out var r) && r.GetBoolean();
 				var a = db.ArtifactTable.FindRecord(c.GetProperty("artifact").GetInt64()) ?? throw new InvalidOperationException("no artifact " + c.GetProperty("artifact"));
+				if (predicate == "field") return FieldEquals(a, c);
 				var v = c.GetProperty(predicate);
 				switch (predicate)
 				{
@@ -115,12 +128,25 @@ namespace ParchLock.EamonHost
 			throw new InvalidOperationException("unknown contract clause " + c.GetRawText());
 		}
 
-		static string Single(JsonElement c, string[] keys, string subject, string[] predicates, string modifier)
+		static string Single(JsonElement c, string[] keys, string subject, string[] predicates, params string[] modifiers)
 		{
 			var found = keys.Where(k => predicates.Contains(k)).ToArray();
-			var other = keys.Where(k => k != subject && k != modifier && !predicates.Contains(k)).ToArray();
+			var other = keys.Where(k => k != subject && !modifiers.Contains(k) && !predicates.Contains(k)).ToArray();
 			if (found.Length != 1 || other.Length > 0) throw new InvalidOperationException("clause needs exactly one predicate: " + c.GetRawText());
+			// "equals" belongs to "field" only.
+			if ((found[0] == "field") != keys.Contains("equals")) throw new InvalidOperationException("field needs equals, and only field takes it: " + c.GetRawText());
 			return found[0];
+		}
+
+		/// <summary>A record's own numeric property (an adventure's Field1..Field5 marker), read like a GameState field.</summary>
+		static bool FieldEquals(object record, JsonElement c)
+		{
+			var name = c.GetProperty("field").GetString();
+			PropertyInfo property;
+			try { property = record.GetType().GetProperty(name, BindingFlags.Public | BindingFlags.Instance); }
+			catch (AmbiguousMatchException) { throw new InvalidOperationException("ambiguous property " + name); }
+			if (property == null) throw new InvalidOperationException("no property " + name + " (properties only)");
+			return Convert.ToInt64(property.GetValue(record)) == c.GetProperty("equals").GetInt64();
 		}
 	}
 }
