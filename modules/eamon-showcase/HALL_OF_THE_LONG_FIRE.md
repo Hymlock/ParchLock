@@ -25,7 +25,7 @@ Every object is tied to something real in the game or the campaign. Nothing is d
 | **The Quest Board** (by the desk) | notices nailed to a post | **Read the board**: every adventure grouped by the five tiers, open or locked, with what unlocks the next tier (two distinct clears below). **Take a notice**: goes to the adventure desk with that adventure chosen | tier policy, campaign record |
 | **The Trophy Wall** (east wall) | a trophy hung for each deed | one trophy per credited clear (the Grimoire's torn page, Kahr-Dur's banner...). **Examine** a trophy: which character earned it, when, and the outcome that counted | campaign record (credits) |
 | **The Stones of the Fallen** (by the doors) | runestones for those who did not return | a name for each character who died on an adventure, with where. Gives death a lasting place, matching ParchLock's death counter | character file (dead characters), playthrough history |
-| **The Long Tables** (both sides of the fire) | tankards, mead, loud company | **Join the drinkers**: the upstream Outer Chamber event (Eamon's own "join the men drinking beer"), so the existing engine outcome happens here | upstream EamonMH behaviour |
+| **The Long Tables** (both sides of the fire) | tankards, mead, loud company | to be settled with Grok. Correction (source check): upstream "join the men drinking beer" (`DrinkBeerMenu`) is a joke death for ignoring the sign, not a drinking event, so it is not reused as a table purpose | upstream `DrinkBeerMenu.cs` |
 | **The Shield Wall** (both walls) | members' shields | **Examine your shield**: your character sheet (the engine's own Examine Abilities) | upstream Examine Abilities |
 | **The Guild Ledger** (on the desk) | the Irishman's book of names | **Read the ledger**: the guild roster; **sign the ledger**: register a new character (the upstream registration flow) | character file, upstream registration |
 | **The Great Tapestry** (far wall) | the known lands, five regions | the campaign map: the five tiers as regions, which are open, how far the character has come. Opens ParchLock's existing world map view for the campaign | tier policy, campaign record |
@@ -64,3 +64,12 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
    worth reusing)?
 3. What is missing that a mythical guild hall should have and that would serve the campaign?
 4. Order of work against plan packages D/E.
+## Source checks (2026-11-11, against pinned upstream)
+
+- `DrinkBeerMenu.Execute`: "you feel a sword being thrust through your back ... You really must learn to follow directions!" A death-style joke at the outer chamber, not a social event.
+- Dead characters stay in the character file: `RegistrationDeskMenu` answers a dead name with "sad ... dead" (`Status.Dead`). The Stones of the Fallen have a real source.
+- Class mappings are loaded per plugin by its own engine class (`LoadPluginClassMappings` -> `LoadPluginClassMappings01(Assembly.GetExecutingAssembly())`), the way each adventure's engine extends EamonRT. Option A therefore means a ParchLock Hall plugin whose engine derives from EamonMH's, launched where EamonMH would be (the host already resolves plugin launches in `AppShim.ExecutePlugin`).
+
+## Operator addition: items are usable
+
+"Players can use the hall's items for various purposes." Each object needs real uses (take, use, give, burn, read, sit, offer...), not only examine/read-outs, and each use must do something true in the game or campaign. Uses must not duplicate an existing place's service unless they are a themed route into that same upstream service (for example the Shield Wall opening the engine's own Examine Abilities).
