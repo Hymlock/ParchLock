@@ -227,7 +227,11 @@ var ParchLockQol = {
             try { var states = typeof SaveState !== "undefined" ? SaveState.exportFor(names) : null; if (states) { data.SaveStates = states; json = JSON.stringify(data); } } catch (eStates) {}
             // A campaign with no files yet is left out: importing it must never wipe another device's campaign (Grok #3392 Q3).
             // A campaign that cannot be read fails the export rather than produce a backup that silently lacks it (L1).
-            var campaign = eamon ? eamon.exportCampaign().then(c => { if (eamon.campaignFileCount(c)) data.EamonCampaign = c; }, err => {
+            var campaign = eamon ? eamon.exportCampaign().then(c => {
+                // Never produce a package this app could not import again (Grok #3394 R1).
+                if (eamon.campaignFileCount(c) && !eamon.validCampaign(c)) throw new Error("it holds a file ParchLock cannot restore");
+                if (eamon.campaignFileCount(c)) data.EamonCampaign = c;
+            }).catch(err => {
                 Message.Show("Export Failed", ParchLockQol.EscapeHtml("The Eamon campaign could not be read: " + (err && err.message || err)), true);
                 throw err;
             }) : Promise.resolve();
@@ -582,10 +586,17 @@ var ParchLockQol = {
         var rollback = null;
         return vm.exportCampaign().then(current => {
             rollback = current;
+            // The device's own campaign must be restorable before it is replaced (Grok #3394 R1).
+            if (!vm.validCampaign(current)) {
+                Message.Show("Import Failed", "This device's Eamon campaign holds a file ParchLock cannot put back if the import failed, so nothing was changed.", true);
+                return "failed";
+            }
             var mine = vm.campaignFileCount(current), theirs = vm.campaignFileCount(data.EamonCampaign);
             if (mine && ((Number(data.EamonCampaign.revision) || 0) < (Number(current.revision) || 0) || theirs < mine)
-                && !confirm("This replaces your Eamon campaign on this device (characters and saved games) with the one in the package, which is older or smaller. Continue?"))
+                && !confirm("This replaces your Eamon campaign on this device (characters and saved games) with the one in the package, which is older or smaller. Continue?")) {
+                Message.Show("Import Cancelled", "Nothing was changed.");
                 return "declined";
+            }
             return vm.importCampaign(data.EamonCampaign).then(() => {
                 var result = ParchLockQol.ImportPackageData(text, { campaignStored: true });
                 if (result === true) {
