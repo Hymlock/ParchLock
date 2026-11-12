@@ -306,9 +306,9 @@ var ParchLock = {
         // package digest, so ParchLock's own records for it (maps, map slots, radial and sheet preferences, save-package
         // story name) are keyed by a stable id instead, and a package update does not hide them (Grok #3456 D2). Every
         // other story keeps its file name. Older digest-keyed records are left in place, never deleted.
+        // Decided from what is installed, the same test as the transcript identity and the orphan cleanup (Grok #3481 F1).
         try {
-            var showcaseId = typeof EamonPackage !== "undefined" && EamonPackage.idFromStory ? EamonPackage.idFromStory(ParchLock.StoryPath) : null;
-            if (showcaseId && Object.prototype.hasOwnProperty.call(EamonPackage.trusted(), showcaseId)) ParchLock.GameFilename = "eamon/showcase";
+            if (typeof ModuleLibrary !== "undefined" && ModuleLibrary.isShowcaseStory && ModuleLibrary.isShowcaseStory(ParchLock.StoryPath)) ParchLock.GameFilename = "eamon/showcase";
         } catch (e) {}
         var game = ModuleLibrary.find(ParchLock.StoryPath);
 

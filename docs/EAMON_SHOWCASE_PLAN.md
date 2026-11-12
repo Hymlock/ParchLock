@@ -471,6 +471,14 @@ pointer). At Showcase start, records of earlier builds that no save is attached 
 "local/<id>.eamon.js", old transcripts and snapshots) are removed; learning is left to its own cleanup, which keeps
 its index consistent. Verified: a save's transcript and snapshot survive an update to another release and the removal
 of the old release; planted old-build records are removed and the campaign's own are untouched. Regression 8/8.
+Grok #3481: whether a story is the Showcase is decided from what is installed (an Eamon package is approved when it
+is installed), never from the current app's approval list, in all three places (the stable map key, the identity, the
+cleanup); the cleanup never touches the running release or any installed one, and remembers Showcase ids it has seen.
+Verified: after a simulated app update that no longer approves the installed release, two relaunches still keep
+everything under the stable names (nothing written under the old id; the save's transcript and snapshot intact).
+Start a new campaign now also clears the campaign's transcript, save snapshots and live maps; learning stays (it is
+ParchLock's knowledge of the game's words, not campaign progress; owner to confirm). Verified: afterwards the
+transcript and maps are empty and the learning record unchanged.
 
 ## 10. Work packages
 

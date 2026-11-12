@@ -492,8 +492,18 @@ var ModuleLibrary = (function () {
     // and they leave only with their saves (owner 2026-11-12, #3471 item 8; Grok #3479). The package's own id still
     // names its installed files, its approval and the campaign stamp. No Z-machine or Glulx facts exist for it.
     var SHOWCASE_IDENTITY = "4ab1c9a28ef804b35a9aa2997fa4f55830eb8672c92ed97d9781e8d90aee5002";
-    function isTrustedShowcase(id) {
-        try { return typeof EamonPackage !== "undefined" && EamonPackage.trusted && Object.prototype.hasOwnProperty.call(EamonPackage.trusted(), id); } catch (e) { return false; }
+    // "Is this the Showcase" is decided once, from what is installed: an Eamon package reaches the library only after its
+    // approval was checked at install, and a later app's approval list must not change where its records go (Grok #3481
+    // F1). ParchLock.SetTitle, eamonIdentityForPath and cleanShowcaseOrphans all use this one test.
+    var KNOWN_SHOWCASE_KEY = "PL_EamonShowcaseIds";
+    function installedShowcase(id) { return !!id && cache.some(function (entry) { return entry.id === id && entry.Format === "eamon"; }); }
+    function isShowcaseStory(value) {
+        var m = /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(value ? normalizePath(value) : "");
+        return !!m && installedShowcase(m[1]);
+    }
+    function knownShowcaseIds() { try { var v = JSON.parse(localStorage.getItem(KNOWN_SHOWCASE_KEY) || "[]"); return Array.isArray(v) ? v.filter(function (x) { return /^[0-9a-f]{64}$/.test(x); }) : []; } catch (e) { return []; } }
+    function rememberShowcaseId(id) {
+        try { var ids = knownShowcaseIds(); if (/^[0-9a-f]{64}$/.test(id) && ids.indexOf(id) < 0) { ids.push(id); localStorage.setItem(KNOWN_SHOWCASE_KEY, JSON.stringify(ids)); } } catch (e) {}
     }
     function eamonIdentityForPath(sourcePath) {
         var match = /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(sourcePath || "");
@@ -501,7 +511,9 @@ var ModuleLibrary = (function () {
         var item = cache.find(function (entry) { return entry.id === match[1] && entry.Format === "eamon"; });
         if (!item) return null;
         if (executableIdentityByPath[sourcePath]) return executableIdentityByPath[sourcePath];
-        var digest = isTrustedShowcase(item.id) ? SHOWCASE_IDENTITY : item.id;
+        // Every installed Eamon package is a Showcase release (install refuses anything unapproved).
+        var digest = SHOWCASE_IDENTITY;
+        rememberShowcaseId(item.id);
         var summary = Object.freeze({ digest: digest, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, header: null });
         return (executableIdentityByPath[sourcePath] = Object.freeze({
             digest: digest, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, bytes: new Uint8Array(0), summary: summary
@@ -648,6 +660,13 @@ var ModuleLibrary = (function () {
                 var m = /^(?:PL_Map_|PL_MapSlots_|PL_TranscriptDigest_)local\/([0-9a-f]{64})\.eamon\.js(?:#.*)?$/.exec(k || "");
                 if (m) ids[m[1]] = true;
             });
+            knownShowcaseIds().forEach(function (id) { ids[id] = true; });
+            // Never the running story or any installed release: only ids with no library entry are orphans (Grok #3481 F1).
+            var running = null;
+            try { var rm = typeof ParchLock !== "undefined" && /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(normalizePath(ParchLock.StoryPath || "")); running = rm ? rm[1] : null; } catch (eR) {}
+            Object.keys(ids).forEach(function (id) { if (id === running || installedShowcase(id)) delete ids[id]; });
+            var known = knownShowcaseIds().filter(function (id) { return !ids[id]; });
+            try { localStorage.setItem(KNOWN_SHOWCASE_KEY, JSON.stringify(known)); } catch (eK) {}
             Object.keys(ids).forEach(function (id) {
                 var path = "local/" + id + ".eamon.js";
                 keys.forEach(function (k) {
@@ -664,6 +683,23 @@ var ModuleLibrary = (function () {
             });
         } catch (e) {}
         return removed;
+    }
+
+    /* Start a new campaign (owner item 6): every save is gone and the player confirmed losing all characters and their
+       progress, so the campaign's own records go too: its transcript, its save snapshots and its live maps (Grok #3481
+       F3). Learning stays: it is ParchLock's knowledge of the game's words, not campaign progress. */
+    function forgetShowcaseCampaign() {
+        try {
+            if (typeof ParchLockMap !== "undefined") ParchLockMap.PersistenceBlocked = true;
+            try { if (typeof SaveState !== "undefined") SaveState.removeStory(SHOWCASE_IDENTITY); } catch (eS) {}
+            removeTranscriptDigest(SHOWCASE_IDENTITY);
+            var doomed = [];
+            for (var i = 0; i < localStorage.length; i++) {
+                var k = localStorage.key(i);
+                if (k && /^(?:PL_Map_|PL_MapSlots_)eamon\/showcase(?:#.*)?$/.test(k)) doomed.push(k);
+            }
+            doomed.forEach(function (k) { localStorage.removeItem(k); });
+        } catch (e) {}
     }
 
     // E3: one seen-once flag per installed module (tutorial-style).
@@ -860,6 +896,7 @@ var ModuleLibrary = (function () {
         restoreBuiltIns: restoreBuiltIns, renameLocal: renameLocal, openManager: openManager, onChanged: onChanged,
         reconcile: reconcile, inspect: inspect, hash: hash, sha256Fallback: sha256Fallback,
         currentExecutableDigest: currentExecutableDigest, cleanShowcaseOrphans: cleanShowcaseOrphans, showcaseIdentity: SHOWCASE_IDENTITY,
+        isShowcaseStory: isShowcaseStory, forgetShowcaseCampaign: forgetShowcaseCampaign,
         executableDigestForPath: executableDigestForPath, libraryRevision: function () { return libraryRevision; },
         currentExecutableBytes: currentExecutableBytes,
         currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,
