@@ -82,6 +82,21 @@ namespace ParchLock.EamonHost
 			// 200); stock engine, nothing checks the investigation, so escaping alive through an exit is the clear.
 			// Interpretation, for Grok's and the operator's review.
 			["Escape from Mt. Moon"] = @"{ ""quest"": null }",
+			// The Temple of Ngurct: the mission is returning the gold medallion of Ngurct (artifact 77) carried; otherwise
+			// "you have failed in your mission" (MainLoop.cs Shutdown, checked before it limbos the medallion). Princess
+			// Thera's return is an extra reward, not the mission. For Grok's review.
+			["The Temple of Ngurct"] = @"{ ""quest"": { ""artifact"": 77, ""carried"": true } }",
+			// The Vile Grimoire of Jaldi'al: the grimoire (artifact 27) carried to Kreqor (MainLoop.cs Shutdown); the
+			// leather-bound book (9) is the forgery he rejects. For Grok's review.
+			["The Vile Grimoire of Jaldi'al"] = @"{ ""quest"": { ""artifact"": 27, ""carried"": true } }",
+			// Stronghold of Kahr-Dur: its own exit verdict (PlayerMoveCheckState.cs:114-146): the necromancer (22) in limbo
+			// and Lady Mirabelle (26) in the player's room; last prompt its own Y/N (:153), before any change (Grok #3402).
+			["Stronghold of Kahr-Dur"] = @"{ ""quest"": { ""all"": [ { ""monster"": 22, ""inLimbo"": true }, { ""monster"": 26, ""inPlayerRoom"": true } ] } }",
+			// A Runcible Cargo: three scripted victories: the bandit commander (27) and soldiers (28) dead, or the bandit
+			// prince (38) and Praetorian Guards (39) dead (GetPlayerInputState.cs:246-277), or the detonator with the
+			// explosive (43) in the cargo (129) carried by the prince and the gates (137) closed (UseCommand.cs:63-89). The
+			// capitulation ending (SayCommand.cs:227-241) matches none (Grok #3402, #3407). For Grok's review.
+			["A Runcible Cargo"] = @"{ ""quest"": { ""any"": [ { ""all"": [ { ""monster"": 27, ""inLimbo"": true }, { ""monster"": 28, ""inLimbo"": true } ] }, { ""all"": [ { ""monster"": 38, ""inLimbo"": true }, { ""monster"": 39, ""inLimbo"": true } ] }, { ""all"": [ { ""artifact"": 43, ""inContainer"": 129 }, { ""artifact"": 129, ""carriedByMonster"": 38 }, { ""artifact"": 137, ""open"": false } ] } ] } }",
 			["Alternate Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 11, ""inPlayerRoom"": true }, { ""monster"": 11, ""reactionAbove"": ""Neutral"" } ] } }",
 		};
 
@@ -111,7 +126,7 @@ namespace ParchLock.EamonHost
 		// key is refused, so a typo can never be read as a different test (Grok #3407 item 3). Defaults follow the
 		// engine: carried, worn and container tests are not recursive unless "recurse": true (item 2).
 		static readonly string[] MonsterPredicates = { "inPlayerRoom", "reactionAbove", "inLimbo", "inRoom", "field", "dead" };
-		static readonly string[] ArtifactPredicates = { "carried", "worn", "inContainer", "carriedByMonster", "inLimbo", "inRoom", "field" };
+		static readonly string[] ArtifactPredicates = { "carried", "worn", "inContainer", "carriedByMonster", "inLimbo", "inRoom", "field", "open" };
 
 		static bool Holds(JsonElement c)
 		{
@@ -150,6 +165,10 @@ namespace ParchLock.EamonHost
 					case "inContainer": return a.IsCarriedByContainerUid(v.GetInt64(), recurse);
 					case "carriedByMonster": return a.IsCarriedByMonsterUid(v.GetInt64(), recurse);
 					case "inLimbo": return a.IsInLimbo(recurse) == v.GetBoolean();
+					// A door/gate or an in-container's open state (the engine's own IsOpen()).
+					case "open":
+						var openable = (Eamon.Framework.Primitive.Classes.IArtifactCategory)a.DoorGate ?? a.InContainer ?? throw new InvalidOperationException("artifact " + a.Uid + " has no open state");
+						return openable.IsOpen() == v.GetBoolean();
 					default: return a.IsInRoomUid(v.GetInt64());
 				}
 			}
