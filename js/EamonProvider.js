@@ -124,12 +124,20 @@ var EamonProvider = {
     noteRelocation: (world) => {
         try {
             var room = world && world.room;
+            // Main Hall only (Grok #3381 F1): adventure exits to unseen, dark or door rooms carry no target id,
+            // and MapTopology's own movement rules already govern adventure edges.
+            if (!room || world.adventure !== "Main Hall") return;   // a room-less prompt keeps the last room (F3)
             var prev = EamonProvider._prevRoom;
-            EamonProvider._prevRoom = room ? { id: room.id, exits: world.exits || [], adventure: world.adventure } : null;
-            if (!room || !prev || prev.id === room.id || prev.adventure !== world.adventure) return;
+            EamonProvider._prevRoom = { id: room.id, exits: world.exits || [], adventure: world.adventure };
+            if (!prev || prev.id === room.id || prev.adventure !== world.adventure) return;
+            // The words the Hall accepts for a move (HallSnapshot.Translate): the key, the label, n/s, "go <x>" (F2).
             var last = typeof MapTopology !== "undefined" ? String(MapTopology.lastCommand || "").trim().toLowerCase() : "";
+            if (last.indexOf("go ") === 0) last = last.slice(3).trim();
+            var words = [last, last === "n" ? "north" : last === "s" ? "south" : last];
             var moved = prev.exits.some(function (e) {
-                return e.to === room.id && (String(e.command || "").toLowerCase() === last || String(e.label || "").toLowerCase() === last);
+                if (e.to !== room.id) return false;
+                var command = String(e.command || "").toLowerCase(), label = String(e.label || "").toLowerCase();
+                return words.indexOf(command) >= 0 || words.indexOf(label) >= 0;
             });
             if (!moved && typeof MapTopology !== "undefined") { MapTopology.prevRoomId = null; MapTopology.prevRoomName = ""; }
         } catch (e) {}

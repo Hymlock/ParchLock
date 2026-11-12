@@ -87,3 +87,5 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - Great Tapestry: opens ParchLock's existing world-map view with campaign data; waits for that data.
 - Stair: the Village exit's themed object, sending the same key.
 - Order: Hall rooms (built); then upstream-backed objects (Shield Wall, Stair, Ledger, Stones); then, after the campaign record (package E), the Fire, Board, Skald, Trophies and Tapestry.
+
+- Constructor rule (Grok #3381): the Hall snapshot constructs the hierarchical menus and their action menus off-stage to read their items. Any host-registered Hall class must keep its constructor free of side effects (as every upstream menu constructor is: only `Buf = gEngine.Buf` and item lists).

@@ -102,7 +102,13 @@ namespace ParchLock.EamonHost
 				{
 					// Never let an unrecognised line become the default "X" (leave the universe): ask again.
 					reply = HallSnapshot.Translate(ask, reply, validCharFunc);
-					if (reply == null) continue;
+					if (reply == null)
+					{
+						// Say why nothing happened (Grok #3381: silent re-asks leave screen-reader users guessing).
+						gEngine.Out.Print("Choose one of the places or numbers shown.");
+						App.RefreshOutputWindowText();
+						continue;
+					}
 				}
 
 				buf.Clear();
