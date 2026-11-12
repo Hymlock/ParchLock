@@ -130,6 +130,12 @@ expertise above 25 (its IntroStory.cs:28-38). A legal route to tier 2 therefore 
 plus The Wayfarers Inn or The Training Ground. Tiers 2 to 5: no adventure refuses entry in source (the only
 IntroStory refusals in the collection are the four Beginners adventures and The Training Ground; The Tower of Eamon
 and Escape from Mt. Moon have no custom code and run on the stock engine), so every gate has a source-legal route.
+Checked 2026-11-12: Beginner's Forest's exit gates (artifacts 19, 20) lead to the adventure exit
+(live: walking east through the room 1 gate gives the leave prompt and FinishAdventure); Escape from Mt. Moon's
+Rocket boss is a single monster with courage 100, so it never flees and goes to limbo when slain, and the engine
+refuses moves past a visible enemy; The Wayfarers Inn's second exit (room 10 south, after the bridge is worn and the
+wall map read) is produced by the room's own GetDir override, which the world snapshot reads, so the map offers it;
+A Runcible Cargo's dream snapshot (SNAPSHOT_001.DAT) is a campaign file, committed and exported with the slots.
 Still to prove in play. Notes (Grok #3422): The Pyramid of Anharos zeroes all held and banked
 gold on any finish without its quest (a ParchLock warning is the operator's call); A Runcible Cargo's dream can end
 in ExitType.Error if its start snapshot is missing, which strands the character outside the Hall (never a clear; the
@@ -396,7 +402,10 @@ G. Independent adversarial review, final candidate on real targets, release.
    - EQ-PROMPT-1 nested prompt: at a yes/no or clarification prompt no Equipment drag, dwell or radial submits into
      the field; afterwards the tree matches the engine again.
    Done 2026-11-12 and verified live (Alternate Beginner's Cave box): EQ-TREE-2 and -4 tags, EQ-DROP-SELF-1 and -2,
-   EQ-GESTURE-1 and -3, EQ-DROP-IN-1 (put in, and "It won't fit."). Still to do: the rest, recoverInventory and
+   EQ-GESTURE-1 and -3, EQ-DROP-IN-1 (put in, and "It won't fit."). EQ-PROMPT-1 verified live and fixed: at the save
+   dialog's "Enter new name:" fast travel had typed "north" (a game saved under that name); ParchLock's own commands
+   now never type into an Eamon nested prompt (refused, "The route command was not accepted."), and the Equipment
+   sheet is empty there. The unused EamonProvider.nativeCommands path is removed. Still to do: the rest, recoverInventory and
    nested-prompt clearing checks, and retiring the unused EamonProvider.nativeCommands (without reviving its early
    return).
 
