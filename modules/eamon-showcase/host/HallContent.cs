@@ -131,7 +131,8 @@ namespace ParchLock.EamonHost
 			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
 			var id = character != null ? RunLedger.CharacterId(character.Uid, character.Name ?? "") : null;
 			var everCleared = RunLedger.ClearedAdventures(id);
-			var (cycle, cleared) = RunLedger.CurrentCycle(id);
+			var outgrown = ProgressionGate.Outgrown(character);
+			var (cycle, cleared) = RunLedger.CurrentCycle(id, outgrown);
 			var open = ProgressionGate.OpenTier(everCleared);
 			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared. Clear every adventure and a New Game+ cycle begins, in which each can be credited again.");
 			if (cycle > 1) gOut.Print("New Game+ cycle {0}: \"(cleared)\" marks the adventures cleared in this cycle.", cycle);
@@ -140,7 +141,7 @@ namespace ParchLock.EamonHost
 				gOut.Print("Tier {0}, {1}: {2}", tier, ProgressionGate.TierNames[tier], tier <= open ? "open" : "locked");
 				// One line per notice (Print adds a blank line after each).
 				foreach (var adventure in ProgressionGate.Tiers.Where(t => t.Value == tier).Select(t => t.Key).OrderBy(n => n))
-					gOut.WriteLine("  {0}{1}", adventure, cleared.Contains(adventure) ? " (cleared)" : "");
+					gOut.WriteLine("  {0}{1}", adventure, cleared.Contains(adventure) ? " (cleared)" : outgrown.Contains(adventure) ? " (outgrown: counts as complete)" : "");
 			}
 			gEngine.In.KeyPress(Buf);
 		}

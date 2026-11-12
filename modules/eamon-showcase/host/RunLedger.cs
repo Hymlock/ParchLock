@@ -95,10 +95,14 @@ namespace ParchLock.EamonHost
 
 		/// <summary>Opens the next cycle whenever every Showcase adventure is cleared in the current one: on every read,
 		/// not only on a new credit, so a change in the adventure set can never leave a cycle that cannot finish (Grok #3431).</summary>
-		static bool Normalise(CharacterClears c)
+		static bool Normalise(CharacterClears c, HashSet<string> outgrown)
 		{
+			// An adventure the character has outgrown (its own entry check refuses them for good) counts as complete in
+			// every cycle, or a veteran could never finish one (operator 2026-11-12); it is not a credit.
 			var advanced = false;
-			while (ProgressionGate.Tiers.Count > 0 && ProgressionGate.Tiers.Keys.All(a => c.clears.Any(x => x.cycle == c.cycle && x.adventure == a))) { c.cycle++; advanced = true; }
+			outgrown = outgrown ?? new HashSet<string>();
+			while (ProgressionGate.Tiers.Count > 0 && ProgressionGate.Tiers.Keys.All(a => outgrown.Contains(a) || c.clears.Any(x => x.cycle == c.cycle && x.adventure == a))
+				&& c.clears.Any(x => x.cycle == c.cycle)) { c.cycle++; advanced = true; }
 			return advanced;
 		}
 
@@ -118,11 +122,11 @@ namespace ParchLock.EamonHost
 		}
 
 		/// <summary>This character's current cycle and the adventures cleared in it.</summary>
-		internal static (int Cycle, HashSet<string> Cleared) CurrentCycle(string characterId)
+		internal static (int Cycle, HashSet<string> Cleared) CurrentCycle(string characterId, HashSet<string> outgrown = null)
 		{
 			var cleared = new HashSet<string>(StringComparer.Ordinal);
 			if (string.IsNullOrEmpty(characterId) || !ReadLedger().TryGetValue(characterId, out var c)) return (1, cleared);
-			Normalise(c);
+			Normalise(c, outgrown);
 			foreach (var clear in c.clears) if (clear.cycle == c.cycle) cleared.Add(clear.adventure);
 			return (c.cycle, cleared);
 		}
@@ -149,21 +153,21 @@ namespace ParchLock.EamonHost
 		/// cycle. "credited", or "credited, new cycle N" when this clear completes every Showcase adventure in the
 		/// cycle (operator, #3416 and #3427). Bound to the adventure engine that was tracked and to a character seen in
 		/// it (Grok #3410 F1).</summary>
-		internal static string Credit(object engine, string characterId, string adventure, string characterName = null, string quest = null)
+		internal static string Credit(object engine, string characterId, string adventure, string characterName = null, string quest = null, HashSet<string> outgrown = null)
 		{
 			if (string.IsNullOrEmpty(_run) || !ReferenceEquals(engine, _trackedEngine)) return "no run";
 			if (string.IsNullOrEmpty(characterId)) return "no character";
 			if (_run.StartsWith(Unbound, StringComparison.Ordinal)) return "unbound run";
 			var ledger = ReadLedger();
 			if (!ledger.TryGetValue(characterId, out var c)) ledger[characterId] = c = new CharacterClears();
-			Normalise(c);
+			Normalise(c, outgrown);
 			if (c.clears.Any(x => x.run == _run)) return "already credited";
 			if (c.clears.Any(x => x.cycle == c.cycle && x.adventure == adventure)) return "already cleared";
 			c.clears.Add(new Clear { adventure = adventure, run = _run, cycle = c.cycle });
 			var result = "credited";
 			// "All loaded" = the Showcase's tiered adventures (ProgressionGate.Tiers, the package's complete set): once every
 			// one is cleared in this cycle, the next cycle opens. Only a credit can advance it, so save/restore cannot.
-			if (Normalise(c)) result = "credited, new cycle " + c.cycle;
+			if (Normalise(c, outgrown)) result = "credited, new cycle " + c.cycle;
 			Directory.CreateDirectory(Path.GetDirectoryName(LedgerPath));
 			File.WriteAllText(LedgerPath, JsonSerializer.Serialize(ledger));
 			// The Trophy Wall's record of this credit: who, which adventure, when, which cycle and what counted.

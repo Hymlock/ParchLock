@@ -174,7 +174,18 @@ credited on the first exit, "already cleared" on a second run. Operator decision
 required for its credit; leaving alive is not enough. Walking into The Training Ground and straight out was a clear
 under the old no-quest rule (verified live). Every adventure therefore gets a completion requirement from its own
 source; the four that had none (The Training Ground, Beginner's Cave II, The Deep Canyon, Escape from Mt. Moon) are
-being settled with Grok by blind dual investigation. A restored slot that has lost its
+Their requirements (2026-11-12): The Training Ground is completed by
+graduating, leaving it with armour expertise above 25, the level at which its own manager turns a character away as
+overqualified (operator); Beginner's Cave II by leaving it no longer a beginner (its own gate's test; Claude's
+extension of the operator's rule, under review); The Deep Canyon by reaching room 60, its only exit ("Outside Main
+Hall. Congratulations!"); Escape from Mt. Moon by leaving from room 12 past the beaten Rocket boss, not back through
+the entrance. Verified live: walking out of The Training Ground and Beginner's Cave II is no longer a clear.
+
+**New Game+ and outgrown adventures (operator 2026-11-12).** Eamon never lowers armour expertise or weapon abilities,
+so once a character fails an adventure's own entry check (the four Beginners adventures after any change from the
+beginner values; The Training Ground above armour expertise 25) it can never enter again. Such an outgrown adventure
+counts as complete for every New Game+ cycle (otherwise no veteran could finish a cycle); it is never a credit or a
+trophy. The Quest Board marks it "outgrown: counts as complete". A restored slot that has lost its
 run stamp starts an unbound run, and saves made from it stay unbound: that play-through is never credited until a
 fresh entry or Start Over (fail-closed by design, not a defect). Characters are keyed by a ParchLock id per record
 uid and name; a deleted character recreated with the same name at a recycled uid inherits the old id (known limit).

@@ -25,10 +25,10 @@ namespace ParchLock.EamonHost
 			// player's room at the exit and not an Enemy). Last prompt: the exit Y/N (EamonRT PlayerMoveCheckState
 			// ReadField); nothing moves Cynthia after it. Grok #3400/#3407 and Claude's blind contract agree.
 			["The Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 3, ""inPlayerRoom"": true }, { ""monster"": 3, ""reactionAbove"": ""Enemy"" } ] } }",
-			// The Training Ground: a practice facility (module description, intro effects 1-3); no quest code, no
-			// reward, no scripted finish. Clears on leaving alive through its one exit. Last prompt: the exit Y/N.
-			// Grok's blind version (#3423) agrees.
-			["The Training Ground"] = @"{ ""quest"": null }",
+			// The Training Ground: its own end is graduation. The manager turns away a character whose armour expertise is
+			// above 25 ("you're overqualified", IntroStory.cs:28-38); operator decision 2026-11-12: leaving it with armour
+			// expertise above 25 completes it. Read at the exit Y/N (the character's own record).
+			["The Training Ground"] = @"{ ""quest"": { ""character"": ""ArmorExpertise"", ""greaterThan"": 25 } }",
 			// The Wayfarers Inn: "resolve the crisis" (intro effect 250) = the haunting laid to rest,
 			// GameState.CharlotteRestInPeace, set only at UseCommand.cs:92 (Charlotte's blessed bones and the teddy
 			// bear buried); it pays the investors' reward (MainLoop.cs:112). A GameState flag Shutdown never changes.
@@ -39,15 +39,19 @@ namespace ParchLock.EamonHost
 			// gives the crown and sets her Field1 to 1 (GetPlayerInputState.cs:28-58); nothing resets it. Last prompt: exit Y/N.
 			// Claude's reading, for Grok's review.
 			["Beginner's Forest"] = @"{ ""quest"": { ""monster"": 8, ""field"": ""Field1"", ""equals"": 1 } }",
-			// Beginner's Cave II: no quest text, no reward or finish code (only OpenCommand, Monster, IntroStory). Claude's
-			// reading, for Grok's review.
-			["Beginner's Cave II"] = @"{ ""quest"": null }",
+			// Beginner's Cave II: no quest text, no reward or finish code; a beginners' practice cave whose own gate refuses
+			// anyone who is "not a beginner" (RT IntroStory Beginners check). By the operator's Training Ground rule
+			// (2026-11-12) its end is graduation: leaving it no longer a beginner (armour expertise 0, axe 5, club 20, sword
+			// 0 no longer all hold). Claude's extension of that rule, for Grok's and the operator's review.
+			["Beginner's Cave II"] = @"{ ""quest"": { ""not"": { ""all"": [ { ""character"": ""ArmorExpertise"", ""equals"": 0 }, { ""character"": ""Axe"", ""equals"": 5 }, { ""character"": ""Club"", ""equals"": 20 }, { ""character"": ""Sword"", ""equals"": 0 } ] } } }",
 			// Alternate Beginner's Cave: Nina's reward, MainLoop.cs Shutdown: Nina (monster 11) in the player's room at the exit
 			// with Reaction == Friend (exactly; Friend is the only reaction above Neutral). Last prompt: exit Y/N; Claude's
 			// reading, for Grok's review.
 			// The Deep Canyon: pushed into the canyon, "it'll be up to you to find your way out" (intro effects 202-204); no
 			// reward or finish code. Escaping alive through an exit is the goal. Claude's reading, for Grok's review.
-			["The Deep Canyon"] = @"{ ""quest"": null }",
+			// Completion (operator 2026-11-12): the only exit is room 60, "Outside Main Hall. Congratulations!!!!" (the start
+			// room has no exit), so reaching it is the author's end; stated explicitly.
+			["The Deep Canyon"] = @"{ ""quest"": { ""gameState"": ""Ro"", ""equals"": 60 } }",
 			// The Pyramid of Anharos: the success branch of MainLoop.Shutdown: KV == 1 (set by PUT, PutCommand.cs:71),
 			// KF != 1 (SayCommand.cs:46 toggles it), and Omar, Ali or Farouk (monsters 1, 2, 6) in the player's room;
 			// every other branch levies tax and takes the gold. Facts settled before the exit Y/N. For Grok's review.
@@ -81,7 +85,10 @@ namespace ParchLock.EamonHost
 			// Escape from Mt. Moon: "safely navigate its corridors and investigate the activities of Team Rocket" (effect
 			// 200); stock engine, nothing checks the investigation, so escaping alive through an exit is the clear.
 			// Interpretation, for Grok's and the operator's review.
-			["Escape from Mt. Moon"] = @"{ ""quest"": null }",
+			// Completion (operator 2026-11-12): room 12 "By Many Fossils" ("Now that you've beaten Rocket...") exits north
+			// toward Cerulean City, the author's end; room 1's exit only goes back to Pewter City. The Rocket boss (monster
+			// 4) beaten as well.
+			["Escape from Mt. Moon"] = @"{ ""quest"": { ""all"": [ { ""gameState"": ""Ro"", ""equals"": 12 }, { ""monster"": 4, ""inLimbo"": true } ] } }",
 			// The Temple of Ngurct: the mission is returning the gold medallion of Ngurct (artifact 77) carried; otherwise
 			// "you have failed in your mission" (MainLoop.cs Shutdown, checked before it limbos the medallion). Princess
 			// Thera's return is an extra reward, not the mission. For Grok's review.
@@ -181,6 +188,18 @@ namespace ParchLock.EamonHost
 				var running = (gEngine as EamonRT.Framework.Plugin.IEngine)?.CurrState as EamonRT.Framework.Commands.ICommand;
 				return running != null && string.Equals(running.Verb, c.GetProperty("command").GetString(), StringComparison.OrdinalIgnoreCase)
 					&& running.DobjArtifact != null && running.DobjArtifact.Uid == c.GetProperty("dobj").GetInt64();
+			}
+			if (keys.Contains("character"))
+			{
+				// The player character's own record: ArmorExpertise or a weapon ability (Axe, Bow, Club, Spear, Sword).
+				var comparison = keys.Contains("equals") ? "equals" : keys.Contains("greaterThan") ? "greaterThan" : null;
+				if (keys.Length != 2 || comparison == null) throw new InvalidOperationException("character needs exactly one of: equals, greaterThan");
+				var who = (gEngine as EamonRT.Framework.Plugin.IEngine)?.Character ?? throw new InvalidOperationException("no character");
+				var stat = c.GetProperty("character").GetString();
+				long value = stat == "ArmorExpertise" ? who.ArmorExpertise
+					: Enum.TryParse<Weapon>(stat, out var weapon) ? who.GetWeaponAbility(weapon)
+					: throw new InvalidOperationException("unknown character stat " + stat);
+				return comparison == "equals" ? value == c.GetProperty("equals").GetInt64() : value > c.GetProperty("greaterThan").GetInt64();
 			}
 			if (keys.Contains("zone"))
 			{

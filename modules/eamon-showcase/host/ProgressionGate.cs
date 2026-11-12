@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Eamon.Framework.Primitive.Enums;
 using static Eamon.Game.Plugin.Globals;
 
 namespace ParchLock.EamonHost
@@ -57,6 +58,22 @@ namespace ParchLock.EamonHost
 			var below = Tiers.Count(t => t.Value == tier - 1 && cleared.Contains(t.Key));
 			return string.Format("{0} is a tier {1} adventure ({2}). It opens once you have cleared two different tier {3} adventures ({4}); you have cleared {5}.",
 				adventure.Trim(), tier, TierNames[tier], tier - 1, TierNames[tier - 1], below);
+		}
+
+		static readonly string[] BeginnersStory = { "The Beginner's Cave", "Beginner's Forest", "Beginner's Cave II", "Alternate Beginner's Cave" };
+
+		/// <summary>The adventures this character has outgrown: their own entry checks now refuse the character for good
+		/// (the four Beginners adventures once armour expertise 0, axe 5, club 20, sword 0 no longer all hold, RT
+		/// IntroStory; The Training Ground above armour expertise 25). Eamon never lowers these abilities, so it is
+		/// permanent. They count as complete for New Game+ cycles (operator 2026-11-12), never as credits.</summary>
+		internal static HashSet<string> Outgrown(Eamon.Framework.ICharacter c)
+		{
+			var result = new HashSet<string>(StringComparer.Ordinal);
+			if (c == null) return result;
+			var beginner = c.ArmorExpertise == 0 && c.GetWeaponAbility(Weapon.Axe) == 5 && c.GetWeaponAbility(Weapon.Club) == 20 && c.GetWeaponAbility(Weapon.Sword) == 0;
+			if (!beginner) foreach (var a in BeginnersStory) result.Add(a);
+			if (c.ArmorExpertise > 25) result.Add("The Training Ground");
+			return result;
 		}
 
 		/// <summary>The fileset (adventure) a typed selection names, or null.</summary>
