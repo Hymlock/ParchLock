@@ -59,6 +59,18 @@ namespace ParchLock.EamonHost
 			// stock engine, nothing checks it in code, so ParchLock reads it as leaving with the Book of Evil Plans
 			// (artifact 22, starts in the tall bookcase 17). Interpretation, for Grok's and the operator's review.
 			["The Tower of Eamon"] = @"{ ""quest"": { ""artifact"": 22, ""carried"": true, ""recurse"": true } }",
+			// DharmaQuest: the gods' ceremony when praying in room 68 (PrayCommand.cs:122-296), a scripted finish; its last
+			// prompt is the key press at :288 with the player still in room 68 (ExitType is set after it). Leaving any
+			// other way reads false. For Grok's review.
+			["DharmaQuest"] = @"{ ""quest"": { ""gameState"": ""Ro"", ""equals"": 68 } }",
+			// Firestorm: stop Thorak (monster 27, starts in room 85; intro effects 200-206, 47). A slain single monster
+			// goes to limbo (EamonRT MonsterDies), and Firestorm's own code reads "not in limbo" as Thorak alive
+			// (Room.cs:23-25). Its exit is ungated. For Grok's review.
+			["Firestorm"] = @"{ ""quest"": { ""monster"": 27, ""inLimbo"": true } }",
+			// Wrenhold's Secret Vigil: after the exit's Y the orb goes to limbo and, only on success, King Argas hands over
+			// the magic elven bow (artifact 50, starts in limbo) before the bow-naming prompt (PlayerMoveCheckState.cs
+			// :162-205), its last prompt with ExitType still None (Grok #3407 fix 1).
+			["Wrenhold's Secret Vigil"] = @"{ ""quest"": { ""all"": [ { ""artifact"": 50, ""carried"": true }, { ""artifact"": 4, ""inLimbo"": true } ] } }",
 			["Alternate Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 11, ""inPlayerRoom"": true }, { ""monster"": 11, ""reactionAbove"": ""Neutral"" } ] } }",
 		};
 
