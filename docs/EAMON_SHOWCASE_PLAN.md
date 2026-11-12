@@ -378,10 +378,8 @@ ships no file in the campaign-owned patterns (checked). ParchLock's own Eamon st
 files (see the finding below). Verified on Windows with three test packages: afield in a changed adventure (free
 recall, gold unchanged, no desk question, slots and game state deleted, plain message); in the Hall (15 stale
 deletion markers dropped, campaign kept, one notice); afield in an unchanged adventure while another changed (resumed,
-the slot still restorable); a changed save format (refused, nothing changed). Not yet: the APK path; B4 (importing a
-save package from another package version, refused today); and ParchLock's maps, transcripts and saves for Eamon
-are keyed by the story file name, which contains the package digest, so a new package does not show them (sent to
-Grok). "Start a new campaign" after a refusal deletes user data: owner question 6.
+the slot still restorable); a changed save format (refused, nothing changed). At this point (later resolved below): the APK path, B4 import across releases, and ParchLock's story-keyed records
+were open; B4 and the keying are now built (D1, D2). "Start a new campaign" after a refusal deletes user data: owner question 6.
 Grok #3456 (built 2026-11-12): an adventure the package did not change keeps every saved entry as it is; the
 allow-list applies only to changed folders and System/Bin (F1). Measured: Eamon never keeps an unsaved live world
 (a relaunch after moving, with no package change, starts again at the adventure's entrance; only save slots carry
@@ -531,7 +529,17 @@ G. Independent adversarial review, final candidate on real targets, release.
    on-container drop has no case yet (recorded, as its rule allows). K2 verified: the sheet has no key handlers and no positive
    tabindex, the line input stays focusable with the sheet open, and the only key the open sheet suppresses is the
    Ctrl+Shift+Arrow move; Tab on the line input is ParchLock's autocomplete for every engine (B7), unchanged by the
-   sheet. Existing-module regression 8/8 after these shared JS changes. Still to do: the remaining EQ checks.
+   sheet. Existing-module regression 8/8 after these shared JS changes.
+   Verified 2026-11-12 (Test Adventure, the character's own mountain backpack, read through EquipmentUI's own model and
+   rules): EQ-DROP-IN-2, closed backpack: a drop sends nothing and says "mountain backpack is closed."; after OPEN the same
+   drop sends PUT SHIELD IN MOUNTAIN BACKPACK. EQ-GESTURE-4: the held-item radial lists only Eamon verbs (examine, wear for
+   the shield, drop; Give... and Put... open their pickers as GIVE X TO / PUT X IN). EQ-TREE-1: Yourself with worn leather
+   armour and shield, sword readied, no invented pack (the nested-prompt clearing probe). EQ-DROP-SELF-3 in part: Yourself
+   offers Wear for a held shield and no Ready for the already readied sword; Ready for an unreadied weapon still needs a
+   second weapon. By design, not a defect: Yourself also lists the game dictionary's verbs as typed-line suggestions
+   (shared design D214 U5; they fill the line, they do not send). Harmless extra: an openable container's radial offers
+   both Open and Close whatever its state. Still to do: EQ-TREE-3, EQ-NEST-1, EQ-DROP-UNDER-1, EQ-DROP-ROOM-1, Ready in
+   EQ-DROP-SELF-3, and EQ-GESTURE-2 on the phone.
 
 ## 12. Still to be evidenced (not disputes)
 
