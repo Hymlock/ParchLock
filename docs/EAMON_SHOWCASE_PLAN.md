@@ -134,8 +134,11 @@ container, reaction, GameState fields, with "not" and "any of" (A Runcible Cargo
 FinishAdventure that is not a clear). The host evaluates it at every adventure prompt and keeps the latest
 result, because several adventures end by script with no exit prompt (Land of the Mountain King, Dharmaquest,
 A Runcible Cargo) or use their own exit prompt (Firestorm, Stronghold of Kahr-Dur, Wrenhold's Secret Vigil);
-each of those has a key press just before it ends, with the world intact. A contract uses only facts that are
-settled by that last prompt (Wrenhold changes the world after its Y answer; ten adventures override Shutdown).
+each of those has a key press just before it ends, with the world intact. A contract is written over the world as it
+stands at the last prompt of that adventure's success path, cited per contract, which is not always the state
+before the exit's Y answer (Wrenhold puts the orb in limbo, then asks to name the bow, so its contract tests the
+bow it hands over); ten adventures override Shutdown. Clause tests follow the engine's defaults (carried, worn
+and container tests are not recursive unless stated) and each clause has exactly one test.
 The outcome is bound when the plugin returns: ExitType FinishAdventure and Die 0, nothing else read from the
 engine then (proved by a host probe). Gold and gains come from the exported character (final minus entry
 gold). Each save slot carries the run id it was saved in, and a successful RESTORE makes that run current, so

@@ -68,6 +68,7 @@ namespace ParchLock.EamonHost
 			// readable from the engine object, but its game state is gone (GetGameState() is null), so Die is the value
 			// at the adventure's last prompt: the exit Y/N for FinishAdventure, the death menu (Die 1) for a death.
 			if (_adventure != null) HostBridge.Lifecycle("adventure-ended", _adventureName + "|" + _adventure.ExitType + "|die=" + _dieAtPrompt + "|quest=" + ClearContracts.Latest);
+			ClearContracts.Reset();
 			_adventure = null;
 		}
 
