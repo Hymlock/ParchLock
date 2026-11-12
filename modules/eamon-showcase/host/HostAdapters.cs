@@ -83,7 +83,8 @@ namespace ParchLock.EamonHost
 				Persistence.Flush();
 				SaveEvents.AfterFlush();
 				try { if (gEngine is EamonMH.Framework.Plugin.IEngine) RunLedger.ObserveCharacters(gDatabase?.CharacterTable?.Records ?? new System.Collections.Generic.List<Eamon.Framework.ICharacter>()); } catch (Exception) { }
-				try { Debrief.ReportIfDue(); } catch (Exception) { }
+				// The debriefing file is committed at once, so a tale shown is a tale kept (Grok #3431).
+				try { if (Debrief.ReportIfDue()) { Persistence.Flush(); SaveEvents.AfterFlush(); } } catch (Exception) { }
 			}
 			if (!(gEngine is EamonMH.Framework.Plugin.IEngine)) SaveEvents.Track();
 			// ParchLock's map, exits and object lists follow the game only at an adventure's own prompt.

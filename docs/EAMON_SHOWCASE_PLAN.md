@@ -167,7 +167,9 @@ can be credited once again. The character is never reset (stats, inventory, gold
 ledger keeps a cycle per character with every clear (adventure, run, cycle) as history; tier gates and the Guild rank
 use clears from any cycle. Only a credit can open a cycle, so save and restore cannot; a run already credited stays
 "already credited" in any cycle. The player is told in the debriefing ("New Game+: cycle N begins..."), and the
-Quest Board and Trophy Wall show the cycle. Verified live: The Training Ground
+Quest Board and Trophy Wall show the cycle. A run is credited in the cycle current when it finishes (a play-through started before a new cycle
+and finished after it earns a credit in the new cycle; each credit is still a distinct fresh play-through). The
+cycle opens whenever the ledger finds every adventure cleared, not only on a new credit (Grok #3431). Verified live: The Training Ground
 credited on the first exit, "already cleared" on a second run. Operator decision (2026-11-12): completing the adventure is
 required for its credit; leaving alive is not enough. Walking into The Training Ground and straight out was a clear
 under the old no-quest rule (verified live). Every adventure therefore gets a completion requirement from its own

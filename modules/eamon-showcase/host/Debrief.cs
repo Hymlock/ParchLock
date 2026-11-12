@@ -35,11 +35,12 @@ namespace ParchLock.EamonHost
 		}
 
 		/// <summary>At the Main Hall's first safe prompt after the return, after its commit: report the debriefing.</summary>
-		internal static void ReportIfDue()
+		/// <summary>Returns true when it wrote the debriefing (the caller then commits it at once, Grok #3431).</summary>
+		internal static bool ReportIfDue()
 		{
-			if (_ending == null || !(gEngine is EamonMH.Framework.Plugin.IEngine)) return;
+			if (_ending == null || !(gEngine is EamonMH.Framework.Plugin.IEngine)) return false;
 			var character = HallCharacter;
-			if (character == null) return;
+			if (character == null) return false;
 			int rank = 0;
 			try { rank = ProgressionGate.OpenTier(); } catch (Exception) { }
 			using var ending = JsonDocument.Parse(_ending);
@@ -65,21 +66,38 @@ namespace ParchLock.EamonHost
 				rank = sameCharacter && rank > 0 ? ProgressionGate.TierNames[rank] : null,
 				tierOpened = sameCharacter && rank > rankBefore && rankBefore > 0 ? rank : 0
 			});
+			var owner = _endingCharacter;
 			_ending = null;
 			_goldAtChoice = null;
 			_bankAtChoice = null;
 			_endingCharacter = null;
-			// Kept in the campaign files so the Long Fire can tell it again, after a restart too.
-			try { System.IO.File.WriteAllText(LastPath, payload); } catch (Exception) { }
+			// Kept in the campaign files, per character, so the Long Fire tells each character their own last tale.
+			try
+			{
+				if (owner != null)
+				{
+					var all = ReadAll();
+					all[owner] = payload;
+					System.IO.File.WriteAllText(LastPath, JsonSerializer.Serialize(all));
+				}
+			}
+			catch (Exception) { }
 			HostBridge.Lifecycle("debrief", payload);
+			return true;
+		}
+
+		static System.Collections.Generic.Dictionary<string, string> ReadAll()
+		{
+			try { return System.IO.File.Exists(LastPath) ? JsonSerializer.Deserialize<System.Collections.Generic.Dictionary<string, string>>(System.IO.File.ReadAllText(LastPath)) ?? new System.Collections.Generic.Dictionary<string, string>() : new System.Collections.Generic.Dictionary<string, string>(); }
+			catch (Exception) { return new System.Collections.Generic.Dictionary<string, string>(); }
 		}
 
 		static string LastPath => Entry.BasePath + "/System/Bin/PLDEBRIEF.DAT";
 
-		/// <summary>The latest debriefing, or null when no adventure has ended yet.</summary>
-		internal static string Last()
+		/// <summary>This character's latest debriefing, or null when they have not returned from an adventure yet.</summary>
+		internal static string Last(string characterId)
 		{
-			try { return System.IO.File.Exists(LastPath) ? System.IO.File.ReadAllText(LastPath) : null; } catch (Exception) { return null; }
+			return characterId != null && ReadAll().TryGetValue(characterId, out var payload) ? payload : null;
 		}
 	}
 }

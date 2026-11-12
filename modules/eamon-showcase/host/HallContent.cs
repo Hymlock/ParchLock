@@ -104,14 +104,16 @@ namespace ParchLock.EamonHost
 		public override void Execute()
 		{
 			gOut.Print("{0}", gEngine.LineSep);
-			var last = Debrief.Last();
+			var hall = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
+			var last = hall != null ? Debrief.Last(RunLedger.CharacterId(hall.Uid, hall.Name ?? "")) : null;
 			string adventure = null;
 			try { if (last != null) using (var d = System.Text.Json.JsonDocument.Parse(last)) adventure = d.RootElement.GetProperty("adventure").GetString(); } catch (Exception) { adventure = null; }
 			if (adventure == null) gOut.Print("You sit by the Long Fire. The embers have no new tale for you yet.");
 			else
 			{
 				gOut.Print("You sit by the Long Fire, and the old skald recounts your last adventure, {0}.", adventure);
-				HostBridge.Lifecycle("debrief", last);
+				// A retelling: the page marks the new-tier and new-cycle lines as news from that time.
+				HostBridge.Lifecycle("debrief", last.TrimEnd().TrimEnd('}') + ",\"replay\":true}");
 			}
 			gEngine.In.KeyPress(Buf);
 		}
