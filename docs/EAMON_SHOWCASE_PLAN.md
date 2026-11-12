@@ -542,8 +542,19 @@ G. Independent adversarial review, final candidate on real targets, release.
    (ActionSynth.authoredCommandAllowed via AttributeSchema.containerOpenState) now gets the engine's exact open state
    from the Eamon adapter, null (both, as before) unless the id is exactly one in-container; a locked container is
    closed, so Open stays and the game says it is locked. Verified: closed backpack offers only OPEN, open only CLOSE;
-   Glk stories untouched (the hook is Eamon-only), regression 8/8. Still to do: EQ-TREE-3, EQ-NEST-1, EQ-DROP-UNDER-1, EQ-DROP-ROOM-1, Ready in
-   EQ-DROP-SELF-3, and EQ-GESTURE-2 on the phone.
+   Glk stories untouched (the hook is Eamon-only), regression 8/8.
+   Verified 2026-11-12 (Test Adventure, scripted, read through EquipmentUI and ActionSynth): EQ-DROP-SELF-3 complete:
+   the flashlight taken from the stump (a weapon, not readied) offers Ready from Yourself. EQ-TREE-3: after DROP ALL
+   the sheet holds only the worn leather armour and shield, nothing from the room; at the outer chamber, before a
+   character is chosen, the sheet is empty. EQ-NEST-1: the jewelry box under the stump (and the gold ring in it)
+   appears only after LOOK UNDER STUMP; an unsaved find is never kept across a relaunch, since Eamon restarts an
+   unsaved adventure from its module files (measured for #3456). EQ-DROP-ROOM-1: room containers (the stump, the
+   iron-bound chest) are never Equipment rows or drop targets; the held sword's Put... picker lists the room's
+   containers first (chest, cabinet, cube); PUT SWORD IN IRON-BOUND CHEST while it is closed gets the game's "You must
+   first open it." and the sword stays held; the closed chest's own radial offers only OPEN. EQ-DROP-UNDER-1:
+   inapplicable as its rule allows: no Showcase under/behind holder is ever a drop target (they are room fixtures),
+   and no radial sends PUT IN to one. Grok #3468 F1 applied (open state is null unless the snapshot gives a boolean;
+   it always does). All Equipment checks are done on desktop; EQ-GESTURE-2 waits for the phone build. Remaining desktop checks verified below; EQ-GESTURE-2 is phone-only.
 
 ## 12. Still to be evidenced (not disputes)
 
