@@ -99,7 +99,7 @@ var EamonProvider = {
             var text = String(a || "").toLowerCase().trim();
             if (text && out.indexOf(text) < 0) out.push(text);
             // Grammar particles ("of", "the") name nothing and would read as a word shared between objects.
-            text.split(/[^a-z0-9'-]+/).forEach(function (w) { if (w && !/^(a|an|the|of|and|or|to)$/.test(w) && out.indexOf(w) < 0) out.push(w); });
+            text.split(/[^a-z0-9'-]+/).forEach(function (w) { if (w && !/^(a|an|the|of|and|or|to|in|on|at|by|with|for|from|into|onto|under|behind)$/.test(w) && out.indexOf(w) < 0) out.push(w); });
         });
         return out;
     },

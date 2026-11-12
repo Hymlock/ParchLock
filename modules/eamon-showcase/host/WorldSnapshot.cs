@@ -26,6 +26,10 @@ namespace ParchLock.EamonHost
 		// adventure code * 1,000,000 + kind base + native number. The code is a stable hash of the
 		// adventure name (checked collision-free for the 23 shipped adventures).
 		static long _adventure;
+		// Contents the game has listed with LOOK UNDER/BEHIND/IN or EXAMINE (ExamineCommand.ContainerArtifactList):
+		// that listing names them without marking them Seen. Kept for the running adventure engine.
+		static object _revealedFor;
+		static readonly HashSet<long> _revealed = new HashSet<long>();
 		static long PlayerId => _adventure + PlayerBase;
 		static long AdventureCode(string name)
 		{
@@ -44,6 +48,12 @@ namespace ParchLock.EamonHost
 			var self = db.MonsterTable.FindRecord(state.Cm);
 			if (room == null || self == null) return null;
 			_adventure = AdventureCode(engine.GetModule()?.Name);
+			if (!ReferenceEquals(_revealedFor, engine)) { _revealedFor = engine; _revealed.Clear(); }
+			var lastCommands = (engine as EamonRT.Framework.Plugin.IEngine)?.LastCommandList;
+			if (lastCommands != null)
+				foreach (var command in lastCommands)
+					if (command is EamonRT.Game.Commands.ExamineCommand examine && examine.ContainerArtifactList != null)
+						foreach (var shownContent in examine.ContainerArtifactList) if (shownContent != null) _revealed.Add(shownContent.Uid);
 
 			var lit = room.IsLit();
 			var exits = new List<object>();
@@ -90,12 +100,15 @@ namespace ParchLock.EamonHost
 					var holderRecord = db.ArtifactTable.FindRecord(holder);
 					var held = holderRecord != null && (holderRecord.IsCarriedByMonster(MonsterType.CharMonster, true) || holderRecord.IsWornByMonster(MonsterType.CharMonster, true));
 					// Opening a container lists its contents by name without marking them Seen ("Within the box, you
-					// see an ornate knife"), so the engine's own rule for contents the player can reach decides, the
-					// one EamonRT's Engine uses when it hands a container's contents to the player (Engine.cs: Seen, or
-					// not an in-container, or the container is open, or it shows its contents when closed).
-					var reachable = holderRecord != null && (a.GetCarriedByContainerContainerType() != Eamon.Framework.Primitive.Enums.ContainerType.In
-						|| (holderRecord.InContainer != null && holderRecord.InContainer.IsOpen()) || holderRecord.ShouldExposeInContentsWhenClosed());
-					if (!a.Seen && !reachable) continue;
+					// see an ornate knife"), so an open in-container (or one that shows its contents when closed)
+					// shows them, as OPEN prints them. On, under and behind follow the engine's own exposure rule
+					// (Artifact.IsCarriedByContainerContainerTypeExposedTo...; under/behind stay hidden until LOOK
+					// UNDER/BEHIND or EXAMINE marks them Seen, and an adventure's override is honoured) (Grok #3399).
+					var inside = a.GetCarriedByContainerContainerType() == Eamon.Framework.Primitive.Enums.ContainerType.In;
+					var visible = holderRecord != null && (inside
+						? (holderRecord.InContainer != null && holderRecord.InContainer.IsOpen()) || holderRecord.ShouldExposeInContentsWhenClosed()
+						: (held ? a.IsCarriedByContainerContainerTypeExposedToMonster(MonsterType.CharMonster) : a.IsCarriedByContainerContainerTypeExposedToRoom()));
+					if (!a.Seen && !visible && !_revealed.Contains(a.Uid)) continue;
 					(held ? inventory : objects).Add(Describe(a, _adventure + ArtifactBase + holder, self));
 					shown.Add(a.Uid);
 				}
