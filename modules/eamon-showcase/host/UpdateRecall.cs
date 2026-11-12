@@ -71,11 +71,11 @@ namespace ParchLock.EamonHost
 				try
 				{
 					engine.Character = found.Record;
-					new EamonMH.Game.Menus.ActionMenus.RegistrationDeskMenu().RecallCharacterFromAdventure();
+					// ParchLock's desk subclass, so this recall and the desk's own paid one report deleted saves the same way.
+					new HallRegistrationDeskMenu().RecallCharacterFromAdventure();
 				}
 				catch (Exception) { }
 				finally { engine.Character = previous; }
-				if (found.Record.Status != Status.Adventuring) SaveEvents.MarkSavesDeleted(adventure);
 				lines.Add(found.Record.Status != Status.Adventuring
 					? adventure + " was updated. " + found.Record.Name + " has been returned to the Main Hall as they were when they set out; progress and saved games in that adventure were lost. No fee was charged."
 					: adventure + " was updated. " + found.Record.Name + " is still listed as adventuring there and could not be returned automatically; the registration desk can recall them. You can keep a copy of this campaign with Download Package in the save manager.");
@@ -84,5 +84,36 @@ namespace ParchLock.EamonHost
 		}
 
 		sealed class ICharacterRef { public Eamon.Framework.ICharacter Record; }
+
+		/// <summary>The adventure's own module name (MODULE.DAT), which names its saves; a Main Hall fileset name can differ
+		/// (Demo Adventure is "Eamon Deluxe 5.0 Demo Adventure" in its module, Grok #3462 C1). Null when unreadable.</summary>
+		internal static string ModuleName(string workDir)
+		{
+			try
+			{
+				var dir = (workDir ?? "").Replace('\\', '/').TrimEnd('/').Split('/').Last();
+				var path = Entry.BasePath + "/Adventures/" + dir + "/MODULE.DAT";
+				if (!File.Exists(path)) return null;
+				var name = Field(Read(path), "Name").Trim();
+				return name.Length > 0 ? name : null;
+			}
+			catch (Exception) { return null; }
+		}
+	}
+
+	/// <summary>Upstream's registration desk with one addition: when its recall returns a character (upstream's -dgs hop has
+	/// then deleted every save slot of that adventure, outside the plugin loop), those saves leave ParchLock after the next
+	/// commit, as on an ordinary exit (Grok #3462). Fee, text and questions are upstream's own.</summary>
+	[Eamon.Game.Attributes.ClassMappings(typeof(EamonMH.Framework.Menus.ActionMenus.IRegistrationDeskMenu))]
+	public class HallRegistrationDeskMenu : EamonMH.Game.Menus.ActionMenus.RegistrationDeskMenu
+	{
+		public override void RecallCharacterFromAdventure()
+		{
+			base.RecallCharacterFromAdventure();
+			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
+			if (character == null || character.Status == Status.Adventuring || string.IsNullOrWhiteSpace(AdventureName)) return;
+			var fileset = gDatabase?.FilesetTable?.Records?.FirstOrDefault(f => string.Equals((f.Name ?? "").Trim(), AdventureName.Trim(), StringComparison.Ordinal));
+			SaveEvents.MarkSavesDeleted(UpdateRecall.ModuleName(fileset?.WorkDir) ?? AdventureName.Trim());
+		}
 	}
 }

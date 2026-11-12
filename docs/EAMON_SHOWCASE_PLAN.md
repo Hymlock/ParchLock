@@ -415,7 +415,13 @@ Ground save's transcript and map snapshot were present after the import and gone
 replaces the campaign files wholesale, but transcript, snapshot and ledger records are written per imported save
 name, so records of the device's earlier campaign under other save names stay behind unshown (as for any story's
 save package today). Upstream's own paid recall at the registration desk runs the same nested hop and does not
-report its deleted saves either (pre-existing; left as is unless wanted).
+report its deleted saves either; decided with Grok (#3462): fixed the same way, because an ordinary player action
+otherwise leaves transcript lines and map snapshots naming deleted slots. A ParchLock subclass of upstream's desk
+(registered like the Hall's other menus; upstream source unchanged) reports the recalled adventure's saves deleted;
+the update recall uses the same subclass. Saves are named by each adventure's own MODULE.DAT name, since one Main
+Hall fileset name differs (Demo Adventure; all 23 checked). Verified: paid recall from the Training Ground with a
+saved slot charged upstream's fee exactly (22 - 99 = -77, with upstream's lien text), and that slot's transcript and
+map snapshot left ParchLock. Regression 8/8.
 
 **Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
 promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
