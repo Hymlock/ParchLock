@@ -112,8 +112,16 @@ namespace EamonPM
 		/// <summary>Upstream PluginLoop without the UI: run plugins until none asks for a successor.</summary>
 		public static void PluginLoop(string[] args)
 		{
+			string previousPlugin = null;
 			while (args != null && args.Length >= 2 && args[0].Equals("-pfn", StringComparison.OrdinalIgnoreCase))
 			{
+				// An adventure entered from the Main Hall starts from its own module files: a new game of that
+				// adventure (booting straight back into an adventure after a restart is not).
+				var plugin = args[1];
+				ParchLock.EamonHost.SaveEvents.FreshEntry = previousPlugin != null
+					&& previousPlugin.Equals("EamonMH.dll", StringComparison.OrdinalIgnoreCase)
+					&& !plugin.Equals("EamonMH.dll", StringComparison.OrdinalIgnoreCase);
+				previousPlugin = plugin;
 				CurrentArgs = args;
 				ParchLock.EamonHost.HostBridge.Phase("plugin", string.Join(" ", args));
 				ExecutePlugin(args, true);

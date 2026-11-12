@@ -10,28 +10,36 @@ namespace ParchLock.EamonHost
 	internal static class SaveEvents
 	{
 		static object _reported;
+		/// <summary>Set by the plugin loop when an adventure was entered from the Main Hall.</summary>
+		internal static bool FreshEntry;
 
 		/// <summary>Called at an adventure's own prompt: the engine's LastCommandList holds last turn's commands.</summary>
 		internal static void Report()
 		{
+			if (FreshEntry)
+			{
+				FreshEntry = false;
+				HostBridge.Lifecycle("adventure-fresh", gEngine.GetModule()?.Name ?? "");
+			}
 			var rt = gEngine as EamonRT.Framework.Plugin.IEngine;
-			var command = rt?.LastCommandList?.LastOrDefault(c => c is EamonRT.Framework.Commands.ISaveCommand || c is EamonRT.Framework.Commands.IRestoreCommand);
+			var command = rt?.LastCommandList?.LastOrDefault(c => c is EamonRT.Game.Commands.SaveCommand || c is EamonRT.Game.Commands.RestoreCommand);
 			if (command == null || ReferenceEquals(command, _reported)) return;
 			_reported = command;
-			if (rt.ExitType == Eamon.Framework.Primitive.Enums.ExitType.Error) return;
 			var adventure = gEngine.GetModule()?.Name ?? "Eamon";
-			if (command is EamonRT.Framework.Commands.ISaveCommand save)
+			if (command is EamonRT.Game.Commands.SaveCommand save)
 			{
-				if (save.SaveSlot < 1 || string.IsNullOrWhiteSpace(save.SaveName)) return;
-				HostBridge.Lifecycle("save", Name(adventure, save.SaveSlot, save.SaveName));
+				// GameSaved is the engine's own success flag (a failed save prints "not saved" and leaves it false;
+				// a cancelled slot menu never sets it). The name is the fileset record the save wrote, which covers
+				// the interactive save (typed name) and a quick save over a named slot (Grok #3388 S1, S2).
+				if (!save.GameSaved || save.SaveSlot < 1 || string.IsNullOrWhiteSpace(save.SaveFileset?.Name)) return;
+				HostBridge.Lifecycle("save", Name(adventure, save.SaveSlot, save.SaveFileset.Name));
 			}
-			else if (command is EamonRT.Framework.Commands.IRestoreCommand restore)
+			else if (command is EamonRT.Game.Commands.RestoreCommand restore)
 			{
-				if (restore.SaveSlot < 1) return;
-				// The slot's name as the save recorded it (the engine's own fileset list, in slot order).
-				var fileset = gDatabase?.FilesetTable?.Records?.OrderBy(f => f.Uid).Skip((int)restore.SaveSlot - 1).FirstOrDefault();
-				if (fileset == null) return;
-				HostBridge.Lifecycle("restore", Name(adventure, restore.SaveSlot, fileset.Name));
+				// Every failed restore sets ExitType.Error; the record the engine loaded is restore.SaveFileset.
+				if (rt.ExitType == Eamon.Framework.Primitive.Enums.ExitType.Error) return;
+				if (restore.SaveSlot < 1 || string.IsNullOrWhiteSpace(restore.SaveFileset?.Name)) return;
+				HostBridge.Lifecycle("restore", Name(adventure, restore.SaveSlot, restore.SaveFileset.Name));
 			}
 		}
 

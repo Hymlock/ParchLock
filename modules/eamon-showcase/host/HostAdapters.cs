@@ -83,13 +83,14 @@ namespace ParchLock.EamonHost
 			else if (safePoint)
 			{
 				try { world = WorldSnapshot.Build(); } catch (Exception) { world = null; }
-				try { SaveEvents.Report(); } catch (Exception) { }
 			}
 			// A Hall menu is answered with a line, so ParchLock's normal command path (radial, map, fast
 			// travel, history, transcript) can drive it; the engine still gets one valid menu key.
 			var hallMenu = ask.IsHallMenu;
 			string typedLine = null;
 			HostBridge.World(world ?? "");
+			// Save/restore/new-adventure events follow this prompt's world snapshot (the page needs the room first).
+			if (safePoint && !(gEngine is EamonMH.Framework.Plugin.IEngine)) { try { SaveEvents.Report(); } catch (Exception) { } }
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
 			var startColumn = lastIndex > -1 ? text.Length - (lastIndex + 1) : (long)text.Length;
