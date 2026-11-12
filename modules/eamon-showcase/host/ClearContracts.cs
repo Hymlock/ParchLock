@@ -45,6 +45,20 @@ namespace ParchLock.EamonHost
 			// Alternate Beginner's Cave: Nina's reward, MainLoop.cs Shutdown: Nina (monster 11) in the player's room at the exit
 			// with Reaction == Friend (exactly; Friend is the only reaction above Neutral). Last prompt: exit Y/N; Claude's
 			// reading, for Grok's review.
+			// The Deep Canyon: pushed into the canyon, "it'll be up to you to find your way out" (intro effects 202-204); no
+			// reward or finish code. Escaping alive through an exit is the goal. Claude's reading, for Grok's review.
+			["The Deep Canyon"] = @"{ ""quest"": null }",
+			// The Pyramid of Anharos: the success branch of MainLoop.Shutdown: KV == 1 (set by PUT, PutCommand.cs:71),
+			// KF != 1 (SayCommand.cs:46 toggles it), and Omar, Ali or Farouk (monsters 1, 2, 6) in the player's room;
+			// every other branch levies tax and takes the gold. Facts settled before the exit Y/N. For Grok's review.
+			["The Pyramid of Anharos"] = @"{ ""quest"": { ""all"": [ { ""gameState"": ""KV"", ""equals"": 1 }, { ""not"": { ""gameState"": ""KF"", ""equals"": 1 } }, { ""any"": [ { ""monster"": 1, ""inPlayerRoom"": true }, { ""monster"": 2, ""inPlayerRoom"": true }, { ""monster"": 6, ""inPlayerRoom"": true } ] } ] } }",
+			// Land of the Mountain King: no exit; the only finish is the scripted one when the mountain king (monster 1)
+			// dies (CombatComponent.cs:32-51); its last prompts are the key presses after that death. For Grok's review.
+			["Land of the Mountain King"] = @"{ ""quest"": { ""monster"": 1, ""dead"": true } }",
+			// The Tower of Eamon: the mission is "to expose the secret plans" of the Underground Villains Club (effect 200);
+			// stock engine, nothing checks it in code, so ParchLock reads it as leaving with the Book of Evil Plans
+			// (artifact 22, starts in the tall bookcase 17). Interpretation, for Grok's and the operator's review.
+			["The Tower of Eamon"] = @"{ ""quest"": { ""artifact"": 22, ""carried"": true, ""recurse"": true } }",
 			["Alternate Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 11, ""inPlayerRoom"": true }, { ""monster"": 11, ""reactionAbove"": ""Neutral"" } ] } }",
 		};
 
@@ -73,7 +87,7 @@ namespace ParchLock.EamonHost
 		// Each leaf names one subject and exactly one predicate (plus the "recurse" modifier for artifacts); any other
 		// key is refused, so a typo can never be read as a different test (Grok #3407 item 3). Defaults follow the
 		// engine: carried, worn and container tests are not recursive unless "recurse": true (item 2).
-		static readonly string[] MonsterPredicates = { "inPlayerRoom", "reactionAbove", "inLimbo", "inRoom", "field" };
+		static readonly string[] MonsterPredicates = { "inPlayerRoom", "reactionAbove", "inLimbo", "inRoom", "field", "dead" };
 		static readonly string[] ArtifactPredicates = { "carried", "worn", "inContainer", "carriedByMonster", "inLimbo", "inRoom", "field" };
 
 		static bool Holds(JsonElement c)
@@ -95,6 +109,7 @@ namespace ParchLock.EamonHost
 					case "inPlayerRoom": return (m.Location == state.Ro) == v.GetBoolean();
 					case "reactionAbove": return m.Reaction > Enum.Parse<Friendliness>(v.GetString());
 					case "inLimbo": return m.IsInLimbo() == v.GetBoolean();
+					case "dead": return m.IsDead() == v.GetBoolean();
 					default: return m.Location == v.GetInt64();
 				}
 			}
