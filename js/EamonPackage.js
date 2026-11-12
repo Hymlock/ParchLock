@@ -16,7 +16,7 @@ var EamonPackage = (function () {
     // Approved Showcase releases for this app build: SHA-256 of the package file -> label.
     var TRUSTED = {
         /*TRUSTED-BEGIN*/
-        "e0d91758c9ed6f6ec26ca5e31eae70a0c29c3b633ce0e9002da9db6028913216": "Eamon Showcase 0.1.0-dev"
+        "e3e83ed88485aef78686bac0985d041b207959d058aaf44fec0d0cf337face44": "Eamon Showcase 0.1.0-dev"
         /*TRUSTED-END*/
     };
     var MAGIC = "PLEAMON1\n";

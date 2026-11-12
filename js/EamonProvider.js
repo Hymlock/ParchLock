@@ -44,6 +44,7 @@ var EamonProvider = {
         if (o.drinkable) a.drinkable = true;
         if (o.readable) a.readable = true;
         if (o.light) a.lightSource = true;
+        if (o.climb) a.climbable = true;
         return a;
     },
 

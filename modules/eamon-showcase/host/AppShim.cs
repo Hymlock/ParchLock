@@ -103,6 +103,9 @@ namespace EamonPM
 			program.EnableStdio = enableStdio;
 			program.LineWrapUserInput = true;
 			program.LoadPortabilityClassMappings = LoadPortabilityClassMappings;
+			// The unchanged Main Hall runs with ParchLock's Hall engine class, which adds the Hall of the Long
+			// Fire classes after EamonMH's own mappings (HallContent.cs).
+			if (program is EamonMH.Program mhProgram) mhProgram.EngineType = typeof(ParchLock.EamonHost.HallEngine);
 			program.Main(args.Skip(2).ToArray());
 		}
 

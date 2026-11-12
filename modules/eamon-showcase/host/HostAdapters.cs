@@ -85,6 +85,7 @@ namespace ParchLock.EamonHost
 			// A Hall menu is answered with a line, so ParchLock's normal command path (radial, map, fast
 			// travel, history, transcript) can drive it; the engine still gets one valid menu key.
 			var hallMenu = ask.IsHallMenu;
+			string typedLine = null;
 			HostBridge.World(world ?? "");
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
@@ -103,6 +104,7 @@ namespace ParchLock.EamonHost
 					// Operator decision 2026-11-11: an empty Enter at the top Hall menu is ignored instead of the
 					// upstream default "X" (leave the universe); in the Village and Practice Area X only walks north.
 					if (ask.MenuDepth == 1 && string.IsNullOrWhiteSpace(reply)) continue;
+					typedLine = reply;
 					// Never let an unrecognised line become the default "X" (leave the universe): ask again.
 					reply = HallSnapshot.Translate(ask, reply, validCharFunc);
 					if (reply == null)
@@ -127,7 +129,9 @@ namespace ParchLock.EamonHost
 			}
 
 			if (gEngine.EnableScreenReaderMode) { App.OutputBuf.Clear(); startColumn = 0L; }
-			gEngine.LineWrap(buf.ToString(), Buf01, startColumn);
+			// A Hall line echoes what the player typed ("examine stones"), not the menu key it became; the
+			// story window already shows the typed text, so the adapter then prints no duplicate.
+			gEngine.LineWrap(hallMenu && !string.IsNullOrWhiteSpace(typedLine) ? typedLine.Trim() : buf.ToString(), Buf01, startColumn);
 			if (gEngine.Out != null) gEngine.Out.WriteLine("{0}", Buf01);
 			else if (gEngine.Error != null) gEngine.Error.WriteLine("{0}", Buf01);
 			return RetCode.Success;

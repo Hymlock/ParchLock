@@ -16,7 +16,8 @@ namespace ParchLock.EamonHost
 		internal Type AskerType;
 		internal int MenuDepth;
 
-		internal bool IsMainHallEngine => (Eamon.Game.Plugin.Globals.gEngine?.GetType().FullName ?? "").StartsWith("EamonMH.", StringComparison.Ordinal);
+		// By type, not name: the Hall runs with ParchLock's HallEngine, derived from EamonMH's engine.
+		internal bool IsMainHallEngine => Eamon.Game.Plugin.Globals.gEngine is EamonMH.Framework.Plugin.IEngine;
 		/// <summary>A hierarchical Main Hall menu (Hall, Village, Practice Area) waiting for a choice.</summary>
 		internal bool IsHallMenu => IsMainHallEngine && Asker == "Eamon.Game.Menus.Menu" && Method == "Execute" && MenuDepth >= 1 && MenuDepth <= 3;
 
@@ -63,6 +64,17 @@ namespace ParchLock.EamonHost
 		};
 
 		sealed class Exit { public string label, command, toName; public long? to; public bool compass, door; }
+		/// <summary>A Hall object: verbs map to the engine key that answers them.</summary>
+		sealed class HallObject { public long Id; public string Name; public string[] Aliases; public Dictionary<string, string> Verbs; public bool Readable, Climb; }
+		// The Main Hall's objects (HALL_OF_THE_LONG_FIRE.md). Shield Wall and Stair reuse upstream keys 5 and 6.
+		static readonly HallObject[] MainHallObjects =
+		{
+			new HallObject { Id = 101, Name = "Shield Wall", Aliases = new[] { "shields", "shield", "wall" }, Verbs = new Dictionary<string, string> { ["examine"] = "5" } },
+			new HallObject { Id = 102, Name = "stair", Aliases = new[] { "stairs", "steps" }, Verbs = new Dictionary<string, string> { ["examine"] = "6", ["climb"] = "6" }, Climb = true },
+			new HallObject { Id = 103, Name = "Guild Ledger", Aliases = new[] { "ledger", "book" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Ledger.ToString(), ["read"] = HallKeys.Ledger.ToString() }, Readable = true },
+			new HallObject { Id = 104, Name = "Stones of the Fallen", Aliases = new[] { "stones", "stone", "names" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Stones.ToString(), ["read"] = HallKeys.Stones.ToString() }, Readable = true },
+		};
+		static readonly Dictionary<string, string> VerbWords = new Dictionary<string, string> { ["x"] = "examine", ["look at"] = "examine", ["l at"] = "examine", ["examine"] = "examine", ["read"] = "read", ["climb"] = "climb", ["go down"] = "climb", ["descend"] = "climb" };
 		sealed class Special { public string label, command; }
 		sealed class Level { public List<Exit> Exits = new List<Exit>(); public List<Special> Commands = new List<Special>(); }
 
@@ -94,6 +106,7 @@ namespace ParchLock.EamonHost
 			foreach (var item in menu?.MenuItemList ?? new List<Eamon.Framework.Menus.IMenuItem>())
 			{
 				var key = item.SelectChar.ToString();
+				if (string.IsNullOrWhiteSpace(item.LineText)) continue;   // hidden object choices (HallContent.cs)
 				var text = Label(item.LineText);
 				var sub = item.SubMenu;
 				var child = Iface(sub, Levels);
@@ -153,12 +166,17 @@ namespace ParchLock.EamonHost
 				adventure = WorldName,
 				room = new { id = w.Id, name = w.Name, lit = true },
 				exits = w.Level.Exits.Select(e => new { e.label, e.command, e.to, e.toName, e.door, e.compass }),
-				objects = Array.Empty<object>(),
+				objects = (w.Id == Base + 1 ? MainHallObjects : Array.Empty<HallObject>()).Select(o => new
+				{
+					id = Base + o.Id, name = o.Name, parent = (long?)null, kind = "artifact", aliases = o.Aliases,
+					@fixed = true, readable = o.Readable, climb = o.Climb, state = ""
+				}),
 				inventory = Array.Empty<object>(),
 				stats = new { },
 				playerId = Base + 300000,
 				special = w.Level.Commands.Select(c => new { c.label, c.command }),
-				vocabulary = (object)null
+				// The Hall's own words: its object verbs, so ParchLock offers exactly these (no Z verbs).
+				vocabulary = w.Id == Base + 1 ? new { commands = new[] { new { verb = "examine", synonyms = new[] { "x" } }, new { verb = "read", synonyms = Array.Empty<string>() }, new { verb = "climb", synonyms = Array.Empty<string>() } }, preps = Array.Empty<string>() } : null
 			});
 		}
 
@@ -182,6 +200,16 @@ namespace ParchLock.EamonHost
 				if (string.Equals(e.label, lower, StringComparison.OrdinalIgnoreCase) || (e.compass && e.label == compassWord)) return e.command;
 			foreach (var c in level.Commands)
 				if (string.Equals(c.label, t, StringComparison.OrdinalIgnoreCase)) return c.command;
+			// "<verb> <object>" for a Hall object: the object's key for that verb.
+			if (ctx.MenuDepth == 1)
+				foreach (var verb in VerbWords.Keys.OrderByDescending(k => k.Length))
+				{
+					if (!lower.StartsWith(verb + " ")) continue;
+					var noun = lower.Substring(verb.Length).Trim();
+					if (noun.StartsWith("the ")) noun = noun.Substring(4);
+					var obj = MainHallObjects.FirstOrDefault(o => string.Equals(o.Name, noun, StringComparison.OrdinalIgnoreCase) || o.Aliases.Contains(noun));
+					if (obj != null && obj.Verbs.TryGetValue(VerbWords[verb], out var objKey)) return objKey;
+				}
 			return null;
 		}
 	}

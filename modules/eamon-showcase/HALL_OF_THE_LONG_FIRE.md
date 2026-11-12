@@ -97,3 +97,10 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - Objects in a menu room: a host `IMainHallMenu` subclass adds menu items with empty `LineText` (not printed, so the upstream menu looks the same) and letter keys; their `SubMenu` is a host action menu that answers through the engine's normal output: Ledger -> roster from the character file; Stones -> dead characters. Shield Wall reuses key 5 (Examine Abilities) and Stair key 6 (Village), so they need no new item.
 - Commands: the Hall snapshot lists the objects (name, aliases, attrs scenery) so the existing underline and radial offer them; `HallSnapshot.Translate` maps "examine stones" / "read ledger" / "climb stair" to that object's key. The engine's validator still decides; unknown lines are refused as now.
 - Constructors stay side-effect free (snapshot builds menus off-stage).
+
+## Built (first slice, desktop; Grok review #3383 pending)
+
+- `HallContent.cs`: `HallEngine` (EamonMH engine + host mappings, set via `EamonMH.Program.EngineType` in `AppShim.ExecutePlugin`); `HallMhMenu` prints the Hall description before upstream's subtitle; `HallMainHallMenu` adds hidden choices L (Guild Ledger) and F (Stones of the Fallen); `LedgerMenu` and `StonesMenu` answer from the character file through the engine's own output.
+- `HallSnapshot`: Main Hall objects (Shield Wall -> 5, stair -> 6, Guild Ledger -> L, Stones -> F) with a Hall vocabulary (examine, read, climb); `Translate` maps "<verb> <object>" to the key; hidden items are neither exits nor room commands; the Main Hall engine is recognised by type, not name. A Hall line echoes the typed text, not the key.
+- Verified: the four names are underlined; the radial offers examine/read/climb from ParchLock's shared verb table; read ledger lists the roster with in the hall / away / fallen; examine stones answers; climb stair arrives in the Village; ordinary regression 8/8.
+- Not yet: Long Fire, Skald, Quest Board, Trophy Wall, Great Tapestry (need package E); outer chamber room; phone.
