@@ -76,6 +76,7 @@ namespace ParchLock.EamonHost
 			new HallObject { Id = 106, Name = "Quest Board", Aliases = new[] { "board", "notices", "notice" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Board.ToString(), ["read"] = HallKeys.Board.ToString() }, Readable = true },
 			new HallObject { Id = 107, Name = "Trophy Wall", Aliases = new[] { "trophies", "trophy" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Trophies.ToString() } },
 			new HallObject { Id = 108, Name = "skald", Aliases = new[] { "bard", "old skald" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Skald.ToString(), ["ask"] = HallKeys.Skald.ToString() } },
+			new HallObject { Id = 109, Name = "Great Tapestry", Aliases = new[] { "tapestry", "lands" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Tapestry.ToString() } },
 			new HallObject { Id = 104, Name = "Stones of the Fallen", Aliases = new[] { "stones", "stone", "names" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Stones.ToString(), ["read"] = HallKeys.Stones.ToString() }, Readable = true },
 		};
 		static readonly Dictionary<string, string> VerbWords = new Dictionary<string, string> { ["x"] = "examine", ["look at"] = "examine", ["l at"] = "examine", ["examine"] = "examine", ["read"] = "read", ["climb"] = "climb", ["go down"] = "climb", ["descend"] = "climb", ["sit by"] = "sit", ["sit at"] = "sit", ["sit"] = "sit", ["ask"] = "ask", ["talk to"] = "ask", ["listen to"] = "ask" };

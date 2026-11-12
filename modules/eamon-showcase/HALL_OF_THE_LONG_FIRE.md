@@ -106,7 +106,9 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - Built 2026-11-12 (package E in place): the Long Fire (sitting reopens the latest debriefing panel; the story text only names the tale; the debriefing is kept in the campaign files, PLDEBRIEF.DAT) and the Quest Board (read/examine: the five tiers, open or locked, this character's clears, the unlock rule; it starts nothing). Verified live after a Training Ground clear.
 - Built 2026-11-12: the Trophy Wall (examine: one trophy per credited clear, with who, when, what counted and the New Game+ cycle; trophy names are ParchLock content from each adventure's story). Verified live.
 - Built 2026-11-12: the Skald ("ask skald" / examine: lists the adventures, tells an open one from its own intro story, or its own module description when it has none, with its author line; a locked one gets "That tale is not yet yours to hear"; starts nothing). Verified live.
-- Not yet: Great Tapestry; outer chamber room; phone.
+- Built 2026-11-12: the Great Tapestry (examine tapestry: the five tiers as regions, lit where open and in shadow where locked, with locked regions showing only how many adventures they hold; adventures completed this cycle in gold thread; the character's figure in the furthest open region, with the New Game+ cycle mark). It reads the same records as the Quest Board and starts nothing. Verified live (fresh character: Novice Initiative lit, four regions in shadow).
+- Open question (Grok, #3444 rule): whether the Tapestry should also open ParchLock's World Map view. That view draws rooms and exits from the current game, so a tier map would need campaign data shaped as rooms; the text view stands until that is decided.
+- Not yet: outer chamber room; phone.
 
 ## After Grok review #3385
 

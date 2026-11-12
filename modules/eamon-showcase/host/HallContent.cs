@@ -28,7 +28,7 @@ namespace ParchLock.EamonHost
 	internal static class HallKeys
 	{
 		// Symbols nobody types as a command (Grok #3385 C1: 'L' collided with the universal "l" for look).
-		internal const char Ledger = '#', Stones = '@', Fire = '&', Board = '%', Trophies = '$', Skald = '!';
+		internal const char Ledger = '#', Stones = '@', Fire = '&', Board = '%', Trophies = '$', Skald = '!', Tapestry = '^';
 	}
 
 	/// <summary>The Hall's description before upstream's own subtitle: the names ParchLock underlines.</summary>
@@ -43,9 +43,9 @@ namespace ParchLock.EamonHost
 			if (FreshEntry)
 			{
 				FreshEntry = false;
-				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die, where an old skald sits telling tales. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk, and trophies of cleared adventures hang on the Trophy Wall. At the far end a stair leads down toward the Village.");
+				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die, where an old skald sits telling tales. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk, and trophies of cleared adventures hang on the Trophy Wall. On the far wall hangs the Great Tapestry of the known lands, and beneath it a stair leads down toward the Village.");
 			}
-			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board, the Trophy Wall, the skald and the stair are here.");
+			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board, the Trophy Wall, the skald, the Great Tapestry and the stair are here.");
 			// Upstream's subtitle with the count of choices including ParchLock's "Seek New Game+" (MhMenu.cs:17-19).
 			gOut.Print("Character: {0}", gCharacter != null ? gCharacter.Name : gEngine.UnknownName);
 			gOut.Print("As you wander about the hall, you realize you can do one of eight things:");
@@ -79,6 +79,7 @@ namespace ParchLock.EamonHost
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Board; x.LineText = ""; x.SubMenu = new QuestBoardMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Trophies; x.LineText = ""; x.SubMenu = new TrophyWallMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Skald; x.LineText = ""; x.SubMenu = new SkaldMenu(); }));
+			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Tapestry; x.LineText = ""; x.SubMenu = new TapestryMenu(); }));
 		}
 	}
 
@@ -381,6 +382,36 @@ namespace ParchLock.EamonHost
 			if (warning != null) { gOut.Print("{0}", gEngine.LineSep); gOut.Print("{0}", warning); }
 			base.Execute();
 		}
+	}
+
+	/// <summary>The Great Tapestry: the campaign as the known lands, one region per tier (ParchLock's tier gates), lit where
+	/// open and dark where not, the adventures of each region stitched in, those completed this cycle in gold thread, and
+	/// the character's figure in the furthest region reached. It reads the same records as the Quest Board; it starts
+	/// nothing.</summary>
+	public class TapestryMenu : Menu
+	{
+		public override void Execute()
+		{
+			gOut.Print("{0}", gEngine.LineSep);
+			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
+			var id = character != null ? RunLedger.CharacterId(character.Uid, character.Name ?? "") : null;
+			var completed = ProgressionGate.Completed(character, id);
+			var open = ProgressionGate.OpenTier(completed);
+			var (cycle, cleared) = RunLedger.CurrentCycle(id, ProgressionGate.Outgrown(character));
+			gOut.Print("The Great Tapestry covers the far wall: the known lands woven in five regions, from the green fields of the novices to the storm-lit peaks of the heroes.");
+			for (var tier = 1; tier <= 5; tier++)
+			{
+				var names = ProgressionGate.Tiers.Where(t => t.Value == tier).Select(t => t.Key).OrderBy(n => n).ToList();
+				var gold = names.Where(n => cleared.Contains(n)).ToList();
+				gOut.WriteLine("  {0}, {1}: {2}{3}", ProgressionGate.TierNames[tier], tier <= open ? "lit" : "still in shadow",
+					tier <= open ? string.Join(", ", names) : names.Count + " adventures not yet revealed",
+					gold.Count > 0 ? ". In gold thread: " + string.Join(", ", gold) : "");
+			}
+			if (character != null) gOut.Print("A small figure of {0} stands in {1}{2}.", character.Name, ProgressionGate.TierNames[open], cycle > 1 ? ", stitched with the mark of New Game+ cycle " + cycle : "");
+			gEngine.In.KeyPress(Buf);
+		}
+
+		public TapestryMenu() { Buf = gEngine.Buf; }
 	}
 
 	/// <summary>The Stones of the Fallen: the names of characters who died, from the character file.</summary>
