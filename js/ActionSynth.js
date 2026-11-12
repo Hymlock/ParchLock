@@ -645,7 +645,12 @@ var ActionSynth = {
                 var pool = (WorldModel.lastPayload && (WorldModel.lastPayload.inventory || []).concat(WorldModel.lastPayload.discoveredObjects || [])) || [];
                 var holder = pool.find(function (o) { return o && obj.parentId != null && String(o.id) === String(obj.parentId); });
                 var holderRef = holder && typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(holder) : null;
-                if (!holderRef || !holderRef.unique) return nested;
+                if (!holderRef || !holderRef.unique) {
+                    // Said, not silently dropped (Grok #3443): the entry explains instead of typing an ambiguous REMOVE.
+                    nested.push({ verb: "take out of " + containerName, noun: name, objectId: obj.id || null, confidence: obj.confidence || 0.8,
+                        command: Actionable.EXPLAIN + "There is more than one " + containerName + " here, so ParchLock cannot say which one to take " + name + " out of. Drag it out in Equipment, or type the command naming the one you mean." });
+                    return nested;
+                }
                 holderNoun = holderRef.noun;
             }
             nested.push({

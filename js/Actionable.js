@@ -1343,8 +1343,11 @@ var Actionable = {
         var text = String(command == null ? "" : command);
         return !!text.trim() && !/\s$/.test(text);
     },
+    // A radial entry whose "command" explains why it cannot be sent (shown, never typed into the game).
+    EXPLAIN: " explain:",
     runChosenCommand: (command, source) => {
         var text = String(command == null ? "" : command);
+        if (text.indexOf(Actionable.EXPLAIN) === 0) { try { Message.Show("Not done", ParchLockQol.EscapeHtml(text.slice(Actionable.EXPLAIN.length))); } catch (eX) {} return false; }
         if (!text.trim()) return false;
         if (Actionable.isCompleteCommand(text)) {
             var complete = text.trim();
@@ -1401,9 +1404,11 @@ var Actionable = {
 
         /* UNDO_RESTORE_RESYNC */
         if (!$(".Input.LineInput").length || Message.IsOpen || $("#dialog").length) return false;
-        // Eamon: never into a nested prompt (a save name, a yes/no, a shop step); fast travel once typed "north" as a save
-        // name there (Grok #3434 EQ-PROMPT-1, verified live before this fix).
-        if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel) return false;
+        // Eamon: ParchLock's own commands (travel, radials, Equipment, probes) never go into a nested prompt (a save name, a
+        // yes/no, a shop step); fast travel once typed "north" as a save name there (Grok #3434 EQ-PROMPT-1). The player's
+        // own answers do: an allow-list, so a new caller fails closed (Grok #3441).
+        if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel
+            && source !== "user-voice") return false;
         if (!$(".Input.LineInput:visible").length
             // D192 (grok round 2): the `equip-open` escape has been removed.
             // It allowed ANY injection into a hidden line input for as long as

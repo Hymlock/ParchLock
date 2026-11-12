@@ -205,7 +205,11 @@ New Game+ cycle, so no character is locked out of completion for a technical rea
 beginner alternatives count as one completion at most, whether credited, overqualified or both (Grok #3439): an
 overqualified beginner adventure never stands in for a second, different adventure, so neither training alone nor
 one beginner clear opens tier 2; The Wayfarers Inn, which admits anyone, is always the other tier 1 completion
-needed, so no character is locked out of a tier either. It earns no credit or trophy; the Quest Board shows "(overqualified: completed)". Nothing has to be visited or selected to
+needed, so no character is locked out of a tier either. Training warnings (operator 2026-11-12, #3444): the Practice
+Area trainers warn only when the very next session would disqualify the character: while still a beginner (Don
+Diego: training axe, club or sword; the beginner check ignores spear and bow; the armour master: any session), and
+from armour expertise 24, where one more armour session can pass 25 and close The Training Ground. Never otherwise,
+and never once a beginner adventure is credited. Verified live for both trainers. It earns no credit or trophy; the Quest Board shows "(overqualified: completed)". Nothing has to be visited or selected to
 activate it: it is read from the character's own record whenever the progression is checked. The Trophy Wall shows
 the signed-in character's shelf for the current cycle (operator 2026-11-12): the trophies earned in this cycle, plus
 the latest earlier trophy of an adventure the character is overqualified for (it cannot be earned again, so it
@@ -408,7 +412,9 @@ G. Independent adversarial review, final candidate on real targets, release.
    EQ-GESTURE-1 and -3, EQ-DROP-IN-1 (put in, and "It won't fit."). EQ-PROMPT-1 verified live and fixed: at the save
    dialog's "Enter new name:" fast travel had typed "north" (a game saved under that name); ParchLock's own commands
    now never type into an Eamon nested prompt (refused, "The route command was not accepted."), and the Equipment
-   sheet is empty there. The unused EamonProvider.nativeCommands path is removed. Still to do: the rest, recoverInventory and
+   sheet is empty there. The player's own answers still reach a nested prompt (Grok #3441): a spoken answer goes
+   through (verified live: a save named by voice), and an empty Send there is an answer, never a repeat of the last
+   command; only ParchLock-originated sources are refused (an allow-list, so new callers fail closed). The unused EamonProvider.nativeCommands path is removed. Still to do: the rest, recoverInventory and
    nested-prompt clearing checks, and retiring the unused EamonProvider.nativeCommands (without reviving its early
    return).
 

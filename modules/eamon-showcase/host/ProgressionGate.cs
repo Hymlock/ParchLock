@@ -71,7 +71,7 @@ namespace ParchLock.EamonHost
 			cleared ??= Cleared();
 			if (tier <= OpenTier(cleared)) return null;
 			var below = TierCount(tier - 1, cleared);
-			return string.Format("{0} is a tier {1} adventure ({2}). It opens once you have cleared two different tier {3} adventures ({4}); you have cleared {5}.",
+			return string.Format("{0} is a tier {1} adventure ({2}). It opens once you have completed two different tier {3} adventures ({4}; the beginner adventures count as one); you have completed {5}.",
 				adventure.Trim(), tier, TierNames[tier], tier - 1, TierNames[tier - 1], below);
 		}
 
@@ -98,8 +98,11 @@ namespace ParchLock.EamonHost
 			return result;
 		}
 
-		/// <summary>A warning before training would close beginner adventures the character has not completed (Grok #3439):
-		/// null when no beginner adventure is still open to them or one is already credited.</summary>
+		/// <summary>A warning only when the very next training session would disqualify the character (operator 2026-11-12,
+		/// #3444): while still a beginner, the first session closes the four beginner adventures (Don Diego: only training
+		/// axe, club or sword does; the beginner check ignores spear and bow); at armour expertise 24 or more, one more armour
+		/// session (up to +2) can pass 25 and close The Training Ground. Never otherwise, never once a beginner adventure is
+		/// credited.</summary>
 		internal static string TrainingWarning(Eamon.Framework.ICharacter c, bool armour)
 		{
 			if (c == null) return null;
@@ -107,10 +110,13 @@ namespace ParchLock.EamonHost
 			if (credited.Overlaps(BeginnerAlternatives)) return null;
 			var closed = Outgrown(c);
 			var stillBeginner = !closed.Contains("The Beginner's Cave");
-			var trainingGroundOpen = !closed.Contains("The Training Ground");
-			if (!stillBeginner && !(armour && trainingGroundOpen)) return null;
-			var what = stillBeginner ? "any change to your weapon skills or armour expertise closes the four beginner adventures (The Beginner's Cave, Beginner's Forest, Beginner's Cave II, Alternate Beginner's Cave) to you for good" : "";
-			if (armour && trainingGroundOpen) what += (what.Length > 0 ? ", and " : "") + "armour expertise above 25 closes The Training Ground";
+			var trainingGroundAtRisk = armour && !closed.Contains("The Training Ground") && c.ArmorExpertise >= 24;
+			if (!stillBeginner && !trainingGroundAtRisk) return null;
+			string what;
+			if (stillBeginner && armour) what = "this training changes your armour expertise, which closes the four beginner adventures (The Beginner's Cave, Beginner's Forest, Beginner's Cave II, Alternate Beginner's Cave) to you for good";
+			else if (stillBeginner) what = "training your axe, club or sword here closes the four beginner adventures (The Beginner's Cave, Beginner's Forest, Beginner's Cave II, Alternate Beginner's Cave) to you for good (spear and bow do not)";
+			else what = "one more session here can take your armour expertise above 25, which closes The Training Ground to you";
+			if (stillBeginner && trainingGroundAtRisk) what += ", and can take your armour expertise above 25, closing The Training Ground";
 			return "A word from the guild: " + what + ". An adventure you can no longer enter counts as completed for New Game+, but earns no credit or trophy.";
 		}
 

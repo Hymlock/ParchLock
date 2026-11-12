@@ -296,8 +296,12 @@ namespace ParchLock.EamonHost
 			var module = Read(System.IO.Path.Combine(dir, "MODULE.DAT"));
 			var effects = Read(System.IO.Path.Combine(dir, "EFFECTS.DAT"));
 			var byUid = new Dictionary<long, string>();
-			foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(effects, "name=\"Uid\" value=\"(\\d+)\"[\\s\\S]*?name=\"Desc\" value=\"([^\"]*)\""))
-				byUid[long.Parse(m.Groups[1].Value)] = System.Net.WebUtility.HtmlDecode(m.Groups[2].Value);
+			// One effect record at a time, so a record without text can never borrow the next one's (Grok #3441 N1).
+			foreach (var record in effects.Split(new[] { "<Complex type=" }, StringSplitOptions.None))
+			{
+				var uidMatch = System.Text.RegularExpressions.Regex.Match(record, "name=\"Uid\" value=\"(\\d+)\"");
+				if (uidMatch.Success) byUid[long.Parse(uidMatch.Groups[1].Value)] = Field(record, "Desc");
+			}
 			var parts = new List<string>();
 			long.TryParse(Field(module, "IntroStory"), out var next);
 			// No intro story (the Beginners adventures tell theirs in code): the module's own description, which can chain on
@@ -320,7 +324,7 @@ namespace ParchLock.EamonHost
 			gOut.Print("{0}", gEngine.LineSep);
 			var open = (gDatabase?.FilesetTable?.Records ?? new List<Eamon.Framework.IFileset>()).Where(f => ProgressionGate.Tiers.ContainsKey((f.Name ?? "").Trim())).OrderBy(f => f.Uid).ToList();
 			gOut.Print("The old skald looks up from the fire. \"Which tale would ye hear?\"");
-			foreach (var f in open) gOut.WriteLine("  {0}. {1}", f.Uid, f.Name.Trim());
+			foreach (var f in open) gOut.WriteLine("  {0}. {1}{2}", f.Uid, f.Name.Trim(), ProgressionGate.LockReason(f.Name) != null ? " (not yet)" : "");
 			gOut.Write("{0}Enter a number, or X for none: ", Environment.NewLine);
 			Buf.Clear();
 			var rc = gEngine.In.ReadField(Buf, gEngine.BufSize01, null, ' ', '\0', false, null, gEngine.ModifyCharToUpper, gEngine.IsCharDigitOrX, null);
