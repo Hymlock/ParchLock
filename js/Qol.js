@@ -291,6 +291,8 @@ var ParchLockQol = {
     // submission choke points (Input.Inject, Enter); status probes excluded there.
     _sent: [],
     RecordSent: (command) => {
+        // An answer at an Eamon nested prompt (a save name, Y, a shop number) is not a command to repeat (Grok #3446 F2).
+        if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel) return;
         var c = ParchLockQol.NormalizeText(String(command || ""));
         if (!c) return;
         var key = c.toLowerCase();
@@ -308,7 +310,9 @@ var ParchLockQol = {
             history.push(c);
         });
 
-        $($(".Style_input").get().reverse()).each(function() {
+        // Eamon's on-screen echoes include nested answers (save names, Y, shop numbers), which cannot be told apart from
+        // commands there; its history is what was really sent at the top level (Grok #3446 F2).
+        if (!(typeof window !== "undefined" && window.__PARCHLOCK_EAMON__)) $($(".Style_input").get().reverse()).each(function() {
 
             // T10/D207: only what the player actually submitted. A hidden
             // status probe's echo is excluded by its ownership, never by its

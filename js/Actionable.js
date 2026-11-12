@@ -1394,7 +1394,14 @@ var Actionable = {
     },
 
     Submit: (command, source) => {
+        // Eamon: ParchLock's own commands (travel, radials, Equipment, probes) never go into a nested prompt (a save name, a
+        // yes/no, a shop step); fast travel once typed "north" as a save name there (Grok #3434 EQ-PROMPT-1). The player's
+        // own answers do: an allow-list, so a new caller fails closed (Grok #3441). Checked first, so a spoken answer such
+        // as "restore" at a nested prompt is never treated as a timeline command below (Grok #3446 F1).
+        var eamonNested = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel;
+        if (eamonNested && source !== "user-voice") return false;
         try {
+            if (eamonNested) throw 0;
             if (/^(undo|restore|restart)$/i.test(String(command || "").trim())) {
                 window.__PL_RESYNC__ = Date.now();
                 if (typeof TextGate !== "undefined" && /^(restore|restart)$/i.test(String(command).trim())) TextGate.reset();
@@ -1404,11 +1411,6 @@ var Actionable = {
 
         /* UNDO_RESTORE_RESYNC */
         if (!$(".Input.LineInput").length || Message.IsOpen || $("#dialog").length) return false;
-        // Eamon: ParchLock's own commands (travel, radials, Equipment, probes) never go into a nested prompt (a save name, a
-        // yes/no, a shop step); fast travel once typed "north" as a save name there (Grok #3434 EQ-PROMPT-1). The player's
-        // own answers do: an allow-list, so a new caller fails closed (Grok #3441).
-        if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel
-            && source !== "user-voice") return false;
         if (!$(".Input.LineInput:visible").length
             // D192 (grok round 2): the `equip-open` escape has been removed.
             // It allowed ANY injection into a hidden line input for as long as

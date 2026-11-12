@@ -324,7 +324,8 @@ namespace ParchLock.EamonHost
 			gOut.Print("{0}", gEngine.LineSep);
 			var open = (gDatabase?.FilesetTable?.Records ?? new List<Eamon.Framework.IFileset>()).Where(f => ProgressionGate.Tiers.ContainsKey((f.Name ?? "").Trim())).OrderBy(f => f.Uid).ToList();
 			gOut.Print("The old skald looks up from the fire. \"Which tale would ye hear?\"");
-			foreach (var f in open) gOut.WriteLine("  {0}. {1}{2}", f.Uid, f.Name.Trim(), ProgressionGate.LockReason(f.Name) != null ? " (not yet)" : "");
+			var completed = ProgressionGate.Completed((gEngine as EamonMH.Framework.Plugin.IEngine)?.Character);
+			foreach (var f in open) gOut.WriteLine("  {0}. {1}{2}", f.Uid, f.Name.Trim(), ProgressionGate.LockReason(f.Name, completed) != null ? " (not yet)" : "");
 			gOut.Write("{0}Enter a number, or X for none: ", Environment.NewLine);
 			Buf.Clear();
 			var rc = gEngine.In.ReadField(Buf, gEngine.BufSize01, null, ' ', '\0', false, null, gEngine.ModifyCharToUpper, gEngine.IsCharDigitOrX, null);
@@ -367,7 +368,16 @@ namespace ParchLock.EamonHost
 	{
 		public override void Execute()
 		{
-			var warning = ProgressionGate.TrainingWarning((gEngine as EamonMH.Framework.Plugin.IEngine)?.Character, true);
+			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
+			long maxGain = 2;
+			try
+			{
+				// The strike price exactly as upstream MasterArmorMenu computes it; each strike adds at most 2.
+				var ap = gEngine.GetMerchantAskPrice(gEngine.ArmorTrainingPrice, (double)gEngine.GetMerchantRtio(character.GetMerchantAdjustedCharisma()));
+				maxGain = ap > 0 ? 2 * (character.HeldGold / ap) : 2;
+			}
+			catch (Exception) { maxGain = 2; }
+			var warning = ProgressionGate.TrainingWarning(character, true, maxGain);
 			if (warning != null) { gOut.Print("{0}", gEngine.LineSep); gOut.Print("{0}", warning); }
 			base.Execute();
 		}

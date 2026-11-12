@@ -103,20 +103,21 @@ namespace ParchLock.EamonHost
 		/// axe, club or sword does; the beginner check ignores spear and bow); at armour expertise 24 or more, one more armour
 		/// session (up to +2) can pass 25 and close The Training Ground. Never otherwise, never once a beginner adventure is
 		/// credited.</summary>
-		internal static string TrainingWarning(Eamon.Framework.ICharacter c, bool armour)
+		internal static string TrainingWarning(Eamon.Framework.ICharacter c, bool armour, long maxArmourGain = 2)
 		{
 			if (c == null) return null;
 			var credited = RunLedger.ClearedAdventures(RunLedger.CharacterId(c.Uid, c.Name ?? ""));
 			if (credited.Overlaps(BeginnerAlternatives)) return null;
 			var closed = Outgrown(c);
 			var stillBeginner = !closed.Contains("The Beginner's Cave");
-			var trainingGroundAtRisk = armour && !closed.Contains("The Training Ground") && c.ArmorExpertise >= 24;
+			// One visit to the armour master is a loop of paid strikes (+2 at most each), so the risk is what this visit can
+			// buy: current expertise plus the most the character's gold can add (Grok #3446).
+			var trainingGroundAtRisk = armour && !closed.Contains("The Training Ground") && c.ArmorExpertise + maxArmourGain > 25;
 			if (!stillBeginner && !trainingGroundAtRisk) return null;
 			string what;
 			if (stillBeginner && armour) what = "this training changes your armour expertise, which closes the four beginner adventures (The Beginner's Cave, Beginner's Forest, Beginner's Cave II, Alternate Beginner's Cave) to you for good";
 			else if (stillBeginner) what = "training your axe, club or sword here closes the four beginner adventures (The Beginner's Cave, Beginner's Forest, Beginner's Cave II, Alternate Beginner's Cave) to you for good (spear and bow do not)";
-			else what = "one more session here can take your armour expertise above 25, which closes The Training Ground to you";
-			if (stillBeginner && trainingGroundAtRisk) what += ", and can take your armour expertise above 25, closing The Training Ground";
+			else what = "your armour expertise is " + c.ArmorExpertise + ", and training here can take it above 25, which closes The Training Ground to you";
 			return "A word from the guild: " + what + ". An adventure you can no longer enter counts as completed for New Game+, but earns no credit or trophy.";
 		}
 

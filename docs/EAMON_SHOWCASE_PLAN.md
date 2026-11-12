@@ -208,8 +208,11 @@ one beginner clear opens tier 2; The Wayfarers Inn, which admits anyone, is alwa
 needed, so no character is locked out of a tier either. Training warnings (operator 2026-11-12, #3444): the Practice
 Area trainers warn only when the very next session would disqualify the character: while still a beginner (Don
 Diego: training axe, club or sword; the beginner check ignores spear and bow; the armour master: any session), and
-from armour expertise 24, where one more armour session can pass 25 and close The Training Ground. Never otherwise,
-and never once a beginner adventure is credited. Verified live for both trainers. It earns no credit or trophy; the Quest Board shows "(overqualified: completed)". Nothing has to be visited or selected to
+for the armour master, when this visit can take armour expertise above 25 and close The Training Ground. Never
+otherwise, and never once a beginner adventure is credited. Decision with Grok (#3446), for the operator's review:
+one visit to the armour master is a loop of paid strikes (+2 at most each), so a "session" is one visit, the only
+unit ParchLock can warn at without forking upstream's menu; the warning shows when current expertise plus twice the
+number of strikes the character's gold can buy (at upstream's own price) exceeds 25. Verified live for both trainers. It earns no credit or trophy; the Quest Board shows "(overqualified: completed)". Nothing has to be visited or selected to
 activate it: it is read from the character's own record whenever the progression is checked. The Trophy Wall shows
 the signed-in character's shelf for the current cycle (operator 2026-11-12): the trophies earned in this cycle, plus
 the latest earlier trophy of an adventure the character is overqualified for (it cannot be earned again, so it
