@@ -47,6 +47,14 @@ var EquipmentUI = {
         // parse_name alone is not ambiguity; learning owns its stricter gate.
         if (!ref.unique) return [];
         var nested = ActionSynth.heldContainerName(obj, WorldModel.lastPayload);
+        // Eamon: a thing inside a container comes out with REMOVE <obj> FROM <container>, never TAKE (Grok #3434),
+        // the same command the drag onto Yourself sends (dropCommand).
+        if (nested && typeof EamonProvider !== "undefined" && EamonProvider.active && EamonProvider.active()) {
+            var holder = model && obj.parentId != null ? model.byId[String(obj.parentId)] : null;
+            var holderRef = holder ? Actionable.referenceFor(holder) : null;
+            if (!holderRef || !holderRef.unique) return [];
+            return [{ Label: "Take out of " + nested, Form: "remove from", Enter: true, EamonCommand: "remove " + ref.noun + " from " + holderRef.noun }];
+        }
         var scopedRemoval = !nested && ActionSynth.wornRemovalScopeFor ? ActionSynth.wornRemovalScopeFor(obj) : null;
         var forms = {}, candidates = [];
         function allowed(form) {
@@ -124,6 +132,7 @@ var EquipmentUI = {
         if (selectedDescriptor && !Actionable.radialCommandCurrent(selectedDescriptor)) return;
         var candidate = EquipmentUI.yourselfCommands(obj, model).find(function (item) { return item.Form === form; });
         if (!candidate || (enter && !candidate.Enter)) return;
+        if (candidate.EamonCommand) { Actionable.runChosenCommand(candidate.EamonCommand); return; }
         if (selectedDescriptor) {
             var current = candidate.ScopedCommand;
             var kind = selectedDescriptor.qualifiedRemovalScope ? "qualifiedRemovalScope" : selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : selectedDescriptor.lightFormScope ? "lightFormScope" : null;
@@ -158,13 +167,13 @@ var EquipmentUI = {
         EquipmentUI._holdPointerId = d.pointerId;
         EquipmentUI.cleanupDrag(d);
         candidates.forEach(function (item) {
-            var descriptor = item.ScopedCommand || { objectId: obj.id, verb: item.Form, command: item.Form + ' ' + Actionable.referenceFor(obj).noun };
+            var descriptor = item.ScopedCommand || { objectId: obj.id, verb: item.Form, command: item.EamonCommand || (item.Form + ' ' + Actionable.referenceFor(obj).noun) };
             item.LearnedCommand = Object.assign({}, descriptor, { learnedItemScope: Actionable.learnedItemScopeFor(descriptor, 'inventory') });
             item.Action = function () {
                 if (item.LearnedCommand.learnedItemScope && !Actionable.radialCommandCurrent(item.LearnedCommand)) return;
                 EquipmentUI.selectYourselfAction(d.id, item.Form, item.Enter, d.generation, d.moduleKey, item.ScopedCommand);
             };
-            item.Command = item.ScopedCommand ? item.ScopedCommand.command : item.Form + " " + Actionable.referenceFor(obj).noun;
+            item.Command = item.ScopedCommand ? item.ScopedCommand.command : item.EamonCommand || (item.Form + " " + Actionable.referenceFor(obj).noun);
             item.Usage = Actionable.usageCount ? Actionable.usageCount(item.Command) : 0;
         });
         ParchLockQol.OpenRadial(d.lastX, d.lastY, candidates, { source: "inventory", noun: obj.name, objectId: obj.id, objectStatusStamp: ParchLockQol.ObjectStatusStamp ? ParchLockQol.ObjectStatusStamp() : null });
@@ -792,6 +801,13 @@ var EquipmentUI = {
                 tags = tags.concat(EquipmentUI.containerStateTags(o));
                 tags = tags.concat(EquipmentUI.activationStateTags(o));
                 tags = tags.concat(EquipmentUI.illuminationStateTags(o));
+                // Eamon reports these itself in its snapshot (no Z-machine memory): open or closed, a surface, the readied
+                // weapon (Grok #3434 EQ-TREE-2, EQ-TREE-4).
+                if (o.eamon) {
+                    if (a.container && tags.indexOf("open") < 0 && tags.indexOf("closed") < 0) tags.push(a.open ? "open" : "closed");
+                    if (a.supporter && tags.indexOf("surface") < 0) tags.push("surface");
+                    if (o.eamon.ready) tags.push("readied");
+                }
                 var kidCount = EquipmentUI.childrenOf(m, o).length;
                 if (kidCount) tags.push(kidCount + " inside");
             }
@@ -817,6 +833,13 @@ var EquipmentUI = {
                     if (typeof Actionable !== "undefined") Actionable.Open(String(o.name).toLowerCase(), "inventory", e.clientX, e.clientY, o.id);
                 });
                 EquipmentUI.bindHold(el, o);
+                // A click or tap on the row opens the same inventory radial as right-click or long-press (Grok #3434
+                // EQ-GESTURE-1): never on the drag grip, never right after a long-press already opened it.
+                el.addEventListener("click", function (e) {
+                    if (e.target.closest && e.target.closest(".equip-grip")) return;
+                    if (Date.now() < (el._holdContextUntil || 0) || EquipmentUI._drag) return;
+                    if (typeof Actionable !== "undefined") Actionable.Open(String(o.name).toLowerCase(), "inventory", e.clientX, e.clientY, o.id);
+                });
 
                 // D125 (operator-reported): dragging used to start anywhere on
                 // the row, which meant the row needed touch-action:none and
@@ -1085,8 +1108,24 @@ var EquipmentUI = {
             if (!item || !target) return;
             var command = EquipmentUI.dropCommand(m, item, target);
             if (command) Actionable.Submit(command);
+            // A refused drop says why, not only with a red outline (Grok #3434 EQ-DROP-SELF-2, EQ-DROP-IN-2).
+            else { var reason = EquipmentUI.dropRefusalReason(m, item, target); if (reason) Message.Show("Not moved", ParchLockQol.EscapeHtml(reason.charAt(0).toUpperCase() + reason.slice(1))); }
         };
         attempt();
+    },
+
+    dropRefusalReason: function (m, item, target) {
+        if (!item || !target) return null;
+        var a = target.attrs || {};
+        if (String(target.id) === String(item.id)) return "That is the same thing.";
+        if (target.self) {
+            var holder = item.parentId != null ? m.byId[String(item.parentId)] : null;
+            return holder ? "ParchLock cannot name " + item.name + " or " + holder.name + " clearly enough to take it out." : item.name + " is already in your hands.";
+        }
+        if (EquipmentUI.isDescendant(m, item, target.id)) return item.name + " cannot go inside something it holds.";
+        if (a.container && !a.open) return target.name + " is closed.";
+        if (!a.container && !a.supporter) return target.name + " cannot hold things.";
+        return "ParchLock cannot name " + item.name + " or " + target.name + " clearly enough for that.";
     },
 
     // D126: a translucent replica of the line you picked up, following the

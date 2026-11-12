@@ -636,11 +636,14 @@ var ActionSynth = {
                 var inspect = ActionSynth.defaultInspectVerb();
                 nested.push({ verb: inspect, noun: name, objectId: obj.id || null, command: inspect + " " + name, confidence: obj.confidence || 0.8 });
             }
+            // Eamon takes a thing out of a container only with its own REMOVE <obj> FROM <container> (EamonRT
+            // RemoveCommand); GET finds room items only. Same command as the Equipment drag (Grok #3434).
+            var eamonNested = ActionSynth.eamonVocabularyActive && ActionSynth.eamonVocabularyActive();
             nested.push({
                 verb: "take out of " + containerName,
                 noun: name,
                 objectId: obj.id || null,
-                command: "take " + name,
+                command: eamonNested ? "remove " + name + " from " + containerName : "take " + name,
                 confidence: obj.confidence || 0.8
             });
             ActionSynth.nestedEdibleForms(obj.id, context).forEach(function (verb) {

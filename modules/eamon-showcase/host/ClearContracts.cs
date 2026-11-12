@@ -39,11 +39,12 @@ namespace ParchLock.EamonHost
 			// gives the crown and sets her Field1 to 1 (GetPlayerInputState.cs:28-58); nothing resets it. Last prompt: exit Y/N.
 			// Claude's reading, for Grok's review.
 			["Beginner's Forest"] = @"{ ""quest"": { ""monster"": 8, ""field"": ""Field1"", ""equals"": 1 } }",
-			// Beginner's Cave II: no quest text, no reward or finish code; a beginners' practice cave whose own gate refuses
-			// anyone who is "not a beginner" (RT IntroStory Beginners check). By the operator's Training Ground rule
-			// (2026-11-12) its end is graduation: leaving it no longer a beginner (armour expertise 0, axe 5, club 20, sword
-			// 0 no longer all hold). Claude's extension of that rule, for Grok's and the operator's review.
-			["Beginner's Cave II"] = @"{ ""quest"": { ""not"": { ""all"": [ { ""character"": ""ArmorExpertise"", ""equals"": 0 }, { ""character"": ""Axe"", ""equals"": 5 }, { ""character"": ""Club"", ""equals"": 20 }, { ""character"": ""Sword"", ""equals"": 0 } ] } } }",
+			// Beginner's Cave II: its author's own hint names the whole design: "There are two secret passages to be found ...
+			// That is all there is for special events in this adventure" (HINTS.DAT, all secrets). They lead to its one
+			// centrepiece, the treasure chest (artifact 5, value 1500) "sealed in this room with its owner (the mummy)" behind
+			// the second passage (room 7). Completion (operator 2026-11-12: the creator's own completion, played): leave
+			// carrying the treasure chest. Claude's reading, for Grok's review.
+			["Beginner's Cave II"] = @"{ ""quest"": { ""artifact"": 5, ""carried"": true, ""recurse"": true } }",
 			// Alternate Beginner's Cave: Nina's reward, MainLoop.cs Shutdown: Nina (monster 11) in the player's room at the exit
 			// with Reaction == Friend (exactly; Friend is the only reaction above Neutral). Last prompt: exit Y/N; Claude's
 			// reading, for Grok's review.

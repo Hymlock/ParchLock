@@ -140,7 +140,7 @@ namespace ParchLock.EamonHost
 		static readonly Dictionary<string, string> Requirements = new Dictionary<string, string>(StringComparer.Ordinal)
 		{
 			["The Training Ground"] = "complete it by graduating: leave with armour expertise above 25 (only plate armour allows that)",
-			["Beginner's Cave II"] = "complete it by leaving no longer a beginner",
+			["Beginner's Cave II"] = "complete it by bringing out the mummy's treasure chest",
 			["Escape from Mt. Moon"] = "complete it by beating the Rocket boss and leaving through the far side",
 		};
 

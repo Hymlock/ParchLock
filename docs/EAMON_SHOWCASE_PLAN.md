@@ -176,8 +176,9 @@ under the old no-quest rule (verified live). Every adventure therefore gets a co
 source; the four that had none (The Training Ground, Beginner's Cave II, The Deep Canyon, Escape from Mt. Moon) are
 Their requirements (2026-11-12): The Training Ground is completed by
 graduating, leaving it with armour expertise above 25, the level at which its own manager turns a character away as
-overqualified (operator); Beginner's Cave II by leaving it no longer a beginner (its own gate's test; Claude's
-extension of the operator's rule, under review); The Deep Canyon by reaching room 60, its only exit ("Outside Main
+overqualified (operator; the only adventure whose completion is a skill level); Beginner's Cave II by bringing out
+the mummy's treasure chest, the centrepiece its author's own hint leads to ("two secret passages ... that is all
+there is for special events"; under review); The Deep Canyon by reaching room 60, its only exit ("Outside Main
 Hall. Congratulations!"); Escape from Mt. Moon by leaving from room 12 past the beaten Rocket boss, not back through
 the entrance. Verified live: walking out of The Training Ground and Beginner's Cave II is no longer a clear.
 
@@ -234,6 +235,23 @@ sold is not itemised yet (it is inside the gold difference).
 - **Equipment:** "Yourself" is the root. Held, readied and worn are optional groups under it. Only real
   container objects hold items; there is no synthetic pack slot. The existing Equipment tree and its
   command authority are adapted. A drag sends a verified engine command or is refused with a reason.
+  Rule clarifications (owner request, Grok audit #3434, 2026-11-12):
+  - A. Tree: worn gear sits under Yourself and is tagged worn; held items are listed beside Yourself (allowed
+    layout). The readied weapon is tagged "readied" and matches the engine's current weapon (built).
+  - B. Only real in-containers and on-containers are drop targets; no pack slot. Under and behind are never drag
+    targets; a PUT UNDER/BEHIND an adventure accepts belongs on the radial, never as a silent "put in".
+  - C. Drag commands for Eamon: a content onto Yourself sends REMOVE <obj> FROM <container>; a directly held item
+    onto Yourself sends nothing and says it is already in your hands; onto an open in-container PUT X IN Y; onto a
+    supporter PUT X ON Y. A closed, locked, cyclical or unnameable drop is refused with its reason in ParchLock's
+    dialog (built); a too-big one is sent and the game's own refusal shows. Wear and Ready are radial or
+    Yourself-dwell choices, never a drop.
+  - D. Gestures, desktop and Android WebView alike: a click or tap on a row opens the inventory radial (built);
+    right-click and a 500 ms long-press open the same radial once; a swipe on the row scrolls; a drag starts only
+    from the grip; dwelling 750 ms on Yourself opens the Yourself radial. Every path resolves the same object and,
+    for taking a content out, the same REMOVE ... FROM command (built: the item radial and the Yourself radial now
+    send it, never bare TAKE).
+  - E. Open, closed, surface and readied are shown for Eamon from its own snapshot, without Z-machine memory (built).
+  - F. During a nested prompt (a yes/no, a clarification) Equipment drags, radials and travel submit nothing.
 - **Stats:** real values and units; base abilities, temporary boosts, wounds, armour and encumbrance kept
   separate.
 - **Map and fast travel:** one map per adventure. Fast travel reuses the existing navigator and sends
@@ -331,6 +349,47 @@ G. Independent adversarial review, final candidate on real targets, release.
 8. Shipped assemblies built from the pinned commit, hashes recorded, only host code new. Performance
    targets met on the phone. Existing ParchLock regressions unchanged. No changed candidate inherits an
    earlier pass.
+9. Equipment and inventory checks (owner request, Grok audit #3434), each a scripted, observable step on desktop
+   and on the Android WebView:
+   - EQ-TREE-1 Yourself and custody: with worn armour and a held weapon, Yourself is present, worn gear under it
+     tagged worn, the weapon carried, no synthetic pack, and the tree equals the engine's custody after INVENTORY.
+   - EQ-TREE-2 readied: readying a weapon tags it readied; readying another moves the tag.
+   - EQ-TREE-3 empty and Hall: an empty inventory shows nothing invented from room objects; before a Hall character
+     is chosen the sheet shows honest absence, not another character's gear.
+   - EQ-TREE-4 Eamon state tags: an open and a closed in-container look different, a supporter is marked a surface,
+     without Z-machine memory.
+   - EQ-NEST-1 contents rule: in-container contents appear only when open, shown-when-closed, Seen or just listed;
+     an under/behind find only after the game lists it (Test Adventure sapphire, Wayfarers Inn); a reload forgets an
+     unseen look-under find until the player looks again.
+   - EQ-DROP-SELF-1 remove from container: dragging a content onto Yourself sends REMOVE ... FROM, the engine
+     accepts, the item becomes held, the tree matches.
+   - EQ-DROP-SELF-2 already held: dragging a held item onto Yourself sends nothing and says why.
+   - EQ-DROP-SELF-3 wear and ready via dwell: dwelling on Yourself offers Wear for a held wearable and Ready for a
+     weapon; a plain drop does neither.
+   - EQ-DROP-IN-1 put in: onto an open held in-container sends PUT X IN Y and nests; a too-big item shows the game's
+     own refusal and the tree is unchanged.
+   - EQ-DROP-IN-2 closed or locked: no command is sent and the reason shows; after opening, EQ-DROP-IN-1 works.
+   - EQ-DROP-ON-1 put on: onto an on-container sends PUT X ON Y (if no Showcase adventure has one, recorded and
+     skipped; no invented supporter).
+   - EQ-DROP-UNDER-1 under/behind: a drag never sends "put in" to an under/behind holder; a real PUT UNDER/BEHIND is a
+     named radial action, or the check is marked inapplicable.
+   - EQ-DROP-ROOM-1 room container: a room chest is not an Equipment drop target; putting into it goes through the
+     radial's Put... picker, and a closed one is refused by the game without moving the item.
+   - EQ-GESTURE-1 click/tap: a click or tap on a row opens the inventory radial, on mouse and WebView.
+   - EQ-GESTURE-2 long-press and grip (WebView): 500 ms opens the radial once and submits nothing; a swipe scrolls; a
+     grip drag on a legal target submits the same command as the desktop drag.
+   - EQ-GESTURE-3 nested radial: a content's radial offers Examine and a take-out that sends REMOVE ... FROM, never
+     bare TAKE; the Yourself-dwell radial sends the same command.
+   - EQ-GESTURE-4 held-item radial: only Eamon verbs appear; Drop sends DROP X; Give... and Put... open a target
+     picker and send GIVE X TO Y / PUT X IN (ON) Y.
+   - EQ-GESTURE-5 keyboard: a keyboard user can reach a row and open the same radial, or the plan states that
+     keyboard access is out of scope for this release (to be decided).
+   - EQ-PROMPT-1 nested prompt: at a yes/no or clarification prompt no Equipment drag, dwell or radial submits into
+     the field; afterwards the tree matches the engine again.
+   Done 2026-11-12 and verified live (Alternate Beginner's Cave box): EQ-TREE-2 and -4 tags, EQ-DROP-SELF-1 and -2,
+   EQ-GESTURE-1 and -3, EQ-DROP-IN-1 (put in, and "It won't fit."). Still to do: the rest, recoverInventory and
+   nested-prompt clearing checks, and retiring the unused EamonProvider.nativeCommands (without reviving its early
+   return).
 
 ## 12. Still to be evidenced (not disputes)
 
