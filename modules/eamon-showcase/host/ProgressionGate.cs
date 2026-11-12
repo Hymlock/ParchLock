@@ -62,6 +62,13 @@ namespace ParchLock.EamonHost
 
 		static readonly string[] BeginnersStory = { "The Beginner's Cave", "Beginner's Forest", "Beginner's Cave II", "Alternate Beginner's Cave" };
 
+		/// <summary>The beginner alternatives: adventures their authors present as alternatives to the Beginner's Cave
+		/// (module descriptions: Beginner's Forest and The Training Ground "an alternative to the Beginner's Cave"; Beginner's
+		/// Cave II "a Beginner's Cave"; Alternate Beginner's Cave "an introduction for young Eamonauts"), whose entry checks
+		/// admit only a beginner. One completed through its own end satisfies the group for a New Game+ cycle.</summary>
+		internal static readonly HashSet<string> BeginnerAlternatives = new HashSet<string>(StringComparer.Ordinal)
+			{ "The Beginner's Cave", "Beginner's Forest", "Beginner's Cave II", "Alternate Beginner's Cave", "The Training Ground" };
+
 		/// <summary>The adventures this character has outgrown: their own entry checks now refuse the character for good
 		/// (the four Beginners adventures once armour expertise 0, axe 5, club 20, sword 0 no longer all hold, RT
 		/// IntroStory; The Training Ground above armour expertise 25). Eamon never lowers these abilities, so it is

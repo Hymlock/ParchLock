@@ -93,17 +93,49 @@ namespace ParchLock.EamonHost
 		internal sealed class Clear { public string adventure { get; set; } public string run { get; set; } public int cycle { get; set; } }
 		internal sealed class CharacterClears { public int cycle { get; set; } = 1; public List<Clear> clears { get; set; } = new List<Clear>(); }
 
-		/// <summary>Opens the next cycle whenever every Showcase adventure is cleared in the current one: on every read,
-		/// not only on a new credit, so a change in the adventure set can never leave a cycle that cannot finish (Grok #3431).</summary>
-		static bool Normalise(CharacterClears c, HashSet<string> outgrown)
+		/// <summary>True when every Showcase adventure is complete in the current cycle, judged on every read, not only on a
+		/// new credit, so a change in the adventure set can never leave a cycle that cannot finish (Grok #3431). An adventure
+		/// the character has outgrown (its own entry check refuses them for good) counts as complete, or a veteran could never
+		/// finish one (operator 2026-11-12); it is not a credit. The next cycle then waits for the player to accept it.</summary>
+		static bool CycleComplete(CharacterClears c, HashSet<string> unused = null)
 		{
-			// An adventure the character has outgrown (its own entry check refuses them for good) counts as complete in
-			// every cycle, or a veteran could never finish one (operator 2026-11-12); it is not a credit.
-			var advanced = false;
+			// Every adventure through its own end (operator 2026-11-12: nothing counts without being completed). The
+			// beginner alternatives are one choice: their authors present them as alternatives to the Beginner's Cave and
+			// their entry checks admit only a beginner, so one completed alternative satisfies the group. In New Game+
+			// cycles a veteran can enter none of them, so the group is satisfied by one completed in any earlier cycle.
+			if (ProgressionGate.Tiers.Count == 0 || !c.clears.Any(x => x.cycle == c.cycle)) return false;
+			var others = ProgressionGate.Tiers.Keys.Where(a => !ProgressionGate.BeginnerAlternatives.Contains(a));
+			if (!others.All(a => c.clears.Any(x => x.cycle == c.cycle && x.adventure == a))) return false;
+			return c.clears.Any(x => ProgressionGate.BeginnerAlternatives.Contains(x.adventure) && (x.cycle == c.cycle || c.cycle > 1));
+		}
+
+		/// <summary>The Showcase adventures still to complete in this character's current cycle (not cleared, not outgrown).</summary>
+		internal static List<string> RemainingInCycle(string characterId, HashSet<string> outgrown)
+		{
 			outgrown = outgrown ?? new HashSet<string>();
-			while (ProgressionGate.Tiers.Count > 0 && ProgressionGate.Tiers.Keys.All(a => outgrown.Contains(a) || c.clears.Any(x => x.cycle == c.cycle && x.adventure == a))
-				&& c.clears.Any(x => x.cycle == c.cycle)) { c.cycle++; advanced = true; }
-			return advanced;
+			CharacterClears c = null;
+			if (!string.IsNullOrEmpty(characterId)) ReadLedger().TryGetValue(characterId, out c);
+			c = c ?? new CharacterClears();
+			var remaining = ProgressionGate.Tiers.Keys.Where(a => !ProgressionGate.BeginnerAlternatives.Contains(a) && !c.clears.Any(x => x.cycle == c.cycle && x.adventure == a)).ToList();
+			var alternativeDone = c.clears.Any(x => ProgressionGate.BeginnerAlternatives.Contains(x.adventure) && (x.cycle == c.cycle || c.cycle > 1));
+			if (!alternativeDone) remaining.Insert(0, "one of the beginner adventures (" + string.Join(", ", ProgressionGate.BeginnerAlternatives) + ")");
+			return remaining;
+		}
+
+		/// <summary>New Game+ is offered to this character: the current cycle is complete.</summary>
+		internal static bool NewGamePlusOffered(string characterId, HashSet<string> outgrown)
+		{
+			return !string.IsNullOrEmpty(characterId) && ReadLedger().TryGetValue(characterId, out var c) && CycleComplete(c, outgrown);
+		}
+
+		/// <summary>The player accepted the offer at the Quest Board: the next cycle opens. Returns the new cycle, or 0.</summary>
+		internal static int AcceptNewGamePlus(string characterId, HashSet<string> outgrown)
+		{
+			var ledger = ReadLedger();
+			if (string.IsNullOrEmpty(characterId) || !ledger.TryGetValue(characterId, out var c) || !CycleComplete(c, outgrown)) return 0;
+			c.cycle++;
+			File.WriteAllText(LedgerPath, JsonSerializer.Serialize(ledger));
+			return c.cycle;
 		}
 
 		static Dictionary<string, CharacterClears> ReadLedger()
@@ -126,7 +158,6 @@ namespace ParchLock.EamonHost
 		{
 			var cleared = new HashSet<string>(StringComparer.Ordinal);
 			if (string.IsNullOrEmpty(characterId) || !ReadLedger().TryGetValue(characterId, out var c)) return (1, cleared);
-			Normalise(c, outgrown);
 			foreach (var clear in c.clears) if (clear.cycle == c.cycle) cleared.Add(clear.adventure);
 			return (c.cycle, cleared);
 		}
@@ -160,14 +191,13 @@ namespace ParchLock.EamonHost
 			if (_run.StartsWith(Unbound, StringComparison.Ordinal)) return "unbound run";
 			var ledger = ReadLedger();
 			if (!ledger.TryGetValue(characterId, out var c)) ledger[characterId] = c = new CharacterClears();
-			Normalise(c, outgrown);
 			if (c.clears.Any(x => x.run == _run)) return "already credited";
 			if (c.clears.Any(x => x.cycle == c.cycle && x.adventure == adventure)) return "already cleared";
 			c.clears.Add(new Clear { adventure = adventure, run = _run, cycle = c.cycle });
 			var result = "credited";
 			// "All loaded" = the Showcase's tiered adventures (ProgressionGate.Tiers, the package's complete set): once every
 			// one is cleared in this cycle, the next cycle opens. Only a credit can advance it, so save/restore cannot.
-			if (Normalise(c, outgrown)) result = "credited, new cycle " + c.cycle;
+			if (CycleComplete(c, outgrown)) result = "credited, new game plus offered";
 			Directory.CreateDirectory(Path.GetDirectoryName(LedgerPath));
 			File.WriteAllText(LedgerPath, JsonSerializer.Serialize(ledger));
 			// The Trophy Wall's record of this credit: who, which adventure, when, which cycle and what counted.

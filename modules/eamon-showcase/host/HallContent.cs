@@ -46,7 +46,9 @@ namespace ParchLock.EamonHost
 				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk, and trophies of cleared adventures hang on the Trophy Wall. At the far end a stair leads down toward the Village.");
 			}
 			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board, the Trophy Wall and the stair are here.");
-			base.PrintMainHallMenuSubtitle();
+			// Upstream's subtitle with the count of choices including ParchLock's "Seek New Game+" (MhMenu.cs:17-19).
+			gOut.Print("Character: {0}", gCharacter != null ? gCharacter.Name : gEngine.UnknownName);
+			gOut.Print("As you wander about the hall, you realize you can do one of eight things:");
 		}
 	}
 
@@ -62,6 +64,15 @@ namespace ParchLock.EamonHost
 
 		public HallMainHallMenu() : base()
 		{
+			// New Game+ is on offer from the start, so the goal is visible; before it is earned it says what remains
+			// (operator 2026-11-12). Placed before upstream's X.
+			var leave = MenuItemList.IndexOf(MenuItemList.FirstOrDefault(i => i.SelectChar == 'X'));
+			MenuItemList.Insert(leave < 0 ? MenuItemList.Count : leave, gEngine.CreateInstance<IMenuItem>(x =>
+			{
+				x.SelectChar = '7';
+				x.LineText = string.Format("{0}7. Seek New Game+.", Environment.NewLine);
+				x.SubMenu = new NewGamePlusMenu();
+			}));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Ledger; x.LineText = ""; x.SubMenu = new LedgerMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Stones; x.LineText = ""; x.SubMenu = new StonesMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Fire; x.LineText = ""; x.SubMenu = new FireMenu(); }));
@@ -125,6 +136,14 @@ namespace ParchLock.EamonHost
 	/// (ParchLock's tier gates, ProgressionGate). Reading it starts nothing; the desk's own selection does that.</summary>
 	public class QuestBoardMenu : Menu
 	{
+		// What completing these takes, where it is not obvious from the adventure itself (Grok #3433).
+		static readonly Dictionary<string, string> Requirements = new Dictionary<string, string>(StringComparer.Ordinal)
+		{
+			["The Training Ground"] = "complete it by graduating: leave with armour expertise above 25 (only plate armour allows that)",
+			["Beginner's Cave II"] = "complete it by leaving no longer a beginner",
+			["Escape from Mt. Moon"] = "complete it by beating the Rocket boss and leaving through the far side",
+		};
+
 		public override void Execute()
 		{
 			gOut.Print("{0}", gEngine.LineSep);
@@ -134,19 +153,72 @@ namespace ParchLock.EamonHost
 			var outgrown = ProgressionGate.Outgrown(character);
 			var (cycle, cleared) = RunLedger.CurrentCycle(id, outgrown);
 			var open = ProgressionGate.OpenTier(everCleared);
-			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared. Clear every adventure and a New Game+ cycle begins, in which each can be credited again.");
+			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared. Complete every adventure (of the beginner adventures one is enough: they are alternatives) and New Game+ is offered, in which each can be credited again.");
 			if (cycle > 1) gOut.Print("New Game+ cycle {0}: \"(cleared)\" marks the adventures cleared in this cycle.", cycle);
 			for (var tier = 1; tier <= 5; tier++)
 			{
 				gOut.Print("Tier {0}, {1}: {2}", tier, ProgressionGate.TierNames[tier], tier <= open ? "open" : "locked");
 				// One line per notice (Print adds a blank line after each).
 				foreach (var adventure in ProgressionGate.Tiers.Where(t => t.Value == tier).Select(t => t.Key).OrderBy(n => n))
-					gOut.WriteLine("  {0}{1}", adventure, cleared.Contains(adventure) ? " (cleared)" : outgrown.Contains(adventure) ? " (outgrown: counts as complete)" : "");
+					gOut.WriteLine("  {0}{1}{2}", adventure, cleared.Contains(adventure) ? " (cleared)" : outgrown.Contains(adventure) ? " (closed to you now)" : "",
+						!cleared.Contains(adventure) && !outgrown.Contains(adventure) && Requirements.TryGetValue(adventure, out var need) ? " - " + need : "");
+			}
+			// New Game+ is offered, never imposed: the next cycle opens only when the player accepts it here.
+			if (RunLedger.NewGamePlusOffered(id, outgrown))
+			{
+				gOut.Print("A gilded notice is pinned above the rest: every adventure on the board is complete. New Game+ is offered: cycle {0}, in which each adventure can be credited again. {1} keeps everything.", cycle + 1, character.Name);
+				gOut.Write("{0}Begin New Game+ cycle {1} (Y/N): ", Environment.NewLine, cycle + 1);
+				Buf.Clear();
+				var rc = gEngine.In.ReadField(Buf, gEngine.BufSize02, null, ' ', '\0', false, null, gEngine.ModifyCharToUpper, gEngine.IsCharYOrN, null);
+				if (gEngine.IsSuccess(rc) && Buf.Length > 0 && Buf[0] == 'Y')
+				{
+					var opened = RunLedger.AcceptNewGamePlus(id, outgrown);
+					gOut.Print(opened > 0 ? "You take down the gilded notice. New Game+ cycle " + opened + " begins." : "The notice is gone.");
+				}
+				else gOut.Print("You leave the gilded notice where it is. It will wait for you.");
 			}
 			gEngine.In.KeyPress(Buf);
 		}
 
 		public QuestBoardMenu() { Buf = gEngine.Buf; }
+	}
+
+	/// <summary>"Seek New Game+": offered from the start. Before every Showcase adventure is complete in the current cycle
+	/// it names what remains; once it is, the player may accept the next cycle (or leave it for later). The character is
+	/// never reset (operator, #3427, 2026-11-12).</summary>
+	public class NewGamePlusMenu : Menu
+	{
+		public override void Execute()
+		{
+			gOut.Print("{0}", gEngine.LineSep);
+			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
+			if (character == null) { gOut.Print("There is no adventurer signed in."); gEngine.In.KeyPress(Buf); return; }
+			var id = RunLedger.CharacterId(character.Uid, character.Name ?? "");
+			var outgrown = ProgressionGate.Outgrown(character);
+			var (cycle, _) = RunLedger.CurrentCycle(id, outgrown);
+			if (!RunLedger.NewGamePlusOffered(id, outgrown))
+			{
+				var remaining = RunLedger.RemainingInCycle(id, outgrown);
+				gOut.Print("The Irishman shakes his head. \"New Game+ is for those who have completed every adventure on the Quest Board{0}. Ye still have {1} to go: {2}.\"",
+					cycle > 1 ? " in this cycle (cycle " + cycle + ")" : "", remaining.Count, string.Join(", ", remaining));
+				gOut.Print("Complete each one through its own end and come back. {0} keeps everything in New Game+; each adventure can then be credited again.", character.Name);
+				gEngine.In.KeyPress(Buf);
+				return;
+			}
+			gOut.Print("The Irishman grins. \"Every adventure on the board is done. New Game+ is yours: cycle {0}, where each adventure can be credited again, and ye keep everything.\"", cycle + 1);
+			gOut.Write("{0}Begin New Game+ cycle {1} (Y/N): ", Environment.NewLine, cycle + 1);
+			Buf.Clear();
+			var rc = gEngine.In.ReadField(Buf, gEngine.BufSize02, null, ' ', '\0', false, null, gEngine.ModifyCharToUpper, gEngine.IsCharYOrN, null);
+			if (gEngine.IsSuccess(rc) && Buf.Length > 0 && Buf[0] == 'Y')
+			{
+				var opened = RunLedger.AcceptNewGamePlus(id, outgrown);
+				gOut.Print(opened > 0 ? "New Game+ cycle " + opened + " begins." : "The offer is gone.");
+			}
+			else gOut.Print("\"Whenever ye are ready,\" he says.");
+			gEngine.In.KeyPress(Buf);
+		}
+
+		public NewGamePlusMenu() { Buf = gEngine.Buf; }
 	}
 
 	/// <summary>The Trophy Wall: one trophy per credited clear (RunLedger's trophy records). The trophy names are

@@ -181,11 +181,17 @@ extension of the operator's rule, under review); The Deep Canyon by reaching roo
 Hall. Congratulations!"); Escape from Mt. Moon by leaving from room 12 past the beaten Rocket boss, not back through
 the entrance. Verified live: walking out of The Training Ground and Beginner's Cave II is no longer a clear.
 
-**New Game+ and outgrown adventures (operator 2026-11-12).** Eamon never lowers armour expertise or weapon abilities,
-so once a character fails an adventure's own entry check (the four Beginners adventures after any change from the
-beginner values; The Training Ground above armour expertise 25) it can never enter again. Such an outgrown adventure
-counts as complete for every New Game+ cycle (otherwise no veteran could finish a cycle); it is never a credit or a
-trophy. The Quest Board marks it "outgrown: counts as complete". A restored slot that has lost its
+**New Game+, the beginner alternatives, and how it is offered (operator 2026-11-12).** Every adventure counts only
+when completed through its own end; nothing is marked complete by training or by being turned away (an earlier
+"outgrown" rule that let bought armour training mark five tier 1 adventures complete was withdrawn by the operator).
+The authors present The Beginner's Cave's companions as alternatives to it (module descriptions: Beginner's Forest
+and The Training Ground "an alternative to the Beginner's Cave", Beginner's Cave II "a Beginner's Cave", Alternate
+Beginner's Cave "an introduction for young Eamonauts"), and their entry checks admit only a beginner, so for a
+New Game+ cycle one of these five completed through its own end satisfies the group; in later cycles a veteran can
+enter none of them, so the group is satisfied by one completed in an earlier cycle. Each of them still earns its own
+credit when completed. New Game+ is offered from the start as the Main Hall choice "7. Seek New Game+." (also a Hall
+room command): before it is earned it names exactly what remains; once earned it asks to begin the next cycle (Y/N),
+and the Quest Board shows the same offer. The character is never reset. A restored slot that has lost its
 run stamp starts an unbound run, and saves made from it stay unbound: that play-through is never credited until a
 fresh entry or Start Over (fail-closed by design, not a defect). Characters are keyed by a ParchLock id per record
 uid and name; a deleted character recreated with the same name at a recycled uid inherits the old id (known limit).
