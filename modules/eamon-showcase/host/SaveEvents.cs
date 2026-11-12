@@ -59,7 +59,8 @@ namespace ParchLock.EamonHost
 				try { _dieAtPrompt = gEngine.GetGameState()?.Die ?? -99; } catch (Exception) { _dieAtPrompt = -98; }
 				ClearContracts.Evaluate();
 				try { RunLedger.Track(); } catch (Exception) { }
-				_character = rt.Character?.Name ?? _character;
+				// The character of THIS adventure only (no carry-over from an earlier one, Grok #3410 F1).
+				try { _character = rt.Character != null ? RunLedger.CharacterId(rt.Character.Uid, rt.Character.Name ?? "") : null; } catch (Exception) { _character = null; }
 			}
 		}
 
@@ -78,11 +79,12 @@ namespace ParchLock.EamonHost
 				var cleared = _adventure.ExitType == Eamon.Framework.Primitive.Enums.ExitType.FinishAdventure && _dieAtPrompt == 0
 					&& (ClearContracts.Latest == "true" || ClearContracts.Latest == "none");
 				string credit = "not a clear";
-				if (cleared) { try { credit = RunLedger.Credit(_character ?? "", _adventureName); } catch (Exception e) { credit = "error: " + e.Message; } }
+				if (cleared) { try { credit = RunLedger.Credit(_adventure, _character, _adventureName); } catch (Exception e) { credit = "error: " + e.Message; } }
 				HostBridge.Lifecycle("adventure-ended", _adventureName + "|" + _adventure.ExitType + "|die=" + _dieAtPrompt + "|quest=" + ClearContracts.Latest + "|run=" + RunLedger.Current + "|credit=" + credit);
 			}
 			ClearContracts.Reset();
 			_adventure = null;
+			_character = null;
 		}
 
 		/// <summary>Called after a safe-point commit: the deletion is durable, so ParchLock forgets those saves now.</summary>
