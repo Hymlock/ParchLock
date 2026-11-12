@@ -119,6 +119,13 @@ adventures' own entry checks (for example The Training Ground refuses characters
 expertise exceeds 25). If a
 tier has no valid route, change the added placement, never the source check.
 
+Tier 1 route evidence (source, Codex #3316): The Beginner's Cave, Beginner's Forest, Beginner's Cave II and
+Alternate Beginner's Cave use the engine's Beginners entry check (a weapon carried; armour expertise 0, axe 5,
+club 20, sword 0; RT IntroStory.cs:128-152), and Eamon raises those abilities in combat, so a character will
+usually enter only one of them. The Wayfarers Inn has no entry check and The Training Ground refuses only armour
+expertise above 25 (its IntroStory.cs:28-38). A legal route to tier 2 therefore exists: one Beginners adventure
+plus The Wayfarers Inn or The Training Ground. Still to prove the same way for tiers 2 to 5, and in play.
+
 **What counts as a clear.** Each adventure gets an outcome contract written from its source: returned
 alive, quest success as an exact state condition, failure, death, abort. The engine's "finish adventure"
 exit alone is not success (Stronghold of Kahr-Dur uses it after printing that the quest failed).
