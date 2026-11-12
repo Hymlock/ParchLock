@@ -140,7 +140,7 @@ namespace ParchLock.EamonHost
 		static readonly Dictionary<string, string> Requirements = new Dictionary<string, string>(StringComparer.Ordinal)
 		{
 			["The Training Ground"] = "complete it by graduating: leave with armour expertise above 25 (only plate armour allows that)",
-			["Beginner's Cave II"] = "complete it by bringing out the mummy's treasure chest",
+			["Beginner's Cave II"] = "complete it by carrying out the mummy's treasure chest yourself (it weighs 90: hardiness 10 or more and a light load)",
 			["Escape from Mt. Moon"] = "complete it by beating the Rocket boss and leaving through the far side",
 		};
 
@@ -152,7 +152,7 @@ namespace ParchLock.EamonHost
 			var everCleared = RunLedger.ClearedAdventures(id);
 			var outgrown = ProgressionGate.Outgrown(character);
 			var (cycle, cleared) = RunLedger.CurrentCycle(id, outgrown);
-			var open = ProgressionGate.OpenTier(everCleared);
+			var open = ProgressionGate.OpenTier(ProgressionGate.Completed(character, id));
 			gOut.Print("The notices on the Quest Board are grouped in five tiers. A tier opens once two different adventures of the tier below have been cleared. Complete every adventure (of the beginner adventures one is enough: they are alternatives) and New Game+ is offered, in which each can be credited again.");
 			if (cycle > 1) gOut.Print("New Game+ cycle {0}: \"(cleared)\" marks the adventures cleared in this cycle.", cycle);
 			for (var tier = 1; tier <= 5; tier++)
@@ -160,7 +160,7 @@ namespace ParchLock.EamonHost
 				gOut.Print("Tier {0}, {1}: {2}", tier, ProgressionGate.TierNames[tier], tier <= open ? "open" : "locked");
 				// One line per notice (Print adds a blank line after each).
 				foreach (var adventure in ProgressionGate.Tiers.Where(t => t.Value == tier).Select(t => t.Key).OrderBy(n => n))
-					gOut.WriteLine("  {0}{1}{2}", adventure, cleared.Contains(adventure) ? " (cleared)" : outgrown.Contains(adventure) ? " (closed to you now)" : "",
+					gOut.WriteLine("  {0}{1}{2}", adventure, cleared.Contains(adventure) ? " (cleared)" : outgrown.Contains(adventure) ? " (overqualified: completed)" : "",
 						!cleared.Contains(adventure) && !outgrown.Contains(adventure) && Requirements.TryGetValue(adventure, out var need) ? " - " + need : "");
 			}
 			// New Game+ is offered, never imposed: the next cycle opens only when the player accepts it here.
@@ -173,6 +173,7 @@ namespace ParchLock.EamonHost
 				if (gEngine.IsSuccess(rc) && Buf.Length > 0 && Buf[0] == 'Y')
 				{
 					var opened = RunLedger.AcceptNewGamePlus(id, outgrown);
+					if (opened > 0) { Persistence.Flush(); SaveEvents.AfterFlush(); }   // kept the moment it is shown (Grok #3437)
 					gOut.Print(opened > 0 ? "You take down the gilded notice. New Game+ cycle " + opened + " begins." : "The notice is gone.");
 				}
 				else gOut.Print("You leave the gilded notice where it is. It will wait for you.");
@@ -212,6 +213,7 @@ namespace ParchLock.EamonHost
 			if (gEngine.IsSuccess(rc) && Buf.Length > 0 && Buf[0] == 'Y')
 			{
 				var opened = RunLedger.AcceptNewGamePlus(id, outgrown);
+				if (opened > 0) { Persistence.Flush(); SaveEvents.AfterFlush(); }   // kept the moment it is shown (Grok #3437)
 				gOut.Print(opened > 0 ? "New Game+ cycle " + opened + " begins." : "The offer is gone.");
 			}
 			else gOut.Print("\"Whenever ye are ready,\" he says.");
@@ -242,11 +244,22 @@ namespace ParchLock.EamonHost
 		public override void Execute()
 		{
 			gOut.Print("{0}", gEngine.LineSep);
-			var trophies = RunLedger.Trophies();
-			if (trophies.Count == 0) gOut.Print("The Trophy Wall is bare. Its hooks wait for the first cleared adventure.");
+			// The signed-in character's shelf for the current New Game+ cycle (operator 2026-11-12): the trophies earned in
+			// this cycle, plus the latest earlier trophy of an adventure the character is overqualified for (it cannot be
+			// earned again, so it stays). Trophies of adventures that can be played again leave the shelf when a new cycle
+			// begins and return when earned again; the full record stays in the campaign files.
+			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
+			var id = character != null ? RunLedger.CharacterId(character.Uid, character.Name ?? "") : null;
+			var overqualified = ProgressionGate.Outgrown(character);
+			var (cycle, _) = RunLedger.CurrentCycle(id, overqualified);
+			var mine = RunLedger.Trophies().Where(t => t.character == id).ToList();
+			var trophies = mine.Where(t => t.cycle == cycle).ToList();
+			foreach (var a in overqualified)
+				if (!trophies.Any(t => t.adventure == a)) { var kept = mine.Where(t => t.adventure == a).OrderByDescending(t => t.cycle).FirstOrDefault(); if (kept != null) trophies.Add(kept); }
+			if (trophies.Count == 0) gOut.Print("Your hooks on the Trophy Wall are bare{0}. They wait for your first completed adventure.", cycle > 1 ? " in this New Game+ cycle" : "");
 			else
 			{
-				gOut.Print("On the Trophy Wall hang the trophies of cleared adventures:");
+				gOut.Print("On the Trophy Wall hang {0}'s trophies{1}:", character?.Name, cycle > 1 ? " for New Game+ cycle " + cycle : "");
 				foreach (var t in trophies)
 					gOut.WriteLine("  {0}, from {1}: earned by {2} on {3} ({4})", Names.TryGetValue(t.adventure, out var n) ? n : "a trophy", t.adventure, t.name, t.date,
 						(t.quest == "true" ? "the quest fulfilled" : "returned alive through its own exit") + (t.cycle > 1 ? ", New Game+ cycle " + t.cycle : ""));

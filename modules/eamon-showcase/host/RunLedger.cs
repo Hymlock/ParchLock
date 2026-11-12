@@ -97,28 +97,36 @@ namespace ParchLock.EamonHost
 		/// new credit, so a change in the adventure set can never leave a cycle that cannot finish (Grok #3431). An adventure
 		/// the character has outgrown (its own entry check refuses them for good) counts as complete, or a veteran could never
 		/// finish one (operator 2026-11-12); it is not a credit. The next cycle then waits for the player to accept it.</summary>
-		static bool CycleComplete(CharacterClears c, HashSet<string> unused = null)
+		static bool CycleComplete(CharacterClears c, HashSet<string> overqualified = null)
 		{
-			// Every adventure through its own end (operator 2026-11-12: nothing counts without being completed). The
-			// beginner alternatives are one choice: their authors present them as alternatives to the Beginner's Cave and
-			// their entry checks admit only a beginner, so one completed alternative satisfies the group. In New Game+
-			// cycles a veteran can enter none of them, so the group is satisfied by one completed in any earlier cycle.
+			// Every adventure through its own end (operator 2026-11-12). The beginner alternatives are one choice (their
+			// authors present them as alternatives to the Beginner's Cave), so one completed satisfies the group; in New
+			// Game+ cycles one completed in an earlier cycle does. An adventure whose own entry check now refuses the
+			// character as overqualified is marked completed (operator 2026-11-12), in every cycle, so no character is
+			// locked out of completion for a technical reason.
+			overqualified = overqualified ?? new HashSet<string>();
 			if (ProgressionGate.Tiers.Count == 0 || !c.clears.Any(x => x.cycle == c.cycle)) return false;
 			var others = ProgressionGate.Tiers.Keys.Where(a => !ProgressionGate.BeginnerAlternatives.Contains(a));
-			if (!others.All(a => c.clears.Any(x => x.cycle == c.cycle && x.adventure == a))) return false;
-			return c.clears.Any(x => ProgressionGate.BeginnerAlternatives.Contains(x.adventure) && (x.cycle == c.cycle || c.cycle > 1));
+			if (!others.All(a => overqualified.Contains(a) || c.clears.Any(x => x.cycle == c.cycle && x.adventure == a))) return false;
+			return AlternativesDone(c, overqualified);
+		}
+
+		static bool AlternativesDone(CharacterClears c, HashSet<string> overqualified)
+		{
+			return ProgressionGate.BeginnerAlternatives.Any(a => overqualified.Contains(a))
+				|| c.clears.Any(x => ProgressionGate.BeginnerAlternatives.Contains(x.adventure) && (x.cycle == c.cycle || c.cycle > 1));
 		}
 
 		/// <summary>The Showcase adventures still to complete in this character's current cycle (not cleared, not outgrown).</summary>
+		/// <summary>(outgrown: the adventures the character is overqualified for, marked completed by operator decision.)</summary>
 		internal static List<string> RemainingInCycle(string characterId, HashSet<string> outgrown)
 		{
 			outgrown = outgrown ?? new HashSet<string>();
 			CharacterClears c = null;
 			if (!string.IsNullOrEmpty(characterId)) ReadLedger().TryGetValue(characterId, out c);
 			c = c ?? new CharacterClears();
-			var remaining = ProgressionGate.Tiers.Keys.Where(a => !ProgressionGate.BeginnerAlternatives.Contains(a) && !c.clears.Any(x => x.cycle == c.cycle && x.adventure == a)).ToList();
-			var alternativeDone = c.clears.Any(x => ProgressionGate.BeginnerAlternatives.Contains(x.adventure) && (x.cycle == c.cycle || c.cycle > 1));
-			if (!alternativeDone) remaining.Insert(0, "one of the beginner adventures (" + string.Join(", ", ProgressionGate.BeginnerAlternatives) + ")");
+			var remaining = ProgressionGate.Tiers.Keys.Where(a => !ProgressionGate.BeginnerAlternatives.Contains(a) && !outgrown.Contains(a) && !c.clears.Any(x => x.cycle == c.cycle && x.adventure == a)).ToList();
+			if (!AlternativesDone(c, outgrown)) remaining.Insert(0, "one of the beginner adventures (" + string.Join(", ", ProgressionGate.BeginnerAlternatives) + ")");
 			return remaining;
 		}
 

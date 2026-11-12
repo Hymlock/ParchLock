@@ -837,7 +837,8 @@ var EquipmentUI = {
                 // EQ-GESTURE-1): never on the drag grip, never right after a long-press already opened it.
                 el.addEventListener("click", function (e) {
                     if (e.target.closest && e.target.closest(".equip-grip")) return;
-                    if (Date.now() < (el._holdContextUntil || 0) || EquipmentUI._drag) return;
+                    // Not the click that ends a drag released over this same row (Grok #3437).
+                    if (Date.now() < (el._holdContextUntil || 0) || EquipmentUI._drag || Date.now() - (EquipmentUI._dragEndedAt || 0) < 300) return;
                     if (typeof Actionable !== "undefined") Actionable.Open(String(o.name).toLowerCase(), "inventory", e.clientX, e.clientY, o.id);
                 });
 
@@ -1069,6 +1070,7 @@ var EquipmentUI = {
                 try { EquipmentUI.Render(); } catch (eR) {}
             }
             if (!d.active) return;                     // was a tap, not a drag
+            EquipmentUI._dragEndedAt = Date.now();
             if (targetId != null) EquipmentUI.submitDrop(d.id, targetId);
         };
         document.addEventListener("pointerup", finish);

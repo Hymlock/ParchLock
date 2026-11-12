@@ -41,9 +41,10 @@ namespace ParchLock.EamonHost
 			["Beginner's Forest"] = @"{ ""quest"": { ""monster"": 8, ""field"": ""Field1"", ""equals"": 1 } }",
 			// Beginner's Cave II: its author's own hint names the whole design: "There are two secret passages to be found ...
 			// That is all there is for special events in this adventure" (HINTS.DAT, all secrets). They lead to its one
-			// centrepiece, the treasure chest (artifact 5, value 1500) "sealed in this room with its owner (the mummy)" behind
-			// the second passage (room 7). Completion (operator 2026-11-12: the creator's own completion, played): leave
-			// carrying the treasure chest. Claude's reading, for Grok's review.
+			// centrepiece, the treasure chest (artifact 5, value 1500, weight 90) "sealed in this room with its owner (the
+			// mummy)" behind the first passage (room 7). Its author says outright that it is to be carried out: OPEN TREASURE
+			// CHEST prints "You would only make a mess. Wait until you leave." (OpenCommand.cs:23-28). Completion (operator
+			// 2026-11-12: the creator's own completion, played): leave carrying the chest yourself. Accepted, Grok #3437.
 			["Beginner's Cave II"] = @"{ ""quest"": { ""artifact"": 5, ""carried"": true, ""recurse"": true } }",
 			// Alternate Beginner's Cave: Nina's reward, MainLoop.cs Shutdown: Nina (monster 11) in the player's room at the exit
 			// with Reaction == Friend (exactly; Friend is the only reaction above Neutral). Last prompt: exit Y/N; Claude's

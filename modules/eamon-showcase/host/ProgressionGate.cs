@@ -26,12 +26,17 @@ namespace ParchLock.EamonHost
 		internal static readonly string[] TierNames = { "", "Novice Initiative", "Journeyman Contracts", "Experienced Expeditions", "The Strange Realms", "Heroic Gauntlets" };
 		const int ClearsToOpen = 2;   // a tier opens after two different adventures of the tier below are cleared
 
-		static HashSet<string> Cleared()
+		/// <summary>The adventures that count as completed for the tier gates: credited clears plus those the character is
+		/// overqualified for (operator 2026-11-12: marked completed, so no technical lockout).</summary>
+		internal static HashSet<string> Completed(Eamon.Framework.ICharacter character, string characterId = null)
 		{
-			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
 			if (character == null) return new HashSet<string>();
-			return RunLedger.ClearedAdventures(RunLedger.CharacterId(character.Uid, character.Name ?? ""));
+			var completed = RunLedger.ClearedAdventures(characterId ?? RunLedger.CharacterId(character.Uid, character.Name ?? ""));
+			completed.UnionWith(Outgrown(character));
+			return completed;
 		}
+
+		static HashSet<string> Cleared() => Completed((gEngine as EamonMH.Framework.Plugin.IEngine)?.Character);
 
 		/// <summary>The highest tier open to the current character (1 at the start).</summary>
 		internal static int OpenTier(HashSet<string> cleared = null)

@@ -83,7 +83,7 @@ namespace ParchLock.EamonHost
 					&& (ClearContracts.Latest == "true" || ClearContracts.Latest == "none");
 				string credit = "not a clear";
 				int rankBefore = 0;
-				try { rankBefore = ProgressionGate.OpenTier(RunLedger.ClearedAdventures(_character)); } catch (Exception) { }
+				try { rankBefore = ProgressionGate.OpenTier(ProgressionGate.Completed(_adventure.Character, _character)); } catch (Exception) { }
 				if (cleared) { try { credit = RunLedger.Credit(_adventure, _character, _adventureName, _adventure.Character?.Name, ClearContracts.Latest, ProgressionGate.Outgrown(_adventure.Character)); } catch (Exception e) { credit = "error: " + e.Message; } }
 				HostBridge.Lifecycle("adventure-ended", _adventureName + "|" + _adventure.ExitType + "|die=" + _dieAtPrompt + "|quest=" + ClearContracts.Latest + "|run=" + RunLedger.Current + "|credit=" + credit);
 				Debrief.Ended(_adventureName, _adventure.ExitType.ToString(), _dieAtPrompt, ClearContracts.Latest, credit, _character, rankBefore);

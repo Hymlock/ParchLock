@@ -639,11 +639,20 @@ var ActionSynth = {
             // Eamon takes a thing out of a container only with its own REMOVE <obj> FROM <container> (EamonRT
             // RemoveCommand); GET finds room items only. Same command as the Equipment drag (Grok #3434).
             var eamonNested = ActionSynth.eamonVocabularyActive && ActionSynth.eamonVocabularyActive();
+            var holderNoun = containerName;
+            if (eamonNested) {
+                // The container must be named unambiguously, as the Equipment drag requires (Grok #3437).
+                var pool = (WorldModel.lastPayload && (WorldModel.lastPayload.inventory || []).concat(WorldModel.lastPayload.discoveredObjects || [])) || [];
+                var holder = pool.find(function (o) { return o && obj.parentId != null && String(o.id) === String(obj.parentId); });
+                var holderRef = holder && typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(holder) : null;
+                if (!holderRef || !holderRef.unique) return nested;
+                holderNoun = holderRef.noun;
+            }
             nested.push({
                 verb: "take out of " + containerName,
                 noun: name,
                 objectId: obj.id || null,
-                command: eamonNested ? "remove " + name + " from " + containerName : "take " + name,
+                command: eamonNested ? "remove " + name + " from " + holderNoun : "take " + name,
                 confidence: obj.confidence || 0.8
             });
             ActionSynth.nestedEdibleForms(obj.id, context).forEach(function (verb) {
