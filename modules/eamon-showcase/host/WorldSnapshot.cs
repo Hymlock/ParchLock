@@ -29,7 +29,7 @@ namespace ParchLock.EamonHost
 		// Contents the game has listed with LOOK UNDER/BEHIND/IN or EXAMINE (ExamineCommand.ContainerArtifactList):
 		// that listing names them without marking them Seen. Kept for the running adventure engine.
 		static object _revealedFor;
-		static readonly HashSet<long> _revealed = new HashSet<long>();
+		static readonly Dictionary<long, long> _revealed = new Dictionary<long, long>();   // uid -> Location when listed
 		static long PlayerId => _adventure + PlayerBase;
 		static long AdventureCode(string name)
 		{
@@ -52,8 +52,13 @@ namespace ParchLock.EamonHost
 			var lastCommands = (engine as EamonRT.Framework.Plugin.IEngine)?.LastCommandList;
 			if (lastCommands != null)
 				foreach (var command in lastCommands)
-					if (command is EamonRT.Game.Commands.ExamineCommand examine && examine.ContainerArtifactList != null)
-						foreach (var shownContent in examine.ContainerArtifactList) if (shownContent != null) _revealed.Add(shownContent.Uid);
+				{
+					// LOOK UNDER/BEHIND/IN lists into ExamineCommand.ContainerArtifactList; EXAMINE of a container that
+					// shows its contents redirects to InventoryCommand.DobjArtContainedArtifactList (Grok #3402 note 2).
+					var listed = (command as EamonRT.Game.Commands.ExamineCommand)?.ContainerArtifactList
+						?? (command as EamonRT.Game.Commands.InventoryCommand)?.DobjArtContainedArtifactList;
+					if (listed != null) foreach (var shownContent in listed) if (shownContent != null) _revealed[shownContent.Uid] = shownContent.Location;
+				}
 
 			var lit = room.IsLit();
 			var exits = new List<object>();
@@ -108,7 +113,7 @@ namespace ParchLock.EamonHost
 					var visible = holderRecord != null && (inside
 						? (holderRecord.InContainer != null && holderRecord.InContainer.IsOpen()) || holderRecord.ShouldExposeInContentsWhenClosed()
 						: (held ? a.IsCarriedByContainerContainerTypeExposedToMonster(MonsterType.CharMonster) : a.IsCarriedByContainerContainerTypeExposedToRoom()));
-					if (!a.Seen && !visible && !_revealed.Contains(a.Uid)) continue;
+					if (!a.Seen && !visible && !(_revealed.TryGetValue(a.Uid, out var listedAt) && listedAt == a.Location)) continue;
 					(held ? inventory : objects).Add(Describe(a, _adventure + ArtifactBase + holder, self));
 					shown.Add(a.Uid);
 				}

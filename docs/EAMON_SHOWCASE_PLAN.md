@@ -128,6 +128,21 @@ expedition of that character. The quest facts are captured at the end of the adv
 state is still available, then bound to the successful upstream cleanup and the durable returned-character
 revision; they are never read from a freshly loaded Main Hall.
 
+**How a clear is captured (agreed with Grok, #3400-#3402).** Each adventure's contract is data the host
+evaluates over the engine's own records: monster or artifact location, in limbo or dead, carried, worn or in a
+container, reaction, GameState fields, with "not" and "any of" (A Runcible Cargo's capitulation ending is a
+FinishAdventure that is not a clear). The host evaluates it at every adventure prompt and keeps the latest
+result, because several adventures end by script with no exit prompt (Land of the Mountain King, Dharmaquest,
+A Runcible Cargo) or use their own exit prompt (Firestorm, Stronghold of Kahr-Dur, Wrenhold's Secret Vigil);
+each of those has a key press just before it ends, with the world intact. A contract uses only facts that are
+settled by that last prompt (Wrenhold changes the world after its Y answer; ten adventures override Shutdown).
+The outcome is bound when the plugin returns: ExitType FinishAdventure and Die 0, nothing else read from the
+engine then (proved by a host probe). Gold and gains come from the exported character (final minus entry
+gold). Each save slot carries the run id it was saved in, and a successful RESTORE makes that run current, so
+a restored or imported pre-exit save can never earn a second credit for its run; a fresh entry starts a new
+run, and whether a fresh replay may be credited again is a policy choice to record. Entry gates stay in the
+engine (the Beginners intro check, The Training Ground's own refusal).
+
 **Ownership.** Progress belongs to the character and is saved with it; it is lost with the character.
 Restoring an older save restores that save's progress. Credits are idempotent: never granted twice. Restore
 never erases installed learning or the death history. There is no "Unlock all" switch.
