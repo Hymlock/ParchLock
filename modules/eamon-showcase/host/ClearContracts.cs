@@ -25,6 +25,16 @@ namespace ParchLock.EamonHost
 			// player's room at the exit and not an Enemy). Last prompt: the exit Y/N (EamonRT PlayerMoveCheckState
 			// ReadField); nothing moves Cynthia after it. Grok #3400/#3407 and Claude's blind contract agree.
 			["The Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 3, ""inPlayerRoom"": true }, { ""monster"": 3, ""reactionAbove"": ""Enemy"" } ] } }",
+			// The Training Ground: a practice facility (module description, intro effects 1-3); no quest code, no
+			// reward, no scripted finish. Clears on leaving alive through its one exit. Last prompt: the exit Y/N.
+			// Claude's reading; Grok's blind version (#3419) pending.
+			["The Training Ground"] = @"{ ""quest"": null }",
+			// The Wayfarers Inn: "resolve the crisis" (intro effect 250) = the haunting laid to rest,
+			// GameState.CharlotteRestInPeace, set only at UseCommand.cs:92 (Charlotte's blessed bones and the teddy
+			// bear buried); it pays the investors' reward (MainLoop.cs:112). A GameState flag Shutdown never changes.
+			// Whether the "long-lost documentation" (deed 70 or diary 85) is also required is open. Claude's reading;
+			// Grok's blind version (#3419) pending.
+			["The Wayfarers Inn"] = @"{ ""quest"": { ""gameState"": ""CharlotteRestInPeace"", ""equals"": 1 } }",
 		};
 
 		/// <summary>The latest evaluation for the running adventure: "true", "false", "none" (no quest), "uncontracted"

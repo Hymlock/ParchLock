@@ -154,7 +154,10 @@ engine then (proved by a host probe). Gold and gains come from the exported char
 gold). Each save slot carries the run id it was saved in, and a successful RESTORE makes that run current, so
 a restored or imported pre-exit save can never earn a second credit for its run; a fresh entry starts a new
 run. Operator decision (2026-11-12): a clear is credited once per character and adventure; a fresh replay plays
-normally, and the engine still pays its own rewards, but earns no second credit. A restored slot that has lost its
+normally, and the engine still pays its own rewards, but earns no second credit. Verified live: The Training Ground
+credited on the first exit, "already cleared" on a second run. Open for the operator (found 2026-11-12): under the
+no-quest rule, entering The Training Ground and leaving at once is a clear (verified live), so it can count towards
+the tier 1 gate without any play; decide whether a no-quest adventure needs more than leaving alive. A restored slot that has lost its
 run stamp starts an unbound run, and saves made from it stay unbound: that play-through is never credited until a
 fresh entry or Start Over (fail-closed by design, not a defect). Characters are keyed by a ParchLock id per record
 uid and name; a deleted character recreated with the same name at a recycled uid inherits the old id (known limit).
