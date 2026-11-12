@@ -75,3 +75,5 @@ Accepted with changes; built (desktop Chromium, not yet phone or G1 targets):
 Corrections to the proposal above: place rooms are not all without a leave key (some interactions take X); the Main Hall's own item 6 has no compass wording (the south slot is a layout choice, the command stays 6); `gEngine.Menu` is not a current-room fact.
 
 Not yet done: outer chamber and registration desk as their own later room; screen-reader mode with Hall line prompts (unverified); Equipment and stats for the selected character in the Hall; phone.
+
+- Operator decision 2026-11-11: an empty Enter at the Main Hall menu is ignored (upstream's default X would leave the universe); in the Village and Practice Area the default X still walks north. Verified: empty Enter leaves the player in the Main Hall with the prompt still open.

@@ -100,6 +100,9 @@ namespace ParchLock.EamonHost
 				if (reply == null) throw new HostCancelledException();
 				if (hallMenu)
 				{
+					// Operator decision 2026-11-11: an empty Enter at the top Hall menu is ignored instead of the
+					// upstream default "X" (leave the universe); in the Village and Practice Area X only walks north.
+					if (ask.MenuDepth == 1 && string.IsNullOrWhiteSpace(reply)) continue;
 					// Never let an unrecognised line become the default "X" (leave the universe): ask again.
 					reply = HallSnapshot.Translate(ask, reply, validCharFunc);
 					if (reply == null)
