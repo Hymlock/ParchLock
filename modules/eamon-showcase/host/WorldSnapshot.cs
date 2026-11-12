@@ -101,8 +101,19 @@ namespace ParchLock.EamonHost
 			};
 			if (character != null) { stats["gold"] = character.HeldGold; stats["name"] = character.Name; }
 
+			// The words this adventure's parser accepts: each player-enabled command's verb and synonyms,
+			// and the engine's prepositions. ParchLock offers only these (operator rule: no extra commands).
+			var commands = new List<object>();
+			var rtEngine = engine as EamonRT.Framework.Plugin.IEngine;
+			if (rtEngine?.CommandList != null)
+				foreach (var command in rtEngine.CommandList)
+					if (command != null && command.IsPlayerEnabled && !string.IsNullOrWhiteSpace(command.Verb))
+						commands.Add(new { verb = command.Verb, synonyms = command.Synonyms ?? Array.Empty<string>(), dark = command.IsDarkEnabled });
+			var preps = (engine.Preps ?? Array.Empty<Eamon.Framework.Primitive.Classes.IPrep>()).Where(p => p != null && !string.IsNullOrWhiteSpace(p.Name)).Select(p => p.Name.ToLowerInvariant()).Distinct().ToArray();
+
 			return JsonSerializer.Serialize(new
 			{
+				vocabulary = new { commands, preps },
 				adventure = engine.GetModule()?.Name, room = new { id = _adventure + room.Uid, name = room.Name, lit }, exits, objects, inventory, stats,
 				playerId = PlayerId
 			});

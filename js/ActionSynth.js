@@ -15,6 +15,12 @@ var ActionSynth = {
         talkable: ["talk to"],
         // D239: bare "climb X" only; the game picks the direction (CLIMB OBJECT -> V-CLIMB-FOO).
         climbable: ["climb"],
+        // Facts only the Eamon provider sets (js/EamonProvider.js); Eamon's own command words.
+        readyWeapon: ["ready"],
+        drinkable: ["drink"],
+        readable: ["read"],
+        lightSource: ["light"],
+        hostile: ["attack"],
         default: ["examine"]
     },
 
@@ -47,6 +53,10 @@ var ActionSynth = {
     literalAvailable: (literals) => {
         var mem = null;
         try { mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null; } catch (eMem) { mem = null; }
+        // An Eamon adventure's own parser vocabulary is a dictionary too (js/EamonProvider.js): same rule.
+        if (!mem && typeof EamonProvider !== "undefined" && EamonProvider.vocabulary && EamonProvider.vocabulary()) {
+            return String(literals || "").trim().split(/\s+/).every(function (w) { return EamonProvider.hasWord(w); });
+        }
         if (!mem || typeof ZRamReader === "undefined" || !ZRamReader.hasDictionaryWord) return true;
         // An adapter exists: an uncertain read must fail CLOSED (#1944), as
         // Actionable.isGameWord does, never license an invented form.
@@ -223,6 +233,9 @@ var ActionSynth = {
             }
         } catch (eL) {}
         if (a.nativeUseVerb === "use" && verbs.indexOf("use") < 0) verbs.push("use");
+        if (typeof EamonProvider !== "undefined" && EamonProvider.vocabulary && EamonProvider.vocabulary()) {
+            verbs = verbs.filter(function (v) { return ActionSynth.literalAvailable(v); });
+        }
         return verbs.map(function (v) { return ActionSynth.projectGeneratedActivation(v, objectId, options.context); })
             .filter(function (v, i, list) { return v && list.indexOf(v) === i; });
     },

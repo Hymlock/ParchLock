@@ -19,13 +19,18 @@ var EamonProvider = {
 
     attrs: (o) => {
         var a = {};
-        if (o.kind === "monster") { a.animate = true; a.talkable = true; return a; }
+        if (o.kind === "monster") { a.animate = true; a.talkable = true; if (o.reaction !== "Friend") a.hostile = true; return a; }
         a.takeable = true;
         if (o.worn) { a.worn = true; a.isWorn = true; }
         if (o.wearable) { a.wearable = true; a.clothing = true; }
         if (o.container) a.container = true;
         if (o.edible) a.edible = true;
         if (o.fixed || o.door) { a.takeable = false; a.scenery = true; }
+        // Eamon object facts that select the matching rows of the shared ActionSynth.rules table.
+        if (o.weapon && !o.ready) a.readyWeapon = true;
+        if (o.drinkable) a.drinkable = true;
+        if (o.readable) a.readable = true;
+        if (o.light) a.lightSource = true;
         return a;
     },
 
@@ -52,6 +57,26 @@ var EamonProvider = {
         if (o.container || o.door) { add("open"); add("close"); }
         if (held && !o.worn) { add("drop"); add("give", "give " + n + " to "); add("put", "put " + n + " in "); }
         return list;
+    },
+
+    // The adventure's own words: command verbs and synonyms, prepositions, and the names and synonyms of
+    // the objects the game has shown. Null outside an adventure (no parser to ask).
+    vocabulary: () => {
+        var world = EamonProvider.active() ? EamonProvider.world() : null;
+        if (!world || !world.vocabulary) return null;
+        if (EamonProvider._vocabFor === world) return EamonProvider._vocab;
+        var words = {};
+        var add = function (text) { String(text || "").toLowerCase().split(/[^a-z0-9'-]+/).forEach(function (w) { if (w) words[w] = true; }); };
+        (world.vocabulary.commands || []).forEach(function (c) { add(c.verb); (c.synonyms || []).forEach(add); });
+        (world.vocabulary.preps || []).forEach(add);
+        (world.objects || []).concat(world.inventory || []).forEach(function (o) { add(o.name); (o.aliases || []).forEach(add); });
+        EamonProvider._vocabFor = world;
+        EamonProvider._vocab = words;
+        return words;
+    },
+    hasWord: (word) => {
+        var vocab = EamonProvider.vocabulary();
+        return !!vocab && !!vocab[String(word || "").toLowerCase()];
     },
 
     item: (o, world, held) => ({
@@ -112,6 +137,10 @@ var EamonProvider = {
             inventory: inventory,
             exits: exits,
             hudMetrics: [],
+            // The command verbs, as the submit-button command list and autocomplete read a story's verbs.
+            specialCommands: ((world.vocabulary && world.vocabulary.commands) || []).map(function (c) {
+                return { label: c.verb, command: c.verb, source: "dictionary-verb" };
+            }),
             probe: {
                 status: "eamon-live", playerId: world.playerId, inventoryRootId: world.playerId,
                 playerSource: "eamon-native", roomId: world.room.id, roomSource: "eamon-native",
