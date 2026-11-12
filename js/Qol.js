@@ -629,6 +629,17 @@ var ParchLockQol = {
             // A campaign is applied only to the exact story (and Showcase version) it came from (Grok #3392 V2).
             if (data.EamonCampaign != null && data.Story !== ParchLock.GameFilename) throw new Error("This package's Eamon campaign names no Showcase version");
             WorkspaceUI.ValidateMap(data);
+            // An Eamon Showcase package from another release is the same campaign (Story "eamon/showcase" for every release,
+            // Grok #3456 D2): its transcript lines are kept under this release's digest instead of refusing the package.
+            if (data.EamonCampaign != null && data.Story === "eamon/showcase" && data.Transcripts && typeof data.Transcripts === "object"
+                && typeof Transcript !== "undefined" && Transcript.digest) data.Transcripts.digest = Transcript.digest;
+            // Likewise each save's own map snapshot (SaveState records are keyed by the same digest).
+            if (data.EamonCampaign != null && data.Story === "eamon/showcase" && data.SaveStates && typeof data.SaveStates === "object"
+                && typeof SaveState !== "undefined" && SaveState.storyId()) {
+                var showcaseId = SaveState.storyId();
+                data.SaveStates.story = showcaseId;
+                Object.keys(data.SaveStates.saves || {}).forEach(n => { if (data.SaveStates.saves[n] && typeof data.SaveStates.saves[n] === "object") data.SaveStates.saves[n].story = showcaseId; });
+            }
             // E4: transcript records are validated before anything is changed.
             if (typeof Transcript !== "undefined" && Transcript.validImport && !Transcript.validImport(data.Transcripts)) throw new Error("Invalid transcript records in this package");
             if (typeof SaveState !== "undefined" && !SaveState.validImport(data.SaveStates)) throw new Error("Invalid save map records in this package");

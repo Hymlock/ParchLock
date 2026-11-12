@@ -360,7 +360,7 @@ Probes once built: p1 (changed adventure file wins, that slot refused, credit st
 (engine change refuses boot and keeps data), p3 (export from N imports into N+1).
 Built 2026-11-12 (groundwork, no behaviour change): every commit records the installed package digest as the
 campaign stamp, the campaign export carries it, and boot notes whether it changed (verified live). Findings sent to
-Grok before B is built (#3453): an in-progress adventure is itself overlay state (FRESHMEAT and rewritten data files),
+Grok before B is built (#3453): an in-progress adventure is itself overlay state (FRESHMEAT, FRESHGEAR, EAMONCFG, its run file and slot files; measured later: play never rewrites the package's own data files),
 so it needs the slot fingerprint rule too; and the interim C rule would refuse the campaign after every rebuild.
 Grok #3454 (accepted, built 2026-11-12): the interim C rule is dropped; B and C have separate triggers (the package
 digest drives B and changes every build; a save-format number, changed only by hand and not before the owner's
@@ -398,13 +398,23 @@ id "eamon/showcase", so they survive a package update (verified: the Training Gr
 after the update); other stories are unchanged; older digest-keyed maps are left in place and not read (owner
 question 7). Learning and transcripts are keyed by the executable digest and story path by design and still start
 fresh with each package. D1 built: a save package from another Showcase release imports when its save format
-matches, then carries over at reopen (not yet probed live). Regression 8/8.
+matches, then carries over at reopen. Regression 8/8.
+Grok #3458: f224afde accepted. Notes for the owner: (D2-a) removing a Showcase release from the Library no longer
+deletes its maps, which are now the campaign's (consistent with "campaign progress is kept"); (D2-b) removing a
+release still deletes that release's transcript, so removing the old release after updating loses its transcript
+(owner question 8); (D2-c) save packages exported before f224afde name the old story file and are refused as another
+Showcase version (development only). Download Package round trip verified 2026-11-12 (two fresh profiles): exported
+on one release with a character afield in the Training Ground; on the next release a copy marked save format 2 is
+refused ("saved in a format this Showcase cannot read"), the real package imports, and on reopen the campaign is
+carried over (the Training Ground had changed, so its character was recalled free), with all 20 campaign files and
+both maps present. To make that work, a Showcase package from another release keeps its transcript lines and its
+saves' map snapshots under the open release's digest instead of being refused for them (other stories unchanged).
 
 **Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
 promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
 map wanted later (a new view, not the room map)? (3) Keyboard access to the Equipment sheet is out of scope for this
 release (it is missing for every engine); a shared follow-up? (4) The armour-master warning judges one visit
-(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings. (6) After a refused campaign, a "Start a new campaign" button (it deletes the old campaign, so it waits for you). (7) Maps made under earlier dev packages stay under their old keys and are not shown; reading them once into the stable key is a small follow-up if wanted. (8) Learning and transcripts restart with each package.
+(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings. (6) After a refused campaign, a "Start a new campaign" button (it deletes the old campaign, so it waits for you). (7) Maps made under earlier dev packages stay under their old keys and are not shown; reading them once into the stable key is a small follow-up if wanted. (8) Learning, transcripts and per-save map snapshots restart with each package (an imported save package keeps its own); removing an old release from the Library deletes its transcript.
 
 ## 10. Work packages
 
