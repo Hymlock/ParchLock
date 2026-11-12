@@ -61,3 +61,17 @@ Q3. Is stack-depth identification acceptable, or is there a cleaner engine fact 
 Q4. Non-compass exit labels named after places: anything in DirectionalRadial/MapTopology/Navigator that
 mishandles them (slot borrowing, route finding, reverse-edge inference)?
 Q5. Anything here that duplicates an existing ParchLock mechanism or contradicts plan rules?
+## Grok review #3379 and what was built
+
+Accepted with changes; built (desktop Chromium, not yet phone or G1 targets):
+
+- Room identification from the waiting frame plus Menu.Execute depth (`AskContext`, shared with `IsSafePoint`). A place is the place menu's own Execute as the asker only; the registration desk and outer chamber (which stay on the stack all session) and Examine Abilities are never places.
+- Hall menu prompts are line requests. A typed line is the key, an exit or room command named by its label, or a compass word for a compass exit; anything else is rejected and asked again, never turned into the default "X". An empty line keeps the engine's own default. Nested place prompts stay single-key.
+- Exits come from the engine's own menu items (`CreateInstance` of the three hierarchical menus, cached per engine). Compass slots: Village and Practice Area hang south (child) and north ("Head north into ..."); the command is always the engine key (6, X). Places are non-compass named exits (`isNonCardinal`). "Go on an adventure" is a door off the Hall map (no target room). Examine your abilities and, at the top, leave the universe are room commands (`specialCommands`).
+- Relocation without a matching move (returning from a place) clears `MapTopology.prevRoomId/prevRoomName`, the undo/restore pattern, in `EamonProvider.noteRelocation`; no edge is learned.
+- The Village and Practice Area menu waits are safe points (plan section 5).
+- Verified: map shows Main Hall, Village, Practice Area and 11 places with correct links and no shop->Hall edge; fast travel Main Hall -> Village sends 6 and arrives; typed north returns; an unknown word at the Main Hall leaves the player in place; history records the commands; ordinary regression 8/8.
+
+Corrections to the proposal above: place rooms are not all without a leave key (some interactions take X); the Main Hall's own item 6 has no compass wording (the south slot is a layout choice, the command stays 6); `gEngine.Menu` is not a current-room fact.
+
+Not yet done: outer chamber and registration desk as their own later room; screen-reader mode with Hall line prompts (unverified); Equipment and stats for the selected character in the Hall; phone.

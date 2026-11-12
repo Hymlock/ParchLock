@@ -62,7 +62,8 @@ namespace ParchLock.EamonHost
 			App.RefreshOutputWindowText();
 			// Only a top-level wait is a safe point (plan section 5). A nested prompt (a parser question,
 			// a shop or registration step, a yes/no inside an action) is mid-transaction and saves nothing.
-			var safePoint = IsSafePoint();
+			var ask = AskContext.Current();
+			var safePoint = IsSafePoint(ask);
 			if (safePoint)
 			{
 				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();
@@ -70,11 +71,20 @@ namespace ParchLock.EamonHost
 			}
 			// ParchLock's map, exits and object lists follow the game only at an adventure's own prompt.
 			// Anywhere else (the Main Hall, a nested question) there is no world to offer actions on.
+			// In the Main Hall engine, the Hall's own rooms (HallSnapshot.cs), at every prompt, so a place's
+			// nested prompts show that place.
 			string world = null;
-			if (safePoint && !(gEngine is EamonMH.Framework.Plugin.IEngine))
+			if (gEngine is EamonMH.Framework.Plugin.IEngine)
+			{
+				try { world = HallSnapshot.Build(ask); } catch (Exception) { world = null; }
+			}
+			else if (safePoint)
 			{
 				try { world = WorldSnapshot.Build(); } catch (Exception) { world = null; }
 			}
+			// A Hall menu is answered with a line, so ParchLock's normal command path (radial, map, fast
+			// travel, history, transcript) can drive it; the engine still gets one valid menu key.
+			var hallMenu = ask.IsHallMenu;
 			HostBridge.World(world ?? "");
 			var text = App.OutputBuf.ToString();
 			var lastIndex = text.LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
@@ -85,9 +95,15 @@ namespace ParchLock.EamonHost
 
 			while (true)
 			{
-				var reply = HostBridge.Read(anyKey ? "key" : (ReadLineMode ? "line" : "field"), (int)Math.Min(bufSize, int.MaxValue),
+				var reply = HostBridge.Read(anyKey ? "key" : (ReadLineMode || hallMenu ? "line" : "field"), (int)Math.Min(bufSize, int.MaxValue),
 					fillChar == '\0' ? "" : fillChar.ToString(), maskChar == '\0' ? "" : maskChar.ToString(), defaultText, safePoint);
 				if (reply == null) throw new HostCancelledException();
+				if (hallMenu)
+				{
+					// Never let an unrecognised line become the default "X" (leave the universe): ask again.
+					reply = HallSnapshot.Translate(ask, reply, validCharFunc);
+					if (reply == null) continue;
+				}
 
 				buf.Clear();
 				foreach (var typed in reply)
@@ -113,29 +129,15 @@ namespace ParchLock.EamonHost
 		/// (GetPlayerInputState) or a menu waiting for a choice (Menu.Execute). Decided from who is
 		/// asking, not from what the prompt says.
 		/// </summary>
-		static bool IsSafePoint()
+		static bool IsSafePoint(AskContext ask)
 		{
-			// Unknown context is never a safe point. Relies on type and method names, so the engine
-			// must stay untrimmed and unobfuscated (the build sets PublishTrimmed=false).
-			var frames = new StackTrace(false).GetFrames();
-			var menuDepth = 0;
-			string asker = null, askerMethod = null;
-			foreach (var frame in frames)
-			{
-				var method = frame.GetMethod();
-				var type = method?.DeclaringType;
-				if (type == null || type == typeof(HostTextReader)) continue;
-				var name = type.FullName ?? "";
-				if (asker == null) { asker = name; askerMethod = method.Name; }
-				if (name == "Eamon.Game.Menus.Menu" && method.Name == "Execute") menuDepth++;
-			}
-			if (asker == null) return false;
+			// Unknown context is never a safe point.
+			if (ask?.Asker == null) return false;
 			// An adventure's own command prompt.
-			if (asker.EndsWith(".GetPlayerInputState", StringComparison.Ordinal)) return true;
-			// The Main Hall's top menu only: asked directly by Menu.Execute, not from a sub-menu
-			// (Menu.Execute calls sub-menus recursively), and only while the Main Hall engine is running.
-			var engine = gEngine?.GetType().FullName ?? "";
-			return asker == "Eamon.Game.Menus.Menu" && askerMethod == "Execute" && menuDepth == 1 && engine.StartsWith("EamonMH.", StringComparison.Ordinal);
+			if (ask.Asker.EndsWith(".GetPlayerInputState", StringComparison.Ordinal)) return true;
+			// A hierarchical Main Hall menu waiting for a choice: the Hall, the Village or the Practice Area,
+			// now rooms the player lingers in (plan section 5; Grok #3379). Places and nested prompts are not.
+			return ask.IsHallMenu;
 		}
 
 		public virtual RetCode ReadField(StringBuilder buf, long bufSize, char[] boxChars, string emptyVal, Func<char, bool> validCharFunc)

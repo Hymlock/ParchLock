@@ -118,10 +118,28 @@ var EamonProvider = {
         }
     },
 
+    // Returning from a Hall place, or any room change not made by the move just sent, is the engine
+    // relocating the player: clear the map's previous room, the same way undo/restore do, so MapTopology
+    // learns no edge from it (Grok #3379 Q1).
+    noteRelocation: (world) => {
+        try {
+            var room = world && world.room;
+            var prev = EamonProvider._prevRoom;
+            EamonProvider._prevRoom = room ? { id: room.id, exits: world.exits || [], adventure: world.adventure } : null;
+            if (!room || !prev || prev.id === room.id || prev.adventure !== world.adventure) return;
+            var last = typeof MapTopology !== "undefined" ? String(MapTopology.lastCommand || "").trim().toLowerCase() : "";
+            var moved = prev.exits.some(function (e) {
+                return e.to === room.id && (String(e.command || "").toLowerCase() === last || String(e.label || "").toLowerCase() === last);
+            });
+            if (!moved && typeof MapTopology !== "undefined") { MapTopology.prevRoomId = null; MapTopology.prevRoomName = ""; }
+        } catch (e) {}
+    },
+
     collect: () => {
         if (!EamonProvider.active()) return { sources: [] };
         var world = EamonProvider.world();
         EamonProvider.syncMapScope(world);
+        EamonProvider.noteRelocation(world);
         if (!world || !world.room) {
             // Structural, and empty on purpose: there is no room to map or act in right now.
             return {
@@ -136,7 +154,8 @@ var EamonProvider = {
             return {
                 label: e.label, command: e.command || e.label, prop: null,
                 targetRoomId: e.to != null ? e.to : null, targetRoomName: e.toName || "",
-                isNonCardinal: false, ambiguousDiagonal: false, hinted: false, confidence: 0.95
+                // Hall places are named exits, not directions (adventure exits are always compass).
+                isNonCardinal: e.compass === false, ambiguousDiagonal: false, hinted: false, confidence: 0.95
             };
         });
         return {
@@ -151,7 +170,10 @@ var EamonProvider = {
             exits: exits,
             hudMetrics: [],
             // The command verbs, as the submit-button command list and autocomplete read a story's verbs.
-            specialCommands: ((world.vocabulary && world.vocabulary.commands) || []).map(function (c) {
+            specialCommands: world.special ? world.special.map(function (c) {
+                // A Hall room's own commands (Examine your abilities, Leave the universe), sent as the engine key.
+                return { label: c.label, command: c.command, source: "ram-special" };
+            }) : ((world.vocabulary && world.vocabulary.commands) || []).map(function (c) {
                 return { label: c.verb, command: c.verb, source: "dictionary-verb" };
             }),
             probe: {
