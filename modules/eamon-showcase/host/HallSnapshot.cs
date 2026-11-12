@@ -20,6 +20,11 @@ namespace ParchLock.EamonHost
 		internal bool IsMainHallEngine => Eamon.Game.Plugin.Globals.gEngine is EamonMH.Framework.Plugin.IEngine;
 		/// <summary>A hierarchical Main Hall menu (Hall, Village, Practice Area) waiting for a choice.</summary>
 		internal bool IsHallMenu => IsMainHallEngine && Asker == "Eamon.Game.Menus.Menu" && Method == "Execute" && MenuDepth >= 1 && MenuDepth <= 3;
+		/// <summary>Upstream's outer chamber: "Press D for desk or M for men", the first thing the Main Hall asks.</summary>
+		internal bool IsOuterChamber => IsMainHallEngine && Method == "Execute" && AskerType != null
+			&& typeof(EamonMH.Framework.Menus.ActionMenus.IOuterChamberMenu).IsAssignableFrom(AskerType);
+		/// <summary>A Hall prompt that takes a typed line and is translated to the engine's key (Hall menus, the outer chamber).</summary>
+		internal bool IsHallLine => IsHallMenu || IsOuterChamber;
 
 		// Relies on type and method names: the engine must stay untrimmed (PublishTrimmed=false).
 		internal static AskContext Current()
@@ -79,7 +84,31 @@ namespace ParchLock.EamonHost
 			new HallObject { Id = 109, Name = "Great Tapestry", Aliases = new[] { "tapestry", "lands" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Tapestry.ToString() } },
 			new HallObject { Id = 104, Name = "Stones of the Fallen", Aliases = new[] { "stones", "stone", "names" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Stones.ToString(), ["read"] = HallKeys.Stones.ToString() }, Readable = true },
 		};
-		static readonly Dictionary<string, string> VerbWords = new Dictionary<string, string> { ["x"] = "examine", ["look at"] = "examine", ["l at"] = "examine", ["examine"] = "examine", ["read"] = "read", ["climb"] = "climb", ["go down"] = "climb", ["descend"] = "climb", ["sit by"] = "sit", ["sit at"] = "sit", ["sit"] = "sit", ["ask"] = "ask", ["talk to"] = "ask", ["listen to"] = "ask" };
+		// The outer chamber (upstream OuterChamberMenu), as a room of its own: its desk, the sign over it and the men drinking
+		// beer, each answering with upstream's own key. Joining the men is upstream's joke death; it is offered like any other
+		// choice, because the author intended it (operator 2026-11-12).
+		const long OuterChamberId = 4;
+		static readonly HallObject[] OuterChamberObjects =
+		{
+			new HallObject { Id = 121, Name = "desk", Aliases = new[] { "cubbyhole", "registration desk" }, Verbs = new Dictionary<string, string> { ["examine"] = "D", ["go to"] = "D" } },
+			new HallObject { Id = 122, Name = "sign", Aliases = new[] { "register sign" }, Verbs = new Dictionary<string, string> { ["examine"] = "", ["read"] = "" }, Readable = true },
+			new HallObject { Id = 123, Name = "men drinking beer", Aliases = new[] { "men", "women", "beer", "drinkers" }, Verbs = new Dictionary<string, string> { ["examine"] = "", ["join"] = "M" } },
+		};
+		/// <summary>A Translate result that answers from the room's own text instead of sending a key.</summary>
+		internal const string Describe = "\u0001";
+		/// <summary>Upstream's own words for the outer chamber's things (OuterChamberMenu).</summary>
+		internal static string DescribeText(string name) =>
+			name == "sign" ? "Over the desk is a sign which says:  REGISTER HERE OR ELSE!"
+			: name == "men drinking beer" ? "Many men and women are guzzling beer and there is loud singing and laughter."
+			: null;
+		static Level OuterChamberLevel()
+		{
+			var level = new Level();
+			level.Exits.Add(new Exit { label = "desk", command = "D", to = null, toName = null, compass = false });
+			level.Commands.Add(new Special { label = "Join the men drinking beer", command = "M" });
+			return level;
+		}
+		static readonly Dictionary<string, string> VerbWords = new Dictionary<string, string> { ["x"] = "examine", ["look at"] = "examine", ["l at"] = "examine", ["examine"] = "examine", ["read"] = "read", ["climb"] = "climb", ["go down"] = "climb", ["descend"] = "climb", ["sit by"] = "sit", ["sit at"] = "sit", ["sit"] = "sit", ["ask"] = "ask", ["talk to"] = "ask", ["listen to"] = "ask", ["go to"] = "go to", ["go over to"] = "go to", ["join"] = "join" };
 		sealed class Special { public string label, command; }
 		sealed class Level { public List<Exit> Exits = new List<Exit>(); public List<Special> Commands = new List<Special>(); }
 
@@ -147,6 +176,7 @@ namespace ParchLock.EamonHost
 		static (long Id, string Name, Level Level)? Where(AskContext ctx)
 		{
 			if (ctx == null || !ctx.IsMainHallEngine) return null;
+			if (ctx.IsOuterChamber) return (Base + OuterChamberId, "Outer Chamber", OuterChamberLevel());
 			if (ctx.IsHallMenu)
 			{
 				var room = LevelRooms[ctx.MenuDepth - 1];
@@ -171,7 +201,7 @@ namespace ParchLock.EamonHost
 				adventure = WorldName,
 				room = new { id = w.Id, name = w.Name, lit = true },
 				exits = w.Level.Exits.Select(e => new { e.label, e.command, e.to, e.toName, e.door, e.compass }),
-				objects = (w.Id == Base + 1 ? MainHallObjects : Array.Empty<HallObject>()).Select(o => new
+				objects = (w.Id == Base + 1 ? MainHallObjects : w.Id == Base + OuterChamberId ? OuterChamberObjects : Array.Empty<HallObject>()).Select(o => new
 				{
 					id = Base + o.Id, name = o.Name, parent = (long?)null, kind = "artifact", aliases = o.Aliases,
 					@fixed = true, readable = o.Readable, climb = o.Climb, state = ""
@@ -181,7 +211,8 @@ namespace ParchLock.EamonHost
 				playerId = Base + 300000,
 				special = w.Level.Commands.Select(c => new { c.label, c.command }),
 				// The Hall's own words: its object verbs, so ParchLock offers exactly these (no Z verbs).
-				vocabulary = w.Id == Base + 1 ? new { commands = new[] { new { verb = "examine", synonyms = new[] { "x" } }, new { verb = "read", synonyms = Array.Empty<string>() }, new { verb = "climb", synonyms = Array.Empty<string>() } }, preps = Array.Empty<string>() } : null
+				vocabulary = w.Id == Base + 1 ? new { commands = new[] { new { verb = "examine", synonyms = new[] { "x" } }, new { verb = "read", synonyms = Array.Empty<string>() }, new { verb = "climb", synonyms = Array.Empty<string>() } }, preps = Array.Empty<string>() }
+					: w.Id == Base + OuterChamberId ? new { commands = new[] { new { verb = "examine", synonyms = new[] { "x" } }, new { verb = "read", synonyms = Array.Empty<string>() }, new { verb = "join", synonyms = Array.Empty<string>() } }, preps = Array.Empty<string>() } : null
 			});
 		}
 
@@ -196,7 +227,7 @@ namespace ParchLock.EamonHost
 			var t = (reply ?? "").Trim();
 			if (t.Length == 0) return "";
 			if (t.Length == 1 && valid != null && valid(char.ToUpperInvariant(t[0]))) return t;
-			var level = ctx.IsHallMenu ? LevelFor(ctx.MenuDepth) : null;
+			var level = ctx.IsHallMenu ? LevelFor(ctx.MenuDepth) : ctx.IsOuterChamber ? OuterChamberLevel() : null;
 			if (level == null) return null;
 			var lower = t.ToLowerInvariant();
 			if (lower.StartsWith("go ")) lower = lower.Substring(3).Trim();
@@ -205,15 +236,17 @@ namespace ParchLock.EamonHost
 				if (string.Equals(e.label, lower, StringComparison.OrdinalIgnoreCase) || (e.compass && e.label == compassWord)) return e.command;
 			foreach (var c in level.Commands)
 				if (string.Equals(c.label, t, StringComparison.OrdinalIgnoreCase)) return c.command;
-			// "<verb> <object>" for a Hall object: the object's key for that verb.
-			if (ctx.MenuDepth == 1)
+			// "<verb> <object>" for a Hall object: the object's key for that verb. An empty key answers from the room text
+			// itself (the sign, the drinkers): the prompt is shown again (Translate's caller refuses an empty result).
+			var objects = ctx.IsOuterChamber ? OuterChamberObjects : ctx.MenuDepth == 1 ? MainHallObjects : null;
+			if (objects != null)
 				foreach (var verb in VerbWords.Keys.OrderByDescending(k => k.Length))
 				{
 					if (!lower.StartsWith(verb + " ")) continue;
 					var noun = lower.Substring(verb.Length).Trim();
 					if (noun.StartsWith("the ")) noun = noun.Substring(4);
-					var obj = MainHallObjects.FirstOrDefault(o => string.Equals(o.Name, noun, StringComparison.OrdinalIgnoreCase) || o.Aliases.Contains(noun));
-					if (obj != null && obj.Verbs.TryGetValue(VerbWords[verb], out var objKey)) return objKey;
+					var obj = objects.FirstOrDefault(o => string.Equals(o.Name, noun, StringComparison.OrdinalIgnoreCase) || o.Aliases.Contains(noun));
+					if (obj != null && obj.Verbs.TryGetValue(VerbWords[verb], out var objKey)) return objKey.Length > 0 ? objKey : Describe + obj.Name;
 				}
 			return null;
 		}

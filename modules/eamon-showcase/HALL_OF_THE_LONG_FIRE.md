@@ -108,7 +108,12 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - Built 2026-11-12: the Skald ("ask skald" / examine: lists the adventures, tells an open one from its own intro story, or its own module description when it has none, with its author line; a locked one gets "That tale is not yet yours to hear"; starts nothing). Verified live.
 - Built 2026-11-12: the Great Tapestry (examine tapestry: the five tiers as regions, lit where open and in shadow where locked, with locked regions showing only how many adventures they hold; adventures completed this cycle in gold thread, outgrown ones in grey thread; the character's figure in the furthest open region, with the New Game+ cycle mark). It reads the same records as the Quest Board and starts nothing. Verified live (fresh character: Novice Initiative lit, four regions in shadow).
 - Decided (Grok #3452): text only. The World Map view's routing, travel, fog and exit chips all act on the room graph, so five synthetic tier "rooms" would be campaign data passing as a room map. Owner question for later: a graphic campaign map as a new view.
-- Not yet: outer chamber room; phone.
+- Built 2026-11-12: the Outer Chamber (upstream OuterChamberMenu, "Press D for desk or M for men") is a Hall room of its
+  own: the desk (go to / examine -> D, the registration flow), the sign (read: "REGISTER HERE OR ELSE!") and the men
+  drinking beer (examine; "Join the men drinking beer" -> M, upstream's joke death, offered like any choice because
+  the author intended it, operator 2026-11-12). It takes a typed line like the Hall menus; an empty or unknown line
+  asks again (an empty line would otherwise fall to upstream's men branch). Verified live.
+- Not yet: phone.
 
 ## After Grok review #3385
 

@@ -112,7 +112,7 @@ namespace ParchLock.EamonHost
 			}
 			// A Hall menu is answered with a line, so ParchLock's normal command path (radial, map, fast
 			// travel, history, transcript) can drive it; the engine still gets one valid menu key.
-			var hallMenu = ask.IsHallMenu;
+			var hallMenu = ask.IsHallLine;
 			string typedLine = null;
 			HostBridge.World(world ?? "");
 			// Save/restore/new-adventure events follow this prompt's world snapshot (the page needs the room first).
@@ -135,19 +135,29 @@ namespace ParchLock.EamonHost
 				{
 					// Operator decision 2026-11-11: an empty Enter at the top Hall menu is ignored instead of the
 					// upstream default "X" (leave the universe); in the Village and Practice Area X only walks north.
-					if (ask.MenuDepth == 1 && string.IsNullOrWhiteSpace(reply))
+					// At the outer chamber an empty line would fall to upstream's "else" branch (the men drinking beer), so it
+					// is asked again too; a choice is only ever the player's own.
+					if ((ask.MenuDepth == 1 || ask.IsOuterChamber) && string.IsNullOrWhiteSpace(reply))
 					{
-						HostTextReader.Refuse();   // not silent (Grok #3385)
+						HostTextReader.Refuse(ask);   // not silent (Grok #3385)
 						App.RefreshOutputWindowText();
 						continue;
 					}
 					typedLine = reply;
 					// Never let an unrecognised line become the default "X" (leave the universe): ask again.
 					reply = HallSnapshot.Translate(ask, reply, validCharFunc);
+					if (reply != null && reply.StartsWith(HallSnapshot.Describe, StringComparison.Ordinal))
+					{
+						// Reading the sign or looking at the drinkers: upstream's own words, then the same question again.
+						gEngine.Out.Print("{0}", HallSnapshot.DescribeText(reply.Substring(1)) ?? "");
+						HostTextReader.Ask(ask);
+						App.RefreshOutputWindowText();
+						continue;
+					}
 					if (reply == null)
 					{
 						// Say why nothing happened (Grok #3381: silent re-asks leave screen-reader users guessing).
-						HostTextReader.Refuse();
+						HostTextReader.Refuse(ask);
 						App.RefreshOutputWindowText();
 						continue;
 					}
@@ -202,14 +212,22 @@ namespace ParchLock.EamonHost
 			if (ask.Asker.EndsWith(".GetPlayerInputState", StringComparison.Ordinal)) return true;
 			// A hierarchical Main Hall menu waiting for a choice: the Hall, the Village or the Practice Area,
 			// now rooms the player lingers in (plan section 5; Grok #3379). Places and nested prompts are not.
-			return ask.IsHallMenu;
+			// The outer chamber is the Hall's front room: nothing is in progress there either.
+			return ask.IsHallLine;
 		}
 
 		/// <summary>A refused Hall line: say so, then show the menu prompt again as the engine prints it.</summary>
-		internal static void Refuse()
+		internal static void Refuse(AskContext ask = null)
 		{
-			gEngine.Out.Print("Choose one of the places or numbers shown.");
-			gEngine.Out.Write("{0}{1}[{2}X]: ", Environment.NewLine, gEngine.EnableScreenReaderMode ? "Your choice " : "", gEngine.EnableScreenReaderMode ? "Default " : "");
+			gEngine.Out.Print("{0}", ask != null && ask.IsOuterChamber ? "Choose the desk (D) or the men (M)." : "Choose one of the places or numbers shown.");
+			Ask(ask);
+		}
+
+		/// <summary>The waiting question again, as the engine prints it.</summary>
+		internal static void Ask(AskContext ask)
+		{
+			if (ask != null && ask.IsOuterChamber) gEngine.Out.Write("{0}Press D for desk or M for men: ", Environment.NewLine);
+			else gEngine.Out.Write("{0}{1}[{2}X]: ", Environment.NewLine, gEngine.EnableScreenReaderMode ? "Your choice " : "", gEngine.EnableScreenReaderMode ? "Default " : "");
 		}
 
 		public virtual RetCode ReadField(StringBuilder buf, long bufSize, char[] boxChars, string emptyVal, Func<char, bool> validCharFunc)
