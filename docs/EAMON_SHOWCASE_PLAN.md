@@ -422,6 +422,7 @@ the update recall uses the same subclass. Saves are named by each adventure's ow
 Hall fileset name differs (Demo Adventure; all 23 checked). Verified: paid recall from the Training Ground with a
 saved slot charged upstream's fee exactly (22 - 99 = -77, with upstream's lien text), and that slot's transcript and
 map snapshot left ParchLock. Regression 8/8.
+Grok #3464: the recall and carry-over chain (#3453 to #3463) is accepted end to end on Windows. Still to do before it is done: the APK probe (a character afield in a changed adventure on the phone build, and one save-package round trip), at the next APK build.
 
 **Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
 promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign

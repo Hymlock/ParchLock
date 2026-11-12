@@ -92,6 +92,7 @@ namespace ParchLock.EamonHost
 			try
 			{
 				var dir = (workDir ?? "").Replace('\\', '/').TrimEnd('/').Split('/').Last();
+				if (dir.Length == 0) return null;
 				var path = Entry.BasePath + "/Adventures/" + dir + "/MODULE.DAT";
 				if (!File.Exists(path)) return null;
 				var name = Field(Read(path), "Name").Trim();
@@ -110,6 +111,9 @@ namespace ParchLock.EamonHost
 		public override void RecallCharacterFromAdventure()
 		{
 			base.RecallCharacterFromAdventure();
+			// Upstream recurses through nested fileset files; this runs at each level. The inner level finds its fileset in
+			// the pushed table; at the outer level a differing name may miss and mark the fileset name, a harmless no-op
+			// (MarkSavesDeleted de-duplicates) (Grok #3464 n1).
 			var character = (gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
 			if (character == null || character.Status == Status.Adventuring || string.IsNullOrWhiteSpace(AdventureName)) return;
 			var fileset = gDatabase?.FilesetTable?.Records?.FirstOrDefault(f => string.Equals((f.Name ?? "").Trim(), AdventureName.Trim(), StringComparison.Ordinal));
