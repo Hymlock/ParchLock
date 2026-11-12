@@ -23,7 +23,10 @@ var EamonProvider = {
         a.takeable = true;
         if (o.worn) { a.worn = true; a.isWorn = true; }
         if (o.wearable) { a.wearable = true; a.clothing = true; }
-        if (o.container) a.container = true;
+        // Equipment drop targets follow the game: an in-container takes "put X in Y" only while open; an
+        // on-container is a supporter ("put X on Y").
+        if (o.inside) { a.container = true; a.open = a.isOpen = !!o.open; a.openable = true; }
+        if (o.onTop) a.supporter = true;
         if (o.edible) a.edible = true;
         if (o.fixed || o.door) { a.takeable = false; a.scenery = true; }
         // Eamon object facts that select the matching rows of the shared ActionSynth.rules table.

@@ -123,6 +123,8 @@ namespace ParchLock.EamonHost
 		{
 			id = _adventure + ArtifactBase + a.Uid, name = a.Name, parent, kind = "artifact", aliases = a.Synonyms ?? Array.Empty<string>(),
 			worn, ready = self.Weapon == a.Uid, wearable = a.Wearable != null, container = a.GeneralContainer != null,
+			// Container kind and open state (IsOpen is a field read: Field2 == 0 for an in-container).
+			inside = a.InContainer != null, onTop = a.OnContainer != null, open = a.InContainer != null && a.InContainer.IsOpen(),
 			weapon = a.GeneralWeapon != null, readable = a.Readable != null, edible = a.Edible != null, drinkable = a.Drinkable != null,
 			light = a.LightSource != null, door = a.DoorGate != null, @fixed = a.IsUnmovable(), state = a.StateDesc ?? ""
 		};
