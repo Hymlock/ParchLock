@@ -49,8 +49,8 @@ namespace ParchLock.EamonHost
 				var fresh = Entry.BasePath + "/Adventures/" + dir + "/FRESHMEAT.DAT";
 				if (!File.Exists(fresh))
 				{
-					// Fail closed (Grok #3454 A3): nothing is set by hand and nothing is deleted.
-					lines.Add(adventure + " was updated, and the character who went into it could not be found there. Nothing was changed; you can keep a copy of this campaign with Download Package in the save manager.");
+					// Fail closed (Grok #3454 A3, #3456 N1): nothing is set by hand; the desk's own recall remains.
+					lines.Add(adventure + " was updated. The character who went into it is still listed as adventuring there and could not be returned automatically; the registration desk can recall them. You can keep a copy of this campaign with Download Package in the save manager.");
 					continue;
 				}
 				ICharacterRef found = null;
@@ -65,7 +65,7 @@ namespace ParchLock.EamonHost
 				catch (Exception) { found = null; }
 				if (found == null || found.Record.Status != Status.Adventuring)
 				{
-					lines.Add(adventure + " was updated, and the character who went into it could not be found in the guild's register. Nothing was changed; you can keep a copy of this campaign with Download Package in the save manager.");
+					lines.Add(adventure + " was updated. The character who went into it is still listed as adventuring there and could not be returned automatically; the registration desk can recall them. You can keep a copy of this campaign with Download Package in the save manager.");
 					continue;
 				}
 				try
@@ -77,7 +77,7 @@ namespace ParchLock.EamonHost
 				finally { engine.Character = previous; }
 				lines.Add(found.Record.Status != Status.Adventuring
 					? adventure + " was updated. " + found.Record.Name + " has been returned to the Main Hall as they were when they set out; progress and saved games in that adventure were lost. No fee was charged."
-					: adventure + " was updated, but " + found.Record.Name + " could not be returned from it. Nothing was changed; you can keep a copy of this campaign with Download Package in the save manager.");
+					: adventure + " was updated. " + found.Record.Name + " is still listed as adventuring there and could not be returned automatically; the registration desk can recall them. You can keep a copy of this campaign with Download Package in the save manager.");
 			}
 			if (lines.Count > 0) HostBridge.Lifecycle("package-recall", JsonSerializer.Serialize(lines));
 		}

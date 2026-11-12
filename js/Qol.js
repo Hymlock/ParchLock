@@ -635,6 +635,10 @@ var ParchLockQol = {
             // An Eamon campaign imports only into the open Eamon story, validated before anything is written.
             var eamonVm = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__;
             if (data.EamonCampaign != null && !(eamonVm && eamonVm.validCampaign && eamonVm.validCampaign(data.EamonCampaign))) throw new Error(eamonVm ? "Invalid Eamon campaign in this package" : "This package holds an Eamon campaign: open the Eamon story before importing it");
+            // A campaign from another Showcase release imports when its save format is this one's (no format counts as
+            // the first); it is then carried over to this package when the story reopens (Grok #3456 D1).
+            if (data.EamonCampaign != null && eamonVm.campaignSchema != null && (data.EamonCampaign.schema == null ? 1 : data.EamonCampaign.schema) !== eamonVm.campaignSchema)
+                throw new Error("This package's Eamon campaign was saved in a format this Showcase cannot read");
             if (data.Map.some((room, index) => room.Id !== index || Object.values(room.Exits).some(id => !Number.isInteger(id) || id < 0 || id >= data.Map.length))) throw new Error("Invalid room connections");
             if (data.Save.some(entry => !entry || typeof entry.Key !== "string" || typeof entry.Data !== "string" || !/^(dirent|content):(save|data|transcript|command):[^:]+:.+/.test(entry.Key))) throw new Error("Invalid save entries");
             if (data.Save.length && !ParchLock.GameId) throw new Error("Wait for the story identity before importing saves");

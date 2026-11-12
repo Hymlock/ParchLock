@@ -302,6 +302,14 @@ var ParchLock = {
         if (ParchLock.StoryPath) ParchLock.GameFilename = ParchLock.StoryPath.indexOf("games/") === 0
             ? ParchLock.StoryPath.slice(6)
             : ParchLock.StoryPath;
+        // An approved Eamon Showcase package is one campaign across its releases: its story file name carries the
+        // package digest, so ParchLock's own records for it (maps, map slots, radial and sheet preferences, save-package
+        // story name) are keyed by a stable id instead, and a package update does not hide them (Grok #3456 D2). Every
+        // other story keeps its file name. Older digest-keyed records are left in place, never deleted.
+        try {
+            var showcaseId = typeof EamonPackage !== "undefined" && EamonPackage.idFromStory ? EamonPackage.idFromStory(ParchLock.StoryPath) : null;
+            if (showcaseId && Object.prototype.hasOwnProperty.call(EamonPackage.trusted(), showcaseId)) ParchLock.GameFilename = "eamon/showcase";
+        } catch (e) {}
         var game = ModuleLibrary.find(ParchLock.StoryPath);
 
         if (game) {

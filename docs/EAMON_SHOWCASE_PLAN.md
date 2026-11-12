@@ -382,12 +382,29 @@ the slot still restorable); a changed save format (refused, nothing changed). No
 save package from another package version, refused today); and ParchLock's maps, transcripts and saves for Eamon
 are keyed by the story file name, which contains the package digest, so a new package does not show them (sent to
 Grok). "Start a new campaign" after a refusal deletes user data: owner question 6.
+Grok #3456 (built 2026-11-12): an adventure the package did not change keeps every saved entry as it is; the
+allow-list applies only to changed folders and System/Bin (F1). Measured: Eamon never keeps an unsaved live world
+(a relaunch after moving, with no package change, starts again at the adventure's entrance; only save slots carry
+state), so this is a safeguard. A failed recall now says the character is still adventuring there and the desk can
+recall them (N1). Gear survives the recall (sword, leather armour and shield listed afterwards and after later
+reboots, N2). A campaign saved before fingerprints existed treats every adventure as changed, so on its first boot
+under this build every character afield is recalled once (N3, for the owner). Fingerprints cover adventure data
+files only: a change to an adventure's compiled code that alters its saved state needs the save-format number
+raised by hand (N4). Each adventure's slots exist only while its one character is afield there, so comparing
+fingerprints at each package change is equivalent to per-slot fingerprints, provided campaign files are never
+written without the meta record in the same transaction (accepted). D2 built: an approved Showcase package's
+ParchLock records (maps, map slots, radial and sheet preferences, save-package story name) are keyed by the stable
+id "eamon/showcase", so they survive a package update (verified: the Training Ground and Main Hall maps were there
+after the update); other stories are unchanged; older digest-keyed maps are left in place and not read (owner
+question 7). Learning and transcripts are keyed by the executable digest and story path by design and still start
+fresh with each package. D1 built: a save package from another Showcase release imports when its save format
+matches, then carries over at reopen (not yet probed live). Regression 8/8.
 
 **Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
 promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
 map wanted later (a new view, not the room map)? (3) Keyboard access to the Equipment sheet is out of scope for this
 release (it is missing for every engine); a shared follow-up? (4) The armour-master warning judges one visit
-(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings. (6) After a refused campaign, a "Start a new campaign" button (it deletes the old campaign, so it waits for you).
+(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings. (6) After a refused campaign, a "Start a new campaign" button (it deletes the old campaign, so it waits for you). (7) Maps made under earlier dev packages stay under their old keys and are not shown; reading them once into the stable key is a small follow-up if wanted. (8) Learning and transcripts restart with each package.
 
 ## 10. Work packages
 
