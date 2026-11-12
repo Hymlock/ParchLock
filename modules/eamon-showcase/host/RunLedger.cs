@@ -94,6 +94,9 @@ namespace ParchLock.EamonHost
 			var key = characterId + "|" + adventure;
 			if (!ledger.TryGetValue(key, out var runs)) ledger[key] = runs = new List<string>();
 			if (runs.Contains(_run)) return "already credited";
+			// Operator policy (2026-11-12): a clear is credited once per character and adventure; a fresh replay
+			// plays normally (the engine still pays its own rewards) but earns no second credit.
+			if (runs.Count > 0) return "already cleared";
 			runs.Add(_run);
 			Directory.CreateDirectory(Path.GetDirectoryName(LedgerPath));
 			File.WriteAllText(LedgerPath, JsonSerializer.Serialize(ledger));
