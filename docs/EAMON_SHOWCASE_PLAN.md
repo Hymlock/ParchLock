@@ -124,7 +124,10 @@ Alternate Beginner's Cave use the engine's Beginners entry check (a weapon carri
 club 20, sword 0; RT IntroStory.cs:128-152), and Eamon raises those abilities in combat, so a character will
 usually enter only one of them. The Wayfarers Inn has no entry check and The Training Ground refuses only armour
 expertise above 25 (its IntroStory.cs:28-38). A legal route to tier 2 therefore exists: one Beginners adventure
-plus The Wayfarers Inn or The Training Ground. Still to prove the same way for tiers 2 to 5, and in play.
+plus The Wayfarers Inn or The Training Ground. Tiers 2 to 5: no adventure refuses entry in source (the only
+IntroStory refusals in the collection are the four Beginners adventures and The Training Ground; The Tower of Eamon
+and Escape from Mt. Moon have no custom code and run on the stock engine), so every gate has a source-legal route.
+Still to prove in play.
 
 **What counts as a clear.** Each adventure gets an outcome contract written from its source: returned
 alive, quest success as an exact state condition, failure, death, abort. The engine's "finish adventure"
