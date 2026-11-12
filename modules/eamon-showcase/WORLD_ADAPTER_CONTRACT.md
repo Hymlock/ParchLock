@@ -27,7 +27,7 @@ IDs can collide across kinds and adventures. Character campaign identity is sepa
 knowledge ownership. Imported/created character gear may have dynamic IDs: its allocation and restore
 semantics must be traced before declaring those IDs stable across characters or saves.
 
-Main Hall is a menu hub, not an invented navigable room. A selected Hall character can still supply
+Superseded by operator direction (2026-11-11, plan section 2): the Main Hall, Village and Practice Area and their places are presented as rooms; see `HALL_AS_ROOMS.md`. Original text: Main Hall is a menu hub, not an invented navigable room. A selected Hall character can still supply
 native Equipment/stats under Yourself. Before a character is selected, expose honest absence rather
 than a guessed inventory root or another character's gear.
 

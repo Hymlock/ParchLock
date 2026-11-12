@@ -26,8 +26,15 @@ source and corrected below.
   only, each with a written disposition.
 - Size: 1,214 rooms, 1,447 artifacts, 512 monsters, 1,484 effects; 550 adventure C# files (about 35,200
   lines, 18 of the 20 player adventures have custom code); engine about 50,000 lines; Main Hall 3,700.
-- Data are gzip-compressed SharpSerializer XML `.DAT` files. 12 directions. Gold cap 999,999. The Main Hall
-  is a menu hub with no rooms, so it has no map.
+- Data are gzip-compressed SharpSerializer XML `.DAT` files. 12 directions. Gold cap 999,999. Upstream, the
+  Main Hall is a menu hub with no rooms. **Operator direction (2026-11-11), replacing the earlier "no map"
+  line:** in ParchLock the Hall is played like any other ParchLock world. The Hall, the Village and the
+  Practice Area are rooms (the engine's own menu texts already say "Head north into the Main Hall",
+  "Wander south into the Practice Area"), and each place (weapons shop, wizard, banker, adventure desk,
+  the Village shops, the Practice Area trainers) is a room reached from them. All of it sits on the
+  Hall's map and is reached with the existing direction buttons, radial, fast travel, history and
+  transcript, by sending the engine's own menu keys. Actions that are not places (examine abilities,
+  leave the universe) attach to the room as commands. Nothing in the engine changes.
 
 ## 3. Fixed rules
 
