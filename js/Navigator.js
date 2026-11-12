@@ -17,7 +17,7 @@ var Navigator = {
         try { if (typeof Actionable !== "undefined" && Actionable.cancelTapMove) Actionable.cancelTapMove(); } catch (eTap) {}
         // A visible threat here already: no route starts (and narration is not cut off).
         var threat = Navigator.routeThreat();
-        if (threat) { Navigator.ClearQueue(Navigator.threatReason(threat)); return; }
+        if (threat) { Navigator.ClearQueue(Navigator.threatReason(threat), "Route Not Started"); return; }
         // D159 (operator-reported): during fast travel the narration "gets
         // stuck on your original location". Every room the route passes
         // THROUGH prints a description, each is queued for speech, and speech
@@ -73,7 +73,7 @@ var Navigator = {
         } catch (e) {}
     },
 
-    ClearQueue: (reason) => {
+    ClearQueue: (reason, title) => {
         clearTimeout(Navigator.Timer);
         Navigator.stopSpeechHold();       // D159: never leave narration muted
         Navigator.Awaiting = null;
@@ -82,7 +82,7 @@ var Navigator = {
         if (reason) {
             Navigator.Interrupted = true;
             Navigator.InterruptReason = reason;
-            try { Message.Show("Route Interrupted", reason); } catch (e) {}
+            try { Message.Show(title || "Route Interrupted", reason); } catch (e) {}
         }
     },
 
@@ -110,7 +110,10 @@ var Navigator = {
                 // really walking it again re-records the edge and clears the
                 // block, so a door that was locked and is later opened heals
                 // itself.
-                try { Navigator.demoteFailedEdge(pending); } catch (eD) {}
+                // Eamon's exits are the engine's own list, and a refused step there (an enemy the game has not
+                // shown, "You can't do that with unfriendlies about!") does not disprove the edge (Grok #3396 T2).
+                var eamonStory = typeof EamonProvider !== "undefined" && EamonProvider.active && EamonProvider.active();
+                if (!eamonStory) { try { Navigator.demoteFailedEdge(pending); } catch (eD) {} }
                 Navigator.ClearQueue("The last movement did not reach the expected room.");
                 return;
             }
@@ -122,6 +125,9 @@ var Navigator = {
         var threat = Navigator.routeThreat();
         if (threat) {
             var heard = Navigator.textSinceStep();
+            // Everything on screen is handled before the hold lifts, so the pending read-aloud debounce cannot
+            // speak these lines a second time (Grok #3396 T1).
+            try { if (typeof ReadAloud !== "undefined" && ReadAloud.seedSilent) ReadAloud.seedSilent(); } catch (eSeed) {}
             Navigator.stopSpeechHold();
             try { if (heard && typeof ReadAloud !== "undefined" && ReadAloud.onStoryDelta) ReadAloud.onStoryDelta(heard); } catch (eSpeak) {}
             Navigator.ClearQueue(Navigator.threatReason(threat));
@@ -220,8 +226,9 @@ var Navigator = {
     // The story text printed since the last route step was sent (the room the route stopped in).
     textSinceStep: () => {
         try {
-            var anchor = Navigator._stepAnchor, out = [], after = !anchor;
-            if (typeof ReadAloud === "undefined" || !ReadAloud.bufferRoots) return "";
+            var anchor = Navigator._stepAnchor, out = [], after = false;
+            // No anchor, no text: never the whole scrollback (Grok #3396 T3).
+            if (!anchor || typeof ReadAloud === "undefined" || !ReadAloud.bufferRoots) return "";
             ReadAloud.bufferRoots().forEach(function (root) {
                 Array.prototype.forEach.call(root.querySelectorAll(".BufferLine"), function (el) {
                     if (el === anchor) { after = true; return; }

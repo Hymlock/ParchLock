@@ -593,7 +593,18 @@ var EquipmentUI = {
         var sourceRef = typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(item) : { noun: item.name, unique: true };
         var targetRef = target.self ? null : (typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(target) : { noun: target.name, unique: true });
         if (!sourceRef.unique || (targetRef && !targetRef.unique)) return null;
-        if (target.self) return "take " + sourceRef.noun;
+        if (target.self) {
+            // Eamon takes a thing out of a container with its own REMOVE <obj> FROM <container> (EamonRT
+            // RemoveCommand, which redirects to GET); GET finds only what lies in the room. A thing already held
+            // directly has nothing to take.
+            if (typeof EamonProvider !== "undefined" && EamonProvider.active && EamonProvider.active()) {
+                var holder = item.parentId != null ? m.byId[String(item.parentId)] : null;
+                if (!holder) return null;
+                var holderRef = typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(holder) : { noun: holder.name, unique: true };
+                return holderRef.unique ? "remove " + sourceRef.noun + " from " + holderRef.noun : null;
+            }
+            return "take " + sourceRef.noun;
+        }
         var a = target.attrs || {};
         if (a.container && a.open) return "put " + sourceRef.noun + " in " + targetRef.noun;
         if (a.supporter) return "put " + sourceRef.noun + " on " + targetRef.noun;

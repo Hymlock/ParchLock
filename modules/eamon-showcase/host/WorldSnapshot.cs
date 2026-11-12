@@ -84,11 +84,18 @@ namespace ParchLock.EamonHost
 			for (var pass = 0; pass < 3; pass++)
 				foreach (var a in artifacts)
 				{
-					if (!a.Seen || shown.Contains(a.Uid) || !a.IsCarriedByContainer()) continue;
+					if (shown.Contains(a.Uid) || !a.IsCarriedByContainer()) continue;
 					var holder = a.GetCarriedByContainerUid();
 					if (!shown.Contains(holder)) continue;
 					var holderRecord = db.ArtifactTable.FindRecord(holder);
 					var held = holderRecord != null && (holderRecord.IsCarriedByMonster(MonsterType.CharMonster, true) || holderRecord.IsWornByMonster(MonsterType.CharMonster, true));
+					// Opening a container lists its contents by name without marking them Seen ("Within the box, you
+					// see an ornate knife"), so the engine's own rule for contents the player can reach decides, the
+					// one EamonRT's Engine uses when it hands a container's contents to the player (Engine.cs: Seen, or
+					// not an in-container, or the container is open, or it shows its contents when closed).
+					var reachable = holderRecord != null && (a.GetCarriedByContainerContainerType() != Eamon.Framework.Primitive.Enums.ContainerType.In
+						|| (holderRecord.InContainer != null && holderRecord.InContainer.IsOpen()) || holderRecord.ShouldExposeInContentsWhenClosed());
+					if (!a.Seen && !reachable) continue;
 					(held ? inventory : objects).Add(Describe(a, _adventure + ArtifactBase + holder, self));
 					shown.Add(a.Uid);
 				}

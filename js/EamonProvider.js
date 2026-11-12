@@ -93,12 +93,25 @@ var EamonProvider = {
         return !!vocab && !!vocab[String(word || "").toLowerCase()];
     },
 
+    aliasWords: (aliases) => {
+        var out = [];
+        (aliases || []).forEach(function (a) {
+            var text = String(a || "").toLowerCase().trim();
+            if (text && out.indexOf(text) < 0) out.push(text);
+            // Grammar particles ("of", "the") name nothing and would read as a word shared between objects.
+            text.split(/[^a-z0-9'-]+/).forEach(function (w) { if (w && !/^(a|an|the|of|and|or|to)$/.test(w) && out.indexOf(w) < 0) out.push(w); });
+        });
+        return out;
+    },
+
     item: (o, world, held) => ({
         id: o.id,
         name: o.name,
         parentId: o.parent != null ? o.parent : null,
         attrs: EamonProvider.attrs(o),
-        aliases: (o.aliases || []).slice(),
+        // Eamon synonyms can be phrases ("scrap of parchment"); ParchLock's references match word by word, so each
+        // phrase also gives its words (as vocabulary() already does).
+        aliases: EamonProvider.aliasWords(o.aliases),
         confidence: 0.95,
         discovered: true,
         // Eamon's own verbs for this thing in its present state; the shared menu path offers these as given.
