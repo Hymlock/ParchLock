@@ -57,7 +57,10 @@ namespace ParchLock.EamonHost
 			{
 				_adventure = rt; _adventureName = gEngine.GetModule()?.Name ?? "";
 				try { _dieAtPrompt = gEngine.GetGameState()?.Die ?? -99; } catch (Exception) { _dieAtPrompt = -98; }
-				ClearContracts.Evaluate();
+				// Once the adventure has decided to finish (ExitType set before Shutdown runs), its remaining prompts are
+				// Shutdown's own key presses, after it has already moved reward items to limbo (The Wayfarers Inn's deed,
+				// MainLoop.cs:65): the contract keeps the last evaluation from before the finish.
+				if (rt.ExitType == Eamon.Framework.Primitive.Enums.ExitType.None) ClearContracts.Evaluate();
 				try { RunLedger.Track(); } catch (Exception) { }
 				// The character of THIS adventure only (no carry-over from an earlier one, Grok #3410 F1).
 				try { _character = rt.Character != null ? RunLedger.CharacterId(rt.Character.Uid, rt.Character.Name ?? "") : null; } catch (Exception) { _character = null; }
