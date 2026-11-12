@@ -69,12 +69,13 @@ namespace ParchLock.EamonHost
 		// The Main Hall's objects (HALL_OF_THE_LONG_FIRE.md). Shield Wall and Stair reuse upstream keys 5 and 6.
 		static readonly HallObject[] MainHallObjects =
 		{
+			new HallObject { Id = 105, Name = "Long Fire", Aliases = new[] { "fire", "embers", "hearth" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Fire.ToString(), ["sit"] = HallKeys.Fire.ToString() } },
 			new HallObject { Id = 101, Name = "Shield Wall", Aliases = new[] { "shields", "shield", "wall" }, Verbs = new Dictionary<string, string> { ["examine"] = "5" } },
 			new HallObject { Id = 102, Name = "stair", Aliases = new[] { "stairs", "steps" }, Verbs = new Dictionary<string, string> { ["examine"] = "6", ["climb"] = "6" }, Climb = true },
 			new HallObject { Id = 103, Name = "Guild Ledger", Aliases = new[] { "ledger", "book" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Ledger.ToString(), ["read"] = HallKeys.Ledger.ToString() }, Readable = true },
 			new HallObject { Id = 104, Name = "Stones of the Fallen", Aliases = new[] { "stones", "stone", "names" }, Verbs = new Dictionary<string, string> { ["examine"] = HallKeys.Stones.ToString(), ["read"] = HallKeys.Stones.ToString() }, Readable = true },
 		};
-		static readonly Dictionary<string, string> VerbWords = new Dictionary<string, string> { ["x"] = "examine", ["look at"] = "examine", ["l at"] = "examine", ["examine"] = "examine", ["read"] = "read", ["climb"] = "climb", ["go down"] = "climb", ["descend"] = "climb" };
+		static readonly Dictionary<string, string> VerbWords = new Dictionary<string, string> { ["x"] = "examine", ["look at"] = "examine", ["l at"] = "examine", ["examine"] = "examine", ["read"] = "read", ["climb"] = "climb", ["go down"] = "climb", ["descend"] = "climb", ["sit by"] = "sit", ["sit at"] = "sit", ["sit"] = "sit" };
 		sealed class Special { public string label, command; }
 		sealed class Level { public List<Exit> Exits = new List<Exit>(); public List<Special> Commands = new List<Special>(); }
 

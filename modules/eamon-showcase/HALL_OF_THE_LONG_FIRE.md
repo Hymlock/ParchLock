@@ -104,3 +104,12 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - `HallSnapshot`: Main Hall objects (Shield Wall -> 5, stair -> 6, Guild Ledger -> L, Stones -> F) with a Hall vocabulary (examine, read, climb); `Translate` maps "<verb> <object>" to the key; hidden items are neither exits nor room commands; the Main Hall engine is recognised by type, not name. A Hall line echoes the typed text, not the key.
 - Verified: the four names are underlined; the radial offers examine/read/climb from ParchLock's shared verb table; read ledger lists the roster with in the hall / away / fallen; examine stones answers; climb stair arrives in the Village; ordinary regression 8/8.
 - Not yet: Long Fire, Skald, Quest Board, Trophy Wall, Great Tapestry (need package E); outer chamber room; phone.
+
+## After Grok review #3385
+
+- Hard rule: `LoadPluginClassMappings01` fails the whole Main Hall launch if any `[ClassMappings]` class in the scanned (host) assembly has no resolvable interface. Every attributed host class must name its interface explicitly.
+- `IsMainHallEngine` is a type check; it must stay in step with the `EngineType` line (HallEngine broke the old name check).
+- Hidden keys are symbols (# ledger, @ stones, & fire), never letters a player types as a command (L was "look").
+- The long description prints on entry; later passes print one line that still names the objects.
+- The Long Fire is an object now. Its true current answer is that no tale is waiting; the debriefing comes with package E.
+- These first objects are read-outs and a movement (examine, read, climb, sit). The operator's "various purposes" uses come with the campaign record and later slices.

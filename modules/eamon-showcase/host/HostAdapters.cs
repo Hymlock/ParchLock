@@ -19,6 +19,8 @@ namespace ParchLock.EamonHost
 		[JSImport("read", "eamon-host")] internal static partial string Read(string kind, int size, string fill, string mask, string defaultText, bool safePoint);
 		/// <summary>What the player can perceive now, as JSON; empty when the engine is not at an adventure's own prompt.</summary>
 		[JSImport("world", "eamon-host")] internal static partial void World(string json);
+		/// <summary>An Eamon SAVE or RESTORE completed: "save"/"restore" and the save's ParchLock name.</summary>
+		[JSImport("lifecycle", "eamon-host")] internal static partial void Lifecycle(string kind, string name);
 		[JSImport("sleep", "eamon-host")] internal static partial void Sleep(int milliseconds);
 		[JSImport("stage", "eamon-host")] internal static partial void Stage(string path, byte[] bytes);
 		[JSImport("unstage", "eamon-host")] internal static partial void Unstage(string path);
@@ -81,6 +83,7 @@ namespace ParchLock.EamonHost
 			else if (safePoint)
 			{
 				try { world = WorldSnapshot.Build(); } catch (Exception) { world = null; }
+				try { SaveEvents.Report(); } catch (Exception) { }
 			}
 			// A Hall menu is answered with a line, so ParchLock's normal command path (radial, map, fast
 			// travel, history, transcript) can drive it; the engine still gets one valid menu key.
@@ -103,14 +106,19 @@ namespace ParchLock.EamonHost
 				{
 					// Operator decision 2026-11-11: an empty Enter at the top Hall menu is ignored instead of the
 					// upstream default "X" (leave the universe); in the Village and Practice Area X only walks north.
-					if (ask.MenuDepth == 1 && string.IsNullOrWhiteSpace(reply)) continue;
+					if (ask.MenuDepth == 1 && string.IsNullOrWhiteSpace(reply))
+					{
+						HostTextReader.Refuse();   // not silent (Grok #3385)
+						App.RefreshOutputWindowText();
+						continue;
+					}
 					typedLine = reply;
 					// Never let an unrecognised line become the default "X" (leave the universe): ask again.
 					reply = HallSnapshot.Translate(ask, reply, validCharFunc);
 					if (reply == null)
 					{
 						// Say why nothing happened (Grok #3381: silent re-asks leave screen-reader users guessing).
-						gEngine.Out.Print("Choose one of the places or numbers shown.");
+						HostTextReader.Refuse();
 						App.RefreshOutputWindowText();
 						continue;
 					}
@@ -151,6 +159,13 @@ namespace ParchLock.EamonHost
 			// A hierarchical Main Hall menu waiting for a choice: the Hall, the Village or the Practice Area,
 			// now rooms the player lingers in (plan section 5; Grok #3379). Places and nested prompts are not.
 			return ask.IsHallMenu;
+		}
+
+		/// <summary>A refused Hall line: say so, then show the menu prompt again as the engine prints it.</summary>
+		internal static void Refuse()
+		{
+			gEngine.Out.Print("Choose one of the places or numbers shown.");
+			gEngine.Out.Write("{0}{1}[{2}X]: ", Environment.NewLine, gEngine.EnableScreenReaderMode ? "Your choice " : "", gEngine.EnableScreenReaderMode ? "Default " : "");
 		}
 
 		public virtual RetCode ReadField(StringBuilder buf, long bufSize, char[] boxChars, string emptyVal, Func<char, bool> validCharFunc)

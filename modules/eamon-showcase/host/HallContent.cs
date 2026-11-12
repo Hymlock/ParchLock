@@ -27,16 +27,25 @@ namespace ParchLock.EamonHost
 	/// <summary>The hidden Hall choices for objects (not printed; the upstream menu looks unchanged).</summary>
 	internal static class HallKeys
 	{
-		internal const char Ledger = 'L', Stones = 'F';
+		// Symbols nobody types as a command (Grok #3385 C1: 'L' collided with the universal "l" for look).
+		internal const char Ledger = '#', Stones = '@', Fire = '&';
 	}
 
 	/// <summary>The Hall's description before upstream's own subtitle: the names ParchLock underlines.</summary>
 	[ClassMappings(typeof(EamonMH.Framework.Menus.IMhMenu))]
 	public class HallMhMenu : EamonMH.Game.Menus.MhMenu
 	{
+		/// <summary>Set by the Hall menu's Startup: the next subtitle is the first since entering the Hall.</summary>
+		internal static bool FreshEntry = true;
+
 		public override void PrintMainHallMenuSubtitle()
 		{
-			gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. At the far end a stair leads down toward the Village.");
+			if (FreshEntry)
+			{
+				FreshEntry = false;
+				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. At the far end a stair leads down toward the Village.");
+			}
+			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen and the stair are here.");
 			base.PrintMainHallMenuSubtitle();
 		}
 	}
@@ -45,10 +54,17 @@ namespace ParchLock.EamonHost
 	[ClassMappings(typeof(IMainHallMenu))]
 	public class HallMainHallMenu : EamonMH.Game.Menus.HierarchicalMenus.MainHallMenu
 	{
+		public override void Startup()
+		{
+			base.Startup();
+			HallMhMenu.FreshEntry = true;   // the long description once per entry (Grok #3385 C2)
+		}
+
 		public HallMainHallMenu() : base()
 		{
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Ledger; x.LineText = ""; x.SubMenu = new LedgerMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Stones; x.LineText = ""; x.SubMenu = new StonesMenu(); }));
+			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Fire; x.LineText = ""; x.SubMenu = new FireMenu(); }));
 		}
 	}
 
@@ -75,6 +91,22 @@ namespace ParchLock.EamonHost
 		}
 
 		public LedgerMenu() { Buf = gEngine.Buf; }
+	}
+
+	/// <summary>
+	/// The Long Fire. Its purpose is the debriefing of the latest return (ParchLock's debriefing panel, plan
+	/// package E). Until that record exists, the true answer is that no tale is waiting.
+	/// </summary>
+	public class FireMenu : Menu
+	{
+		public override void Execute()
+		{
+			gOut.Print("{0}", gEngine.LineSep);
+			gOut.Print("You sit by the Long Fire. The embers have no new tale for you yet.");
+			gEngine.In.KeyPress(Buf);
+		}
+
+		public FireMenu() { Buf = gEngine.Buf; }
 	}
 
 	/// <summary>The Stones of the Fallen: the names of characters who died, from the character file.</summary>
