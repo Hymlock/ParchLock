@@ -77,6 +77,16 @@ namespace ParchLock.EamonHost
 				try { legend = ProgressionGate.Legend(); } catch (Exception) { legend = null; }
 				if (legend != null) { gEngine.Out.Print("{0}", legend); gEngine.Out.Write("{0}Enter the selection or X to exit: ", Environment.NewLine); }
 			}
+			// A character afield in an adventure the new package changed comes home before anything else in the Main Hall
+			// (UpdateRecall.cs): at its first prompt, before the registration desk, which would otherwise offer upstream's
+			// paid recall. The recalled record is saved and committed with the -dgs deletions at once.
+			if (gEngine is EamonMH.Framework.Plugin.IEngine && UpdateRecall.Pending)
+			{
+				try { UpdateRecall.RunIfDue(); } catch (Exception) { }
+				HallCheckpoint.SaveModified();
+				Persistence.Flush();
+				SaveEvents.AfterFlush();
+			}
 			if (safePoint)
 			{
 				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();

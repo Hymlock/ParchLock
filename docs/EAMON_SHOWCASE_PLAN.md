@@ -362,12 +362,32 @@ Built 2026-11-12 (groundwork, no behaviour change): every commit records the ins
 campaign stamp, the campaign export carries it, and boot notes whether it changed (verified live). Findings sent to
 Grok before B is built (#3453): an in-progress adventure is itself overlay state (FRESHMEAT and rewritten data files),
 so it needs the slot fingerprint rule too; and the interim C rule would refuse the campaign after every rebuild.
+Grok #3454 (accepted, built 2026-11-12): the interim C rule is dropped; B and C have separate triggers (the package
+digest drives B and changes every build; a save-format number, changed only by hand and not before the owner's
+review, drives C). Eamon deletes an adventure's slots whenever its character returns to the Hall, so slots exist
+only for an adventure a character is in, and the slot rule becomes the afield rule: each adventure folder has a
+fingerprint (a digest of its pristine package files, computed by the engine worker); on a package change the page
+compares them, keeps only campaign-owned files (rosters, PL*.DAT, each adventure's PLRUN, SAVEGAME, FRESHMEAT,
+FRESHGEAR, EAMONCFG and numbered slot files; never a path the package ships except the two rosters), drops every
+other entry and deletion marker so the new package wins, and does not resume into a changed adventure. At the Main
+Hall's first prompt, before the registration desk (which would otherwise offer its paid recall), the host returns
+that adventure's character through upstream's own inner recall, free; upstream's -dgs hop then deletes that
+adventure's old game state and slots (upstream's meaning of recall; the message says so). A missing FRESHMEAT fails
+closed with a plain message. A changed save format refuses the campaign and changes nothing. The package itself
+ships no file in the campaign-owned patterns (checked). ParchLock's own Eamon state lives outside the campaign
+files (see the finding below). Verified on Windows with three test packages: afield in a changed adventure (free
+recall, gold unchanged, no desk question, slots and game state deleted, plain message); in the Hall (15 stale
+deletion markers dropped, campaign kept, one notice); afield in an unchanged adventure while another changed (resumed,
+the slot still restorable); a changed save format (refused, nothing changed). Not yet: the APK path; B4 (importing a
+save package from another package version, refused today); and ParchLock's maps, transcripts and saves for Eamon
+are keyed by the story file name, which contains the package digest, so a new package does not show them (sent to
+Grok). "Start a new campaign" after a refusal deletes user data: owner question 6.
 
 **Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
 promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
 map wanted later (a new view, not the room map)? (3) Keyboard access to the Equipment sheet is out of scope for this
 release (it is missing for every engine); a shared follow-up? (4) The armour-master warning judges one visit
-(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings.
+(#3446). (5) Pyramid effect 51; the Tower and Mt. Moon contract readings. (6) After a refused campaign, a "Start a new campaign" button (it deletes the old campaign, so it waits for you).
 
 ## 10. Work packages
 

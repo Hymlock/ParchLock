@@ -97,7 +97,10 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       await page.waitForFunction(() => /added|already present|rejected/.test((document.querySelector('#pl-module-results') || {}).innerText || ''), null, {timeout: 180000});
       receipt.importMs = Date.now() - importStarted;
       receipt.importResult = await page.evaluate(() => document.querySelector('#pl-module-results').innerText);
-      const entry = await page.evaluate(() => ModuleLibrary.all().filter(g => g.Format === 'eamon').map(g => ({path: g.Path, title: g.Title, compat: g.Compat, size: g.Size}))[0] || null);
+      // The entry of the package just imported (its digest names the story), so a profile that already holds another
+      // Showcase version opens the new one.
+      const digest = require('crypto').createHash('sha256').update(require('fs').readFileSync(process.env.PARCHLOCK_APP_IMPORT)).digest('hex');
+      const entry = await page.evaluate(d => { const all = ModuleLibrary.all().filter(g => g.Format === 'eamon').map(g => ({path: g.Path, title: g.Title, compat: g.Compat, size: g.Size})); return all.find(g => g.path.indexOf(d) >= 0) || all[0] || null; }, digest);
       receipt.libraryEntry = entry;
       console.log('IMPORT ' + JSON.stringify({ms: receipt.importMs, result: receipt.importResult, entry}));
       if (!entry) throw new Error('import produced no library entry: ' + receipt.importResult);
