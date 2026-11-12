@@ -2,6 +2,15 @@
 // Shared parsers remain in StatTracker/StatusGridDecoder.
 // No current numeric readings or title dispatch belong here.
 var ModuleStatFacts = {
+    "format:eamon": {
+        "command": "status",
+        "fields": [
+            "health"
+        ],
+        "replyFamily": "eamon-status",
+        "outcome": "line",
+        "evidence": "2026-11-11 Eamon CS 3.1.0 STATUS in The Beginner's Cave (Damage Taken d/h, Gold, In bank, attributes, Armor Expertise, Weight carried); The Vile Grimoire of Jaldi'al answers \"You are at N percent health.\""
+    },
     "ef6530a73b3a3b868f0c872a28944bba407d0e209bf73892af0f38a9ef6a3a48": {
         "command": "status",
         "fields": [
