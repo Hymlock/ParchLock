@@ -80,6 +80,8 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     const page = cdp ? context.pages()[0] : await context.newPage();
     if (cdp) receipt.scope = 'Eamon inside the ParchLock play screen, on device: ' + (await page.evaluate(() => navigator.userAgent));
     page.on('console', m => { if (process.env.PARCHLOCK_APP_ALLLOGS || m.type() === 'error' || m.type() === 'warning') logs.push({type: m.type(), text: m.text().slice(0, 300)}); });
+    // PARCHLOCK_APP_ACCEPT_DIALOGS=1: answer browser confirm/alert dialogs with OK, as a player would.
+    if (process.env.PARCHLOCK_APP_ACCEPT_DIALOGS) page.on('dialog', d => { receipt.dialogs = (receipt.dialogs || []).concat(d.message().slice(0, 120)); d.accept().catch(() => {}); });
     page.on('pageerror', e => logs.push({type: 'pageerror', text: String(e).slice(0, 400)}));
     const began = Date.now();
     let story = process.env.PARCHLOCK_APP_STORY || 'eamon/showcase.eamon';

@@ -479,7 +479,9 @@ var StatTracker = {
         "named-counter-score": /^You have achieved (-?\d+) out of a possible (\d+) ([A-Za-z][A-Za-z ]{0,24})(?:, in (\d+) turns?)?\.$/i,
         "labelled-holiness": /^Your current ([A-Za-z]+) is (-?\d+) out of a possible \1 of (\d+), in (\d+) moves?\.$/i,
         "possessive-magic": /^([A-Za-z][A-Za-z '-]*)'s magic is currently at (-?\d+)\.$/i,
-        "eamon-status": /Damage Taken:\s*\d+\s*\/\s*\d+|You are at \d+ percent health\./i
+        // Every line of the Eamon CS STATUS block, and the room status the engine reprints after a command,
+        // so a quiet probe owns its whole reply (measured: The Beginner's Cave, The Vile Grimoire).
+        "eamon-status": /Damage Taken:\s*\d+\s*\/\s*\d+|You are at \d+ percent health\.|^\s*(?:Intellect|Hardiness|Weapon Abilities|Gold|Armor|Weight carried|(?:Axe|Bow|Club|Spear|Sword)\s*)\s*:|^\[[^\]\n]+\]$|^Obvious (?:exits|paths):/i
     },
 
     measuredMetricProbes: function () {
@@ -544,6 +546,7 @@ var StatTracker = {
              ['armor expertise','Armor expertise',/Armor Expertise:\s*(\d+)%/i]].forEach(function(row){const m=row[2].exec(custom);if(m)values[row[0]]={label:row[1],value:+m[1],unit:row[0]==='armor expertise'?'percent':undefined};});
             const weight=/Weight carried:\s*(\d+)\s*\/\s*(\d+)/i.exec(custom);
             if(weight)values.weight={label:'Weight carried',value:+weight[1],max:+weight[2]};
+            if(!Object.keys(values).length)return false;   // never fall through to the generic counter families
         }
         if(Object.keys(values).length){
             var customModel=StatTracker.model();
