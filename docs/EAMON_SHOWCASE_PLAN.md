@@ -537,8 +537,12 @@ G. Independent adversarial review, final candidate on real targets, release.
    armour and shield, sword readied, no invented pack (the nested-prompt clearing probe). EQ-DROP-SELF-3 in part: Yourself
    offers Wear for a held shield and no Ready for the already readied sword; Ready for an unreadied weapon still needs a
    second weapon. By design, not a defect: Yourself also lists the game dictionary's verbs as typed-line suggestions
-   (shared design D214 U5; they fill the line, they do not send). Harmless extra: an openable container's radial offers
-   both Open and Close whatever its state. Still to do: EQ-TREE-3, EQ-NEST-1, EQ-DROP-UNDER-1, EQ-DROP-ROOM-1, Ready in
+   (shared design D214 U5; they fill the line, they do not send; Grok #3466 ACCEPT). Fixed (Grok #3466): an openable
+   container's radial offered both Open and Close whatever its state, a wrong option; the shared open/close filter
+   (ActionSynth.authoredCommandAllowed via AttributeSchema.containerOpenState) now gets the engine's exact open state
+   from the Eamon adapter, null (both, as before) unless the id is exactly one in-container; a locked container is
+   closed, so Open stays and the game says it is locked. Verified: closed backpack offers only OPEN, open only CLOSE;
+   Glk stories untouched (the hook is Eamon-only), regression 8/8. Still to do: EQ-TREE-3, EQ-NEST-1, EQ-DROP-UNDER-1, EQ-DROP-ROOM-1, Ready in
    EQ-DROP-SELF-3, and EQ-GESTURE-2 on the phone.
 
 ## 12. Still to be evidenced (not disputes)

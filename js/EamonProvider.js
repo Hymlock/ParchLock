@@ -93,6 +93,18 @@ var EamonProvider = {
         eamon: { kind: o.kind, ready: !!o.ready, weapon: !!o.weapon, readable: !!o.readable, light: !!o.light, door: !!o.door, state: o.state || "", reaction: o.reaction || "" }
     }),
 
+    // An in-container's open state exactly as the engine reports it in the current snapshot (Grok #3466), for the shared
+    // open/close filter (AttributeSchema.containerOpenState). Null unless the id names exactly one in-container: the
+    // shared code then offers both forms, as for any story it cannot read. A locked container is closed, so OPEN stays
+    // offered and the game itself says it is locked.
+    containerOpenState: (objectId) => {
+        var world = EamonProvider.active() ? EamonProvider.world() : null;
+        if (!world || objectId == null) return null;
+        var matches = (world.objects || []).concat(world.inventory || []).filter(function (o) { return o && String(o.id) === String(objectId); });
+        if (matches.length !== 1 || matches[0].kind !== "artifact" || !matches[0].inside) return null;
+        return !!matches[0].open;
+    },
+
     // Fast travel stops for a known, visible threat (plan section 7): a monster the game has shown in this room
     // whose reaction is Enemy. Only what the snapshot already holds (seen, lit), so a hidden one is never revealed.
     routeThreat: () => {

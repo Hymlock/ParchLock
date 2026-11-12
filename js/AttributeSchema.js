@@ -702,6 +702,11 @@ var AttributeSchema = {
     },
 
     containerOpenState: function (mem, objectId) {
+        // Eamon: the engine's own open state of an in-container, so the shared open/close filter offers only the form
+        // that applies (Grok #3466); null (both forms, as before) when not exactly one known container.
+        if (typeof EamonProvider !== "undefined" && EamonProvider.active && EamonProvider.active()) {
+            try { return EamonProvider.containerOpenState ? EamonProvider.containerOpenState(objectId) : null; } catch (eEamon) { return null; }
+        }
         try {
             var authority = AttributeSchema.containerStateAuthority(mem, objectId);
             if (authority.status === "valid") return authority.logicalOpen;
