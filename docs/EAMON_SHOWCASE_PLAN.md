@@ -417,9 +417,12 @@ G. Independent adversarial review, final candidate on real targets, release.
    now never type into an Eamon nested prompt (refused, "The route command was not accepted."), and the Equipment
    sheet is empty there. The player's own answers still reach a nested prompt (Grok #3441): a spoken answer goes
    through (verified live: a save named by voice), and an empty Send there is an answer, never a repeat of the last
-   command; only ParchLock-originated sources are refused (an allow-list, so new callers fail closed). The unused EamonProvider.nativeCommands path is removed. Still to do: the rest, recoverInventory and
-   nested-prompt clearing checks, and retiring the unused EamonProvider.nativeCommands (without reviving its early
-   return).
+   command; only ParchLock-originated sources are refused (an allow-list, so new callers fail closed). The unused EamonProvider.nativeCommands path is removed. Done 2026-11-12: nested-prompt clearing verified live
+   (after a save at "Enter new name:" the game is back at the top level and the Equipment tree matches the engine:
+   sword readied, leather armor and shield worn); recoverInventory checked from source as inert for Eamon (room
+   objects are never worn and monster-held artifacts are never listed, so an empty inventory recovers nothing and no
+   monster can be promoted to holder). EQ-GESTURE-5 sent to Grok (#3450): Equipment has no keyboard path for any
+   engine, so proposed out of scope for this release. Still to do: the remaining EQ checks.
 
 ## 12. Still to be evidenced (not disputes)
 
