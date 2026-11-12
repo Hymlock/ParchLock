@@ -112,6 +112,9 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
     await page.locator('#message #close').click({timeout: 8000}).catch(() => {});
     await ready();
     receipt.firstPromptMs = Date.now() - began;
+    // PARCHLOCK_APP_PROFILE=1: sample the page's main thread for the rest of the run (CPU profile summary).
+    let profiler = null;
+    if (process.env.PARCHLOCK_APP_PROFILE) { profiler = await context.newCDPSession(page); await profiler.send('Profiler.enable'); await profiler.send('Profiler.setSamplingInterval', {interval: 1000}); await profiler.send('Profiler.start'); }
     if (process.env.PARCHLOCK_HOST_FAIL_RESULT) await page.evaluate(() => window.__probeEngineWorker.onmessage({data:{kind:'result',value:'error: injected engine result'}}));
     const rules = script.rules.map(([pattern, answer]) => ({pattern: new RegExp(pattern), answer}));
     for (let n = 0; n < (script.max || 200); n++) {
@@ -144,6 +147,14 @@ const script = JSON.parse(fs.readFileSync(process.env.PARCHLOCK_HOST_SCRIPT, 'ut
       await ready();
     }
     await page.waitForFunction(() => { const vm=window.__PARCHLOCK_EAMON__; return !vm || vm.state.commitError || vm.state.pendingCommits === 0; },null,{timeout:10000});
+    if (profiler) {
+      const {profile} = await profiler.send('Profiler.stop');
+      const byId = new Map(profile.nodes.map(n => [n.id, n])), self = new Map(), total = profile.samples.length;
+      const interval = (profile.endTime - profile.startTime) / Math.max(1, total) / 1000;
+      profile.samples.forEach(id => { const n = byId.get(id), f = n.callFrame; const key = (f.functionName || '(anon)') + ' ' + f.url.replace(/^.*\//, '') + ':' + (f.lineNumber + 1) + ':' + (f.columnNumber + 1); self.set(key, (self.get(key) || 0) + 1); });
+      receipt.profile = [...self.entries()].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([k, c]) => Math.round(c * interval) + ' ms ' + k);
+      console.log('PROFILE ' + receipt.profile.join(' | '));
+    }
     const final = await page.evaluate(() => { const s = window.__PARCHLOCK_EAMON__ ? window.__PARCHLOCK_EAMON__.state : null; return s && {phase: s.phase, restored: s.restored, commits: s.commits, pendingCommits: s.pendingCommits, commitError: s.commitError, turns: s.turns, events: s.events}; });
     if (receipt.readyTimeout) receipt.dom = await page.evaluate(() => ({inputs: [...document.querySelectorAll('input,textarea')].map(i => i.id + '|' + i.className + '|' + (i.offsetParent ? 'shown' : 'hidden')), windows: [...document.querySelectorAll('#windowport > *')].map(w => w.id + '|' + w.className), pending: !!window.__PARCHLOCK_EAMON__}));
     // PARCHLOCK_APP_EVAL: an expression evaluated in the page at the end, for inspecting ParchLock's own state.

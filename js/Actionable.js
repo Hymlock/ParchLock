@@ -172,6 +172,9 @@ var Actionable = {
         } catch (eEncoding) {}
         try {
             var mem = ZRamProvider.getMem();
+            // No Z-machine loaded (Glulx, Eamon): there is no dictionary encoding to compare. Returning here
+            // avoids a thrown-and-caught exception per call, which dominated whole turns on long transcripts.
+            if (!mem) return w;
             ZRamReader.hasDictionaryWord(mem, w);
             var dict = ZRamReader._dictWordCache || ZRamReader.parseDictionary(mem);
             if (dict.words[w]) return "@" + dict.words[w];
