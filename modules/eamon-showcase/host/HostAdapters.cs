@@ -82,6 +82,7 @@ namespace ParchLock.EamonHost
 				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();
 				Persistence.Flush();
 				SaveEvents.AfterFlush();
+				try { if (gEngine is EamonMH.Framework.Plugin.IEngine) RunLedger.ObserveCharacters(gDatabase?.CharacterTable?.Records ?? new System.Collections.Generic.List<Eamon.Framework.ICharacter>()); } catch (Exception) { }
 				try { Debrief.ReportIfDue(); } catch (Exception) { }
 			}
 			if (!(gEngine is EamonMH.Framework.Plugin.IEngine)) SaveEvents.Track();
@@ -141,19 +142,6 @@ namespace ParchLock.EamonHost
 					}
 				}
 
-				if (adventureChoice)
-				{
-					string reason = null;
-					try { reason = ProgressionGate.LockReason(ProgressionGate.AdventureFor(reply)); } catch (Exception) { reason = null; }
-					if (reason != null)
-					{
-						gEngine.Out.Print("{0}", reason);
-						gEngine.Out.Write("{0}Enter the selection or X to exit: ", Environment.NewLine);
-						App.RefreshOutputWindowText();
-						continue;
-					}
-				}
-
 				buf.Clear();
 				foreach (var typed in reply)
 				{
@@ -163,6 +151,21 @@ namespace ParchLock.EamonHost
 					if (termCharFunc != null && termCharFunc(typed)) break;
 				}
 				if (buf.Length == 0 && !string.IsNullOrEmpty(emptyVal)) buf.Append(emptyVal);
+				// The tier gate reads the selection exactly as the menu will (filtered and truncated buffer, then
+				// Convert.ToInt64), so no spelling of a locked number gets past it (Grok #3429 G1).
+				if (adventureChoice)
+				{
+					string reason = null;
+					try { reason = ProgressionGate.LockReason(ProgressionGate.AdventureFor(buf.ToString())); } catch (Exception) { reason = null; }
+					if (reason != null)
+					{
+						buf.Clear();
+						gEngine.Out.Print("{0}", reason);
+						gEngine.Out.Write("{0}Enter the selection or X to exit: ", Environment.NewLine);
+						App.RefreshOutputWindowText();
+						continue;
+					}
+				}
 				if (buf.Length > 0 || (emptyAllowed && string.IsNullOrEmpty(emptyVal)) || anyKey) break;
 			}
 

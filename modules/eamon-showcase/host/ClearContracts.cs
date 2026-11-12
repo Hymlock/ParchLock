@@ -61,11 +61,11 @@ namespace ParchLock.EamonHost
 			["The Tower of Eamon"] = @"{ ""quest"": { ""artifact"": 22, ""carried"": true, ""recurse"": true } }",
 			// DharmaQuest: the gods' ceremony when praying in room 68 (PrayCommand.cs:122-296), a scripted finish; its last
 			// prompt is the key press at :288 with the player still in room 68 (ExitType is set after it). Leaving any
-			// other way reads false. For Grok's review.
+			// other way reads false. Ro==68 holds at every prompt in Olympus; safe because room 68 has no exits (Grok #3429).
 			["DharmaQuest"] = @"{ ""quest"": { ""gameState"": ""Ro"", ""equals"": 68 } }",
 			// Firestorm: stop Thorak (monster 27, starts in room 85; intro effects 200-206, 47). A slain single monster
 			// goes to limbo (EamonRT MonsterDies), and Firestorm's own code reads "not in limbo" as Thorak alive
-			// (Room.cs:23-25). Its exit is ungated. For Grok's review.
+			// (Room.cs:23-25). Its exit (room 86 south) is itself closed while Thorak lives (Room.GetDir). Accepted, Grok #3429.
 			["Firestorm"] = @"{ ""quest"": { ""monster"": 27, ""inLimbo"": true } }",
 			// Wrenhold's Secret Vigil: after the exit's Y the orb goes to limbo and, only on success, King Argas hands over
 			// the magic elven bow (artifact 50, starts in limbo) before the bow-naming prompt (PlayerMoveCheckState.cs
@@ -94,9 +94,11 @@ namespace ParchLock.EamonHost
 			["Stronghold of Kahr-Dur"] = @"{ ""quest"": { ""all"": [ { ""monster"": 22, ""inLimbo"": true }, { ""monster"": 26, ""inPlayerRoom"": true } ] } }",
 			// A Runcible Cargo: three scripted victories: the bandit commander (27) and soldiers (28) dead, or the bandit
 			// prince (38) and Praetorian Guards (39) dead (GetPlayerInputState.cs:246-277), or the detonator with the
-			// explosive (43) in the cargo (129) carried by the prince and the gates (137) closed (UseCommand.cs:63-89). The
-			// capitulation ending (SayCommand.cs:227-241) matches none (Grok #3402, #3407). For Grok's review.
-			["A Runcible Cargo"] = @"{ ""quest"": { ""any"": [ { ""all"": [ { ""monster"": 27, ""inLimbo"": true }, { ""monster"": 28, ""inLimbo"": true } ] }, { ""all"": [ { ""monster"": 38, ""inLimbo"": true }, { ""monster"": 39, ""inLimbo"": true } ] }, { ""all"": [ { ""artifact"": 43, ""inContainer"": 129 }, { ""artifact"": 129, ""carriedByMonster"": 38 }, { ""artifact"": 137, ""open"": false } ] } ] } }",
+			// explosive (43) in the cargo (129) carried by the prince and the gates (137) closed (UseCommand.cs:63-89), sampled
+			// while USE of the detonator (45) is the running command: the capitulation ending (SayCommand.cs:227-241) can leave
+			// the same world (the gates slam shut by themselves in room 93, PrintPlayerRoomState.cs:271-283), so only the
+			// command tells them apart (Grok #3429). Branches 1-2 accepted by Grok #3429.
+			["A Runcible Cargo"] = @"{ ""quest"": { ""any"": [ { ""all"": [ { ""monster"": 27, ""inLimbo"": true }, { ""monster"": 28, ""inLimbo"": true } ] }, { ""all"": [ { ""monster"": 38, ""inLimbo"": true }, { ""monster"": 39, ""inLimbo"": true } ] }, { ""all"": [ { ""artifact"": 43, ""inContainer"": 129 }, { ""artifact"": 129, ""carriedByMonster"": 38 }, { ""artifact"": 137, ""open"": false }, { ""command"": ""use"", ""dobj"": 45 } ] } ] } }",
 			["Alternate Beginner's Cave"] = @"{ ""quest"": { ""all"": [ { ""monster"": 11, ""inPlayerRoom"": true }, { ""monster"": 11, ""reactionAbove"": ""Neutral"" } ] } }",
 		};
 
@@ -171,6 +173,14 @@ namespace ParchLock.EamonHost
 						return openable.IsOpen() == v.GetBoolean();
 					default: return a.IsInRoomUid(v.GetInt64());
 				}
+			}
+			if (keys.Contains("command"))
+			{
+				// The command the engine is running now (gEngine.CurrState during its Execute): its verb and direct object.
+				if (keys.Length != 2 || !keys.Contains("dobj")) throw new InvalidOperationException("command needs exactly: dobj");
+				var running = (gEngine as EamonRT.Framework.Plugin.IEngine)?.CurrState as EamonRT.Framework.Commands.ICommand;
+				return running != null && string.Equals(running.Verb, c.GetProperty("command").GetString(), StringComparison.OrdinalIgnoreCase)
+					&& running.DobjArtifact != null && running.DobjArtifact.Uid == c.GetProperty("dobj").GetInt64();
 			}
 			if (keys.Contains("zone"))
 			{

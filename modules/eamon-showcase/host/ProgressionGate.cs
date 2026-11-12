@@ -41,10 +41,17 @@ namespace ParchLock.EamonHost
 			return open;
 		}
 
-		/// <summary>Why this adventure cannot be started now, or null. Adventures outside the table (tests) are never locked.</summary>
+		// Upstream's demonstration and test modules ride along in the bundle outside the campaign (not in the release's 20).
+		static readonly HashSet<string> Untiered = new HashSet<string>(StringComparer.Ordinal) { "Eamon Deluxe 5.0 Demo Adventure", "Demo Adventure", "Sample Adventure", "Test Adventure" };
+
+		/// <summary>Why this adventure cannot be started now, or null. A name that is neither in the tier table nor a known
+		/// test module is locked rather than silently opened (Grok #3429 G2).</summary>
 		internal static string LockReason(string adventure, HashSet<string> cleared = null)
 		{
-			if (adventure == null || !Tiers.TryGetValue(adventure.Trim(), out var tier) || tier <= 1) return null;
+			if (adventure == null) return null;
+			if (!Tiers.TryGetValue(adventure.Trim(), out var tier))
+				return Untiered.Contains(adventure.Trim()) ? null : adventure.Trim() + " is not an adventure this Showcase recognises, so it cannot be started.";
+			if (tier <= 1) return null;
 			cleared ??= Cleared();
 			if (tier <= OpenTier(cleared)) return null;
 			var below = Tiers.Count(t => t.Value == tier - 1 && cleared.Contains(t.Key));

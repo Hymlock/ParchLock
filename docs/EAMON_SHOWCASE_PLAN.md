@@ -168,9 +168,11 @@ ledger keeps a cycle per character with every clear (adventure, run, cycle) as h
 use clears from any cycle. Only a credit can open a cycle, so save and restore cannot; a run already credited stays
 "already credited" in any cycle. The player is told in the debriefing ("New Game+: cycle N begins..."), and the
 Quest Board and Trophy Wall show the cycle. Verified live: The Training Ground
-credited on the first exit, "already cleared" on a second run. Open for the operator (found 2026-11-12): under the
-no-quest rule, entering The Training Ground and leaving at once is a clear (verified live), so it can count towards
-the tier 1 gate without any play; decide whether a no-quest adventure needs more than leaving alive. A restored slot that has lost its
+credited on the first exit, "already cleared" on a second run. Operator decision (2026-11-12): completing the adventure is
+required for its credit; leaving alive is not enough. Walking into The Training Ground and straight out was a clear
+under the old no-quest rule (verified live). Every adventure therefore gets a completion requirement from its own
+source; the four that had none (The Training Ground, Beginner's Cave II, The Deep Canyon, Escape from Mt. Moon) are
+being settled with Grok by blind dual investigation. A restored slot that has lost its
 run stamp starts an unbound run, and saves made from it stay unbound: that play-through is never credited until a
 fresh entry or Start Over (fail-closed by design, not a defect). Characters are keyed by a ParchLock id per record
 uid and name; a deleted character recreated with the same name at a recycled uid inherits the old id (known limit).

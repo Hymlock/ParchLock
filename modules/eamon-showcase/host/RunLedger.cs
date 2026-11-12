@@ -81,8 +81,8 @@ namespace ParchLock.EamonHost
 				? JsonSerializer.Deserialize<Dictionary<string, string[]>>(File.ReadAllText(CharactersPath)) ?? new Dictionary<string, string[]>()
 				: new Dictionary<string, string[]>();
 			var key = uid.ToString();
-			if (map.TryGetValue(key, out var entry) && entry.Length == 2 && entry[0] == name) return entry[1];
-			map[key] = new[] { name, Guid.NewGuid().ToString("N") };
+			if (map.TryGetValue(key, out var entry) && entry.Length >= 2 && entry[0] == name && !(entry.Length >= 3 && entry[2] == "gone")) return entry[1];
+			map[key] = new[] { name, Guid.NewGuid().ToString("N"), "" };
 			Directory.CreateDirectory(Path.GetDirectoryName(CharactersPath));
 			File.WriteAllText(CharactersPath, JsonSerializer.Serialize(map));
 			return map[key][1];
@@ -115,6 +115,23 @@ namespace ParchLock.EamonHost
 			if (string.IsNullOrEmpty(characterId) || !ReadLedger().TryGetValue(characterId, out var c)) return (1, cleared);
 			foreach (var clear in c.clears) if (clear.cycle == c.cycle) cleared.Add(clear.adventure);
 			return (c.cycle, cleared);
+		}
+
+		/// <summary>At a Main Hall prompt: a character record that has gone (deleted, its uid free to be recycled) or died
+		/// marks its id as finished, so a new character later given that uid and name starts with no clears (Grok #3429 Q3).</summary>
+		internal static void ObserveCharacters(IEnumerable<Eamon.Framework.ICharacter> characters)
+		{
+			if (!File.Exists(CharactersPath)) return;
+			var map = JsonSerializer.Deserialize<Dictionary<string, string[]>>(File.ReadAllText(CharactersPath)) ?? new Dictionary<string, string[]>();
+			var present = characters.ToDictionary(c => c.Uid.ToString(), c => c);
+			var changed = false;
+			foreach (var entry in map.ToList())
+			{
+				if (entry.Value.Length < 3 || entry.Value[2] == "gone") continue;
+				var finished = !present.TryGetValue(entry.Key, out var record) || record.Status == Eamon.Framework.Primitive.Enums.Status.Dead;
+				if (finished) { map[entry.Key] = new[] { entry.Value[0], entry.Value[1], "gone" }; changed = true; }
+			}
+			if (changed) File.WriteAllText(CharactersPath, JsonSerializer.Serialize(map));
 		}
 
 		/// <summary>Records a clear of this run for this character and adventure. "already credited": this run was

@@ -10,7 +10,8 @@ namespace ParchLock.EamonHost
 {
 	internal static class Debrief
 	{
-		static long? _goldAtChoice;
+		static long? _goldAtChoice, _bankAtChoice;
+		static string _endingCharacter;
 		static int _rankAtChoice;
 		static string _ending;      // set when an adventure plugin returns, cleared once reported
 
@@ -22,13 +23,15 @@ namespace ParchLock.EamonHost
 			var character = HallCharacter;
 			if (character == null) return;
 			_goldAtChoice = character.HeldGold;
+			_bankAtChoice = character.BankGold;
 			try { _rankAtChoice = ProgressionGate.OpenTier(); } catch (Exception) { _rankAtChoice = 0; }
 		}
 
 		/// <summary>At the plugin's return: how the adventure ended (from SaveEvents.AfterPlugin).</summary>
-		internal static void Ended(string adventure, string exitType, long die, string quest, string credit)
+		internal static void Ended(string adventure, string exitType, long die, string quest, string credit, string characterId, int rankBefore)
 		{
-			_ending = JsonSerializer.Serialize(new { adventure, exitType, die, quest, credit });
+			_ending = JsonSerializer.Serialize(new { adventure, exitType, die, quest, credit, rankBefore });
+			_endingCharacter = characterId;
 		}
 
 		/// <summary>At the Main Hall's first safe prompt after the return, after its commit: report the debriefing.</summary>
@@ -41,6 +44,11 @@ namespace ParchLock.EamonHost
 			try { rank = ProgressionGate.OpenTier(); } catch (Exception) { }
 			using var ending = JsonDocument.Parse(_ending);
 			var e = ending.RootElement;
+			// The figures belong to the character who went on the adventure: if another one is signed in now, report the
+			// ending alone (Grok #3429 D2).
+			var sameCharacter = _endingCharacter != null && _endingCharacter == RunLedger.CharacterId(character.Uid, character.Name ?? "");
+			// The rank before is taken at the plugin's return from the ledger, so it survives a relaunch (D3).
+			var rankBefore = e.GetProperty("rankBefore").GetInt32();
 			var payload = JsonSerializer.Serialize(new
 			{
 				adventure = e.GetProperty("adventure").GetString(),
@@ -48,15 +56,19 @@ namespace ParchLock.EamonHost
 				die = e.GetProperty("die").GetInt64(),
 				quest = e.GetProperty("quest").GetString(),
 				credit = e.GetProperty("credit").GetString(),
-				character = character.Name,
-				goldBefore = _goldAtChoice,
-				goldAfter = character.HeldGold,
-				rankBefore = _rankAtChoice > 0 ? ProgressionGate.TierNames[_rankAtChoice] : null,
-				rank = rank > 0 ? ProgressionGate.TierNames[rank] : null,
-				tierOpened = rank > _rankAtChoice && _rankAtChoice > 0 ? rank : 0
+				character = sameCharacter ? character.Name : null,
+				goldBefore = sameCharacter ? _goldAtChoice : null,
+				goldAfter = sameCharacter ? character.HeldGold : (long?)null,
+				bankBefore = sameCharacter ? _bankAtChoice : null,
+				bankAfter = sameCharacter ? character.BankGold : (long?)null,
+				rankBefore = sameCharacter && rankBefore > 0 ? ProgressionGate.TierNames[rankBefore] : null,
+				rank = sameCharacter && rank > 0 ? ProgressionGate.TierNames[rank] : null,
+				tierOpened = sameCharacter && rank > rankBefore && rankBefore > 0 ? rank : 0
 			});
 			_ending = null;
 			_goldAtChoice = null;
+			_bankAtChoice = null;
+			_endingCharacter = null;
 			// Kept in the campaign files so the Long Fire can tell it again, after a restart too.
 			try { System.IO.File.WriteAllText(LastPath, payload); } catch (Exception) { }
 			HostBridge.Lifecycle("debrief", payload);
