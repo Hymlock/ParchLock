@@ -149,6 +149,15 @@ not written into the story text.
 - **Map and fast travel:** one map per adventure. Fast travel reuses the existing navigator and sends
   ordinary moves. If an encounter interrupts a route, the player stays in that room and later queued moves
   are dropped. Travel is locked only for a known, visible threat and never reveals a hidden one.
+- **Saves and everything that follows them (operator, 2026-11-11):** every adventure in the package gets
+  what a single-story module already gets from ParchLock's existing save systems, with nothing new built:
+  each game save carries its own map and item-label snapshot (`SaveState`) and transcript marker
+  (`Transcript`), restoring a save restores those, a new game archives the working map, playthrough
+  history follows the save (`PlaythroughState`), saves appear in the existing save-file manager, and
+  save packages export and import every adventure's maps and saves. Eamon's own SAVE and RESTORE
+  commands drive these through the same entry points the Glk save dialog drives for Z-machine stories;
+  save names identify the adventure and slot. All of it survives quit, force-stop and restart on every
+  target, as it does for a regular module.
 - **Narration:** existing speech settings and duplicate prevention remain authoritative. The reuse audit
   first establishes whether the draft's optional routine-miss narration policy is already supported. If a
   gap remains, only a minimal event-aware extension inside the existing read-aloud pipeline is added; the
