@@ -102,7 +102,8 @@ var EamonProvider = {
         if (!world || objectId == null) return null;
         var matches = (world.objects || []).concat(world.inventory || []).filter(function (o) { return o && String(o.id) === String(objectId); });
         if (matches.length !== 1 || matches[0].kind !== "artifact" || !matches[0].inside) return null;
-        return !!matches[0].open;
+        // The host snapshot always sends a boolean open for artifacts (WorldSnapshot.Describe); anything else is unknown (Grok #3468 F1).
+        return typeof matches[0].open === "boolean" ? matches[0].open : null;
     },
 
     // Fast travel stops for a known, visible threat (plan section 7): a monster the game has shown in this room
