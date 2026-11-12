@@ -66,6 +66,16 @@ namespace ParchLock.EamonHost
 			// a shop or registration step, a yes/no inside an action) is mid-transaction and saves nothing.
 			var ask = AskContext.Current();
 			var safePoint = IsSafePoint(ask);
+			// The Main Hall's adventure selection: ParchLock's tier gates (ProgressionGate). The locked adventures are
+			// named with the prompt, and a locked choice is refused below with its reason.
+			var adventureChoice = ask.IsMainHallEngine && ask.Asker == "EamonMH.Game.Menus.ActionMenus.GoOnAdventureMenu"
+				&& App.OutputBuf.ToString().TrimEnd().EndsWith("Enter the selection or X to exit:", StringComparison.Ordinal);
+			if (adventureChoice)
+			{
+				string legend = null;
+				try { legend = ProgressionGate.Legend(); } catch (Exception) { legend = null; }
+				if (legend != null) { gEngine.Out.Print("{0}", legend); gEngine.Out.Write("{0}Enter the selection or X to exit: ", Environment.NewLine); }
+			}
 			if (safePoint)
 			{
 				if (gEngine is EamonMH.Framework.Plugin.IEngine) HallCheckpoint.SaveModified();
@@ -124,6 +134,19 @@ namespace ParchLock.EamonHost
 					{
 						// Say why nothing happened (Grok #3381: silent re-asks leave screen-reader users guessing).
 						HostTextReader.Refuse();
+						App.RefreshOutputWindowText();
+						continue;
+					}
+				}
+
+				if (adventureChoice)
+				{
+					string reason = null;
+					try { reason = ProgressionGate.LockReason(ProgressionGate.AdventureFor(reply)); } catch (Exception) { reason = null; }
+					if (reason != null)
+					{
+						gEngine.Out.Print("{0}", reason);
+						gEngine.Out.Write("{0}Enter the selection or X to exit: ", Environment.NewLine);
 						App.RefreshOutputWindowText();
 						continue;
 					}

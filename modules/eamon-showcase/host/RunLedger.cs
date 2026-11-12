@@ -80,6 +80,17 @@ namespace ParchLock.EamonHost
 			return map[key][1];
 		}
 
+		/// <summary>The adventures this character has a credited clear in.</summary>
+		internal static HashSet<string> ClearedAdventures(string characterId)
+		{
+			var result = new HashSet<string>(StringComparer.Ordinal);
+			if (string.IsNullOrEmpty(characterId) || !File.Exists(LedgerPath)) return result;
+			var ledger = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(File.ReadAllText(LedgerPath)) ?? new Dictionary<string, List<string>>();
+			foreach (var entry in ledger)
+				if (entry.Value.Count > 0 && entry.Key.StartsWith(characterId + "|", StringComparison.Ordinal)) result.Add(entry.Key.Substring(characterId.Length + 1));
+			return result;
+		}
+
 		/// <summary>Records a clear of this run for this character and adventure: "credited", or "already credited"
 		/// when this run was credited before (a restored or imported copy of it). Bound to the adventure engine that
 		/// was tracked and to a character seen in it (Grok #3410 F1).</summary>

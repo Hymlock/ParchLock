@@ -121,13 +121,19 @@ tier has no valid route, change the added placement, never the source check.
 
 Tier 1 route evidence (source, Codex #3316): The Beginner's Cave, Beginner's Forest, Beginner's Cave II and
 Alternate Beginner's Cave use the engine's Beginners entry check (a weapon carried; armour expertise 0, axe 5,
-club 20, sword 0; RT IntroStory.cs:128-152), and Eamon raises those abilities in combat, so a character will
-usually enter only one of them. The Wayfarers Inn has no entry check and The Training Ground refuses only armour
+club 20, sword 0; RT IntroStory.cs:128-152). Eamon raises the weapon used and, only while armour is worn, armour
+expertise in combat, so a sword or armoured character usually enters only one of them; Spear and Bow are not checked,
+so an unarmoured spear or bow character can enter all four (Grok #3422; source-legal, the operator may decide whether
+that is intended). Armour expertise cannot pass 25 with the gear a new character can afford (leather 10, shield 5,
+chain 20). The Wayfarers Inn has no entry check and The Training Ground refuses only armour
 expertise above 25 (its IntroStory.cs:28-38). A legal route to tier 2 therefore exists: one Beginners adventure
 plus The Wayfarers Inn or The Training Ground. Tiers 2 to 5: no adventure refuses entry in source (the only
 IntroStory refusals in the collection are the four Beginners adventures and The Training Ground; The Tower of Eamon
 and Escape from Mt. Moon have no custom code and run on the stock engine), so every gate has a source-legal route.
-Still to prove in play.
+Still to prove in play. Notes (Grok #3422): The Pyramid of Anharos zeroes all held and banked
+gold on any finish without its quest (a ParchLock warning is the operator's call); A Runcible Cargo's dream can end
+in ExitType.Error if its start snapshot is missing, which strands the character outside the Hall (never a clear; the
+snapshot file must persist with the campaign).
 
 **What counts as a clear.** Each adventure gets an outcome contract written from its source: returned
 alive, quest success as an exact state condition, failure, death, abort. The engine's "finish adventure"
@@ -172,6 +178,14 @@ never erases installed learning or the death history. There is no "Unlock all" s
 **Enforcement.** One progression authority. A lock gates *starting* an adventure, never resuming or
 finishing one in progress. Locked adventures stay visible with the reason. The mechanism is chosen after
 tracing every start, resume and restore path in source.
+
+**Enforcement as built (2026-11-12).** The only start path is the Main Hall's own adventure selection (EamonMH
+GoOnAdventureMenu.SelectAdventure; resuming is the app relaunching into an adventure, RESTORE happens inside one,
+recall deletes state). The host names the locked adventures and the Guild rank with that prompt and refuses a locked
+choice with its reason (ProgressionGate, credits from the clear ledger per character). Verified live: a new character
+is refused The Deep Canyon with "opens once you have cleared two different tier 1 adventures; you have cleared 0";
+after clearing The Training Ground and Beginner's Cave II the rank reads Journeyman Contracts and The Deep Canyon
+starts. Both of those clears were walk-in, walk-out exits (see the open operator question above).
 
 **Debriefing.** After returning to the Main Hall, a ParchLock panel shows treasure sold, gold gained,
 whether a clear was credited and why, rank and any newly opened tier, using the engine's own figures. It is
