@@ -487,15 +487,24 @@ var ModuleLibrary = (function () {
     // An installed Eamon Showcase is its own executable: the loader only ever fetches an empty placeholder
     // for it, so its identity is the approved package digest recorded at install (js/EamonPackage.js).
     // Same shape as a captured story identity; it has no Z/Glulx header and no story bytes.
+    // An approved Eamon Showcase is one campaign across its releases: its transcripts, the map snapshots of its saves and
+    // its learning are keyed by this fixed identity (sha256 of "parchlock/eamon-showcase"), so a new release keeps them
+    // and they leave only with their saves (owner 2026-11-12, #3471 item 8; Grok #3479). The package's own id still
+    // names its installed files, its approval and the campaign stamp. No Z-machine or Glulx facts exist for it.
+    var SHOWCASE_IDENTITY = "4ab1c9a28ef804b35a9aa2997fa4f55830eb8672c92ed97d9781e8d90aee5002";
+    function isTrustedShowcase(id) {
+        try { return typeof EamonPackage !== "undefined" && EamonPackage.trusted && Object.prototype.hasOwnProperty.call(EamonPackage.trusted(), id); } catch (e) { return false; }
+    }
     function eamonIdentityForPath(sourcePath) {
         var match = /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(sourcePath || "");
         if (!match) return null;
         var item = cache.find(function (entry) { return entry.id === match[1] && entry.Format === "eamon"; });
         if (!item) return null;
         if (executableIdentityByPath[sourcePath]) return executableIdentityByPath[sourcePath];
-        var summary = Object.freeze({ digest: item.id, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, header: null });
+        var digest = isTrustedShowcase(item.id) ? SHOWCASE_IDENTITY : item.id;
+        var summary = Object.freeze({ digest: digest, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, header: null });
         return (executableIdentityByPath[sourcePath] = Object.freeze({
-            digest: item.id, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, bytes: new Uint8Array(0), summary: summary
+            digest: digest, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, bytes: new Uint8Array(0), summary: summary
         }));
     }
 
@@ -582,6 +591,10 @@ var ModuleLibrary = (function () {
         // E3: uninstalling (remove, hide, remove-all) re-arms the module's
         // one-time inventory warning for a later reinstall.
         try { localStorage.removeItem(inventoryWarningKey(path)); } catch (eW) {}
+        // An Eamon Showcase release shares the campaign's identity: its transcripts and save snapshots belong to the
+        // campaign and leave only with their saves (owner rule 8), so removing one release forgets only its pointer
+        // (Grok #3479 P2).
+        if (localStorage.getItem(transcriptDigestKey(path)) === SHOWCASE_IDENTITY) { try { localStorage.removeItem(transcriptDigestKey(path)); } catch (eP) {} return; }
         // D215: the map and label snapshots of its saves, keyed by the same
         // executable digest -- read before removeTranscript deletes that key.
         try { if (typeof SaveState !== "undefined") SaveState.removeStory(localStorage.getItem(transcriptDigestKey(path))); } catch (eSs) {}
@@ -597,6 +610,13 @@ var ModuleLibrary = (function () {
             var key = transcriptDigestKey(path), digest = localStorage.getItem(key);
             if (!digest) return;
             localStorage.removeItem(key);
+            removeTranscriptDigest(digest);
+        } catch (e) {}
+    }
+
+    function removeTranscriptDigest(digest) {
+        try {
+            if (!digest) return;
             localStorage.removeItem("PL_Transcript_" + digest);
             if (typeof indexedDB === "undefined") return;
             var req = indexedDB.open("ParchLockTranscripts", 1);
@@ -612,6 +632,38 @@ var ModuleLibrary = (function () {
                 } catch (eT) {}
             };
         } catch (e) {}
+    }
+
+    /* Orphaned records of earlier Showcase builds (owner 2026-11-12, #3471 items 7-8; Grok #3479 P3/P4): each package
+       id once keyed its own maps ("PL_Map_" / "PL_MapSlots_" + "local/<id>.eamon.js[#adventure]"), transcript and save
+       snapshots. The campaign now keeps them under "eamon/showcase" and the fixed Showcase identity, so the old ones are
+       attached to no save and are removed. Only package ids found in "local/<64 hex>.eamon.js" keys are touched; nothing
+       under the stable names is. Learning is left to LearningStores' own cleanup (its index must stay consistent). */
+    function cleanShowcaseOrphans() {
+        var removed = 0;
+        try {
+            var ids = {}, keys = [];
+            for (var i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i));
+            keys.forEach(function (k) {
+                var m = /^(?:PL_Map_|PL_MapSlots_|PL_TranscriptDigest_)local\/([0-9a-f]{64})\.eamon\.js(?:#.*)?$/.exec(k || "");
+                if (m) ids[m[1]] = true;
+            });
+            Object.keys(ids).forEach(function (id) {
+                var path = "local/" + id + ".eamon.js";
+                keys.forEach(function (k) {
+                    if (k && (k === LEGACY.map + path || k === LEGACY.mapSlots + path || k.indexOf(LEGACY.map + path + "#") === 0 || k.indexOf(LEGACY.mapSlots + path + "#") === 0)) { localStorage.removeItem(k); removed++; }
+                });
+                var pointer = transcriptDigestKey(path), digest = localStorage.getItem(pointer);
+                // The pointer of a release now keyed by the Showcase identity stays; its old package-id records go.
+                if (digest && digest !== SHOWCASE_IDENTITY) { localStorage.removeItem(pointer); removed++; }
+                [id, digest].forEach(function (d) {
+                    if (!d || d === SHOWCASE_IDENTITY || !/^[0-9a-f]{64}$/.test(d)) return;
+                    try { if (typeof SaveState !== "undefined") SaveState.removeStory(d); } catch (eS) {}
+                    removeTranscriptDigest(d);
+                });
+            });
+        } catch (e) {}
+        return removed;
     }
 
     // E3: one seen-once flag per installed module (tutorial-style).
@@ -807,7 +859,7 @@ var ModuleLibrary = (function () {
         removeLocal: removeLocal, hideBuiltIn: hideBuiltIn, removeAll: removeAll, inventoryWarningKey: inventoryWarningKey, transcriptDigestKey: transcriptDigestKey,
         restoreBuiltIns: restoreBuiltIns, renameLocal: renameLocal, openManager: openManager, onChanged: onChanged,
         reconcile: reconcile, inspect: inspect, hash: hash, sha256Fallback: sha256Fallback,
-        currentExecutableDigest: currentExecutableDigest,
+        currentExecutableDigest: currentExecutableDigest, cleanShowcaseOrphans: cleanShowcaseOrphans, showcaseIdentity: SHOWCASE_IDENTITY,
         executableDigestForPath: executableDigestForPath, libraryRevision: function () { return libraryRevision; },
         currentExecutableBytes: currentExecutableBytes,
         currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,

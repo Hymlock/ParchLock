@@ -458,6 +458,19 @@ Start a new campaign also forgets the deleted saves' transcripts and map snapsho
 character (fails safe). The update check was also verified with a character afield in an unchanged adventure: no
 warning, and after the update the game resumed in that adventure with its save. On the phone, still to check that the
 WebView shows these confirmations (a WebView that answered No would cancel silently).
+Built 2026-11-12, item 8 (design accepted by Grok #3479). Audit of every Showcase system: import/export, the
+Equipment sheet, saves (lifecycle to transcripts, snapshots and playthroughs; deleted saves forgotten, including after
+either recall), maps (stable key), navigation (live map) and narration (nothing story-keyed) already followed the save
+rules; transcripts, per-save map snapshots and learning were keyed by the package digest and reset by every release.
+Now an approved Showcase has one fixed identity (ModuleLibrary SHOWCASE_IDENTITY) for those three, so they follow the
+campaign and leave only with their saves; the package id still names the installed files, the approval and the
+campaign stamp. Every digest consumer was checked: the Z-machine and Glulx fact lookups have no Eamon entry, the save
+identity needs a story header Eamon lacks, and the learning, transcript and snapshot stores are meant to carry over.
+Removing a release from the Library keeps the campaign's transcripts and snapshots (it drops only that release's
+pointer). At Showcase start, records of earlier builds that no save is attached to (maps and map slots under
+"local/<id>.eamon.js", old transcripts and snapshots) are removed; learning is left to its own cleanup, which keeps
+its index consistent. Verified: a save's transcript and snapshot survive an update to another release and the removal
+of the old release; planted old-build records are removed and the campaign's own are untouched. Regression 8/8.
 
 ## 10. Work packages
 
