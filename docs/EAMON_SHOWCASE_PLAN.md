@@ -443,6 +443,14 @@ side; starting a new campaign asks once more ("This permanently deletes the old 
 characters, their progress and their saved games. This cannot be undone.") and only then clears the campaign files and
 reopens. Verified: the dialog and both buttons; Download Package carries the campaign; Cancel deletes nothing; confirm
 clears it and the Showcase starts fresh at the outer chamber. Item 5 built (Pyramid contract). Item 4 confirmed in code.
+Built 2026-11-12, item 1: before a new Showcase package is installed, the import computes its per-adventure
+fingerprints the way the engine worker does and compares them with the campaign's record; if a character is afield in
+an adventure the update changes, it says so by name ("Parch Tester is adventuring in The Training Ground"), explains
+that they would return to the Main Hall as they set out and lose that adventure's progress and saves, points to
+Download Package, and installs only on Yes. Verified: a package changing The Training Ground asked and, declined,
+changed nothing (the campaign stayed on the old package); a package changing only Beginner's Cave II installed without
+asking and carried the campaign over. A save-format change arrives with an app update, which cannot be intercepted
+beforehand; that case is the refusal with Download Package and Start a new campaign (item 6).
 
 ## 10. Work packages
 

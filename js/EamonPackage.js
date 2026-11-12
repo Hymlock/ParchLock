@@ -82,6 +82,77 @@ var EamonPackage = (function () {
         });
     }
 
+
+    /* Before an update (owner 2026-11-12, #3471 item 1): the campaign carries over to a new package, except that a
+       character afield in an adventure the package changes is recalled to the Main Hall and loses that adventure's
+       progress and saves (plan 9a). Those are found here the way the engine worker fingerprints adventures (each folder's
+       sorted paths and file digests), compared with the campaign's own record, so the player is asked before anything is
+       installed and can keep a copy first. Nothing is read or changed when there is no campaign. */
+    function readText(bytes) {
+        if (bytes.length > 1 && bytes[0] === 0x1f && bytes[1] === 0x8b) return gunzip(bytes).then(function (raw) { return new TextDecoder().decode(raw); });
+        return Promise.resolve(new TextDecoder().decode(bytes));
+    }
+    function fieldOf(xml, name) {
+        var m = new RegExp('name="' + name + '" value="([^"]*)"').exec(xml);
+        return m ? m[1].replace(/&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&") : "";
+    }
+    function fromHex(text) { var out = new Uint8Array(text.length / 2); for (var i = 0; i < out.length; i++) out[i] = parseInt(text.substr(i * 2, 2), 16); return out; }
+    function packageFingerprints(files) {
+        var byDir = {};
+        files.forEach(function (f) {
+            var rel = f.path.indexOf("eamon-data/") === 0 ? f.path.slice(11) : null;
+            var m = rel && /^Adventures\/([^/]+)\//.exec(rel);
+            if (m) (byDir[m[1]] = byDir[m[1]] || []).push({ rel: rel, sha: f.sha256 });
+        });
+        var out = {};
+        return Object.keys(byDir).reduce(function (chain, dir) {
+            return chain.then(function () {
+                var entries = byDir[dir].sort(function (a, b) { return a.rel < b.rel ? -1 : a.rel > b.rel ? 1 : 0; });
+                var parts = [];
+                entries.forEach(function (e) { parts.push(new TextEncoder().encode(e.rel + "\n"), fromHex(e.sha)); });
+                var all = new Uint8Array(parts.reduce(function (n, p) { return n + p.length; }, 0)), at = 0;
+                parts.forEach(function (p) { all.set(p, at); at += p.length; });
+                return crypto.subtle.digest("SHA-256", all).then(function (d) { out[dir] = hex(d); });
+            });
+        }, Promise.resolve()).then(function () { return out; });
+    }
+    function campaignRecord() {
+        if (typeof indexedDB === "undefined") return Promise.resolve(null);
+        return new Promise(function (resolve) {
+            var request = indexedDB.open("parchlock-eamon", 1);
+            request.onupgradeneeded = function () { request.result.createObjectStore("files", { keyPath: "path" }); request.result.createObjectStore("meta", { keyPath: "key" }); };
+            request.onerror = function () { resolve(null); };
+            request.onsuccess = function () {
+                var d = request.result, tx = d.transaction(["files", "meta"]), files = null, meta = null;
+                tx.objectStore("files").getAll().onsuccess = function (e) { files = e.target.result; };
+                tx.objectStore("meta").get("state").onsuccess = function (e) { meta = e.target.result; };
+                tx.oncomplete = function () { d.close(); resolve({ files: files || [], meta: meta || null }); };
+                tx.onerror = tx.onabort = function () { d.close(); resolve(null); };
+            };
+        });
+    }
+    function updateLosses(id, parsed) {
+        return campaignRecord().then(function (campaign) {
+            if (!campaign || !campaign.files.length || (campaign.meta && campaign.meta.stamp === id)) return [];
+            var afield = campaign.files.filter(function (f) { return !f.deleted && /^Adventures\/[^/]+\/FRESHMEAT\.DAT$/i.test(f.path); });
+            if (!afield.length) return [];
+            return packageFingerprints(parsed.files).then(function (now) {
+                var old = (campaign.meta && campaign.meta.fingerprints) || {};
+                var losses = [];
+                return afield.reduce(function (chain, f) {
+                    var dir = f.path.split("/")[1];
+                    if (old[dir] && now[dir] && old[dir] === now[dir]) return chain;
+                    return chain.then(function () {
+                        var module = parsed.files.filter(function (p) { return p.path === "eamon-data/Adventures/" + dir + "/MODULE.DAT"; })[0];
+                        return Promise.all([readText(new Uint8Array(f.bytes)), module ? readText(module.data) : Promise.resolve("")]).then(function (texts) {
+                            losses.push({ character: fieldOf(texts[0], "Name") || "A character", adventure: fieldOf(texts[1], "Name") || dir });
+                        }, function () { losses.push({ character: "A character", adventure: dir }); });
+                    });
+                }, Promise.resolve()).then(function () { return losses; });
+            });
+        }, function () { return []; });
+    }
+
     /* Returns {id, title, version, size}. Everything is checked before anything is stored, and the
        ".installed" marker is written last, so an interrupted import is never mistaken for a package. */
     function install(bytes) {
@@ -99,6 +170,15 @@ var EamonPackage = (function () {
         }).then(function (raw) {
             parsed = parse(raw);
             return verify(parsed.files);
+        }).then(function () {
+            return updateLosses(id, parsed);
+        }).then(function (losses) {
+            if (!losses.length) return;
+            var lines = losses.map(function (l) { return "- " + l.character + " is adventuring in " + l.adventure + "."; }).join("\n");
+            var ask = "This update changes an adventure a character is in:\n\n" + lines
+                + "\n\nIf you update, they will be returned to the Main Hall as they were when they set out, and their progress and saved games in that adventure will be lost. Everything else in the campaign is kept."
+                + "\n\nTo keep a copy first, choose Cancel, open the Eamon Showcase and use Download Package in the save manager.\n\nUpdate now?";
+            if (!window.confirm(ask)) { id = null; throw new Error("Update cancelled. Nothing was changed."); }
         }).then(function () {
             return caches.delete(cacheName(id));
         }).then(function () {
