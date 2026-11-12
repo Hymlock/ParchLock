@@ -75,6 +75,7 @@ namespace ParchLock.EamonHost
 				}
 				catch (Exception) { }
 				finally { engine.Character = previous; }
+				if (found.Record.Status != Status.Adventuring) SaveEvents.MarkSavesDeleted(adventure);
 				lines.Add(found.Record.Status != Status.Adventuring
 					? adventure + " was updated. " + found.Record.Name + " has been returned to the Main Hall as they were when they set out; progress and saved games in that adventure were lost. No fee was charged."
 					: adventure + " was updated. " + found.Record.Name + " is still listed as adventuring there and could not be returned automatically; the registration desk can recall them. You can keep a copy of this campaign with Download Package in the save manager.");

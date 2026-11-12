@@ -46,7 +46,8 @@ namespace ParchLock.EamonHost
 		}
 
 		static EamonRT.Framework.Plugin.IEngine _adventure;
-		static string _adventureName, _deletedPending;
+		static string _adventureName;
+		static readonly System.Collections.Generic.List<string> _deletedPending = new System.Collections.Generic.List<string>();
 		static long _dieAtPrompt;
 		static string _character;
 
@@ -72,7 +73,7 @@ namespace ParchLock.EamonHost
 		/// loop), so its save names stop naming saves (Grok #3391 N3).</summary>
 		internal static void AfterPlugin()
 		{
-			if (_adventure != null && _adventure.DeleteGameStateAfterLoop && !string.IsNullOrEmpty(_adventureName)) _deletedPending = _adventureName;
+			if (_adventure != null && _adventure.DeleteGameStateAfterLoop && !string.IsNullOrEmpty(_adventureName)) MarkSavesDeleted(_adventureName);
 			// How the adventure ended (plan section 6; Grok #3402 P3). Probed: after the plugin returns ExitType is still
 			// readable from the engine object, but its game state is gone (GetGameState() is null), so Die is the value
 			// at the adventure's last prompt: the exit Y/N for FinishAdventure, the death menu (Die 1) for a death.
@@ -96,9 +97,16 @@ namespace ParchLock.EamonHost
 		/// <summary>Called after a safe-point commit: the deletion is durable, so ParchLock forgets those saves now.</summary>
 		internal static void AfterFlush()
 		{
-			if (_deletedPending == null) return;
-			HostBridge.Lifecycle("saves-deleted", _deletedPending);
-			_deletedPending = null;
+			foreach (var name in _deletedPending) HostBridge.Lifecycle("saves-deleted", name);
+			_deletedPending.Clear();
+		}
+
+		/// <summary>Every save slot of this adventure was deleted outside the plugin loop's own exit (the update recall's
+		/// nested -dgs hop, UpdateRecall.cs): its saves leave ParchLock after the next commit, as on an ordinary exit
+		/// (Grok #3460 P1).</summary>
+		internal static void MarkSavesDeleted(string adventure)
+		{
+			if (!string.IsNullOrEmpty(adventure) && !_deletedPending.Contains(adventure)) _deletedPending.Add(adventure);
 		}
 
 		static object _startOver;

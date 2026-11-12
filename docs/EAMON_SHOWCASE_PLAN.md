@@ -409,6 +409,13 @@ refused ("saved in a format this Showcase cannot read"), the real package import
 carried over (the Training Ground had changed, so its character was recalled free), with all 20 campaign files and
 both maps present. To make that work, a Showcase package from another release keeps its transcript lines and its
 saves' map snapshots under the open release's digest instead of being refused for them (other stories unchanged).
+Grok #3460: accepted. The update recall's -dgs hop deletes the adventure's slots outside the plugin loop, so the
+host now reports those saves deleted after the commit, as on an ordinary exit (verified: the imported Training
+Ground save's transcript and map snapshot were present after the import and gone after the recall). Note: an import
+replaces the campaign files wholesale, but transcript, snapshot and ledger records are written per imported save
+name, so records of the device's earlier campaign under other save names stay behind unshown (as for any story's
+save package today). Upstream's own paid recall at the registration desk runs the same nested hop and does not
+report its deleted saves either (pre-existing; left as is unless wanted).
 
 **Owner questions for the 4 PM review (parked, not blocking).** (1) Release policy: do shipped Showcase updates
 promise carry-over at all (the B+C rule above assumes yes). (2) The Great Tapestry is text; is a graphic campaign
