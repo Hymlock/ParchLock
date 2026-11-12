@@ -135,8 +135,9 @@ namespace ParchLock.EamonHost
 				{
 					// Operator decision 2026-11-11: an empty Enter at the top Hall menu is ignored instead of the
 					// upstream default "X" (leave the universe); in the Village and Practice Area X only walks north.
-					// At the outer chamber an empty line would fall to upstream's "else" branch (the men drinking beer), so it
-					// is asked again too; a choice is only ever the player's own.
+					// At the outer chamber too: upstream's own field never accepts an empty answer (emptyAllowed false), but an
+					// empty line from the host would reach its "else" branch (the men drinking beer), so it is asked again; a
+					// choice is only ever the player's own (Grok #3474 N2).
 					if ((ask.MenuDepth == 1 || ask.IsOuterChamber) && string.IsNullOrWhiteSpace(reply))
 					{
 						HostTextReader.Refuse(ask);   // not silent (Grok #3385)

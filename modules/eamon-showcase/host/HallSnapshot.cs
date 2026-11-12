@@ -90,7 +90,7 @@ namespace ParchLock.EamonHost
 		const long OuterChamberId = 4;
 		static readonly HallObject[] OuterChamberObjects =
 		{
-			new HallObject { Id = 121, Name = "desk", Aliases = new[] { "cubbyhole", "registration desk" }, Verbs = new Dictionary<string, string> { ["examine"] = "D", ["go to"] = "D" } },
+			new HallObject { Id = 121, Name = "desk", Aliases = new[] { "cubbyhole", "registration desk" }, Verbs = new Dictionary<string, string> { ["examine"] = "", ["go to"] = "D" } },
 			new HallObject { Id = 122, Name = "sign", Aliases = new[] { "register sign" }, Verbs = new Dictionary<string, string> { ["examine"] = "", ["read"] = "" }, Readable = true },
 			new HallObject { Id = 123, Name = "men drinking beer", Aliases = new[] { "men", "women", "beer", "drinkers" }, Verbs = new Dictionary<string, string> { ["examine"] = "", ["join"] = "M" } },
 		};
@@ -99,6 +99,8 @@ namespace ParchLock.EamonHost
 		/// <summary>Upstream's own words for the outer chamber's things (OuterChamberMenu).</summary>
 		internal static string DescribeText(string name) =>
 			name == "sign" ? "Over the desk is a sign which says:  REGISTER HERE OR ELSE!"
+			// Examining the desk only looks; going to it registers (Grok #3474 N1).
+			: name == "desk" ? "On the north side of the chamber is a cubbyhole with a desk."
 			: name == "men drinking beer" ? "Many men and women are guzzling beer and there is loud singing and laughter."
 			: null;
 		static Level OuterChamberLevel()
@@ -229,8 +231,10 @@ namespace ParchLock.EamonHost
 			if (t.Length == 1 && valid != null && valid(char.ToUpperInvariant(t[0]))) return t;
 			var level = ctx.IsHallMenu ? LevelFor(ctx.MenuDepth) : ctx.IsOuterChamber ? OuterChamberLevel() : null;
 			if (level == null) return null;
-			var lower = t.ToLowerInvariant();
-			if (lower.StartsWith("go ")) lower = lower.Substring(3).Trim();
+			var whole = t.ToLowerInvariant();
+			// "go <exit>" names an exit; the object verbs below read the whole line, so "go to desk", "go over to the desk"
+			// and "go down stairs" keep their verb (Grok #3474 F1).
+			var lower = whole.StartsWith("go ") ? whole.Substring(3).Trim() : whole;
 			var compassWord = lower == "n" ? "north" : lower == "s" ? "south" : lower;
 			foreach (var e in level.Exits)
 				if (string.Equals(e.label, lower, StringComparison.OrdinalIgnoreCase) || (e.compass && e.label == compassWord)) return e.command;
@@ -242,8 +246,8 @@ namespace ParchLock.EamonHost
 			if (objects != null)
 				foreach (var verb in VerbWords.Keys.OrderByDescending(k => k.Length))
 				{
-					if (!lower.StartsWith(verb + " ")) continue;
-					var noun = lower.Substring(verb.Length).Trim();
+					if (!whole.StartsWith(verb + " ")) continue;
+					var noun = whole.Substring(verb.Length).Trim();
 					if (noun.StartsWith("the ")) noun = noun.Substring(4);
 					var obj = objects.FirstOrDefault(o => string.Equals(o.Name, noun, StringComparison.OrdinalIgnoreCase) || o.Aliases.Contains(noun));
 					if (obj != null && obj.Verbs.TryGetValue(VerbWords[verb], out var objKey)) return objKey.Length > 0 ? objKey : Describe + obj.Name;
