@@ -121,6 +121,7 @@ namespace EamonPM
 				ParchLock.EamonHost.SaveEvents.FreshEntry = previousPlugin != null
 					&& previousPlugin.Equals("EamonMH.dll", StringComparison.OrdinalIgnoreCase)
 					&& !plugin.Equals("EamonMH.dll", StringComparison.OrdinalIgnoreCase);
+				ParchLock.EamonHost.RunLedger.PendingNew = ParchLock.EamonHost.SaveEvents.FreshEntry;
 				previousPlugin = plugin;
 				CurrentArgs = args;
 				ParchLock.EamonHost.HostBridge.Phase("plugin", string.Join(" ", args));

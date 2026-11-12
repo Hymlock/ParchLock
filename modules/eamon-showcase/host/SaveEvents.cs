@@ -32,6 +32,7 @@ namespace ParchLock.EamonHost
 				// a cancelled slot menu never sets it). The name is the fileset record the save wrote, which covers
 				// the interactive save (typed name) and a quick save over a named slot (Grok #3388 S1, S2).
 				if (!save.GameSaved || save.SaveSlot < 1 || string.IsNullOrWhiteSpace(save.SaveFileset?.Name)) return;
+				RunLedger.OnSaved(save.SaveSlot);
 				HostBridge.Lifecycle("save", Name(adventure, save.SaveSlot, save.SaveFileset.Name));
 			}
 			else if (command is EamonRT.Game.Commands.RestoreCommand restore)
@@ -39,6 +40,7 @@ namespace ParchLock.EamonHost
 				// Every failed restore sets ExitType.Error; the record the engine loaded is restore.SaveFileset.
 				if (rt.ExitType == Eamon.Framework.Primitive.Enums.ExitType.Error) return;
 				if (restore.SaveSlot < 1 || string.IsNullOrWhiteSpace(restore.SaveFileset?.Name)) return;
+				RunLedger.OnRestored(restore.SaveSlot);
 				HostBridge.Lifecycle("restore", Name(adventure, restore.SaveSlot, restore.SaveFileset.Name));
 			}
 		}
@@ -46,6 +48,7 @@ namespace ParchLock.EamonHost
 		static EamonRT.Framework.Plugin.IEngine _adventure;
 		static string _adventureName, _deletedPending;
 		static long _dieAtPrompt;
+		static string _character;
 
 		/// <summary>Called at every adventure prompt: the adventure engine now running.</summary>
 		internal static void Track()
@@ -55,6 +58,8 @@ namespace ParchLock.EamonHost
 				_adventure = rt; _adventureName = gEngine.GetModule()?.Name ?? "";
 				try { _dieAtPrompt = gEngine.GetGameState()?.Die ?? -99; } catch (Exception) { _dieAtPrompt = -98; }
 				ClearContracts.Evaluate();
+				try { RunLedger.Track(); } catch (Exception) { }
+				_character = rt.Character?.Name ?? _character;
 			}
 		}
 
@@ -67,7 +72,15 @@ namespace ParchLock.EamonHost
 			// How the adventure ended (plan section 6; Grok #3402 P3). Probed: after the plugin returns ExitType is still
 			// readable from the engine object, but its game state is gone (GetGameState() is null), so Die is the value
 			// at the adventure's last prompt: the exit Y/N for FinishAdventure, the death menu (Die 1) for a death.
-			if (_adventure != null) HostBridge.Lifecycle("adventure-ended", _adventureName + "|" + _adventure.ExitType + "|die=" + _dieAtPrompt + "|quest=" + ClearContracts.Latest);
+			if (_adventure != null)
+			{
+				// A clear: the adventure's own finish, alive (Die exactly 0, Grok #3405), with its quest met or no quest.
+				var cleared = _adventure.ExitType == Eamon.Framework.Primitive.Enums.ExitType.FinishAdventure && _dieAtPrompt == 0
+					&& (ClearContracts.Latest == "true" || ClearContracts.Latest == "none");
+				string credit = "not a clear";
+				if (cleared) { try { credit = RunLedger.Credit(_character ?? "", _adventureName); } catch (Exception e) { credit = "error: " + e.Message; } }
+				HostBridge.Lifecycle("adventure-ended", _adventureName + "|" + _adventure.ExitType + "|die=" + _dieAtPrompt + "|quest=" + ClearContracts.Latest + "|run=" + RunLedger.Current + "|credit=" + credit);
+			}
 			ClearContracts.Reset();
 			_adventure = null;
 		}
@@ -89,6 +102,7 @@ namespace ParchLock.EamonHost
 			var rt = gEngine as EamonRT.Framework.Plugin.IEngine;
 			if (rt == null || !rt.StartOver || ReferenceEquals(rt, _startOver)) return;
 			_startOver = rt;
+			try { RunLedger.NewRun(); } catch (Exception) { }
 			HostBridge.Lifecycle("adventure-fresh", gEngine.GetModule()?.Name ?? "");
 		}
 
