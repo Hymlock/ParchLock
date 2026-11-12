@@ -105,7 +105,8 @@ the ones on upstream behaviour (tables, shield, ledger, stair) can come first.
 - Verified: the four names are underlined; the radial offers examine/read/climb from ParchLock's shared verb table; read ledger lists the roster with in the hall / away / fallen; examine stones answers; climb stair arrives in the Village; ordinary regression 8/8.
 - Built 2026-11-12 (package E in place): the Long Fire (sitting reopens the latest debriefing panel; the story text only names the tale; the debriefing is kept in the campaign files, PLDEBRIEF.DAT) and the Quest Board (read/examine: the five tiers, open or locked, this character's clears, the unlock rule; it starts nothing). Verified live after a Training Ground clear.
 - Built 2026-11-12: the Trophy Wall (examine: one trophy per credited clear, with who, when, what counted and the New Game+ cycle; trophy names are ParchLock content from each adventure's story). Verified live.
-- Not yet: Skald, Great Tapestry; outer chamber room; phone.
+- Built 2026-11-12: the Skald ("ask skald" / examine: lists the adventures, tells an open one from its own intro story, or its own module description when it has none, with its author line; a locked one gets "That tale is not yet yours to hear"; starts nothing). Verified live.
+- Not yet: Great Tapestry; outer chamber room; phone.
 
 ## After Grok review #3385
 

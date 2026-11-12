@@ -28,7 +28,7 @@ namespace ParchLock.EamonHost
 	internal static class HallKeys
 	{
 		// Symbols nobody types as a command (Grok #3385 C1: 'L' collided with the universal "l" for look).
-		internal const char Ledger = '#', Stones = '@', Fire = '&', Board = '%', Trophies = '$';
+		internal const char Ledger = '#', Stones = '@', Fire = '&', Board = '%', Trophies = '$', Skald = '!';
 	}
 
 	/// <summary>The Hall's description before upstream's own subtitle: the names ParchLock underlines.</summary>
@@ -43,9 +43,9 @@ namespace ParchLock.EamonHost
 			if (FreshEntry)
 			{
 				FreshEntry = false;
-				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk, and trophies of cleared adventures hang on the Trophy Wall. At the far end a stair leads down toward the Village.");
+				gOut.Print("The guild's long hall stretches away under smoke-black beams. Down its middle runs the Long Fire, a trench of embers the length of the hall that is never let die, where an old skald sits telling tales. Members' shields hang along the Shield Wall. By the door the Guild Ledger lies open on its lectern, and beside it stand the Stones of the Fallen. Notices are nailed to the Quest Board by the desk, and trophies of cleared adventures hang on the Trophy Wall. At the far end a stair leads down toward the Village.");
 			}
-			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board, the Trophy Wall and the stair are here.");
+			else gOut.Print("The Long Fire, the Shield Wall, the Guild Ledger, the Stones of the Fallen, the Quest Board, the Trophy Wall, the skald and the stair are here.");
 			// Upstream's subtitle with the count of choices including ParchLock's "Seek New Game+" (MhMenu.cs:17-19).
 			gOut.Print("Character: {0}", gCharacter != null ? gCharacter.Name : gEngine.UnknownName);
 			gOut.Print("As you wander about the hall, you realize you can do one of eight things:");
@@ -78,6 +78,7 @@ namespace ParchLock.EamonHost
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Fire; x.LineText = ""; x.SubMenu = new FireMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Board; x.LineText = ""; x.SubMenu = new QuestBoardMenu(); }));
 			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Trophies; x.LineText = ""; x.SubMenu = new TrophyWallMenu(); }));
+			MenuItemList.Add(gEngine.CreateInstance<IMenuItem>(x => { x.SelectChar = HallKeys.Skald; x.LineText = ""; x.SubMenu = new SkaldMenu(); }));
 		}
 	}
 
@@ -268,6 +269,77 @@ namespace ParchLock.EamonHost
 		}
 
 		public TrophyWallMenu() { Buf = gEngine.Buf; }
+	}
+
+	/// <summary>The skald at the Long Fire: a tale of an adventure open to the character, told from that adventure's own
+	/// intro story and author line (its MODULE.DAT and EFFECTS.DAT, read-only); a locked one gets only "That tale is not
+	/// yet yours to hear". He tells; he starts nothing (HALL_OF_THE_LONG_FIRE.md).</summary>
+	public class SkaldMenu : Menu
+	{
+		static string Read(string path)
+		{
+			var bytes = System.IO.File.ReadAllBytes(path);
+			if (bytes.Length > 1 && bytes[0] == 0x1f && bytes[1] == 0x8b)
+				using (var gz = new System.IO.Compression.GZipStream(new System.IO.MemoryStream(bytes), System.IO.Compression.CompressionMode.Decompress))
+				using (var r = new System.IO.StreamReader(gz)) return r.ReadToEnd();
+			return System.Text.Encoding.UTF8.GetString(bytes);
+		}
+
+		static string Field(string xml, string name) => System.Net.WebUtility.HtmlDecode(System.Text.RegularExpressions.Regex.Match(xml, "name=\"" + name + "\" value=\"([^\"]*)\"").Groups[1].Value);
+
+		/// <summary>The intro story: the module's IntroStory effect and the effects it chains to (**NNN), up to four.</summary>
+		internal static (string Tale, string Author) Tale(Eamon.Framework.IFileset fileset)
+		{
+			var dir = System.IO.Path.GetFullPath(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), (fileset.WorkDir ?? "").Replace('\\', '/')));
+			var module = Read(System.IO.Path.Combine(dir, "MODULE.DAT"));
+			var effects = Read(System.IO.Path.Combine(dir, "EFFECTS.DAT"));
+			var byUid = new Dictionary<long, string>();
+			foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(effects, "name=\"Uid\" value=\"(\\d+)\"[\\s\\S]*?name=\"Desc\" value=\"([^\"]*)\""))
+				byUid[long.Parse(m.Groups[1].Value)] = System.Net.WebUtility.HtmlDecode(m.Groups[2].Value);
+			var parts = new List<string>();
+			long.TryParse(Field(module, "IntroStory"), out var next);
+			// No intro story (the Beginners adventures tell theirs in code): the module's own description, which can chain on
+			// into effects the same way.
+			string first = null;
+			if (next <= 0) { first = Field(module, "Desc"); next = -1; }
+			for (var i = 0; i < 4 && (first != null || (next > 0 && byUid.ContainsKey(next))); i++)
+			{
+				var text = first ?? byUid[next];
+				first = null;
+				var link = System.Text.RegularExpressions.Regex.Match(text, "\\*{1,2}(\\d+)\\s*$");
+				next = link.Success && text.EndsWith("**" + link.Groups[1].Value) ? long.Parse(link.Groups[1].Value) : 0;
+				parts.Add(System.Text.RegularExpressions.Regex.Replace(text, "\\*{1,2}\\d+\\s*$", "").Replace("@@PB", " ").Trim());
+			}
+			return (string.Join(" ", parts), Field(module, "Author"));
+		}
+
+		public override void Execute()
+		{
+			gOut.Print("{0}", gEngine.LineSep);
+			var open = (gDatabase?.FilesetTable?.Records ?? new List<Eamon.Framework.IFileset>()).Where(f => ProgressionGate.Tiers.ContainsKey((f.Name ?? "").Trim())).OrderBy(f => f.Uid).ToList();
+			gOut.Print("The old skald looks up from the fire. \"Which tale would ye hear?\"");
+			foreach (var f in open) gOut.WriteLine("  {0}. {1}", f.Uid, f.Name.Trim());
+			gOut.Write("{0}Enter a number, or X for none: ", Environment.NewLine);
+			Buf.Clear();
+			var rc = gEngine.In.ReadField(Buf, gEngine.BufSize01, null, ' ', '\0', false, null, gEngine.ModifyCharToUpper, gEngine.IsCharDigitOrX, null);
+			if (!gEngine.IsSuccess(rc) || Buf.Length == 0 || Buf[0] == 'X') { gOut.Print("\"Another time, then.\""); return; }
+			var chosen = long.TryParse(Buf.ToString().Trim(), out var uid) ? open.FirstOrDefault(f => f.Uid == uid) : null;
+			if (chosen == null) gOut.Print("\"I know no tale by that number.\"");
+			else if (ProgressionGate.LockReason(chosen.Name) != null) gOut.Print("\"That tale is not yet yours to hear.\"");
+			else
+			{
+				try
+				{
+					var (tale, author) = Tale(chosen);
+					gOut.Print("\"{0},\" says the skald, \"{1}\"", chosen.Name.Trim(), string.IsNullOrWhiteSpace(tale) ? "is a tale I have only heard in pieces." : tale);
+					if (!string.IsNullOrWhiteSpace(author)) gOut.Print("\"So it was told by {0}.\"", author.Trim());
+				}
+				catch (Exception) { gOut.Print("\"The tale escapes me tonight.\""); }
+			}
+			gEngine.In.KeyPress(Buf);
+		}
+
+		public SkaldMenu() { Buf = gEngine.Buf; }
 	}
 
 	/// <summary>The Stones of the Fallen: the names of characters who died, from the character file.</summary>

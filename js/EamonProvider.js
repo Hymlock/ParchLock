@@ -48,31 +48,6 @@ var EamonProvider = {
         return a;
     },
 
-    // Verb forms the Eamon CS parser itself accepts (EamonRT command set), chosen from the engine's own
-    // facts about the object. The game remains the judge: a form may still be refused in play.
-    commands: (o, held) => {
-        var n = o.name, list = [];
-        var add = function (verb, command) { list.push({ verb: verb, command: command || (verb + " " + n), confidence: 0.95 }); };
-        add("examine");
-        if (o.kind === "monster") {
-            if (o.reaction !== "Friend") add("attack");
-            else add("inventory");
-            return list;
-        }
-        if (held) {
-            if (o.weapon && !o.ready) add("ready");
-            if (o.wearable && !o.worn) add("wear");
-            if (o.worn) add("remove");
-        } else if (!o.fixed && !o.door) add("get");
-        if (o.readable) add("read");
-        if (o.drinkable) add("drink");
-        if (o.edible) add("eat");
-        if (o.light) add("light");
-        if (o.container || o.door) { add("open"); add("close"); }
-        if (held && !o.worn) { add("drop"); add("give", "give " + n + " to "); add("put", "put " + n + " in "); }
-        return list;
-    },
-
     // The adventure's own words: command verbs and synonyms, prepositions, and the names and synonyms of
     // the objects the game has shown. Null outside an adventure (no parser to ask).
     vocabulary: () => {
@@ -114,8 +89,7 @@ var EamonProvider = {
         aliases: EamonProvider.aliasWords(o.aliases),
         confidence: 0.95,
         discovered: true,
-        // Eamon's own verbs for this thing in its present state; the shared menu path offers these as given.
-        nativeCommands: EamonProvider.commands(o, held),
+
         eamon: { kind: o.kind, ready: !!o.ready, weapon: !!o.weapon, readable: !!o.readable, light: !!o.light, door: !!o.door, state: o.state || "", reaction: o.reaction || "" }
     }),
 

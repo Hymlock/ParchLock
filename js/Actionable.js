@@ -1401,6 +1401,9 @@ var Actionable = {
 
         /* UNDO_RESTORE_RESYNC */
         if (!$(".Input.LineInput").length || Message.IsOpen || $("#dialog").length) return false;
+        // Eamon: never into a nested prompt (a save name, a yes/no, a shop step); fast travel once typed "north" as a save
+        // name there (Grok #3434 EQ-PROMPT-1, verified live before this fix).
+        if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel) return false;
         if (!$(".Input.LineInput:visible").length
             // D192 (grok round 2): the `equip-open` escape has been removed.
             // It allowed ANY injection into a hidden line input for as long as
