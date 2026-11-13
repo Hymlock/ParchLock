@@ -140,7 +140,26 @@ Proven in play 2026-11-12 (one live clear per tier, Grok #3483/#3484): The Deep 
 player took the author's route (silver lantern, shovel, dug up the peanuts in room 31, gave them to the elephants at
 room 21, west and north to room 60), fought five enemies on the way, and left at room 60; the host recorded
 FinishAdventure, die 0, quest true, credited, and the debriefing read "Cleared, and credited". The tier gate was
-opened by seeding two tier 1 credits (that proof is the tier 1 route evidence above). Still to prove in play: one each
+opened by seeding two tier 1 credits (that proof is the tier 1 route evidence above).
+Escape from Mt. Moon (tier 4, all(Ro == 12, Rocket boss in limbo)): proven in play 2026-11-12 the same way (route to
+the boss, 22 fights, no deaths, exit north from room 12; FinishAdventure, quest true, credited); it replaces Stronghold
+of Kahr-Dur as the live multi-condition proof (Grok #3490/#3493): Kahr-Dur's portcullis needs the Dragon Spice, which
+the roaming Necromancer carries, so its live route is nondeterministic. The test characters for the tier 2-5 proofs
+were seeded (tiers opened, and for Mt. Moon stronger stats and spells); the proofs are the adventures' own routes and
+finishes, not character progression.
+Contract self-check (built, Grok #3484): at each adventure's first prompt every clause is evaluated with no
+short-circuit and every uid a predicate names (holder container or monster, room, zone) must exist in the loaded
+database; a tiered adventure without a contract fails. Verified for all 20: ok.
+Contract proven by injected end state (probe build only, live clear not yet played; Grok #3489): a probe-only host
+build (compiled with PARCHLOCK_PROBE, never in a shipped package; the shipped build treats "#probe" as ordinary
+input, verified) applies the end state each author's finish code produces, then the real finish runs; a negative run
+leaves one condition out. Positive credited and negative not a clear: Beginner's Cave II, Beginner's Forest, The
+Sub-Aquan Laboratory, The Tower of Eamon, The Vile Grimoire of Jaldi'al, The Temple of Ngurct, Escape from Mt. Moon;
+Wrenhold's Secret Vigil (the contract turns true only when the exit hands over the bow, as its source orders);
+Firestorm (positive credited; with Thorak alive its exit stays shut, the author's own lock). Still to run: The
+Pyramid of Anharos (its intro asks for a guide; driver fixed), The Wayfarers Inn (exit not reached), Alternate
+Beginner's Cave's negative (Nina is a fixed Friend, so her presence is the real condition), Orb of My Life,
+DharmaQuest, Land of the Mountain King, A Runcible Cargo and Stronghold of Kahr-Dur. Still to prove in play: one each
 for tiers 1, 3, 4 and 5, chosen to cover a monster-dead, an artifact-possession and a multi-condition contract, plus a
 contract self-check of all 20 against the built package's databases. Cross-checked against the authors' own hints
 (HINTS.DAT, read from the built package): Stronghold of Kahr-Dur's "What do I have to do to successfully complete the

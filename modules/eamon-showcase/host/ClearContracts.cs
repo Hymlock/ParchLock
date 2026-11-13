@@ -120,14 +120,30 @@ namespace ParchLock.EamonHost
 
 		internal static void Reset() => Latest = "uncontracted";
 
+		static readonly HashSet<string> Checked = new HashSet<string>(StringComparer.Ordinal);
+
 		internal static void Evaluate()
 		{
 			var name = gEngine?.GetModule()?.Name ?? "";
-			if (!Contracts.TryGetValue(name, out var json)) { Latest = "uncontracted"; return; }
+			if (!Contracts.TryGetValue(name, out var json))
+			{
+				Latest = "uncontracted";
+				// A tiered adventure must have a contract (Grok #3484 self-check).
+				if (ProgressionGate.Tiers.ContainsKey(name) && Checked.Add(name)) HostBridge.Lifecycle("contract-check", name + "|FAIL: no contract");
+				return;
+			}
 			try
 			{
 				if (!Parsed.TryGetValue(name, out var doc)) Parsed[name] = doc = JsonDocument.Parse(json);
 				if (gEngine.GetGameState() == null || gEngine.Database == null) { Latest = "error: no game state"; return; }
+				// Once per adventure load: every clause against the database and game state the engine actually loaded.
+				if (Checked.Add(name))
+				{
+					var problems = new List<string>();
+					var questToCheck = doc.RootElement.GetProperty("quest");
+					if (questToCheck.ValueKind != JsonValueKind.Null) Check(questToCheck, problems);
+					HostBridge.Lifecycle("contract-check", name + "|" + (problems.Count == 0 ? "ok" : "FAIL: " + string.Join("; ", problems)));
+				}
 				var quest = doc.RootElement.GetProperty("quest");
 				Latest = quest.ValueKind == JsonValueKind.Null ? "none" : (Holds(quest) ? "true" : "false");
 			}
@@ -224,6 +240,30 @@ namespace ParchLock.EamonHost
 				return comparison == "equals" ? value == c.GetProperty("equals").GetInt64() : value > c.GetProperty("greaterThan").GetInt64();
 			}
 			throw new InvalidOperationException("unknown contract clause " + c.GetRawText());
+		}
+
+		/// <summary>The self-check (Grok #3484): every leaf is evaluated, with no short-circuit of all/any/not, and every
+		/// uid a predicate names (a holder container or monster, a room) must exist, so a contract that names something the
+		/// built package does not have fails loudly at the adventure's first prompt instead of at its end.</summary>
+		static void Check(JsonElement c, List<string> problems)
+		{
+			var keys = c.EnumerateObject().Select(p => p.Name).ToArray();
+			if (keys.Length == 1 && (keys[0] == "all" || keys[0] == "any")) { foreach (var child in c.GetProperty(keys[0]).EnumerateArray()) Check(child, problems); return; }
+			if (keys.Length == 1 && keys[0] == "not") { Check(c.GetProperty("not"), problems); return; }
+			try
+			{
+				Holds(c);
+				var db = gEngine.Database;
+				if (keys.Contains("artifact"))
+				{
+					if (c.TryGetProperty("inContainer", out var holder) && db.ArtifactTable.FindRecord(holder.GetInt64()) == null) problems.Add("no container artifact " + holder);
+					if (c.TryGetProperty("carriedByMonster", out var mon) && db.MonsterTable.FindRecord(mon.GetInt64()) == null) problems.Add("no monster " + mon);
+					if (c.TryGetProperty("inRoom", out var room) && db.RoomTable.FindRecord(room.GetInt64()) == null) problems.Add("no room " + room);
+				}
+				if (keys.Contains("monster") && c.TryGetProperty("inRoom", out var mroom) && db.RoomTable.FindRecord(mroom.GetInt64()) == null) problems.Add("no room " + mroom);
+				if (keys.Contains("zone") && !db.RoomTable.Records.Any(r => r.Zone == c.GetProperty("zone").GetInt64())) problems.Add("no room in zone " + c.GetProperty("zone"));
+			}
+			catch (Exception e) { problems.Add(e.Message); }
 		}
 
 		static string Single(JsonElement c, string[] keys, string subject, string[] predicates, params string[] modifiers)

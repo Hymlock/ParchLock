@@ -131,6 +131,16 @@ namespace ParchLock.EamonHost
 				var reply = HostBridge.Read(anyKey ? "key" : (ReadLineMode || hallMenu ? "line" : "field"), (int)Math.Min(bufSize, int.MaxValue),
 					fillChar == '\0' ? "" : fillChar.ToString(), maskChar == '\0' ? "" : maskChar.ToString(), defaultText, safePoint);
 				if (reply == null) throw new HostCancelledException();
+#if PARCHLOCK_PROBE
+				// Probe builds only (ProbeInject.cs): an injected end state, then the same question again.
+				if (!(gEngine is EamonMH.Framework.Plugin.IEngine) && reply.StartsWith(ProbeInject.Prefix, StringComparison.Ordinal))
+				{
+					gEngine.Out.Print("[probe] {0}", ProbeInject.Apply(reply.Substring(ProbeInject.Prefix.Length)));
+					gEngine.Out.Write("{0}> ", Environment.NewLine);
+					App.RefreshOutputWindowText();
+					continue;
+				}
+#endif
 				if (hallMenu)
 				{
 					// Operator decision 2026-11-11: an empty Enter at the top Hall menu is ignored instead of the
