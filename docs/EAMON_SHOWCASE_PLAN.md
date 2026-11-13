@@ -142,7 +142,12 @@ room 21, west and north to room 60), fought five enemies on the way, and left at
 FinishAdventure, die 0, quest true, credited, and the debriefing read "Cleared, and credited". The tier gate was
 opened by seeding two tier 1 credits (that proof is the tier 1 route evidence above). Still to prove in play: one each
 for tiers 1, 3, 4 and 5, chosen to cover a monster-dead, an artifact-possession and a multi-condition contract, plus a
-contract self-check of all 20 against the built package's databases. Notes (Grok #3422): The Pyramid of Anharos zeroes all held and banked
+contract self-check of all 20 against the built package's databases. Cross-checked against the authors' own hints
+(HINTS.DAT, read from the built package): Stronghold of Kahr-Dur's "What do I have to do to successfully complete the
+Quest?" (dispatch the Necromancer, free Lady Mirabelle, exit with her alive in your room) is its contract exactly;
+Wrenhold's Secret Vigil's hint names two endings (the life-orb in the drow pedestal, or given to King Argas), and both
+lead to King Argas handing over the bow (PlayerMoveCheckState.cs:176-195), which is what its contract tests. The other
+adventures have no completion hint. Notes (Grok #3422): The Pyramid of Anharos zeroes all held and banked
 gold on any finish without its quest (a ParchLock warning is the operator's call); A Runcible Cargo's dream can end
 in ExitType.Error if its start snapshot is missing, which strands the character outside the Hall (never a clear; the
 snapshot file must persist with the campaign).
