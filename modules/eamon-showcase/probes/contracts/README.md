@@ -34,3 +34,14 @@ move after a dark-room bump, fights visible enemies, saves every few steps, rest
 <AdventureDir> <from> <to>` (with `EAMON_DATA` = the package data folder) finds a route through plain exits and
 door/gates. Plans used for the clears proven in play: `dc-plan.json` (The Deep Canyon), `mm-plan.json` (Escape from
 Mt. Moon, with `seed-strong-character-mtmoon.js`).
+
+## 4. Real-input acceptance (plan section 11 item 10)
+
+    node real-input-play.cjs <repo> <EamonShowcase.eamon> <out-dir>
+
+Plays a fresh profile with real input: Playwright pointer clicks on the underlined prompt keys, real typing and
+Enter, and one 21 s idle (longer than the input relay's 20 s poll) before answering. It walks character creation,
+the Main Hall, the Village, the Good Witch, the adventure selection and an adventure's command line, and logs for
+each prompt the underlined keys, menu-line phrases (must be none), the radial's choices and whether any overlay is
+shown. Questions Eamon asks only on some rolls (the suicide offer) are answered when they appear. This is the PC
+half of item 10; the phone half is real taps on the Android APK.
