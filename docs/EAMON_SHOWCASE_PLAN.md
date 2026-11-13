@@ -136,7 +136,13 @@ Rocket boss is a single monster with courage 100, so it never flees and goes to 
 refuses moves past a visible enemy; The Wayfarers Inn's second exit (room 10 south, after the bridge is worn and the
 wall map read) is produced by the room's own GetDir override, which the world snapshot reads, so the map offers it;
 A Runcible Cargo's dream snapshot (SNAPSHOT_001.DAT) is a campaign file, committed and exported with the slots.
-Still to prove in play. Notes (Grok #3422): The Pyramid of Anharos zeroes all held and banked
+Proven in play 2026-11-12 (one live clear per tier, Grok #3483/#3484): The Deep Canyon (tier 2, Ro == 60): a scripted
+player took the author's route (silver lantern, shovel, dug up the peanuts in room 31, gave them to the elephants at
+room 21, west and north to room 60), fought five enemies on the way, and left at room 60; the host recorded
+FinishAdventure, die 0, quest true, credited, and the debriefing read "Cleared, and credited". The tier gate was
+opened by seeding two tier 1 credits (that proof is the tier 1 route evidence above). Still to prove in play: one each
+for tiers 1, 3, 4 and 5, chosen to cover a monster-dead, an artifact-possession and a multi-condition contract, plus a
+contract self-check of all 20 against the built package's databases. Notes (Grok #3422): The Pyramid of Anharos zeroes all held and banked
 gold on any finish without its quest (a ParchLock warning is the operator's call); A Runcible Cargo's dream can end
 in ExitType.Error if its start snapshot is missing, which strands the character outside the Hall (never a clear; the
 snapshot file must persist with the campaign).
