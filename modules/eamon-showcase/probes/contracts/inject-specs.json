@@ -1,0 +1,333 @@
+[
+ {
+  "name": "Alternate Beginner's Cave",
+  "sel": 1,
+  "ops": [
+   {
+    "monster": 11,
+    "to": "player"
+   },
+   {
+    "monster": 11,
+    "set": "Reaction",
+    "value": "Friend"
+   }
+  ],
+  "exit": [
+   1,
+   "w"
+  ],
+  "negativeDrop": 0,
+  "cite": "MainLoop.cs Shutdown: Nina (11) in the player's room with Reaction Friend pays the reward; Nina is a fixed Friend, so her presence is the real condition"
+ },
+ {
+  "name": "Beginner's Cave II",
+  "sel": 3,
+  "ops": [
+   {
+    "artifact": 5,
+    "to": "carried"
+   }
+  ],
+  "exit": [
+   1,
+   "n"
+  ],
+  "negativeDrop": 0,
+  "cite": "OpenCommand.cs:23-28 'Wait until you leave': the treasure chest (5) carried out"
+ },
+ {
+  "name": "Beginner's Forest",
+  "sel": 4,
+  "ops": [
+   {
+    "monster": 8,
+    "set": "Field1",
+    "value": 1
+   }
+  ],
+  "exit": [
+   1,
+   "e"
+  ],
+  "negativeDrop": 0,
+  "cite": "GetPlayerInputState.cs:28-58: meeting the Fairy Queen (8) sets her Field1 = 1; exit through the room 1 gate"
+ },
+ {
+  "name": "The Pyramid of Anharos",
+  "sel": 16,
+  "ops": [
+   {
+    "state": "KV",
+    "value": 1
+   },
+   {
+    "state": "KF",
+    "value": 1
+   }
+  ],
+  "exit": [
+   1,
+   "w"
+  ],
+  "negativeKeep": [
+   0,
+   1
+  ],
+  "positiveOps": [
+   0
+  ],
+  "cite": "MainLoop.cs:34-69 Shutdown: KV == 1 and KF != 1 is the tomb-restored branch (effect 51 or a reward); KF == 1 levies tax"
+ },
+ {
+  "name": "The Sub-Aquan Laboratory",
+  "sel": 17,
+  "ops": [
+   {
+    "state": "QuestValue",
+    "value": 1
+   }
+  ],
+  "exit": [
+   16,
+   "u"
+  ],
+  "negativeDrop": 0,
+  "cite": "MainLoop.cs Shutdown pays when QuestValue > 0 (ReadCommand.cs:40/:110/:136 raise it)"
+ },
+ {
+  "name": "The Temple of Ngurct",
+  "sel": 18,
+  "ops": [
+   {
+    "artifact": 77,
+    "to": "carried"
+   }
+  ],
+  "exit": [
+   1,
+   "s"
+  ],
+  "negativeDrop": 0,
+  "cite": "MainLoop.cs Shutdown: the gold medallion (77) carried, checked before it is put in limbo"
+ },
+ {
+  "name": "The Tower of Eamon",
+  "sel": 19,
+  "ops": [
+   {
+    "artifact": 22,
+    "to": "carried"
+   }
+  ],
+  "exit": [
+   1,
+   "s"
+  ],
+  "negativeDrop": 0,
+  "cite": "effect 200 mission; the Book of Evil Plans (22) carried out (stock engine)"
+ },
+ {
+  "name": "The Vile Grimoire of Jaldi'al",
+  "sel": 21,
+  "ops": [
+   {
+    "artifact": 27,
+    "to": "carried"
+   }
+  ],
+  "exit": [
+   1,
+   "w"
+  ],
+  "negativeDrop": 0,
+  "cite": "MainLoop.cs Shutdown: the grimoire (27) carried to Kreqor"
+ },
+ {
+  "name": "The Wayfarers Inn",
+  "sel": 22,
+  "ops": [
+   {
+    "state": "CharlotteRestInPeace",
+    "value": 1
+   }
+  ],
+  "exit": [
+   1,
+   "s"
+  ],
+  "negativeDrop": 0,
+  "cite": "UseCommand.cs:92 sets CharlotteRestInPeace when the blessed bones and bear are buried; the adventure itself requires SET MATURECONTENT TRUE before any command",
+  "pre": [
+   "set maturecontent true"
+  ]
+ },
+ {
+  "name": "Wrenhold's Secret Vigil",
+  "sel": 23,
+  "ops": [
+   {
+    "artifact": 4,
+    "to": "carried"
+   }
+  ],
+  "exit": [
+   1,
+   "n"
+  ],
+  "negativeDrop": 0,
+  "cite": "PlayerMoveCheckState.cs:162-205: orb (4) carried at the exit -> orb to limbo, King Argas hands over the bow (50)"
+ },
+ {
+  "name": "Escape from Mt. Moon",
+  "sel": 7,
+  "ops": [
+   {
+    "monster": 4,
+    "to": "limbo"
+   }
+  ],
+  "exit": [
+   12,
+   "n"
+  ],
+  "negativeDrop": 0,
+  "cite": "room 12 north is the author's exit past the beaten Rocket boss (4); a slain single monster goes to limbo"
+ },
+ {
+  "name": "Firestorm",
+  "sel": 8,
+  "ops": [
+   {
+    "monster": 27,
+    "to": "limbo"
+   }
+  ],
+  "exit": [
+   86,
+   "s"
+  ],
+  "negativeDrop": 0,
+  "cite": "Room.cs:23-25 / Room.GetDir: room 86 south opens once Thorak (27) is in limbo (slain)"
+ },
+ {
+  "name": "Orb of My Life",
+  "sel": 10,
+  "ops": [
+   {
+    "artifact": 23,
+    "to": "carried"
+   },
+   {
+    "artifact": 14,
+    "to": "carried"
+   }
+  ],
+  "exit": [
+   null,
+   [
+    "say reome",
+    "n"
+   ]
+  ],
+  "negativeDrop": 0,
+  "cite": "GetCommand.cs:50-58 (taking the freed Orb 9 swaps in Orb 23), SayCommand.cs:131-145 (SAY REOME with the Jewel of Reome opens exits), MainLoop.cs Shutdown (Orb 23 carried = success)"
+ },
+ {
+  "name": "DharmaQuest",
+  "sel": 6,
+  "ops": [],
+  "exit": [
+   68,
+   [
+    "pray"
+   ]
+  ],
+  "negativeExit": [
+   72,
+   [
+    "e"
+   ]
+  ],
+  "cite": "PrayCommand.cs:122-296: praying in room 68 starts the gods' ceremony and the scripted finish; room 72 east is the plain exit"
+ },
+ {
+  "name": "Land of the Mountain King",
+  "sel": 9,
+  "ops": [
+   {
+    "monster": 1,
+    "set": "DmgTaken",
+    "value": 179
+   }
+  ],
+  "exit": [
+   18,
+   [
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king",
+    "attack king"
+   ]
+  ],
+  "negativeDrop": 0,
+  "cite": "CombatComponent.cs:32-51: the Mountain King (1, Hardiness 180) dying is the scripted finish (FinishAdventure)"
+ },
+ {
+  "name": "A Runcible Cargo",
+  "sel": 2,
+  "ops": [
+   {
+    "monster": 27,
+    "to": "limbo"
+   },
+   {
+    "monster": 28,
+    "to": "limbo"
+   }
+  ],
+  "exit": [
+   null,
+   [
+    "look"
+   ]
+  ],
+  "negativeDrop": 1,
+  "cite": "GetPlayerInputState.cs:246-277: the bandit commander (27) and soldiers (28) both in limbo (dead) is a scripted victory (FinishAdventure)"
+ },
+ {
+  "name": "Stronghold of Kahr-Dur",
+  "sel": 12,
+  "ops": [
+   {
+    "monster": 22,
+    "to": "limbo"
+   },
+   {
+    "artifact": 26,
+    "to": "limbo"
+   },
+   {
+    "monster": 26,
+    "to": "player"
+   }
+  ],
+  "exit": [
+   1,
+   "s"
+  ],
+  "negativeDrop": 0,
+  "cite": "PlayerMoveCheckState.cs:114-153: its own exit verdict needs the Necromancer (22) in limbo and Lady Mirabelle (monster 26, freed from the bound artifact 26) in the player's room"
+ }
+]
