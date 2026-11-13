@@ -1,5 +1,9 @@
 # ParchLock Release Notes
 
+## Build 87 (test build, Eamon Showcase) - 2026-11-12
+
+- Test build for phone checks of the Eamon Showcase work: campaign carry-over across Showcase releases (free recall from a changed adventure, update warning, save-format refusal with Download Package and Start a new campaign), the Outer Chamber and Hall rooms, Equipment sheet checks, and transcripts, save snapshots and learning kept with the campaign. Android versionCode 62; shell cache 187. Not a public release.
+
 ## Desktop patch 2.0.3 - 2026-11-09
 
 - Windows: if Windows reserves ParchLock's local port (for example after enabling virtualization), the launcher offers an available alternative and remembers it for future launches. It explains that browser saves and settings belong to the previous address; declining leaves that address unchanged. Existing data is not deleted.
