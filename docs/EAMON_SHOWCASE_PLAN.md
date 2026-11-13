@@ -156,10 +156,15 @@ input, verified) applies the end state each author's finish code produces, then 
 leaves one condition out. Positive credited and negative not a clear: Beginner's Cave II, Beginner's Forest, The
 Sub-Aquan Laboratory, The Tower of Eamon, The Vile Grimoire of Jaldi'al, The Temple of Ngurct, Escape from Mt. Moon;
 Wrenhold's Secret Vigil (the contract turns true only when the exit hands over the bow, as its source orders);
-Firestorm (positive credited; with Thorak alive its exit stays shut, the author's own lock). Still to run: The
-Pyramid of Anharos (its intro asks for a guide; driver fixed), The Wayfarers Inn (exit not reached), Alternate
-Beginner's Cave's negative (Nina is a fixed Friend, so her presence is the real condition), Orb of My Life,
-DharmaQuest, Land of the Mountain King, A Runcible Cargo and Stronghold of Kahr-Dur. Still to prove in play: one each
+Firestorm (positive credited; with Thorak alive its exit stays shut, the author's own lock); The Pyramid of Anharos
+(KV 1 credited; KV 1 with KF 1 is the tax branch, not a clear); The Wayfarers Inn; Alternate Beginner's Cave (Nina
+is a fixed Friend, so her presence is the real condition). Wrenhold's negative is the author's death ending for
+leaving without the life-orb. The Wayfarers Inn disables every command except QUIT, RESTORE and SETTINGS until the
+player types SET MATURECONTENT TRUE, and says so itself every turn (CommandImpl.cs:29-31, StateImpl.cs:38-40): the
+author's own consent gate; ParchLock never opts in for the player, and the game's instruction reaches them as is.
+Still to run: Orb of My Life, DharmaQuest, Land of the Mountain King, A Runcible Cargo, Stronghold of Kahr-Dur.
+Live clears not yet played (for the owner's play or later sampling): every adventure except The Beginner's Cave, The
+Training Ground, The Deep Canyon and Escape from Mt. Moon. Still to prove in play: one each
 for tiers 1, 3, 4 and 5, chosen to cover a monster-dead, an artifact-possession and a multi-condition contract, plus a
 contract self-check of all 20 against the built package's databases. Cross-checked against the authors' own hints
 (HINTS.DAT, read from the built package): Stronghold of Kahr-Dur's "What do I have to do to successfully complete the
