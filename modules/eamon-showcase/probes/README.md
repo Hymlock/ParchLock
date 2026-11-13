@@ -16,7 +16,7 @@ G1 remains OPEN: actual Eamon gameplay/console adaptation, nested fields, RNG fi
 
 `EamonProbe.cs` provides the reflection/serializer fixture method. `run-storage-probe.cjs` commits its actual serialized module output into an isolated IndexedDB database, closes the persistent Chromium process, starts a fresh process with the same scratch profile, and deserializes the stored bytes. This passed with identical Beginner's Cave title/room/artifact counts on November 10. It does not prove engine saves, multi-file atomicity, campaign progress or production learning persistence. The scratch profile remains as evidence and contains no production app storage. The prepare script runs both input and storage checks.
 
-No playable importable Showcase file exists yet.
+Status update (2026-11-12): the playable importable Showcase now exists (host/ and docs/EAMON_SHOWCASE_PLAN.md); the notes above describe the November 10 feasibility fixtures only. Gate G1 is measured per target in the plan (desktop done; the Android measurements are part of the Build 87 phone session). Contract tests: contracts/README.md.
 
 ## Ordinary-module regression protection
 
