@@ -626,24 +626,30 @@ var ModuleLibrary = (function () {
         } catch (e) {}
     }
 
+    // Resolves once the stored lines are deleted (or the attempt failed), so a caller about to reload can wait for it:
+    // an unload aborts a pending IndexedDB transaction (Grok #3484 R1).
     function removeTranscriptDigest(digest) {
-        try {
-            if (!digest) return;
-            localStorage.removeItem("PL_Transcript_" + digest);
-            if (typeof indexedDB === "undefined") return;
-            var req = indexedDB.open("ParchLockTranscripts", 1);
-            req.onupgradeneeded = function () {
-                var store = req.result.createObjectStore("lines", { keyPath: ["digest", "seq"] });
-                store.createIndex("digest", "digest");
-            };
-            req.onsuccess = function () {
-                try {
-                    var tx = req.result.transaction("lines", "readwrite");
-                    var cur = tx.objectStore("lines").index("digest").openCursor(IDBKeyRange.only(digest));
-                    cur.onsuccess = function () { var c = cur.result; if (c) { c.delete(); c.continue(); } };
-                } catch (eT) {}
-            };
-        } catch (e) {}
+        return new Promise(function (resolve) {
+            try {
+                if (!digest) return resolve();
+                localStorage.removeItem("PL_Transcript_" + digest);
+                if (typeof indexedDB === "undefined") return resolve();
+                var req = indexedDB.open("ParchLockTranscripts", 1);
+                req.onupgradeneeded = function () {
+                    var store = req.result.createObjectStore("lines", { keyPath: ["digest", "seq"] });
+                    store.createIndex("digest", "digest");
+                };
+                req.onerror = function () { resolve(); };
+                req.onsuccess = function () {
+                    try {
+                        var tx = req.result.transaction("lines", "readwrite");
+                        var cur = tx.objectStore("lines").index("digest").openCursor(IDBKeyRange.only(digest));
+                        cur.onsuccess = function () { var c = cur.result; if (c) { c.delete(); c.continue(); } };
+                        tx.oncomplete = tx.onerror = tx.onabort = function () { try { req.result.close(); } catch (eC) {} resolve(); };
+                    } catch (eT) { resolve(); }
+                };
+            } catch (e) { resolve(); }
+        });
     }
 
     /* Orphaned records of earlier Showcase builds (owner 2026-11-12, #3471 items 7-8; Grok #3479 P3/P4): each package
@@ -689,10 +695,13 @@ var ModuleLibrary = (function () {
        progress, so the campaign's own records go too: its transcript, its save snapshots and its live maps (Grok #3481
        F3). Learning stays: it is ParchLock's knowledge of the game's words, not campaign progress. */
     function forgetShowcaseCampaign() {
+        var done = Promise.resolve();
         try {
             if (typeof ParchLockMap !== "undefined") ParchLockMap.PersistenceBlocked = true;
+            // Nothing of this session may write the old campaign's transcript back before the reload (Grok #3484 R1).
+            try { if (typeof Transcript !== "undefined") { Transcript.meta = null; Transcript.digest = null; Transcript.saveMeta = function () {}; } } catch (eT) {}
             try { if (typeof SaveState !== "undefined") SaveState.removeStory(SHOWCASE_IDENTITY); } catch (eS) {}
-            removeTranscriptDigest(SHOWCASE_IDENTITY);
+            done = removeTranscriptDigest(SHOWCASE_IDENTITY);
             var doomed = [];
             for (var i = 0; i < localStorage.length; i++) {
                 var k = localStorage.key(i);
@@ -700,6 +709,7 @@ var ModuleLibrary = (function () {
             }
             doomed.forEach(function (k) { localStorage.removeItem(k); });
         } catch (e) {}
+        return done;
     }
 
     // E3: one seen-once flag per installed module (tutorial-style).
