@@ -1,0 +1,91 @@
+{
+  "hall": true,
+  "status": {
+    "source": "hall",
+    "profile": "hall",
+    "name": "Hero",
+    "gender": "Male",
+    "intellect": 16,
+    "learningPct": 6,
+    "hardiness": 10,
+    "agility": 7,
+    "charisma": 13,
+    "charmPct": 6,
+    "weapons": [
+      {
+        "name": "Axe",
+        "pct": 5
+      },
+      {
+        "name": "Bow",
+        "pct": -10
+      },
+      {
+        "name": "Club",
+        "pct": 20
+      },
+      {
+        "name": "Spear",
+        "pct": 10
+      },
+      {
+        "name": "Sword",
+        "pct": 0
+      }
+    ],
+    "spells": [
+      {
+        "name": "Blast",
+        "max": 0
+      },
+      {
+        "name": "Heal",
+        "max": 0
+      },
+      {
+        "name": "Speed",
+        "max": 0
+      },
+      {
+        "name": "Power",
+        "max": 0
+      }
+    ],
+    "armorExpertise": 0,
+    "gold": 200,
+    "bank": 0
+  },
+  "adventure": "Main Hall",
+  "room": {
+    "id": 308000001,
+    "name": "Main Hall",
+    "lit": true
+  },
+  "chips": [
+    "2Weapons and Armor Shop",
+    "3Hokas Tokas the Wizard",
+    "sVillage",
+    "4Rowan McFenny the Banker"
+  ],
+  "spokesHidden": 3,
+  "spokesTotal": 3,
+  "eamonSettings": true,
+  "rt": {
+    "median": 13,
+    "max": 16,
+    "all": [
+      5,
+      6,
+      8,
+      11,
+      13,
+      14,
+      14,
+      16
+    ]
+  }
+}\n\nADVENTURE\n{
+  "adventure": null,
+  "room": null,
+  "status": null
+}

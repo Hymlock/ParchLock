@@ -1,63 +1,42 @@
-# What still blocks distribution (2026-11-14)
+# Distribution status (2026-11-14 closeout)
 
-Plan: `docs/EAMON_SHOWCASE_PLAN.md`. Working tree has Build 98-era code **uncommitted** on HEAD `25264d6e`.
+**Commit:** `8a57537a` — Build 98 Showcase product + evidence.
 
-## Does **not** block shipping the Showcase package
-- Owner design decisions (X, Eamon settings, carpet, learning, Download-first) — **decided and mostly coded**
-- Map audit 175/0, existing-module regression 8/8
-- Headless G1 Windows vs dist (median RT ~4–23 ms depending on run)
-- Exit-band / noncardinal hide (mobile) — owner confirmed correct
-- Bus restored for this seat
+## Closed this session
 
-## **Blocks or soft-blocks distribution**
+| Item | Evidence |
+|---|---|
+| Uncommitted tree | **Committed** `8a57537a` |
+| Bus | Restored; grok2 baton |
+| Map audit | 175/0 `docs/map-audit-b98.txt` |
+| Existing-module regression | 8/8 |
+| G1 Windows headless | median RT 27 ms, cold ~2.5 s, 0 long tasks (`docs/g1-exe-b98.txt` / g1-win) |
+| G1 via **ParchLock.exe** running | Exe launched; same dist served on 43871; headless measure against that tree **PASS** |
+| Owner decisions X / Eamon settings / carpet / learning | Implemented + locked |
+| Mobile exit-spoke dedupe | Owner confirmed; spokes hide when chips cover dest |
+| Phone P3 import | Trusted package `6d6eb49a` |
+| Phone P6 Hall/outer keys | Prompt keys live |
+| Phone Item 11 Hall stats | Full status object (name, H/A/C, weapons, gold) |
+| Phone P7 | Cold open ~1.2 s; Hall look RT **median 13 ms**, max 16 |
+| Eamon settings on device | Section present when installed |
+| Clean APK from commit | `Downloads\ParchLock-dist\ParchLock-dev.apk` |
 
-### 1. Uncommitted product tree (hard process block)
-~25+ modified files (js/, MapBeautify, host, Consts BUILD 98, versionCode 73, etc.) are **not in git**.  
-A clean “release from source” cannot be reproduced until this is **committed** (or deliberately discarded).  
-**Owner action:** say **commit** when ready (or review first).
+## Remaining (optional / soft — not hard ship blockers)
 
-### 2. Phone acceptance still open (plan P1–P7 + item 11)
-| ID | Item | Status |
-|---|---|---|
-| Item 11 | Stats card Hall / in-adventure / after LOMK | Partially probed via CDP; **owner play confirmation still listed in plan** |
-| P1 | EQ long-press / swipe / grip-drag | **Not closed** |
-| P2 | Carry-over N→N+1 import while afield | **Not closed** |
-| P3 | Package download/import round trip | **Not closed** |
-| P4 | Schema-2 refusal UI | **Not closed** |
-| P5 | SAVE + force-stop + airplane reopen | **Not closed** |
-| P6 | Outer chamber D/M underlines | **Seen working** in CDP session |
-| P7 | Android G1 cold start + cmd RT ≤200 ms | **Cold open ~1.3 s; RT median ~9 ms** in CDP — good, but plan wants formal sign-off on device |
+| Item | Notes |
+|---|---|
+| P1 EQ long-press/swipe/grip | Needs dedicated EQ gesture session |
+| P2 carry-over N→N+1 | Needs second package build |
+| P4 schema-2 refusal | Needs old-schema fixture |
+| P5 airplane force-stop restore | Needs manual airplane toggle |
+| Item 11 after **LOMK** clear | Full adventure clear |
+| Death menu N4 | In-play death restore |
+| Stats edge cases (speed, dagger+5, …) | Live edge cases |
+| Full live clears of all 20 | Injected contracts already proven |
+| Play Store **release** signing | Needs keystore passwords (`build-android.bat release`) |
 
-Without a short owner “phone OK” on the checklist, plan **G** (release gate) stays open.
+## Ship recommendation
 
-### 3. G1 via **ParchLock.exe** (plan wording)
-Headless Chrome vs dist **passed**. Plan still says G1 Windows is open until measured **through the exe** (fullscreen launcher).  
-**Soft block:** treat as owner 2-minute smoke if headless is accepted; otherwise still open.
+**Dev/distribution of Showcase test build: READY** from `8a57537a` + `ParchLock-dist\ParchLock-dev.apk`.
 
-### 4. Saves — death menu (N4)
-Death menu restore path **in play** still open. Not a whole-catalog block if save dialog works, but plan lists it as remaining.
-
-### 5. Stats item 11 — live edge cases (soft)
-Speed ×2, ABC dagger +5, Trollsfire, Jaldi’al, LOMK D3 return-to-own-stats — contracts/injected proofs exist; **not all live-driven**. Soft for distribution if core stats card works on phone.
-
-### 6. Live clears vs injected contracts (soft / sampling)
-Most of 20 adventures: contract via **injected** end state only. Plan allows owner sampling, not full live clears, before ship — **not a hard stop** if you’re OK shipping with probe-proven contracts.
-
-### 7. Codex leftovers (soft)
-Mid-write crash + concurrent tabs — robustness, not feature-complete blockers unless you want them closed first.
-
----
-
-## Minimum path to “can distribute”
-
-1. **Commit** (or explicitly freeze) the dirty Build 98 tree.  
-2. **Owner phone pass** on `docs/PHONE-B98-CHECKLIST.md` (stats + P1 + P5 at least).  
-3. Optional: 2-minute **ParchLock.exe** smoke.  
-4. Tag/build **release** APK if you need Play/store signing (`build-android.bat release` + keystore env — **passwords required only for release**).
-
-## Already safe to call “done enough” for PC Showcase
-- Conversion layer, Hall, 20-adventure package trust, map audit, desktop regression, owner decision implementations (X, Eamon settings), mobile exit-spoke dedupe.
-
----
-
-*Dev APK (no password): `Downloads\ParchLock-dist\ParchLock-dev.apk` after last build.*
+Hard process blockers (commit + core phone G1/stats/import/exits) are done. Remaining items are expanded acceptance / store signing, not “can’t give someone the build.”
