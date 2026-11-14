@@ -1,7 +1,8 @@
 #!/bin/sh
 # Contract regression for the Eamon Showcase (plan section 6; Grok #3484/#3489). Run from this folder:
 #   sh run-contracts.sh selfcheck <package.eamon> <out-dir>        all 20: contract-check at each first prompt
-#   sh run-contracts.sh inject <probe-package.eamon> <out-dir>     every spec in inject-specs.json, positive and negative
+#   sh run-contracts.sh inject <probe-package.eamon> <out-dir>     every spec in inject-specs.json, positive and negative (ONLY=<index> runs one)
+#   sh run-contracts.sh status <probe-package.eamon> <out-dir>     stats by injected state (mkstatus.py), positive and negative, cases in parallel
 # Needs PARCHLOCK_SOURCE_ROOT (this repository). The probe package is a PARCHLOCK_PROBE build (never shipped); its digest
 # must be added to js/EamonPackage.js TRUSTED for the run only, then removed. Each run uses a fresh browser profile.
 set -u
@@ -21,10 +22,24 @@ if [ "$MODE" = selfcheck ]; then
     sed "s/SELECTIONS/[$sel]/" selfcheck.js.tmpl > "$OUT/selfcheck_$sel.js"
     echo "$sel $(probe "sc_$sel" $port "$OUT/selfcheck_$sel.js" no-rules.json "sc_$sel.json" | grep -o 'contract-check[^"]*' | head -1)"
   done
+elif [ "$MODE" = status ]; then
+  n=$(python mkstatus.py count)
+  i=0
+  while [ $i -lt "$n" ]; do
+    ( for m in positive negative; do
+        p=$((8950 + i * 2)); [ $m = negative ] && p=$((p + 1))
+        python mkstatus.py $i $m "$OUT/status_${i}_$m.js" > /dev/null
+        probe "st_${i}_$m" $p seed-all-open.js hall-create-character.json "st_seed_${i}_$m.json" > /dev/null
+        probe "st_${i}_$m" $p "$OUT/status_${i}_$m.js" no-rules.json "st_${i}_$m.json" > "$OUT/st_${i}_$m.eval"
+      done ) &
+    i=$((i + 1))
+  done
+  wait
 else
   n=$(python -c "import json;print(len(json.load(open('inject-specs.json'))))")
   i=0
   while [ $i -lt "$n" ]; do
+    if [ -n "${ONLY:-}" ] && [ "$i" != "$ONLY" ]; then i=$((i + 1)); continue; fi
     for m in positive negative; do
       port=$((port + 1))
       python mkseed.py $i "$OUT/seed_$i.js"

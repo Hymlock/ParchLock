@@ -256,7 +256,7 @@ namespace ParchLock.EamonHost
 				var db = gEngine.Database;
 				if (keys.Contains("artifact"))
 				{
-					if (c.TryGetProperty("inContainer", out var holder) && db.ArtifactTable.FindRecord(holder.GetInt64()) == null) problems.Add("no container artifact " + holder);
+					if (c.TryGetProperty("inContainer", out var holder)) { var h = db.ArtifactTable.FindRecord(holder.GetInt64()); if (h == null) problems.Add("no artifact " + holder); else if (h.GeneralContainer == null) problems.Add("artifact " + holder + " is not a container"); }   // Grok #3498 N2
 					if (c.TryGetProperty("carriedByMonster", out var mon) && db.MonsterTable.FindRecord(mon.GetInt64()) == null) problems.Add("no monster " + mon);
 					if (c.TryGetProperty("inRoom", out var room) && db.RoomTable.FindRecord(room.GetInt64()) == null) problems.Add("no room " + room);
 				}

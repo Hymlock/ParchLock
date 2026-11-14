@@ -301,9 +301,44 @@ var ModuleLibrary = (function () {
                 changed();
                 requestPersistence();
                 item.Duplicate = duplicate;
+                retireOlderShowcases(pkg.id);
                 return item;
             });
         });
+    }
+
+    // One Showcase in the library (owner, 2026-11-13: 309 stories plus one Showcase, never two). A newly installed
+    // Showcase replaces any other: the old row and its package files go, the campaign, maps and transcripts stay
+    // (they belong to the stable Showcase identity). The one being played right now is retired at the next library
+    // load instead, so no file it still needs disappears under it.
+    var SUPERSEDED_KEY = "PL_ShowcaseSuperseded";
+    function playingPath() {
+        try { var m = /[?&]story=([^&]+)/.exec(location.search); return m ? normalizePath(decodeURIComponent(m[1])) : null; } catch (e) { return null; }
+    }
+    function retireOlderShowcases(keepId) {
+        var playing = playingPath(), later = [];
+        cache.filter(function (entry) { return entry.Format === "eamon" && entry.id !== keepId; }).forEach(function (entry) {
+            if (playing && normalizePath(entry.Path) === playing) later.push(entry.Path);
+            else removeLocal(entry.Path).catch(function () {});
+        });
+        try {
+            if (later.length) localStorage.setItem(SUPERSEDED_KEY, JSON.stringify({ keep: keepId, paths: later }));
+        } catch (e) {}
+    }
+    function retireDeferredShowcases() {
+        // A library that already holds two Showcases (installed before this rule) keeps the newest one.
+        var shows = cache.filter(function (entry) { return entry.Format === "eamon"; });
+        if (shows.length > 1) {
+            shows.sort(function (x, y) { return String(y.AddedAt || "").localeCompare(String(x.AddedAt || "")); });
+            retireOlderShowcases(shows[0].id);
+        }
+        var rec = null;
+        try { rec = JSON.parse(localStorage.getItem(SUPERSEDED_KEY) || "null"); } catch (e) {}
+        if (!rec || !Array.isArray(rec.paths)) return;
+        var playing = playingPath();
+        var left = rec.paths.filter(function (p) { return playing && normalizePath(p) === playing; });
+        rec.paths.forEach(function (p) { if (left.indexOf(p) < 0 && find(p)) removeLocal(p).catch(function () {}); });
+        try { if (left.length) localStorage.setItem(SUPERSEDED_KEY, JSON.stringify({ keep: rec.keep, paths: left })); else localStorage.removeItem(SUPERSEDED_KEY); } catch (e) {}
     }
 
     function addFile(file) {
@@ -367,8 +402,16 @@ var ModuleLibrary = (function () {
         });
     }
 
+    function compareTitles(a, b) {
+        var ta = String((a && a.Title) || "").toLowerCase();
+        var tb = String((b && b.Title) || "").toLowerCase();
+        if (ta < tb) return -1;
+        if (ta > tb) return 1;
+        return 0;
+    }
+
     function all() {
-        return builtIns().filter(function (game) { return hidden.indexOf(game.Path) < 0; }).concat(cache.slice());
+        return builtIns().filter(function (game) { return hidden.indexOf(game.Path) < 0; }).concat(cache.slice()).sort(compareTitles);
     }
 
     function normalizePath(value) {
@@ -706,6 +749,8 @@ var ModuleLibrary = (function () {
             for (var i = 0; i < localStorage.length; i++) {
                 var k = localStorage.key(i);
                 if (k && /^(?:PL_Map_|PL_MapSlots_)eamon\/showcase(?:#.*)?$/.test(k)) doomed.push(k);
+                // The save names mirrored into ParchLock's save dialog go with the campaign (one save system).
+                if (k && /^(?:dirent|content):save:eamonshowcase-/.test(k)) doomed.push(k);
             }
             doomed.forEach(function (k) { localStorage.removeItem(k); });
         } catch (e) {}
@@ -894,7 +939,7 @@ var ModuleLibrary = (function () {
                 listeners.slice().forEach(function (listener) { try { listener(); } catch (e) {} });
             }
         });
-        return reconcile();
+        return reconcile().then(function (v) { try { retireDeferredShowcases(); } catch (e) {} return v; });
     }
 
     if (!Array.isArray(window.GameList)) window.GameList = [];

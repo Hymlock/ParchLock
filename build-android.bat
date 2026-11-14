@@ -50,6 +50,18 @@ if exist "%APK_WEB%" (
   exit /b 1
 )
 call npx cap copy android || exit /b 1
+rem An update test's N+1 package is trusted in the APK only, through EAMON_TEST_TRUST, never in a release (Grok #3525).
+if defined EAMON_TEST_TRUST (
+  if /I "%MODE%"=="release" (
+    echo ERROR: EAMON_TEST_TRUST is for test builds only; unset it for a release build.
+    exit /b 1
+  )
+  node "%SRC%\tools\check-trusted.cjs" inject "%APK_WEB%\js\EamonPackage.js" || exit /b 1
+)
+rem A release build's check is strict: no test allowance at all (Grok #3527 N1).
+set "TRUST_ALLOW=--allow-test"
+if /I "%MODE%"=="release" set "TRUST_ALLOW="
+node "%SRC%\tools\check-trusted.cjs" check "%SRC%\js\EamonPackage.js" "%APK_WEB%\js\EamonPackage.js" !TRUST_ALLOW! || exit /b 1
 set "CAP_PLUGINS=%SRC%\android\app\src\main\assets\capacitor.plugins.json"
 if not exist "%CAP_PLUGINS%" (
   echo ERROR: capacitor.plugins.json missing; run "npx cap sync android" once.

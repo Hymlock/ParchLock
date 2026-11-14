@@ -1,0 +1,24 @@
+weapon: ["Marcos says, \"Well, I just happen to have three swords in, of varying quality. I've got a very good one for 28 GP, a fair one for 22 GP, and a kinda shabby one for 17 GP.  Which do you want?\"","Marcos hands you your weapon and takes the price from you.","2. Visit the Weapons and Armor Shop."]
+seed: {"seededFor":"d999aa7c42eb41d89899ed422a96600a"}
+adventure list (20): {"Alternate Beginner's Cave":"1","A Runcible Cargo":"2","Beginner's Cave II":"3","Beginner's Forest":"4","DharmaQuest":"6","Escape from Mt. Moon":"7","Firestorm":"8","Land of the Mountain King":"9","Orb of My Life":"10","Stronghold of Kahr-Dur":"12","The Beginner's Cave":"14","The Deep Canyon":"15","The Pyramid of Anharos":"16","The Sub-Aquan Laboratory":"17","The Temple of Ngurct":"18","The Tower of Eamon":"19","The Training Ground":"20","The Vile Grimoire of Jaldi'al":"21","The Wayfarers Inn":"22","Wrenhold's Secret Vigil":"23"}
+Alternate Beginner's Cave: 9 rooms checked, 0 mismatches
+A Runcible Cargo: 9 rooms checked, 0 mismatches
+Beginner's Cave II: 9 rooms checked, 0 mismatches
+Beginner's Forest: 9 rooms checked, 0 mismatches
+DharmaQuest: 9 rooms checked, 0 mismatches
+Escape from Mt. Moon: 9 rooms checked, 0 mismatches
+Firestorm: 9 rooms checked, 0 mismatches
+Land of the Mountain King: 9 rooms checked, 0 mismatches
+Orb of My Life: 9 rooms checked, 0 mismatches
+Stronghold of Kahr-Dur: 9 rooms checked, 0 mismatches
+The Beginner's Cave: 9 rooms checked, 0 mismatches
+The Deep Canyon: 9 rooms checked, 0 mismatches
+The Pyramid of Anharos: 9 rooms checked, 0 mismatches
+The Sub-Aquan Laboratory: 9 rooms checked, 0 mismatches
+The Temple of Ngurct: 9 rooms checked, 0 mismatches
+The Tower of Eamon: 9 rooms checked, 0 mismatches
+The Training Ground: 4 rooms checked, 0 mismatches
+The Vile Grimoire of Jaldi'al: 9 rooms checked, 0 mismatches
+The Wayfarers Inn: 9 rooms checked, 0 mismatches (opted into mature content as the author requires)
+Wrenhold's Secret Vigil: 9 rooms checked, 0 mismatches
+TOTAL: 175 room checks, 0 mismatches

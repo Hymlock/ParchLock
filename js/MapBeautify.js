@@ -62,6 +62,13 @@ var MapBeautify = {
             n++;
         });
         if (n) host.appendChild(wrap);
+        // After rebuilding large white non-cardinal spokes, hide any already
+        // covered by smaller #exits .exit chips (mobile only; Map.preferCompactExitChips).
+        try {
+            if (document.body && document.body.classList.contains("pl-mobile")
+                && typeof ParchLockMap !== "undefined" && ParchLockMap.preferCompactExitChips)
+                ParchLockMap.preferCompactExitChips();
+        } catch (eHide) {}
     },
     iterations: 12,
 

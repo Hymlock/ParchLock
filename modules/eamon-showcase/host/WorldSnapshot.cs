@@ -129,17 +129,40 @@ namespace ParchLock.EamonHost
 			// The words this adventure's parser accepts: each player-enabled command's verb and synonyms,
 			// and the engine's prepositions. ParchLock offers only these (operator rule: no extra commands).
 			var commands = new List<object>();
+			var statusEnabled = false;
 			var rtEngine = engine as EamonRT.Framework.Plugin.IEngine;
 			if (rtEngine?.CommandList != null)
 				foreach (var command in rtEngine.CommandList)
-					if (command != null && command.IsPlayerEnabled && !string.IsNullOrWhiteSpace(command.Verb))
-						commands.Add(new { verb = command.Verb, synonyms = command.Synonyms ?? Array.Empty<string>(), dark = command.IsDarkEnabled });
+				{
+					if (command == null) continue;
+					// An adventure's override may read the actor's room (The Pyramid of Anharos: LOOK and EXAMINE work in
+					// the Black Room, 39), which the engine sets only while a command runs. Give the listed command the
+					// player and the current room for the read, as the engine would, and put back what it held.
+					var heldMonster = command.ActorMonster; var heldRoom = command.ActorRoom;
+					try
+					{
+						command.ActorMonster = self; command.ActorRoom = room;
+						// Whether the player has STATUS here, as the engine decides it (ruleset 5/62 turns it off; an
+						// adventure may turn it back on): the status card shows no more than the game does (item 11, D1).
+						if (command is EamonRT.Framework.Commands.IStatusCommand) statusEnabled = command.IsPlayerEnabled;
+						if (command.IsPlayerEnabled && !string.IsNullOrWhiteSpace(command.Verb))
+							commands.Add(new { verb = command.Verb, synonyms = command.Synonyms ?? Array.Empty<string>(), dark = command.IsDarkEnabled });
+					}
+					catch (Exception ex)
+					{
+						// A throwing author override costs that one verb, never the whole snapshot (map, exits, underlines;
+						// Grok #3523 F2). Logged so it is found, not hidden.
+						Console.WriteLine("[world] verb left out: " + (command.Verb ?? command.GetType().Name) + " (" + ex.GetType().Name + ")");
+					}
+					finally { command.ActorMonster = heldMonster; command.ActorRoom = heldRoom; }
+				}
 			var preps = (engine.Preps ?? Array.Empty<Eamon.Framework.Primitive.Classes.IPrep>()).Where(p => p != null && !string.IsNullOrWhiteSpace(p.Name)).Select(p => p.Name.ToLowerInvariant()).Distinct().ToArray();
 
 			return JsonSerializer.Serialize(new
 			{
 				vocabulary = new { commands, preps },
 				adventure = engine.GetModule()?.Name, room = new { id = _adventure + room.Uid, name = room.Name, lit }, exits, objects, inventory, stats,
+				status = StatsSnapshot.Adventure(engine, state, self, character, statusEnabled, engine.GetModule()?.Name),
 				playerId = PlayerId
 			});
 		}

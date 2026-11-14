@@ -124,6 +124,11 @@ var MapTopology = {
         if (!MapTopology.mapIsEmptyOfRealRooms()) return true;
         if (MapTopology.prevRoomId != null && payload.roomId != null
             && String(MapTopology.prevRoomId) !== String(payload.roomId)) return true;
+        // Eamon: the room is the engine's own current-room record (js/EamonProvider.js), sent only while the player
+        // is in a real room (an adventure room or a Hall place; never at creation prompts, which have no room). The
+        // announcement test exists for Inform epigraph boots and does not apply; the map matches the engine from
+        // the first prompt (map-versus-engine audit, Grok #3521 P1).
+        if (payload.probe && payload.probe.roomSource === "eamon-native") return true;
         // M09 scope (orchestrator 2026-10-10): the epigraph/menu boot problem is
         // Inform-only (Curses, Ghost, Vespers). ZIL stories keep the pre-M09
         // admission so a room the player starts in while dark (HHG Bedroom 150,
@@ -288,8 +293,11 @@ var MapTopology = {
         // Prefer the display label; do not let command steal the label when
         // both exist (D55: label "exit 1", command "x1" must stay distinct).
         var rawLabel = (ex && (ex.label || ex.dir)) || "";
-        var label = MapTopology.normalizeLabel(rawLabel || (ex && ex.command) || "");
-        var cardinal = MapTopology.isCardinal(label);
+        // An Eamon menu-key exit ("D" for the desk) keeps its own key as its label and is never a compass direction,
+        // whatever its letter: normalizing would turn "D" into "down" (Grok #3532 (a)).
+        var keyExit = !!(ex && ex.keyExit);
+        var label = keyExit ? String(rawLabel || (ex && ex.command) || "").trim() : MapTopology.normalizeLabel(rawLabel || (ex && ex.command) || "");
+        var cardinal = !keyExit && MapTopology.isCardinal(label);
         var command = (ex && ex.command != null && String(ex.command).trim() !== "")
             ? String(ex.command).toLowerCase().trim()
             : label;
@@ -468,7 +476,7 @@ var MapTopology = {
         if (MapTopology.isInternalRoomName(fromName) && !(meta && meta.fromId)) return;
         var from = MapTopology.ensureRoom(fromName, meta && meta.fromId);
         if (!from) return;
-        var dir = MapTopology.normalizeLabel(label);
+        var dir = (meta && meta.keyExit) ? String(label).trim() : MapTopology.normalizeLabel(label);   // a menu key stays its key
         if (!dir) return;
         meta = meta || {};
         // Real parser command for this edge (D55: may differ from label).
@@ -745,6 +753,8 @@ var MapTopology = {
             else ParchLockMap.CurrentRoom = roomName;
         }
         (payload.exits || []).forEach(function (raw) {
+            // An Eamon question's own keys (Y/N asked inside a room) are answers, not ways out: never map exits.
+            if (raw && raw.promptKey) return;
             var ex = MapTopology.classifyExit(raw);
             var dest = ex.targetRoomName || null;
             if (dest && dest.charAt(0) === "(") dest = null;
@@ -764,6 +774,7 @@ var MapTopology = {
                 source: raw && raw.source === "i7-mapstorage" ? "i7-mapstorage" : "ram-lookahead",
                 prop: ex.prop,
                 command: ex.command || ex.label,
+                keyExit: !!ex.keyExit,
                 ambiguousDiagonal: !!ex.ambiguousDiagonal,
                 hintOnly: !!ex.hintOnly,
                 roomHintSourceId: ex.roomHintSourceId,
@@ -771,6 +782,44 @@ var MapTopology = {
                 doorToName: ex.isDoor && ex.doorTo != null ? ex.doorToName : undefined
             });
         });
+        // A complete structural exit list (Eamon Main Hall / Village / Practice Area)
+        // is authoritative for that room. applyPayloadExits otherwise only adds or
+        // overwrites the same direction key, so a wrongly sourced edge (Hall shop
+        // hanging off Village, mixed 3/4 labels) would stay stale forever. Drop
+        // pathable edges and ExitMeta on THIS room whose label or command is not
+        // in the live snapshot. Existing saved maps are not migrated; they repair
+        // the next time the player visits the room.
+        if (room && payload.probe && payload.probe.completeExits) {
+            var live = {}, keyCmd = {};
+            (payload.exits || []).forEach(function (raw) {
+                if (raw && raw.promptKey) return;   // a prompt key ("N" for no) keeps no exit alive
+                var ex = MapTopology.classifyExit(raw);
+                var lab = ex.keyExit ? ex.label : MapTopology.normalizeLabel(ex.label);
+                var cmd = String(ex.command || "").toLowerCase().trim();
+                if (lab) live[lab] = true;
+                if (cmd) { live[cmd] = true; if (ex.keyExit) keyCmd[cmd] = true; }
+            });
+            var isLive = function (dir, em) {
+                em = em || {};
+                var cmd = String(em.command || "").toLowerCase().trim();
+                var lab = MapTopology.normalizeLabel(em.label || dir);
+                if (live[dir] || live[lab]) return true;
+                // A compass direction is not kept alive by a menu key that shares its command: an old "down" edge
+                // whose command is "d" is the desk key misread, and goes on this visit (Grok #3541 item 1).
+                if (cmd && keyCmd[cmd] && !em.keyExit && MapTopology.isCardinal(lab)) return false;
+                return !!(cmd && live[cmd]);
+            };
+            Object.keys(room.Exits || {}).forEach(function (dir) {
+                if (isLive(dir, (room.ExitMeta || {})[dir])) return;
+                delete room.Exits[dir];
+                if (room.ExitMeta) delete room.ExitMeta[dir];
+            });
+            Object.keys(room.ExitMeta || {}).forEach(function (dir) {
+                var em = room.ExitMeta[dir];
+                if (!em || em.subLocation || isLive(dir, em)) return;
+                delete room.ExitMeta[dir];
+            });
+        }
     },
     // D223: source-owned reconciliation for Map_Storage hints, current room
     // only, run BEFORE mergeConfirmedExits. Unwalked i7-mapstorage entries

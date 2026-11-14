@@ -70,6 +70,8 @@ robocopy "%SRC%\img" "%RUNTIME_STAGE%\img" *.png *.svg *.ico *.css *.js /E /NFL 
 if errorlevel 8 goto :fail
 robocopy "%SRC%\js" "%RUNTIME_STAGE%\js" *.js /E /XF EmglkenHost.js EmglkenProvider.js HostEmglkenBridge.js /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
+rem Eamon package trust: the desktop folder trusts exactly the repository's TRUSTED block (Grok #3525).
+node "%SRC%\tools\check-trusted.cjs" check "%SRC%\js\EamonPackage.js" "%RUNTIME_STAGE%\js\EamonPackage.js" || goto :fail
 robocopy "%SRC%\lib" "%RUNTIME_STAGE%\lib" *.js *.wasm *.json *.html *.css *.gif /E /XD emglken parchment-modern /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
 robocopy "%SRC%\licenses" "%RUNTIME_STAGE%\licenses" *.txt /E /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
@@ -134,7 +136,7 @@ for %%D in (css img js lib licenses) do (
 robocopy "%SRC%\native-hooks" "%SOURCE_STAGE%\native-hooks" *.* %ROBO% /XD build /XF *.log >nul
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\tools" 2>nul
-for %%F in (patch-android-tts.cjs public-games.js package-complete.ps1) do (
+for %%F in (patch-android-tts.cjs public-games.js package-complete.ps1 check-trusted.cjs) do (
   if not exist "%SRC%\tools\%%F" goto :sourcefail
   copy /y "%SRC%\tools\%%F" "%SOURCE_STAGE%\tools\%%F" >nul || goto :sourcefail
 )

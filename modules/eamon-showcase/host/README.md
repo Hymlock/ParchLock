@@ -145,7 +145,7 @@ never point these controls at a user's real storage or treat them as the final c
   installs as one library entry (`local/<sha256>.eamon.js`) and plays from its own package cache,
   served by the app's service worker; app updates never purge it; removing it keeps campaign progress.
   A package runs only if its whole-file SHA-256 is listed in `TRUSTED` in `js/EamonPackage.js`.
-  **The current pin is a development build (`0.1.0-dev`, a4f77d98...); a release must replace it.**
+  **The current pin is a development build (`0.1.0-dev`; the digest is in the TRUSTED block); a release must replace it.**
   Build a package with `node host/pack-showcase.cjs <work> <out.eamon> <version> [--pin]` (deterministic).
 - Verified on desktop Chromium: import (0.7 s for 11.1 MB, 381 files) -> Main Hall -> Beginner's Cave with
   no development overlay served; map 4 rooms correctly linked. Ordinary-module regression

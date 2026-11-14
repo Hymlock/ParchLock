@@ -33,8 +33,46 @@ source and corrected below.
   "Wander south into the Practice Area"), and each place (weapons shop, wizard, banker, adventure desk,
   the Village shops, the Practice Area trainers) is a room reached from them. All of it sits on the
   Hall's map and is reached with the existing direction buttons, radial, fast travel, history and
-  transcript, by sending the engine's own menu keys. Actions that are not places (examine abilities,
-  leave the universe) attach to the room as commands. Nothing in the engine changes.
+  transcript, by sending the engine's own menu keys. **Operator direction (2026-11-12), replacing
+  the earlier "attach to the room as commands":** every Eamon menu and prompt choice (numbered
+  `1. ...` lists, `N=Label;` lists, `[X]:` menus, `Press D ... or M ...`, Y/N, R/T, shop buy lists)
+  is offered through ParchLock's native choice system. The number or letter key gets the native
+  underline and is tapped, not the option text. The same choices appear on the existing radial and
+  compass and send the engine key. Never a floating label or overlay over the controls. Underlines
+  persist across map and panel return like native marks. Map edges go from the room whose menu
+  offers them, labelled with that key. The conversion layer (section 2a) is first
+  implemented in Grok build 90 (uncommitted), which supersedes the incomplete build 89
+  wiring. Nothing in the engine changes.
+  **Note (2026-11-12):** this rule and the section 11 real-input check were missed because the plan
+  never stated the menu-key rule or a real-tap check, and build-87 probes injected input, so the 204
+  input-relay crash and the missing choice wiring were not caught.
+
+## 2a. Eamon conversion layer (operator direction 2026-11-12)
+
+Eamon accepts only specific keys at each prompt, unlike a Z-machine parser. A dedicated
+conversion layer sits alongside ParchLock's normal command and underlining systems and
+feeds them, so the two work together.
+
+The layer reads the current Eamon prompt or menu and derives the exact accepted keys
+(`1. ...` lists, `N=Label;` lists, `[X]:` menus, `Press D ... or M ...`, Y/N, R/T, shop
+buy lists), with no phrase-guessing. Those keys become the native underline targets
+(the key only, never the option phrase), the radial and compass / `#exits` non-cardinal
+chip entries, and map edges from the room whose menu offers them, labelled with that
+key. Compass exits such as "north" stay ordinary direction exits.
+
+It coexists with native noun and exit underlining and the first-instance rule: choice
+targets are the keys and are never claimed by phrases ("desk", "Go on an adventure");
+room-description nouns stay `examine X` (desk, sign, Long Fire, Shield Wall). No floating
+labels. Opening the map does not drop the prompt-key marks.
+
+Gated, Eamon-only: key derivation, key-only exit labels, prompt-key marks and the
+menu-line skip (`EamonProvider`, `Actionable.isEamonStory`). Shared and unchanged:
+`wrapTargets` / `wrapFirstExact` / `span.pl-act`, `retainMarks`, the first-instance
+rule, the radial, the `#exits` non-cardinal chips, MapTopology, and all Z-machine
+behaviour.
+
+Build 90 is the first implementation. Acceptance is section 11 item 10 (real taps and
+keypresses, including a 20 s idle; script-injected input does not count).
 
 ## 3. Fixed rules
 
@@ -78,6 +116,17 @@ importing or signed Android operation. Record actual sizes. `file://` launch is
 not required. Also to verify: `Input.js` line-input gating, and that the vendor loader can start a non-Glk
 engine without patching minified code.
 
+G1 measured, Windows (2026-11-13): headless installed Chrome 157 against the b93 dist folder (the folder ParchLock.exe
+serves); the exe itself was not run (no visible windows); g1-win.cjs. Runtime: .NET 8
+WebAssembly, untrimmed (PublishTrimmed false), interpreter (no wasm-tools AOT), engine in a Web Worker. Command round
+trip, measured in the page from the real Enter keydown to the next live line input, 12 commands in The Training
+Ground: median 26 ms, max 43 ms (target <= 200 ms). Main-thread long tasks during those commands: none. Cold start,
+a new browser process on a profile with the campaign saved mid-adventure, to the first prompt: 2.50-2.59 s over three
+runs (navigation to first prompt 2.21-2.30 s; target <= 5 s). Package 11.18 MB (advisory). Android: P7a cold start
+passed on Build 87 (activity start 353 ms; library entry to first prompt 1368 ms); the Android round-trip and P7b
+measurements wait for the phone session on the current build.
+Open: G1 Windows through ParchLock.exe itself (it opens Chrome full screen), measured by the owner; not passed until then.
+
 ## 5. Persistence
 
 One authority: an IndexedDB-backed virtual file system holding the pristine bundle (read-only), working
@@ -93,6 +142,64 @@ copies, upstream save slots and config, and the campaign record.
 - Tests include a write-bypass detector and injected failure before and after every upstream write and
   every commit, low storage, process kill, duplicate callbacks, old-save restore, two tabs and clean
   reinstall import. Result is always the previous or the next complete revision.
+
+**One save system (owner ruling, 2026-11-13).** The player sees only ParchLock's save menus. Eamon's own save and
+restore screens ("Saved games: 1-6", "Enter new name") never appear. Why there were two: ParchLock's save system
+catches a game's request to Glk for a save file; Eamon is a .NET program that writes its own files (a SAVEGAME.DAT
+slot list per adventure plus a numbered file set per slot) straight to its virtual disk above, so ParchLock's save
+menus never saw an Eamon save and the Save / Restore panel showed "0 browser save files". Design (NOT BUILT; for
+Grok's adversarial review):
+- Tools > Save, Save files > Game Save and a typed SAVE all open ParchLock's save dialog, listing the current
+  adventure's five slots by their Eamon names (from that adventure's SAVEGAME.DAT); the player picks a slot and
+  names it. Restore (Tools, Save files, typed RESTORE) lists the same slots.
+- The host runs the engine's own SaveCommand / RestoreCommand with that slot and name supplied, so the engine's
+  own code writes and reads the files; its menu text is not printed, and ParchLock shows one confirmation.
+- Where Eamon cannot save (the Main Hall, a nested prompt), ParchLock says so; the campaign itself is committed
+  at every safe point regardless.
+- Unchanged: Download / Import Package (the campaign travels inside it), maps, transcripts attached to saves.
+- BUILT on PC (uncommitted, not yet in a build; Grok #3545 accepted the design with C1-C4). The dialog is ParchLock's
+  own file-picking save/load dialog (lib/main.js Dialog, reached through the VM's options), not a list. The
+  adventure's Eamon saves are mirrored into its store by name under the id eamonshowcase-<folder>, so the picker
+  and the Save files panel show them. The dialog sends the engine's own direct forms, "save <slot> <name>"
+  (EamonRT CommandParser quick save: no slot menu, no name prompt) and "restore <slot>", through the normal
+  command line, so author rules apply (Firestorm and Orb restore steps, the Wayfarers SAVE gate). A new name takes
+  the next free slot, an existing name replaces its slot (the dialog asks first), and when all five are in use the
+  player is asked to pick one to replace. Names are cleaned to letters, digits and simple punctuation, at most 40
+  characters (FsNameLen). Success is decided by the engine's own save/restore event, never by printed text; our
+  command line is not echoed. When saving is not possible (the Main Hall, a pending question, or the game
+  refusing), a pop-up says so: "You glance around furtively and try to save your game. There is movement in the
+  corner, and it doesn't seem safe to do that right now." The game's own reason stays in the story. The per-save
+  map, labels and transcript attach through the existing save event (Transcript.commitSave).
+- Verified on PC with real input: Tools > Save in the Main Hall gives the pop-up; in The Training Ground,
+  Tools > Save, name "At the stairs", Save: the story shows only the game's "[QUICK SAVE 1: At The Stairs] Game
+  saved."; the save snapshot is stored; after moving on, a typed RESTORE opens the dialog listing "At The Stairs",
+  and choosing it restores the Flight of Stairs with the map; no Eamon menu appears. The Wayfarers Inn before the
+  opt-in: the game's refusal shows, then the pop-up. Existing-module regression: pass.
+- Grok #3547 conditions, done and tested on PC with real input:
+  F1 save names keep only letters, digits, spaces, apostrophes and hyphens (Eamon splits a command at . ! ? ; , and
+  at "and", "then", "also"); a name with one of those words is refused with a plain note ("Bread and butter": refused,
+  nothing ran; "Me & you!" saved as "Me You"). F2 the dialog's Edit (delete / rename) is hidden for Showcase saves.
+  F3 a refusal is the prompt returning without the engine's save event (1 s grace); a wait that runs out claims
+  nothing; Firestorm (its own RestoreCommand override) saves and restores with no false pop-up. F4 a new save is
+  listed at once. F5 our command line is hidden on screen and kept out of the transcript (aria-hidden), and never
+  a line the player typed. F6 the Main Hall gets a plain note; the owner's "movement in the corner" line is for a
+  refusal inside an adventure (wording for the owner to review). (d) a new campaign deletes the Showcase's per-save
+  snapshots (SaveState.removeStory) and the mirrored save names. Overwriting a named save replaces its slot.
+- Found on the way: at every boot Transcript.reconcileSaves dropped each Eamon save's transcript and map snapshot
+  (it looked for a Glk save file the Showcase never writes). Eamon's deleted saves are reported by the host
+  (SaveEvents MarkSavesDeleted), so that check is skipped for the Showcase; after a reload the save keeps its
+  transcript and map, and restoring it works.
+- The engine's own slot menu (the death menu's "Restore a saved game", or RESTORE with an out-of-range slot) is
+  answered through ParchLock's restore dialog: the slot list and its question line are not shown, the chosen slot
+  (or "Don't restore" on Cancel) is sent as that menu's key. Tested with "restore 9": pick restores, Cancel returns.
+  QUIT's Y/N questions stay as they are (single-key prompts).
+- Grok #3554, done: S1 a typed SAVE whose first word is not a slot 1-5 ("save foo", "save 9 x"), which the engine
+  answers with its own slot menu, opens ParchLock's dialog with the rest as the suggested name (real input: "save
+  foo bar" opened the dialog with "foo bar", saved "Foo Bar", no Eamon menu). S2 the Save files panel lists the
+  adventure's saves as "kept by the adventure" with no Download or Delete, and counts "saved games in this
+  adventure". N1 the death menu with no saves says so before the game shows its menu again. N2 two saves with the
+  same name are listed as "Name #slot". N3 a refused name is quoted as cleaned.
+- Still to do: the phone with real taps (the next build), and the death menu itself in play (N4, open).
 
 ## 6. Campaign progression
 
@@ -147,22 +254,22 @@ of Kahr-Dur as the live multi-condition proof (Grok #3490/#3493): Kahr-Dur's por
 the roaming Necromancer carries, so its live route is nondeterministic. The test characters for the tier 2-5 proofs
 were seeded (tiers opened, and for Mt. Moon stronger stats and spells); the proofs are the adventures' own routes and
 finishes, not character progression.
-Contract self-check (built, Grok #3484): at each adventure's first prompt every clause is evaluated with no
+Contract self-check (built, Grok #3484): at each adventure's first prompt (once per adventure per page load) every clause is evaluated with no
 short-circuit and every uid a predicate names (holder container or monster, room, zone) must exist in the loaded
-database; a tiered adventure without a contract fails. Verified for all 20: ok.
+database, and an inContainer holder must be a container (Grok #3498 N2); a tiered adventure without a contract fails. Verified for all 20: ok.
 Contract proven by injected end state (probe build only, live clear not yet played; Grok #3489): a probe-only host
 build (compiled with PARCHLOCK_PROBE, never in a shipped package; the shipped build treats "#probe" as ordinary
-input, verified) applies the end state each author's finish code produces, then the real finish runs; a negative run
+input, verified; pack-showcase.cjs refuses any package whose _framework members carry the ProbeInject name or the "[probe]" literal unless it is packed with --probe, a version naming it and no --pin, Grok #3498 N1; the packer takes only uncompressed members, skipping .br and .gz, so the scan covers exactly what ships, Grok #3517) applies the end state each author's finish code produces, then the real finish runs; a negative run
 leaves one condition out. Positive credited and negative not a clear: Beginner's Cave II, Beginner's Forest, The
 Sub-Aquan Laboratory, The Tower of Eamon, The Vile Grimoire of Jaldi'al, The Temple of Ngurct, Escape from Mt. Moon;
 Wrenhold's Secret Vigil (the contract turns true only when the exit hands over the bow, as its source orders);
-Firestorm (positive credited; with Thorak alive its exit stays shut, the author's own lock); The Pyramid of Anharos
+Firestorm (positive credited; static negative, Grok #3498: placed in exit room 86 with Thorak alive, the contract reads false and the exit stays shut, the author's own lock); The Pyramid of Anharos
 (KV 1 credited; KV 1 with KF 1 is the tax branch, not a clear); The Wayfarers Inn; Alternate Beginner's Cave (Nina
 is a fixed Friend, so her presence is the real condition). Wrenhold's negative is the author's death ending for
 leaving without the life-orb. The Wayfarers Inn disables every command except QUIT, RESTORE and SETTINGS until the
 player types SET MATURECONTENT TRUE, and says so itself every turn (CommandImpl.cs:29-31, StateImpl.cs:38-40): the
 author's own consent gate; ParchLock never opts in for the player, and the game's instruction reaches them as is.
-Still to run: Orb of My Life, DharmaQuest, Land of the Mountain King, A Runcible Cargo, Stronghold of Kahr-Dur.
+Also credited positive and not a clear negative: Orb of My Life (both artifacts carried, then the spoken word); DharmaQuest (the prayer in room 68 credits; leaving from room 72 does not); Stronghold of Kahr-Dur (needs Kahr-Dur gone, the spice gone and the prisoner freed; without the spice it reads false). A Runcible Cargo: the positive is credited; with only one of the two captors gone, the contract stays false and the dream does not end. Land of the Mountain King: the adventure starts the player unarmed, so the probe hands over and readies the silver sword (artifact 25); with the king at 1 hit point, real attacks kill him and the scripted finish is credited; at full strength the king kills the player, and that ending is not a clear. Every injected-state run is done.
 Live clears not yet played (for the owner's play or later sampling): every adventure except The Beginner's Cave, The
 Training Ground, The Deep Canyon and Escape from Mt. Moon. Still to prove in play: one each
 for tiers 1, 3, 4 and 5, chosen to cover a monster-dead, an artifact-possession and a multi-condition contract, plus a
@@ -314,6 +421,13 @@ sold is not itemised yet (it is inside the gold difference).
   - F. During a nested prompt (a yes/no, a clarification) Equipment drags, radials and travel submit nothing.
 - **Stats:** real values and units; base abilities, temporary boosts, wounds, armour and encumbrance kept
   separate.
+  Partial (owner, 2026-11-13; WorldSnapshot.cs). Today only, inside an adventure at its top-level command
+  prompt: health (Hardiness minus DmgTaken, of maxHealth = Hardiness), agility, armour class (state.Ar),
+  speed, gold and the name. Missing: base Hardiness, Agility and Charisma as abilities; weapon abilities;
+  spell abilities; armour expertise; encumbrance (weight carried of the limit); temporary boosts shown
+  apart from base; wounds; and any stats in the Main Hall or during character creation (the snapshot is
+  built only at an adventure prompt, so the panel was empty in the Hall). Reuse ParchLock's existing
+  stat monitoring; no new panel. Work and acceptance: section 11 item 11.
 - **Map and fast travel:** one map per adventure. Fast travel reuses the existing navigator and sends
   ordinary moves. If an encounter interrupts a route, the player stays in that room and later queued moves
   are dropped. Travel is locked only for a known, visible threat and never reveals a hidden one.
@@ -370,6 +484,12 @@ verifies a trusted release identity (a pinned approved digest or a signature, wh
 build and import flow). The app never runs arbitrary package script or grants file, network or device
 access because a manifest asks; host file access is confined to the campaign's virtual file system. No
 user accounts or installers. Today's Z-machine story import does not already provide this boundary.
+
+**One Showcase in the library (owner, 2026-11-13: "There should only be 310").** Installing a Showcase package
+replaces any other Showcase row: its row and package files are removed, while the campaign, maps and transcripts
+(keyed to the stable Showcase identity) stay. The Showcase being played at that moment is removed at the next
+library load instead, and a library that already holds two keeps the most recently added. BUILT, uncommitted;
+tested on PC: dev, then N+1 imported, the shelf stays at 310 with only N+1, also after a reload.
 
 **Campaign storage across package releases (decision with Grok, #3448/#3451, for the owner's review).** The
 campaign's saved files are an overlay on the package's pristine bundle (changed files plus deletion markers). A new
@@ -642,8 +762,274 @@ G. Independent adversarial review, final candidate on real targets, release.
    inapplicable as its rule allows: no Showcase under/behind holder is ever a drop target (they are room fixtures),
    and no radial sends PUT IN to one. Grok #3468 F1 applied (open state is null unless the snapshot gives a boolean;
    it always does). All Equipment checks are done on desktop; EQ-GESTURE-2 waits for the phone build. Remaining desktop checks verified below; EQ-GESTURE-2 is phone-only.
+10. Real-input acceptance (2026-11-12). Every Eamon menu and prompt is checked by real taps on the
+    Android APK and by real keypresses and clicks on Windows, including an idle longer than the
+    input-relay POLL_MS (20 s) before answering; script-injected input does not count for this item.
+    Map exits are compared against the engine's exits across all 20 adventures (map-versus-engine
+    audit), with mismatches listed.
+    PC, real input, fresh load (2026-11-13, Build 90 tree plus the fix below; real pointer clicks and typing in
+    Chromium, not script injection): D (click), name (typed), Y, gender 0, N, and T after a 21 s idle all answered;
+    each prompt underlines exactly its own keys; Main Hall menu lines underline only 1-7 and X, the radial offers
+    the same keys, no overlay. Fixed on the way: answered single-key prompts stayed underlined and on the radial
+    (a single-key answer leaves no typed echo to cut at), so a stale Y could be sent to a later prompt; the engine
+    now reports the waiting question's text (zvm state.promptText, everything printed since the previous answer)
+    and only that question's lines carry prompt keys (Actionable.inCurrentPrompt; EamonProvider reads the same
+    text for the radial). Existing-module regression 8/8. Phone rerun pending (Build 87 phone results: blocked by
+    the input-relay 204 crash, fixed in Build 88).
+    Grok #3513 follow-up (Build 92 tree, real input): a refused typed answer re-asks the same question and its keys
+    stay underlined (D/M after Q, Y/N after q, Main Hall 1-7/X after 9; zvm appends a short re-ask with the same last
+    line to promptText); opening and closing the map and Equipment keeps them; a reload reprints the question with
+    its keys; at creation prompts outside any room the radial offers the prompt keys (Y, N) and a real click on Y
+    answered it.
+    Grok #3515 S1 (Build 93 tree, real input): a nested prompt is answered only through the prompt-key controls (the
+    underline, and radial entries the prompt layer built, marked promptKey); at Y/N and at the Good Witch menu a
+    one-letter Submit with no source (a compass chip), a fast-travel step and a probe were all refused and the prompt
+    and its keys stayed; the underlined N, radial D and radial Y each answered. Modes (N1): D/M, the name, the Main Hall
+    and the Village are line prompts at Hall safe points (room input by design, section 2: their keys are the room's
+    exits); Y/N, gender 0/1, the suicide Y/N, R/T and the Good Witch 1-4 are single-key nested prompts, and an invalid
+    key there prints nothing, so the keys stay. No map room exists at any creation prompt (N3). When the story ends
+    the waiting question is cleared (N2). Build 93 (ParchLock-dist-b93) carries these; phone rerun on it pending.
+    Map-versus-engine audit (2026-11-13, probes/map-audit.cjs, real game input): in each of the 20 adventures the walk
+    follows the engine's own exits for up to 8 moves and compares, at every top-level prompt, the engine's Obvious exits
+    and room with the map's current room and its exits. First run: 166 checks, 28 mismatches, of three kinds. (1) Every
+    adventure's first room was missing from the map until the player left it: MapTopology's first-room gate still asked
+    an Eamon room to be "announced", and Eamon's heading "[Entrance]" never matched; an Eamon room (the engine's own
+    record, sent only while the player is in a room) is now admitted at once (Grok #3521 P1). (2) A Y/N question asked
+    inside a room (The Temple of Ngurct, The Wayfarers Inn) put its keys on the map as exits ("y"; "n" hid inside north):
+    prompt keys are now never map exits. (3) The Pyramid of Anharos had no world snapshot at all (no map, no exits, no
+    underlines): its own IsDarkEnabled override reads the actor's room, which the engine sets only while a command runs;
+    the host now gives each listed command the player and the current room for that read and restores them (host change,
+    needs a package rebuild). After the fixes: 175 checks over all 20, 0 mismatches. Every start room is lit and has
+    exits. Curses and Vespers still refuse their epigraph room until it is announced, and The Hitchhiker's Guide's dark
+    Bedroom is still admitted (before and after identical). A reload mid-adventure restarts at the start room (engine
+    truth) with no duplicate node.
+    Start rooms (Grok #3521 P4): all lit with exits, e.g. The Pyramid of Anharos, Desert's Edge (east, west). In-adventure
+    menus that move the player (Grok #3523 F1, upstream source search): only The Pyramid of Anharos's flying carpet
+    (SAY SOAR WITH ALAXAR while carrying it, then "1=Pyramid; 2=Obelisk; 3=Oasis; 4=Main Hall"), an item's teleport
+    offered in whichever room the player speaks, not a room's own menu; the map adds the destination as its own room
+    with the engine's exits and draws no line from the room left (verified with real input: Desert's Edge to At
+    Obelisk). Every other in-adventure prompt key is an answer (Leave this adventure Y/N, yes/no, press a key), never
+    travel, so no prompt key is a map exit. At an in-room Y/N the direction compass shows only the engine's exits, the
+    radial offers the prompt's Y and N, a compass direction sent there is refused, and the radial N answers (real
+    input, Grok #3523 C1). A throwing author override now costs only that verb in the world snapshot, logged as
+    "[world] verb left out" (Grok #3523 F2); the snapshot is built on the engine thread at an input wait.
+    Build 95 (ParchLock-dist-b95; package 408f8bbe, contract self-check 20/20, map audit 175 checks with 0 mismatches)
+    carries every fix in this item and is the build for the phone rerun (APK SHA-256 554d1c70f769871c...; the APK alone
+    also trusts the N+1 update-test package b05f6e71, injected at build time through EAMON_TEST_TRUST; the desktop folder
+    and source archive trust only 408f8bbe, and tools/check-trusted.cjs fails any build whose trust list differs, and any
+    release build given a test trust; Grok #3525). Ready for the owner.
+    Phone acceptance checklist for Build 95 (P1-P7, defined on the bus: Claude #3494 probes and pass
+    criteria, #3495 APK handoff, #3497 P7 addendum; later rerun requests #3512 and #3531). Real taps
+    only; script-injected input does not count. Include an idle longer than the input-relay POLL_MS
+    (20 s) before answering, and confirm prompt-key underlines survive opening and closing the map and
+    Equipment (this item).
+    P1 EQ-GESTURE-2 (Equipment, also item 9): in any adventure with held items (e.g. Alternate
+    Beginner's Cave after buying a sword): (a) long-press a row ~500 ms, the inventory radial opens
+    once and nothing is submitted; (b) a vertical swipe on the list scrolls it and opens no radial;
+    (c) a grip-drag of a held item onto Yourself or onto an open held container sends the same command
+    as the desktop drag. Pass = a/b/c as stated.
+    P2 Carry-over (the APK probe still open after Grok #3464): on N (EamonShowcase-dev.eamon, 408f8bbe),
+    create a character, enter The Training Ground, SAVE once (slot 1), go back to the Android home
+    screen (don't quit). Import N+1 (EamonShowcase-next.eamon, b05f6e71, changes only The Training
+    Ground; trusted in this APK only) from Modules and open it. Pass = the import first warns "This
+    update changes an adventure a character is in ... Update now?" (answer Yes; also checks
+    window.confirm in the WebView), then an "Eamon Showcase Updated" message: the character was
+    returned to the Main Hall, no fee, and READ LEDGER says "in the hall".
+    P3 Save package round trip (the other half of the #3464 APK probe): on N with some play,
+    Save/Restore -> Download Package, then Import Package on the same phone. Pass = "Import Complete"
+    and the campaign and maps are still there after reopen.
+    P4 New campaign / save records: skip unless adb devtools (chrome://inspect) is available. If it
+    is: in devtools set IndexedDB parchlock-eamon meta.state.schema = 2, reload -> the "Eamon
+    Campaign" dialog with Download Package and Start a new campaign; Start -> confirm -> fresh outer
+    chamber.
+    P5 Durable saves / offline restart: in an adventure, SAVE, then force-stop the app (adb shell am
+    force-stop com.parchlock.app), turn on airplane mode, relaunch, open the Showcase. Pass = it opens
+    offline, the character and the save are there (RESTORE lists the slot).
+    P6 Outer chamber: at "Press D for desk or M for men", D and M are native underlined tappable keys
+    (owner ruling, Grok #3500), not the words desk or men; the radial offers the same keys; no floating
+    overlay label; the map shows "Outer Chamber"; "read sign" prints the sign and asks again.
+    P7 Gate G1, Android leg (plan section 4): with the Build 95 APK and EamonShowcase-dev.eamon, via
+    chrome://inspect on the WebView (or adb logcat if devtools are not available), record: (a) cold
+    start = from app launch (adb shell am start -W com.parchlock.app/.MainActivity gives TotalTime)
+    plus from opening the Eamon Showcase library entry to the first prompt ('Press D for desk or M
+    for men'); (b) command round trip after 10 ordinary adventure commands (e.g. in The Training
+    Ground: look, n, s, inventory...), read window.__PARCHLOCK_EAMON__.state.turns (ms per turn, page
+    side). Targets: cold start <= 5 s, round trip <= 200 ms. Note anything that froze the UI. (Build
+    87 already recorded activity start 353 ms and library entry to first prompt 1368 ms; the
+    round-trip wait is on this build.)
+    Status (2026-11-13): Build 95 installed on the phone at 5:54 AM ET after an app-data backup at
+    C:\Users\hymlo\Downloads\phone-backup-pre-b95\; the run was blocked on the phone lock screen
+    and has not been run (Grok #3533).
+    Builds 92-94 (desktop folders and source archives) also trusted b05f6e71, from a hand edit made before that guard;
+    they are superseded and are not to be shared.
+    All-games regression gate against HEAD 25264d6e (work/investigations/regression-gate.cjs; 298 Z-machine games in
+    three shards and 11 Glulx games, outputs outside the repository): the first run differed in the underline marks of 8
+    games (Help, Inevitable, Jigsaw, Mask, cabal, jet, medusa, terror_tabby). Rerunning those 8 on both trees, the
+    baseline rerun differed from its own first run in Help, Inevitable, jet, medusa and terror_tabby, the candidate rerun
+    from its own in Jigsaw, Mask, cabal and medusa, and the two reruns differed only in medusa (alternating with and
+    without "mirror" on both trees): every difference flips on the same tree, so none is a regression. Glulx: 0
+    differences across two runs of each tree.
+    Grok #3541 conditions (uncommitted, not in a build; 2026-11-13). Item 1 completeExits prune was
+    already in MapTopology.isLive / applyPayloadExits: a cardinal "down" is not kept alive only because it
+    shares command "d" with keyExit D. Verified live on a map seeded with a stale Down at Outer Chamber:
+    after the visit prune, ExitMeta is only D and M and the Down edge is gone (b96pre-stale-down-pruned.png).
+    Item 2: numbered/lettered menu patterns and "1=Label" are gated by EamonProvider.isAdventureCommandPrompt
+    (an adventure's GetPlayerInputState / printed ">"), in promptKeySpans, promptChoicesFromText and
+    isChoiceMenuLine. At the Main Hall, 1-7 and X stay underlined and survive opening and closing the map
+    (real clicks, b96pre-main-hall.png, b96pre-hall-map-closed.png). Live walk with real clicks and typing
+    (2026-11-13, about 8:00 AM ET): from the Hall list into Alternate Beginner's Cave, Space at "Press any
+    key to continue", then the adventure ">" at East/West Road. No numbered or lettered prompt-key
+    underlines in the room text; the compass radial offers only E and W (b96pre-adventure-prompt.png,
+    b96pre-adventure-no-menu-keys.png, b96pre-adventure-radial.png). The first rooms walked (n, e, s, w,
+    look around East/West Road) have no numbered or lettered description line; that is recorded, not a
+    failure.
+    Item 3: zvm flush no longer appends once "Enter the selection" is already in promptText (cap 8000).
+    Verified with real typing: at the selection, keys 1-23 and X are live; a refused "zzzz" left promptText
+    at 1537 characters and kept those keys (b96pre-selection-refused.png). A page reload mid-list does not
+    keep page-1 keys: promptText is in-memory only, and the Showcase restarts at the Outer Chamber. That
+    loss is acceptable and is recorded here.
+    The earlier report that later runs lost the LineInput after the refused "zzzz" is a test-harness
+    artifact, not a product bug, and is not caused by the promptText bound or the
+    isAdventureCommandPrompt gate. After a refused "zzzz" at "Enter the selection", a visible LineInput
+    remains; real typing of "hello" appears in the field (no Enter); a real click on a list key still
+    enters an adventure. The same after-zzzz typing check also holds on the clean Build 95 dist, which
+    does not have those edits (b96pre-zzzz-then-hello.png, b96pre-b95-zzzz-then-hello.png). Earlier
+    Playwright failures were a stale locator after the engine replaced the input node, or a wait for
+    LineInput at a later char prompt or after a mid-list reload.
+    Phone finding (ii): EamonProvider.verbAllowedFor filters Yourself / inventory radial verbs and
+    addMoreActions suggestions, Eamon only. Live inventory radial on a real held sword (already the ready
+    weapon after a shop purchase) in Alternate Beginner's Cave: Eat, Drink and Wear are absent; Ready,
+    Examine and Drop are present (b96pre-equip-open.png, b96pre-sword-radial.png). An extra uncommitted
+    fix was needed for that last verb: attrs.readyWeapon is now set for every weapon, including one
+    already readied (previously only if !o.ready, so READY was omitted for a just-bought sword). Edible /
+    drinkable / wearable flags still allow those verbs (unit 11/11). Z-machine radial paths are unchanged.
+    Existing-module regression 8/8 after this change (z3, z5, z8, zblorb, gblorb, ulx, plus offline z5
+    and ulx). These fixes are not in a build yet; Claude owns the next build number. Phone retest waits
+    for that build.
+    Help-at-start remains the intended setting (owner ruling).
+11. Stats completion (owner, 2026-11-13). Finish the section 7 Stats display, still partial on Build 95.
+    Show, through ParchLock's existing stat monitoring (no new panel): base Hardiness, Agility and Charisma;
+    weapon abilities; spell abilities; armour expertise; encumbrance (weight carried of the limit); temporary
+    boosts shown apart from base; wounds; and a Hall and character-creation source for the same figures, not
+    only at an adventure's top-level prompt. Acceptance: a live real-input check on PC and on the phone that
+    every shown value equals the engine's own figures (for example the Hall's status or character screen).
+    Design (Claude, 2026-11-13; for Grok's review): the Build 95 card already shows charisma, intellect, armour
+    expertise, bank and weight carried, but by sending Eamon's STATUS behind the scenes and parsing its text (the
+    generic stat probe), which works only at an adventure prompt. Replace that with data: the host's world snapshot
+    carries exactly what the engine's own StatusCommand passes to StatDisplay (StatDisplayArgs): health and wounds
+    (Hardiness - DmgTaken of Hardiness), Intellect and Charisma (character), Hardiness and Agility (monster; with a
+    speed spell active the base Agility and the doubled value apart, with GameState.Speed turns left), the five
+    weapon abilities, the four spells as current energy (GameState.Sa) of the base ability, gold and bank, the
+    armour worn and armour expertise, and weight carried of GetWeightCarryableGronds(Hardiness). An adventure that
+    hides skill stats in its own STATUS hides them here too. In the Main Hall (and once a character exists during
+    creation) the Hall character's base values come the same way, without what only an adventure has (weight
+    carried, spell energy, boosts). EamonProvider writes them into ParchLock's existing stat model as confirmed
+    engine values; the Showcase no longer uses the STATUS probe. Host change: needs a package rebuild and pin.
+    Each adventure's own STATUS is the presentation rule (source read 2026-11-13). Generic (EamonRT StatusCommand +
+    Engine.StatDisplay): name, gender, damage taken of hardiness; intellect with "Learning: +N%"; agility, "x2" while
+    a speed spell lasts; hardiness; charisma with "Charm Mon: +N%"; weapon and spell abilities unless omitSkillStats
+    (ruleset 5.62 with a game state); gold, bank; armour worn and armour expertise; weight carried of the limit.
+    Adventure profiles: The Vile Grimoire of Jaldi'al shows only "You are at N percent health" and the conditions
+    "paralyzed" / "agility impaired" (the author hides the rest; the card shows only those); The Beginner's Cave
+    adds "Trollsfire is alight!" while it burns (an effect); Alternate Beginner's Cave shows Hardiness as base "+5"
+    while its magic dagger works (MagicDaggerCounter; a temporary boost); Firestorm has no spell block and its own
+    health wording; The Temple of Ngurct runs the generic display under ruleset 0. The other 15 use the generic
+    display. Every one is checked against its own STATUS with real input.
+    Grok #3554 (accepted with): D1 the ruleset hides STATUS in more adventures: StatusCommand is not player-enabled
+    under ruleset 5.62, and StatDisplay omits skill stats then; DharmaQuest (5), Orb of My Life (62) and The Pyramid
+    of Anharos (62) have no STATUS at all, and The Deep Canyon (5) re-enables it without skill stats. The profile is
+    read from the engine (StatusCommand.IsPlayerEnabled and omitSkillStats as STATUS would compute them), not from
+    a list; where STATUS is disabled the card shows no more than the game does (health only, or nothing; the
+    author's rule). Firestorm and Alternate Beginner's Cave compute omitSkillStats themselves; Firestorm and The
+    Temple of Ngurct push rulesets only around certain calls. D2 also send what base StatDisplay prints: name,
+    gender, damage taken, the learning bonus (GetIntellectBonusPct) and the charm factor (GetCharismaFactor), and the
+    armour name (from Ar and Sh). D3 Land of the Mountain King overrides armour expertise and every weapon and spell
+    ability during play and restores them on exit: the Hall values come only after that restore (in the acceptance
+    list). D4 The Beginner's Cave's Trollsfire line comes from AfterPrintPlayerStatus, a host field. Retire the
+    STATUS probe only after a per-field diff shows the snapshot gives every value the probe gave.
+    Built (2026-11-13): host StatsSnapshot.cs (Adventure and Hall), carried in the world and Hall snapshots as
+    "status"; EamonProvider.applyStatus writes it into the stat model (source "eamon-native"), and StatTracker skips
+    the STATUS probe for the Showcase, so no hidden command is sent. Package 7aca797d (0.1.0-dev) is the repository
+    pin; the temporary candidate trust is gone.
+    Evidence: the Hall and The Training Ground card values equal the engine's STATUS, with no hidden STATUS sent
+    (stats-card check). The map-audit STATUSCHECK=1 run types STATUS for real at the first room of all 20
+    adventures and compares the card field by field: 20 of 20 match. That covers damage and health, intellect,
+    hardiness, agility, charisma, gold, bank, weight of the limit, and weapon and spell presence. 15 adventures use
+    the full display, The Vile Grimoire of Jaldi'al shows its health percentage, and 4 show health only. The 4 are
+    DharmaQuest, Orb of My Life, The Pyramid of Anharos and The Temple of Ngurct. In each of those the game itself
+    answers STATUS with its command list, so the engine read is right; the Temple line above was wrong on that.
+    Still open:
+    - States that appear only in play: the speed spell's x2 agility, Alternate Beginner's Cave's dagger +5, The
+      Beginner's Cave Trollsfire, Jaldi'al's two conditions, and the Land of the Mountain King Hall values after the
+      restore (D3). These are built from the same engine reads but not yet driven live. Checked against the source
+      (2026-11-13): the reads use the same tests as each author's own STATUS. Those are Jaldi'al's
+      ParalyzedTargets and ClumsyTargets keyed on Cm, The Beginner's Cave's artifact 10 carried with Trollsfire == 1,
+      and Alternate Beginner's Cave's MagicDaggerCounter > 0 showing Hardiness - 5 "+5". All are public GameState
+      properties.
+    - The phone check, on Build 98.
+    Grok #3558 accepted the design and the value mapping, with fixes. Done:
+    - F1: the status read can no longer cost the world snapshot. StatsSnapshot.Adventure and Hall catch any failure,
+      leave the status out, and log "[world] status left out (<type>)".
+    - F2: applyStatus re-applies whenever StatTracker has swapped its model or unconfirmed the rows (restart,
+      restore, story change), even when the values are unchanged. PC check (f2-check.cjs):
+      - a RESTORE of a save with the same values keeps every row present and confirmed;
+      - after leaving for a Z story and returning, the rows come back confirmed at the adventure's first prompt.
+      Before that prompt they show as unconfirmed last-known values, as for every story.
+    - N1: the four adventure-specific profiles are chosen by the adventure's own namespace, not its title.
+    - N2: the comments now name The Temple of Ngurct as health-only.
+    - N3: health is clamped at 0, where the engine's figure can go below 0 (seen only at death).
+    - N4: make-dist runs check-trusted.
+    Proven by injected state (C1; probe build only: probes/contracts/run-contracts.sh status, mkstatus.py,
+    check-status.py). Each run has a positive and a negative case, and STATUS is typed for real and compared with
+    the card. All 8 match:
+    - Alternate Beginner's Cave, magic dagger: base Hardiness "+5", with the counter at 0 as the negative.
+    - The Beginner's Cave, "Trollsfire is alight!": the flag set but the sword not carried as the negative.
+    - The Training Ground, speed spell: "x2" agility.
+    - The Vile Grimoire of Jaldi'al: paralyzed and agility impaired. The card shows the state after the whole turn,
+      so a paralysis the game ends in the same turn ("Your paralysis has worn off prematurely.") is gone from it.
+    C2: after a typed STATUS there are no duplicate rows, and no engine figure comes from another source.
+    On the rebuilt release package 6d6eb49a (the repository pin, 0.1.0-dev), STATUSCHECK is still 20 of 20.
+    Phone checklist (Build 98):
+    - the status card in the Hall and in one adventure;
+    - Land of the Mountain King Hall values after its restore (D3). PC check done (2026-11-13, probe build).
+      The scripted finish killed the King, then the run returned to the Hall. The Hall card showed armour
+      expertise 0 and axe 5, bow -10, club 20, spear 10, sword 0: the new character's own abilities, not the
+      adventure's 79 and 10%. Gold showed 2372 after the reward. Grok #3561 accepted item 11 and noted a gap. This
+      proves the overrides did not leak, but not a return to a character's own values when those differ from
+      the starting ones. Phone D3 step: note the Hall card before entering Land of the Mountain King, then compare
+      it with the card after the return.
+    Build 98 (ParchLock-dist-b98): APK SHA-256 121590c96054974280367d6d318e8ece6c450a91d5f1226b70c585a4be905d05,
+    versionCode 73, shell cache 198. The dist and APK trust only 6d6eb49a, and the package is at
+    eamon-test/EamonShowcase-dev.eamon.
 
 ## 12. Still to be evidenced (not disputes)
+
+Owner decisions locked 2026-11-14 (grok2 sole seat): (1) Hall X → ParchLock Exit game (implemented). (2) Eamon settings section in Options only when Showcase installed (implemented; SETTINGS button when live at top-level). (3) Pyramid carpet = destination rooms only, no teleport edge (status quo). (4) Learning remains per module install, not campaign. (5) Campaign refusal: Download Package first when that dialog is shown.
+
+Owner review items (2026-11-13, historical): whether The Pyramid of Anharos's flying carpet (an item teleport offered in any room)
+should be drawn as a labelled map line; G1 Windows through ParchLock.exe itself; the phone run P1-P7 on Build 95
+(steps now listed under section 11 item 10); stats completion (section 11 item 11).
+Parallel-systems audit (owner rule, 2026-11-13: adapt Eamon into ParchLock's existing systems, never run Eamon's own
+UI beside them). Saves: done (section 5, one save system). Stats: section 11 item 11. For the owner's decision:
+(1) The Hall's "X. Temporarily leave the universe" ends the engine on a dead-end line ("[You have left the universe.
+Reopen the module to return to the Main Hall.]"); ParchLock's own Exit game already leaves a story for the library.
+Proposal: X goes through Exit game (the campaign is committed as now). (2) Eamon's SETTINGS command (verbose rooms,
+monsters and artifacts, enhanced combat, combat pauses, pronoun options, mature content) is a second options system
+beside ParchLock's Options. Proposal: a Showcase section in Options whose switches send Eamon's own SETTINGS command
+behind the scenes; a typed SETTINGS still works; The Wayfarers Inn's mature-content opt-in stays the player's own
+choice. Not parallel systems (game content, kept): HINTS, the death menu's Start over / Accept death, QUIT's
+"return to the Main Hall?", the Hall's "Examine your abilities", paging prompts.
+
+Later (not blocking): the regression gate's underline-marks column was nondeterministic on 8 of 298 Z-machine games
+across identical runs. Cause for most: the gate read the marks 1.3 s after LOOK, before the underline pass finished.
+Fixed in the gate (gate-tools/regression-gate.cjs beside the repo, Grok #3532): marks are taken as a set once three
+reads agree for at least 900 ms, UNSETTLED after 6 s, settle time logged (median about 0.6 s); MAPTOGGLE=1 covers
+underline restore after the map closes (0 differences). Still flipping on the same tree after settling: jet (identical
+text; the object "dragon's wing" is underlined as "dragon's" in one run and "wing" in another, a ParchLock word-choice
+nondeterminism), Inevitable (5 or 9 marks under load) and cabal ("table"); to examine. Build 98 gate (2026-11-13,
+16 processes) added two more load flips, both gone in 3 paired reruns. permagic: "of junk" instead of "papers".
+suvehnux: two different underline sets, 3 of 6 runs on the same tree. The game text was identical in a text
+capture, so the cause is ParchLock-side timing, not the game.
 
 Gate G1 results; rights ledger content; each adventure's entry conditions, outcome contract and quest
 classification; final placement of the 16 added adventures and the route proof through each gate.

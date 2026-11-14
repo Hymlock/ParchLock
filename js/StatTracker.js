@@ -395,7 +395,9 @@ var StatTracker = {
         var base = StatTracker.MeasuredProbeFacts[identity.digest], extra = collaboration[identity.digest], local = StatTracker.SupplementalProbeFacts[identity.digest];
         // An Eamon Showcase package changes digest each release, but STATUS is the Eamon CS engine's own
         // command in every adventure: its fact is keyed by format.
-        if (!base && identity.format === "eamon") base = StatTracker.MeasuredProbeFacts["format:eamon"];
+        // Once the engine's own status values arrive in the world snapshot (EamonProvider.applyStatus, item 11), the
+        // Showcase no longer sends STATUS behind the scenes.
+        if (!base && identity.format === "eamon" && !StatTracker._eamonNative) base = StatTracker.MeasuredProbeFacts["format:eamon"];
         return base || extra || local ? Object.assign({}, base || {}, extra || {}, local || {}) : null;
     },
 

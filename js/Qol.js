@@ -465,10 +465,15 @@ var ParchLockQol = {
     ShowSaveManager: () => {
 
         var body = "";
+        // The Eamon Showcase: this panel lists the current adventure's saves (mirrored by EamonSaves), which belong
+        // to the adventure; they are replaced through Save, never deleted or exported from here (Grok #3554 S2).
+        var eamonFolder = (typeof EamonSaves !== "undefined" && EamonSaves.folder) ? EamonSaves.folder() : null;
+        if (eamonFolder) { try { ParchLock.GameId = EamonSaves.gameId(eamonFolder); } catch (eG) {} }
         var saves = ParchLockQol.GetStoredFiles();
+        var isEamonSave = (save) => /^eamonshowcase-/.test(String(save.Key || "").split(":")[2] || "");
 
         body += "<div class='qol-window-actions'>";
-        body += "<span>" + saves.length + " browser save files</span>";
+        body += "<span>" + saves.length + (eamonFolder ? (saves.length === 1 ? " saved game in this adventure" : " saved games in this adventure") : " browser save files") + "</span>";
         body += "<button id='native-save'>Game Save</button>";
         body += "<button id='native-restore'>Game Restore</button>";
         body += "<button id='download-package'>Download Package</button>";
@@ -485,7 +490,7 @@ var ParchLockQol = {
 
         if (!saves.length) {
 
-            body += "<p>No Parchment save files are currently stored for this story.</p>";
+            body += eamonFolder ? "<p>There are no saved games in this adventure yet.</p>" : "<p>No Parchment save files are currently stored for this story.</p>";
         }
         else {
 
@@ -493,6 +498,11 @@ var ParchLockQol = {
 
                 body += "<div class='save-row'>";
                 body += "<strong>" + ParchLockQol.EscapeHtml(save.Filename) + "</strong>";
+                if (isEamonSave(save)) {
+                    body += "<span>kept by the adventure</span>";
+                    body += "</div>";
+                    return;
+                }
                 body += "<span>" + ParchLockQol.EscapeHtml(save.Usage) + "</span>";
                 body += "<button class='download-save-file' data-key='" + ParchLockQol.EscapeAttr(save.Key) + "'>Download</button>";
                 body += "<button class='delete-save-file' data-dirent='" + ParchLockQol.EscapeAttr(save.DirentKey) + "' data-content='" + ParchLockQol.EscapeAttr(save.ContentKey) + "'>Delete</button>";
@@ -504,8 +514,10 @@ var ParchLockQol = {
 
         Message.Show("Save / Restore", "<div class='pl-tool-content'>" + body + "</div>", true);
 
-        $("#native-save").click(() => { Message.Hide(); Input.Clear(); Input.Inject("save", true); });
-        $("#native-restore").click(() => { Message.Hide(); Input.Clear(); Input.Inject("restore", true); });
+        // The Showcase uses ParchLock's own dialog for both (one save system, owner 2026-11-13).
+        var eamonSave = (kind) => typeof EamonSaves !== "undefined" && EamonSaves.handles(kind);
+        $("#native-save").click(() => { if (eamonSave("save")) { Message.Hide(); EamonSaves.open("save"); return; } Message.Hide(); Input.Clear(); Input.Inject("save", true); });
+        $("#native-restore").click(() => { if (eamonSave("restore")) { Message.Hide(); EamonSaves.open("restore"); return; } Message.Hide(); Input.Clear(); Input.Inject("restore", true); });
         $("#download-package").click(() => { var name = ParchLockQol.ExportFilename("Save package", undefined, "json"); ParchLockQol.PackageWithTranscripts(ParchLock.GetSaveData()).then(data => ParchLockQol.DownloadText(name, data)); });
         $("#save-package-as").click(ParchLockQol.SavePackageAs);
         $("#copy-package").click(() => ParchLockQol.PackageWithTranscripts(ParchLock.GetSaveData()).then(data => ParchLockQol.CopyText(data, "Save package copied to clipboard.")));
@@ -780,7 +792,7 @@ var ParchLockQol = {
                 // real command, defaulting to the label for ordinary
                 // compass exits where the two are the same word.
                 var realCommand = (e && e.command) || label;
-                pushGame({ Command: realCommand, Label: label, Enter: true, Score: 52, source: "ram-exit" });
+                pushGame({ Command: realCommand, Label: label, Enter: true, Score: 52, source: "ram-exit", PromptKey: !!(e && e.promptKey) });
             });
             // D88 Stage 6 cutover point (default off): flag on sources from
             // SemanticActions.resolveForPayload, proven byte-parity with
@@ -1091,6 +1103,7 @@ var ParchLockQol = {
                 .data("action", item.Action)
                 .data("usage-key", item.UsageKey)
                 .data("track-tap", item.TrackTap === true)
+                .data("prompt-key", item.PromptKey === true)
                 .appendTo(menu);
         });
 
@@ -1130,6 +1143,12 @@ var ParchLockQol = {
             ParchLockQol.HideRadialMenu();
             var action = $(this).data("action");
             if (action) { action(); return; }
+            // An Eamon prompt's own key (Y/N, D/M, a menu number) answers that prompt, like a tap on its underlined key;
+            // it is the only radial path into a nested prompt (Grok #3515 S1).
+            if ($(this).data("prompt-key") === true && typeof Actionable !== "undefined" && Actionable.SubmitPromptChoice) {
+                Actionable.SubmitPromptChoice(command);
+                return;
+            }
             /* #33/#34: route real submissions through Actionable.Submit --
                the single usage choke-point -- instead of noteUsage+Inject
                directly. This also means a radial-clicked Undo/Restore gets

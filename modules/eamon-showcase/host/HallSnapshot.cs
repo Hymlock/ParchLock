@@ -210,6 +210,8 @@ namespace ParchLock.EamonHost
 				}),
 				inventory = Array.Empty<object>(),
 				stats = new { },
+				// The checked-in character's base values for ParchLock's status card (item 11); none before the desk.
+				status = StatsSnapshot.Hall(Eamon.Game.Plugin.Globals.gEngine, (Eamon.Game.Plugin.Globals.gEngine as EamonMH.Framework.Plugin.IEngine)?.Character),
 				playerId = Base + 300000,
 				special = w.Level.Commands.Select(c => new { c.label, c.command }),
 				// The Hall's own words: its object verbs, so ParchLock offers exactly these (no Z verbs).

@@ -1,0 +1,7 @@
+browser: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36
+in The Training Ground at the command line
+command round trip ms (n=12): [38,29,23,13,23,25,20,32,22,20,20,20] median=23 max=38
+long tasks during commands (ms): [] max=0
+cold start 1: browser launch 304 ms; launch to first prompt 2635 ms; navigation to first prompt (in page) 2320 ms; prompt "Press any key to continue:"; long tasks [] max=0
+cold start 2: browser launch 256 ms; launch to first prompt 2451 ms; navigation to first prompt (in page) 2187 ms; prompt "Press any key to continue:"; long tasks [] max=0
+cold start 3: browser launch 250 ms; launch to first prompt 2543 ms; navigation to first prompt (in page) 2287 ms; prompt "Press any key to continue:"; long tasks [] max=0

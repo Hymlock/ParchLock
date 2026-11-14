@@ -60,6 +60,10 @@ var EquipmentUI = {
         function allowed(form) {
             if (!AttrCalibrator.dictionaryForm(form)) return false;
             if (!ActionSynth.learnedFormAllowed(obj.id, form, 'inventory')) return false;
+            // Eamon: Yourself / inventory suggestions follow the snapshot's object type, so a sword
+            // is not offered Eat, Drink or Wear (Grok #3541 phone finding ii). Z-machine unchanged.
+            if (typeof EamonProvider !== "undefined" && EamonProvider.active && EamonProvider.active()
+                && EamonProvider.verbAllowedFor && !EamonProvider.verbAllowedFor(obj, form)) return false;
             if (form === ActionSynth.defaultInspectVerb() && ActionSynth.inspectVerbDisabled()) return false;
             if (nested) return form === "take" || form.indexOf("take out of ") === 0;
             if (EquipmentUI.isWorn(obj)) return form === (scopedRemoval ? "drop" : ((obj.attrs || {}).equipmentToggleVerb || "remove")) || form === ActionSynth.defaultInspectVerb();

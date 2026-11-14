@@ -1,0 +1,185 @@
+url=https://localhost/
+build={"BUILD":98,"ua":"Mozilla/5.0 (Linux; Android 16; NX799J Build/BQ2A.250705.001-BP2A.250605.031.A3;"}
+eamon before import: 0
+eamon games: [{"title":"Eamon Showcase","path":"local/6d6eb49ac1cf9c0b268204ba0ac8f5292c5649e756c2e7423fa6f163a8b72ac8.eamon.js","id":"6d6eb49ac1cf"}]
+trusted: 6d6eb49ac1cf9c0b
+cold open ms=1305
+at: ver the desk is a sign which says: REGISTER HERE OR ELSE! Do you go over to the desk or join the men drinking beer? ------------------------ Press D for desk or M for men: 
+P6 outer/D-M: {"outer":true,"marks":["desk","sign","men drinking beer","D","M"],"dmMarks":["D","M"],"room":"Outer Chamber"}
+after desk flow: g about the idiot on the other shift with the lousy handwriting. He eventually looks at you and says, "Yer name's na in here. Have ye given it to me aright?" ------------------------ Press Y for yes or N for no: 
+item11 status: {
+  "adventure": null,
+  "room": null,
+  "worldStatus": null,
+  "payload": {
+    "vmType": "pending-emglken",
+    "roomName": "",
+    "hud": []
+  },
+  "equipHead": ""
+}
+atTopLevel=false
+Eamon settings in Options: false
+
+=== continue creation ===
+start: ugh his book, while muttering something about the idiot on the other shift with the lousy handwriting. He eventually looks at you and says, "Yer name's na in here. Have ye given it to me aright?" ------------------------ Press Y for yes or N for no: 
+step 0: handwriting. He eventually looks at you and says, "Yer name's na in here. Have ye given it to me aright?" ------------------------ Press Y for yes or N for no: 
+step 1: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 2: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 3: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 4: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 5: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 6: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 7: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 8: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 9: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 10: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 11: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 12: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 13: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 14: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 15: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 16: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 17: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 18: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 19: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 20: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 21: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 22: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 23: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 24: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 25: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 26: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 27: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 28: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 29: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 30: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 31: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 32: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 33: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 34: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 35: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 36: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 37: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 38: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 39: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 40: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 41: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 42: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 43: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 44: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 45: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 46: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 47: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 48: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 49: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 50: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 51: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 52: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 53: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 54: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 55: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 56: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 57: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 58: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+step 59: o sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+after loop:  Press Y for yes or N for no: N ------------------------ He pulls out a sword and begins to sharpen it, saying "Ye'd best be givin' me yer name laddie, if ye know wots good fer ye!!!" ------------------------ You give him your name (type it in now): 
+HALL SNAP: {
+  "adventure": null,
+  "room": null,
+  "status": null,
+  "special": null,
+  "atTop": false,
+  "payloadRoom": "",
+  "vmType": "pending-emglken",
+  "equip": "",
+  "options": "Make yourself at home. Your choices are saved automatically.\n\nGetting started\nHelp when a story begins\nVoice input\nHold to talk and automatic sending\nStory scrolling\nKeep new passages in view\nRead aloud\nNarration, speech rate and repeats\nAccessibility & controls\nNotes, directions and tutorials\nLearned words\nChoose the labels shown in your editor, and erase what was learned for stories you uninstal",
+  "hasEamonSettings": false
+}\nstart: something about the idiot on the other shift with the lousy handwriting. He eventually looks at you and says, "Yer name's na in here. Have ye given it to me aright?" ------------------------ Press Y for yes or N for no: \nafter Y: wait just a minute and I'll bring someone out to take care of ye." The Irishman says, "First I must know whether ye be male or female. Which are ye?" ------------------------ You give him your gender (0=Male; 1=Female): \ni=0 e out to take care of ye." The Irishman says, "First I must know whether ye be male or female. Which are ye?" ------------------------ You give him your gender (0=Male; 1=Female): \ni=1 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=2 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=3 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=4 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=5 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=6 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=7 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=8 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=9 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=10 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=11 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=12 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=13 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=14 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=15 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=16 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=17 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=18 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=19 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=20 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=21 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=22 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=23 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=24 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=25 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=26 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=27 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=28 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=29 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=30 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=31 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=32 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=33 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=34 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=35 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=36 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=37 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=38 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=39 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=40 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=41 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=42 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=43 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=44 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=45 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=46 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=47 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=48 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=49 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=50 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=51 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=52 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=53 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=54 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=55 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=56 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=57 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=58 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=59 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=60 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=61 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=62 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=63 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=64 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=65 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=66 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=67 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=68 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=69 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=70 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=71 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=72 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=73 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=74 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=75 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=76 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=77 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=78 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \ni=79 lity: 9 Charisma: 14" "You are such a poor excuse for an adventurer that we will allow you to commit suicide." ------------------------ Press Y to commit suicide or N to continue: \nHALL={
+  "atTop": false,
+  "adventure": null,
+  "room": null,
+  "status": null,
+  "special": null,
+  "payloadRoom": "",
+  "vm": "pending-emglken",
+  "tail": "o read, and your prime attributes are-- Intellect: 9 Hardiness: 10 Agility: 9 Charisma: 14\" \"You are such a poor excuse for an adventurer that we will allow you to commit suicide.\" ------------------------ Press Y to commit suicide or N to continue: "
+}\n\nHALL_ARRIVAL\n{
+  "atTop": true,
+  "adventure": "Main Hall",
+  "room": {
+    "id": 308000001,
+    "name": "Main Hall",
+    "lit": true
+  },
+  "status": {
+    "source": "hall",
+    "profile": "hall",
+    "name": "TestHero",
+    "gender": "Female",
+    "intellect": 9,
+    "learningPct": -8,
+    "hardiness": 10,
+    "agility": 9,
+    "charisma": 14,
+    "charmPct": 8,
+    "weapons": [
+      {
+        "name": "Axe",
+        "pct": 5
+      },
+      {
+        "name": "Bow",
+        "pct": -10
+      },
+      {
+        "name": "Club",
+        "pct": 20
+      },
+      {
+        "name": "Spear",
+        "pct": 10
+      },
+      {
+        "name": "Sword",
+        "pct": 0
+      }
+    ],
+    "spells": [
+      {
+        "name": "Blast",
+        "max": 0
+      },
+      {
+        "name": "Heal",
+        "max": 0
+      },
+      {
+        "name": "Speed",
+        "max": 0
+      },
+      {
+        "name": "Power",
+        "max": 0
+      }
+    ],
+    "armorExpertise": 0,
+    "gold": 200,
+    "bank": 0
+  },
+  "special": [
+    {
+      "label": "Examine your abilities",
+      "command": "5"
+    },
+    {
+      "label": "Seek New Game+",
+      "command": "7"
+    },
+    {
+      "label": "Temporarily leave the universe",
+      "command": "X"
+    }
+  ],
+  "tail": "ize you can do one of eight things: 1. Go on an adventure. 2. Visit the Weapons and Armor Shop. 3. Hire a Wizard to teach you some spells. 4. Find the banker to deposit or withdraw some gold. 5. Examine your abilities. 6. Enter the Village. 7. Seek New Game+. X. Temporarily leave the universe. [X]: "
+}

@@ -1,10 +1,11 @@
 // Builds the importable Eamon Showcase package from a host build directory (see Prepare-Host.ps1).
 //   node pack-showcase.cjs <work dir> <output file.eamon> [version]
 // Prints the package SHA-256. A ParchLock build runs the package only if that digest is listed in
-// js/EamonPackage.js (TRUSTED); pass --pin to write it there for a development build.
+// js/EamonPackage.js (TRUSTED); pass --pin to write it there for a development build. A PARCHLOCK_PROBE build is refused
+// unless --probe is given (then the version must name it and --pin is refused).
 const fs = require('fs'), path = require('path'), zlib = require('zlib'), crypto = require('crypto');
 const [work, output, versionArg] = process.argv.slice(2).filter(a => !a.startsWith('--'));
-if (!work || !output) { console.error('usage: node pack-showcase.cjs <work dir> <output.eamon> [version] [--pin]'); process.exit(2); }
+if (!work || !output) { console.error('usage: node pack-showcase.cjs <work dir> <output.eamon> [version] [--pin | --probe]'); process.exit(2); }
 const version = versionArg || '0.1.0-dev';
 const framework = path.join(work, 'eamon-host/bin/Release/net8.0/publish/wwwroot/_framework');
 const data = path.join(work, 'data');
@@ -23,6 +24,14 @@ const buffers = members.map(m => {
   if (m.path === 'eamon-data/manifest.json' && bytes[0] === 0xEF) bytes = bytes.subarray(3); // no byte-order mark
   return bytes;
 });
+// Probe guard (Grok #3498 N1): a PARCHLOCK_PROBE build carries the ProbeInject class, whose name sits in the assembly
+// metadata as UTF-8 and whose "[probe]" reply is a UTF-16 literal. Such a build is packed only with --probe and a
+// version naming it, and never pinned, so it cannot become a trusted shipped package by accident.
+const probeMarks = [Buffer.from('ProbeInject'), Buffer.from('[probe]', 'utf16le')];
+const probeMembers = members.filter((m, i) => m.path.startsWith('_framework/') && probeMarks.some(mark => buffers[i].includes(mark))).map(m => m.path);
+const probeWanted = process.argv.includes('--probe');
+if (probeMembers.length && !probeWanted) { console.error('refused: probe code in ' + probeMembers.join(', ') + ' (a PARCHLOCK_PROBE build; pass --probe to pack it for testing)'); process.exit(1); }
+if (probeWanted && (!probeMembers.length || !/probe/.test(version) || process.argv.includes('--pin'))) { console.error('refused: --probe needs a probe build, a version containing "probe", and no --pin'); process.exit(1); }
 const header = Buffer.from(JSON.stringify({
   title: 'Eamon Showcase', version, engine: 'Eamon CS 3.1.0 (5db64a37afe0b5455ee477e067fca4e6d249e419)',
   files: members.map((m, i) => ({path: m.path, size: buffers[i].length, sha256: crypto.createHash('sha256').update(buffers[i]).digest('hex')}))

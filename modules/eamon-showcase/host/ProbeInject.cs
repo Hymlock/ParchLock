@@ -6,6 +6,8 @@
 //   {"monster": 27, "to": "limbo" | "player"}             or  {"monster": 26, "room": 12}
 //   {"monster": 8, "set": "Field1", "value": 1}  or  {"monster": 11, "set": "Reaction", "value": "Friend"}  (a record's own property)
 //   {"state": "Ro", "value": 60}   (a game state property; "Ro" also moves the player there)
+//   {"stateKey": "ParalyzedTargets", "value": 3}   (adds the player's monster to a game state dictionary keyed by monster
+//   uid; a list value gets [value]; "remove": true takes it out; stats acceptance, Grok #3558 C1)
 //   {"report": true}               (lifecycle "probe-contract": the contract's evaluation now)
 #if PARCHLOCK_PROBE
 using System;
@@ -68,6 +70,18 @@ namespace ParchLock.EamonHost
 					{
 						SetProperty(state, sf.GetString(), c.GetProperty("value"));
 						if (sf.GetString() == "Ro") { player.SetInRoomUid(state.Ro); }
+					}
+					else if (c.TryGetProperty("stateKey", out var sk))
+					{
+						var p = state.GetType().GetProperty(sk.GetString(), BindingFlags.Public | BindingFlags.Instance) ?? throw new InvalidOperationException("no property " + sk);
+						var dict = p.GetValue(state) as System.Collections.IDictionary ?? throw new InvalidOperationException(sk + " is not a dictionary");
+						if (c.TryGetProperty("remove", out _)) dict.Remove(state.Cm);
+						else
+						{
+							var valueType = p.PropertyType.GetGenericArguments()[1];
+							var v = c.GetProperty("value").GetInt64();
+							dict[state.Cm] = valueType == typeof(long) ? (object)v : new System.Collections.Generic.List<long> { v };
+						}
 					}
 					else if (!c.TryGetProperty("report", out _)) throw new InvalidOperationException("unknown op");
 					ClearContracts.Evaluate();

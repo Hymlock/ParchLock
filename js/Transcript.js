@@ -402,6 +402,10 @@ var Transcript = {
     reconcileSaves: function () {
         var sig = Transcript.signature();
         if (!sig || !Transcript.meta) return;
+        // The Eamon Showcase's saves are the engine's own files, not Glk save files, so this check would drop every
+        // one of them at each boot. The host reports deleted Eamon saves itself (SaveEvents MarkSavesDeleted ->
+        // forgetSaves), which is the authority there (one save system, 2026-11-13).
+        if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__) return;
         var gone = Object.keys(Transcript.meta.saves).filter(function (n) {
             try { return localStorage.getItem("dirent:save:" + sig + ":" + n) == null; } catch (e) { return false; }
         });

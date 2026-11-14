@@ -105,30 +105,9 @@ var TranslatorUI = {
 
     applySpecialCommands: (p) => {
         TranslatorUI.ensureChrome();
-        var box = $("#pl-special-commands").empty();
-        var cmds = (p && p.specialCommands) || [];
-        var rendered = 0;
-        cmds.forEach(function (c) {
-            var label = typeof c === "string" ? c : (c.label || c.command || "");
-            var command = typeof c === "string" ? c : (c.command || c.label || "");
-            if (!label) return;
-            // Dictionary verbs belong on the input-line radial (D34
-            // follow-up / D26), not as a 200-button special-commands bar.
-            if (typeof c === "object" && c.source === "dictionary-verb") return;
-            $("<button>").text(label).attr("type", "button").appendTo(box).on("click", function () {
-                if (typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit(command);
-                else if (typeof Input !== "undefined" && Input.Inject) { Input.Inject(command); Input.Enter && Input.Enter(); }
-            });
-            rendered++;
-        });
-        // Visibility must follow what actually got appended, not the raw
-        // pre-filter payload count -- a payload whose specialCommands are
-        // entirely dictionary-verb-sourced (or otherwise unlabeled) filters
-        // down to zero buttons above, and showing an empty bordered box in
-        // that case is a visible dead artifact, not a legitimate chrome
-        // element (it was never clickable or draggable; it's an empty div).
-        if (!rendered) { box.hide(); return; }
-        box.show();
+        // Owner #3500: ParchLock choices are underlined tappable words (js/Actionable.js),
+        // never the floating #pl-special-commands button bar (the "Join the men drinking beer" overlay).
+        $("#pl-special-commands").empty().hide();
     },
 
     applyHud: (p) => {
@@ -246,8 +225,10 @@ var TranslatorUI = {
     remapRoomExitKeys: (room) => {
         if (!room || !room.Exits) return;
         var next = {};
+        // An Eamon menu-key exit ("D" for the desk) is a key, not a direction: it keeps its own key (Grok #3532 (a)).
+        var isKey = function (dir) { return !!(room.ExitMeta && room.ExitMeta[dir] && room.ExitMeta[dir].keyExit); };
         Object.keys(room.Exits).forEach(function (dir) {
-            var short = TranslatorUI.canonicalDir(dir);
+            var short = isKey(dir) ? null : TranslatorUI.canonicalDir(dir);
             var key = short || dir;
             if (next[key] == null) next[key] = room.Exits[dir];
         });
@@ -255,7 +236,7 @@ var TranslatorUI = {
         if (room.ExitMeta) {
             var meta = {};
             Object.keys(room.ExitMeta).forEach(function (dir) {
-                var short = TranslatorUI.canonicalDir(dir);
+                var short = isKey(dir) ? null : TranslatorUI.canonicalDir(dir);
                 var key = short || dir;
                 var prev = meta[key], cur = room.ExitMeta[dir];
                 // "n" and "north" fold into one record and the later one wins.

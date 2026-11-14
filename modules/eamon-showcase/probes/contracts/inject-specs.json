@@ -282,7 +282,11 @@
    ]
   ],
   "negativeDrop": 0,
-  "cite": "CombatComponent.cs:32-51: the Mountain King (1, Hardiness 180) dying is the scripted finish (FinishAdventure)"
+  "cite": "CombatComponent.cs:32-51: the Mountain King (1, Hardiness 180) dying is the scripted finish (FinishAdventure); the adventure starts the player unarmed (MainLoop strips weapons), so the probe hands over the silver sword (artifact 25, GetCommand.cs:39) and readies it",
+  "pre": [
+   "#probe {\"artifact\": 25, \"to\": \"carried\"}",
+   "ready sword"
+  ]
  },
  {
   "name": "A Runcible Cargo",
