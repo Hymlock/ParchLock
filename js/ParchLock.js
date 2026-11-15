@@ -346,7 +346,14 @@ var ParchLock = {
             var nativeApp = window.Capacitor && window.Capacitor.isNativePlatform
                 && window.Capacitor.isNativePlatform();
             if (!story && !nativeApp && typeof MobileLayout !== "undefined" && !MobileLayout.isCompact()) {
-                location.replace("index.html");
+                // The PC launcher identifies the clicked shortcut's picture.
+                // Keep that choice when cold startup moves to the library.
+                var launchSplash = new URLSearchParams(window.location.search).get("splash");
+                var libraryUrl = "index.html";
+                if (["archive", "map", "dungeon", "forest"].indexOf(launchSplash) !== -1) {
+                    libraryUrl += "?splash=" + encodeURIComponent(launchSplash);
+                }
+                location.replace(libraryUrl);
                 return;
             }
             document.body.classList.add("no-story");

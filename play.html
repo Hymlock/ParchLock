@@ -12,6 +12,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 		<script>
 			(function () {
+				// D215: only lock a splash scene in <head> when the PC launcher
+				// already named it (?splash=<id>). Do NOT pick random here —
+				// that blocked Android's iconScene() (Codex). Android/random
+				// stay in ParchLockSplash.js after the native plugin answers.
+				var scenes = {
+					map: { image: "img/parchlock-splash-living-map.png", alt: "An elaborate hand-drawn fantasy map on an explorer's table", eyebrow: "Every story has a way in" },
+					dungeon: { image: "img/parchlock-splash-dungeon-door.png", alt: "An ancient wooden door standing ajar in a dark dusty dungeon", eyebrow: "Beyond the door, the story waits" },
+					archive: { image: "img/parchlock-splash-archive-door.png", alt: "A moonlit archive with a map door shaped like a keyhole", eyebrow: "The archive is waiting" },
+					forest: { image: "img/parchlock-splash-forest-path.png", alt: "A winding path through a richly detailed ancient forest", eyebrow: "Choose a path. Discover a world." }
+				};
+				var id = null;
+				try {
+					id = new URLSearchParams(window.location.search).get("splash");
+				} catch (e) {}
+				if (id && scenes[id]) {
+					window.__PL_SPLASH_SCENE = scenes[id];
+					window.__PL_SPLASH_SCENE.id = id;
+				}
 				try {
 					if (sessionStorage.getItem("PL_ParchLockSplashSeen") !== "1" && String(window.name || "").indexOf("__PARCHLOCK_SPLASH_SEEN__") === -1) {
 						document.documentElement.classList.add("parchlock-splash-pending");
@@ -149,8 +167,8 @@
 
 	<body>
 
-		<div id="parchlock-splash" data-scene="map" role="dialog" aria-modal="true" aria-labelledby="parchlock-splash-title">
-			<img class="parchlock-splash__picture" src="img/parchlock-splash-living-map.png" alt="An elaborate hand-drawn fantasy map on an explorer's table">
+		<div id="parchlock-splash" data-scene="" role="dialog" aria-modal="true" aria-labelledby="parchlock-splash-title">
+			<img class="parchlock-splash__picture" src="" alt="">
 			<div class="parchlock-splash__shade" aria-hidden="true"></div>
 			<div class="parchlock-splash__motion" aria-hidden="true">
 				<span class="pl-route pl-route--one"></span>
@@ -168,13 +186,31 @@
 				<span class="pl-leaf pl-leaf--three"></span>
 			</div>
 			<div class="parchlock-splash__content">
-				<p class="parchlock-splash__eyebrow">Every story has a way in</p>
+				<p class="parchlock-splash__eyebrow"></p>
 				<h1 class="parchlock-splash__title" id="parchlock-splash-title">ParchLock!</h1>
 				<div class="parchlock-splash__rule" aria-hidden="true"></div>
 				<p class="parchlock-splash__credits">Adapted by <strong>Hymlock Groves</strong><br>Based on Parchmap by Roy Lazarovich</p>
 				<button class="parchlock-splash__start" type="button">Start the Adventure!</button>
 			</div>
 		</div>
+		<script>
+			(function () {
+				// Apply the scene chosen in <head> immediately so the first paint
+				// matches the desktop icon. Lock it so later scripts cannot swap to map.
+				var s = window.__PL_SPLASH_SCENE;
+				if (!s) return;
+				var splash = document.getElementById("parchlock-splash");
+				if (!splash) return;
+				var picture = splash.querySelector(".parchlock-splash__picture");
+				var eyebrow = splash.querySelector(".parchlock-splash__eyebrow");
+				splash.dataset.scene = s.id;
+				if (picture) { picture.src = s.image; picture.alt = s.alt || ""; }
+				if (eyebrow) eyebrow.textContent = s.eyebrow || "";
+				window.__PL_SPLASH_LOCKED = s.id;
+				document.documentElement.classList.add("parchlock-splash-active");
+				document.documentElement.classList.remove("parchlock-splash-pending");
+			})();
+		</script>
 		<script src="img/ParchLockSplash.js"></script>
 
 		<div id="pl-rotate-hint" hidden aria-hidden="true">

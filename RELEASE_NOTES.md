@@ -1,12 +1,28 @@
 # ParchLock Release Notes
 
+## Windows 2.0.101 maintenance patch â€” November 14, 2026
+
+- Preserve the requested splash picture when desktop startup redirects to the story library.
+- Keep the current shortcut picture during launch; advance it when the session ends.
+- Refresh only ParchLock's shortcut, removing the global icon refresh that visibly disturbed the desktop.
+- Retain the existing signed Android 2.0.100 APK byte-for-byte. This is not an Android update.
+- Both Windows installers include the APK and corresponding source archives. The optional Eamon Showcase download is unchanged and separate.
+
+Validation: 20 browser startup/bridge-failure/dismissal checks passed; an actual Windows scratch shortcut cycled through all four pictures and reloaded its saved state. Grok 2 reported installed-launch URL/shortcut pairing and rotation checks. A visual no-flicker confirmation on every Windows desktop is not claimed. APK signatures verified against the existing release certificate; no new Android live-test claim is made.
+
+Earlier release notes contain development history. Any earlier "unsigned" or "release candidate" labels do not describe the already published signed Android 2.0.100 APK. This patch does not claim completion of all Eamon development gates.
+
+## Earlier development history
+
+# ParchLock Release Notes
+
 ## Build 101 (release candidate, 2026-11-14/15)
 
 - Hall Equipment: carried/worn CharArt inventory in Main Hall (HallSnapshot.CharacterInventory).
 - Status chips: Eamon skills pack two-up (numeric percent/fraction).
 - Read-aloud: decorative asterisks not spoken.
 - Phone acceptance: P1, P3, P4, P5, N4 PASS; P2 marked partial/off.
-- Showcase package pin: fd291722… (0.1.0-dev-hallinv).
+- Showcase package pin: fd291722ï¿½ (0.1.0-dev-hallinv).
 - Android versionCode 100 / 2.0.100; shell cache 200. Not Play-signed (no keystore in env).
 
 ## Build 100 (test build, Hall inventory) - 2026-11-14

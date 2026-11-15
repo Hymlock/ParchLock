@@ -31,13 +31,9 @@
     }
   ];
 
-  function randomIndex(length) {
-    if (window.crypto && window.crypto.getRandomValues) {
-      var value = new Uint32Array(1);
-      window.crypto.getRandomValues(value);
-      return value[0] % length;
-    }
-    return Math.floor(Math.random() * length);
+  function sceneById(id) {
+    for (var i = 0; i < scenes.length; i++) if (scenes[i].id === id) return scenes[i];
+    return null;
   }
 
   function hasBeenDismissed() {
@@ -48,10 +44,50 @@
   }
 
   function rememberDismissal() {
-    try { window.sessionStorage.setItem(SESSION_KEY, "1"); } catch (e) {}
+    try {
+      window.sessionStorage.setItem(SESSION_KEY, "1");
+    } catch (e) {}
     if (String(window.name || "").indexOf(WINDOW_MARKER) === -1) {
       window.name = String(window.name || "") + WINDOW_MARKER;
     }
+  }
+
+  function resolveScene() {
+    // 1) Already chosen in play.html <head> (matches desktop icon / ?splash=)
+    if (window.__PL_SPLASH_SCENE && window.__PL_SPLASH_SCENE.id) {
+      var fromHead = sceneById(window.__PL_SPLASH_SCENE.id);
+      if (fromHead) return fromHead;
+    }
+    // 2) URL param
+    var requested = null;
+    try {
+      requested = new URLSearchParams(window.location.search).get("splash");
+    } catch (e) {}
+    var fromUrl = sceneById(requested);
+    if (fromUrl) return fromUrl;
+    // 3) Already painted on the DOM
+    var splash = document.getElementById("parchlock-splash");
+    if (splash && splash.dataset.scene) {
+      var fromDom = sceneById(splash.dataset.scene);
+      if (fromDom) return fromDom;
+    }
+    // 4) Random only when nothing requested
+    return scenes[Math.floor(Math.random() * scenes.length)];
+  }
+
+  function applyScene(scene, splash, picture, eyebrow) {
+    if (!scene || !splash || !picture || !splash.isConnected || hasBeenDismissed()) return;
+    splash.dataset.scene = scene.id;
+    // Only set src if different — avoids a second network load that can flash.
+    if (picture.getAttribute("src") !== scene.image) {
+      picture.src = scene.image;
+    }
+    picture.alt = scene.alt || "";
+    if (eyebrow) eyebrow.textContent = scene.eyebrow || "";
+    document.documentElement.classList.remove("parchlock-splash-pending");
+    document.documentElement.classList.add("parchlock-splash-active");
+    // Freeze: nothing else may change the splash image this session boot.
+    window.__PL_SPLASH_LOCKED = scene.id;
   }
 
   function init() {
@@ -68,52 +104,51 @@
     var eyebrow = splash.querySelector(".parchlock-splash__eyebrow");
     var start = splash.querySelector(".parchlock-splash__start");
 
-    var shown = false;
-    function show(id) {
-      if (shown) return;
-      shown = true;
-      var scene = null;
-      for (var i = 0; i < scenes.length; i++) if (scenes[i].id === id) scene = scenes[i];
-      if (!scene) scene = scenes[randomIndex(scenes.length)];
-      splash.dataset.scene = scene.id;
-      picture.src = scene.image;
-      picture.alt = scene.alt;
-      eyebrow.textContent = scene.eyebrow;
+    // PC launcher: ?splash= already applied/locked in play.html — keep it.
+    if (window.__PL_SPLASH_LOCKED) {
       document.documentElement.classList.remove("parchlock-splash-pending");
       document.documentElement.classList.add("parchlock-splash-active");
-    }
-    // D215: open on the scene shown by the icon the player tapped -- the PC
-    // launcher passes ?splash=<id>, Android reports the launching icon. An
-    // unknown or missing scene, or no answer within 150ms, stays random.
-    var requested = null;
-    try { requested = new URLSearchParams(window.location.search).get("splash"); } catch (e) {}
-    if (requested) {
-      show(requested);
     } else {
+      // Android: wait for iconScene before locking. Web/random: apply now.
       var plugin = null;
       try {
         var Cap = window.Capacitor;
-        if (Cap && typeof Cap.isNativePlatform === "function" && Cap.isNativePlatform() && Cap.Plugins && Cap.Plugins.SaveFile && Cap.Plugins.SaveFile.iconScene) plugin = Cap.Plugins.SaveFile;
+        if (Cap && typeof Cap.isNativePlatform === "function" && Cap.isNativePlatform() && Cap.Plugins && Cap.Plugins.SaveFile && Cap.Plugins.SaveFile.iconScene) {
+          plugin = Cap.Plugins.SaveFile;
+        }
       } catch (e) {}
       if (plugin) {
-        window.setTimeout(function () { show(null); }, 150);
-        plugin.iconScene().then(function (r) { show(r && r.scene); }, function () { show(null); });
+        // A slow bridge is not evidence that no icon scene exists. Picking and
+        // locking a random image on a timer makes slower phones mismatch.
+        // The Start button remains available while the bridge answers.
+        Promise.resolve().then(function () { return plugin.iconScene(); }).then(
+          function (r) {
+            if (window.__PL_SPLASH_LOCKED) return;
+            var s = sceneById(r && r.scene) || resolveScene();
+            applyScene(s, splash, picture, eyebrow);
+          },
+          function () {
+            if (!window.__PL_SPLASH_LOCKED) applyScene(resolveScene(), splash, picture, eyebrow);
+          }
+        );
       } else {
-        show(null);
+        applyScene(resolveScene(), splash, picture, eyebrow);
       }
     }
 
-    start.addEventListener("click", function () {
-      if (splash.classList.contains("is-leaving")) return;
-      rememberDismissal();
-      splash.classList.add("is-leaving");
-      window.setTimeout(function () {
-        splash.remove();
-        document.documentElement.classList.remove("parchlock-splash-pending", "parchlock-splash-active");
-        var lineInput = document.querySelector(".Input.LineInput");
-        if (lineInput && lineInput.focus) lineInput.focus();
-      }, 700);
-    });
+    if (start) {
+      start.addEventListener("click", function () {
+        if (splash.classList.contains("is-leaving")) return;
+        rememberDismissal();
+        splash.classList.add("is-leaving");
+        window.setTimeout(function () {
+          splash.remove();
+          document.documentElement.classList.remove("parchlock-splash-pending", "parchlock-splash-active");
+          var lineInput = document.querySelector(".Input.LineInput");
+          if (lineInput && lineInput.focus) lineInput.focus();
+        }, 700);
+      });
+    }
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });

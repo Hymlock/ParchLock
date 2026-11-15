@@ -49,13 +49,16 @@ ParchLock modifications are provided under GNU GPL version 3; see `LICENSE`.
 Corresponding source for the distributed build is `ParchLock-source.zip`.
 Third-party components and included games retain their own licenses.
 
-## Downloads — 2.0.100
+## Downloads — Windows 2.0.101 / Android 2.0.100
 
-[Get ParchLock 2.0.100 for Windows and Android](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.100).
+[Open the current release](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.101).
 
-On that release page:
+- [ParchLock-Setup-2.0.101-public.exe](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-Setup-2.0.101-public.exe) — Windows installer, including the public story set, Android APK and source archives.
+- [ParchLock-public.apk](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-public.apk) — unchanged Android 2.0.100 APK, signed with the existing release key.
+- [ParchLock-source.zip](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-source.zip) — source for the corrected Windows/web files and installer recipe.
+- [ParchLock-Android-2.0.100-source.zip](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-Android-2.0.100-source.zip) — original corresponding source for the unchanged Android APK.
+- [Eamon Showcase module](https://github.com/Hymlock/ParchLock/releases/download/v2.0.100/EamonShowcase-2.0.100.eamon) — optional, unchanged module; import it through Modules → Add. It is separate from the installer.
 
-- **ParchLock-Setup-2.0.100-public.exe** — Windows installer (public story set + public APK)
-- **ParchLock-public.apk** — Android install
-- **EamonShowcase-2.0.100.eamon** — optional Eamon Showcase module (import via Modules → Add; not inside the installer)
-- **ParchLock-source.zip** — corresponding source for this build
+This is a Windows-only maintenance patch: the startup picture follows the rotating desktop shortcut, and icon rotation notifies Windows about ParchLock's shortcut only. Android has not been rebuilt or changed. The public distribution contains 75 bundled story files. The Showcase is still a development module; its full adventure acceptance work is not declared complete.
+
+The installer contains the APK as well as both source archives. For browser play, use the installed PC launcher or host the complete runtime folder; a source ZIP is not a ready-to-play web archive.
