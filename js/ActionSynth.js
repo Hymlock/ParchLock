@@ -44,9 +44,20 @@ var ActionSynth = {
     // literal of the form ("give" and "to", "put" and "in") must be in the
     // story's dictionary. Only decided where a dictionary adapter exists (Z
     // RAM); elsewhere (Glulx, no memory yet) existing behaviour is unchanged.
+    // True only for an Eamon adventure in play and never while a Z-machine is loaded.
+    eamonVocabularyActive: () => {
+        try {
+            if (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem && ZRamProvider.getMem()) return false;
+            return typeof EamonProvider !== "undefined" && !!EamonProvider.vocabulary && !!EamonProvider.vocabulary();
+        } catch (e) { return false; }
+    },
     literalAvailable: (literals) => {
         var mem = null;
         try { mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null; } catch (eMem) { mem = null; }
+        // An Eamon adventure's own parser vocabulary is a dictionary too (js/EamonProvider.js): same rule.
+        if (!mem && typeof EamonProvider !== "undefined" && EamonProvider.vocabulary && EamonProvider.vocabulary()) {
+            return String(literals || "").trim().split(/\s+/).every(function (w) { return EamonProvider.hasWord(w); });
+        }
         if (!mem || typeof ZRamReader === "undefined" || !ZRamReader.hasDictionaryWord) return true;
         // An adapter exists: an uncertain read must fail CLOSED (#1944), as
         // Actionable.isGameWord does, never license an invented form.
@@ -223,6 +234,14 @@ var ActionSynth = {
             }
         } catch (eL) {}
         if (a.nativeUseVerb === "use" && verbs.indexOf("use") < 0) verbs.push("use");
+        // An Eamon adventure: its provider's own fact rows (kept out of this shared table, which is also
+        // AttrCalibrator's verb source for every story), then only words the Eamon parser knows.
+        if (ActionSynth.eamonVocabularyActive()) {
+            Object.keys(EamonProvider.RULES).forEach(function (key) {
+                if (a[key]) EamonProvider.RULES[key].forEach(function (v) { if (verbs.indexOf(v) < 0) verbs.push(v); });
+            });
+            verbs = verbs.filter(function (v) { return ActionSynth.literalAvailable(v); });
+        }
         return verbs.map(function (v) { return ActionSynth.projectGeneratedActivation(v, objectId, options.context); })
             .filter(function (v, i, list) { return v && list.indexOf(v) === i; });
     },
@@ -617,11 +636,28 @@ var ActionSynth = {
                 var inspect = ActionSynth.defaultInspectVerb();
                 nested.push({ verb: inspect, noun: name, objectId: obj.id || null, command: inspect + " " + name, confidence: obj.confidence || 0.8 });
             }
+            // Eamon takes a thing out of a container only with its own REMOVE <obj> FROM <container> (EamonRT
+            // RemoveCommand); GET finds room items only. Same command as the Equipment drag (Grok #3434).
+            var eamonNested = ActionSynth.eamonVocabularyActive && ActionSynth.eamonVocabularyActive();
+            var holderNoun = containerName;
+            if (eamonNested) {
+                // The container must be named unambiguously, as the Equipment drag requires (Grok #3437).
+                var pool = (WorldModel.lastPayload && (WorldModel.lastPayload.inventory || []).concat(WorldModel.lastPayload.discoveredObjects || [])) || [];
+                var holder = pool.find(function (o) { return o && obj.parentId != null && String(o.id) === String(obj.parentId); });
+                var holderRef = holder && typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(holder) : null;
+                if (!holderRef || !holderRef.unique) {
+                    // Said, not silently dropped (Grok #3443): the entry explains instead of typing an ambiguous REMOVE.
+                    nested.push({ verb: "take out of " + containerName, noun: name, objectId: obj.id || null, confidence: obj.confidence || 0.8,
+                        command: Actionable.EXPLAIN + "There is more than one " + containerName + " here, so ParchLock cannot say which one to take " + name + " out of. Drag it out in Equipment, or type the command naming the one you mean." });
+                    return nested;
+                }
+                holderNoun = holderRef.noun;
+            }
             nested.push({
                 verb: "take out of " + containerName,
                 noun: name,
                 objectId: obj.id || null,
-                command: "take " + name,
+                command: eamonNested ? "remove " + name + " from " + holderNoun : "take " + name,
                 confidence: obj.confidence || 0.8
             });
             ActionSynth.nestedEdibleForms(obj.id, context).forEach(function (verb) {

@@ -1,5 +1,102 @@
 # ParchLock Release Notes
 
+## Build 101 (release candidate, 2026-11-14/15)
+
+- Hall Equipment: carried/worn CharArt inventory in Main Hall (HallSnapshot.CharacterInventory).
+- Status chips: Eamon skills pack two-up (numeric percent/fraction).
+- Read-aloud: decorative asterisks not spoken.
+- Phone acceptance: P1, P3, P4, P5, N4 PASS; P2 marked partial/off.
+- Showcase package pin: fd291722… (0.1.0-dev-hallinv).
+- Android versionCode 100 / 2.0.100; shell cache 200. Not Play-signed (no keystore in env).
+
+## Build 100 (test build, Hall inventory) - 2026-11-14
+
+- Eamon Main Hall: Equipment lists the character's carried and worn gear (CharArt), not an empty Yourself row.
+- Read-aloud: decorative asterisks (`***`) are not spoken.
+- New Showcase package digest (0.1.0-dev-hallinv). Android versionCode 100; shell cache 200. Not a public release.
+
+## Build 99 (test build, status packing) - 2026-11-14
+
+- Eamon status card: weapon skills, spells, learning and charm are numeric chips and pack two-up in Equipment (no full-width text rows). Freeform lines (armour name, conditions, rare boosts) stay full width.
+- Android versionCode 99; shell cache 199. Not a public release.
+
+## Build 98 (test build, Eamon stats) - 2026-11-13
+
+- Eamon: the status card shows the game's own figures in the Main Hall and in every adventure: health, intellect, hardiness, agility, charisma with their bonuses, weapon and spell abilities, armour and armour expertise, weight carried of the limit, gold and bank. Nothing is sent to the game behind the scenes.
+- Eamon: each adventure shows only what its own STATUS shows (health only where STATUS is not available; The Vile Grimoire of Jaldi'al shows its health percentage and conditions). Temporary boosts (speed, the magic dagger) are shown apart from the base value.
+- New Showcase package (0.1.0-dev, a new digest); campaigns carry over.
+- Android versionCode 73; shell cache 198. Not a public release.
+
+## Build 97 (test build, Eamon saves hardened) - 2026-11-13
+
+- Eamon saves: names use letters, digits, spaces, apostrophes and hyphens (words like "and" would split the command); the dialog cannot delete or rename an Eamon save; a refusal is shown once, after the game's own reason; a new save is listed at once; a save keeps its transcript and map after the app restarts.
+- Eamon: when the game itself offers "Restore a saved game" (after a death), ParchLock's restore dialog is used instead of the game's slot list.
+- Eamon: no menu keys at an adventure's ">" command line; a sword's menu no longer offers Eat, Drink or Wear.
+- Android versionCode 72; shell cache 197. Not a public release.
+
+## Build 96 (test build, Eamon saves and menus) - 2026-11-13
+
+- Eamon Showcase: one save system. Tools > Save, Tools > Restore, the Save files buttons and a typed SAVE or RESTORE all use ParchLock's own save and load dialog; Eamon's slot menus no longer appear. Where saving is not possible, a pop-up says so.
+- Eamon: numbered choices of two or three digits (adventures 10 to 23) are underlined; a list shown in pages keeps every page's numbers live at "Enter the selection"; "or X to exit" underlines X.
+- Eamon: the Hall desk key D is no longer shown as a compass "Down"; an old map repairs itself on the next visit.
+- Android versionCode 71; shell cache 196. Not a public release.
+
+## Build 95 (test build, Eamon maps) - 2026-11-13
+
+- Eamon: the room an adventure starts in is on the map at once, not only after leaving it.
+- Eamon: a yes/no question asked inside a room no longer adds its keys to the map as exits.
+- Eamon: The Pyramid of Anharos now has its map, exits and underlined words (they were missing for the whole adventure).
+- New Showcase package (0.1.0-dev, a new digest); campaigns carry over.
+- Android versionCode 70; shell cache 195. Not a public release.
+- APK SHA-256 554d1c70f769871c... (the update test package is trusted in this APK only).
+
+## Build 94 (test build, Eamon prompt answers) - 2026-11-13
+
+- An Eamon key (an underline or a radial entry) answers only the question it belongs to, and only while that question is waiting; a radial left open after the game moved on does nothing.
+- Android versionCode 69; shell cache 194. Not a public release.
+
+## Build 93 (test build, Eamon prompt answers) - 2026-11-13
+
+- At an Eamon question inside a scene (Y/N, a shop step), only the question's own underlined keys and the matching radial entries answer it; a compass chip, fast travel or any other ParchLock command never does.
+- When an Eamon story ends, the last menu's keys are no longer offered.
+- Android versionCode 68; shell cache 193. Not a public release.
+
+## Build 92 (test build, Eamon prompt keys) - 2026-11-13
+
+- A refused answer (a wrong key at D/M, Y/N, a Hall or shop menu) keeps the question's keys underlined; the map, Equipment and a reload do not drop them.
+- During character creation the radial offers the prompt's own keys (Y/N, 0/1, R/T) and choosing one answers it.
+- Android versionCode 67; shell cache 192. Not a public release.
+
+## Build 91 (test build, Eamon prompt keys) - 2026-11-13
+
+- Only the waiting Eamon prompt's keys are underlined and on the radial: an answered single-key prompt (D/M, Y/N, 0/1, R/T) no longer stays tappable, so a stale key can never be sent to a later prompt. Verified on PC with real clicks and typing on a fresh load, including a 21 s idle before answering.
+- Android versionCode 66; shell cache 191. Not a public release.
+
+## Build 90 (test build, Eamon conversion layer) - 2026-11-12
+
+- Eamon conversion layer: each prompt and menu is read for its exact accepted keys, which become the native underline targets (key only), radial and compass / non-cardinal chip entries, and map edges. Option phrases are not underlined and cannot claim those keys, so D and M in "Press D for desk or M for men" are tappable, desk and sign stay examine targets, and Main Hall / Village menu lines underline only 1-7/X.
+- The top #exits chip strip is the existing non-cardinal exit band; Hall exits now use the key as the label, so chips read "1 -> Weapons and Armor Shop" (or just "5") instead of "Weapons and Armor Shop -> Weapons and Armor Shop".
+- Prompt-key underlines persist when the map is opened and closed. Regular Z-machine modules are unchanged (the layer is Eamon-only).
+- Android versionCode 65; shell cache 190. Not a public release.
+
+## Build 89 (test build, Eamon menu keys and module list) - 2026-11-12
+
+- Menu and prompt choices use ParchLock's native dotted underlines (Actionable.Refresh, wrapTargets, wrapFirstExact, span.pl-act, retained by retainMarks): the number/letter keys in the Main Hall, Village, Practice Area and other Eamon numbered or lettered menus, plus Press D/M, (Y/N) and (R/T). Option phrases are not underlined. Tapping a key sends that key.
+- Hall special phrases are no longer underlined as phrases. Room commands such as Examine your abilities appear on the existing abbreviated nav chips and send the engine key.
+- Newly added modules appear in alphabetical order by display title (case-insensitive) immediately after import.
+- Hall/Village map edges that were recorded on the wrong room are dropped the next time that room is visited (live snapshot is authoritative). Existing saved maps are not migrated.
+- Android versionCode 64; shell cache 189. Not a public release.
+
+## Build 88 (test build, Eamon Showcase input fix) - 2026-11-12
+
+- Fixes the input relay crash after ~20s idle: a 204 poll response no longer carries a body, so timed-out polls cannot throw and freeze all input on PC and phone.
+- Hall and prompt choices are offered as underlined tappable words, not the floating special-command bar (the giant "Join the men drinking beer" overlay). Single-key letters in prompts such as "Press D for desk or M for men" or "(Y/N)" are tappable and answer the prompt directly.
+- Android versionCode 63; shell cache 188. Not a public release.
+
+## Build 87 (test build, Eamon Showcase) - 2026-11-12
+
+- Test build for phone checks of the Eamon Showcase work: campaign carry-over across Showcase releases (free recall from a changed adventure, update warning, save-format refusal with Download Package and Start a new campaign), the Outer Chamber and Hall rooms, Equipment sheet checks, and transcripts, save snapshots and learning kept with the campaign. Android versionCode 62; shell cache 187. Not a public release.
+
 ## Desktop patch 2.0.3 - 2026-11-09
 
 - Windows: if Windows reserves ParchLock's local port (for example after enabling virtualization), the launcher offers an available alternative and remembers it for future launches. It explains that browser saves and settings belong to the previous address; declining leaves that address unchanged. Existing data is not deleted.

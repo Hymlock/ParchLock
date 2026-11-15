@@ -19,9 +19,12 @@
  * up the new files instead of serving a stale cached shell forever.
  */
 // v174: persistent item learning, learned radial priority and calibration reload.
-const CACHE_VERSION = "parchlock-shell-v185"; // Build 86: Android story picker accepts files for content validation; Build 85: carried containers no longer replace your inventory (Equipment); Build 84: phone responsiveness (snapshot reuse), Inform flag layouts for all non-ZIL games, dejavu, Edifice player swap, Cast at only when the game knows cast; Build 83: keyboard/contrast a11y, Tab trap, picker hyphen names, opaque tentative boxes, faster grammar; Build 82: local-map exit hints, put on surfaces, ZIL instrumental grammar; Build 81: map room boxes long-press menu (rewind); Build 80: long stat names span two columns; Build 79: LLR3 depth level names, whole-word stat labels; Build 78: older I7 probe leak, LLR3 depth levels, killed-in deaths; Build 77: door hints, seated moves, probe reply boundary, compiled room names, status clock/hide, click-to-rewind; Save-linked cumulative playthrough history; Build 72: Wumpus section groups on the World Map (frame) and local map (caption); first-room gate for Inform epigraph/menu boots (Curses, Ghost, Vespers); Facility player global; Build 71: Wumpus multi-section rooms (measured section, dark-room names, exit 3, objects); item names (no line crossing, game casing, full descriptors); I7 Map_Storage exits; dark-scope latest reply; Build 70: compass labels from the game's own compass, internal-named rooms, stale "(on the X)" names, I7 phantom exits, Degeneracy player; Item 8: full room names from the printed heading; Item 8: two-line exit names; Item 7: shared secondary words not underlined alone; Map closes instantly when Equipment replaces it; Item 6: first underline per reply; Automatic return paths, Mapping option removed; Build 69; Exit decoding respects property size (no punctured boat); Build 68; Item 4: verified display names survive undo; Item 5: equal fixed mobile borders, bottom exits under input, opacity dark scope; Item 3: display-key cache (latency); widget copy ASCII; Item 2: inventory load summary is probe reply; Issue 1: icon rotation at app start, native first-launch question, truthful Options result; Post-APK63 HHG noun-safe links, full inventory labels, ephemeral radial pool and Take/root evidence; APK63: D214 underlining/possession, generic ambiguous base words, ZIL room hints and World Map; APK62: BufferRevision cache + StatTracker render/version skips; Treasures burdened prowess; inventory hidden/worn facts, Yourself, state labels; TTS callback repair; Close ✕ glyph everywhere; native dialog Edit row; Export naming repairs + Tools beautification + legacy restore label; Export naming: readable unique download names (#1746); E4 rev: save-concrete transcript; E3 warning before guards; E5b prowess family; E3 install-owned inventory WARNING; E4 save-attached running transcript; Worn learner uses the game's own inventory listing; Inventory holder learned from the game's own INVENTORY routine (Suspect); Worn: one owner per story (declared > measured fact > learned from inventory opcodes > Inform default); D152/D153: interpreter-only slot2 seeding and turn-counter ambiguity repair.
+const CACHE_VERSION = "parchlock-shell-v200"; // Build 100: Hall Equipment shows carried/worn gear; TTS ignores *; Build 99: Eamon status skills pack two-up (numeric percent/fraction, not full-width text rows); Build 98: Eamon stats from the engine (status card in the Hall and in every adventure, each adventure's own STATUS rules); Build 97: save names safe, refusals by pop-up, death-menu restore through the dialog; Build 96: one save system for the Showcase; menu keys 10+; desk key not a compass; Build 95: Eamon maps match the engine (first room, no prompt-key exits, the Pyramid's world); Build 94: a prompt key answers only the question it belongs to; Build 93: only the prompt-key controls answer a nested Eamon prompt; Build 92: Eamon prompt keys survive refusals and reloads, radial answers creation prompts; Build 91: only the waiting Eamon prompt's keys are choices; Build 90: Eamon conversion layer (prompt keys only for underlines, radial, chips and map edges); Build 89: native pl-act underlines for Eamon menu keys and prompt letters, specials on nav chips, alphabetized module list; Build 88: input-relay 204 uses a null body; Hall specials and prompt letters are underlined tappable choices, not the floating command bar; Build 87: Eamon Showcase test build (campaign carry-over, Hall rooms, Equipment checks); Eamon host: input relay and engine adapter; Build 86: Android story picker accepts files for content validation; Build 85: carried containers no longer replace your inventory (Equipment); Build 84: phone responsiveness (snapshot reuse), Inform flag layouts for all non-ZIL games, dejavu, Edifice player swap, Cast at only when the game knows cast; Build 83: keyboard/contrast a11y, Tab trap, picker hyphen names, opaque tentative boxes, faster grammar; Build 82: local-map exit hints, put on surfaces, ZIL instrumental grammar; Build 81: map room boxes long-press menu (rewind); Build 80: long stat names span two columns; Build 79: LLR3 depth level names, whole-word stat labels; Build 78: older I7 probe leak, LLR3 depth levels, killed-in deaths; Build 77: door hints, seated moves, probe reply boundary, compiled room names, status clock/hide, click-to-rewind; Save-linked cumulative playthrough history; Build 72: Wumpus section groups on the World Map (frame) and local map (caption); first-room gate for Inform epigraph/menu boots (Curses, Ghost, Vespers); Facility player global; Build 71: Wumpus multi-section rooms (measured section, dark-room names, exit 3, objects); item names (no line crossing, game casing, full descriptors); I7 Map_Storage exits; dark-scope latest reply; Build 70: compass labels from the game's own compass, internal-named rooms, stale "(on the X)" names, I7 phantom exits, Degeneracy player; Item 8: full room names from the printed heading; Item 8: two-line exit names; Item 7: shared secondary words not underlined alone; Map closes instantly when Equipment replaces it; Item 6: first underline per reply; Automatic return paths, Mapping option removed; Build 69; Exit decoding respects property size (no punctured boat); Build 68; Item 4: verified display names survive undo; Item 5: equal fixed mobile borders, bottom exits under input, opacity dark scope; Item 3: display-key cache (latency); widget copy ASCII; Item 2: inventory load summary is probe reply; Issue 1: icon rotation at app start, native first-launch question, truthful Options result; Post-APK63 HHG noun-safe links, full inventory labels, ephemeral radial pool and Take/root evidence; APK63: D214 underlining/possession, generic ambiguous base words, ZIL room hints and World Map; APK62: BufferRevision cache + StatTracker render/version skips; Treasures burdened prowess; inventory hidden/worn facts, Yourself, state labels; TTS callback repair; Close ✕ glyph everywhere; native dialog Edit row; Export naming repairs + Tools beautification + legacy restore label; Export naming: readable unique download names (#1746); E4 rev: save-concrete transcript; E3 warning before guards; E5b prowess family; E3 install-owned inventory WARNING; E4 save-attached running transcript; Worn learner uses the game's own inventory listing; Inventory holder learned from the game's own INVENTORY routine (Suspect); Worn: one owner per story (declared > measured fact > learned from inventory opcodes > Inform default); D152/D153: interpreter-only slot2 seeding and turn-counter ambiguity repair.
 // D215: approved storybook icons and bounded authored-ending death counter.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
+
+// Eamon host: answers the engine worker's blocking input requests (see lib/eamon/input-relay.js).
+importScripts("lib/eamon/input-relay.js");
 
 const APP_SHELL = [
     "./",
@@ -87,6 +90,7 @@ const APP_SHELL = [
     "js/Message.js",
     "js/IconRotation.js",
     "js/MobileLayout.js",
+    "js/EamonPackage.js",
     "js/ModuleLibrary.js",
     "js/Navigator.js",
     "js/ParchLock.js",
@@ -109,10 +113,14 @@ const APP_SHELL = [
     "js/WorldMapLayout.js",
     "js/WorldModel.js",
     "js/ZRamProvider.js",
+    "js/EamonProvider.js",
     "js/ZRamReader.js",
     "js/ZvmCapture.js",
     "lib/ie.js",
     "lib/jquery.min.js",
+    "lib/eamon/zvm.js",
+    "lib/eamon/story.z8.js",
+    "lib/eamon/host-worker.js",
     "lib/main.js",
     "lib/resourcemap.js"
 ];
@@ -135,6 +143,8 @@ self.addEventListener("activate", function (event) {
     event.waitUntil(
         caches.keys().then(function (names) {
             return Promise.all(names.map(function (name) {
+                // Installed Eamon Showcase packages are player content, not app shell: never purge them.
+                if (/^parchlock-eamon-pkg-/.test(name)) return;
                 if (name !== CACHE_VERSION && name !== RUNTIME_CACHE) return caches.delete(name);
             }));
         }).then(function () { return self.clients.claim(); })
@@ -145,6 +155,17 @@ self.addEventListener("fetch", function (event) {
     var req = event.request;
     if (req.method !== "GET") return;
     var url = new URL(req.url);
+    if (/\/eamon-input$/.test(url.pathname)) return; // answered by the Eamon input relay above
+    // Files of an installed Eamon Showcase package (js/EamonPackage.js), only ever from this device.
+    var eamonPkg = url.origin === self.location.origin && /\/lib\/eamon\/pkg\/([0-9a-f]{64})\//.exec(url.pathname);
+    if (eamonPkg) {
+        event.respondWith(caches.open("parchlock-eamon-pkg-" + eamonPkg[1]).then(function (cache) {
+            return cache.match(url.origin + url.pathname);
+        }).then(function (hit) {
+            return hit || new Response("Not part of the installed Eamon Showcase.", { status: 404, headers: { "Content-Type": "text/plain" } });
+        }));
+        return;
+    }
 
     // IndexedDB-backed modules are virtual URLs handled by ModuleLibrary's
     // jQuery adapter. A leak into fetch must fail locally, never reach a

@@ -215,9 +215,27 @@ var ParchLockQol = {
             if (typeof Transcript === "undefined" || !Transcript.exportFor) return Promise.resolve(json);
             var data = JSON.parse(json);
             var names = (data.Save || []).map(s => String(s && s.Key || "")).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+            // An Eamon campaign: its own save names (every save of this story) and the campaign files.
+            var eamon = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.exportCampaign ? window.__PARCHLOCK_EAMON__ : null;
+            if (eamon) {
+                if (Transcript.meta) names = names.concat(Object.keys(Transcript.meta.saves || {}));
+                var prefix = typeof SaveState !== "undefined" ? SaveState.keyFor(SaveState.storyId(), "") : null;
+                if (prefix) for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && k.indexOf(prefix) === 0) names.push(k.slice(prefix.length)); }
+                names = Array.from(new Set(names));
+            }
             // D215: each save's own map and item labels travel with it.
             try { var states = typeof SaveState !== "undefined" ? SaveState.exportFor(names) : null; if (states) { data.SaveStates = states; json = JSON.stringify(data); } } catch (eStates) {}
-            return Transcript.exportFor(names).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => json);
+            // A campaign with no files yet is left out: importing it must never wipe another device's campaign (Grok #3392 Q3).
+            // A campaign that cannot be read fails the export rather than produce a backup that silently lacks it (L1).
+            var campaign = eamon ? eamon.exportCampaign().then(c => {
+                // Never produce a package this app could not import again (Grok #3394 R1).
+                if (eamon.campaignFileCount(c) && !eamon.validCampaign(c)) throw new Error("it holds a file ParchLock cannot restore");
+                if (eamon.campaignFileCount(c)) data.EamonCampaign = c;
+            }).catch(err => {
+                Message.Show("Export Failed", ParchLockQol.EscapeHtml("The Eamon campaign could not be read: " + (err && err.message || err)), true);
+                throw err;
+            }) : Promise.resolve();
+            return campaign.then(() => Transcript.exportFor(names).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => JSON.stringify(data)));
         } catch (e) { return Promise.resolve(json); }
     },
 
@@ -273,6 +291,8 @@ var ParchLockQol = {
     // submission choke points (Input.Inject, Enter); status probes excluded there.
     _sent: [],
     RecordSent: (command) => {
+        // An answer at an Eamon nested prompt (a save name, Y, a shop number) is not a command to repeat (Grok #3446 F2).
+        if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel) return;
         var c = ParchLockQol.NormalizeText(String(command || ""));
         if (!c) return;
         var key = c.toLowerCase();
@@ -290,7 +310,9 @@ var ParchLockQol = {
             history.push(c);
         });
 
-        $($(".Style_input").get().reverse()).each(function() {
+        // Eamon's on-screen echoes include nested answers (save names, Y, shop numbers), which cannot be told apart from
+        // commands there; its history is what was really sent at the top level (Grok #3446 F2).
+        if (!(typeof window !== "undefined" && window.__PARCHLOCK_EAMON__)) $($(".Style_input").get().reverse()).each(function() {
 
             // T10/D207: only what the player actually submitted. A hidden
             // status probe's echo is excluded by its ownership, never by its
@@ -443,10 +465,15 @@ var ParchLockQol = {
     ShowSaveManager: () => {
 
         var body = "";
+        // The Eamon Showcase: this panel lists the current adventure's saves (mirrored by EamonSaves), which belong
+        // to the adventure; they are replaced through Save, never deleted or exported from here (Grok #3554 S2).
+        var eamonFolder = (typeof EamonSaves !== "undefined" && EamonSaves.folder) ? EamonSaves.folder() : null;
+        if (eamonFolder) { try { ParchLock.GameId = EamonSaves.gameId(eamonFolder); } catch (eG) {} }
         var saves = ParchLockQol.GetStoredFiles();
+        var isEamonSave = (save) => /^eamonshowcase-/.test(String(save.Key || "").split(":")[2] || "");
 
         body += "<div class='qol-window-actions'>";
-        body += "<span>" + saves.length + " browser save files</span>";
+        body += "<span>" + saves.length + (eamonFolder ? (saves.length === 1 ? " saved game in this adventure" : " saved games in this adventure") : " browser save files") + "</span>";
         body += "<button id='native-save'>Game Save</button>";
         body += "<button id='native-restore'>Game Restore</button>";
         body += "<button id='download-package'>Download Package</button>";
@@ -463,7 +490,7 @@ var ParchLockQol = {
 
         if (!saves.length) {
 
-            body += "<p>No Parchment save files are currently stored for this story.</p>";
+            body += eamonFolder ? "<p>There are no saved games in this adventure yet.</p>" : "<p>No Parchment save files are currently stored for this story.</p>";
         }
         else {
 
@@ -471,6 +498,11 @@ var ParchLockQol = {
 
                 body += "<div class='save-row'>";
                 body += "<strong>" + ParchLockQol.EscapeHtml(save.Filename) + "</strong>";
+                if (isEamonSave(save)) {
+                    body += "<span>kept by the adventure</span>";
+                    body += "</div>";
+                    return;
+                }
                 body += "<span>" + ParchLockQol.EscapeHtml(save.Usage) + "</span>";
                 body += "<button class='download-save-file' data-key='" + ParchLockQol.EscapeAttr(save.Key) + "'>Download</button>";
                 body += "<button class='delete-save-file' data-dirent='" + ParchLockQol.EscapeAttr(save.DirentKey) + "' data-content='" + ParchLockQol.EscapeAttr(save.ContentKey) + "'>Delete</button>";
@@ -482,8 +514,10 @@ var ParchLockQol = {
 
         Message.Show("Save / Restore", "<div class='pl-tool-content'>" + body + "</div>", true);
 
-        $("#native-save").click(() => { Message.Hide(); Input.Clear(); Input.Inject("save", true); });
-        $("#native-restore").click(() => { Message.Hide(); Input.Clear(); Input.Inject("restore", true); });
+        // The Showcase uses ParchLock's own dialog for both (one save system, owner 2026-11-13).
+        var eamonSave = (kind) => typeof EamonSaves !== "undefined" && EamonSaves.handles(kind);
+        $("#native-save").click(() => { if (eamonSave("save")) { Message.Hide(); EamonSaves.open("save"); return; } Message.Hide(); Input.Clear(); Input.Inject("save", true); });
+        $("#native-restore").click(() => { if (eamonSave("restore")) { Message.Hide(); EamonSaves.open("restore"); return; } Message.Hide(); Input.Clear(); Input.Inject("restore", true); });
         $("#download-package").click(() => { var name = ParchLockQol.ExportFilename("Save package", undefined, "json"); ParchLockQol.PackageWithTranscripts(ParchLock.GetSaveData()).then(data => ParchLockQol.DownloadText(name, data)); });
         $("#save-package-as").click(ParchLockQol.SavePackageAs);
         $("#copy-package").click(() => ParchLockQol.PackageWithTranscripts(ParchLock.GetSaveData()).then(data => ParchLockQol.CopyText(data, "Save package copied to clipboard.")));
@@ -557,8 +591,45 @@ var ParchLockQol = {
         $("#import-package-submit").click(() => ParchLockQol.ImportPackageData($("#import-package-box").val()));
     },
 
-    ImportPackageData: (text) => {
+    // An Eamon campaign package (Grok #3392 Q1): the campaign transaction is the write that can fail for reasons
+    // outside ParchLock (quota, a blocked database), so it goes first, with this device's campaign kept as a
+    // rollback copy; ParchLock's own records (maps, save snapshots, transcripts) follow only once it is stored,
+    // and if they fail the device's campaign is put back. The engine is stopped for the swap, so the story
+    // reopens either way.
+    ImportEamonCampaign: (text, data) => {
+        var vm = window.__PARCHLOCK_EAMON__;
+        var fail = (message) => Message.Show("Import Failed", ParchLockQol.EscapeHtml(message), true, () => location.reload());
+        var rollback = null;
+        return vm.exportCampaign().then(current => {
+            rollback = current;
+            // The device's own campaign must be restorable before it is replaced (Grok #3394 R1).
+            if (!vm.validCampaign(current)) {
+                Message.Show("Import Failed", "This device's Eamon campaign holds a file ParchLock cannot put back if the import failed, so nothing was changed.", true);
+                return "failed";
+            }
+            var mine = vm.campaignFileCount(current), theirs = vm.campaignFileCount(data.EamonCampaign);
+            if (mine && ((Number(data.EamonCampaign.revision) || 0) < (Number(current.revision) || 0) || theirs < mine)
+                && !confirm("This replaces your Eamon campaign on this device (characters and saved games) with the one in the package, which is older or smaller. Continue?")) {
+                Message.Show("Import Cancelled", "Nothing was changed.");
+                return "declined";
+            }
+            return vm.importCampaign(data.EamonCampaign).then(() => {
+                var result = ParchLockQol.ImportPackageData(text, { campaignStored: true });
+                if (result === true) {
+                    Message.Show("Import Complete", "The save package, maps and Eamon campaign were imported. The story will reopen.");
+                    setTimeout(() => location.reload(), 1500);
+                    return "imported";
+                }
+                result = String(result).replace(/\.+$/, "");
+                return vm.importCampaign(rollback).then(() => { fail(result + ". This device's campaign was put back; the story will reopen."); return "rolled back"; },
+                    err => { fail(result + ". The device's campaign could not be put back either (" + (err && err.message || err) + ")."); return "failed"; });
+            }, err => { fail("The Eamon campaign could not be stored: " + (err && err.message || err) + ". This device's campaign is unchanged; the story will reopen."); return "failed"; });
+        }, err => { Message.Show("Import Failed", ParchLockQol.EscapeHtml("This device's Eamon campaign could not be read, so it was left untouched: " + (err && err.message || err)), true); return "failed"; });
+    },
 
+    ImportPackageData: (text, stage) => {
+
+        var campaignStored = !!(stage && stage.campaignStored);
         var previous = [], previousRooms = ParchLockMap.Rooms, importSucceeded = false;
         var previousBlocked = ParchLockMap.PersistenceBlocked;
         try {
@@ -566,11 +637,31 @@ var ParchLockQol = {
             var data = JSON.parse(text);
 
             if (!data || !Array.isArray(data.Map) || !Array.isArray(data.Save)) throw new Error("Invalid package");
-            if (data.Story && data.Story !== ParchLock.GameFilename) throw new Error("This package belongs to another story");
+            if (data.Story && data.Story !== ParchLock.GameFilename) throw new Error(data.EamonCampaign != null && window.__PARCHLOCK_EAMON__ ? "This package was made with another Showcase version" : "This package belongs to another story");
+            // A campaign is applied only to the exact story (and Showcase version) it came from (Grok #3392 V2).
+            if (data.EamonCampaign != null && data.Story !== ParchLock.GameFilename) throw new Error("This package's Eamon campaign names no Showcase version");
             WorkspaceUI.ValidateMap(data);
+            // An Eamon Showcase package from another release is the same campaign (Story "eamon/showcase" for every release,
+            // Grok #3456 D2): its transcript lines are kept under this release's digest instead of refusing the package.
+            if (data.EamonCampaign != null && data.Story === "eamon/showcase" && data.Transcripts && typeof data.Transcripts === "object"
+                && typeof Transcript !== "undefined" && Transcript.digest) data.Transcripts.digest = Transcript.digest;
+            // Likewise each save's own map snapshot (SaveState records are keyed by the same digest).
+            if (data.EamonCampaign != null && data.Story === "eamon/showcase" && data.SaveStates && typeof data.SaveStates === "object"
+                && typeof SaveState !== "undefined" && SaveState.storyId()) {
+                var showcaseId = SaveState.storyId();
+                data.SaveStates.story = showcaseId;
+                Object.keys(data.SaveStates.saves || {}).forEach(n => { if (data.SaveStates.saves[n] && typeof data.SaveStates.saves[n] === "object") data.SaveStates.saves[n].story = showcaseId; });
+            }
             // E4: transcript records are validated before anything is changed.
             if (typeof Transcript !== "undefined" && Transcript.validImport && !Transcript.validImport(data.Transcripts)) throw new Error("Invalid transcript records in this package");
             if (typeof SaveState !== "undefined" && !SaveState.validImport(data.SaveStates)) throw new Error("Invalid save map records in this package");
+            // An Eamon campaign imports only into the open Eamon story, validated before anything is written.
+            var eamonVm = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__;
+            if (data.EamonCampaign != null && !(eamonVm && eamonVm.validCampaign && eamonVm.validCampaign(data.EamonCampaign))) throw new Error(eamonVm ? "Invalid Eamon campaign in this package" : "This package holds an Eamon campaign: open the Eamon story before importing it");
+            // A campaign from another Showcase release imports when its save format is this one's (no format counts as
+            // the first); it is then carried over to this package when the story reopens (Grok #3456 D1).
+            if (data.EamonCampaign != null && eamonVm.campaignSchema != null && (data.EamonCampaign.schema == null ? 1 : data.EamonCampaign.schema) !== eamonVm.campaignSchema)
+                throw new Error("This package's Eamon campaign was saved in a format this Showcase cannot read");
             if (data.Map.some((room, index) => room.Id !== index || Object.values(room.Exits).some(id => !Number.isInteger(id) || id < 0 || id >= data.Map.length))) throw new Error("Invalid room connections");
             if (data.Save.some(entry => !entry || typeof entry.Key !== "string" || typeof entry.Data !== "string" || !/^(dirent|content):(save|data|transcript|command):[^:]+:.+/.test(entry.Key))) throw new Error("Invalid save entries");
             if (data.Save.length && !ParchLock.GameId) throw new Error("Wait for the story identity before importing saves");
@@ -581,10 +672,24 @@ var ParchLockQol = {
             if (typeof SaveState !== "undefined") {
                 if ((data.Save.length || data.SaveStates) && SaveState.importReady && !SaveState.importReady()) throw new Error("Wait for the story to finish loading before importing saves.");
                 var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+                // An Eamon campaign's saves are its engine slots, named in its SaveStates (no Glk dirents).
+                if (data.EamonCampaign && data.SaveStates && data.SaveStates.saves) importedNames = importedNames.concat(Object.keys(data.SaveStates.saves));
                 stateWrites = SaveState.importWrites(data.SaveStates, importedNames);
             }
-            var mapKey = "PL_Map_" + ParchLock.GameFilename;
+            // Everything is validated: a campaign package now stores the campaign first (ImportEamonCampaign).
+            if (data.EamonCampaign != null && !campaignStored) { ParchLockQol.ImportEamonCampaign(text, data); return "pending"; }
+            var mapKey = ParchLockMap.StorageKey();
             previous.push({ Key: mapKey, Data: localStorage.getItem(mapKey) });
+            // The other worlds' maps of a multi-world story (see ParchLock.GetSaveData), inside this rollback.
+            if (data.ScopedMaps && typeof data.ScopedMaps === "object") {
+                Object.keys(data.ScopedMaps).forEach(function (world) {
+                    if (world === ParchLockMap.Scope) return;
+                    WorkspaceUI.ValidateMap({ Map: data.ScopedMaps[world] });
+                    var worldKey = "PL_Map_" + ParchLock.GameFilename + "#" + world;
+                    previous.push({ Key: worldKey, Data: localStorage.getItem(worldKey) });
+                    localStorage.setItem(worldKey, JSON.stringify(data.ScopedMaps[world]));
+                });
+            }
 
             // D112: a new Rooms array invalidates any active Notes scope
             // (the previously-scoped room record no longer exists in it).
@@ -614,7 +719,7 @@ var ParchLockQol = {
             ParchLockMap.Save();
             try { if (typeof Transcript !== "undefined" && Transcript.importRecords && data.Transcripts) Transcript.importRecords(data.Transcripts); } catch (eTx) {}
 
-            Message.Show("Import Complete", "The save package and map data were imported.");
+            if (!campaignStored) Message.Show("Import Complete", "The save package and map data were imported.");
             importSucceeded = true;
         }
         catch(e) {
@@ -625,9 +730,11 @@ var ParchLockQol = {
                 try { if (entry.Data === null) localStorage.removeItem(entry.Key); else localStorage.setItem(entry.Key, entry.Data); }
                 catch (rollbackError) { ParchLockMap.PersistenceBlocked = true; }
             });
+            if (campaignStored) return e.message;
             Message.Show("Import Failed", ParchLockQol.EscapeHtml(e.message), true);
         }
         if (importSucceeded && typeof SaveState !== "undefined" && SaveState.afterImport) SaveState.afterImport();
+        return importSucceeded;
     },
 
     GetRadialCommands: () => {
@@ -685,7 +792,7 @@ var ParchLockQol = {
                 // real command, defaulting to the label for ordinary
                 // compass exits where the two are the same word.
                 var realCommand = (e && e.command) || label;
-                pushGame({ Command: realCommand, Label: label, Enter: true, Score: 52, source: "ram-exit" });
+                pushGame({ Command: realCommand, Label: label, Enter: true, Score: 52, source: "ram-exit", PromptKey: !!(e && e.promptKey) });
             });
             // D88 Stage 6 cutover point (default off): flag on sources from
             // SemanticActions.resolveForPayload, proven byte-parity with
@@ -996,6 +1103,7 @@ var ParchLockQol = {
                 .data("action", item.Action)
                 .data("usage-key", item.UsageKey)
                 .data("track-tap", item.TrackTap === true)
+                .data("prompt-key", item.PromptKey === true)
                 .appendTo(menu);
         });
 
@@ -1035,6 +1143,12 @@ var ParchLockQol = {
             ParchLockQol.HideRadialMenu();
             var action = $(this).data("action");
             if (action) { action(); return; }
+            // An Eamon prompt's own key (Y/N, D/M, a menu number) answers that prompt, like a tap on its underlined key;
+            // it is the only radial path into a nested prompt (Grok #3515 S1).
+            if ($(this).data("prompt-key") === true && typeof Actionable !== "undefined" && Actionable.SubmitPromptChoice) {
+                Actionable.SubmitPromptChoice(command);
+                return;
+            }
             /* #33/#34: route real submissions through Actionable.Submit --
                the single usage choke-point -- instead of noteUsage+Inject
                directly. This also means a radial-clicked Undo/Restore gets

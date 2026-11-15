@@ -53,6 +53,8 @@ var WorkspaceUI = {
         ParchLockQol.OpenRadial(cx, cy, entries.map(entry => ({ Label: entry[0], Action: entry[1] })), { source: "tools" });
     },
     Command: command => {
+        // The Showcase saves and restores through ParchLock's own dialog (one save system, owner 2026-11-13).
+        if (typeof EamonSaves !== "undefined" && EamonSaves.handles(command)) { EamonSaves.open(command); return; }
         if (!WorkspaceUI.HasStory()) { Message.Show("Choose a story", "<a href='index.html'>Open the game library</a>", true); return; }
         if (!$("#windowport .Input.LineInput:visible").length || $("#dialog").length) {
             Message.Show("Game command unavailable", "Close this window and finish the game's startup screen or current prompt before choosing " + ParchLockQol.EscapeHtml(command) + ".", true);
@@ -159,6 +161,34 @@ var WorkspaceUI = {
         groups.speech = group("Read aloud", "Narration, speech rate and repeats");
         groups.interface = group("Accessibility & controls", "Notes, directions and tutorials");
         groups.learned = group("Learned words", "Choose the labels shown in your editor, and erase what was learned for stories you uninstalled");
+        // Owner 2026-11-14: Eamon settings only when a Showcase package is installed.
+        try {
+            if (typeof EamonProvider !== "undefined" && EamonProvider.showcaseInstalled
+                && EamonProvider.showcaseInstalled()) {
+                groups.eamon = group("Eamon settings", "Showcase engine options (only while the Eamon package is installed)");
+                $("<p class='pl-options-note'>").text(
+                    "These controls use the engine’s own SETTINGS command while you are playing the Showcase at a top-level prompt. They do not affect other stories."
+                ).appendTo(groups.eamon);
+                var eamonLive = typeof EamonProvider.active === "function" && EamonProvider.active()
+                    && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state
+                    && window.__PARCHLOCK_EAMON__.state.atTopLevel;
+                var settingsBtn = $("<button type='button'>").text("Open SETTINGS in the game")
+                    .prop("disabled", !eamonLive)
+                    .appendTo(groups.eamon);
+                if (!eamonLive) {
+                    $("<p class='pl-options-note'>").text(
+                        "Available when the Showcase is open and waiting for a normal command (not a nested question)."
+                    ).appendTo(groups.eamon);
+                }
+                settingsBtn.on("click", function () {
+                    try {
+                        Message.Hide();
+                        if (typeof Actionable !== "undefined" && Actionable.Submit)
+                            Actionable.Submit("settings", "user-action");
+                    } catch (eSet) {}
+                });
+            }
+        } catch (eEamonOpt) {}
         // D215: Android only - the rotating storybook icon and its experimental launcher option.
         try { if (typeof IconRotation !== "undefined") IconRotation.addOptions(group); } catch (eIcon) {}
         [
@@ -404,7 +434,7 @@ var WorkspaceUI = {
         // D13: erase learned data whose every owner story is uninstalled.
         try { if (typeof LearningStores !== "undefined") LearningStores.addOptions(groups.learned); } catch (eLearn) {}
     },
-    MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename,
+    MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename + (ParchLockMap.Scope ? "#" + ParchLockMap.Scope : ""),
     ReadSlots: () => {
         try { var slots = JSON.parse(localStorage.getItem(WorkspaceUI.MapKey()) || "[]"); return Array.isArray(slots) ? slots : []; } catch (_) { return []; }
     },
@@ -416,7 +446,7 @@ var WorkspaceUI = {
     },
     LoadMap: data => {
         var previousRooms = ParchLockMap.Rooms, previousBlocked = ParchLockMap.PersistenceBlocked;
-        var key = "PL_Map_" + ParchLock.GameFilename, previous;
+        var key = ParchLockMap.StorageKey(), previous;
         try {
             if (!ParchLock.GameFilename) throw new Error("Open a story first.");
             WorkspaceUI.ValidateMap(data);

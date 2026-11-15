@@ -172,6 +172,9 @@ var Actionable = {
         } catch (eEncoding) {}
         try {
             var mem = ZRamProvider.getMem();
+            // No Z-machine loaded (Glulx, Eamon): there is no dictionary encoding to compare. Returning here
+            // avoids a thrown-and-caught exception per call, which dominated whole turns on long transcripts.
+            if (!mem) return w;
             ZRamReader.hasDictionaryWord(mem, w);
             var dict = ZRamReader._dictWordCache || ZRamReader.parseDictionary(mem);
             if (dict.words[w]) return "@" + dict.words[w];
@@ -804,6 +807,8 @@ var Actionable = {
     // treated as verified.
     isGameWord: (word) => {
         try {
+            // An Eamon adventure answers from its own parser vocabulary (js/EamonProvider.js).
+            if (typeof ActionSynth !== "undefined" && ActionSynth.eamonVocabularyActive && ActionSynth.eamonVocabularyActive()) return EamonProvider.hasWord(word);
             if (typeof ZRamProvider === "undefined" || !ZRamProvider.getMem) return false;
             var mem = ZRamProvider.getMem();
             if (!mem || typeof ZRamReader === "undefined" || !ZRamReader.hasDictionaryWord) return false;
@@ -1168,11 +1173,14 @@ var Actionable = {
             var kind = this.dataset.kind || "object";
             var oid = this.dataset.objectId || null;
             if (kind === "direction") Actionable.SubmitTapMove(Actionable.resolveExitCommand(noun));
+            else if (kind === "command" || kind === "prompt-key") Actionable.SubmitPromptChoice(this.dataset.command || noun);
             else Actionable.activatePrimary(noun, kind, oid, e.clientX, e.clientY);
         }).on("contextmenu.pmAct", ".pl-act:not(.is-stale)", function (e) {
             e.preventDefault();
             e.stopPropagation();
-            Actionable.Open(this.dataset.noun, this.dataset.kind || "object", e.clientX, e.clientY, this.dataset.objectId || null);
+            var kind = this.dataset.kind || "object";
+            if (kind === "command" || kind === "prompt-key") Actionable.SubmitPromptChoice(this.dataset.command || this.dataset.noun);
+            else Actionable.Open(this.dataset.noun, kind, e.clientX, e.clientY, this.dataset.objectId || null);
         });
 
         // D88 Stage 6: genuine touch long-press (ARCHITECTURE_UML.md "Mobile
@@ -1211,7 +1219,9 @@ var Actionable = {
                 if (Actionable._touch !== state) return; // cancelled (moved/lifted) before firing
                 state.fired = true;
                 Actionable.fireHoldSelection(state);
-                Actionable.Open(el.dataset.noun, el.dataset.kind || "object", state.startX, state.startY, el.dataset.objectId || null);
+                var holdKind = el.dataset.kind || "object";
+                if (holdKind === "command" || holdKind === "prompt-key") Actionable.SubmitPromptChoice(el.dataset.command || el.dataset.noun);
+                else Actionable.Open(el.dataset.noun, holdKind, state.startX, state.startY, el.dataset.objectId || null);
             }, Actionable.LongPressMs);
         }).on("touchmove.pmAct", ".pl-act:not(.is-stale)", function (e) {
             var state = Actionable._touch;
@@ -1338,8 +1348,11 @@ var Actionable = {
         var text = String(command == null ? "" : command);
         return !!text.trim() && !/\s$/.test(text);
     },
+    // A radial entry whose "command" explains why it cannot be sent (shown, never typed into the game).
+    EXPLAIN: "\u0000explain:",
     runChosenCommand: (command, source) => {
         var text = String(command == null ? "" : command);
+        if (text.indexOf(Actionable.EXPLAIN) === 0) { try { Message.Show("Not done", ParchLockQol.EscapeHtml(text.slice(Actionable.EXPLAIN.length))); } catch (eX) {} return false; }
         if (!text.trim()) return false;
         if (Actionable.isCompleteCommand(text)) {
             var complete = text.trim();
@@ -1385,14 +1398,56 @@ var Actionable = {
         return ran;
     },
 
-    Submit: (command, source) => {
+    // Owner #3500: tapping an underlined prompt letter or Hall command answers
+    // the current prompt directly. Char prompts use CharKeys.sendChar; line
+    // prompts use Input.Inject so a nested Eamon yes/no is not blocked as a
+    // ParchLock travel command (Actionable.Submit's nested guard).
+    SubmitPromptChoice: (command) => {
+        var key = String(command || "").trim();
+        if (!key) return false;
+        // Eamon: a key reaches only the question it belongs to. A radial left open on one prompt, or an underline tapped
+        // after its prompt was answered, must not answer whichever question waits next (Grok #3517 N-A).
         try {
+            var vmState = window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state;
+            if (vmState && typeof EamonProvider !== "undefined" && EamonProvider.promptChoicesFromText) {
+                if (!vmState.awaiting) return false;
+                var accepted = EamonProvider.promptChoicesFromText(EamonProvider.latestPromptText()).some(function (c) { return String(c.key).toLowerCase() === key.toLowerCase(); });
+                if (!accepted) return false;
+            }
+        } catch (eVerify) { return false; }
+        if (key.length === 1 && /[A-Za-z]/.test(key)) key = key.toUpperCase();
+        try {
+            if (typeof CharKeys !== "undefined" && CharKeys.charTarget && CharKeys.charTarget()) {
+                return !!(CharKeys.sendChar && CharKeys.sendChar(key.charAt(0)));
+            }
+        } catch (eChar) {}
+        if (typeof Input === "undefined" || !Input.Inject) return false;
+        try { Input.Clear(); } catch (eClear) {}
+        return Input.Inject(key, true, "user-action");
+    },
+    Submit: (command, source) => {
+        // Eamon: ParchLock's own commands (travel, radials, Equipment, probes) never go into a nested prompt (a save name, a
+        // yes/no, a shop step); fast travel once typed "north" as a save name there (Grok #3434 EQ-PROMPT-1). The player's
+        // own answers do: an allow-list, so a new caller fails closed (Grok #3441). Checked first, so a spoken answer such
+        // as "restore" at a nested prompt is never treated as a timeline command below (Grok #3446 F1).
+        var eamonNested = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel;
+        // The prompt's own keys answer through SubmitPromptChoice, called only by the prompt-key controls (the underline
+        // and the radial entries the prompt layer built); a one-letter command from anywhere else ("n" from a compass
+        // chip, "d" from fast travel) is not an answer and stays refused here (Grok #3515 S1).
+        if (eamonNested && source !== "user-voice") return false;
+        if (!eamonNested) try {
             if (/^(undo|restore|restart)$/i.test(String(command || "").trim())) {
                 window.__PL_RESYNC__ = Date.now();
                 if (typeof TextGate !== "undefined" && /^(restore|restart)$/i.test(String(command).trim())) TextGate.reset();
                 if (typeof TranslatorUI !== "undefined") TranslatorUI.lastSig = "";
             }
         } catch (e) {}
+        // Owner 2026-11-14: Hall X ("leave the universe") → ParchLock Exit game.
+        try {
+            if (typeof EamonProvider !== "undefined" && EamonProvider.interceptLeaveUniverse
+                && EamonProvider.interceptLeaveUniverse(command, source))
+                return true;
+        } catch (eLeave) {}
 
         /* UNDO_RESTORE_RESYNC */
         if (!$(".Input.LineInput").length || Message.IsOpen || $("#dialog").length) return false;
@@ -1883,6 +1938,169 @@ var Actionable = {
         return Actionable.distinctObjects(Actionable.payloadPool()).map(function (o) { return { id: String(o.id), name: String(o.name || "").toLowerCase().trim() }; })
             .filter(function (n) { return /\s/.test(n.name); });
     },
+    // Owner 2026-11-12: Eamon prompt keys reuse the native wrapTargets / wrapFirstExact
+    // / span.pl-act path and the payload.exits radial. Gated so Z-machine stories keep
+    // their existing underline, radial and Refresh behaviour.
+    isEamonStory: function () {
+        try {
+            if (typeof EamonProvider !== "undefined" && EamonProvider.active && EamonProvider.active()) return true;
+            if (typeof window !== "undefined" && window.__PARCHLOCK_EAMON__) return true;
+            var p = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
+            return !!(p && p.vmType === "eamon");
+        } catch (e) { return false; }
+    },
+    groupIndex: function (match, n) {
+        var consumed = 0, at, i;
+        for (i = 1; i <= n; i++) {
+            if (match[i] == null) continue;
+            at = match[0].indexOf(match[i], consumed);
+            if (at < 0) return -1;
+            if (i === n) return match.index + at;
+            consumed = at + match[i].length;
+        }
+        return -1;
+    },
+    promptKeySpans: function (text) {
+        var source = String(text || ""), spans = [], seen = {};
+        var add = function (ch, start) {
+            if (ch == null || ch === "" || /^(enter|space)$/i.test(ch) || start < 0) return;
+            var key = start + ":" + String(ch).toLowerCase();
+            if (seen[key]) return;
+            seen[key] = true;
+            spans.push({ ch: ch, start: start, end: start + String(ch).length });
+        };
+        var re, m;
+        // Numbered / lettered menu lines and "1=Label" only on a menu or question prompt, not the
+        // adventure's ">" command line, where "12. ..." is room text (Grok #3541 item 2).
+        var menuKeys = !(typeof EamonProvider !== "undefined" && EamonProvider.isAdventureCommandPrompt && EamonProvider.isAdventureCommandPrompt());
+        if (menuKeys) {
+            re = /(^|\n)(\s*)(\d{1,3}|[A-Za-z])[.)]\s+\S/g;   // "10. Orb of My Life": a number key may have up to three digits
+            while ((m = re.exec(source))) add(m[3], m.index + m[1].length + m[2].length);
+            // "1=Intellect; 2=Hardiness; 3=Agility; 4=Charisma:" (Good Witch and similar shops)
+            re = /(?:^|\n|;|\()\s*([A-Za-z0-9])\s*=\s*[A-Za-z]/g;
+            while ((m = re.exec(source))) add(m[1], Actionable.groupIndex(m, 1));
+        }
+        re = /\[([A-Za-z0-9])\]\s*:/g;
+        while ((m = re.exec(source))) add(m[1], m.index + 1);
+        // "Press any key to continue or X to exit:", "Enter the selection or X to exit:": X is an accepted key too.
+        re = /\bor\s+([A-Za-z0-9])\s+to\s+(?:exit|leave|quit|return)\b/gi;
+        while ((m = re.exec(source))) add(m[1], Actionable.groupIndex(m, 1));
+        re = /\bPress\s+([A-Za-z0-9])\b(?:\s+\S+){0,10}\s+or\s+([A-Za-z0-9])\b/gi;
+        while ((m = re.exec(source))) {
+            add(m[1], Actionable.groupIndex(m, 1));
+            add(m[2], Actionable.groupIndex(m, 2));
+        }
+        re = /\(([A-Za-z0-9])\s*\/\s*([A-Za-z0-9])\)/g;
+        while ((m = re.exec(source))) {
+            add(m[1], Actionable.groupIndex(m, 1));
+            add(m[2], Actionable.groupIndex(m, 2));
+        }
+        re = /\b(?:Press|Type)\s+([A-Za-z0-9])\s+or\s+([A-Za-z0-9])\b/gi;
+        while ((m = re.exec(source))) {
+            add(m[1], Actionable.groupIndex(m, 1));
+            add(m[2], Actionable.groupIndex(m, 2));
+        }
+        return spans;
+    },
+    promptKeysInText: function (text) {
+        var keys = {}, i, spans = Actionable.promptKeySpans(text);
+        for (i = 0; i < spans.length; i++) keys[spans[i].ch] = true;
+        return Object.keys(keys);
+    },
+    isChoiceMenuOccurrence: function (source, idx) {
+        var start = String(source || "").lastIndexOf("\n", idx) + 1;
+        var line = String(source || "").slice(start);
+        return Actionable.isChoiceMenuLine(line);
+    },
+    // Full BufferLine (not a single text node): "1. ...", "1) ...", or "1=Label".
+    isChoiceMenuLine: function (lineOrText) {
+        if (typeof EamonProvider !== "undefined" && EamonProvider.isAdventureCommandPrompt && EamonProvider.isAdventureCommandPrompt()) return false;
+        var text = (lineOrText && lineOrText.nodeType === 1) ? (lineOrText.textContent || "") : String(lineOrText || "");
+        return /^\s*(?:\d{1,3}|[A-Za-z])[.)]\s+\S/m.test(text) || /(?:^|\n|;)\s*[A-Za-z0-9]\s*=\s*[A-Za-z]/.test(text);
+    },
+    promptWaiting: function () {
+        return !!(typeof $ !== "undefined" && $(".Input.LineInput:visible, .Input.CharInput:visible").length);
+    },
+    promptKeyTargets: function (lines) {
+        if (!Actionable.isEamonStory() || !lines || !lines.length || !Actionable.promptWaiting()) return [];
+        var targets = [];
+        lines.forEach(function (line) {
+            if (!line) return;
+            Actionable.promptKeySpans(line.textContent || "").forEach(function (sp) {
+                var ch = sp.ch;
+                targets.push({
+                    phrase: ch,
+                    kind: "prompt-key",
+                    command: /[A-Za-z]/.test(ch) ? ch.toUpperCase() : ch,
+                    objectId: null,
+                    fromName: true,
+                    preferred: true,
+                    lines: [line]
+                });
+            });
+        });
+        return targets;
+    },
+    // Wrap one accepted key at its exact offset in the line's textContent, even
+    // when the letter sits in its own text node (Parchment often splits "D").
+    // wrapFirstExact cannot do this: it searches each node in isolation, so
+    // promptKeySpans("D") misses "Press D ... or M".
+    wrapPromptKeyAt: function (line, start, ch, meta) {
+        if (!line || start < 0 || ch == null || ch === "") return null;
+        var want = String(ch), len = want.length, walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
+        var pos = 0, node;
+        while ((node = walker.nextNode())) {
+            var value = node.nodeValue || "";
+            var next = pos + value.length;
+            if (start >= next) { pos = next; continue; }
+            var idx = start - pos;
+            if (idx < 0 || idx >= value.length) return null;
+            var matched = value.slice(idx, idx + len);
+            if (matched.toLowerCase() !== want.toLowerCase()) return null;
+            if (Actionable.wrappingExcluded(node.parentElement)) return null;
+            var existing = node.parentElement && node.parentElement.closest && node.parentElement.closest(".pl-act");
+            if (existing) {
+                var same = existing.dataset && existing.dataset.kind === "prompt-key"
+                    && String(existing.dataset.command || existing.dataset.noun).toLowerCase() === String((meta && meta.command) || want).toLowerCase();
+                if (same) {
+                    existing.classList.remove("is-stale");
+                    return existing;
+                }
+                return null;
+            }
+            var frag = document.createDocumentFragment();
+            if (idx > 0) frag.appendChild(document.createTextNode(value.slice(0, idx)));
+            var mark = document.createElement("span");
+            var command = (meta && meta.command) || (/[A-Za-z]/.test(want) ? want.toUpperCase() : want);
+            mark.className = "pl-act";
+            mark.dataset.noun = matched.toLowerCase();
+            mark.dataset.kind = "prompt-key";
+            mark.dataset.command = String(command);
+            mark.textContent = matched;
+            mark.title = "Choose " + mark.dataset.command;
+            frag.appendChild(mark);
+            if (idx + len < value.length) frag.appendChild(document.createTextNode(value.slice(idx + len)));
+            node.parentNode.replaceChild(frag, node);
+            return mark;
+        }
+        return null;
+    },
+    applyPromptKeyMarks: function (lines) {
+        if (!Actionable.isEamonStory() || !lines || !lines.length) return 0;
+        var n = 0;
+        lines.forEach(function (line) {
+            if (!line) return;
+            Actionable.promptKeySpans(line.textContent || "").forEach(function (sp) {
+                var command = /[A-Za-z]/.test(sp.ch) ? sp.ch.toUpperCase() : sp.ch;
+                var mark = Actionable.wrapPromptKeyAt(line, sp.start, sp.ch, { command: command });
+                if (mark) {
+                    n++;
+                    if (Actionable.LiveMarks && Actionable.LiveMarks.indexOf(mark) < 0) Actionable.LiveMarks.push(mark);
+                }
+            });
+        });
+        return n;
+    },
     wrapFirstExact: (lines, phrase, meta) => {
         var target = String(phrase || "");
         if (!target || !lines || !lines.length) return false;
@@ -1912,17 +2130,29 @@ var Actionable = {
                         from = idx + 1;
                         continue;
                     }
+                    // Menu option lines keep only the leading key underlined. Check the
+                    // full BufferLine, not this text node, because Parchment may split
+                    // "1." from "Go on an adventure".
+                    if (meta.kind === "prompt-key") {
+                        var okKey = Actionable.promptKeySpans(source).some(function (sp) {
+                            return sp.start === idx && source.slice(sp.start, sp.end).toLowerCase() === targetLower;
+                        });
+                        if (!okKey) { from = idx + 1; continue; }
+                    } else if (Actionable.isEamonStory() && Actionable.isChoiceMenuLine(line)) {
+                        from = idx + 1;
+                        continue;
+                    }
                     var matched = source.slice(idx, afterIdx);
                     // D70 / directive #3780 (suvehnux): an occurrence inside another object's printed full name names THAT
                     // object ("the brass cage" is not a mention of "bars of the cage"), so a shorter phrase never takes it.
-                    if (meta.kind !== "direction" && Actionable.insideOtherFullName(source, idx, afterIdx, meta)) { from = idx + 1; continue; }
+                    if (meta.kind !== "direction" && meta.kind !== "command" && meta.kind !== "prompt-key" && Actionable.insideOtherFullName(source, idx, afterIdx, meta)) { from = idx + 1; continue; }
                     // Item 7 (APK 64, wump2ka "main source of light"): a single
                     // word shared by several objects is underlined only when it
                     // is the MAIN noun of at least one of them ("pellets",
                     // "door"). A secondary word of each ("light": the fog's
                     // adjective, a Glow Bar synonym) is not, since the prose is
                     // usually using it in its ordinary sense.
-                    if (meta.kind !== "direction" && !/\s/.test(matched.trim())) {
+                    if (meta.kind !== "direction" && meta.kind !== "command" && meta.kind !== "prompt-key" && !/\s/.test(matched.trim())) {
                         var sharers = Actionable.distinctObjects(Actionable.payloadPool()).filter(function (o) {
                             var ml = matched.toLowerCase();
                             return String(o.name).toLowerCase() === ml || !!Actionable.nounWordsOf(o)[ml]
@@ -1955,9 +2185,12 @@ var Actionable = {
                         if (owners.length) mark.dataset.kind = owners.every(function (o) { return held[String(o.id)]; }) ? 'inventory' : 'object';
                     }
                     if (meta.dictAddr) mark.dataset.dictAddr = String(meta.dictAddr);
+                    if (meta.command) mark.dataset.command = String(meta.command);
                     mark.textContent = matched;
-                    mark.title = meta.kind === "direction" ? "Go " + mark.dataset.noun : "Examine " + mark.dataset.noun;
-                    if (meta.kind !== "direction" && !mark.dataset.objectId) mark.title = "Ambiguous reference: " + mark.dataset.noun;
+                    mark.title = meta.kind === "direction" ? "Go " + mark.dataset.noun
+                        : (meta.kind === "command" || meta.kind === "prompt-key") ? "Choose " + (meta.command || mark.dataset.noun)
+                        : "Examine " + mark.dataset.noun;
+                    if (meta.kind !== "direction" && meta.kind !== "command" && meta.kind !== "prompt-key" && !mark.dataset.objectId) mark.title = "Ambiguous reference: " + mark.dataset.noun;
                     meta.resolvedObjectId = mark.dataset.objectId || null;
                     meta.markCandidateIds = mark.dataset.candidateIds || '[]';
                     meta.markCoverIds = mark.dataset.coverIds || meta.markCandidateIds;
@@ -2037,12 +2270,71 @@ var Actionable = {
             });
         });
     },
+    // Eamon: is this story line part of the question now waiting? The engine reports that question's text
+    // (zvm state.promptText, everything printed since the previous answer); its lines are the last non-empty lines of
+    // the story window, the live prompt line included. Without that report every line counts, as before.
+    hasPromptBoundary: function () {
+        try { var st = window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state; return !!(st && typeof st.promptText === "string" && st.promptText); } catch (e) { return false; }
+    },
+    inCurrentPrompt: function (line) {
+        try {
+            var vmState = window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state;
+            if (!vmState || typeof vmState.promptText !== "string" || !line) return true;
+            var segs = vmState.promptText.split("\n");
+            // A single-key answer is echoed at the start of the next text, on the old prompt's line ("...: Y"): that
+            // first segment belongs to the answered prompt, not to the question now waiting.
+            if (vmState.lastAnswerWasChar && segs.length > 1 && segs[0].replace(/\u00a0/g, " ").trim().length <= 3) segs.shift();
+            var want = segs.map(function (s) { return s.replace(/\u00a0/g, " ").trim(); }).filter(Boolean).length;
+            // An answered prompt line ends with its echoed key after the colon; the waiting one ends with the colon.
+            var own = String(line.textContent || "").replace(/\u00a0/g, " ");
+            if (!(line.querySelector && line.querySelector(".Input, .LineInput, .CharInput")) && /:\s*[A-Za-z0-9]\s*$/.test(own)) return false;
+            if (!want) return false;
+            var all = Array.prototype.slice.call(document.querySelectorAll("#windowport .BufferWindow .BufferLine"));
+            // Count back from the line that holds the live input (the waiting prompt), so a line ParchLock itself
+            // prints after it cannot shift the window (Grok #3513 F2); without a live input, from the last line.
+            var start = all.length - 1;
+            for (var a = all.length - 1; a >= 0; a--) { if (all[a].querySelector && all[a].querySelector(".Input.LineInput, .Input.CharInput")) { start = a; break; } }
+            var seen = 0;
+            for (var i = start; i >= 0 && seen < want; i--) {
+                if (!/\S/.test(String(all[i].textContent || "").replace(/\u00a0/g, " "))) continue;
+                if (all[i] === line) return true;
+                seen++;
+            }
+            return false;
+        } catch (e) { return true; }
+    },
     retainMarks: function (pool) {
         var held = {}, exits = Actionable.exitLabels().map(function (s) { return String(s).toLowerCase(); });
         (((WorldModel.lastPayload || {}).inventory) || []).forEach(function (o) { held[String(o.id)] = true; });
         Actionable.LiveMarks = Actionable.LiveMarks.filter(function (mark) {
-            var valid = mark.isConnected && !mark.classList.contains('is-stale') && Actionable.observedLine(mark.closest('.BufferLine'));
+            var isPromptKey = mark.dataset.kind === 'prompt-key';
+            // Prompt-key lines often start with "Press ..." and fail observedLine
+            // (IsInstruction). Do not stale them for that, and recover a mark
+            // latched stale on an earlier tick if the prompt is still current.
+            var valid = mark.isConnected && (isPromptKey || (!mark.classList.contains('is-stale') && Actionable.observedLine(mark.closest('.BufferLine'))));
             if (valid && mark.dataset.kind === 'direction') valid = exits.indexOf(mark.dataset.noun) >= 0;
+            else if (isPromptKey) {
+                var key = String(mark.dataset.command || mark.dataset.noun || "");
+                var line = mark.closest('.BufferLine');
+                var laterContent = false, sib, sibText;
+                // Same-line submitted echo ("Press Y ...: Y") also ends this prompt.
+                if (line && line.querySelector && line.querySelector(".Style_input") && !line.querySelector(".Input, .LineInput, .CharInput")) laterContent = true;
+                for (sib = line && line.nextElementSibling; sib && !laterContent; sib = sib.nextElementSibling) {
+                    if (!sib.classList || !sib.classList.contains("BufferLine")) continue;
+                    if (sib.querySelector && (sib.querySelector(".Style_input") || sib.querySelector(".Input, .LineInput, .CharInput"))) { laterContent = true; break; }
+                    sibText = String(sib.textContent || "").replace(/\u00a0/g, " ");
+                    if (/\S/.test(sibText)) { laterContent = true; break; }
+                }
+                // Do not require a visible input: opening the map can hide it, and
+                // prompt-key marks must persist like native noun marks (plan 2a).
+                if (Actionable.hasPromptBoundary()) laterContent = false;   // the engine's boundary decides (inCurrentPrompt)
+                valid = mark.isConnected && !laterContent && Actionable.inCurrentPrompt(line) && Actionable.promptKeysInText((line && line.textContent) || "").some(function (ch) {
+                    return String(ch).toLowerCase() === key.toLowerCase();
+                });
+                if (valid) mark.classList.remove('is-stale');
+            } else if (valid && mark.dataset.kind === 'command') {
+                valid = false;
+            }
             else if (valid) {
                 var prior = [];
                 try { prior = JSON.parse(mark.dataset.candidateIds || '[]'); } catch (eIds) {}
@@ -2301,7 +2593,9 @@ var Actionable = {
         var payload = null;
         try { payload = WorldModel && WorldModel.lastPayload; } catch (eP) {}
         var structural = Actionable.isStructuralPayload(payload);
-        if (!$(".Input.LineInput:visible").length) return;
+        if (Actionable.isEamonStory()) {
+            if (!$(".Input.LineInput:visible, .Input.CharInput:visible").length) return;
+        } else if (!$(".Input.LineInput:visible").length) return;
 
         var lines = $("#windowport .BufferWindow .BufferLine").toArray();
         var epoch = (typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0) + ':' +
@@ -2456,7 +2750,11 @@ var Actionable = {
         var possessionState = structural ? Actionable.observedPossessions(payload,
             (payload.discoveredObjects || []).concat(payload.inventory || []).concat(Actionable.promoteUnnamed(payload, text)), text)
             .map(function (o) { return [o.id, o.possessedBy, o.name]; }) : [];
-        var signature = room + ":" + lines.length + ":" + lastInput + ":" + text + ":" + payloadKey + ":" + JSON.stringify(possessionState);
+        // Eamon prompt-key lines are often IsInstruction ("Press D ..."), so they
+        // are omitted from `text`. If the signature ignored them, Refresh would
+        // return early once nouns were wrapped and never mark D/M on first paint.
+        var keyText = Actionable.isEamonStory() ? lines.map(function (l) { return (l && l.textContent) || ""; }).filter(function (s) { return Actionable.promptKeySpans(s).length; }).join("\n") : "";
+        var signature = room + ":" + lines.length + ":" + lastInput + ":" + text + ":" + keyText + ":" + payloadKey + ":" + JSON.stringify(possessionState);
         if (signature === Actionable.Signature && !changedLines.length && Actionable.LiveMarks.every(mark => mark.isConnected && !mark.classList.contains("is-stale"))) return;
         Actionable.Signature = signature;
 
@@ -2634,8 +2932,37 @@ var Actionable = {
         // where it is almost always the ordinary word ("in the park"). The exit stays on the compass and radial.
         Actionable.exitLabels().forEach(function (label) {
             if (/^(in|out|on|off|into|onto|under|over|through|across)$/i.test(String(label).trim())) return;
+            // Eamon prompt keys are wrapped at exact offsets below; a direction
+            // wrap of "D" or "1" would take the first standalone letter instead.
+            if (Actionable.isEamonStory() && /^[A-Za-z0-9]$/.test(String(label).trim())) return;
             wrapTargets.push({ phrase: label, kind: "direction", objectId: null, fromName: true });
         });
+        // Conversion layer: wrap accepted keys at their printed offsets first,
+        // so "desk" / "men drinking beer" cannot claim D or M, and menu phrases
+        // are never the choice target. Include IsInstruction lines: the shared
+        // filter treats "Press D for desk or M for men:" as help text and would
+        // drop the only line that holds those keys. Noun first-instance still
+        // uses observedLine (latest) so Z-machine behaviour is unchanged.
+        // Include the current prompt line even when it also holds the live
+        // input (Glk often puts "Press D for desk or M for men:" on the same
+        // BufferLine as Style_input). latest starts AFTER lastInput, so it
+        // would miss those keys. Skip lines that already have a later
+        // submitted echo (not the live Input).
+        var latestForKeys = lines.filter(function (line, i) {
+            if (!line || !line.isConnected) return false;
+            if (!Actionable.promptKeySpans(line.textContent || '').length) return false;
+            // Only the question now waiting: an answered single-key prompt leaves no typed echo (Grok b90 left them live).
+            if (!Actionable.inCurrentPrompt(line)) return false;
+            // With the engine's own boundary that test is the whole answer: a refused typed answer ("[X]: 9") re-asks
+            // the same menu, whose lines sit before that echo yet are still the question (Grok #3513 F1).
+            if (Actionable.hasPromptBoundary()) return true;
+            for (var j = i + 1; j < lines.length; j++) {
+                if (!lines[j] || !lines[j].querySelector) continue;
+                if (lines[j].querySelector('.Style_input') && !lines[j].querySelector('.Input, .LineInput, .CharInput')) return false;
+            }
+            return true;
+        });
+        Actionable.applyPromptKeyMarks(latestForKeys);
         // Prefer longer phrases; prefer short-name hits over alias hits at
         // equal length so "canteen" wins before a short alias collides.
         wrapTargets.sort(function (a, b) {
@@ -2664,8 +2991,13 @@ var Actionable = {
         // which is exactly what D70's "longest visible match wins" intends.
         var markedIds = {};
         var markedDirections = {};
+        var markedCommands = {};
         Actionable.LiveMarks.forEach(function (mark) {
             if (mark.dataset.kind === 'direction') { markedDirections[mark.dataset.noun] = true; return; }
+            if (mark.dataset.kind === 'command' || mark.dataset.kind === 'prompt-key') {
+                markedCommands[String(mark.dataset.command || mark.dataset.noun).toLowerCase()] = true;
+                return;
+            }
             Actionable.markCoverIds(mark).forEach(function (id) { markedIds[String(id)] = true; });
         });
         // Two passes. The first offers every object its BEST phrase -- full
@@ -2725,7 +3057,9 @@ var Actionable = {
                 t.headVariantProof = !!pendingRetire.headVariantProof;
             }
             if (t.kind === 'direction' && markedDirections[String(t.phrase).toLowerCase()]) return;
-            var wrappedNow; try { wrappedNow = Actionable.wrapFirstExact(activeLines, t.phrase, t); } finally { t.headVariantProof = false; }
+            if ((t.kind === 'command' || t.kind === 'prompt-key') && markedCommands[String(t.command || t.phrase).toLowerCase()]) return;
+            var wrapLines = (t.kind === "prompt-key" && t.lines && t.lines.length) ? t.lines : activeLines;
+            var wrappedNow; try { wrappedNow = Actionable.wrapFirstExact(wrapLines, t.phrase, t); } finally { t.headVariantProof = false; }
             if (wrappedNow) {
                 if (pendingRetire) Actionable.retireMarks(pendingRetire, markedIds, t);
                 try { JSON.parse(t.markCoverIds || t.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
@@ -2738,6 +3072,7 @@ var Actionable = {
                     }
                 }
                 if (t.kind === 'direction') markedDirections[String(t.phrase).toLowerCase()] = true;
+                if (t.kind === 'command' || t.kind === 'prompt-key') markedCommands[String(t.command || t.phrase).toLowerCase()] = true;
             }
         }); } finally { Actionable._fullNameSpans = null; }
         Actionable.relocateExactMarks(activeLines);
@@ -2869,6 +3204,8 @@ var Actionable = {
         var add = function (verb) {
             verb = String(verb || '').trim();
             if (!verb || seen[verb.toLowerCase()]) return;
+            if (typeof EamonProvider !== "undefined" && EamonProvider.active && EamonProvider.active()
+                && EamonProvider.verbAllowedFor && obj && !EamonProvider.verbAllowedFor(obj, verb)) return;
             seen[verb.toLowerCase()] = true;
             var command = verb + ' ' + noun, removalCommand = null;
             if (verb === 'remove' && typeof ActionSynth !== 'undefined' && ActionSynth.normalizeQualifiedRemovalCandidate) {

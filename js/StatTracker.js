@@ -393,6 +393,11 @@ var StatTracker = {
         var collaboration = typeof ModuleStatFactsClaude !== "undefined" ? ModuleStatFactsClaude
             : (typeof module !== "undefined" && module.exports ? require("./ModuleStatFactsClaude.js") : {});
         var base = StatTracker.MeasuredProbeFacts[identity.digest], extra = collaboration[identity.digest], local = StatTracker.SupplementalProbeFacts[identity.digest];
+        // An Eamon Showcase package changes digest each release, but STATUS is the Eamon CS engine's own
+        // command in every adventure: its fact is keyed by format.
+        // Once the engine's own status values arrive in the world snapshot (EamonProvider.applyStatus, item 11), the
+        // Showcase no longer sends STATUS behind the scenes.
+        if (!base && identity.format === "eamon" && !StatTracker._eamonNative) base = StatTracker.MeasuredProbeFacts["format:eamon"];
         return base || extra || local ? Object.assign({}, base || {}, extra || {}, local || {}) : null;
     },
 
@@ -475,7 +480,10 @@ var StatTracker = {
         "assigned-tasks": /^You have so far completed (\d+) of the (\d+) tasks assigned you\.$/i,
         "named-counter-score": /^You have achieved (-?\d+) out of a possible (\d+) ([A-Za-z][A-Za-z ]{0,24})(?:, in (\d+) turns?)?\.$/i,
         "labelled-holiness": /^Your current ([A-Za-z]+) is (-?\d+) out of a possible \1 of (\d+), in (\d+) moves?\.$/i,
-        "possessive-magic": /^([A-Za-z][A-Za-z '-]*)'s magic is currently at (-?\d+)\.$/i
+        "possessive-magic": /^([A-Za-z][A-Za-z '-]*)'s magic is currently at (-?\d+)\.$/i,
+        // Every line of the Eamon CS STATUS block, and the room status the engine reprints after a command,
+        // so a quiet probe owns its whole reply (measured: The Beginner's Cave, The Vile Grimoire).
+        "eamon-status": /Damage Taken:\s*\d+\s*\/\s*\d+|You are at \d+ percent health\.|^\s*(?:Intellect|Hardiness|Weapon Abilities|Gold|Armor|Weight carried|(?:Axe|Bow|Club|Spear|Sword)\s*)\s*:|^\[[^\]\n]+\]$|^Obvious (?:exits|paths):/i
     },
 
     measuredMetricProbes: function () {
@@ -528,6 +536,19 @@ var StatTracker = {
             if(time)values.time={label:'Time',value:time[1],unit:'text'};
             if(location)values.location={label:'Robot location',value:location[1].trim(),unit:'text'};
             if(value)values.value={label:'Value (hundred dollars American)',value:+value[1]};
+        } else if(family==='eamon-status') {
+            // Eamon CS STATUS (engine command, every adventure): "Damage Taken: d/h", "Gold: n  In bank: n",
+            // "Intellect: n", "Armor Expertise: n%", "Weight carried: a/b"; some adventures answer
+            // "You are at N percent health." Health is hardiness minus damage taken.
+            const damage=/Damage Taken:\s*(\d+)\s*\/\s*(\d+)/i.exec(custom), pct=/You are at (\d+) percent health\./i.exec(custom);
+            if(damage&&+damage[1]<=+damage[2])values.health={label:'Health',value:+damage[2]-(+damage[1]),max:+damage[2]};
+            else if(pct)values.health={label:'Health',value:+pct[1],max:100,unit:'percent'};
+            [['gold','Gold',/\bGold:\s*(-?\d+)/i],['bank','In bank',/\bIn bank:\s*(-?\d+)/i],['intellect','Intellect',/\bIntellect:\s*(\d+)/i],
+             ['hardiness','Hardiness',/\bHardiness:\s*(\d+)/i],['agility','Agility',/\bAgility\s*:\s*(\d+)/i],['charisma','Charisma',/\bCharisma:\s*(\d+)/i],
+             ['armor expertise','Armor expertise',/Armor Expertise:\s*(\d+)%/i]].forEach(function(row){const m=row[2].exec(custom);if(m)values[row[0]]={label:row[1],value:+m[1],unit:row[0]==='armor expertise'?'percent':undefined};});
+            const weight=/Weight carried:\s*(\d+)\s*\/\s*(\d+)/i.exec(custom);
+            if(weight)values.weight={label:'Weight carried',value:+weight[1],max:+weight[2]};
+            if(!Object.keys(values).length)return false;   // never fall through to the generic counter families
         }
         if(Object.keys(values).length){
             var customModel=StatTracker.model();
@@ -3646,8 +3667,8 @@ var StatTracker = {
             var label = document.createElement("span");
             label.className = "pl-stat-label";
             label.textContent = typeof LearnedWords !== "undefined" ? LearnedWords.label("status", s.key, s.label || s.key) : s.label || s.key;
-            // A long name ("Deaths this playthrough") gets two grid columns so a word is never split (phone: "PLAYTHROUG/H").
-            if (label.textContent.length > 14) chip.setAttribute("data-long-label", "1");
+            // Only very long names take two columns. Shorter labels wrap inside one cell so skills pack two-up.
+            if (label.textContent.length > 22) chip.setAttribute("data-long-label", "1");
             chip.appendChild(label);
 
             var val = document.createElement("span");
@@ -3657,7 +3678,9 @@ var StatTracker = {
             } else if (s.unit === "range") {
                 val.textContent = s.value + " to " + s.upper;
             } else if (s.unit === "percent") {
-                val.textContent = s.value + "%";
+                // Signed bonuses (Eamon charm/learning, weapon skill) keep their + / -.
+                var n = Number(s.value);
+                val.textContent = (isFinite(n) && n > 0 && (s.key === "charm" || s.key === "learning" || s.key.indexOf("weapon ") === 0) ? "+" : "") + s.value + "%";
             } else if (s.unit === "money") {
                 // D169: the game's own notation. wump2ka prints dollars; the
                 // symbol is captured from what it printed rather than assumed,

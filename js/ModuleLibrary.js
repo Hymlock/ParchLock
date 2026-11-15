@@ -7,7 +7,7 @@ var ModuleLibrary = (function () {
     var STORE = "modules";
     var CACHE_KEY = "PL_Modules_Index";
     var HIDDEN_KEY = "PL_Modules_Hidden";
-    var LOCAL_RE = /^local\/([0-9a-f]{64})\.(z3|z4|z5|z8|zblorb|gblorb|ulx)\.js$/;
+    var LOCAL_RE = /^local\/([0-9a-f]{64})\.(z3|z4|z5|z8|zblorb|gblorb|ulx|eamon)\.js$/;
     var MAX_STORY_BYTES = 64 * 1024 * 1024;
     var MAX_IFMD_BYTES = 512 * 1024;
     var listeners = [];
@@ -282,9 +282,70 @@ var ModuleLibrary = (function () {
         };
     }
 
+    // The Eamon Showcase is one importable package holding a whole campaign (js/EamonPackage.js). Its
+    // files are kept by the package installer; the library row records only what the shelf shows.
+    function addEamonPackage(bytes, file) {
+        return EamonPackage.install(bytes).then(function (pkg) {
+            var record = {
+                id: pkg.id, path: "local/" + pkg.id + ".eamon.js", bytes: new ArrayBuffer(0),
+                title: pkg.title, author: "Eamon CS adventures", subtitle: pkg.version ? "Version " + pkg.version : "",
+                format: "eamon", compat: "Eamon campaign: Main Hall and adventures", size: pkg.size,
+                addedAt: new Date().toISOString(), filenameHint: String(file.name || "").slice(0, 255), metadataOrigin: "package"
+            };
+            var duplicate = cache.some(function (entry) { return entry.id === pkg.id; });
+            return request("put", record).then(function () {
+                var item = metadata(record);
+                cache = cache.filter(function (entry) { return entry.id !== pkg.id; });
+                cache.push(item);
+                saveCache();
+                changed();
+                requestPersistence();
+                item.Duplicate = duplicate;
+                retireOlderShowcases(pkg.id);
+                return item;
+            });
+        });
+    }
+
+    // One Showcase in the library (owner, 2026-11-13: 309 stories plus one Showcase, never two). A newly installed
+    // Showcase replaces any other: the old row and its package files go, the campaign, maps and transcripts stay
+    // (they belong to the stable Showcase identity). The one being played right now is retired at the next library
+    // load instead, so no file it still needs disappears under it.
+    var SUPERSEDED_KEY = "PL_ShowcaseSuperseded";
+    function playingPath() {
+        try { var m = /[?&]story=([^&]+)/.exec(location.search); return m ? normalizePath(decodeURIComponent(m[1])) : null; } catch (e) { return null; }
+    }
+    function retireOlderShowcases(keepId) {
+        var playing = playingPath(), later = [];
+        cache.filter(function (entry) { return entry.Format === "eamon" && entry.id !== keepId; }).forEach(function (entry) {
+            if (playing && normalizePath(entry.Path) === playing) later.push(entry.Path);
+            else removeLocal(entry.Path).catch(function () {});
+        });
+        try {
+            if (later.length) localStorage.setItem(SUPERSEDED_KEY, JSON.stringify({ keep: keepId, paths: later }));
+        } catch (e) {}
+    }
+    function retireDeferredShowcases() {
+        // A library that already holds two Showcases (installed before this rule) keeps the newest one.
+        var shows = cache.filter(function (entry) { return entry.Format === "eamon"; });
+        if (shows.length > 1) {
+            shows.sort(function (x, y) { return String(y.AddedAt || "").localeCompare(String(x.AddedAt || "")); });
+            retireOlderShowcases(shows[0].id);
+        }
+        var rec = null;
+        try { rec = JSON.parse(localStorage.getItem(SUPERSEDED_KEY) || "null"); } catch (e) {}
+        if (!rec || !Array.isArray(rec.paths)) return;
+        var playing = playingPath();
+        var left = rec.paths.filter(function (p) { return playing && normalizePath(p) === playing; });
+        rec.paths.forEach(function (p) { if (left.indexOf(p) < 0 && find(p)) removeLocal(p).catch(function () {}); });
+        try { if (left.length) localStorage.setItem(SUPERSEDED_KEY, JSON.stringify({ keep: rec.keep, paths: left })); else localStorage.removeItem(SUPERSEDED_KEY); } catch (e) {}
+    }
+
     function addFile(file) {
         return file.arrayBuffer().then(function (buffer) {
-            var inspected = inspect(new Uint8Array(buffer), file.name);
+            var raw = new Uint8Array(buffer);
+            if (typeof EamonPackage !== "undefined" && EamonPackage.looksLikePackage(raw, file.name)) return addEamonPackage(raw, file);
+            var inspected = inspect(raw, file.name);
             return hash(inspected.bytes).then(function (id) {
                 var path = "local/" + id + "." + inspected.format + ".js";
                 var info = inspected.metadata || {};
@@ -341,8 +402,16 @@ var ModuleLibrary = (function () {
         });
     }
 
+    function compareTitles(a, b) {
+        var ta = String((a && a.Title) || "").toLowerCase();
+        var tb = String((b && b.Title) || "").toLowerCase();
+        if (ta < tb) return -1;
+        if (ta > tb) return 1;
+        return 0;
+    }
+
     function all() {
-        return builtIns().filter(function (game) { return hidden.indexOf(game.Path) < 0; }).concat(cache.slice());
+        return builtIns().filter(function (game) { return hidden.indexOf(game.Path) < 0; }).concat(cache.slice()).sort(compareTitles);
     }
 
     function normalizePath(value) {
@@ -445,6 +514,7 @@ var ModuleLibrary = (function () {
         var path = normalizePath(value);
         var item = find(path);
         if (!item) return Promise.reject(new Error("Module is not installed."));
+        if (item.Format === "eamon") return Promise.resolve(item.id);
         var load = item.Local
             ? getBytes(path).then(function (bytes) { return { bytes: bytes, name: path.replace(/\.js$/i, "") }; })
             : fetch(path).then(function (res) {
@@ -457,6 +527,42 @@ var ModuleLibrary = (function () {
         });
     }
 
+    // An installed Eamon Showcase is its own executable: the loader only ever fetches an empty placeholder
+    // for it, so its identity is the approved package digest recorded at install (js/EamonPackage.js).
+    // Same shape as a captured story identity; it has no Z/Glulx header and no story bytes.
+    // An approved Eamon Showcase is one campaign across its releases: its transcripts, the map snapshots of its saves and
+    // its learning are keyed by this fixed identity (sha256 of "parchlock/eamon-showcase"), so a new release keeps them
+    // and they leave only with their saves (owner 2026-11-12, #3471 item 8; Grok #3479). The package's own id still
+    // names its installed files, its approval and the campaign stamp. No Z-machine or Glulx facts exist for it.
+    var SHOWCASE_IDENTITY = "4ab1c9a28ef804b35a9aa2997fa4f55830eb8672c92ed97d9781e8d90aee5002";
+    // "Is this the Showcase" is decided once, from what is installed: an Eamon package reaches the library only after its
+    // approval was checked at install, and a later app's approval list must not change where its records go (Grok #3481
+    // F1). ParchLock.SetTitle, eamonIdentityForPath and cleanShowcaseOrphans all use this one test.
+    var KNOWN_SHOWCASE_KEY = "PL_EamonShowcaseIds";
+    function installedShowcase(id) { return !!id && cache.some(function (entry) { return entry.id === id && entry.Format === "eamon"; }); }
+    function isShowcaseStory(value) {
+        var m = /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(value ? normalizePath(value) : "");
+        return !!m && installedShowcase(m[1]);
+    }
+    function knownShowcaseIds() { try { var v = JSON.parse(localStorage.getItem(KNOWN_SHOWCASE_KEY) || "[]"); return Array.isArray(v) ? v.filter(function (x) { return /^[0-9a-f]{64}$/.test(x); }) : []; } catch (e) { return []; } }
+    function rememberShowcaseId(id) {
+        try { var ids = knownShowcaseIds(); if (/^[0-9a-f]{64}$/.test(id) && ids.indexOf(id) < 0) { ids.push(id); localStorage.setItem(KNOWN_SHOWCASE_KEY, JSON.stringify(ids)); } } catch (e) {}
+    }
+    function eamonIdentityForPath(sourcePath) {
+        var match = /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(sourcePath || "");
+        if (!match) return null;
+        var item = cache.find(function (entry) { return entry.id === match[1] && entry.Format === "eamon"; });
+        if (!item) return null;
+        if (executableIdentityByPath[sourcePath]) return executableIdentityByPath[sourcePath];
+        // Every installed Eamon package is a Showcase release (install refuses anything unapproved).
+        var digest = SHOWCASE_IDENTITY;
+        rememberShowcaseId(item.id);
+        var summary = Object.freeze({ digest: digest, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, header: null });
+        return (executableIdentityByPath[sourcePath] = Object.freeze({
+            digest: digest, format: "eamon", byteLength: item.Size || 0, sourcePath: sourcePath, bytes: new Uint8Array(0), summary: summary
+        }));
+    }
+
     function identityForPath(value) {
         var sourcePath = value ? normalizePath(value) : "";
         if (!sourcePath) {
@@ -466,6 +572,7 @@ var ModuleLibrary = (function () {
                 }
             } catch (e) {}
         }
+        if (sourcePath && /\.eamon\.js$/.test(sourcePath)) return eamonIdentityForPath(sourcePath);
         return sourcePath ? (executableIdentityByPath[sourcePath] || null) : executableIdentity;
     }
 
@@ -539,6 +646,10 @@ var ModuleLibrary = (function () {
         // E3: uninstalling (remove, hide, remove-all) re-arms the module's
         // one-time inventory warning for a later reinstall.
         try { localStorage.removeItem(inventoryWarningKey(path)); } catch (eW) {}
+        // An Eamon Showcase release shares the campaign's identity: its transcripts and save snapshots belong to the
+        // campaign and leave only with their saves (owner rule 8), so removing one release forgets only its pointer
+        // (Grok #3479 P2).
+        if (localStorage.getItem(transcriptDigestKey(path)) === SHOWCASE_IDENTITY) { try { localStorage.removeItem(transcriptDigestKey(path)); } catch (eP) {} return; }
         // D215: the map and label snapshots of its saves, keyed by the same
         // executable digest -- read before removeTranscript deletes that key.
         try { if (typeof SaveState !== "undefined") SaveState.removeStory(localStorage.getItem(transcriptDigestKey(path))); } catch (eSs) {}
@@ -554,21 +665,96 @@ var ModuleLibrary = (function () {
             var key = transcriptDigestKey(path), digest = localStorage.getItem(key);
             if (!digest) return;
             localStorage.removeItem(key);
-            localStorage.removeItem("PL_Transcript_" + digest);
-            if (typeof indexedDB === "undefined") return;
-            var req = indexedDB.open("ParchLockTranscripts", 1);
-            req.onupgradeneeded = function () {
-                var store = req.result.createObjectStore("lines", { keyPath: ["digest", "seq"] });
-                store.createIndex("digest", "digest");
-            };
-            req.onsuccess = function () {
-                try {
-                    var tx = req.result.transaction("lines", "readwrite");
-                    var cur = tx.objectStore("lines").index("digest").openCursor(IDBKeyRange.only(digest));
-                    cur.onsuccess = function () { var c = cur.result; if (c) { c.delete(); c.continue(); } };
-                } catch (eT) {}
-            };
+            removeTranscriptDigest(digest);
         } catch (e) {}
+    }
+
+    // Resolves once the stored lines are deleted (or the attempt failed), so a caller about to reload can wait for it:
+    // an unload aborts a pending IndexedDB transaction (Grok #3484 R1).
+    function removeTranscriptDigest(digest) {
+        return new Promise(function (resolve) {
+            try {
+                if (!digest) return resolve();
+                localStorage.removeItem("PL_Transcript_" + digest);
+                if (typeof indexedDB === "undefined") return resolve();
+                var req = indexedDB.open("ParchLockTranscripts", 1);
+                req.onupgradeneeded = function () {
+                    var store = req.result.createObjectStore("lines", { keyPath: ["digest", "seq"] });
+                    store.createIndex("digest", "digest");
+                };
+                req.onerror = function () { resolve(); };
+                req.onsuccess = function () {
+                    try {
+                        var tx = req.result.transaction("lines", "readwrite");
+                        var cur = tx.objectStore("lines").index("digest").openCursor(IDBKeyRange.only(digest));
+                        cur.onsuccess = function () { var c = cur.result; if (c) { c.delete(); c.continue(); } };
+                        tx.oncomplete = tx.onerror = tx.onabort = function () { try { req.result.close(); } catch (eC) {} resolve(); };
+                    } catch (eT) { resolve(); }
+                };
+            } catch (e) { resolve(); }
+        });
+    }
+
+    /* Orphaned records of earlier Showcase builds (owner 2026-11-12, #3471 items 7-8; Grok #3479 P3/P4): each package
+       id once keyed its own maps ("PL_Map_" / "PL_MapSlots_" + "local/<id>.eamon.js[#adventure]"), transcript and save
+       snapshots. The campaign now keeps them under "eamon/showcase" and the fixed Showcase identity, so the old ones are
+       attached to no save and are removed. Only package ids found in "local/<64 hex>.eamon.js" keys are touched; nothing
+       under the stable names is. Learning is left to LearningStores' own cleanup (its index must stay consistent). */
+    function cleanShowcaseOrphans() {
+        var removed = 0;
+        try {
+            var ids = {}, keys = [];
+            for (var i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i));
+            keys.forEach(function (k) {
+                var m = /^(?:PL_Map_|PL_MapSlots_|PL_TranscriptDigest_)local\/([0-9a-f]{64})\.eamon\.js(?:#.*)?$/.exec(k || "");
+                if (m) ids[m[1]] = true;
+            });
+            knownShowcaseIds().forEach(function (id) { ids[id] = true; });
+            // Never the running story or any installed release: only ids with no library entry are orphans (Grok #3481 F1).
+            var running = null;
+            try { var rm = typeof ParchLock !== "undefined" && /^local\/([0-9a-f]{64})\.eamon\.js$/.exec(normalizePath(ParchLock.StoryPath || "")); running = rm ? rm[1] : null; } catch (eR) {}
+            Object.keys(ids).forEach(function (id) { if (id === running || installedShowcase(id)) delete ids[id]; });
+            var known = knownShowcaseIds().filter(function (id) { return !ids[id]; });
+            try { localStorage.setItem(KNOWN_SHOWCASE_KEY, JSON.stringify(known)); } catch (eK) {}
+            Object.keys(ids).forEach(function (id) {
+                var path = "local/" + id + ".eamon.js";
+                keys.forEach(function (k) {
+                    if (k && (k === LEGACY.map + path || k === LEGACY.mapSlots + path || k.indexOf(LEGACY.map + path + "#") === 0 || k.indexOf(LEGACY.mapSlots + path + "#") === 0)) { localStorage.removeItem(k); removed++; }
+                });
+                var pointer = transcriptDigestKey(path), digest = localStorage.getItem(pointer);
+                // The pointer of a release now keyed by the Showcase identity stays; its old package-id records go.
+                if (digest && digest !== SHOWCASE_IDENTITY) { localStorage.removeItem(pointer); removed++; }
+                [id, digest].forEach(function (d) {
+                    if (!d || d === SHOWCASE_IDENTITY || !/^[0-9a-f]{64}$/.test(d)) return;
+                    try { if (typeof SaveState !== "undefined") SaveState.removeStory(d); } catch (eS) {}
+                    removeTranscriptDigest(d);
+                });
+            });
+        } catch (e) {}
+        return removed;
+    }
+
+    /* Start a new campaign (owner item 6): every save is gone and the player confirmed losing all characters and their
+       progress, so the campaign's own records go too: its transcript, its save snapshots and its live maps (Grok #3481
+       F3). Learning stays: it is ParchLock's knowledge of the game's words, not campaign progress. */
+    function forgetShowcaseCampaign() {
+        var done = Promise.resolve();
+        try {
+            if (typeof ParchLockMap !== "undefined") ParchLockMap.PersistenceBlocked = true;
+            // Nothing of this session may write the old campaign's transcript back before the reload (Grok #3484 R1).
+            try { if (typeof Transcript !== "undefined") { Transcript.meta = null; Transcript.digest = null; Transcript.saveMeta = function () {}; } } catch (eT) {}
+            try { if (typeof SaveState !== "undefined") SaveState.removeStory(SHOWCASE_IDENTITY); } catch (eS) {}
+            done = removeTranscriptDigest(SHOWCASE_IDENTITY);
+            var doomed = [];
+            for (var i = 0; i < localStorage.length; i++) {
+                var k = localStorage.key(i);
+                if (k && /^(?:PL_Map_|PL_MapSlots_)eamon\/showcase(?:#.*)?$/.test(k)) doomed.push(k);
+                // The save names mirrored into ParchLock's save dialog go with the campaign (one save system).
+                if (k && /^(?:dirent|content):save:eamonshowcase-/.test(k)) doomed.push(k);
+            }
+            doomed.forEach(function (k) { localStorage.removeItem(k); });
+        } catch (e) {}
+        return done;
     }
 
     // E3: one seen-once flag per installed module (tutorial-style).
@@ -580,9 +766,18 @@ var ModuleLibrary = (function () {
         var item = find(path);
         if (!item || !item.Local) return Promise.resolve(false);
         return request("delete", item.id).then(function () {
+            // Removing the Showcase removes its installed files; campaign progress is kept (plan section 7).
+            if (item.Format === "eamon" && typeof EamonPackage !== "undefined") return EamonPackage.remove(item.id);
+        }).then(function () {
             cache = cache.filter(function (entry) { return entry.id !== item.id; });
             removeFlags(item.Path);
             [LEGACY.map, LEGACY.mapSlots, LEGACY.gameId].forEach(function (prefix) { localStorage.removeItem(prefix + item.Path); });
+            // A module with several worlds (the Eamon Showcase) keeps one map per world: "<prefix><path>#<world>".
+            [LEGACY.map, LEGACY.mapSlots].forEach(function (prefix) {
+                var scoped = prefix + item.Path + "#", doomed = [];
+                for (var i = 0; i < localStorage.length; i++) { var key = localStorage.key(i); if (key && key.indexOf(scoped) === 0) doomed.push(key); }
+                doomed.forEach(function (key) { localStorage.removeItem(key); });
+            });
             saveCache();
             changed();
             return true;
@@ -718,7 +913,7 @@ var ModuleLibrary = (function () {
             "<p id='pl-module-progress' aria-live='polite'></p><ul id='pl-module-results'></ul>" +
             "<section class='pl-module-collection' aria-label='Installed stories'><div class='pl-module-list-heading'><h3>Your stories</h3><span id='pl-module-count'></span></div><input id='pl-module-search' type='search' placeholder='Find a story or author' aria-label='Search installed stories'><div id='pl-module-list'></div></section>" +
             "<details class='pl-module-library-options'><summary>Library options</summary><div class='pl-module-maintenance'><button id='pl-module-restore' type='button'>Restore built-ins</button><button id='pl-module-remove-all' type='button'>Remove all</button></div></details>" +
-            "<p class='pl-module-permission'>Only add stories you have permission to use.</p><details class='pl-module-format-note'><summary>Supported formats &amp; storage</summary><p>Z-machine: .z3, .z4, .z5, .z8 and .zblorb. Glulx: .ulx and .gblorb. Compatible .js files are also accepted. ParchLock checks compatibility, not ownership or permission.</p><p>Z-machine modules support mapping, actions and radials. Glulx modules are play-only.</p><p class='pl-module-storage-note'>Imported stories stay on this device. Clearing browser or app storage removes imported modules and local state.</p></details></div>";
+            "<p class='pl-module-permission'>Only add stories you have permission to use.</p><details class='pl-module-format-note'><summary>Supported formats &amp; storage</summary><p>Z-machine: .z3, .z4, .z5, .z8 and .zblorb. Glulx: .ulx and .gblorb. Compatible .js files are also accepted. The Eamon Showcase: its .eamon package. ParchLock checks compatibility, not ownership or permission.</p><p>Z-machine modules support mapping, actions and radials. Glulx modules are play-only.</p><p class='pl-module-storage-note'>Imported stories stay on this device. Clearing browser or app storage removes imported modules and local state.</p></details></div>";
         Message.Show("Modules", body, true);
         $("#message #close").text("\u2715").attr("aria-label", "Close");
         bindPicker("#pl-module-files");
@@ -744,7 +939,7 @@ var ModuleLibrary = (function () {
                 listeners.slice().forEach(function (listener) { try { listener(); } catch (e) {} });
             }
         });
-        return reconcile();
+        return reconcile().then(function (v) { try { retireDeferredShowcases(); } catch (e) {} return v; });
     }
 
     if (!Array.isArray(window.GameList)) window.GameList = [];
@@ -755,7 +950,8 @@ var ModuleLibrary = (function () {
         removeLocal: removeLocal, hideBuiltIn: hideBuiltIn, removeAll: removeAll, inventoryWarningKey: inventoryWarningKey, transcriptDigestKey: transcriptDigestKey,
         restoreBuiltIns: restoreBuiltIns, renameLocal: renameLocal, openManager: openManager, onChanged: onChanged,
         reconcile: reconcile, inspect: inspect, hash: hash, sha256Fallback: sha256Fallback,
-        currentExecutableDigest: currentExecutableDigest,
+        currentExecutableDigest: currentExecutableDigest, cleanShowcaseOrphans: cleanShowcaseOrphans, showcaseIdentity: SHOWCASE_IDENTITY,
+        isShowcaseStory: isShowcaseStory, forgetShowcaseCampaign: forgetShowcaseCampaign,
         executableDigestForPath: executableDigestForPath, libraryRevision: function () { return libraryRevision; },
         currentExecutableBytes: currentExecutableBytes,
         currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,

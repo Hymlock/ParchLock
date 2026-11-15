@@ -6,8 +6,10 @@ var UndoRestoreSync = {
         var s = String(cmd || "").trim().toLowerCase();
         if (/^(undo|restore|restart|load)\b/.test(s)) {
             // An attempted command is not a successful timeline change.
-            if (/^(undo|restore|restart)\b/.test(s) && typeof ZvmCapture !== "undefined" && ZvmCapture.patched
-                && typeof window !== "undefined" && window.__PARCHLOCK_ZVM__) {
+            // The Eamon host reports a completed RESTORE itself (lib/eamon/zvm.js lifecycle), like the ZVM hooks.
+            // Eamon has no load verb either: the engine refuses it and nothing changes (Grok #3391 L1).
+            if ((typeof window !== "undefined" && window.__PARCHLOCK_EAMON__) || (/^(undo|restore|restart)\b/.test(s) && typeof ZvmCapture !== "undefined" && ZvmCapture.patched
+                && typeof window !== "undefined" && window.__PARCHLOCK_ZVM__)) {
                 clearTimeout(UndoRestoreSync._commandTimer);
                 UndoRestoreSync._commandTimer = null;
                 UndoRestoreSync.pending = false;
@@ -208,7 +210,8 @@ var UndoRestoreSync = {
             UndoRestoreSync._restoreReason = "";
             UndoRestoreSync._restoreTimer = null;
             UndoRestoreSync.resync(settledReason);
-            if (settledReason === "restore_file") UndoRestoreSync.requestLookAfterRestore();
+            // Eamon re-describes the room itself after RESTORE, and its LOOK is a full turn: no extra LOOK there.
+            if (settledReason === "restore_file" && !(typeof window !== "undefined" && window.__PARCHLOCK_EAMON__)) UndoRestoreSync.requestLookAfterRestore();
         }, 250);
     }
 };

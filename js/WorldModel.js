@@ -42,6 +42,8 @@ var WorldModel = {
         };
         try { wire("z-ram", typeof ZRamProvider !== "undefined" && ZRamProvider,
             function () { return ZRamProvider.collect(); }); } catch (e) {}
+        try { wire("eamon", typeof EamonProvider !== "undefined" && EamonProvider,
+            function () { return EamonProvider.collect(); }); } catch (e) {}
         try { wire("grammar-ram", typeof GrammarProvider !== "undefined" && GrammarProvider,
             function () { return GrammarProvider.collect(); }); } catch (e) {}
         try { wire("buffer-tap", typeof BufferTapProvider !== "undefined" && BufferTapProvider,
@@ -551,7 +553,13 @@ var WorldModel = {
                     var containmentProven = !!(payload.probe
                         && payload.probe.roomSource === "player-containment"
                         && payload.roomId != null);
-                    if (blankPending && containmentProven) {
+                    // An Eamon prompt outside any room (character creation's Y/N, 0/1, R/T) has no room by design; its
+                    // exits are that prompt's own keys, which the radial offers (plan section 2a). Eamon-only.
+                    var eamonPromptOnly = !!(payload.probe && payload.probe.status === "eamon-idle");
+                    if (eamonPromptOnly) {
+                        payload.roomName = "";
+                        payload.roomId = null;
+                    } else if (blankPending && containmentProven) {
                         payload.roomName = "";
                     } else {
                         payload.roomName = "";

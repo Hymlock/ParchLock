@@ -298,9 +298,18 @@ var ParchLock = {
         var story = new URLSearchParams(window.location.search).get("story");
         ParchLock.StoryPath = story ? ModuleLibrary.normalizePath(story) : "";
         ParchLock.GameFilename = "";
+        if (typeof ParchLockMap !== "undefined") ParchLockMap.Scope = "";
         if (ParchLock.StoryPath) ParchLock.GameFilename = ParchLock.StoryPath.indexOf("games/") === 0
             ? ParchLock.StoryPath.slice(6)
             : ParchLock.StoryPath;
+        // An approved Eamon Showcase package is one campaign across its releases: its story file name carries the
+        // package digest, so ParchLock's own records for it (maps, map slots, radial and sheet preferences, save-package
+        // story name) are keyed by a stable id instead, and a package update does not hide them (Grok #3456 D2). Every
+        // other story keeps its file name. Older digest-keyed records are left in place, never deleted.
+        // Decided from what is installed, the same test as the transcript identity and the orphan cleanup (Grok #3481 F1).
+        try {
+            if (typeof ModuleLibrary !== "undefined" && ModuleLibrary.isShowcaseStory && ModuleLibrary.isShowcaseStory(ParchLock.StoryPath)) ParchLock.GameFilename = "eamon/showcase";
+        } catch (e) {}
         var game = ModuleLibrary.find(ParchLock.StoryPath);
 
         if (game) {
@@ -461,7 +470,8 @@ var ParchLock = {
         try {
             if (typeof WorldModel !== "undefined" && WorldModel.tick) WorldModel.tick();
             var p = WorldModel && WorldModel.lastPayload;
-            var structural = p && p.probe && p.probe.status === "z-ram-live" && p.roomName;
+            // "eamon-live": the same kind of fact, from the Eamon engine's own room record (js/EamonProvider.js).
+            var structural = p && p.probe && (p.probe.status === "z-ram-live" || p.probe.status === "eamon-live") && p.roomName;
             /* D24: identity only. Room-graph entry is MapTopology.tick(payload) via TranslatorUI.tick. */
             if (structural && typeof ParchLockMap !== "undefined") {
                 var roomName = ParchLock.CleanRoomName(p.roomName);
@@ -596,6 +606,17 @@ var ParchLock = {
             Map: ParchLockMap.Rooms,
             Save: s
         };
+        // A story with several worlds (the Eamon Showcase: one map per adventure) also exports the other
+        // worlds' maps, keyed by world; Map stays the world in play, so existing packages are unchanged.
+        try {
+            if (ParchLockMap.Scope) ParchLockMap.Save();
+            var scopedPrefix = "PL_Map_" + ParchLock.GameFilename + "#", maps = {};
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && key.indexOf(scopedPrefix) === 0) maps[key.slice(scopedPrefix.length)] = JSON.parse(localStorage.getItem(key));
+            }
+            if (Object.keys(maps).length) { o.MapScope = ParchLockMap.Scope; o.ScopedMaps = maps; }
+        } catch (eScoped) {}
 
         return JSON.stringify(o);
     }

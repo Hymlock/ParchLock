@@ -902,8 +902,57 @@ var ParchLockMap = {
             chip.find(".room-name").text(chipText).attr("title", hint).css({ fontStyle: "italic", opacity: 0.7 });
         });
 
+        // Mobile/APK only: if a compact compass exit-chip already shows a destination,
+        // hide the large white MAP room box for that same slot (not the exit chip).
+        // Hall menu chips (2/3/4/X …) stay on the exit band. Desktop unchanged.
+        try { if (document.body && document.body.classList.contains("pl-mobile")) ParchLockMap.preferCompactExitChips(); } catch (ePref) {}
+
         ParchLockMap.ApplyViewport();
         requestAnimationFrame(WorkspaceUI.DrawPaths);
+    },
+
+    // Mobile only. Two systems paint the same exits:
+    //   - smaller: #exits .exit.shown compass chips (dir letter + short name)
+    //   - larger:  .pl-exit-noncardinal white spoke buttons (MapBeautify)
+    // When a smaller chip already shows that key/destination, hide the larger
+    // spoke (display:none only — do not remove nodes or exit data). Desktop off.
+    preferCompactExitChips: function () {
+        $("#exits .pl-exit-noncardinal.pl-exit-dup-hidden").each(function () {
+            this.classList.remove("pl-exit-dup-hidden");
+            this.style.display = "";
+        });
+        var smallKey = {}, smallDest = {};
+        // Smaller selectors: compass exit chips + live menu prompt-key underlines.
+        try {
+            $(".pl-act").each(function () {
+                if (this.classList.contains("is-stale")) return;
+                if (String(this.dataset.kind || "") !== "prompt-key") return;
+                var k = String(this.dataset.command || this.dataset.noun || "").trim().toLowerCase();
+                if (k) smallKey[k] = true;
+            });
+        } catch (ePk) {}
+        $("#exits .exit.shown").each(function () {
+            if (this.style.display === "none") return;
+            var $el = $(this);
+            var lab = String($el.data("exit-label") || $el.find(".dir-name").text() || "").trim().toLowerCase();
+            if (lab) smallKey[lab] = true;
+            var room = $el.data("room");
+            if (room && room.Id != null) smallDest["id:" + String(room.Id)] = true;
+            var nm = String($el.find(".room-name").text() || (room && room.Name) || "").replace(/\s+/g, " ").trim().toLowerCase();
+            if (nm) smallDest["nm:" + nm] = true;
+        });
+        // Larger white links = MapBeautify non-cardinal spokes only (hide, don't remove).
+        $("#exits .pl-exit-noncardinal").each(function () {
+            var raw = String(this.textContent || "").replace(/\s+/g, " ").trim();
+            if (!raw) return;
+            var parts = raw.split("->");
+            var dir = String(parts[0] || "").trim().toLowerCase();
+            var name = parts.length > 1 ? String(parts.slice(1).join("->")).trim().toLowerCase() : "";
+            var covered = (dir && smallKey[dir]) || (name && smallDest["nm:" + name]);
+            if (!covered) return;
+            this.classList.add("pl-exit-dup-hidden");
+            this.style.display = "none";
+        });
     },
 
     // D71: this slot's small corner label was always the STATIC compass
@@ -1549,16 +1598,31 @@ var ParchLockMap = {
         $("#map #rooms").removeClass("dragging");
     },
 
+    // A module that holds several separate worlds (the Eamon Showcase: one map per adventure) names the
+    // world in play; every other story keeps the empty scope, so its storage keys are unchanged.
+    Scope: "",
+    StorageKey: () => "PL_Map_" + ParchLock.GameFilename + (ParchLockMap.Scope ? "#" + ParchLockMap.Scope : ""),
+    SetScope: (scope) => {
+        scope = String(scope || "");
+        if (scope === ParchLockMap.Scope) return;
+        ParchLockMap.Save();
+        ParchLockMap.Scope = scope;
+        ParchLockMap.NotesScopeRoomKey = null;
+        ParchLockMap.Clear({ seed: false });
+        ParchLockMap.Load();
+        try { ParchLockMap.RefreshMapPanels(); } catch (e) {}
+    },
+
     Save: () => {
         if (!ParchLock.GameFilename || ParchLockMap.PersistenceBlocked) return;
         var mapData = JSON.stringify(ParchLockMap.Rooms);
-        localStorage.setItem("PL_Map_" + ParchLock.GameFilename, mapData);
+        localStorage.setItem(ParchLockMap.StorageKey(), mapData);
     },
 
     Load: () => {
         if (!ParchLock.GameFilename) return;
         try {
-            var mapData = localStorage.getItem("PL_Map_" + ParchLock.GameFilename);
+            var mapData = localStorage.getItem(ParchLockMap.StorageKey());
             if (mapData) {
                 var data = { Map: JSON.parse(mapData) };
                 WorkspaceUI.ValidateMap(data);

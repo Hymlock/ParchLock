@@ -194,7 +194,10 @@ var Input = {
         // T10 (operator): Send on an EMPTY line repeats the last command the
         // player submitted. Exactly one eligible line prompt; anything typed
         // is submitted as before; no history keeps the old behaviour.
-        if ($line.length === 1 && !String($line.val() || "").trim()) {
+        // An empty Send at an Eamon nested prompt is an answer (a default, "any key"), never a repeat of the last command
+        // (Grok #3441).
+        var eamonNested = typeof window !== "undefined" && window.__PARCHLOCK_EAMON__ && window.__PARCHLOCK_EAMON__.state && !window.__PARCHLOCK_EAMON__.state.atTopLevel;
+        if ($line.length === 1 && !String($line.val() || "").trim() && !eamonNested) {
             var last = null;
             try { last = ParchLockQol.GetHistory()[0] || null; } catch (eH) {}
             if (last && typeof Actionable !== "undefined" && Actionable.Submit) {

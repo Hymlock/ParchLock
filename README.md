@@ -45,9 +45,9 @@ Corresponding source for the distributed build is `ParchLock-source.zip`.
 Third-party components and included games retain their own licenses.
 
 
-## Downloads — 2.0.3
+## Downloads — 2.0.100
 
-[Get ParchLock 2.0.3 for Windows and Android](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.3).
+[Get ParchLock 2.0.100 for Windows and Android](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.100).
 The complete ZIP contains the Windows launcher, signed Android APK and matching source ZIP together.
 The APK and source are also separate downloads on the same release page.
-Desktop patch 2.0.3 handles local ports reserved by Windows virtualization. It includes the unchanged signed Android 2.0.2 APK (Build 86, Android versionCode 61), which fixes module selection and imported Glulx launch. Android users already on 2.0.2 do not need to reinstall.
+Desktop patch 2.0.100 handles local ports reserved by Windows virtualization. It includes the unchanged signed Android 2.0.2 APK (Build 86, Android versionCode 61), which fixes module selection and imported Glulx launch. Android users already on 2.0.2 do not need to reinstall.
