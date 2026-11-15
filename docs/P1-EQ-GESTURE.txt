@@ -1,0 +1,42 @@
+{
+  "when": "2026-11-15T00:48:02.155Z",
+  "adventure": "The Beginner's Cave",
+  "inventory": [
+    "axe"
+  ],
+  "results": {
+    "longPress": {
+      "ok": true,
+      "cmds": [
+        "Examine",
+        "Ready",
+        "Drop",
+        "Give to...",
+        "Put in...",
+        "More"
+      ],
+      "display": "block"
+    },
+    "swipe": {
+      "ok": true,
+      "before": 0,
+      "after": 142.15383911132812,
+      "overflow": true,
+      "sh": 1444,
+      "ch": 676
+    },
+    "drag": {
+      "ok": true,
+      "mid": {
+        "bodyDrag": false,
+        "ghost": true,
+        "anyDrag": [
+          "pl-mobile pl-portrait pl-mic-available has-line-input equip-open equip-dragging-active",
+          "equip-row equip-dragging"
+        ]
+      },
+      "attempted": true
+    },
+    "pass": true
+  }
+}

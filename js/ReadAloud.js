@@ -186,12 +186,15 @@ var ReadAloud = {
             var prepared = ReadAloud.applyPronunciations(ReadAloud.normalizeSpokenCaps(line))
                 .replace(/[\u2500-\u257F]/g, " ")
                 .replace(/(?:[_=+|\\\/]{2,})/g, " ")
+                // Decorative asterisks ("***", "* * *") — TTS otherwise says "asterisk".
+                .replace(/\*/g, " ")
                 .replace(/\s+/g, " ")
                 .trim();
             if (hasDiagram) {
                 prepared = prepared
                     .replace(/[|_+=\u2500-\u257F]/g, " ")
                     .replace(/-{2,}/g, " ")
+                    .replace(/\*/g, " ")
                     .replace(/\s+/g, " ")
                     .trim();
             }

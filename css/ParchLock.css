@@ -4956,10 +4956,13 @@ body.light #world-map .world-level.active { background: #0b7e63; color: #fff; }
 #equipment .equip-row { border-radius: 10px; padding: 6px 10px; gap: 8px; }
 #equipment .equip-tags { opacity: 1; color: var(--pl-text); font-size: 12px; font-weight: 400; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; max-width: 35%; }
 #equipment .equip-hint { opacity: .85; line-height: 1.6; border-top: 1px solid var(--pl-border); padding-top: 12px; }
-#equipment #pl-stats-rows { display: grid; grid-template-columns: repeat(auto-fit,minmax(90px,1fr)); grid-auto-flow: dense; align-items: stretch; }
+#equipment #pl-stats-rows { display: grid; grid-template-columns: repeat(auto-fit,minmax(88px,1fr)); grid-auto-flow: dense; align-items: stretch; }
 #equipment .pl-stat { min-width: 0; border-radius: 8px; }
+/* Freeform text only (conditions, armour name, rare boosts). Numeric skills stay one cell and pack two-up. */
 #equipment .pl-stat[data-value-type="text"], #equipment .pl-stat-hint { grid-column: 1/-1; }
 #equipment .pl-stat[data-long-label]:not([data-value-type="text"]) { grid-column: span 2; }
+#equipment .pl-stat-label { line-height: 1.25; }
+#equipment .pl-stat-value { font-size: 16px; }
 body.light #equipment .equip-tags { color: #1e1e1e; }
 /* Reserve the shared fixed controls outside the sheet without moving either handle. */
 body.pl-mobile #equipment { --pl-float-reserve: var(--pl-input-protect-height); height: calc(var(--pl-layout-height) - 8px - var(--pl-safe-top) - var(--pl-kb-inset) - var(--pl-float-reserve)); padding-bottom: calc(28px + var(--pl-safe-bottom)); }

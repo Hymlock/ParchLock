@@ -1,0 +1,53 @@
+P3 export {"bytes":53477,"story":"eamon/showcase","hasCampaign":true,"hasMap":true,"hasSave":true,"fileCount":25}\nP3 import {"result":"pending","message":{"title":"Import Complete","body":"The save package, maps and Eamon campaign were imported. The story will reopen."},"pass":true}\n=== P4 ===\nP4 {
+  "buttons": [
+    "Download Package",
+    "Start a new campaign",
+    "Center",
+    "-",
+    "100%",
+    "+",
+    "Maps",
+    "Reset Map"
+  ],
+  "hasDownload": true,
+  "hasStart": true,
+  "hasTitle": true,
+  "sample": "Eamon Campaign\n\nThis Eamon campaign was saved in a format this version of the Showcase cannot read. Nothing on this device was changed.\n\nYou can keep a copy of it first, then start a new campaign.\n\nDownload Package Start a new campaign\n\n✕",
+  "pass": true
+}\nschema restored\nSUMMARY {
+  "P3": {
+    "pass": true,
+    "export": {
+      "bytes": 53477,
+      "fileCount": 25
+    },
+    "import": {
+      "result": "pending",
+      "message": {
+        "title": "Import Complete",
+        "body": "The save package, maps and Eamon campaign were imported. The story will reopen."
+      },
+      "pass": true
+    }
+  },
+  "P4": {
+    "pass": true,
+    "detail": {
+      "buttons": [
+        "Download Package",
+        "Start a new campaign",
+        "Center",
+        "-",
+        "100%",
+        "+",
+        "Maps",
+        "Reset Map"
+      ],
+      "hasDownload": true,
+      "hasStart": true,
+      "hasTitle": true,
+      "sample": "Eamon Campaign\n\nThis Eamon campaign was saved in a format this version of the Showcase cannot read. Nothing on this device was changed.\n\nYou can keep a copy of it first, then start a new campaign.\n\nDownload Package Start a new campaign\n\n✕",
+      "pass": true
+    }
+  }
+}

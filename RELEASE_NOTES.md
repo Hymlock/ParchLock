@@ -1,5 +1,25 @@
 # ParchLock Release Notes
 
+## Build 101 (release candidate, 2026-11-14/15)
+
+- Hall Equipment: carried/worn CharArt inventory in Main Hall (HallSnapshot.CharacterInventory).
+- Status chips: Eamon skills pack two-up (numeric percent/fraction).
+- Read-aloud: decorative asterisks not spoken.
+- Phone acceptance: P1, P3, P4, P5, N4 PASS; P2 marked partial/off.
+- Showcase package pin: fd291722… (0.1.0-dev-hallinv).
+- Android versionCode 100 / 2.0.100; shell cache 200. Not Play-signed (no keystore in env).
+
+## Build 100 (test build, Hall inventory) - 2026-11-14
+
+- Eamon Main Hall: Equipment lists the character's carried and worn gear (CharArt), not an empty Yourself row.
+- Read-aloud: decorative asterisks (`***`) are not spoken.
+- New Showcase package digest (0.1.0-dev-hallinv). Android versionCode 100; shell cache 200. Not a public release.
+
+## Build 99 (test build, status packing) - 2026-11-14
+
+- Eamon status card: weapon skills, spells, learning and charm are numeric chips and pack two-up in Equipment (no full-width text rows). Freeform lines (armour name, conditions, rare boosts) stay full width.
+- Android versionCode 99; shell cache 199. Not a public release.
+
 ## Build 98 (test build, Eamon stats) - 2026-11-13
 
 - Eamon: the status card shows the game's own figures in the Main Hall and in every adventure: health, intellect, hardiness, agility, charisma with their bonuses, weapon and spell abilities, armour and armour expertise, weight carried of the limit, gold and bank. Nothing is sent to the game behind the scenes.

@@ -1,0 +1,23 @@
+{
+  "airplaneStillOn": true,
+  "navigatorOnline": true,
+  "showcaseOpened": true,
+  "story": "local/b05f6e7192397ed9a9e0566fb04f8ab19d4984ce5375ff29a8c6754d44a13eea.eamon.js",
+  "resumed": {
+    "adv": "The Beginner's Cave",
+    "room": "Cave Entrance",
+    "inv": [
+      "axe"
+    ]
+  },
+  "charLine": null,
+  "files": {
+    "n": 20,
+    "fresh": [
+      "Adventures/TheBeginnersCave/FRESHMEAT.DAT",
+      "Adventures/TheBeginnersCave/FRESHMEAT_001.DAT"
+    ],
+    "savegame": true
+  },
+  "pass": true
+}

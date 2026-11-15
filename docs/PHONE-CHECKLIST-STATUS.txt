@@ -1,0 +1,14 @@
+P1 EQ gestures: PASS (in-adventure)
+P2 N->N+1 carry-over: PARTIAL (marked off by owner)
+P3 Save package round-trip: PASS (Import Complete)
+P4 schema-2 campaign dialog: PASS (Download Package + Start a new campaign)
+P5 offline restore: PASS (airplane on, force-stop, resume)
+N4 death menu restore: PASS
+  - Died (hermit critical hit)
+  - Menu: 1. Restore a saved game
+  - Dialog Load N4save
+  - "Game restored." at Cave Entrance with axe
+Hall inventory: PASS (b100 hallinv package)
+Stats packing: PASS (b99)
+TTS asterisks: PASS
+PC package: make-dist + tools/package-complete.ps1 (owner/bus)

@@ -1,0 +1,8 @@
+P2 N->N+1 carry-over (2026-11-15)
+status: PARTIAL PASS / owner accepted as marked off
+evidence:
+- warnOk: confirm dialog for P2Carry in The Training Ground
+- FRESHMEAT cleared after N+1 import (notAfield)
+- N+1 trusted via EAMON_TEST_TRUST in test APK
+- full Hall reopen/ledger/no-fee not auto-confirmed (automation flaky)
+N=fd291722 (hallinv) N+1=b05f6e71 (next, TG-only fingerprint delta)

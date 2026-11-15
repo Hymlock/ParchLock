@@ -1,0 +1,18 @@
+{
+  "pass": true,
+  "st": {
+    "room": "Main Hall",
+    "inv": [
+      "axe"
+    ]
+  },
+  "eq": {
+    "c": "1",
+    "rows": [
+      "Yourself\nyou",
+      "axe"
+    ]
+  },
+  "package": "fd291722...hallinv",
+  "build": 100
+}

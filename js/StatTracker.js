@@ -3667,8 +3667,8 @@ var StatTracker = {
             var label = document.createElement("span");
             label.className = "pl-stat-label";
             label.textContent = typeof LearnedWords !== "undefined" ? LearnedWords.label("status", s.key, s.label || s.key) : s.label || s.key;
-            // A long name ("Deaths this playthrough") gets two grid columns so a word is never split (phone: "PLAYTHROUG/H").
-            if (label.textContent.length > 14) chip.setAttribute("data-long-label", "1");
+            // Only very long names take two columns. Shorter labels wrap inside one cell so skills pack two-up.
+            if (label.textContent.length > 22) chip.setAttribute("data-long-label", "1");
             chip.appendChild(label);
 
             var val = document.createElement("span");
@@ -3678,7 +3678,9 @@ var StatTracker = {
             } else if (s.unit === "range") {
                 val.textContent = s.value + " to " + s.upper;
             } else if (s.unit === "percent") {
-                val.textContent = s.value + "%";
+                // Signed bonuses (Eamon charm/learning, weapon skill) keep their + / -.
+                var n = Number(s.value);
+                val.textContent = (isFinite(n) && n > 0 && (s.key === "charm" || s.key === "learning" || s.key.indexOf("weapon ") === 0) ? "+" : "") + s.value + "%";
             } else if (s.unit === "money") {
                 // D169: the game's own notation. wump2ka prints dollars; the
                 // symbol is captured from what it printed rather than assumed,

@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "steps": [
+    "Died to hermit (critical hit)",
+    "Death menu: 1 Restore a saved game",
+    "Dialog: N4save selected",
+    "Load -> Game restored at Cave Entrance"
+  ],
+  "final": {
+    "room": "Cave Entrance",
+    "adv": "The Beginner's Cave",
+    "inv": [
+      "axe"
+    ],
+    "restored": true,
+    "alive": true,
+    "tail": "eted)\n 3. Give up, accept death\n \n------------------------\n \nYour choice: 1\n \n------------------------\n \n \nGame restored.\n \n[Cave Entrance]\n \nObvious paths:  north and south.\n \n>  "
+  }
+}

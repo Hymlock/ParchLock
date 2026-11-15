@@ -285,7 +285,6 @@ var EamonProvider = {
                     kind: "counter", confirmed: true, seen: StatTracker.CONFIRM_SAMPLES, source: "eamon-native", boundSource: max == null ? undefined : "eamon-native", readAt: now };
                 EamonProvider._statusKeys.push(key);
             };
-            var pct = function (n) { return (n > 0 ? "+" : "") + n + "%"; };
             if (status.profile === "health-percent") {
                 put("health", "Health", status.healthPct, 100, "percent");
                 (status.conditions || []).forEach(function (c, i) { put("condition" + (i ? " " + (i + 1) : ""), "Condition", c, null, "text"); });
@@ -293,26 +292,34 @@ var EamonProvider = {
                 if (status.health != null) put("health", "Health", status.health, status.maxHealth, "fraction");
                 if (status.profile !== "health-only") {
                     put("intellect", "Intellect", status.intellect);
-                    if (status.learningPct != null) put("learning", "Learning bonus", pct(status.learningPct), null, "text");
+                    // Numeric units pack two-up in the equipment grid; string "text" forces a full-width row.
+                    if (status.learningPct != null) put("learning", "Learning", status.learningPct, null, "percent");
                     put("hardiness", "Hardiness", status.hardiness);
                     // Temporary boosts beside the base value, never folded into it.
                     if (status.hardinessBoost) put("hardiness boost", "Hardiness boost", "+" + status.hardinessBoost + " (magic dagger)", null, "text");
                     put("agility", "Agility", status.agility);
                     if (status.agilityNow != null) put("agility boost", "Agility boost", "x2 = " + status.agilityNow + (status.speedTurns ? " (speed, " + status.speedTurns + " turns)" : " (speed)"), null, "text");
                     put("charisma", "Charisma", status.charisma);
-                    if (status.charmPct != null) put("charm", "Charm bonus", pct(status.charmPct), null, "text");
-                    (status.weapons || []).forEach(function (w) { put("weapon " + String(w.name).toLowerCase(), w.name, w.pct + "%", null, "text"); });
+                    if (status.charmPct != null) put("charm", "Charm", status.charmPct, null, "percent");
+                    (status.weapons || []).forEach(function (w) {
+                        if (w == null || w.pct == null) return;
+                        put("weapon " + String(w.name).toLowerCase(), w.name, w.pct, null, "percent");
+                    });
                     (status.spells || []).forEach(function (s) {
-                        put("spell " + String(s.name).toLowerCase(), s.name, s.now != null ? s.now + "% / " + s.max + "%" : s.max + "%", null, "text");
+                        if (s == null) return;
+                        var key = "spell " + String(s.name).toLowerCase();
+                        if (s.now != null && s.max != null) put(key, s.name, s.now, s.max, "fraction");
+                        else if (s.now != null) put(key, s.name, s.now, null, "percent");
+                        else if (s.max != null) put(key, s.name, s.max, null, "percent");
                     });
                     if (status.armor) put("armor", "Armor", status.armor, null, "text");
-                    if (status.armorExpertise != null) put("armor expertise", "Armor expertise", status.armorExpertise, 100, "percent");
-                    if (status.weight != null) put("weight", "Weight carried", status.weight, status.weightMax, "fraction");
+                    if (status.armorExpertise != null) put("armor expertise", "Armor exp.", status.armorExpertise, 100, "percent");
+                    if (status.weight != null) put("weight", "Weight", status.weight, status.weightMax, "fraction");
                     (status.effects || []).forEach(function (e, i) { put("effect" + (i ? " " + (i + 1) : ""), "Effect", e, null, "text"); });
                 }
             }
             put("gold", "Gold", status.gold);
-            put("bank", "In bank", status.bank);
+            put("bank", "Bank", status.bank);
             if (typeof EquipmentUI !== "undefined" && EquipmentUI.IsOpen && EquipmentUI.IsOpen() && EquipmentUI.Render) EquipmentUI.Render();
         } catch (e) {}
     },

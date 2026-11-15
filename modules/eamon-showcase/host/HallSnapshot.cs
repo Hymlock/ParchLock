@@ -193,11 +193,68 @@ namespace ParchLock.EamonHost
 			return null;
 		}
 
+		// Same kind offsets as WorldSnapshot so Hall gear ids never collide with room scenery (101–109) or playerId.
+		const long ArtifactBase = 100000;
+		static long PlayerId => Base + 300000;
+
+		/// <summary>Character weapons/armour from CharArt (GetCarriedList / GetWornList), same inventory shape as
+		/// WorldSnapshot so Equipment shows gear in the Hall. Read-only field reads only; empty when no character
+		/// or on any failure so a Hall menu never breaks. Nested container contents stay adventure-only (Hall shop
+		/// gear is top-level carried/worn).</summary>
+		static List<object> CharacterInventory(Eamon.Framework.ICharacter character)
+		{
+			var inventory = new List<object>();
+			if (character == null) return inventory;
+			try
+			{
+				var shown = new HashSet<long>();
+				void add(Eamon.Framework.IArtifact a, bool worn)
+				{
+					if (a == null || shown.Contains(a.Uid)) return;
+					shown.Add(a.Uid);
+					inventory.Add(new
+					{
+						id = Base + ArtifactBase + a.Uid,
+						name = a.Name,
+						parent = (long?)PlayerId,
+						kind = "artifact",
+						aliases = a.Synonyms ?? Array.Empty<string>(),
+						worn,
+						ready = false,
+						wearable = a.Wearable != null,
+						container = a.GeneralContainer != null,
+						inside = a.InContainer != null,
+						onTop = a.OnContainer != null,
+						open = a.InContainer != null && a.InContainer.IsOpen(),
+						weapon = a.GeneralWeapon != null,
+						readable = a.Readable != null,
+						edible = a.Edible != null,
+						drinkable = a.Drinkable != null,
+						light = a.LightSource != null,
+						door = a.DoorGate != null,
+						@fixed = a.IsUnmovable(),
+						state = a.StateDesc ?? ""
+					});
+				}
+				foreach (var a in character.GetWornList() ?? new List<Eamon.Framework.IArtifact>())
+					add(a, true);
+				foreach (var a in character.GetCarriedList() ?? new List<Eamon.Framework.IArtifact>())
+					add(a, false);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("[hall] inventory left out (" + ex.GetType().Name + ")");
+				inventory.Clear();
+			}
+			return inventory;
+		}
+
 		internal static string Build(AskContext ctx)
 		{
 			var where = Where(ctx);
 			if (where == null) return null;
 			var w = where.Value;
+			var character = (Eamon.Game.Plugin.Globals.gEngine as EamonMH.Framework.Plugin.IEngine)?.Character;
 			return JsonSerializer.Serialize(new
 			{
 				adventure = WorldName,
@@ -208,11 +265,11 @@ namespace ParchLock.EamonHost
 					id = Base + o.Id, name = o.Name, parent = (long?)null, kind = "artifact", aliases = o.Aliases,
 					@fixed = true, readable = o.Readable, climb = o.Climb, state = ""
 				}),
-				inventory = Array.Empty<object>(),
+				inventory = CharacterInventory(character),
 				stats = new { },
 				// The checked-in character's base values for ParchLock's status card (item 11); none before the desk.
-				status = StatsSnapshot.Hall(Eamon.Game.Plugin.Globals.gEngine, (Eamon.Game.Plugin.Globals.gEngine as EamonMH.Framework.Plugin.IEngine)?.Character),
-				playerId = Base + 300000,
+				status = StatsSnapshot.Hall(Eamon.Game.Plugin.Globals.gEngine, character),
+				playerId = PlayerId,
 				special = w.Level.Commands.Select(c => new { c.label, c.command }),
 				// The Hall's own words: its object verbs, so ParchLock offers exactly these (no Z verbs).
 				vocabulary = w.Id == Base + 1 ? new { commands = new[] { new { verb = "examine", synonyms = new[] { "x" } }, new { verb = "read", synonyms = Array.Empty<string>() }, new { verb = "climb", synonyms = Array.Empty<string>() } }, preps = Array.Empty<string>() }
