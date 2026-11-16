@@ -79,8 +79,13 @@ default, since a keyboard's own arrow keys already work -- turned on in Options.
 With the keyboard open you can hold on the command line for the normal Cut/Copy/Paste
 menu; with the keyboard closed, holding opens the game radial as before.
 
-**Read aloud** (**Tools** → **Options**) is on by default and speaks only **new** story
-text as it appears—not the whole scrollback when you turn it on. Complete
+**Read aloud** asks before the first narration, including the opening tutorial.
+Choose **Yes, read aloud** to enable it, or **No, I'll read** to keep it silent.
+Your choice stays in effect across sessions and stories until you change it in
+**Tools** → **Options** → **Read aloud**. Closing the question with Escape also
+keeps narration off. Existing disabled settings stay disabled when upgrading.
+When enabled, it speaks only **new** story text as it appears, not the whole
+scrollback when you turn it on. Complete
 multi-paragraph replies are kept together even when a story appends them to an existing
 line. Diagram strokes and prompt symbols are skipped, useful map labels remain, and
 all-capital titles are prepared as words. Android and desktop use the same deterministic

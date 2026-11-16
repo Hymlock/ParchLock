@@ -401,6 +401,7 @@ var Tutorial = {
         // Keyboard parity for desktop. Deliberately does NOT trap anything
         // else: there is nothing else to do while the tour is up.
         Tutorial._onKey = function (e) {
+            if (typeof ReadAloud !== "undefined" && ReadAloud.consentDialog) return;
             if (!Tutorial._active) return;
             if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") { e.preventDefault(); Tutorial.next(); }
             else if (e.key === "ArrowLeft") { e.preventDefault(); Tutorial.back(); }

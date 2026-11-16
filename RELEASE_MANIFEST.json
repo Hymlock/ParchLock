@@ -1,18 +1,8 @@
 {
-  "windowsVersion": "2.0.101",
-  "androidVersion": "2.0.100",
+  "version": "2.0.102",
   "variant": "public",
-  "bundledStoryFiles": 75,
-  "sourceCommit": "12edf224",
-  "unchangedAndroid": true,
-  "files": {
-    "img/ParchLockSplash.js": "3ed7fe671d268e4c1da245c25cde089c0004c073645cf25a67966ff1122b4298",
-    "index.html": "911bedc9518e3ed7555b2d9e2a6d67ac648006f3f1b5e6ebfc9ac51cd6fd37b4",
-    "js/ParchLock.js": "1f787577572c4acedc0844bf30c4b578c9ee00bb0fca3ec95a288af3d4621380",
-    "play.html": "591a05288954d659a0359e857dea9cbb64c8f88c068ab102cc666039e025d16d",
-    "service-worker.js": "08c0b613190ec4927ae8019930e95838a8f7faa56556a0433e3b9927b6f0e5c9",
-    "ParchLock.exe": "e4cc14d817bfc48a230e4532df2850a4a4400fff16806a2fa23f4e012b54e936",
-    "ParchLock-source.zip": "c070d0b562f579e005d8dea2fd40d55db575a35c1bc75fe4ebfbcc2d48660731",
-    "ParchLock-Android-2.0.100-source.zip": "e2bf8db1a544bcf218793bb5424f1ef462bf0970eb6e956366360cd3d2b51c5c"
-  }
+  "stories": 75,
+  "sourceCommit": "4ccd675813ceb5a787d696f37601c9d9d1a730fb",
+  "apkSha256": "79240c1ced114c71169f964b35e6eb92578fc2a7b8238eacbc5d5af4672d2ba1",
+  "checks": "Signed APK and source runtime match tested canonical source; README publication links refreshed in source ZIP."
 }

@@ -23,8 +23,9 @@ var Global = {
         // the view moving -- GlkOte scrolls the buffer to the bottom on its own
         // -- it only stops ParchLock repositioning to the start.
         AutoScrollOnOutput: true,
-        // D100 read-aloud: default ON; new story buffer text only.
+        // Ask before the first narration. Existing explicit off settings stay off.
         ReadAloud: true,
+        ReadAloudChoiceMade: false,
         ReadAloudStatus: false,
         // S4: hide the game's one-line status grid while the stat strip
         // already shows its metrics and a readable room label. Default off.

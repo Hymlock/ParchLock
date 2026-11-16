@@ -1,7 +1,3 @@
-# Source archives for this maintenance release
-
-`ParchLock-source.zip` contains the corrected Windows/web source and NSIS installer recipe. `ParchLock-Android-2.0.100-source.zip` is the original source archive for the unchanged, signed Android APK. Signing keys and passwords are never included. The Windows patch version is 2.0.101; the Android package version remains 2.0.100.
-
 # ParchLock Source And Build
 
 `ParchLock-source.zip` is the corresponding-source bundle for the binary

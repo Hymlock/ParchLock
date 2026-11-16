@@ -234,13 +234,14 @@ var WorkspaceUI = {
             .appendTo(scrollLabel);
         scrollLabel.append(document.createTextNode("Scroll new story text to the top (off = ordinary scrolling)"));
 
-        // D100 read-aloud (Options only; no chrome button). Default ON = new story text.
+        // Explicit choice here also satisfies the first-use narration question.
         var raLabel = $("<label>").appendTo(groups.speech);
         var raCheck = $("<input type='checkbox'>")
-            .prop("checked", Global.Prefs.ReadAloud !== false)
+            .prop("checked", Global.Prefs.ReadAloud !== false && !!Global.Prefs.ReadAloudChoiceMade)
             .on("change", function () {
                 var on = !!this.checked;
                 Global.Prefs.ReadAloud = on;
+                Global.Prefs.ReadAloudChoiceMade = true;
                 Global.SavePrefs();
                 try {
                     if (typeof ReadAloud !== "undefined") {

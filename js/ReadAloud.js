@@ -24,6 +24,50 @@ var ReadAloud = {
 
     prefsOn: () => !(typeof Global !== "undefined" && Global.Prefs && Global.Prefs.ReadAloud === false),
 
+    choiceMade: () => !!(typeof Global !== "undefined" && Global.Prefs && Global.Prefs.ReadAloudChoiceMade),
+    consentDialog: null,
+    consentText: "",
+
+    // Use a separate top-layer dialog so the tutorial or an existing Message
+    // remains intact underneath. Nothing, including warm-up speech, runs first.
+    requestConsent: (text) => {
+        ReadAloud.consentText = text;
+        if (ReadAloud.consentDialog) return;
+        var previousFocus = document.activeElement;
+        var dialog = document.createElement("dialog");
+        dialog.id = "pl-readaloud-choice";
+        dialog.setAttribute("aria-labelledby", "pl-readaloud-choice-title");
+        dialog.setAttribute("aria-describedby", "pl-readaloud-choice-description");
+        dialog.style.cssText = "max-width:30rem;width:calc(100% - 3rem);box-sizing:border-box;padding:1.5rem;border:2px solid #b99559;border-radius:12px;background:#17201e;color:#f4eee3;font:inherit;line-height:1.5;";
+        dialog.innerHTML = '<h2 id="pl-readaloud-choice-title">Would you like a narrator?</h2>' +
+            '<p id="pl-readaloud-choice-description">ParchLock can read the adventure aloud. Shall we give your inner narrator a well-earned break?</p>' +
+            '<p>You can change this anytime in Options, under Read aloud.</p>' +
+            '<div style="display:flex;flex-wrap:wrap;gap:1rem"><button type="button" data-choice="yes">Yes, read aloud</button><button type="button" data-choice="no" autofocus>No, I\u2019ll read</button></div>';
+        var finish = function (on) {
+            Global.Prefs.ReadAloud = on;
+            Global.Prefs.ReadAloudChoiceMade = true;
+            try { Global.SavePrefs(); } catch (e) {}
+            var pending = ReadAloud.consentText;
+            ReadAloud.consentText = "";
+            ReadAloud.consentDialog = null;
+            dialog.close();
+            dialog.remove();
+            if (previousFocus && previousFocus.isConnected) previousFocus.focus({ preventScroll: true });
+            if (on) {
+                ReadAloud.applyPrefs();
+                if (pending) ReadAloud.speak(pending);
+            } else ReadAloud.stop();
+        };
+        dialog.addEventListener("cancel", function (event) { event.preventDefault(); finish(false); });
+        // Do not let the underlying game's keyboard handlers close its help card.
+        dialog.addEventListener("keydown", function (event) { event.stopPropagation(); });
+        dialog.querySelector('[data-choice="yes"]').onclick = function () { finish(true); };
+        dialog.querySelector('[data-choice="no"]').onclick = function () { finish(false); };
+        document.body.appendChild(dialog);
+        ReadAloud.consentDialog = dialog;
+        dialog.showModal();
+    },
+
     skipRepeatsOn: () => !!(typeof Global !== "undefined" && Global.Prefs && Global.Prefs.ReadAloudSkipRepeats),
 
     rate: () => {
@@ -305,6 +349,7 @@ var ReadAloud = {
     },
 
     warm: () => {
+        if (!ReadAloud.prefsOn() || !ReadAloud.choiceMade()) return;
         if (ReadAloud.warmed) return;
         ReadAloud.warmed = true;
         try {
@@ -365,6 +410,10 @@ var ReadAloud = {
         if (ReadAloud.automationMuted()) return false;
         var t = ReadAloud.scrubForSpeech(text);
         if (!t || t.length < 2 || !ReadAloud.meaningful(t)) return false;
+        if (!ReadAloud.choiceMade()) {
+            if (ReadAloud.isSupported()) ReadAloud.requestConsent(t);
+            return false;
+        }
         if (t.length > 4000) t = t.slice(0, 4000);
         if (ReadAloud.micBusy()) {
             ReadAloud._micDeferredSpeech = t;

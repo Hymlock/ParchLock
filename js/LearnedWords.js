@@ -391,6 +391,7 @@ var LearnedWords = {
         };
         root.querySelector('[data-action="help"]').onclick = function () { try { localStorage.removeItem(LearnedWords.TUTORIAL_KEY); } catch (e) {} LearnedWords.startTour(); };
         LearnedWords._onKey = function (e) {
+            if (typeof ReadAloud !== "undefined" && ReadAloud.consentDialog) return;
             if (!LearnedWords._open) return;
             if (e.key === "Escape") { e.preventDefault(); e.stopImmediatePropagation(); LearnedWords.close(); return; }
             if (document.getElementById("message").contains(e.target)) {

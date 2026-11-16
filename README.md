@@ -16,23 +16,18 @@ ownership or permission.
 
 ## Start
 
-- **Windows (recommended):** download and run
-  [`ParchLock-Setup-2.0.100-public.exe`](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.100)
-  from the release page. It installs ParchLock (with shortcuts and uninstaller).
-  Then start **ParchLock** from the Start menu or desktop.
-- **Windows (portable):** double-click `ParchLock.exe` in a distribution folder.
-  It serves the files on localhost and opens Chrome or Edge full screen so voice
-  input can work. The first time, it may ask whether to add a desktop shortcut
-  (`ParchLock.exe --desktop-shortcut` asks again). Opening `play.html` directly
-  still plays, but the microphone cannot remember permission on a `file://` page.
-- **Android:** install `ParchLock-public.apk` from the same release (or the APK
-  bundled with the Windows installer package).
-- **Library:** open `index.html` and select **Modules** to add files.
+- Desktop: double-click `ParchLock.exe` in the distribution folder. It serves the
+  files on localhost and opens Chrome or Edge full screen so voice input can work.
+  The first time, it asks whether to add a desktop shortcut whose picture changes
+  each time you close ParchLock (`ParchLock.exe --desktop-shortcut` asks again).
+  Opening `play.html` directly still plays, but the microphone cannot remember
+  permission on a `file://` page.
+- Android: install the signed `.apk` included in the distribution folder.
+- Library: open `index.html` and select **Modules** to add files.
 
 Supported local formats are Z-machine v3, v4, v5 and v8, zblorb, raw Glulx
 (`.ulx`) and gblorb. Z-machine modules receive the full mapping and action
-system. Glulx modules are currently play-only. Eamon Showcase is supported when
-you import the separate `.eamon` module from the release page.
+system. Glulx modules are currently play-only.
 
 Imported bytes are stored in IndexedDB on the current device. They are not sent
 to a ParchLock server. Clearing browser/app storage or reinstalling the Android
@@ -49,16 +44,17 @@ ParchLock modifications are provided under GNU GPL version 3; see `LICENSE`.
 Corresponding source for the distributed build is `ParchLock-source.zip`.
 Third-party components and included games retain their own licenses.
 
-## Downloads — Windows 2.0.101 / Android 2.0.100
 
-[Open the current release](https://github.com/Hymlock/ParchLock/releases/tag/v2.0.101).
+## Downloads: Windows and Android 2.0.102
 
-- [ParchLock-Setup-2.0.101-public.exe](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-Setup-2.0.101-public.exe) — Windows installer, including the public story set, Android APK and source archives.
-- [ParchLock-public.apk](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-public.apk) — unchanged Android 2.0.100 APK, signed with the existing release key.
-- [ParchLock-source.zip](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-source.zip) — source for the corrected Windows/web files and installer recipe.
-- [ParchLock-Android-2.0.100-source.zip](https://github.com/Hymlock/ParchLock/releases/download/v2.0.101/ParchLock-Android-2.0.100-source.zip) — original corresponding source for the unchanged Android APK.
-- [Eamon Showcase module](https://github.com/Hymlock/ParchLock/releases/download/v2.0.100/EamonShowcase-2.0.100.eamon) — optional, unchanged module; import it through Modules → Add. It is separate from the installer.
+- [ParchLock-Setup-2.0.102-public.exe](https://github.com/Hymlock/ParchLock/releases/download/v2.0.102/ParchLock-Setup-2.0.102-public.exe): Windows installer, including the Android APK and matching source.
+- [ParchLock-public.apk](https://github.com/Hymlock/ParchLock/releases/download/v2.0.102/ParchLock-public.apk): Android app, signed with the existing release key.
+- [ParchLock-source.zip](https://github.com/Hymlock/ParchLock/releases/download/v2.0.102/ParchLock-source.zip): corresponding Windows, web and Android source.
+- [ParchLock-WEB-2.0.102.zip](https://github.com/Hymlock/ParchLock/releases/download/v2.0.102/ParchLock-WEB-2.0.102.zip): complete web runtime for browser hosting.
+- [Eamon Showcase](https://github.com/Hymlock/ParchLock/releases/download/v2.0.100/EamonShowcase-2.0.100.eamon): optional separate module, unchanged. Import through Modules, then Add.
 
-This is a Windows-only maintenance patch: the startup picture follows the rotating desktop shortcut, and icon rotation notifies Windows about ParchLock's shortcut only. Android has not been rebuilt or changed. The public distribution contains 75 bundled story files. The Showcase is still a development module; its full adventure acceptance work is not declared complete.
+ParchLock now asks before its first narration. Choose Yes to hear the adventure, or No to keep it silent. The choice persists across stories and sessions. Change it anytime in Options under Read aloud. Existing disabled preferences remain disabled after upgrading. This includes the opening tutorial and Learning tour.
 
-The installer contains the APK as well as both source archives. For browser play, use the installed PC launcher or host the complete runtime folder; a source ZIP is not a ready-to-play web archive.
+This public distribution contains 75 bundled story files. The Showcase remains a development module; this update does not claim completion of all adventure acceptance work.
+
+The Windows installer includes the APK and source archive. The web ZIP contains index.html at its root and is suitable for itch.io browser hosting. An installer EXE cannot run inside the itch.io browser player.
